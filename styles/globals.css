@@ -14,3 +14,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.main-app{
+  margin-left: 126px;
+  margin-right: 126px;
+}

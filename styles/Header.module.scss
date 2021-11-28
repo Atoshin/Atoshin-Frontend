@@ -1,0 +1,41 @@
+.mainHeader {
+  display: flex;
+  justify-content: space-between;
+  font-family: Roboto, sans-serif;
+
+  .logoContainer {
+    width: 96px;
+    height: 96px;
+    background-color: #94A2AB;
+    border-radius: 16px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  .menuContainer {
+    list-style: none;
+    display: flex;
+
+    .marketplaceItem {
+      margin-right: 104px;
+    }
+
+    li {
+      margin: 15px 24px 24px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 19px;
+    }
+
+    .registerBtn {
+      background-color: #232323;
+      text-transform: none;
+      height: 47px;
+      width: 131px;
+      font-weight: 500;
+      border-radius: 5px;
+    }
+  }
+}

@@ -7,7 +7,9 @@ function MyApp({Component, pageProps}) {
     // return <Provider store={store}>
     //     <Component {...pageProps} />
     // </Provider>
-    return <Component {...pageProps} />
+    return <div className="main-app">
+        <Component {...pageProps} />
+    </div>
 }
 
 // const makeStore = () => store;
