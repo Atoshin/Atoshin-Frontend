@@ -4,9 +4,13 @@ import withRedux from 'next-redux-wrapper';
 import store from '../redux/store'
 
 function MyApp({Component, pageProps}) {
-    return <Provider store={store}>
-        <Component {...pageProps} />
-    </Provider>
+    // return <Provider store={store}>
+    //     <Component {...pageProps} />
+    // </Provider>
+    return <Component {...pageProps} />
 }
-const makeStore  = () => store;
-export default withRedux(makeStore)(MyApp)
+
+// const makeStore = () => store;
+// export default withRedux(makeStore)(MyApp)
+
+export default MyApp
