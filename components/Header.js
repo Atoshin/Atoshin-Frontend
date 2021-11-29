@@ -1,14 +1,10 @@
 import classes from '../styles/Header.module.scss'
 import {Button} from "@mui/material";
-import Head from "next/head";
 
 
 export default function Header() {
 
     return <>
-        <Head>
-            <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"/>
-        </Head>
         <div className={classes.mainHeader}>
             <div className={classes.logoContainer}>LOGO</div>
             <ul className={classes.menuContainer}>
