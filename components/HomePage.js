@@ -95,9 +95,15 @@ export default function HomePage() {
                             </div>
                         </div>
                     </div>
-                    <div className={classes.galleryMainPhoto}>
-
+                    <div>
+                        <img className={classes.galleryMainPhoto} src="/images/gallery-main.png" alt=""/>
                     </div>
+                </div>
+                <div className={classes.galleryBottomSec}>
+                    <img className={classes.galleryPhotos} src="/images/gallery-1.png" alt=""/>
+                    <img className={classes.galleryPhotos} src="/images/gallery-2.png" alt=""/>
+                    <img className={classes.galleryPhotos} src="/images/gallery-3.png" alt=""/>
+                    <img className={classes.galleryPhotos} src="/images/gallery-4.png" alt=""/>
                 </div>
             </div>
         </div>
