@@ -2,14 +2,20 @@ import '../styles/globals.css'
 import {Provider} from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import store from '../redux/store'
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function MyApp({Component, pageProps}) {
     // return <Provider store={store}>
     //     <Component {...pageProps} />
     // </Provider>
-    return <div className="main-app">
-        <Component {...pageProps} />
-    </div>
+    return <>
+        <Header/>
+        <div className="main-app">
+            <Component {...pageProps} />
+        </div>
+        <Footer/>
+    </>
 }
 
 // const makeStore = () => store;
