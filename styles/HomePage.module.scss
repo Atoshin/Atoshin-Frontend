@@ -51,6 +51,7 @@
 .topRightMainSec {
   display: flex;
   flex-direction: column;
+  //float: right;
 }
 .topRightSec {
   display: flex;
@@ -223,6 +224,7 @@
   margin-top: 16px;
   width: 645px;
   float: right;
+  margin-left: 112px;
 }
 
 .selectedTap{
