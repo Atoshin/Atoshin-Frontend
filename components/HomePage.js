@@ -6,9 +6,6 @@ import Head from "next/head";
 export default function HomePage() {
 
     return <>
-        <Head>
-            <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"/>
-        </Head>
         <div className={classes.main}>
             <div className={classes.topMainSec}>
                 <div className={classes.topLeftSec}>
@@ -91,7 +88,7 @@ export default function HomePage() {
                                     digital ledger. NFTs can be associated with easily-reproducible
                                     <br/>items such
                                 </div>
-                                <Button className={classes.exploreBtn} >Explore</Button>
+                                <Button className={classes.exploreBtn}>Explore</Button>
                             </div>
                         </div>
                     </div>
@@ -99,6 +96,9 @@ export default function HomePage() {
 
                     </div>
                 </div>
+            </div>
+            <div>
+
             </div>
         </div>
     </>

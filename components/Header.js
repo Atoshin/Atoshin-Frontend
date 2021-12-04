@@ -1,8 +1,16 @@
 import classes from '../styles/Header.module.scss'
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
+import { ethers } from "ethers"
 
 
 export default function Header() {
+
+    const connectWallet = async (e) => {
+        e.preventDefault();
+        const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+        await provider.send("eth_requestAccounts", []);
+    }
+
 
     return <>
         <div className={classes.mainHeader}>
@@ -12,8 +20,8 @@ export default function Header() {
                 <li>Art Centers</li>
                 <li>Artists</li>
                 <li>About NFT</li>
-                <Button className={classes.registerBtn} disableElevation variant={"contained"}>
-                    Register/Login
+                <Button onClick={connectWallet} className={classes.registerBtn} disableElevation variant={"contained"}>
+                    Connect Wallet
                 </Button>
             </ul>
         </div>

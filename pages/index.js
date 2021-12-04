@@ -14,7 +14,6 @@ export default function Home() {
                     <meta name="description" content="Atoshin Marketplace"/>
                     <link rel="icon" href="/favicon.ico"/>
                 </Head>
-                <Header/>
                 <main className={styles.main}>
                     <HomePage/>
                     {/*<h1 className={styles.title}>*/}
@@ -71,7 +70,6 @@ export default function Home() {
                 {/*  </a>*/}
                 {/*</footer>*/}
             </div>
-            <Footer/>
         </div>
     )
 }
