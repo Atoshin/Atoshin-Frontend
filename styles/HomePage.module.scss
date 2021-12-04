@@ -204,8 +204,14 @@
   height: 360px;
   border-radius: 3px;
   margin-left: 41px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.galleryPlayPhoto{
+  position: absolute;
+}
 .galleryBottomSec {
   display: flex;
   flex-direction: row;
