@@ -22,57 +22,77 @@ export default function HomePage() {
                     </div>
                     <Button className={classes.buyBtn}>Buy Now</Button>
                 </div>
-                <div className={classes.topRightSec}>
-                    <div>
-                        <img className={classes.artWorkImg} src="/images/starryNight.png" alt=""/>
-                    </div>
-                    <div className={classes.artWorkDetailSec}>
-                        <div className={classes.priceMainSec}>
-                            <div className={classes.priceSec}>
-                                <div className={classes.titleSec}>
-                                    Price
+                <div className={classes.topRightMainSec}>
+                    <div className={classes.topRightSec}>
+                        <div style={{height: 430}}>
+                            <img className={classes.artWorkImg} src="/images/starryNight.png" alt=""/>
+                        </div>
+                        <div className={classes.artWorkDetailSec}>
+                            <div className={classes.priceMainSec}>
+                                <div className={classes.priceSec}>
+                                    <div className={classes.titleSec}>
+                                        Price
+                                    </div>
+                                    <div className={classes.amountSec}>
+                                        765 ETH
+                                    </div>
                                 </div>
-                                <div className={classes.amountSec}>
-                                    765 ETH
+                                <div className={classes.quantSec}>
+                                    <div className={classes.title2Sec}>
+                                        Quantity
+                                    </div>
+                                    <div className={classes.amountSec}>
+                                        12 Token
+                                    </div>
                                 </div>
                             </div>
-                            <div className={classes.quantSec}>
-                                <div className={classes.title2Sec}>
-                                    Quantity
+                            <div className={classes.dayHourMinSec}>
+                                <div className={classes.Sec}>
+                                    <div className={classes.Num}>
+                                        02
+                                    </div>
+                                    <div className={classes.Txt}>
+                                        Day
+                                    </div>
                                 </div>
-                                <div className={classes.amountSec}>
-                                    12 Token
+                                <div className={classes.Sec}>
+                                    <div className={classes.Num}>
+                                        18
+                                    </div>
+                                    <div className={classes.Txt}>
+                                        Hour
+                                    </div>
+                                </div>
+                                <div className={classes.Sec}>
+                                    <div className={classes.Num}>
+                                        40
+                                    </div>
+                                    <div className={classes.Txt}>
+                                        Min
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className={classes.dayHourMinSec}>
-                            <div className={classes.Sec}>
-                                <div className={classes.Num}>
-                                    02
-                                </div>
-                                <div className={classes.Txt}>
-                                    Day
-                                </div>
-                            </div>
-                            <div className={classes.Sec}>
-                                <div className={classes.Num}>
-                                    18
-                                </div>
-                                <div className={classes.Txt}>
-                                    Hour
-                                </div>
-                            </div>
-                            <div className={classes.Sec}>
-                                <div className={classes.Num}>
-                                    40
-                                </div>
-                                <div className={classes.Txt}>
-                                    Min
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                    {/*<div className={classes.sliderBottomMenu}>*/}
+                    {/*    <div className={classes.selectedTap}>*/}
+                    {/*        Starry Night*/}
+                    {/*    </div>*/}
+                    {/*    <div className={classes.unselectedTab}>*/}
+                    {/*        Mona Lisa*/}
+                    {/*    </div>*/}
+                    {/*    <div className={classes.unselectedTab}>*/}
+                    {/*        Las Meninas*/}
+                    {/*    </div>*/}
+                    {/*    <div className={classes.unselectedTab}>*/}
+                    {/*        The Last Supper*/}
+                    {/*    </div>*/}
+                    {/*    <div className={classes.unselectedTab}>*/}
+                    {/*        The Scream*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
+
             </div>
             <div className={classes.galleryMainSec}>
                 <div className={classes.galleryTopSec}>
