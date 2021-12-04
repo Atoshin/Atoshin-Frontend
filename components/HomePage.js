@@ -74,23 +74,23 @@ export default function HomePage() {
                             </div>
                         </div>
                     </div>
-                    {/*<div className={classes.sliderBottomMenu}>*/}
-                    {/*    <div className={classes.selectedTap}>*/}
-                    {/*        Starry Night*/}
-                    {/*    </div>*/}
-                    {/*    <div className={classes.unselectedTab}>*/}
-                    {/*        Mona Lisa*/}
-                    {/*    </div>*/}
-                    {/*    <div className={classes.unselectedTab}>*/}
-                    {/*        Las Meninas*/}
-                    {/*    </div>*/}
-                    {/*    <div className={classes.unselectedTab}>*/}
-                    {/*        The Last Supper*/}
-                    {/*    </div>*/}
-                    {/*    <div className={classes.unselectedTab}>*/}
-                    {/*        The Scream*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
+                    <div className={classes.sliderBottomMenu}>
+                        <div className={classes.selectedTap}>
+                            Starry Night
+                        </div>
+                        <div className={classes.unselectedTab}>
+                            Mona Lisa
+                        </div>
+                        <div className={classes.unselectedTab}>
+                            Las Meninas
+                        </div>
+                        <div className={classes.unselectedTab}>
+                            The Last Supper
+                        </div>
+                        <div className={classes.unselectedTab}>
+                            The Scream
+                        </div>
+                    </div>
                 </div>
 
             </div>
