@@ -123,8 +123,36 @@ export default function HomePage() {
                     <img className={classes.galleryPhotos} src="/images/gallery-4.png" alt=""/>
                 </div>
             </div>
-            <div>
-
+            <div className={classes.artistMainSec}>
+                <div className={classes.artistTitle}>
+                    Artists
+                </div>
+                <div className={classes.moreArtists}>
+                    <p className={classes.artistsSubtext}>
+                        Learn more about these great artists
+                    </p>
+                    <p className={classes.viewAll}>
+                        View All
+                    </p>
+                </div>
+                <div className={classes.artistsSlider}>
+                    <div className={classes.artist}>
+                        <img src="/images/img_1.png" alt=""/>
+                        <p>Pablo Picasso</p>
+                    </div>
+                    <div className={classes.artist}>
+                        <img src="/images/img_2.png" alt=""/>
+                        <p>Vincent van Gogh</p>
+                    </div>
+                    <div className={classes.artist}>
+                        <img src="/images/img_3.png" alt=""/>
+                        <p>Claude Monet</p>
+                    </div>
+                    <div className={classes.artist}>
+                        <img src="/images/img_4.png" alt=""/>
+                        <p>Jackson Pollock</p>
+                    </div>
+                </div>
             </div>
         </div>
     </>
