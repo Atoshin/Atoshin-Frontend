@@ -11,7 +11,7 @@
 .topLeftSec {
   display: flex;
   flex-direction: column;
-  margin-top: 109px ;
+  margin-top: 109px;
 }
 
 .artWorkName {
@@ -213,5 +213,63 @@
   margin-right: 20px;
 }
 
+.artistMainSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 278px;
+}
 
+.artistTitle {
+  width: 100%;
+  font-size: 40px;
+  font-weight: 550;
+  line-height: 48px;
+}
 
+.moreArtists {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.artistsSubtext {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.viewAll {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  cursor: pointer;
+}
+
+.artistsSlider {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 210px;
+}
+
+.artist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 265px;
+    border-radius: 3px 3px 0px 0px;
+  }
+
+  p {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
