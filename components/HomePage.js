@@ -7,7 +7,7 @@ export default function HomePage() {
 
     return <>
         <div className={classes.main}>
-            <div className={classes.topMainSec}>
+            <div className={classes.topMainSec + ' topMainSec'}>
                 <div className={classes.topLeftSec}>
                     <div className={classes.artWorkName}>
                         Starry Night
@@ -104,9 +104,9 @@ export default function HomePage() {
                             <img className={classes.imgSec} src="/images/img.png" alt=""/>
                             <div className={classes.galleryDesc}>
                                 <div className={classes.galleryDecsTxt}>
-                                    A non-fungible token is a unique and non-interchangeable unit of data stored on a
-                                    digital ledger. NFTs can be associated with easily-reproducible
-                                    <br/>items such
+                                    A non-fungible token is a unique and non-interchangeable unit of data <br/> stored on a
+                                    digital ledger. NFTs can be associated with easily-reproducible <br/>
+                                    items such
                                 </div>
                                 <Button className={classes.exploreBtn}>Explore</Button>
                             </div>
@@ -114,7 +114,7 @@ export default function HomePage() {
                     </div>
                     <div>
                         <img className={classes.galleryMainPhoto} src="/images/gallery-main.png" alt=""/>
-                        <img className={classes.galleryPlayPhoto} src="/images/img_5.png" alt=""/>
+                        {/*<img className={classes.galleryPlayPhoto} src="/images/img_5.png" alt=""/>*/}
                     </div>
                 </div>
                 <div className={classes.galleryBottomSec}>

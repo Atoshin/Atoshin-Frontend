@@ -4,16 +4,19 @@ import withRedux from 'next-redux-wrapper';
 import store from '../redux/store'
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Container from '@mui/material/Container';
+
 
 function MyApp({Component, pageProps}) {
     // return <Provider store={store}>
     //     <Component {...pageProps} />
     // </Provider>
     return <>
-        <Header/>
-        <div className="main-app">
+
+        <Container>
+            <Header/>
             <Component {...pageProps} />
-        </div>
+        </Container>
         <Footer/>
     </>
 }

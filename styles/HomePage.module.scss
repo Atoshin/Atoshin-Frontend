@@ -6,6 +6,8 @@
 .topMainSec {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  //width: 100%;
 }
 
 .topLeftSec {
@@ -52,12 +54,14 @@
 .topRightMainSec {
   display: flex;
   flex-direction: column;
+  width: 645px;
+
   //float: right;
 }
 .topRightSec {
   display: flex;
   flex-direction: column;
-  margin-left: 109px;
+  //margin-left: 109px;
   filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
 }
 
@@ -149,6 +153,7 @@
 .galleryTopSec {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .galleryDescMainSec {
@@ -167,6 +172,7 @@
 .galleryDescSec {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   margin-top: 32px;
 
 }
@@ -181,8 +187,9 @@
   font-size: 16px;
   font-weight: 300;
   line-height: 25px;
-  width: 576px;
+  width: 526px;
   text-align: left;
+  margin-top: 9px;
 }
 
 .exploreBtn {
@@ -203,7 +210,7 @@
   width: 360px;
   height: 360px;
   border-radius: 3px;
-  margin-left: 41px;
+  //margin-left: 41px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -232,7 +239,7 @@
   margin-top: 16px;
   width: 645px;
   float: right;
-  margin-left: 112px;
+  //margin-left: 112px;
 }
 
 .selectedTap{
@@ -312,4 +319,34 @@
     font-size: 18px;
     line-height: 21px;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 600px) {
+  .topMainSec {
+    flex-direction: column;
+  }
+
+
+
+
 }
