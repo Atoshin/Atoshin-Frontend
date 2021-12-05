@@ -12,7 +12,6 @@ function MyApp({Component, pageProps}) {
     //     <Component {...pageProps} />
     // </Provider>
     return <>
-
         <Container>
             <Header/>
             <Component {...pageProps} />

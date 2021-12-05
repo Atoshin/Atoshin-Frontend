@@ -1,13 +1,23 @@
 import classes from '../styles/HomePage.module.scss'
-import {Button} from "@mui/material";
+import {Button, useMediaQuery} from "@mui/material";
 import Head from "next/head";
+import {useTheme} from "@mui/material/styles";
 
 
 export default function HomePage() {
+    const BuyBtn = () => {
+        return <Button className={classes.buyBtn}>Buy Now</Button>
+    }
+    const ExploreBtn = () => {
+        return <Button className={classes.exploreBtn}>Explore</Button>
+
+    }
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
     return <>
         <div className={classes.main}>
-            <div className={classes.topMainSec + ' topMainSec'}>
+            <div className={classes.topMainSec}>
                 <div className={classes.topLeftSec}>
                     <div className={classes.artWorkName}>
                         Starry Night
@@ -20,11 +30,13 @@ export default function HomePage() {
                         in June 1889, it depicts the view from the east-facing window of his asylum room at
                         Saint-Rémy-de-Provence, just before sunrise, with the addition of an imaginary village
                     </div>
-                    <Button className={classes.buyBtn}>Buy Now</Button>
+                    {!matches &&
+                        <BuyBtn/>
+                    }
                 </div>
                 <div className={classes.topRightMainSec}>
                     <div className={classes.topRightSec}>
-                        <div style={{height: 430}}>
+                        <div className={classes.artworkImgSec}>
                             <img className={classes.artWorkImg} src="/images/starryNight.png" alt=""/>
                         </div>
                         <div className={classes.artWorkDetailSec}>
@@ -91,6 +103,9 @@ export default function HomePage() {
                             The Scream
                         </div>
                     </div>
+                    {matches &&
+                        <BuyBtn/>
+                    }
                 </div>
 
             </div>
@@ -98,24 +113,33 @@ export default function HomePage() {
                 <div className={classes.galleryTopSec}>
                     <div className={classes.galleryDescMainSec}>
                         <div className={classes.galleryName}>
+                            {matches &&
+                                <img style={{width:42,height:45,}} className={classes.imgSec} src="/images/img.png" alt=""/>
+                            }
                             DD Gallery
+
                         </div>
                         <div className={classes.galleryDescSec}>
-                            <img className={classes.imgSec} src="/images/img.png" alt=""/>
+                            {!matches &&
+                                <img className={classes.imgSec} src="/images/img.png" alt=""/>
+                            }
                             <div className={classes.galleryDesc}>
                                 <div className={classes.galleryDecsTxt}>
-                                    A non-fungible token is a unique and non-interchangeable unit of data <br/> stored on a
-                                    digital ledger. NFTs can be associated with easily-reproducible <br/>
+                                    A non-fungible token is a unique and non-interchangeable unit of data stored
+                                    on a
+                                    digital ledger. NFTs can be associated with easily-reproducible
                                     items such
                                 </div>
-                                <Button className={classes.exploreBtn}>Explore</Button>
+                                {!matches &&
+                                    <ExploreBtn/>
+                                }
                             </div>
                         </div>
                     </div>
-                    <div>
                         <img className={classes.galleryMainPhoto} src="/images/gallery-main.png" alt=""/>
-                        {/*<img className={classes.galleryPlayPhoto} src="/images/img_5.png" alt=""/>*/}
-                    </div>
+                    {matches &&
+                        <ExploreBtn/>
+                    }
                 </div>
                 <div className={classes.galleryBottomSec}>
                     <img className={classes.galleryPhotos} src="/images/gallery-1.png" alt=""/>
@@ -137,14 +161,16 @@ export default function HomePage() {
                     </p>
                 </div>
                 <div className={classes.artistsSlider}>
-                    <div className={classes.artist}>
-                        <img src="/images/img_1.png" alt=""/>
-                        <p>Pablo Picasso</p>
-                    </div>
-                    <div className={classes.artist}>
-                        <img src="/images/img_2.png" alt=""/>
-                        <p>Vincent van Gogh</p>
-                    </div>
+                    {!matches && <>
+                        <div className={classes.artist}>
+                            <img src="/images/img_1.png" alt=""/>
+                            <p>Pablo Picasso</p>
+                        </div>
+                        <div className={classes.artist}>
+                            <img src="/images/img_2.png" alt=""/>
+                            <p>Vincent van Gogh</p>
+                        </div>
+                    </> }
                     <div className={classes.artist}>
                         <img src="/images/img_3.png" alt=""/>
                         <p>Claude Monet</p>

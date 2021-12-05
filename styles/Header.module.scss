@@ -7,6 +7,34 @@
   //margin-right: 126px;
   margin-bottom: 80px;
 
+  .headerMainMob {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+
+  .hamburgerAndlogo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hamburger {
+    width: 16px;
+    height: 14px;
+  }
+
+  .logoMob {
+    width: 51px;
+    height: 32px;
+    color: white;
+    margin-right: 34px;
+    border-radius: 5px;
+    background-color: #94A2AB;
+  }
   .logoContainer {
     display: flex;
     align-items: center;
@@ -20,7 +48,18 @@
     font-weight: bold;
     font-size: 22px;
   }
-
+  .registerBtnMob {
+    background-color: #232323;
+    color: white;
+    text-transform: none;
+    height: 32px;
+    width: 71px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    padding: 0;
+    border-radius: 5px;
+  }
   .menuContainer {
     list-style: none;
     display: flex;

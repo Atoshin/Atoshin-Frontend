@@ -66,7 +66,7 @@
   display: flex;
   flex-direction: row;
   width: 895px;
-  justify-content: space-between!important;
+  justify-content: space-between !important;
   margin-top: 48px;
 }
 
@@ -116,8 +116,45 @@
 }
 
 
+@media (max-width: 600px) {
+  .dividingLine {
+    width: 90%;
+  }
+  .emailSec {
+    width: 100%;
+    margin-right: 24px;
+    margin-left: 24px;
+  }
+  .registerBtn {
+    margin-left: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    background-color: #F4F4EF;
+    color: #232323;
+    width: 96px;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: none;
 
+  }
+  .registerText {
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 24px;
+  }
+  .emailInput {
+     width: 204px;
+     height: 30px;
+     border-radius: 5px;
+     font-weight: 300;
+     font-size: 16px;
+     padding-left: 15px;
+     color: #232323;
+   }
 
+}
 
 
 
