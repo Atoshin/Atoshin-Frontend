@@ -1,0 +1,108 @@
+.artistMainSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 278px;
+}
+
+.artistTitle {
+  width: 100%;
+  font-size: 40px;
+  font-weight: 550;
+  line-height: 48px;
+  font-family: "Eksell-font";
+}
+
+.moreArtists {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.artistsSubtext {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.viewAll {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  cursor: pointer;
+}
+
+.artistsSlider {
+  //display: flex;
+  //justify-content: space-between;
+  margin-bottom: 210px;
+}
+
+.artist {
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  border-radius: 3px;
+  margin: 10px 5px 10px 5px;
+  img {
+    user-select: none;
+    width: 100%;
+  }
+
+  p {
+    user-select: none;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
+
+@media (max-width: 600px) {
+  .artist {
+    img {
+      //width: calc(100% - 8px);
+    }
+
+    p {
+      font-family: Roboto;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  .artistTitle {
+    width: 100%;
+    font-size: 25px;
+    font-weight: 550;
+    line-height: 30px;
+    font-family: "Eksell-font";
+  }
+
+  .artistsSubtext {
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .viewAll {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    cursor: pointer;
+  }
+
+  .moreArtists {
+    margin-bottom: 24px;
+  }
+}
