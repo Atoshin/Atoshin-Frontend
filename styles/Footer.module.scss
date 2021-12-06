@@ -114,25 +114,49 @@
   margin-top: 81px;
   margin-bottom: 24px;
 }
-
+.instagramIcon {
+  width: 30.38px;
+  height: 30px;
+}
+.linkedInIcon {
+  width: 30.38px;
+  height: 30px;
+  margin-left: 32px;
+}
+.telegramIcon {
+  width: 29.21px;
+  height: 25.88px;
+  margin-left: 32px;
+}
+.twitterIcon {
+  width: 30.38px;
+  height: 24.39px;
+  margin-left: 32px;
+}
 
 @media (max-width: 600px) {
+  .footerMain {
+    width: 100%;
+    height: 100%;
+  }
   .dividingLine {
     width: 90%;
+    margin-top: 24px;
   }
   .emailSec {
-    width: 100%;
-    margin-right: 24px;
-    margin-left: 24px;
+    width: 90%;
+    justify-content: space-between;
+    margin-top: 24px;
+    align-items: center;
   }
   .registerBtn {
-    margin-left: 12px;
+    //margin-left: 12px;
     font-size: 12px;
     font-weight: 500;
     line-height: 14px;
     background-color: #F4F4EF;
     color: #232323;
-    width: 96px;
+    width: 30%;
     height: 30px;
     border-radius: 5px;
     text-align: center;
@@ -145,15 +169,59 @@
     margin-top: 24px;
   }
   .emailInput {
-     width: 204px;
+     width: 65%;
      height: 30px;
      border-radius: 5px;
      font-weight: 300;
-     font-size: 16px;
+     font-size: 12px;
      padding-left: 15px;
      color: #232323;
    }
-
+  .linksMainSec {
+    width: 100%;
+  }
+  .logoSec {
+    width: 51px;
+    height: 32px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .linkTitle {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .linkSubtitle {
+    font-size: 12px;
+    font-weight: 300;
+  }
+  .socialMediaSec {
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  .instagramIcon {
+    width: 20.39px;
+    height: 20px;
+  }
+  .linkedInIcon {
+    width: 20.39px;
+    height: 20px;
+    margin-left: 22.09px;
+  }
+  .telegramIcon {
+    width: 19.61px;
+    height: 17.25px;
+    margin-left: 22.09px;
+  }
+  .twitterIcon {
+    width: 20.39px;
+    height: 16.26px;
+    margin-left: 22.09px;
+  }
+  .linksMainSec {
+    margin-top: 24px;
+    width: 90% ;
+  }
 }
 
 

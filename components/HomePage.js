@@ -87,6 +87,7 @@ export default function HomePage() {
                         </div>
                     </div>
                     <div className={classes.sliderBottomMenu}>
+                        <img className={classes.vector} src="/icons/vector-left.png" alt=""/>
                         <div className={classes.selectedTap}>
                             Starry Night
                         </div>
@@ -102,6 +103,7 @@ export default function HomePage() {
                         <div className={classes.unselectedTab}>
                             The Scream
                         </div>
+                        <img className={classes.vector} src="/icons/vector-right.png" alt=""/>
                     </div>
                     {matches &&
                         <BuyBtn/>

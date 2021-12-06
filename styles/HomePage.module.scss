@@ -88,6 +88,8 @@
   height: 115px;
   background-color: #FFFFFF;
   border-radius: 0px 0px 3px 3px;
+  padding-left: 48px;
+  padding-right: 80px;
   //border: 1px #232323;
 }
 
@@ -95,7 +97,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 32px;
-  margin-right: 80px;
+  //margin-right: 80px;
 }
 
 .Sec {
@@ -107,9 +109,7 @@
 .Num {
   font-size: 32px;
   font-weight: 500;
-  line-height: 32px;
   color: #EE574C;
-
 }
 
 .Txt {
@@ -121,7 +121,7 @@
 .priceMainSec {
   display: flex;
   flex-direction: column;
-  margin-left: 48px;
+  //margin-left: 48px;
 }
 
 .priceSec {
@@ -340,6 +340,10 @@
     line-height: 21px;
   }
 }
+.vector {
+  width: 10.29px;
+  height: 20.46px;
+}
 
 
 @media (max-width: 600px) {
@@ -362,6 +366,9 @@
   }
   .artWorkDetailSec {
     width: 100%;
+    padding-left: 16px;
+    padding-right: 36px;
+    height: 52px;
   }
   .topRightMainSec {
     width: 100%;
@@ -436,16 +443,13 @@
     font-size: 25px;
     font-weight: 550;
     line-height: 30px;
-    font-family: "Eksell-font";
   }
   .artistsSubtext {
-    font-family: Roboto;
     font-weight: 300;
     font-size: 12px;
     line-height: 14px;
   }
   .viewAll {
-    font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -454,5 +458,35 @@
   }
   .moreArtists {
     margin-bottom: 24px;
+  }
+  .priceSec {
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+  .dayHourMinSec {
+    margin-top: 7px;
+  }
+  .titleSec {
+    font-size: 12px;
+    font-weight: 300;
+    margin-right: 8px;
+  }
+  .title2Sec {
+    font-size: 12px;
+    font-weight: 300;
+    margin-right: 8px;
+  }
+  .amountSec {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .Num {
+    font-size: 18px;
+  }
+  .Txt {
+    font-size: 12px;
+  }
+  .Sec {
+    margin-right: 6px;
   }
 }

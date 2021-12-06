@@ -50,10 +50,10 @@ export default function Footer() {
                 </div>
             </div>
             <div className={classes.socialMediaSec}>
-                <img src="/icons/instagram.svg" alt=""/>
-                <img style={{marginLeft:32,}} src="/icons/linkedIn.svg" alt=""/>
-                <img style={{marginLeft:32,}} src="/icons/telegram.svg" alt=""/>
-                <img style={{marginLeft:32,}} src="/icons/twitter.svg" alt=""/>
+                <img className={classes.instagramIcon} src="/icons/instagram.svg" alt=""/>
+                <img className={classes.linkedInIcon} src="/icons/linkedIn.svg" alt=""/>
+                <img className={classes.telegramIcon} src="/icons/telegram.svg" alt=""/>
+                <img className={classes.twitterIcon} src="/icons/twitter.svg" alt=""/>
 
             </div>
         </div>
