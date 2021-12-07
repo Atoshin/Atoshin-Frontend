@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
+import ConnectWalletModal from '/components/ConnectWalletModal.js'
 
 export default function Header() {
 
@@ -31,6 +32,7 @@ export default function Header() {
         boxShadow: 24,
         p: 4,
     };
+
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -65,27 +67,28 @@ export default function Header() {
                     </ul>
                 </>
             }
-            <Modal
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                open={open}
-                onClose={handleClose}
-                closeAfterTransition
-                BackdropComponent={Backdrop}
-                BackdropProps={{
-                    timeout: 500,
-                }}
-            >
-                <Fade in={open}>
-                    <Box sx={style}>
-                     <div className={classes.modalMainSec}>
-                        <div style={{fontSize:20}} className={classes.connectWalletTitle}>
-                            Connect your wallet
-                        </div>
-                     </div>
-                    </Box>
-                </Fade>
-            </Modal>
+            <ConnectWalletModal open={open} setOpen={setOpen} handleClose={handleClose}/>
+            {/*<Modal*/}
+            {/*    aria-labelledby="transition-modal-title"*/}
+            {/*    aria-describedby="transition-modal-description"*/}
+            {/*    open={open}*/}
+            {/*    onClose={handleClose}*/}
+            {/*    closeAfterTransition*/}
+            {/*    BackdropComponent={Backdrop}*/}
+            {/*    BackdropProps={{*/}
+            {/*        timeout: 500,*/}
+            {/*    }}*/}
+            {/*>*/}
+            {/*    <Fade in={open}>*/}
+            {/*        <Box sx={style}>*/}
+            {/*         <div className={classes.modalMainSec}>*/}
+            {/*            <div style={{fontSize:20}} className={classes.connectWalletTitle}>*/}
+            {/*                Connect your wallet*/}
+            {/*            </div>*/}
+            {/*         </div>*/}
+            {/*        </Box>*/}
+            {/*    </Fade>*/}
+            {/*</Modal>*/}
         </div>
     </>
 }
