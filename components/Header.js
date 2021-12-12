@@ -9,6 +9,8 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import ConnectWalletModal from '/components/ConnectWalletModal.js'
+import Container from '@mui/material/Container';
+
 
 export default function Header() {
 
@@ -42,17 +44,23 @@ export default function Header() {
                 </>
                 :
                 <>
-                    <div className={classes.logoContainer}>LOGO</div>
-                    <ul className={classes.menuContainer}>
-                        <li className={classes.marketplaceItem}>Marketplace</li>
-                        <li>Art Centers</li>
-                        <li>Artists</li>
-                        <li>About NFT</li>
-                        <Button onClick={handleOpen} className={classes.registerBtn} disableElevation
-                                variant={"contained"}>
-                            Connect Wallet
-                        </Button>
-                    </ul>
+                    <Container>
+                    <div className={classes.mainHeaderDesktop}>
+                        <div className={classes.logoContainer}>
+                            <img className={classes.AtoshinLogo} src="/images/Atoshin-logo.png" alt=""/>
+                        </div>
+                        <ul className={classes.menuContainer}>
+                            <li className={classes.marketplaceItem}>Marketplace</li>
+                            <li>Art Centers</li>
+                            <li>Artists</li>
+                            <li>About NFT</li>
+                            <Button onClick={handleOpen} className={classes.registerBtn} disableElevation
+                                    variant={"contained"}>
+                                Connect Wallet
+                            </Button>
+                        </ul>
+                    </div>
+                    </Container>
                 </>
             }
             <ConnectWalletModal open={open} setOpen={setOpen} handleClose={handleClose}/>

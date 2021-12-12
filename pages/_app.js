@@ -12,11 +12,13 @@ function MyApp({Component, pageProps}) {
     //     <Component {...pageProps} />
     // </Provider>
     return <>
-        <Container>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
             <Header/>
-            <Component {...pageProps} />
-        </Container>
-        <Footer/>
+            <Container>
+                <Component {...pageProps} />
+            </Container>
+            <Footer/>
+        </div>
     </>
 }
 
