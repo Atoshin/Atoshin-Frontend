@@ -1,3 +1,110 @@
-.modalMain{
-  border: 2px solid red;
+.modalMain {
+  display: flex;
+  flex-direction: column;
+}
+
+.connectWalletTitleSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.connectWalletTitle {
+  font-size: 20px;
+  font-weight: 500;
+  color: #232323;
+  //margin-top: 13px;
+}
+
+.vectorXSec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ECECEC;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.vectorX {
+  width: 16px;
+  height: 16px;
+}
+
+.connectWalletDesc {
+  font-size: 16px;
+  font-weight: 300;
+  color: #232323;
+  margin-top: 24px;
+}
+
+.metaMaskMainSec {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 153px;
+  margin-top: 32px;
+  border: 1px solid #94A2AB;
+  border-radius: 5px;
+  padding: 25px;
+}
+
+.metaMaskLogoSec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ECECEC;
+  width: 72px;
+  height: 72px;
+  border-radius: 36px;
+}
+
+.metaMaskLogo {
+  width: 58px;
+  height: 58px;
+}
+
+.metaMaskTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #232323;
+  margin-left: 16px;
+}
+
+.metaMaskLogoMain {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.vectorRight {
+  width: 7.06px;
+  height: 14.03px;
+  color: #000000;
+  margin-right: 15px;
+}
+
+.moreInfoMainSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 33px;
+}
+
+.noAccSec {
+  font-size: 16px;
+  font-weight: 300;
+  color: #232323;
+  margin-right: 5px;
+}
+
+.moreInfoSec {
+  font-size: 12px;
+  font-weight: 300;
+  color: #1D65E0;
 }
