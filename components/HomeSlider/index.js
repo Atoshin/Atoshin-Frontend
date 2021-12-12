@@ -2,10 +2,11 @@ import classes from '../../styles/HomeSlider.module.scss'
 import {Button, Fade, useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import Grow from '@mui/material/Grow';
-import {useState} from "react";
+import {useState, useRef} from "react";
+import {Animation} from "./Animation";
 
 export default function Index() {
-
+    const sliderContainerRef = useRef()
     const BuyBtn = () => {
         return <Button onClick={() => setCurrentSlide(currentSlide + 1)} className={classes.buyBtn}>Buy Now</Button>
     }
@@ -13,6 +14,10 @@ export default function Index() {
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const [currentSlide, setCurrentSlide] = useState(0)
     const sliderImages = [
+        '/images/starryNight.png',
+        '/images/starryNight.png',
+        '/images/starryNight.png',
+        '/images/starryNight.png',
         '/images/starryNight.png',
         '/images/starryNight.png',
     ]
@@ -38,12 +43,7 @@ export default function Index() {
         <div className={classes.topRightMainSec}>
             <div className={classes.sliderImages}>
                 {sliderImages.map((image, idx) => {
-                    return <Fade
-                        // in={currentSlide === idx}
-                        in={true}
-                        style={{transformOrigin: '0 0 0'}}
-                        {...(currentSlide === idx ? {timeout: 1000} : {})}
-                    >
+                    return <Animation key={idx} idx={idx} currentSlide={currentSlide} containerRef={sliderContainerRef}>
                         <div className={classes.topRightSec}>
                             <div className={classes.artworkImgSec}>
                                 <img className={classes.artWorkImg} src={image} alt=""/>
@@ -95,7 +95,7 @@ export default function Index() {
                                 </div>
                             </div>
                         </div>
-                    </Fade>
+                    </Animation>
                 })}
             </div>
             <div className={classes.sliderBottomMenu}>
