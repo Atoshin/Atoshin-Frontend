@@ -6,7 +6,8 @@ import Modal from '@mui/material/Modal';
 import { useTheme } from "@mui/material/styles";
 import { ethers } from "ethers";
 import classes from '../styles/ConnectWalletModal.module.scss';
-
+import Web3Modal from 'web3modal'
+import api from '../api'
 
 export default function ConnectWalletModal({ open, setOpen, handleClose, }) {
 
@@ -15,10 +16,20 @@ export default function ConnectWalletModal({ open, setOpen, handleClose, }) {
 
     const connectWallet = async (e) => {
         e.preventDefault();
-        console.log(window.ethereum);
         if (window.ethereum) {
-            const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-            await provider.send("eth_requestAccounts", []);
+            const web3Modal = new Web3Modal();
+            const connection = await web3Modal.connect();
+            const provider = new ethers.providers.Web3Provider(connection);
+            const signer = provider.getSigner();
+            const address = await signer.getAddress();
+            if (address) {
+                const response = await api.post('wallets/store', {
+                    walletAddress: address
+                });
+                setOpen(false);
+            }
+        } else {
+            window.open('https://metamask.io/download', '_blank')
         }
     }
 

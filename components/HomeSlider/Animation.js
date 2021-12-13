@@ -1,11 +1,10 @@
-import { Slide } from "@mui/material";
-import { useEffect, useState } from "react";
+import {Slide} from "@mui/material";
+import {useEffect, useState} from "react";
 import classes from "../../styles/HomeSlider.module.scss";
 
 
-export function Animation({ currentSlide, idx, images, setImages, setCurrentSlide }) {
+export function Animation({currentSlide, idx, images, setImages, setCurrentSlide}) {
     const [styles, setStyles] = useState({
-        opacity: 1,
         transition: 'all 1s ease',
     });
 
@@ -21,7 +20,6 @@ export function Animation({ currentSlide, idx, images, setImages, setCurrentSlid
     const unMountStyle = () => {
         setStyles({
             ...styles,
-            opacity: 0,
             transition: 'all 1s ease',
             transform: 'scale(0)'
         })
@@ -41,40 +39,42 @@ export function Animation({ currentSlide, idx, images, setImages, setCurrentSlid
     const mountStyle = () => {
         setStyles({
             ...styles,
-            opacity: 1,
             transition: 'all 1s ease',
         })
     }
 
-    const transitionEnd = () => {
+    const transitionEnd = (e) => {
+        // if (e.nativeEvent.propertyName === 'transform') {
         if (currentSlide === idx) {
-            console.log(images, idx, images[idx - 1]);
             setImages([...images, images[idx - 1]]);
         }
     }
 
     useEffect(() => {
         if (currentSlide !== 0) {
-            initiateSlide()
+            initiateSlide(currentSlide)
         }
     }, [currentSlide])
 
     useEffect(() => {
         if (idx !== 0) {
+            let left = idx * 700;
+            if (idx > 5) {
+                left = 5 * 700
+            }
             setStyles({
                 ...styles,
                 position: 'absolute',
-                left: `${idx * 700}px`,
+                left: `${left}px`,
                 transition: 'all 1s ease',
             })
         }
     }, [])
 
     return <div style={styles} onTransitionEnd={transitionEnd}
-        // className={currentSlide === idx ? classes.topRightSec : classes.topRightMainSec}>
-        className={classes.topRightSec}>
+                className={classes.topRightSec}>
         <div className={classes.artworkImgSec}>
-            <img className={classes.artWorkImg} src={images[idx]} alt="" />
+            <img className={classes.artWorkImg} src={images[idx]} alt=""/>
         </div>
         <div className={classes.artWorkDetailSec}>
             <div className={classes.priceMainSec}>

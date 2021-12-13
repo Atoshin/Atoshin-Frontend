@@ -54,6 +54,10 @@
   font-weight: 500;
   line-height: 24px;
   text-transform: none;
+
+  :hover {
+    background-color: #EE574C;
+  }
 }
 
 .topRightMainSec {
@@ -92,7 +96,6 @@
   padding-right: 80px;
   //border: 1px #232323;
 }
-
 
 
 .Sec {
@@ -324,6 +327,7 @@
     line-height: 21px;
   }
 }
+
 .vector {
   width: 10.29px;
   height: 20.46px;
@@ -382,7 +386,7 @@
     text-align: center;
   }
   .galleryMainPhoto {
-   width: 100%;
+    width: 100%;
     //height: 178px;
     margin-top: 24px;
     margin-right: auto;
@@ -409,6 +413,7 @@
     img {
       width: calc(100% - 8px);
     }
+
     p {
       font-family: Roboto;
       font-weight: 500;
