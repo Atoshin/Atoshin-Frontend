@@ -24,39 +24,45 @@ export default function HomePage() {
                     <div className={classes.galleryDescMainSec}>
                         <div className={classes.galleryName}>
                             {matches &&
-                                <img style={{width: 42, height: 45,}} className={classes.imgSec} src="/images/img.png"
-                                     alt=""/>
+                            <img style={{width: 42,}} className={classes.imgSec} src="/images/DD-logo.png"
+                                 alt=""/>
                             }
                             DD Gallery
 
                         </div>
                         <div className={classes.galleryDescSec}>
                             {!matches &&
-                                <img className={classes.imgSec} src="/images/img.png" alt=""/>
+                            <img className={classes.imgSec} src="/images/DD-logo.png" alt=""/>
                             }
                             <div className={classes.galleryDesc}>
                                 <div className={classes.galleryDecsTxt}>
-                                    A non-fungible token is a unique and non-interchangeable unit of data stored
-                                    on a
-                                    digital ledger. NFTs can be associated with easily-reproducible
-                                    items such
+                                    The mission of this museum is to further flourish the art and culture of Iran. Apart
+                                    from the personal desire of its founder, some of the reasons behind the construction
+                                    of this art and cultural center were, creating a context where different ideas could
+                                    meet, working toward the economic advancement of art, creating demand for work of
+                                    art, supporting artists, introducing the capabilities and talents of Iranian artists
+                                    to the world.
                                 </div>
                                 {!matches &&
-                                    <ExploreBtn/>
+                                <ExploreBtn/>
                                 }
                             </div>
                         </div>
                     </div>
-                    <img className={classes.galleryMainPhoto} src="/images/gallery-main.png" alt=""/>
+                    {matches ?
+                        <img className={classes.galleryMainPhoto} src="/images/DD-gallery-main-mob.jpg" alt=""/>
+                        :
+                        <img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""/>
+                    }
                     {matches &&
-                        <ExploreBtn/>
+                    <ExploreBtn/>
                     }
                 </div>
                 <div className={classes.galleryBottomSec}>
-                    <img className={classes.galleryPhotos} src="/images/gallery-1.png" alt=""/>
-                    <img className={classes.galleryPhotos} src="/images/gallery-2.png" alt=""/>
-                    <img className={classes.galleryPhotos} src="/images/gallery-3.png" alt=""/>
-                    <img className={classes.galleryPhotos} src="/images/gallery-4.png" alt=""/>
+                    <img className={classes.galleryPhotos} src="/images/dd-gallery1.jpg" alt=""/>
+                    <img className={classes.galleryPhotos} src="/images/dd-gallery2.jpg" alt=""/>
+                    <img className={classes.galleryPhotos} src="/images/dd-gallery3.jpg" alt=""/>
+                    <img className={classes.galleryPhotos} src="/images/dd-gallery4.jpg" alt=""/>
                 </div>
             </div>
             <ArtistsSlider/>
