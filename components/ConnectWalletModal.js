@@ -17,14 +17,17 @@ export default function ConnectWalletModal({ open, setOpen, handleClose, }) {
     const connectWallet = async (e) => {
         e.preventDefault();
         if (window.ethereum) {
-            const web3Modal = new Web3Modal()
-            const connection = await web3Modal.connect()
-            const provider = new ethers.providers.Web3Provider(connection)
-            const signer = provider.getSigner()
+            const web3Modal = new Web3Modal();
+            const connection = await web3Modal.connect();
+            const provider = new ethers.providers.Web3Provider(connection);
+            const signer = provider.getSigner();
             const address = await signer.getAddress();
-            api.post('wallets/store', {
-                walletAddress: address
-            })
+            if (address) {
+                const response = await api.post('wallets/store', {
+                    walletAddress: address
+                });
+                setOpen(false);
+            }
         } else {
             window.open('https://metamask.io/download', '_blank')
         }
