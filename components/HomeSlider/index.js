@@ -19,7 +19,6 @@ export default function Index() {
         '/images/starryNight.png',
         '/images/image_645x430.png',
         '/images/starryNight.png',
-        '/images/image_645x430.png',
     ]);
 
 
