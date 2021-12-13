@@ -1,9 +1,9 @@
 import classes from '../../styles/HomeSlider.module.scss'
-import {Button, Fade, useMediaQuery} from "@mui/material";
-import {useTheme} from "@mui/material/styles";
+import { Button, Fade, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import Grow from '@mui/material/Grow';
-import {useState, useRef} from "react";
-import {Animation} from "./Animation";
+import { useState, useRef } from "react";
+import { Animation } from "./Animation";
 
 export default function Index() {
     const sliderContainerRef = useRef()
@@ -13,14 +13,14 @@ export default function Index() {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const [currentSlide, setCurrentSlide] = useState(0)
-    const sliderImages = [
+    const [sliderImages, setSliderImages] = useState([
         '/images/starryNight.png',
+        '/images/image_645x430.png',
         '/images/starryNight.png',
+        '/images/image_645x430.png',
         '/images/starryNight.png',
-        '/images/starryNight.png',
-        '/images/starryNight.png',
-        '/images/starryNight.png',
-    ]
+        '/images/image_645x430.png',
+    ]);
 
 
     return <div className={classes.topMainSec}>
@@ -37,69 +37,17 @@ export default function Index() {
                 Saint-Rémy-de-Provence, just before sunrise, with the addition of an imaginary village
             </div>
             {!matches &&
-                <BuyBtn/>
+                <BuyBtn />
             }
         </div>
         <div className={classes.topRightMainSec}>
-            <div className={classes.sliderImages}>
+            <div className={classes.sliderImages} ref={sliderContainerRef}>
                 {sliderImages.map((image, idx) => {
-                    return <Animation key={idx} idx={idx} currentSlide={currentSlide} containerRef={sliderContainerRef}>
-                        <div className={classes.topRightSec}>
-                            <div className={classes.artworkImgSec}>
-                                <img className={classes.artWorkImg} src={image} alt=""/>
-                            </div>
-                            <div className={classes.artWorkDetailSec}>
-                                <div className={classes.priceMainSec}>
-                                    <div className={classes.priceSec}>
-                                        <div className={classes.titleSec}>
-                                            Price
-                                        </div>
-                                        <div className={classes.amountSec}>
-                                            765 ETH
-                                        </div>
-                                    </div>
-                                    <div className={classes.quantSec}>
-                                        <div className={classes.title2Sec}>
-                                            Quantity
-                                        </div>
-                                        <div className={classes.amountSec}>
-                                            12 Token
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={classes.dayHourMinSec}>
-                                    <div className={classes.Sec}>
-                                        <div className={classes.Num}>
-                                            02
-                                        </div>
-                                        <div className={classes.Txt}>
-                                            Day
-                                        </div>
-                                    </div>
-                                    <div className={classes.Sec}>
-                                        <div className={classes.Num}>
-                                            18
-                                        </div>
-                                        <div className={classes.Txt}>
-                                            Hour
-                                        </div>
-                                    </div>
-                                    <div className={classes.Sec}>
-                                        <div className={classes.Num}>
-                                            40
-                                        </div>
-                                        <div className={classes.Txt}>
-                                            Min
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </Animation>
+                    return <Animation key={idx} setCurrentSlide={setCurrentSlide} setImages={setSliderImages} images={sliderImages} idx={idx} currentSlide={currentSlide} />
                 })}
             </div>
             <div className={classes.sliderBottomMenu}>
-                <img className={classes.vector} src="/icons/vector-left.png" alt=""/>
+                <img className={classes.vector} src="/icons/vector-left.png" alt="" />
                 <div className={classes.selectedTap}>
                     Starry Night
                 </div>
@@ -115,10 +63,10 @@ export default function Index() {
                 <div className={classes.unselectedTab}>
                     The Scream
                 </div>
-                <img className={classes.vector} src="/icons/vector-right.png" alt=""/>
+                <img className={classes.vector} src="/icons/vector-right.png" alt="" />
             </div>
             {matches &&
-                <BuyBtn/>
+                <BuyBtn />
             }
         </div>
     </div>

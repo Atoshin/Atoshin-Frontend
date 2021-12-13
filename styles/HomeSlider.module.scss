@@ -51,17 +51,20 @@
   text-transform: none;
 }
 
+
 .sliderImages {
   display: flex;
   align-items: center;
   width: calc(53.5vw);
   overflow-x: hidden;
+  position: relative;
 }
 
 .topRightMainSec {
   display: flex;
   flex-direction: column;
   width: 645px;
+  filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
 
   .artworkImgSec {
     height: 365.3px;
@@ -70,20 +73,24 @@
   .artWorkImg {
     width: 548.8px;
     height: 365.3px;
+    transition: all 1s ease;
   }
+
 
   .artWorkDetailSec {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 645px;
-    height: 115px;
+    width: 548.8px;
+    height: 97.7px;
     background-color: #FFFFFF;
     border-radius: 0px 0px 3px 3px;
     padding-left: 48px;
     padding-right: 80px;
+    margin-bottom: 5px;
     //border: 1px #232323;
   }
+
 }
 
 .topRightSec {
@@ -113,6 +120,7 @@
     border-radius: 0px 0px 3px 3px;
     padding-left: 48px;
     padding-right: 80px;
+    margin-bottom: 5px;
     //border: 1px #232323;
   }
 
