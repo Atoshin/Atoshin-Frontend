@@ -5,6 +5,7 @@ let IMAGES_LENGTH;
 const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurrentSlide}, ref) => {
     const [styles, setStyles] = useState([]);
     const [timerStateChange, setTimerStateChange] = useState(true);
+    const [timeoutId, setTimeoutId] = useState(undefined);
 
     useImperativeHandle(ref, () => ({
         slideForward() {
@@ -47,16 +48,6 @@ const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurren
         slideBackwardsStyle(currentSlide)
     }
 
-
-    // useEffect(() => {
-    //     if (!hover) {
-    //         setTimeout(() => {
-    //             setCurrentSlide(currentSlide + 1)
-    //             slideForwards()
-    //             setTimerStateChange(!timerStateChange)
-    //         }, 5000)
-    //     }
-    // }, [timerStateChange, hover])
 
     const calculateIndex = (idx) => {
         return idx % IMAGES_LENGTH
@@ -133,6 +124,23 @@ const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurren
         IMAGES_LENGTH = images.length
     }, [])
 
+    useEffect(() => {
+        if (styles.length > 0) {
+            let timeout;
+            if (!hover) {
+                timeout = setTimeout(() => {
+                    setCurrentSlide(currentSlide + 1)
+                    setTimerStateChange(!timerStateChange)
+                    slideForwards()
+                }, 5000)
+                setTimeoutId(timeout)
+            } else {
+                if (timeoutId) {
+                    clearTimeout(timeoutId)
+                }
+            }
+        }
+    }, [timerStateChange, hover, styles])
 
     return images.map((img, i) => (
         <div style={styles[i]} onTransitionEnd={transitionEnd}
