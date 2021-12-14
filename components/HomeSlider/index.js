@@ -69,19 +69,24 @@ export default function Index() {
                     animateRef.current.slideBackwards()
                 }}
                      src="/icons/vector-left.png" alt=""/>
-                <div onClick={() => animateRef.current.slideTo(0)} className={classes.selectedTap}>
+                <div onClick={() => animateRef.current.slideTo(0)}
+                     className={currentSlide === 0 ? classes.selectedTap : classes.unselectedTab}>
                     Just You Name It
                 </div>
-                <div onClick={() => animateRef.current.slideTo(1)} className={classes.unselectedTab}>
+                <div onClick={() => animateRef.current.slideTo(1)}
+                     className={currentSlide === 1 ? classes.selectedTap : classes.unselectedTab}>
                     Just You Name It
                 </div>
-                <div onClick={() => animateRef.current.slideTo(2)} className={classes.unselectedTab}>
+                <div onClick={() => animateRef.current.slideTo(2)}
+                     className={currentSlide === 2 ? classes.selectedTap : classes.unselectedTab}>
                     Rain
                 </div>
-                <div onClick={() => animateRef.current.slideTo(3)} className={classes.unselectedTab}>
+                <div onClick={() => animateRef.current.slideTo(3)}
+                     className={currentSlide === 3 ? classes.selectedTap : classes.unselectedTab}>
                     Lanter l
                 </div>
-                <div onClick={() => animateRef.current.slideTo(4)} className={classes.unselectedTab}>
+                <div onClick={() => animateRef.current.slideTo(4)}
+                     className={currentSlide === 4 ? classes.selectedTap : classes.unselectedTab}>
                     Just You Name It
                 </div>
                 <img className={classes.vector} onClick={() => {
