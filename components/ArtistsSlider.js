@@ -3,11 +3,14 @@ import {Slide} from "react-slideshow-image";
 import 'react-slideshow-image/dist/styles.css'
 import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
+import {useRef} from "react";
 
 export default function ArtistsSlider() {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const sliderRef = useRef()
+
 
     return <div className={classes.artistMainSec}>
         <div className={classes.artistTitle}>
@@ -22,7 +25,13 @@ export default function ArtistsSlider() {
             </p>
         </div>
         <div className={classes.artistsSlider}>
-            <Slide easing={"ease"} slidesToShow={matches ? 2 : 4} slidesToScroll={1} autoplay={false}>
+            <img className={classes.vectorLeft} onClick={() => {
+                sliderRef.current.goNext()
+            }}
+                 src="/icons/vector-left.png" alt=""/>
+            <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={false}
+                   slidesToScroll={1}
+                   duration={5000}>
                 <div className={classes.artist}>
                     <img src="/images/artists/Ahmad-Nasrollahi.jpg" alt=""/>
                     <p>Ahmad Nasrollahi</p>
@@ -44,6 +53,10 @@ export default function ArtistsSlider() {
                     <p>Sahand Hesamiyan</p>
                 </div>
             </Slide>
+            <img className={classes.vectorRight} onClick={() => {
+                sliderRef.current.goBack()
+            }}
+                 src="/icons/vector-right.png" alt=""/>
         </div>
     </div>
 }
