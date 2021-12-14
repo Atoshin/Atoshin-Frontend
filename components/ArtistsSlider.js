@@ -24,24 +24,24 @@ export default function ArtistsSlider() {
         <div className={classes.artistsSlider}>
             <Slide easing={"ease"} slidesToShow={matches ? 2 : 4} slidesToScroll={1} autoplay={false}>
                 <div className={classes.artist}>
-                    <img src="/images/img_1.png" alt=""/>
-                    <p>Pablo Picasso</p>
+                    <img src="/images/artists/Ahmad-Nasrollahi.jpg" alt=""/>
+                    <p>Ahmad Nasrollahi</p>
                 </div>
                 <div className={classes.artist}>
-                    <img src="/images/img_2.png" alt=""/>
-                    <p>Vincent van Gogh</p>
+                    <img src="/images/artists/Farideh-Lashai.jpg" alt=""/>
+                    <p>Farideh Lashai</p>
                 </div>
                 <div className={classes.artist}>
-                    <img src="/images/img_3.png" alt=""/>
-                    <p>Claude Monet</p>
+                    <img src="/images/artists/Kambiz-Sabri.jpg" alt=""/>
+                    <p>Kambiz Sabri</p>
                 </div>
                 <div className={classes.artist}>
-                    <img src="/images/img_4.png" alt=""/>
-                    <p>Jackson Pollock</p>
+                    <img src="/images/artists/Reza-Derakhshani.jpg" alt=""/>
+                    <p>Reza Derakhshani</p>
                 </div>
                 <div className={classes.artist}>
-                    <img src="/images/img_3.png" alt=""/>
-                    <p>Claude Monet</p>
+                    <img src="/images/artists/Sahand-Hesamiyan.jpg" alt=""/>
+                    <p>Sahand Hesamiyan</p>
                 </div>
             </Slide>
         </div>
