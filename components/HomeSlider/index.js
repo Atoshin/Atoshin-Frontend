@@ -16,9 +16,11 @@ export default function Index() {
     const [visibleDesc, setVisibleDesc] = useState(true)
     const [isHovered, setIsHovered] = useState(false)
     const [sliderImages, setSliderImages] = useState([
-        '/images/starryNight.png',
-        '/images/image_645x430.png',
-        '/images/starryNight.png',
+        '/images/artworks/art-work1.jpg',
+        '/images/artworks/art-work2.jpg',
+        '/images/artworks/art-work3.jpg',
+        '/images/artworks/art-work4.jpg',
+        '/images/artworks/art-work5.jpg',
     ]);
 
     const changeImageDesc = () => {
@@ -68,19 +70,19 @@ export default function Index() {
                 }}
                      src="/icons/vector-left.png" alt=""/>
                 <div onClick={() => animateRef.current.slideTo(0)} className={classes.selectedTap}>
-                    Starry Night
+                    Just You Name It
                 </div>
                 <div onClick={() => animateRef.current.slideTo(1)} className={classes.unselectedTab}>
-                    Mona Lisa
+                    Just You Name It
                 </div>
                 <div onClick={() => animateRef.current.slideTo(2)} className={classes.unselectedTab}>
-                    Las Meninas
+                    Rain
                 </div>
                 <div onClick={() => animateRef.current.slideTo(3)} className={classes.unselectedTab}>
-                    The Last Supper
+                    Lanter l
                 </div>
                 <div onClick={() => animateRef.current.slideTo(4)} className={classes.unselectedTab}>
-                    The Scream
+                    Just You Name It
                 </div>
                 <img className={classes.vector} onClick={() => {
                     setCurrentSlide(prevState => (prevState + 1))

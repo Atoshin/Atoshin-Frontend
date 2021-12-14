@@ -47,7 +47,7 @@ export default function Header() {
                         }
                         <div className={classes.hamburgerAndlogo}>
                             <div className={classes.logoMob}>
-
+                                <img className={classes.AtoshinLogoMob} src="/images/Atoshin-logo.png" alt=""/>
                             </div>
                             <img className={classes.hamburger} src="/icons/hamburger.png" alt=""/>
                         </div>
