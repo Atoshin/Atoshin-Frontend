@@ -5,10 +5,6 @@ import classes from '../styles/Header.module.scss';
 import ConnectWalletModal from '/components/ConnectWalletModal.js';
 import {useState} from 'react';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Web3Modal from "web3modal";
-import {ethers} from "ethers";
-import api from "../api";
 
 export default function Header() {
 
