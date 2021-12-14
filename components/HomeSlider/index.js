@@ -44,15 +44,13 @@ export default function Index() {
     }}>
         <div className={visibleDesc ? classes.topLeftSecFadeIn : classes.topLeftSecFadeOut}>
             <div className={classes.artWorkName}>
-                Starry Night
+                Lanter l
             </div>
             <div className={classes.artistName}>
-                By Vincent Van Gogh
+                By Sahand Hesamiyan
             </div>
             <div className={classes.artworkInfo}>
-                is an oil-on-canvas painting by the Dutch Post-Impressionist painter Vincent van Gogh. Painted
-                in June 1889, it depicts the view from the east-facing window of his asylum room at
-                Saint-Rémy-de-Provence, just before sunrise, with the addition of an imaginary village
+                This work is designed for Didi Gallery and Museum only in 2015.
             </div>
             {!matches &&
                 <BuyBtn/>
@@ -64,7 +62,7 @@ export default function Index() {
                            currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} ref={animateRef}/>
             </div>
             <div className={classes.sliderBottomMenu}>
-                <img className={classes.vector} onClick={() => {
+                <img style={{marginRight:20,}} className={classes.vector} onClick={() => {
                     setCurrentSlide(prevState => (prevState - 1))
                     animateRef.current.slideBackwards()
                 }}
@@ -89,7 +87,7 @@ export default function Index() {
                      className={currentSlide === 4 ? classes.selectedTap : classes.unselectedTab}>
                     Just You Name It
                 </div>
-                <img className={classes.vector} onClick={() => {
+                <img style={{marginLeft:20,}} className={classes.vector} onClick={() => {
                     setCurrentSlide(prevState => (prevState + 1))
                     animateRef.current.slideForward()
                 }}

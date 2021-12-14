@@ -247,8 +247,9 @@
 .sliderBottomMenu {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   margin-top: 16px;
-  width: 645px;
+  width: 100%;
   float: right;
   //margin-left: 112px;
 }
@@ -256,9 +257,9 @@
 .selectedTap {
   user-select: none;
   cursor: pointer;
-  font-size: 18px;
-  margin-left: 25.12px;
-  margin-right: 31px;
+  font-size: 16px;
+  margin-left: 20px;
+  margin-right: 20px;
   font-weight: 700;
   color: #EE574C;
 }
@@ -275,7 +276,7 @@
   font-size: 16px;
   font-weight: 300;
   color: #232323;
-  margin-right: 31px;
+  margin-right: 20px;
 }
 
 @media (max-width: 600px) {
