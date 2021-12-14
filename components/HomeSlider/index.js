@@ -14,6 +14,7 @@ export default function Index() {
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const [currentSlide, setCurrentSlide] = useState(0)
     const [visibleDesc, setVisibleDesc] = useState(true)
+    const [isHovered, setIsHovered] = useState(false)
     const [sliderImages, setSliderImages] = useState([
         '/images/starryNight.png',
         '/images/image_645x430.png',
@@ -34,7 +35,11 @@ export default function Index() {
         }
     }, [currentSlide])
 
-    return <div className={classes.topMainSec}>
+    return <div className={classes.topMainSec} onMouseOut={() => {
+        if (isHovered) setIsHovered(false)
+    }} onMouseOver={() => {
+        if (!isHovered) setIsHovered(true)
+    }}>
         <div className={visibleDesc ? classes.topLeftSecFadeIn : classes.topLeftSecFadeOut}>
             <div className={classes.artWorkName}>
                 Starry Night
@@ -53,7 +58,8 @@ export default function Index() {
         </div>
         <div className={classes.topRightMainSec}>
             <div className={classes.sliderImages}>
-                <Animation images={sliderImages} setImages={setSliderImages} currentSlide={currentSlide} ref={animateRef}/>
+                <Animation hover={isHovered} images={sliderImages} setImages={setSliderImages}
+                           currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} ref={animateRef}/>
             </div>
             <div className={classes.sliderBottomMenu}>
                 <img className={classes.vector} onClick={() => {
@@ -61,19 +67,19 @@ export default function Index() {
                     animateRef.current.slideBackwards()
                 }}
                      src="/icons/vector-left.png" alt=""/>
-                <div className={classes.selectedTap}>
+                <div onClick={() => animateRef.current.slideTo(0)} className={classes.selectedTap}>
                     Starry Night
                 </div>
-                <div className={classes.unselectedTab}>
+                <div onClick={() => animateRef.current.slideTo(1)} className={classes.unselectedTab}>
                     Mona Lisa
                 </div>
-                <div className={classes.unselectedTab}>
+                <div onClick={() => animateRef.current.slideTo(2)} className={classes.unselectedTab}>
                     Las Meninas
                 </div>
-                <div className={classes.unselectedTab}>
+                <div onClick={() => animateRef.current.slideTo(3)} className={classes.unselectedTab}>
                     The Last Supper
                 </div>
-                <div className={classes.unselectedTab}>
+                <div onClick={() => animateRef.current.slideTo(4)} className={classes.unselectedTab}>
                     The Scream
                 </div>
                 <img className={classes.vector} onClick={() => {

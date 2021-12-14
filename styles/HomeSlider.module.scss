@@ -254,6 +254,8 @@
 }
 
 .selectedTap {
+  user-select: none;
+  cursor: pointer;
   font-size: 18px;
   margin-left: 25.12px;
   margin-right: 31px;
@@ -268,6 +270,8 @@
 }
 
 .unselectedTab {
+  cursor: pointer;
+  user-select: none;
   font-size: 16px;
   font-weight: 300;
   color: #232323;

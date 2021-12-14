@@ -2,24 +2,61 @@ import {useEffect, useState, forwardRef, useImperativeHandle} from "react";
 import classes from "../../styles/HomeSlider.module.scss";
 
 let IMAGES_LENGTH;
-const Animation = forwardRef(({images, currentSlide, setImages}, ref) => {
+const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurrentSlide}, ref) => {
     const [styles, setStyles] = useState([]);
+    const [timerStateChange, setTimerStateChange] = useState(true);
 
     useImperativeHandle(ref, () => ({
         slideForward() {
-            unMountStyle(currentSlide)
-            slideForwardStyle(currentSlide)
-            // setImages(prevState => ([...prevState, prevState[currentSlide]]))
+            slideForwards()
         },
         slideBackwards() {
-            mountStyle(currentSlide)
-            slideBackwardsStyle(currentSlide)
-            // images.pop()
+            slideBackwards()
         },
         slideTo(idx) {
-
+            slideTo(idx)
         }
     }));
+
+    const slideTo = (idx) => {
+        const amount = idx - currentSlide;
+        if (amount > 0) {
+            for (let i = 0; i < amount; i++) {
+                unMountStyle(currentSlide + i)
+            }
+            slideForwardStyle(idx)
+            setCurrentSlide(currentSlide + amount)
+            return;
+        } else if (amount === 0) {
+            //do nothing
+            return;
+        } else {
+
+        }
+        unMountStyle(currentSlide)
+        slideForwardStyle(currentSlide)
+    }
+
+    const slideForwards = () => {
+        unMountStyle(currentSlide)
+        slideForwardStyle(currentSlide)
+    }
+
+    const slideBackwards = () => {
+        mountStyle(currentSlide)
+        slideBackwardsStyle(currentSlide)
+    }
+
+
+    // useEffect(() => {
+    //     if (!hover) {
+    //         setTimeout(() => {
+    //             setCurrentSlide(currentSlide + 1)
+    //             slideForwards()
+    //             setTimerStateChange(!timerStateChange)
+    //         }, 5000)
+    //     }
+    // }, [timerStateChange, hover])
 
     const calculateIndex = (idx) => {
         return idx % IMAGES_LENGTH
