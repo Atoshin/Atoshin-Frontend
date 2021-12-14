@@ -5,38 +5,84 @@
   //width: 100%;
 }
 
-.topLeftSec {
+.topLeftSecFadeIn {
   display: flex;
   flex-direction: column;
   margin-top: 109px;
+
+  .artWorkName {
+    font-size: 50px;
+    font-weight: 550;
+    line-height: 60px;
+    color: #000000;
+    text-align: left;
+    opacity: 1;
+    transition: opacity 1s ease;
+    font-family: "Eksell-font";
+  }
+
+  .artistName {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #232323;
+    opacity: 1;
+    transition: opacity 1s ease;
+    margin-top: 8px;
+  }
+
+  .artworkInfo {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 25px;
+    color: #232323;
+    margin-top: 16px;
+    opacity: 1;
+    transition: opacity 1s ease;
+    text-align: left;
+    width: 366px;
+  }
 }
 
-.artWorkName {
-  font-size: 50px;
-  font-weight: 550;
-  line-height: 60px;
-  color: #000000;
-  text-align: left;
-  font-family: "Eksell-font";
+.topLeftSecFadeOut {
+  display: flex;
+  flex-direction: column;
+  margin-top: 109px;
+
+  .artWorkName {
+    font-size: 50px;
+    font-weight: 550;
+    line-height: 60px;
+    color: #000000;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 1s ease;
+    font-family: "Eksell-font";
+  }
+
+  .artistName {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #232323;
+    margin-top: 8px;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  .artworkInfo {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 25px;
+    color: #232323;
+    margin-top: 16px;
+    text-align: left;
+    width: 366px;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
 }
 
-.artistName {
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 25px;
-  color: #232323;
-  margin-top: 8px;
-}
-
-.artworkInfo {
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 25px;
-  color: #232323;
-  margin-top: 16px;
-  text-align: left;
-  width: 366px;
-}
 
 .buyBtn {
   width: 164px;
@@ -208,6 +254,8 @@
 }
 
 .selectedTap {
+  user-select: none;
+  cursor: pointer;
   font-size: 18px;
   margin-left: 25.12px;
   margin-right: 31px;
@@ -218,9 +266,12 @@
 .vector {
   width: 10.29px;
   height: 20.46px;
+  cursor: pointer;
 }
 
 .unselectedTab {
+  cursor: pointer;
+  user-select: none;
   font-size: 16px;
   font-weight: 300;
   color: #232323;

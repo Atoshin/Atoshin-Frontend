@@ -1,29 +1,46 @@
 import classes from '../../styles/HomeSlider.module.scss'
-import { Button, Fade, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import Grow from '@mui/material/Grow';
-import { useState, useRef } from "react";
-import { Animation } from "./Animation";
+import {Button, useMediaQuery} from "@mui/material";
+import {useTheme} from "@mui/material/styles";
+import {useEffect, useRef, useState} from "react";
+import Animation from "./Animation";
 
 export default function Index() {
-    const sliderContainerRef = useRef()
+    const animateRef = useRef()
     const BuyBtn = () => {
-        return <Button onClick={() => setCurrentSlide(currentSlide + 1)} className={classes.buyBtn}>Buy Now</Button>
+        return <Button onClick={() => setCurrentSlide(prevState => (prevState + 1))} className={classes.buyBtn}>Buy
+            Now</Button>
     }
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const [currentSlide, setCurrentSlide] = useState(0)
+    const [visibleDesc, setVisibleDesc] = useState(true)
+    const [isHovered, setIsHovered] = useState(false)
     const [sliderImages, setSliderImages] = useState([
-        '/images/starryNight.png',
-        '/images/image_645x430.png',
         '/images/starryNight.png',
         '/images/image_645x430.png',
         '/images/starryNight.png',
     ]);
 
+    const changeImageDesc = () => {
+        setVisibleDesc(false)
+        setTimeout(() => {
+            setVisibleDesc(true)
+        }, 800)
+    }
 
-    return <div className={classes.topMainSec}>
-        <div className={classes.topLeftSec}>
+
+    useEffect(() => {
+        if (currentSlide !== 0) {
+            changeImageDesc()
+        }
+    }, [currentSlide])
+
+    return <div className={classes.topMainSec} onMouseOut={() => {
+        if (isHovered) setIsHovered(false)
+    }} onMouseOver={() => {
+        if (!isHovered) setIsHovered(true)
+    }}>
+        <div className={visibleDesc ? classes.topLeftSecFadeIn : classes.topLeftSecFadeOut}>
             <div className={classes.artWorkName}>
                 Starry Night
             </div>
@@ -36,36 +53,43 @@ export default function Index() {
                 Saint-Rémy-de-Provence, just before sunrise, with the addition of an imaginary village
             </div>
             {!matches &&
-                <BuyBtn />
+                <BuyBtn/>
             }
         </div>
         <div className={classes.topRightMainSec}>
-            <div className={classes.sliderImages} ref={sliderContainerRef}>
-                {sliderImages.map((image, idx) => {
-                    return <Animation key={idx} setCurrentSlide={setCurrentSlide} setImages={setSliderImages} images={sliderImages} idx={idx} currentSlide={currentSlide} />
-                })}
+            <div className={classes.sliderImages}>
+                <Animation hover={isHovered} images={sliderImages} setImages={setSliderImages}
+                           currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} ref={animateRef}/>
             </div>
             <div className={classes.sliderBottomMenu}>
-                <img className={classes.vector} src="/icons/vector-left.png" alt="" />
-                <div className={classes.selectedTap}>
+                <img className={classes.vector} onClick={() => {
+                    setCurrentSlide(prevState => (prevState - 1))
+                    animateRef.current.slideBackwards()
+                }}
+                     src="/icons/vector-left.png" alt=""/>
+                <div onClick={() => animateRef.current.slideTo(0)} className={classes.selectedTap}>
                     Starry Night
                 </div>
-                <div className={classes.unselectedTab}>
+                <div onClick={() => animateRef.current.slideTo(1)} className={classes.unselectedTab}>
                     Mona Lisa
                 </div>
-                <div className={classes.unselectedTab}>
+                <div onClick={() => animateRef.current.slideTo(2)} className={classes.unselectedTab}>
                     Las Meninas
                 </div>
-                <div className={classes.unselectedTab}>
+                <div onClick={() => animateRef.current.slideTo(3)} className={classes.unselectedTab}>
                     The Last Supper
                 </div>
-                <div className={classes.unselectedTab}>
+                <div onClick={() => animateRef.current.slideTo(4)} className={classes.unselectedTab}>
                     The Scream
                 </div>
-                <img className={classes.vector} src="/icons/vector-right.png" alt="" />
+                <img className={classes.vector} onClick={() => {
+                    setCurrentSlide(prevState => (prevState + 1))
+                    animateRef.current.slideForward()
+                }}
+                     src="/icons/vector-right.png" alt=""/>
             </div>
             {matches &&
-                <BuyBtn />
+                <BuyBtn/>
             }
         </div>
     </div>

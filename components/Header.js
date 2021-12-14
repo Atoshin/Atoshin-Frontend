@@ -6,6 +6,9 @@ import ConnectWalletModal from '/components/ConnectWalletModal.js';
 import {useState} from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Web3Modal from "web3modal";
+import {ethers} from "ethers";
+import api from "../api";
 
 export default function Header() {
 
@@ -15,6 +18,7 @@ export default function Header() {
 
 
     const [openModal, setOpenModal] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const handleOpen = () => setOpenModal(true);
     const handleCloseModal = () => setOpenModal(false);
 
@@ -34,10 +38,13 @@ export default function Header() {
             {matches ?
                 <>
                     <div className={classes.headerMainMob}>
-                        {/*<Button className={classes.registerBtnMob} onClick={handleOpen}>Connect Wallet</Button>*/}
-                        <div className={classes.avatarIconSec} onClick={handleClick}>
-                            <img className={classes.avatarIconMob} src="/icons/avatar-icon.png" alt=""/>
-                        </div>
+                        {isLoggedIn ?
+                            <div className={classes.avatarIconSec} onClick={handleClick}>
+                                <img className={classes.avatarIconMob} src="/icons/avatar-icon.png" alt=""/>
+                            </div>
+                            :
+                            <Button className={classes.registerBtnMob} onClick={handleOpen}>Connect Wallet</Button>
+                        }
                         <div className={classes.hamburgerAndlogo}>
                             <div className={classes.logoMob}>
 
@@ -58,14 +65,16 @@ export default function Header() {
                                 <li>Art Centers</li>
                                 <li>Artists</li>
                                 <li>About NFT</li>
-                                {/*<Button onClick={handleOpen} className={classes.registerBtn} disableElevation*/}
-                                {/*    variant={"contained"}>*/}
-                                {/*    Connect Wallet*/}
-                                {/*</Button>*/}
-                                <div className={classes.avatarIconSec} onClick={handleClick}>
-                                    <img className={classes.avatarIcon} src="/icons/avatar-icon.png" alt=""/>
-                                </div>
-
+                                {isLoggedIn ?
+                                    <div className={classes.avatarIconSec} onClick={handleClick}>
+                                        <img className={classes.avatarIcon} src="/icons/avatar-icon.png" alt=""/>
+                                    </div>
+                                    :
+                                    <Button onClick={handleOpen} className={classes.registerBtn} disableElevation
+                                            variant={"contained"}>
+                                        Connect Wallet
+                                    </Button>
+                                }
                             </ul>
                         </div>
                     </Container>
@@ -106,7 +115,8 @@ export default function Header() {
                     </div>
                 </div>
             </Menu>
-            <ConnectWalletModal open={openModal} setOpen={setOpenModal} handleClose={handleCloseModal}/>
+            <ConnectWalletModal setIsLoggedIn={setIsLoggedIn} open={openModal} setOpen={setOpenModal}
+                                handleClose={handleCloseModal}/>
         </div>
     </>
 }

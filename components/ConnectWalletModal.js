@@ -9,7 +9,7 @@ import classes from '../styles/ConnectWalletModal.module.scss';
 import Web3Modal from 'web3modal'
 import api from '../api'
 
-export default function ConnectWalletModal({ open, setOpen, handleClose, }) {
+export default function ConnectWalletModal({ open, setOpen, handleClose, setIsLoggedIn}) {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -23,6 +23,7 @@ export default function ConnectWalletModal({ open, setOpen, handleClose, }) {
             const signer = provider.getSigner();
             const address = await signer.getAddress();
             if (address) {
+                setIsLoggedIn(true)
                 const response = await api.post('wallets/store', {
                     walletAddress: address
                 });
