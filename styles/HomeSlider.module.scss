@@ -105,9 +105,11 @@
 .sliderImages {
   display: flex;
   align-items: center;
-  width: calc(53.5vw);
+  //width: calc(53.5vw);
+  //width: 1100px;
   overflow-x: hidden;
   position: relative;
+  height: 550px;
 }
 
 .topRightMainSec {
@@ -150,14 +152,17 @@
   filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
   margin-left: 5px;
   margin-right: 50px;
+  cursor: pointer;
 
   .artworkImgSec {
     height: 430px;
+    transition: all 1s;
   }
 
   .artWorkImg {
     width: 645px;
     height: 430px;
+    transition: all 1s;
   }
 
   .artWorkDetailSec {
@@ -166,11 +171,53 @@
     justify-content: space-between;
     width: 645px;
     height: 115px;
+    transition: all 1s;
     background-color: #FFFFFF;
     border-radius: 0px 0px 3px 3px;
     padding-left: 48px;
     padding-right: 80px;
     margin-bottom: 5px;
+    //border: 1px #232323;
+  }
+
+  .topRightSecSecondary {
+    display: flex;
+    flex-direction: column;
+    //margin-left: 109px;
+    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
+  }
+}
+.topRightSecBehind {
+  display: flex;
+  flex-direction: column;
+  filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
+  margin-left: 5px;
+  margin-right: 50px;
+  cursor: pointer;
+
+  .artworkImgSec {
+    height: 365.3px;
+    transition: height 1s;
+  }
+
+  .artWorkImg {
+    width: 548.8px;
+    height: 365.3px;
+    transition: all 1s;
+  }
+
+  .artWorkDetailSec {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 547.95px;
+    height: 97.7px;
+    background-color: #FFFFFF;
+    border-radius: 0px 0px 3px 3px;
+    padding-left: 48px;
+    padding-right: 80px;
+    margin-bottom: 5px;
+    transition: all 1s;
     //border: 1px #232323;
   }
 

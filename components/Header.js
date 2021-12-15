@@ -34,19 +34,19 @@ export default function Header() {
             {matches ?
                 <>
                     <div className={classes.headerMainMob}>
+                        <img className={classes.hamburger} src="/icons/hamburger.png" alt=""/>
+                        <div className={classes.hamburgerAndlogo}>
+                            <div className={classes.logoMob}>
+                                <img className={classes.AtoshinLogoMob} src="/images/Atoshin-logo.png" alt=""/>
+                            </div>
+                        </div>
                         {isLoggedIn ?
                             <div className={classes.avatarIconSec} onClick={handleClick}>
                                 <img className={classes.avatarIconMob} src="/icons/avatar-icon.png" alt=""/>
                             </div>
                             :
-                            <Button className={classes.registerBtnMob} onClick={handleOpen}>Connect Wallet</Button>
+                            <Button className={classes.registerBtnMob} onClick={handleOpen}>Wallet</Button>
                         }
-                        <div className={classes.hamburgerAndlogo}>
-                            <div className={classes.logoMob}>
-                                <img className={classes.AtoshinLogoMob} src="/images/Atoshin-logo.png" alt=""/>
-                            </div>
-                            <img className={classes.hamburger} src="/icons/hamburger.png" alt=""/>
-                        </div>
                     </div>
                 </>
                 :

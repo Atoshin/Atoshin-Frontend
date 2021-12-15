@@ -1,11 +1,13 @@
 import {useEffect, useState, forwardRef, useImperativeHandle} from "react";
 import classes from "../../styles/HomeSlider.module.scss";
+import usePrevious from "../../functions/hooks/usePrevious";
+import useEffectDebugger from "../../functions/hooks/useEffectDebugger";
 
 let IMAGES_LENGTH;
 const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurrentSlide}, ref) => {
     const [styles, setStyles] = useState([]);
-    const [timerStateChange, setTimerStateChange] = useState(true);
     const [timeoutId, setTimeoutId] = useState(undefined);
+    const prevSlide = usePrevious(currentSlide)
 
     useImperativeHandle(ref, () => ({
         slideForward() {
@@ -41,11 +43,13 @@ const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurren
     const slideForwards = () => {
         unMountStyle(currentSlide)
         slideForwardStyle(currentSlide)
+        setCurrentSlide(currentSlide + 1)
     }
 
     const slideBackwards = () => {
         mountStyle(currentSlide)
         slideBackwardsStyle(currentSlide)
+        setCurrentSlide(currentSlide - 1)
     }
 
 
@@ -68,6 +72,7 @@ const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurren
             transform: 'scale(1)',
         }
     }
+
 
     const slideForwardStyle = (idx) => {
         for (let i = 0; i < images.length; i++) {
@@ -124,27 +129,35 @@ const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurren
         IMAGES_LENGTH = images.length
     }, [])
 
+    const slideOnClick = (i) => {
+        if (currentSlide !== i) {
+            slideForwards()
+        }
+    }
+
+    const autoSlide = () => {
+        let timeout = setTimeout(() => {
+            slideForwards()
+        }, 5000)
+        setTimeoutId(timeout)
+    }
+
     useEffect(() => {
         if (styles.length > 0) {
-            let timeout;
             if (!hover) {
-                timeout = setTimeout(() => {
-                    setCurrentSlide(currentSlide + 1)
-                    setTimerStateChange(!timerStateChange)
-                    slideForwards()
-                }, 5000)
-                setTimeoutId(timeout)
+                autoSlide()
             } else {
                 if (timeoutId) {
                     clearTimeout(timeoutId)
                 }
             }
         }
-    }, [timerStateChange, hover, styles])
+    }, [hover, styles.length, currentSlide])
 
     return images.map((img, i) => (
         <div style={styles[i]} onTransitionEnd={transitionEnd}
-             className={classes.topRightSec}>
+             className={currentSlide === i ? classes.topRightSec : classes.topRightSecBehind}
+             onClick={() => slideOnClick(i)}>
             <div className={classes.artworkImgSec}>
                 <img className={classes.artWorkImg} src={img} alt=""/>
             </div>

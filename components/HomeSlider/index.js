@@ -62,8 +62,7 @@ export default function Index() {
                            currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} ref={animateRef}/>
             </div>
             <div className={classes.sliderBottomMenu}>
-                <img style={{marginRight:20,}} className={classes.vector} onClick={() => {
-                    setCurrentSlide(prevState => (prevState - 1))
+                <img style={{marginRight: 20,}} className={classes.vector} onClick={() => {
                     animateRef.current.slideBackwards()
                 }}
                      src="/icons/vector-left.png" alt=""/>
@@ -87,8 +86,7 @@ export default function Index() {
                      className={currentSlide === 4 ? classes.selectedTap : classes.unselectedTab}>
                     Just You Name It
                 </div>
-                <img style={{marginLeft:20,}} className={classes.vector} onClick={() => {
-                    setCurrentSlide(prevState => (prevState + 1))
+                <img style={{marginLeft: 20,}} className={classes.vector} onClick={() => {
                     animateRef.current.slideForward()
                 }}
                      src="/icons/vector-right.png" alt=""/>
