@@ -22,10 +22,38 @@ export default function Index() {
         '/images/artworks/art-work4.jpg',
         '/images/artworks/art-work5.jpg',
     ]);
-
+    const descriptions = [
+        {
+            name: 'Just You Name it',
+            artist: 'Reza Derakhshani',
+            desc: "The present work belongs to the \"Khosrow and Shirin\" collection, in which two Iranian lovers are depicted. Date of creation is 2001."
+        },
+        {
+            name: 'Just You Name it',
+            artist: 'Reza Derakhshani',
+            desc: "The present work belongs to the \"Khosrow and Shirin\" collection, in which two Iranian lovers are depicted. Date of creation is 2001."
+        },
+        {
+            name: 'Rain',
+            artist: 'Kambiz Sabri',
+            desc: "Rain in 2011 among 2451 works from around the world, was able to win the Emirates Sky Skills competition and in addition to a $ 5,000 cash prize and a special show and art pavilion at Art Dubai 2011, for one year on the Emirates's pulpit cards around the world was  published. Also in 2016, this Artwork was displayed at the Venice Architecture Biennale for 6 months"
+        },
+        {
+            name: 'Lanter I',
+            artist: 'Sahand Hesamiyan',
+            desc: "This work is designed for Didi Gallery and Museum only in 2015."
+        },
+        {
+            name: 'Just you Name it',
+            artist: 'Ahmad Nasrollahi',
+            desc: "This artwork is created in 2004."
+        },
+    ]
+    const [currentDesc, setCurrentDesc] = useState(descriptions[0])
     const changeImageDesc = () => {
         setVisibleDesc(false)
         setTimeout(() => {
+            setCurrentDesc(descriptions[currentSlide])
             setVisibleDesc(true)
         }, 800)
     }
@@ -44,13 +72,13 @@ export default function Index() {
     }}>
         <div className={visibleDesc ? classes.topLeftSecFadeIn : classes.topLeftSecFadeOut}>
             <div className={classes.artWorkName}>
-                Lanter l
+                {currentDesc.name}
             </div>
             <div className={classes.artistName}>
-                By Sahand Hesamiyan
+                By {currentDesc.artist}
             </div>
             <div className={classes.artworkInfo}>
-                This work is designed for Didi Gallery and Museum only in 2015.
+                {currentDesc.desc}
             </div>
             {!matches &&
                 <BuyBtn/>

@@ -5,7 +5,7 @@ import useEffectDebugger from "../../functions/hooks/useEffectDebugger";
 
 let IMAGES_LENGTH;
 const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurrentSlide}, ref) => {
-    const [styles, setStyles] = useState([]);
+    const [styles, setStyles] = useState({});
     const [timeoutId, setTimeoutId] = useState(undefined);
     const prevSlide = usePrevious(currentSlide)
 
@@ -43,7 +43,25 @@ const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurren
     const slideForwards = () => {
         unMountStyle(currentSlide)
         slideForwardStyle(currentSlide)
-        setCurrentSlide(currentSlide + 1)
+        setTimeout(() => {
+            setStyles({
+                ...styles,
+                [currentSlide]: {
+                    transition: 'all 1s ease',
+                    transform: 'scale(1)',
+                    left: `${(images.length - 1) * 700}px`
+                }
+            })
+        }, 1000)
+        setCurrentSlide(calculateNextSlideIdx())
+    }
+
+    const calculateNextSlideIdx = () => {
+        if (currentSlide % images.length === images.length - 1) {
+            return 0
+        } else {
+            return (currentSlide % images.length) + 1
+        }
     }
 
     const slideBackwards = () => {
@@ -110,22 +128,21 @@ const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurren
 
 
     useEffect(() => {
-        const stylesArr = []
+        const stylesObj = {}
         for (let i = 0; i < images.length; i++) {
             let left = i * 700;
-            if (i === 0) {
-                stylesArr.push({
-                    transition: 'all 1s ease',
-                })
-            } else {
-                stylesArr.push({
-                    position: 'absolute',
-                    left: `${left}px`,
-                    transition: 'all 1s ease',
-                })
+            // if (i === 0) {
+            //     stylesObj[i] = {
+            //         transition: 'all 1s ease',
+            //     }
+            // } else {
+            stylesObj[i] = {
+                left: `${left}px`,
+                transition: 'all 1s ease',
             }
+            // }
         }
-        setStyles(stylesArr)
+        setStyles(stylesObj)
         IMAGES_LENGTH = images.length
     }, [])
 
@@ -143,16 +160,16 @@ const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurren
     }
 
     useEffect(() => {
-        if (styles.length > 0) {
-            if (!hover) {
-                autoSlide()
-            } else {
-                if (timeoutId) {
-                    clearTimeout(timeoutId)
-                }
+    if (Object.keys(styles).length > 0) {
+        if (!hover) {
+            autoSlide()
+        } else {
+            if (timeoutId) {
+                clearTimeout(timeoutId)
             }
         }
-    }, [hover, styles.length, currentSlide])
+    }
+    }, [hover, Object.keys(styles).length, currentSlide])
 
     return images.map((img, i) => (
         <div style={styles[i]} onTransitionEnd={transitionEnd}
