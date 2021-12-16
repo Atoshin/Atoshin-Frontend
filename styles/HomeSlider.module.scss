@@ -330,6 +330,12 @@
 }
 
 @media (max-width: 600px) {
+  .topLeftSecFadeIn{
+    margin-top: 0px;
+  }
+  .topLeftSecFadeOut{
+    margin-top: 0px;
+  }
   .topMainSec {
     flex-direction: column;
   }
