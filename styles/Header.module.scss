@@ -180,13 +180,15 @@
   width: 40px;
   height: 40px;
   border-radius: 20px;
-  background: #173E67;
+  background: lightgray;
+  //opacity: 0.1;
   margin-right: 11px;
 }
 
 .ethLogo {
   width: 18.67px;
   height: 32px;
+  //z-index: 100;
 }
 
 .balanceAmount {

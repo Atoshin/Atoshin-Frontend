@@ -21,7 +21,7 @@ export default function Footer() {
             </div>
             <div className={classes.linksMainSec}>
                 <div className={classes.logoSec}>
-                    LOGO
+                    <img className={classes.logoSec} src="/images/atoshin-logo-white.svg" alt=""/>
                 </div>
                 <div className={classes.linksSec}>
                     <div className={classes.linkTitle}>
