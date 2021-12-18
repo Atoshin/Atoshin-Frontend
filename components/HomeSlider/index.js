@@ -86,8 +86,8 @@ export default function Index() {
         </div>
         <div className={classes.topRightMainSec}>
             <div className={classes.sliderImages}>
-                {/*<Animation hover={isHovered} images={sliderImages} setImages={setSliderImages}*/}
-                {/*           currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} ref={animateRef}/>*/}
+                <Animation hover={isHovered} images={sliderImages} setImages={setSliderImages}
+                           currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} ref={animateRef}/>
             </div>
             <div className={classes.sliderBottomMenu}>
                 <img style={{marginRight: 20,}} className={classes.vector} onClick={() => {
