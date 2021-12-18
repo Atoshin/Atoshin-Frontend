@@ -159,17 +159,17 @@ const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurren
         setTimeoutId(timeout)
     }
 
-    useEffect(() => {
-    if (Object.keys(styles).length > 0) {
-        if (!hover) {
-            autoSlide()
-        } else {
-            if (timeoutId) {
-                clearTimeout(timeoutId)
-            }
-        }
-    }
-    }, [hover, Object.keys(styles).length, currentSlide])
+    // useEffect(() => {
+    // if (Object.keys(styles).length > 0) {
+    //     if (!hover) {
+    //         autoSlide()
+    //     } else {
+    //         if (timeoutId) {
+    //             clearTimeout(timeoutId)
+    //         }
+    //     }
+    // }
+    // }, [hover, Object.keys(styles).length, currentSlide])
 
     return images.map((img, i) => (
         <div style={styles[i]} onTransitionEnd={transitionEnd}
