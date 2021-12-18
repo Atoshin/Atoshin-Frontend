@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Provider store={store}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", }}>
                 <Header />
-                <Container>
+                <Container className="main-mui-container">
                     <Component {...pageProps} />
                 </Container>
                 <Footer />

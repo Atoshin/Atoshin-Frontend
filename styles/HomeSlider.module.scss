@@ -40,7 +40,6 @@
     opacity: 1;
     transition: opacity 1s ease;
     text-align: left;
-    width: 366px;
   }
 }
 
@@ -77,7 +76,6 @@
     color: #232323;
     margin-top: 16px;
     text-align: left;
-    width: 366px;
     opacity: 0;
     transition: opacity 1s ease;
   }
@@ -331,10 +329,10 @@
 
 @media (max-width: 600px) {
   .topLeftSecFadeIn{
-    margin-top: 0px;
+    margin-top: 129px;
   }
   .topLeftSecFadeOut{
-    margin-top: 0px;
+    margin-top: 129px;
   }
   .topMainSec {
     flex-direction: column;

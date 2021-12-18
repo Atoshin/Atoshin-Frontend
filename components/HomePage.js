@@ -1,9 +1,7 @@
 import classes from '../styles/HomePage.module.scss'
 import {Button, useMediaQuery} from "@mui/material";
-import Head from "next/head";
 import {useTheme} from "@mui/material/styles";
 //TODO change all <img/> elements with next <Image/>
-import Image from 'next/image';
 import ArtistsSlider from "./ArtistsSlider";
 import HomeSlider from "./HomeSlider";
 
@@ -28,7 +26,6 @@ export default function HomePage() {
                                  alt=""/>
                             }
                             DD Gallery
-
                         </div>
                         <div className={classes.galleryDescSec}>
                             {!matches &&

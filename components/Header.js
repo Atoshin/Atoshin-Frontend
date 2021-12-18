@@ -34,10 +34,12 @@ export default function Header() {
             {matches ?
                 <>
                     <div className={classes.headerMainMob}>
-                        <img className={classes.hamburger} src="/icons/hamburger.png" alt=""/>
-                        <div className={classes.hamburgerAndlogo}>
-                            <div className={classes.logoMob}>
-                                <img className={classes.AtoshinLogoMob} src="/images/atoshin-logo-typography.svg" alt=""/>
+                        <div className={classes.logoWithHam}>
+                            <img className={classes.hamburger} src="/icons/hamburger.png" alt=""/>
+                            <div className={classes.hamburgerAndlogo}>
+                                <div className={classes.logoMob}>
+                                    <img className={classes.AtoshinLogoMob} src="/images/atoshin-logo-typography.svg" alt=""/>
+                                </div>
                             </div>
                         </div>
                         {isLoggedIn ?
