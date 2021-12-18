@@ -56,7 +56,7 @@ export default function Header() {
                     <Container>
                         <div className={classes.mainHeaderDesktop}>
                             <div className={classes.logoContainer}>
-                                <img className={classes.AtoshinLogo} src="/images/Atoshin-logo.png" alt=""/>
+                                <img className={classes.AtoshinLogo}  src="/images/Atoshin-logo.png" alt=""/>
                             </div>
                             <ul className={classes.menuContainer}>
                                 <li className={classes.marketplaceItem}>Marketplace</li>

@@ -4,6 +4,7 @@ import {useTheme} from "@mui/material/styles";
 //TODO change all <img/> elements with next <Image/>
 import ArtistsSlider from "../ArtistsSlider";
 import HomeSlider from "../HomeSlider";
+import * as url from "url";
 
 export default function HomePage() {
 
@@ -47,9 +48,18 @@ export default function HomePage() {
                         </div>
                     </div>
                     {matches ?
-                        <img className={classes.galleryMainPhoto} src="/images/DD-gallery-main-mob.jpg" alt=""/>
+                        // <img className={classes.galleryMainPhoto} src="/images/DD-gallery-main-mob.jpg" alt=""/>
+                        <div className={classes.galleryVidContainer}>
+                            <div style={{backgroundImage: 'url("/images/DD-gallery-main.jpg")',width:'100%',height:178,backgroundPosition: 'center'}}>
+                                {/*<img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""/>*/}
+                            </div>
+                            <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""/>
+                        </div>
                         :
-                        <img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""/>
+                        <div className={classes.galleryVidContainer}>
+                            <img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""/>
+                            <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""/>
+                        </div>
                     }
                     {matches &&
                     <ExploreBtn/>

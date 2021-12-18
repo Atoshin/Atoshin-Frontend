@@ -75,7 +75,7 @@
 }
 
 .AtoshinLogoMob {
-  width: 60px;
+  width: 83px;
   //height: 32px;
 }
 
@@ -122,6 +122,10 @@
     line-height: 19px;
     padding: 0;
     border-radius: 5px;
+
+    &:hover {
+      background-color: rgba(35, 35, 35, 0.90);
+    }
   }
 }
 
