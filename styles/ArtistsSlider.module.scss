@@ -1,7 +1,7 @@
 .artistMainSec {
   display: flex;
   flex-direction: column;
-  margin-top: 278px;
+  margin-top: 206px;
 }
 
 .vectorLeft {
@@ -69,7 +69,7 @@
   cursor: pointer;
   border-radius: 3px;
   margin: 10px 5px 10px 5px;
-
+  background-color: white;
   img {
     user-select: none;
     width: 100%;

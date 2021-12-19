@@ -1,9 +1,14 @@
 import classes from '../styles/Footer.module.scss'
-import {Button} from "@mui/material";
+import {Button, useMediaQuery} from "@mui/material";
 import Head from "next/head";
+import {useTheme} from "@mui/material/styles";
 
 
 export default function Footer() {
+
+
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
     return <>
         <Head>
@@ -20,9 +25,15 @@ export default function Footer() {
             <div className={classes.dividingLine}>
             </div>
             <div className={classes.linksMainSec}>
-                <div className={classes.logoSec}>
-                    <img className={classes.logoSec} src="/images/atoshin-logo-white.svg" alt=""/>
-                </div>
+                {matches ?
+                    <div className={classes.logoSec}>
+                        <img className={classes.logoSec} src="/images/atoshin-logo-typography-white.svg" alt=""/>
+                    </div>
+                    :
+                    <div className={classes.logoSec}>
+                        <img className={classes.logoSec} src="/images/atoshin-logo-white.svg" alt=""/>
+                    </div>
+                }
                 <div className={classes.linksSec}>
                     <div className={classes.linkTitle}>
                         Support
