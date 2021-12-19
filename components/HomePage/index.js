@@ -4,9 +4,11 @@ import {useTheme} from "@mui/material/styles";
 //TODO change all <img/> elements with next <Image/>
 import ArtistsSlider from "../ArtistsSlider";
 import HomeSlider from "../HomeSlider";
+import LeftDrawer from "./LeftDrawer";
+import {useState} from "react";
 
 export default function HomePage() {
-
+    const [drawerState, setDrawerState] = useState(false)
     const ExploreBtn = () => {
         return <Button className={classes.exploreBtn}>Explore</Button>
 
@@ -15,6 +17,7 @@ export default function HomePage() {
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
     return <>
+        <LeftDrawer state={drawerState} setState={setDrawerState}/>
         <div className={classes.main}>
             <HomeSlider/>
             <div className={classes.galleryMainSec}>

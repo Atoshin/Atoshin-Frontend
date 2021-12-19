@@ -1,25 +1,85 @@
-import {useEffect, useState, forwardRef, useImperativeHandle} from "react";
+import { useEffect, useState, forwardRef, useImperativeHandle } from "react";
 import classes from "../../styles/HomeSlider.module.scss";
 import usePrevious from "../../functions/hooks/usePrevious";
 import useEffectDebugger from "../../functions/hooks/useEffectDebugger";
 
 let IMAGES_LENGTH;
-const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurrentSlide}, ref) => {
+const Animation = forwardRef(({ images, currentSlide, setImages, hover, setCurrentSlide }, ref) => {
     const [styles, setStyles] = useState({});
     const [timeoutId, setTimeoutId] = useState(undefined);
+    let startingClientX;
+    let dragging = false;
+    let distanceSwiped = 0;
+    let width = 0;
     const prevSlide = usePrevious(currentSlide)
 
     useImperativeHandle(ref, () => ({
         slideForward() {
-            slideForwards()
+            slideForwards();
         },
         slideBackwards() {
-            slideBackwards()
+            slideBackwards();
+        },
+        startSwipe(e) {
+            startSwipe(e);
+        },
+        endSwipe(e) {
+            endSwipe(e);
+        },
+        swipe(e) {
+            swipe(e);
         },
         slideTo(idx) {
             slideTo(idx)
         }
     }));
+
+
+    const swipe = (e) => {
+        const clientX = e.touches ? e.touches[0].pageX : e.clientX;
+        if (dragging) {
+            let translateValue = width * currentSlide;
+            const distance = clientX - startingClientX;
+            // if (
+            //     !infinite &&
+            //     this.state.index === children.length - slidesToScroll &&
+            //     distance < 0
+            // ) {
+            //     // if it is the last and infinite is false and you're swiping left
+            //     // then nothing happens
+            //     return;
+            // }
+            // if (!infinite && this.state.index === 0 && distance > 0) {
+            //     // if it is the first and infinite is false and you're swiping right
+            //     // then nothing happens
+            //     return;
+            // }
+            distanceSwiped = distance;
+            translateValue -= distanceSwiped;
+            imageContainer.style.transform = `translate(-${translateValue}px)`;
+        }
+    }
+
+    const endSwipe = (e) => {
+        dragging = false;
+        if (Math.abs(distanceSwiped) / width > 0.2) {
+            if (distanceSwiped < 0) {
+                slideForwards();
+            } else {
+                slideBackwards();
+            }
+        } else {
+            if (Math.abs(distanceSwiped) > 0) {
+                // slideTo(, );
+            }
+        }
+    }
+
+    const startSwipe = (e) => {
+        startingClientX = e.touches ? e.touches[0].pageX : e.clientX;
+        clearTimeout(timeoutId);
+        dragging = true;
+    }
 
     const slideTo = (idx) => {
         const amount = idx - currentSlide;
@@ -173,10 +233,10 @@ const Animation = forwardRef(({images, currentSlide, setImages, hover, setCurren
 
     return images.map((img, i) => (
         <div style={styles[i]} onTransitionEnd={transitionEnd}
-             className={currentSlide === i ? classes.topRightSec : classes.topRightSecBehind}
-             onClick={() => slideOnClick(i)}>
+            className={currentSlide === i ? classes.topRightSec : classes.topRightSecBehind}
+            onClick={() => slideOnClick(i)}>
             <div className={classes.artworkImgSec}>
-                <img className={classes.artWorkImg} src={img} alt=""/>
+                <img className={classes.artWorkImg} src={img} alt="" />
             </div>
             <div className={classes.artWorkDetailSec}>
                 <div className={classes.priceMainSec}>

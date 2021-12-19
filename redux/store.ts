@@ -4,7 +4,7 @@ import counterReducer from './reducers/counterSlice'
 
 export function makeStore() {
   return configureStore({
-    reducer: { counter: counterReducer },
+    reducer: {},
   })
 }
 
