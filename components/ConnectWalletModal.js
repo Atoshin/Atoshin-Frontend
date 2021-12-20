@@ -8,11 +8,14 @@ import {ethers} from "ethers";
 import classes from '../styles/ConnectWalletModal.module.scss';
 import Web3Modal from 'web3modal'
 import axios from 'axios'
+import {useDispatch} from "react-redux";
+import {setProvider} from "../redux/slices/accountSlice";
 
 export default function ConnectWalletModal({open, setOpen, handleClose, setIsLoggedIn}) {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const dispatch = useDispatch()
 
     const connectWallet = async (e) => {
         e.preventDefault();
@@ -20,6 +23,7 @@ export default function ConnectWalletModal({open, setOpen, handleClose, setIsLog
             const web3Modal = new Web3Modal();
             const connection = await web3Modal.connect();
             const provider = new ethers.providers.Web3Provider(connection);
+            dispatch(setProvider(provider))
             const signer = provider.getSigner();
             const address = await signer.getAddress();
             if (address) {

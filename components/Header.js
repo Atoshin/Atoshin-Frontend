@@ -3,11 +3,19 @@ import Container from '@mui/material/Container';
 import {useTheme} from '@mui/material/styles';
 import classes from '../styles/Header.module.scss';
 import ConnectWalletModal from '/components/ConnectWalletModal.js';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Menu from '@mui/material/Menu';
+import {useSelector} from "react-redux";
+import {RootState} from "../redux/store";
+import {ethers} from "ethers";
+import Web3Modal from "web3modal";
 
 export default function Header({setDrawerMenu}) {
+    const ethProvider = useSelector((state) => state.account.provider)
 
+    useEffect(async () => {
+        console.log(window.web3)
+    }, [ethProvider])
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -35,10 +43,12 @@ export default function Header({setDrawerMenu}) {
                 <>
                     <div className={classes.headerMainMob}>
                         <div className={classes.logoWithHam}>
-                            <img className={classes.hamburger} src="/icons/hamburger.png" alt="" onClick={() => setDrawerMenu(true)}/>
+                            <img className={classes.hamburger} src="/icons/hamburger.png" alt=""
+                                 onClick={() => setDrawerMenu(true)}/>
                             <div className={classes.hamburgerAndlogo}>
                                 <div className={classes.logoMob}>
-                                    <img className={classes.AtoshinLogoMob} src="/images/atoshin-logo-typography.svg" alt=""/>
+                                    <img className={classes.AtoshinLogoMob} src="/images/atoshin-logo-typography.svg"
+                                         alt=""/>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +66,7 @@ export default function Header({setDrawerMenu}) {
                     <Container>
                         <div className={classes.mainHeaderDesktop}>
                             <div className={classes.logoContainer}>
-                                <img className={classes.AtoshinLogo}  src="/images/Atoshin-logo.png" alt=""/>
+                                <img className={classes.AtoshinLogo} src="/images/Atoshin-logo.png" alt=""/>
                             </div>
                             <ul className={classes.menuContainer}>
                                 <li className={classes.marketplaceItem}>Marketplace</li>

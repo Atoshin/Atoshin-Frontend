@@ -20,6 +20,7 @@ export default function HomeSlider() {
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const [currentSlide, setCurrentSlide] = useState(0)
     const [visibleDesc, setVisibleDesc] = useState(true)
+    const [firstRender, setFirstRender] = useState(true)
     const sliderImages = [
         '/images/artworks/art-work1.jpg',
         '/images/artworks/art-work2.jpg',
@@ -60,12 +61,14 @@ export default function HomeSlider() {
         setTimeout(() => {
             setCurrentDesc(descriptions[currentSlide])
             setVisibleDesc(true)
-        }, 800)
+        }, 500)
     }
 
     useEffect(() => {
-        if (currentSlide !== 0) {
+        if (!firstRender) {
             changeImageDesc()
+        } else {
+            setFirstRender(false)
         }
     }, [currentSlide])
 
