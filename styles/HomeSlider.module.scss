@@ -11,6 +11,7 @@
   flex-direction: column;
   margin-top: 109px;
   width: 75%;
+  padding-right: 70px;
 
   .artWorkName {
     font-size: 50px;
@@ -50,6 +51,7 @@
   flex-direction: column;
   margin-top: 109px;
   width: 75%;
+  padding-right: 70px;
 
   .artWorkName {
     font-size: 50px;
@@ -104,13 +106,14 @@
 
 
 .sliderImages {
-  display: flex;
-  align-items: center;
+  //display: flex;
+  //align-items: center;
   //width: calc(53.5vw);
   //width: 1100px;
-  overflow-x: hidden;
-  position: relative;
+  //overflow-x: hidden;
+  //position: relative;
   height: 550px;
+  width: 645px !important;
 }
 
 .topRightMainSec {
@@ -151,14 +154,12 @@
   flex-direction: column;
   //margin-left: 109px;
   filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
-  margin-left: 5px;
-  margin-right: 50px;
+  //margin-left: 5px;
+  //margin-right: 50px;
   cursor: pointer;
-  position: absolute;
 
   .artworkImgSec {
     height: 430px;
-    transition: all 1s;
   }
 
   .artWorkImg {
@@ -176,9 +177,9 @@
     transition: all 1s;
     background-color: #FFFFFF;
     border-radius: 0px 0px 3px 3px;
-    padding-left: 48px;
-    padding-right: 80px;
-    margin-bottom: 5px;
+    //padding-left: 48px;
+    //padding-right: 80px;
+    //margin-bottom: 5px;
     //border: 1px #232323;
   }
 
@@ -331,10 +332,10 @@
 }
 
 @media (max-width: 600px) {
-  .topLeftSecFadeIn{
+  .topLeftSecFadeIn {
     margin-top: 129px;
   }
-  .topLeftSecFadeOut{
+  .topLeftSecFadeOut {
     margin-top: 129px;
   }
   .topMainSec {

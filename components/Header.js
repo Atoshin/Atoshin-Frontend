@@ -6,7 +6,7 @@ import ConnectWalletModal from '/components/ConnectWalletModal.js';
 import {useState} from 'react';
 import Menu from '@mui/material/Menu';
 
-export default function Header() {
+export default function Header({setDrawerMenu}) {
 
 
     const theme = useTheme();
@@ -35,7 +35,7 @@ export default function Header() {
                 <>
                     <div className={classes.headerMainMob}>
                         <div className={classes.logoWithHam}>
-                            <img className={classes.hamburger} src="/icons/hamburger.png" alt=""/>
+                            <img className={classes.hamburger} src="/icons/hamburger.png" alt="" onClick={() => setDrawerMenu(true)}/>
                             <div className={classes.hamburgerAndlogo}>
                                 <div className={classes.logoMob}>
                                     <img className={classes.AtoshinLogoMob} src="/images/atoshin-logo-typography.svg" alt=""/>

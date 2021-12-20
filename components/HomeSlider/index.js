@@ -1,12 +1,16 @@
 import classes from '../../styles/HomeSlider.module.scss'
-import { Button, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { useEffect, useRef, useState } from "react";
-import Animation from "./Animation";
+import {Button, useMediaQuery} from "@mui/material";
+import {useTheme} from "@mui/material/styles";
+import {useEffect, useRef, useState} from "react";
+import Slider from './Slider';
 
-export default function Index() {
+export default function HomeSlider() {
     const animateRef = useRef({
-        current: {}
+        current: {
+            state: {
+                index: 0
+            }
+        }
     })
     const BuyBtn = () => {
         return <Button onClick={() => setCurrentSlide(prevState => (prevState + 1))} className={classes.buyBtn}>Buy
@@ -16,14 +20,13 @@ export default function Index() {
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const [currentSlide, setCurrentSlide] = useState(0)
     const [visibleDesc, setVisibleDesc] = useState(true)
-    const [isHovered, setIsHovered] = useState(false)
-    const [sliderImages, setSliderImages] = useState([
+    const sliderImages = [
         '/images/artworks/art-work1.jpg',
         '/images/artworks/art-work2.jpg',
         '/images/artworks/art-work3.jpg',
         '/images/artworks/art-work4.jpg',
         '/images/artworks/art-work5.jpg',
-    ]);
+    ];
     const descriptions = [
         {
             name: 'Just You Name it',
@@ -32,8 +35,8 @@ export default function Index() {
         },
         {
             name: 'Just You Name it',
-            artist: 'Reza Derakhshani',
-            desc: "The present work belongs to the \"Khosrow and Shirin\" collection, in which two Iranian lovers are depicted. Date of creation is 2001."
+            artist: 'Farideh Lashai',
+            desc: "This artwork is created in 2004."
         },
         {
             name: 'Rain',
@@ -60,18 +63,14 @@ export default function Index() {
         }, 800)
     }
 
-
     useEffect(() => {
         if (currentSlide !== 0) {
             changeImageDesc()
         }
     }, [currentSlide])
 
-    return <div className={classes.topMainSec} onMouseOut={() => {
-        if (isHovered) setIsHovered(false)
-    }} onMouseOver={() => {
-        if (!isHovered) setIsHovered(true)
-    }}>
+
+    return <div className={classes.topMainSec}>
         <div className={visibleDesc ? classes.topLeftSecFadeIn : classes.topLeftSecFadeOut}>
             <div className={classes.artWorkName}>
                 {currentDesc.name}
@@ -83,54 +82,47 @@ export default function Index() {
                 {currentDesc.desc}
             </div>
             {!matches &&
-                <BuyBtn />
+                <BuyBtn/>
             }
         </div>
         <div className={classes.topRightMainSec}>
-            <div className={classes.sliderImages}
-                onMouseDown={animateRef.current.startSwipe}
-                onMouseUp={animateRef.current.endSwipe}
-                onMouseMove={animateRef.current.swipe}
-                onTouchStart={animateRef.current.startSwipe}
-                onTouchEnd={animateRef.current.endSwipe}
-                onTouchCancel={animateRef.current.endSwipe}
-                onTouchMove={animateRef.current.swipe}
-            >
-                <Animation hover={isHovered} images={sliderImages} setImages={setSliderImages}
-                    currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} ref={animateRef} />
+            <div className={classes.sliderImages}>
+                {/*<Animation hover={isHovered} images={sliderImages} setImages={setSliderImages}*/}
+                {/*    currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} ref={animateRef} />*/}
+                <Slider images={sliderImages} sliderRef={animateRef} setCurrentSlide={setCurrentSlide}/>
             </div>
             <div className={classes.sliderBottomMenu}>
-                <img style={{ marginRight: 20, }} className={classes.vector} onClick={() => {
-                    animateRef.current.slideBackwards()
+                <img style={{marginRight: 20,}} className={classes.vector} onClick={() => {
+                    animateRef.current.goBack()
                 }}
-                    src="/icons/vector-left.png" alt="" />
-                <div onClick={() => animateRef.current.slideTo(0)}
-                    className={currentSlide === 0 ? classes.selectedTap : classes.unselectedTab}>
+                     src="/icons/vector-left.png" alt=""/>
+                <div onClick={() => animateRef.current.goTo(0)}
+                     className={currentSlide === 0 ? classes.selectedTap : classes.unselectedTab}>
                     Just You Name It
                 </div>
-                <div onClick={() => animateRef.current.slideTo(1)}
-                    className={currentSlide === 1 ? classes.selectedTap : classes.unselectedTab}>
+                <div onClick={() => animateRef.current.goTo(1)}
+                     className={currentSlide === 1 ? classes.selectedTap : classes.unselectedTab}>
                     Just You Name It
                 </div>
-                <div onClick={() => animateRef.current.slideTo(2)}
-                    className={currentSlide === 2 ? classes.selectedTap : classes.unselectedTab}>
+                <div onClick={() => animateRef.current.goTo(2)}
+                     className={currentSlide === 2 ? classes.selectedTap : classes.unselectedTab}>
                     Rain
                 </div>
-                <div onClick={() => animateRef.current.slideTo(3)}
-                    className={currentSlide === 3 ? classes.selectedTap : classes.unselectedTab}>
+                <div onClick={() => animateRef.current.goTo(3)}
+                     className={currentSlide === 3 ? classes.selectedTap : classes.unselectedTab}>
                     Lanter l
                 </div>
-                <div onClick={() => animateRef.current.slideTo(4)}
-                    className={currentSlide === 4 ? classes.selectedTap : classes.unselectedTab}>
+                <div onClick={() => animateRef.current.goTo(4)}
+                     className={currentSlide === 4 ? classes.selectedTap : classes.unselectedTab}>
                     Just You Name It
                 </div>
-                <img style={{ marginLeft: 20, }} className={classes.vector} onClick={() => {
-                    animateRef.current.slideForward()
+                <img style={{marginLeft: 20,}} className={classes.vector} onClick={() => {
+                    animateRef.current.goNext()
                 }}
-                    src="/icons/vector-right.png" alt="" />
+                     src="/icons/vector-right.png" alt=""/>
             </div>
             {matches &&
-                <BuyBtn />
+                <BuyBtn/>
             }
         </div>
     </div>
