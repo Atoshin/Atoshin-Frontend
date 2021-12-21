@@ -229,11 +229,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .galleryPlayPhoto {
   position: absolute;
   width: 92.86px;
   height: 92.91px;
+  cursor: pointer;
 }
 
 .galleryBottomSec {

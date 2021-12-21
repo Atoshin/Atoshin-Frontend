@@ -21,10 +21,11 @@
   }
   .artworkImgSec {
     margin-top: 24px;
-    height: initial !important;
+    height: auto !important;
   }
   .artWorkImg {
     width: 100% !important;
+    height: auto !important;
   }
   .artWorkDetailSec {
     width: 100% !important;
@@ -86,5 +87,6 @@
   }
   .sliderImages {
     width: 100% !important;
+    height: auto !important;
   }
 }

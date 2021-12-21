@@ -1,8 +1,8 @@
 import '../styles/globals.scss'
 import {Provider} from 'react-redux';
 import {AppProps} from 'next/app';
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/Layout/Header";
+import Footer from "../components/Layout/Footer";
 import Container from '@mui/material/Container';
 
 import {store} from '../redux/store'
