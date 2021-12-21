@@ -1,4 +1,4 @@
-import classes from '../../styles/HomeSlider.module.scss'
+import classes from '../../styles/HomeSlider/HomeSlider.module.scss'
 import {Button, useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import {useEffect, useRef, useState} from "react";

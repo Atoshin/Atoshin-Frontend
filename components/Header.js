@@ -1,21 +1,51 @@
 import {Button, useMediaQuery} from "@mui/material";
 import Container from '@mui/material/Container';
 import {useTheme} from '@mui/material/styles';
-import classes from '../styles/Header.module.scss';
+import classes from '../styles/Header/Header.module.scss';
 import ConnectWalletModal from '/components/ConnectWalletModal.js';
 import {useEffect, useState} from 'react';
 import Menu from '@mui/material/Menu';
-import {useSelector} from "react-redux";
-import {RootState} from "../redux/store";
-import {ethers} from "ethers";
-import Web3Modal from "web3modal";
+import {useDispatch, useSelector} from "react-redux";
+import Web3 from 'web3'
+import {setAddress} from "../redux/slices/accountSlice";
 
 export default function Header({setDrawerMenu}) {
-    const ethProvider = useSelector((state) => state.account.provider)
 
-    useEffect(async () => {
-        console.log(window.web3)
-    }, [ethProvider])
+    const dispatch = useDispatch()
+    const address = useSelector(state => state.account.address)
+
+    useEffect(() => {
+        const checkConnection = async () => {
+            let web3;
+            if (window.ethereum) {
+                web3 = new Web3(window.ethereum);
+                web3.eth.getAccounts()
+                    .then(async (addr) => {
+                        dispatch(setAddress(addr[0]))
+                    });
+                providerEventListener()
+            } else if (window.web3) {
+                web3 = new Web3(window.web3.currentProvider);
+                web3.eth.getAccounts()
+                    .then(async (addr) => {
+                        dispatch(setAddress(addr[0]))
+                    });
+                providerEventListener()
+            }
+        };
+
+        const providerEventListener = () => {
+            window.ethereum.on('accountsChanged', function (accounts) {
+                if (accounts.length > 0) {
+                    dispatch(setAddress(accounts[0]))
+                } else {
+                    dispatch(setAddress(''))
+                }
+            })
+
+        }
+        checkConnection();
+    }, [])
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -52,7 +82,7 @@ export default function Header({setDrawerMenu}) {
                                 </div>
                             </div>
                         </div>
-                        {isLoggedIn ?
+                        {address ?
                             <div className={classes.avatarIconSec} onClick={handleClick}>
                                 <img className={classes.avatarIconMob} src="/icons/avatar-icon.png" alt=""/>
                             </div>
@@ -73,7 +103,7 @@ export default function Header({setDrawerMenu}) {
                                 <li>Art Centers</li>
                                 <li>Artists</li>
                                 <li>About NFT</li>
-                                {isLoggedIn ?
+                                {address ?
                                     <div className={classes.avatarIconSec} onClick={handleClick}>
                                         <img className={classes.avatarIcon} src="/icons/avatar-icon.png" alt=""/>
                                     </div>

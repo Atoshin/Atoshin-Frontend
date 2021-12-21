@@ -1,4 +1,4 @@
-import classes from "../styles/ArtistsSlider.module.scss";
+import classes from "../styles/ArtistsSlider/ArtistsSlider.module.scss";
 import {Slide} from "react-slideshow-image";
 import 'react-slideshow-image/dist/styles.css'
 import {useTheme} from "@mui/material/styles";
@@ -31,6 +31,7 @@ export default function ArtistsSlider() {
                  src="/icons/vector-left.png" alt=""/>
             <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={false}
                    slidesToScroll={1}
+                   transitionDuration={500}
                    duration={5000}>
                 <div className={classes.artist}>
                     <img src="/images/artists/Ahmad-Nasrollahi.jpg" alt=""/>
