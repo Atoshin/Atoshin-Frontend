@@ -1,4 +1,4 @@
-import classes from "../styles/ArtistsSlider/ArtistsSlider.module.scss";
+import classes from "../../styles/ArtistsSlider/ArtistsSlider.module.scss";
 import {Slide} from "react-slideshow-image";
 import 'react-slideshow-image/dist/styles.css'
 import {useTheme} from "@mui/material/styles";

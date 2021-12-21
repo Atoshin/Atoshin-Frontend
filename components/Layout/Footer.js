@@ -1,4 +1,4 @@
-import classes from '../styles/Footer/Footer.module.scss'
+import classes from '../../styles/Footer/Footer.module.scss'
 import {Button, useMediaQuery} from "@mui/material";
 import Head from "next/head";
 import {useTheme} from "@mui/material/styles";

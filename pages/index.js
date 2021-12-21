@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/Home/Home.module.css'
+import styles from '../styles/Home/Home.module.scss'
 import HomePage from "../components/HomePage";
 
 export default function Home() {

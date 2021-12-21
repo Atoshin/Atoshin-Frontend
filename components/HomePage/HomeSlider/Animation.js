@@ -1,7 +1,7 @@
 import { useEffect, useState, forwardRef, useImperativeHandle } from "react";
-import classes from "../../styles/HomeSlider/HomeSlider.module.scss";
-import usePrevious from "../../functions/hooks/usePrevious";
-import useEffectDebugger from "../../functions/hooks/useEffectDebugger";
+import classes from "../../../styles/HomeSlider/HomeSlider.module.scss";
+import usePrevious from "../../../functions/hooks/usePrevious";
+import useEffectDebugger from "../../../functions/hooks/useEffectDebugger";
 
 let IMAGES_LENGTH;
 const Animation = forwardRef(({ images, currentSlide, setImages, hover, setCurrentSlide }, ref) => {

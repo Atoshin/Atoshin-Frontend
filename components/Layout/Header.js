@@ -1,13 +1,13 @@
 import {Button, useMediaQuery} from "@mui/material";
 import Container from '@mui/material/Container';
 import {useTheme} from '@mui/material/styles';
-import classes from '../styles/Header/Header.module.scss';
-import ConnectWalletModal from '/components/ConnectWalletModal.js';
+import classes from '../../styles/Header/Header.module.scss';
+import ConnectWalletModal from '/components/Layout/ConnectWalletModal.js';
 import {useEffect, useState} from 'react';
 import Menu from '@mui/material/Menu';
 import {useDispatch, useSelector} from "react-redux";
 import Web3 from 'web3'
-import {setAddress} from "../redux/slices/accountSlice";
+import {setAddress} from "../../redux/slices/accountSlice";
 
 export default function Header({setDrawerMenu}) {
 

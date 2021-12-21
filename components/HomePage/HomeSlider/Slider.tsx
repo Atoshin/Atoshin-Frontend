@@ -1,4 +1,4 @@
-import classes from '../../styles/HomeSlider/HomeSlider.module.scss'
+import classes from '../../../styles/HomeSlider/HomeSlider.module.scss'
 import {Slide} from "react-slideshow-image";
 import {useEffect, useState} from "react";
 
