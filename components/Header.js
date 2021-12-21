@@ -5,10 +5,9 @@ import classes from '../styles/Header.module.scss';
 import ConnectWalletModal from '/components/ConnectWalletModal.js';
 import {useEffect, useState} from 'react';
 import Menu from '@mui/material/Menu';
-import {useSelector, useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Web3 from 'web3'
 import {setAddress} from "../redux/slices/accountSlice";
-import {ethers} from "ethers";
 
 export default function Header({setDrawerMenu}) {
 
@@ -24,11 +23,6 @@ export default function Header({setDrawerMenu}) {
                     .then(async (addr) => {
                         dispatch(setAddress(addr[0]))
                     });
-                // web3.eth.getBalance()
-                //     .then(async balance => {
-                //         dispatch(setBalance(balance))
-                //         console.log(balance)
-                //     });
                 providerEventListener()
             } else if (window.web3) {
                 web3 = new Web3(window.web3.currentProvider);
@@ -36,11 +30,6 @@ export default function Header({setDrawerMenu}) {
                     .then(async (addr) => {
                         dispatch(setAddress(addr[0]))
                     });
-                // web3.eth.getBalance()
-                //     .then(async balance => {
-                //         console.log(balance)
-                //         dispatch(setBalance(balance))
-                //     });
                 providerEventListener()
             }
         };
@@ -93,7 +82,7 @@ export default function Header({setDrawerMenu}) {
                                 </div>
                             </div>
                         </div>
-                        {address.length > 0 ?
+                        {address ?
                             <div className={classes.avatarIconSec} onClick={handleClick}>
                                 <img className={classes.avatarIconMob} src="/icons/avatar-icon.png" alt=""/>
                             </div>
@@ -114,7 +103,7 @@ export default function Header({setDrawerMenu}) {
                                 <li>Art Centers</li>
                                 <li>Artists</li>
                                 <li>About NFT</li>
-                                {address.length > 0 ?
+                                {address ?
                                     <div className={classes.avatarIconSec} onClick={handleClick}>
                                         <img className={classes.avatarIcon} src="/icons/avatar-icon.png" alt=""/>
                                     </div>

@@ -6,10 +6,7 @@ import Modal from '@mui/material/Modal';
 import {useTheme} from "@mui/material/styles";
 import {ethers} from "ethers";
 import classes from '../styles/ConnectWalletModal.module.scss';
-import Web3Modal from 'web3modal'
 import axios from 'axios'
-import {useDispatch} from "react-redux";
-import {setProvider} from "../redux/slices/accountSlice";
 
 export default function ConnectWalletModal({open, setOpen, handleClose, setIsLoggedIn}) {
 
