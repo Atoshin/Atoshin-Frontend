@@ -107,6 +107,38 @@ export default function ConnectWalletModal({open, setOpen, handleClose, setIsLog
                                 </div>
                             </div>
                         </div>
+                        <div className={classes.bottomMainSec}>
+                            <div className={classes.downloadMainSec}>
+                                <div className={classes.downloadIconSec}>
+                                    <img src="/icons/download-icon.svg" alt=""/>
+                                </div>
+                                <div className={classes.downloadTxt}>
+                                    Download extention
+                                </div>
+                            </div>
+                            <div>
+                                <img className={classes.vectorRight2} src="/icons/vector-right.png" alt=""/>
+                            </div>
+                            <div className={classes.createWalletSec}>
+                                <div className={classes.walletIconSec}>
+                                    <img src="/icons/wallet-icon.svg" alt=""/>
+                                </div>
+                                <div className={classes.creatWalletTxt}>
+                                    Creat wallet
+                                </div>
+                            </div>
+                            <div>
+                                <img className={classes.vectorRight2} src="/icons/vector-right.png" alt=""/>
+                            </div>
+                            <div className={classes.refreshSec}>
+                                <div className={classes.refreshIconSec}>
+                                    <img src="/icons/refresh-icon.svg" alt=""/>
+                                </div>
+                                <div className={classes.refreshTxt}>
+                                    Creat wallet
+                                </div>
+                            </div>
+                        </div>
                     </Box>
                 </Fade>
             </Modal>
