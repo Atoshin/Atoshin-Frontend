@@ -3,18 +3,35 @@ import {Button, useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import YoutubeVideoModal from "./YoutubeVideoModal";
 import * as React from "react";
+import ImagesModal from "./ImagesModal";
 
 export default function GallerySection() {
     const [openYouTube, setOpenYouTube] = React.useState(false);
+    const [openImage, setOpenImage] = React.useState({
+        toggle: false,
+        imgSrc: null
+    });
     const ExploreBtn = () => {
         return <Button className={classes.exploreBtn}>Explore</Button>
 
+    }
+
+    const openYouTubeModal = (e) => {
+        setOpenYouTube(true)
+    }
+
+    const openImageModal = (e) => {
+        setOpenImage({
+            toggle: true,
+            imgSrc: e.target.src
+        })
     }
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
     return <>
+        <ImagesModal setOpen={setOpenImage} open={openImage}/>
         <YoutubeVideoModal open={openYouTube} setOpen={setOpenYouTube}/>
         <div className={classes.galleryMainSec}>
             <div className={classes.galleryTopSec}>
@@ -47,7 +64,7 @@ export default function GallerySection() {
                 </div>
                 {matches ?
                     // <img className={classes.galleryMainPhoto} src="/images/DD-gallery-main-mob.jpg" alt=""/>
-                    <div className={classes.galleryVidContainer} onClick={() => setOpenYouTube(true)}>
+                    <div className={classes.galleryVidContainer} onClick={openYouTubeModal}>
                         <div style={{
                             backgroundImage: 'url("/images/DD-gallery-main.jpg")',
                             width: '100%',
@@ -56,12 +73,15 @@ export default function GallerySection() {
                         }}>
                             {/*<img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""/>*/}
                         </div>
-                        <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""/>
+                        <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
+                             onClick={openYouTubeModal}/>
                     </div>
                     :
                     <div className={classes.galleryVidContainer}>
-                        <img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""/>
-                        <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""/>
+                        <img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""
+                             onClick={openYouTubeModal}/>
+                        <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
+                             onClick={openYouTubeModal}/>
                     </div>
                 }
                 {matches &&
@@ -69,10 +89,10 @@ export default function GallerySection() {
                 }
             </div>
             <div className={classes.galleryBottomSec}>
-                <img className={classes.galleryPhotos} src="/images/dd-gallery1.jpg" alt=""/>
-                <img className={classes.galleryPhotos} src="/images/dd-gallery2.jpg" alt=""/>
-                <img className={classes.galleryPhotos} src="/images/dd-gallery3.jpg" alt=""/>
-                <img className={classes.galleryPhotos} src="/images/dd-gallery4.jpg" alt=""/>
+                <img className={classes.galleryPhotos} src="/images/dd-gallery1.jpg" alt="" onClick={openImageModal}/>
+                <img className={classes.galleryPhotos} src="/images/dd-gallery2.jpg" alt="" onClick={openImageModal}/>
+                <img className={classes.galleryPhotos} src="/images/dd-gallery3.jpg" alt="" onClick={openImageModal}/>
+                <img className={classes.galleryPhotos} src="/images/dd-gallery4.jpg" alt="" onClick={openImageModal}/>
             </div>
         </div>
     </>

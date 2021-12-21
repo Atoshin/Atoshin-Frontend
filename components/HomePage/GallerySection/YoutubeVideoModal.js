@@ -1,13 +1,13 @@
-import * as React from 'react';
+import {useRef} from 'react';
 import Backdrop from '@mui/material/Backdrop';
 
 export default function YoutubeVideoModal({open, setOpen}) {
+    const ref = useRef();
     const handleClose = () => {
         setOpen(false);
+        ref.current.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
     };
-    const handleToggle = () => {
-        setOpen(!open);
-    };
+
 
     return (
         <Backdrop
@@ -15,7 +15,8 @@ export default function YoutubeVideoModal({open, setOpen}) {
             open={open}
             onClick={handleClose}
         >
-            <iframe width="1350" height="480" src="https://www.youtube.com/embed/pxX1E6ohM7Q"
+            <iframe ref={ref} width="853" height="480"
+                    src="https://www.youtube.com/embed/pxX1E6ohM7Q?enablejsapi=1&version=3&playerapiid=ytplayer"
                     title="YouTube video player" frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen/>
