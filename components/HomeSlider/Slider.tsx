@@ -1,4 +1,4 @@
-import classes from '../../styles/HomeSlider.module.scss'
+import classes from '../../styles/HomeSlider/HomeSlider.module.scss'
 import {Slide} from "react-slideshow-image";
 import {useEffect, useState} from "react";
 
@@ -10,6 +10,7 @@ export default function Slider({images, sliderRef, setCurrentSlide}) {
                slidesToShow={1}
                infinite={true}
                arrows={false}
+               autoplay={false}
                slidesToScroll={1}
                duration={5000}
                onChange={(oldIdx, newIdx) => {

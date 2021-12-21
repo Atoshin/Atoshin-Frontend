@@ -5,7 +5,7 @@ import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import {useTheme} from "@mui/material/styles";
 import {ethers} from "ethers";
-import classes from '../styles/ConnectWalletModal.module.scss';
+import classes from '../styles/ConnectWalletModal/ConnectWalletModal.module.scss';
 import axios from 'axios'
 
 export default function ConnectWalletModal({open, setOpen, handleClose, setIsLoggedIn}) {

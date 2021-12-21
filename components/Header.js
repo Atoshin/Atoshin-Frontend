@@ -1,7 +1,7 @@
 import {Button, useMediaQuery} from "@mui/material";
 import Container from '@mui/material/Container';
 import {useTheme} from '@mui/material/styles';
-import classes from '../styles/Header.module.scss';
+import classes from '../styles/Header/Header.module.scss';
 import ConnectWalletModal from '/components/ConnectWalletModal.js';
 import {useEffect, useState} from 'react';
 import Menu from '@mui/material/Menu';

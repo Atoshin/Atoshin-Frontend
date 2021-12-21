@@ -1,5 +1,5 @@
 import { useEffect, useState, forwardRef, useImperativeHandle } from "react";
-import classes from "../../styles/HomeSlider.module.scss";
+import classes from "../../styles/HomeSlider/HomeSlider.module.scss";
 import usePrevious from "../../functions/hooks/usePrevious";
 import useEffectDebugger from "../../functions/hooks/useEffectDebugger";
 
