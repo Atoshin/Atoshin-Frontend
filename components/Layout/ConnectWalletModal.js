@@ -42,7 +42,7 @@ export default function ConnectWalletModal({open, setOpen, handleClose, setIsLog
             // border: '2px solid #000',
             borderRadius: '5px',
             boxShadow: 24,
-            padding: '24px 24px 0px 24px',
+            padding: '24px 24px 16px 24px',
             filter: 'drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.25))',
         }
         :
@@ -110,7 +110,7 @@ export default function ConnectWalletModal({open, setOpen, handleClose, setIsLog
                         <div className={classes.bottomMainSec}>
                             <div className={classes.downloadMainSec}>
                                 <div className={classes.downloadIconSec}>
-                                    <img src="/icons/download-icon.svg" alt=""/>
+                                    <img className={classes.downloadIcon} src="/icons/download-icon.svg" alt=""/>
                                 </div>
                                 <div className={classes.downloadTxt}>
                                     Download extention
@@ -121,7 +121,7 @@ export default function ConnectWalletModal({open, setOpen, handleClose, setIsLog
                             </div>
                             <div className={classes.createWalletSec}>
                                 <div className={classes.walletIconSec}>
-                                    <img src="/icons/wallet-icon.svg" alt=""/>
+                                    <img className={classes.walletIcon} src="/icons/wallet-icon.svg" alt=""/>
                                 </div>
                                 <div className={classes.creatWalletTxt}>
                                     Creat wallet
@@ -132,7 +132,7 @@ export default function ConnectWalletModal({open, setOpen, handleClose, setIsLog
                             </div>
                             <div className={classes.refreshSec}>
                                 <div className={classes.refreshIconSec}>
-                                    <img src="/icons/refresh-icon.svg" alt=""/>
+                                    <img className={classes.refreshIcon} src="/icons/refresh-icon.svg" alt=""/>
                                 </div>
                                 <div className={classes.refreshTxt}>
                                     Creat wallet
