@@ -1,0 +1,68 @@
+.showAssetMain {
+    display: flex;
+    flex-direction: column;
+}
+
+.topMainSec {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 103px;
+}
+
+.topLeftMainSec {
+    display: flex;
+    flex-direction: column;
+}
+
+.titleSec {
+    display: flex;
+    flex-direction: column;
+}
+
+.artworkTitle {
+    color: #000000;
+    font-size: 40px;
+    font-weight: 550;
+    font-family: "Eksell-font";
+}
+.artistNameSec{
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+.artistText {
+    color: #232323;
+    font-size: 16px;
+    font-weight: 300;
+}
+.artistName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E9E6E6;
+    width: 145px;
+    border-radius: 5px;
+    color: #232323;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
