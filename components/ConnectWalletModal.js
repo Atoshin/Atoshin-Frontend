@@ -15,15 +15,12 @@ export default function ConnectWalletModal({open, setOpen, handleClose, setIsLog
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
-    const dispatch = useDispatch()
 
     const connectWallet = async (e) => {
         e.preventDefault();
         if (window.ethereum) {
-            const web3Modal = new Web3Modal();
-            const connection = await web3Modal.connect();
-            const provider = new ethers.providers.Web3Provider(connection);
-            dispatch(setProvider(provider))
+            const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+            await provider.send("eth_requestAccounts", []);
             const signer = provider.getSigner();
             const address = await signer.getAddress();
             if (address) {
