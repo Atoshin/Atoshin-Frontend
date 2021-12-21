@@ -334,9 +334,13 @@
 @media (max-width: 600px) {
   .topLeftSecFadeIn {
     margin-top: 129px;
+    width: 100%;
+    height: auto;
   }
   .topLeftSecFadeOut {
     margin-top: 129px;
+    width: 100%;
+    height: auto;
   }
   .topMainSec {
     flex-direction: column;
@@ -363,7 +367,7 @@
     width: 100%;
   }
   .sliderBottomMenu {
-    display: none
+    display: none;
   }
   .buyBtn {
     width: 96px;
@@ -419,6 +423,6 @@
     margin-bottom: 6px;
   }
   .sliderImages {
-    width: auto;
+    width: 100%!important;
   }
 }
