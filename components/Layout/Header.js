@@ -140,13 +140,13 @@ export default function Header({setDrawerMenu}) {
                         </div>
                     </div>
                     <div className={classes.myProfileSec}>
-                        <img className={classes.myProfile} src="/icons/avatar-icon-outlined.png" alt=""/>
+                        <img className={classes.myProfile} src="/icons/avatar-icon-outlined.svg" alt=""/>
                         <div className={classes.myProfileText}>
                             My Profile
                         </div>
                     </div>
                     <div className={classes.disconnectSec}>
-                        <img className={classes.disconnectIcon} src="/icons/disconnect-icon.png" alt=""/>
+                        <img className={classes.disconnectIcon} src="/icons/disconnect-icon.svg" alt=""/>
                         <div className={classes.disconnectText}>
                             Disconnect
                         </div>

@@ -4,6 +4,8 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import classes from '../../styles/Header/LeftDrawer.module.scss';
+
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
@@ -30,18 +32,22 @@ export default function LeftDrawer({state, setState}) {
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
+            <div className={classes.menuTopSec}>
+                <img className={classes.logoImg} src="/images/atoshin-logo-hexagon.png" alt=""/>
+                <img  onClick={() => setState(false)} className={classes.vectorXIcon} src="/icons/vector-x.svg" alt=""/>
+            </div>
             <List>
                 <ListItem button>
-                    <ListItemText primary="About NFT"/>
-                </ListItem>
-                <ListItem button>
-                    <ListItemText primary="Artists"/>
+                    <ListItemText primary="Marketplace"/>
                 </ListItem>
                 <ListItem button>
                     <ListItemText primary="Art Centers"/>
                 </ListItem>
                 <ListItem button>
-                    <ListItemText primary="Marketplace"/>
+                    <ListItemText primary="Artists"/>
+                </ListItem>
+                <ListItem button>
+                    <ListItemText primary="About NFT"/>
                 </ListItem>
             </List>
         </Box>

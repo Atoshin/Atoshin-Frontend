@@ -6,7 +6,7 @@ import Footer from "../components/Layout/Footer";
 import Container from '@mui/material/Container';
 
 import {store} from '../redux/store'
-import LeftDrawer from "../components/HomePage/LeftDrawer";
+import LeftDrawer from "../components/Layout/LeftDrawer";
 import {useState} from "react";
 
 function MyApp({Component, pageProps}: AppProps) {
