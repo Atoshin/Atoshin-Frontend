@@ -578,11 +578,13 @@
   color: #000000;
   font-size: 16px;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .topRightMainSec {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .artworkMainImgSec {
@@ -616,17 +618,30 @@
 }
 
 
-.dialog {
+.imgDialog {
   width: 970px;
-  height: 639px;
+  height: 650px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
+  .dialogHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .dialogBody {
+    display: flex;
+  }
 
   .modalTitle {
     margin-top: 64px;
     margin-left: 64px;
     padding-left: 0;
     padding-top: 0;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
   }
 
   .modalMainImg {
@@ -635,15 +650,79 @@
     margin-left: 64px;
   }
 
-  .otherImgesContainer{
+  .otherImgesContainer {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    max-height: 533px;
+    overflow: auto;
   }
 
-  .sideImage{
+  .otherImgesContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sideImage {
     width: 120px;
     height: 120px;
+    display: flex;
     background-position: center;
+    background-size: 120px, 120px;
+    margin-bottom: 24px;
+    margin-left: 24px;
+  }
+
+  .vectorX {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #ECECEC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    margin-right: 24px;
+    cursor: pointer;
+
+    img {
+      width: 16px;
+    }
+  }
+}
+
+
+.ownersDialog {
+  .dialogHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .modalTitle {
+      margin-top: 24px;
+      margin-left: 28px;
+      padding-left: 0;
+      padding-top: 0;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+    }
+  }
+
+  .vectorX {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #ECECEC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 24px;
+    margin-top: 24px;
+    cursor: pointer;
+
+    img {
+      width: 16px;
+    }
   }
 }
 

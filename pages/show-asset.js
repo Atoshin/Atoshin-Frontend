@@ -1,15 +1,14 @@
 import styles from "../styles/ShowAsset/ShowAsset.module.scss";
-import Head from "next/head";
-import HomePage from "../components/HomePage";
 import {Button, useMediaQuery} from "@mui/material";
-import OwnerIndexModal from '../components/Layout/OwnersIndexModal.js';
 import {useTheme} from "@mui/material/styles";
 import ImagesModal from "../components/ShowAsset/ImagesModal";
 import {useState} from "react";
+import OwnersModal from "../components/ShowAsset/OwnersModal";
 
 
 export default function ShowAsset() {
     const [openImages, setOpenImages] = useState(false)
+    const [openOwners, setOpenOwners] = useState(false)
 
 
 
@@ -20,6 +19,7 @@ export default function ShowAsset() {
     return (
         <>
             <ImagesModal open={openImages} setOpen={setOpenImages}/>
+            <OwnersModal open={openOwners} setOpen={setOpenOwners}/>
             <div className={styles.showAssetMain}>
                 <div className={styles.topMainSec}>
                     <div className={styles.topLeftMainSec}>
@@ -212,7 +212,7 @@ export default function ShowAsset() {
                             <div className={styles.ownersTitle}>
                                 Top 10 Owners
                             </div>
-                            <div className={styles.viewAllOwners}>
+                            <div onClick={() => setOpenOwners(true)} className={styles.viewAllOwners}>
                                 View All
                             </div>
                         </div>
