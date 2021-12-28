@@ -4,9 +4,14 @@ import HomePage from "../components/HomePage";
 import {Button, useMediaQuery} from "@mui/material";
 import OwnerIndexModal from '../components/Layout/OwnersIndexModal.js';
 import {useTheme} from "@mui/material/styles";
+import ImagesModal from "../components/ShowAsset/ImagesModal";
+import {useState} from "react";
 
 
 export default function ShowAsset() {
+    const [openImages, setOpenImages] = useState(false)
+
+
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -14,6 +19,7 @@ export default function ShowAsset() {
 
     return (
         <>
+            <ImagesModal open={openImages} setOpen={setOpenImages}/>
             <div className={styles.showAssetMain}>
                 <div className={styles.topMainSec}>
                     <div className={styles.topLeftMainSec}>
@@ -97,7 +103,7 @@ export default function ShowAsset() {
                             </Button>
                         </div>
                     </div>
-                    <div className={styles.topRightMainSec}>
+                    <div className={styles.topRightMainSec} onClick={() => setOpenImages(true)}>
                         <div className={styles.artworkMainImgSec}>
                             <img className={styles.artworkMainImg} src="/images/starry-night-main.png" alt=""/>
                         </div>
