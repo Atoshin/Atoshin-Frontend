@@ -1,12 +1,17 @@
-import styles from "../styles/ShowAsset.module.css";
+import styles from "../styles/ShowAsset/ShowAsset.module.scss";
 import Head from "next/head";
 import HomePage from "../components/HomePage";
 import {Button, useMediaQuery} from "@mui/material";
 import OwnerIndexModal from '../components/Layout/OwnersIndexModal.js';
-
+import {useTheme} from "@mui/material/styles";
 
 
 export default function ShowAsset() {
+
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
+
     return (
         <>
             <div className={styles.showAssetMain}>
@@ -25,7 +30,18 @@ export default function ShowAsset() {
                                 </div>
                             </div>
                         </div>
+                        {matches &&
+                        <div className={styles.artworkMainImgSec}>
+                            <img className={styles.artworkMainImg} src="/images/starry-night-main.png" alt=""/>
+                        </div>
+                        }
+                        {matches &&
+                        <div className={styles.saleEndDateMob}>
+                            Sale ends in December 11, 2021
+                        </div>
+                        }
                         <div className={styles.saleMainSec}>
+
                             <div className={styles.saleStartDate}>
                                 Sale started in December 5, 2021
                             </div>
