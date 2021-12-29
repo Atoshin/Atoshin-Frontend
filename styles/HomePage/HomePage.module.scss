@@ -1,0 +1,359 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.topMainSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  //width: 100%;
+}
+
+.topLeftSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 109px;
+}
+
+.artWorkName {
+  font-size: 50px;
+  font-weight: 550;
+  line-height: 60px;
+  color: #000000;
+  text-align: left;
+  font-family: "Eksell-font";
+}
+
+.artistName {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  color: #232323;
+  margin-top: 8px;
+}
+
+.artworkInfo {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 25px;
+  color: #232323;
+  margin-top: 16px;
+  text-align: left;
+  width: 366px;
+}
+
+.buyBtn {
+  width: 164px;
+  height: 55px;
+  background-color: #EE574C;
+  color: #FFFFFF;
+  border-radius: 5px;
+  margin-top: 24px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  text-transform: none;
+
+  :hover {
+    background-color: #EE574C;
+  }
+}
+
+.topRightMainSec {
+  display: flex;
+  flex-direction: column;
+  width: 645px;
+
+  //float: right;
+}
+
+.topRightSec {
+  display: flex;
+  flex-direction: column;
+  //margin-left: 109px;
+  filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
+}
+
+.artworkImgSec {
+  height: 430px;
+}
+
+.artWorkImg {
+  width: 645px;
+  height: 430px;
+}
+
+.artWorkDetailSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 645px;
+  height: 115px;
+  background-color: #FFFFFF;
+  border-radius: 0px 0px 3px 3px;
+  padding-left: 48px;
+  padding-right: 80px;
+  //border: 1px #232323;
+}
+
+
+.Sec {
+  display: flex;
+  flex-direction: column;
+  margin-right: 16px;
+}
+
+.Num {
+  font-size: 32px;
+  font-weight: 500;
+  color: #EE574C;
+}
+
+.Txt {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.priceSec {
+  display: flex;
+  flex-direction: row;
+  margin-top: 23px;
+  margin-bottom: 27px;
+}
+
+.titleSec {
+  font-size: 16px;
+  font-weight: 300;
+  margin-right: 39px;
+}
+
+
+.title2Sec {
+  font-size: 16px;
+  font-weight: 300;
+  margin-right: 16px;
+}
+
+.amountSec {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.galleryMainSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 206px;
+}
+
+.galleryTopSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.galleryDescMainSec {
+  display: flex;
+  flex-direction: column;
+}
+
+.galleryName {
+  display: flex;
+  align-items: center;
+  //justify-content: center;
+  font-size: 40px;
+  font-weight: 550;
+  line-height: 48px;
+  color: #000000;
+  font-family: "Eksell-font";
+}
+
+.galleryDescSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 32px;
+
+}
+
+.imgSec {
+  width: 169px;
+  height: 90px;
+  margin-right: 24px;
+}
+
+.galleryDecsTxt {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 25px;
+  width: 526px;
+  text-align: left;
+  margin-top: 9px;
+}
+
+.exploreBtn {
+  background-color: #232323;
+  color: white;
+  width: 143px;
+  height: 53px;
+  border-radius: 5px;
+  margin-top: 24px;
+  text-transform: none;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21.09px;
+
+
+  &:hover {
+    background-color: rgba(35, 35, 35, 0.90);
+  }
+}
+
+.galleryDesc {
+  display: flex;
+  flex-direction: column;
+}
+
+.galleryMainPhoto {
+  width: 360px;
+  height: 360px;
+  border-radius: 3px;
+  //margin-left: 41px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.galleryVidContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.galleryPlayPhoto {
+  position: absolute;
+  width: 92.86px;
+  height: 92.91px;
+  cursor: pointer;
+}
+
+.galleryBottomSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 48px;
+}
+
+.galleryPhotos {
+  border-radius: 3px;
+  width: 265px;
+  height: 265px;
+  cursor: pointer;
+  user-select: none;
+  //margin-right: 20px;
+}
+
+.galleryImgModal {
+  max-width: 860px;
+  user-select: none;
+}
+
+.sliderBottomMenu {
+  display: flex;
+  flex-direction: row;
+  margin-top: 16px;
+  width: 645px;
+  float: right;
+  //margin-left: 112px;
+}
+
+.selectedTap {
+  font-size: 18px;
+  margin-left: 25.12px;
+  margin-right: 31px;
+  font-weight: 700;
+  color: #EE574C;
+}
+
+.unselectedTab {
+  font-size: 16px;
+  font-weight: 300;
+  color: #232323;
+  margin-right: 31px;
+}
+
+.artistMainSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 278px;
+}
+
+.artistTitle {
+  width: 100%;
+  font-size: 40px;
+  font-weight: 550;
+  line-height: 48px;
+  font-family: "Eksell-font";
+}
+
+.moreArtists {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.artistsSubtext {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.viewAll {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  cursor: pointer;
+}
+
+.artistsSlider {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 210px;
+}
+
+.artist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  border-radius: 3px;
+
+
+  img {
+    width: 265px;
+  }
+
+  p {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
+
+.vector {
+  width: 10.29px;
+  height: 20.46px;
+}
+
+
+@import "media";

@@ -1,0 +1,93 @@
+@media (max-width: 600px) {
+
+  .topMainSec {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .showAssetMain {
+    margin-top: 88px;
+  }
+
+  .topLeftMainSec {
+    margin-top: 0px;
+  }
+  .artistNameSec {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 12px;
+  }
+  .artistName {
+    width: 129px;
+    font-size: 14px;
+    margin-top: 0px;
+    margin-left: 8px;
+  }
+  .artistText {
+    font-size: 14px;
+  }
+  .artworkMainImgSec {
+    width: 100%;
+    height: 208px;
+    margin-bottom: 38px;
+    margin-top: 17px;
+  }
+
+  .artworkMainImg {
+    width: 100%;
+    height: 208px;
+  }
+
+  .topRightMainSec {
+    display: none;
+  }
+
+  .saleMainSec {
+    margin-top: 0px;
+  }
+  .saleStartDate {
+    display: none;
+  }
+  .saleEndDate {
+    display: none;
+  }
+  .timeCounterSec {
+    width: 70%;
+    margin: auto;
+  }
+  .counterNum {
+    font-size: 25px;
+    margin-bottom: 8px;
+  }
+  .counterTitle {
+    font-size: 14px;
+  }
+  .fractionsMainSec {
+    flex-direction: row;
+    margin-top: 24px;
+    justify-content: center;
+    align-items: baseline;
+  }
+  .fractionsLeftTxt {
+    font-size: 14px;
+    margin-right: 8px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

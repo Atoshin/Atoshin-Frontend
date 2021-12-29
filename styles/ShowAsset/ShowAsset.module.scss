@@ -1,0 +1,746 @@
+.showAssetMain {
+  display: flex;
+  flex-direction: column;
+  margin-top: 180px;
+}
+
+.topMainSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.topLeftMainSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 29px;
+}
+
+.titleSec {
+  display: flex;
+  flex-direction: column;
+}
+
+.artworkTitle {
+  color: #000000;
+  font-size: 40px;
+  font-weight: 550;
+  font-family: "Eksell-font";
+}
+
+.artistNameSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.artistText {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.artistName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E9E6E6;
+  width: 145px;
+  border-radius: 5px;
+  color: #232323;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.saleMainSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 56px;
+}
+
+.saleStartDate {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.timeCounterSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.counterSec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.counterNum {
+  color: #232323;
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.counterTitle {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.saleEndDate {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.saleEndDateMob {
+  display: flex;
+  justify-content: center;
+  color: #232323;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.fractionsMainSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.fractionsLeftTxt {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.fractionsLeftAmount {
+  font-size: 18px;
+  font-weight: 700;
+  color: #232323;
+}
+
+.priceMainSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+
+.priceSec {
+  display: flex;
+  flex-direction: column;
+}
+
+.priceTxt {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.priceAmount {
+  color: #232323;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.BuyBtn {
+  width: 143px;
+  height: 53px;
+  background-color: #232323;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: none;
+  margin-left: 55px;
+  margin-top: 17px;
+  border-radius: 5px;
+}
+
+.midMainSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+}
+
+.provenanceTitle {
+  color: #232323;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.provenanceMainSec {
+  display: flex;
+  flex-direction: row;
+  /*justify-content: space-between;*/
+  width: 100%;
+  height: 331px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  padding: 30px 32px;
+}
+
+.backStorySec {
+  display: flex;
+  flex-direction: column;
+}
+
+.backStoryTitle {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+.backStoryTxt {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 400;
+  width: 423px;
+}
+
+.backStoryDivider {
+  width: 282px;
+  height: 0;
+  border: 1px solid #232323;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  margin-left: 19px;
+}
+
+.backStoryBottomSec {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.backStoryArtistSec {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 24px;
+  margin-left: 4px;
+}
+
+.backStoryArtistTxt {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 300;
+  margin-right: 8px;
+}
+
+.backStoryArtistName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 145px;
+  height: 30px;
+  color: #232323;
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 1px;
+  background-color: #E9E6E6;
+  border-radius: 5px;
+}
+
+.originalOwnerSec {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.originalOwnerTxt {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 300;
+  margin-right: 10px;
+}
+
+.originalOwnerName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 91px;
+  height: 30px;
+  color: #232323;
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 1px;
+  background-color: #E9E6E6;
+  border-radius: 5px;
+}
+
+
+.aboutArtworkSec {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutArtworkTxt {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+.detailSec {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+}
+
+.detailTitle {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 300;
+  margin-right: 16px;
+}
+
+.detailText {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 400;
+  margin-right: 16px;
+}
+
+.aboutArtworkDivider {
+  width: 282px;
+  height: 0;
+  border: 1px solid #232323;
+  margin-top: 16px;
+  margin-bottom: 32px;
+  margin-left: 16px;
+}
+
+.aboutArtworkBottomSec {
+  display: flex;
+  flex-direction: row;
+}
+
+.mintedDateSec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 177px;
+  height: 30px;
+  color: #232323;
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 1px;
+  background-color: #E9E6E6;
+  border-radius: 5px;
+  margin-right: 24px;
+}
+
+.watchArtworkSec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 177px;
+  height: 30px;
+  color: #232323;
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 1px;
+  background-color: #E9E6E6;
+  border-radius: 5px;
+}
+
+.provenanceDivider {
+  height: 196px;
+  border: 1px solid #232323;
+  margin-right: 105px;
+  margin-top: 37px;
+  margin-left: 105px;
+}
+
+.bottomMainSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 72px;
+  margin-bottom: 204px;
+}
+
+.ownersMainSec {
+  display: flex;
+  flex-direction: column;
+}
+
+.ownersIndexSec {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 518px;
+  height: 306px;
+}
+
+.indexTitles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 28px;
+  padding-right: 40px;
+  width: 100%;
+  height: 51px;
+  border-bottom: 1px solid #E5E5E5;;
+}
+
+.rankTitle {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 300;
+  width: 36px;
+}
+
+.ownerNameTitle {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 300;
+  /*margin-right: 35px;*/
+  width: 125px;
+}
+
+.quantityTitle {
+  display: flex;
+  justify-content: center;
+  color: #232323;
+  font-size: 16px;
+  font-weight: 300;
+  width: 73px;
+}
+
+.ownersIndexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 28px;
+  padding-right: 40px;
+  width: 100%;
+  height: 85px;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.rankNum {
+  display: flex;
+  justify-content: center;
+  color: #232323;
+  font-size: 18px;
+  font-weight: 500;
+  width: 36px;
+}
+
+
+.ownerName {
+  color: #193EFF;
+  font-size: 18px;
+  font-weight: 500;
+  width: 125px;
+}
+
+.quantity {
+  color: #232323;
+  font-size: 18px;
+  font-weight: 400;
+  width: 73px;
+}
+
+.historyMainSec {
+  display: flex;
+  flex-direction: column;
+}
+
+.historyIndexSec {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 518px;
+  height: 306px;
+}
+
+.historyIndexTitles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 100%;
+  height: 51px;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.buyerNameTitle {
+  display: flex;
+  justify-content: center;
+  color: #232323;
+  font-size: 16px;
+  font-weight: 300;
+  width: 191px;
+}
+
+.dateTitle {
+  display: flex;
+  justify-content: center;
+  color: #232323;
+  font-size: 16px;
+  font-weight: 300;
+  width: 174px;
+}
+
+.historyIndexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 100%;
+  height: 85px;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.buyerNameSec {
+  display: flex;
+  flex-direction: row;
+  width: 191px;
+}
+
+.boughtBy {
+  color: #232323;
+  font-size: 18px;
+  font-weight: 400;
+  margin-right: 3px;
+}
+
+.buyerName {
+  color: #193EFF;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.dateBought {
+  color: #232323;
+  font-size: 18px;
+  font-weight: 400;
+  width: 174px;
+}
+
+.historyTitleSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  align-items: baseline;
+}
+
+.historyTitle {
+  color: #000000;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.viewAllHistory {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ownersTitleSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  align-items: baseline;
+}
+
+.ownersTitle {
+  color: #000000;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.viewAllOwners {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.topRightMainSec {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.artworkMainImgSec {
+  width: 640px;
+  height: 430px;
+  margin-bottom: 16px;
+}
+
+.artworkMainImg {
+  width: 640px;
+  height: 430px;
+}
+
+.artworkOtherImgSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 640px;
+  overflow: auto;
+}
+
+.artworkOtherImgSec::-webkit-scrollbar {
+  display: none;
+}
+
+.artworkOtherImg {
+  width: 93.39px;
+  height: 93.39px;
+  opacity: 0.6;
+  /*background: rgba(255, 255, 255, 0.18);*/
+}
+
+
+.imgDialog {
+  width: 970px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+
+  .dialogHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .dialogBody {
+    display: flex;
+  }
+
+  .modalTitle {
+    margin-top: 64px;
+    margin-left: 64px;
+    padding-left: 0;
+    padding-top: 0;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+  }
+
+  .modalMainImg {
+    width: 698px;
+    height: 469px;
+    margin-left: 64px;
+  }
+
+  .otherImgesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 533px;
+    overflow: auto;
+  }
+
+  .otherImgesContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sideImage {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    background-position: center;
+    background-size: 120px, 120px;
+    margin-bottom: 24px;
+    margin-left: 24px;
+  }
+
+  .vectorX {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #ECECEC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    margin-right: 24px;
+    cursor: pointer;
+
+    img {
+      width: 16px;
+    }
+  }
+}
+
+
+.ownersDialog {
+  .dialogHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .modalTitle {
+      margin-top: 24px;
+      margin-left: 28px;
+      padding-left: 0;
+      padding-top: 0;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+    }
+  }
+
+  .vectorX {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #ECECEC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 24px;
+    margin-top: 24px;
+    cursor: pointer;
+
+    img {
+      width: 16px;
+    }
+  }
+}
+
+@import "media";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

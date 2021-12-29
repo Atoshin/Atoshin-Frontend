@@ -1,0 +1,333 @@
+.topMainSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 110px;
+  //width: 100%;
+}
+
+.topLeftSecFadeIn {
+  display: flex;
+  flex-direction: column;
+  margin-top: 109px;
+  width: 75%;
+  padding-right: 70px;
+
+  .artWorkName {
+    font-size: 50px;
+    font-weight: 550;
+    line-height: 60px;
+    color: #000000;
+    text-align: left;
+    opacity: 1;
+    transition: opacity 1s ease;
+    font-family: "Eksell-font";
+  }
+
+  .artistName {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #232323;
+    opacity: 1;
+    transition: opacity 1s ease;
+    margin-top: 8px;
+  }
+
+  .artworkInfo {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 25px;
+    color: #232323;
+    margin-top: 16px;
+    opacity: 1;
+    transition: opacity 1s ease;
+    text-align: left;
+  }
+}
+
+.topLeftSecFadeOut {
+  display: flex;
+  flex-direction: column;
+  margin-top: 109px;
+  width: 75%;
+  padding-right: 70px;
+
+  .artWorkName {
+    font-size: 50px;
+    font-weight: 550;
+    line-height: 60px;
+    color: #000000;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 1s ease;
+    font-family: "Eksell-font";
+  }
+
+  .artistName {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #232323;
+    margin-top: 8px;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  .artworkInfo {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 25px;
+    color: #232323;
+    margin-top: 16px;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+}
+
+
+.buyBtn {
+  width: 164px;
+  height: 55px;
+  background-color: #EE574C;
+  color: #FFFFFF;
+  border-radius: 5px;
+  margin-top: 24px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  text-transform: none;
+
+  &:hover {
+    background-color: #EE574C;
+  }
+}
+
+
+.sliderImages {
+  //display: flex;
+  //align-items: center;
+  //width: calc(53.5vw);
+  //width: 1100px;
+  //overflow-x: hidden;
+  //position: relative;
+  height: 550px;
+  width: 645px !important;
+}
+
+.topRightMainSec {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
+
+  .artworkImgSec {
+    height: 365.3px;
+  }
+
+  .artWorkImg {
+    width: 548.8px;
+    height: 365.3px;
+    transition: all 1s ease;
+  }
+
+
+  .artWorkDetailSec {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 548.8px;
+    height: 97.7px;
+    background-color: #FFFFFF;
+    border-radius: 0px 0px 3px 3px;
+    padding-left: 48px;
+    padding-right: 80px;
+    margin-bottom: 5px;
+    //border: 1px #232323;
+  }
+
+}
+
+.topRightSec {
+  display: flex;
+  flex-direction: column;
+  //margin-left: 109px;
+  //margin-left: 5px;
+  //margin-right: 50px;
+  cursor: pointer;
+
+  .artworkImgSec {
+    height: 430px;
+  }
+
+  .artWorkImg {
+    width: 645px;
+    height: 430px;
+    transition: all 1s;
+  }
+
+  .artWorkDetailSec {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 645px;
+    height: 115px;
+    transition: all 1s;
+    background-color: #FFFFFF;
+    border-radius: 0px 0px 3px 3px;
+    //padding-left: 48px;
+    //padding-right: 80px;
+    //margin-bottom: 5px;
+    //border: 1px #232323;
+  }
+
+  .topRightSecSecondary {
+    display: flex;
+    flex-direction: column;
+    //margin-left: 109px;
+    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
+  }
+}
+
+.topRightSecBehind {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
+  margin-left: 5px;
+  margin-right: 50px;
+  cursor: pointer;
+
+  .artworkImgSec {
+    height: 365.3px;
+    transition: height 1s;
+  }
+
+  .artWorkImg {
+    width: 548.8px;
+    height: 365.3px;
+    transition: all 1s;
+  }
+
+  .artWorkDetailSec {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 547.95px;
+    height: 97.7px;
+    background-color: #FFFFFF;
+    border-radius: 0px 0px 3px 3px;
+    padding-left: 48px;
+    padding-right: 80px;
+    margin-bottom: 5px;
+    transition: all 1s;
+    //border: 1px #232323;
+  }
+
+  .topRightSecSecondary {
+    display: flex;
+    flex-direction: column;
+    //margin-left: 109px;
+    filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
+  }
+}
+
+.dayHourMinSec {
+  display: flex;
+  flex-direction: row;
+  margin-top: 32px;
+  //margin-right: 80px;
+}
+
+.Sec {
+  display: flex;
+  flex-direction: column;
+  margin-right: 16px;
+}
+
+.Num {
+  font-size: 32px;
+  font-weight: 500;
+  //line-height: 32px;
+  color: #EE574C;
+
+}
+
+.Txt {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.priceMainSec {
+  display: flex;
+  flex-direction: column;
+  //margin-left: 48px;
+}
+
+.priceSec {
+  display: flex;
+  flex-direction: row;
+  margin-top: 23px;
+  margin-bottom: 27px;
+}
+
+.quantSec {
+  display: flex;
+  flex-direction: row;
+}
+
+.titleSec {
+  font-size: 16px;
+  font-weight: 300;
+  margin-right: 39px;
+}
+
+.title2Sec {
+  font-size: 16px;
+  font-weight: 300;
+  margin-right: 16px;
+}
+
+.amountSec {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.sliderBottomMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 16px;
+  width: 100%;
+  float: right;
+  //margin-left: 112px;
+}
+
+.selectedTap {
+  user-select: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-weight: 700;
+  color: #EE574C;
+}
+
+.vector {
+  width: 10.29px;
+  height: 20.46px;
+  cursor: pointer;
+}
+
+.unselectedTab {
+  cursor: pointer;
+  user-select: none;
+  font-size: 16px;
+  font-weight: 300;
+  color: #232323;
+  margin-right: 20px;
+}
+
+@import "media";
