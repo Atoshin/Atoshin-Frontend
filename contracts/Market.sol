@@ -25,11 +25,14 @@ contract NFTMarket is ReentrancyGuard {
         uint256 itemId;
         address nftContract;
         uint256 tokenId;
-        address payable seller;
+        address payable creator;
         address payable owner;
         uint256 price;
         uint256 royaltyPercentage;
         bool sold;
+        string assetImg;
+        uint256 mintedAt;
+        uint256 totalFractions;
     }
 
     mapping(uint256 => MarketItem) private idToMarketItem;
@@ -38,11 +41,14 @@ contract NFTMarket is ReentrancyGuard {
         uint256 indexed itemId,
         address indexed nftContract,
         uint256 indexed tokenId,
-        address seller,
+        address creator,
         address owner,
         uint256 price,
         uint256 royaltyPercentage,
-        bool sold
+        bool sold,
+        string assetImg,
+        uint256 mintedAt,
+        uint256 totalFractions
     );
 
     /* Returns the listing price of the contract */
@@ -114,7 +120,7 @@ contract NFTMarket is ReentrancyGuard {
             "Please submit the asking price in order to complete the purchase"
         );
 
-        idToMarketItem[itemId].seller.transfer(msg.value);
+        idToMarketItem[itemId].creator.transfer(msg.value);
         IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
         idToMarketItem[itemId].owner = payable(msg.sender);
         idToMarketItem[itemId].sold = true;
@@ -171,14 +177,14 @@ contract NFTMarket is ReentrancyGuard {
         uint256 currentIndex = 0;
 
         for (uint256 i = 0; i < totalItemCount; i++) {
-            if (idToMarketItem[i + 1].seller == msg.sender) {
+            if (idToMarketItem[i + 1].creator == msg.sender) {
                 itemCount += 1;
             }
         }
 
         MarketItem[] memory items = new MarketItem[](itemCount);
         for (uint256 i = 0; i < totalItemCount; i++) {
-            if (idToMarketItem[i + 1].seller == msg.sender) {
+            if (idToMarketItem[i + 1].creator == msg.sender) {
                 uint256 currentId = i + 1;
                 MarketItem storage currentItem = idToMarketItem[currentId];
                 items[currentIndex] = currentItem;
