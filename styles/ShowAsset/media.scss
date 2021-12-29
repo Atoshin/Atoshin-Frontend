@@ -73,6 +73,61 @@
     font-size: 14px;
     margin-right: 8px;
   }
+  .priceMainSec {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 27px;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px -2px 9px rgba(0, 0, 0, 0.1);
+  }
+  .provenanceMainSec {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    width: 100%;
+    height: auto;
+    padding: 18px 16px;
+  }
+  .backStoryTxt {
+    font-size: 12px;
+    width: 100%;
+  }
+  .backStoryDivider {
+    display: none;
+  }
+  .provenanceDivider {
+    display: none;
+  }
+  .backStoryBottomSec {
+    display: none;
+  }
+  .bottomMainSec {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 72px;
+    margin-bottom: 204px;
+  }
+  .ownersIndexSec {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+  }
+  .historyIndexSec {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+  }
 }
 
 
