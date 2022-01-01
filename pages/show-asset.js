@@ -4,11 +4,33 @@ import {useTheme} from "@mui/material/styles";
 import ImagesModal from "../components/ShowAsset/ImagesModal";
 import {useState} from "react";
 import OwnersModal from "../components/ShowAsset/OwnersModal";
+import HistoryModal from "../components/ShowAsset/HistoryModal";
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import styled from "@emotion/styled";
+
+
+
+
+const CustomWidthTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+))({
+    [`& .${tooltipClasses.tooltip}`]: {
+        Width: 226,
+        height:72,
+        backgroundColor: '#ffffff',
+        color : '#000000',
+        marginLeft: 90,
+    },
+});
+
+const longText = `30 fractions belong to DDGallery and 70 fractions can be traded`;
+
 
 
 export default function ShowAsset() {
     const [openImages, setOpenImages] = useState(false)
     const [openOwners, setOpenOwners] = useState(false)
+    const [openHistory, setOpenHistory] = useState(false)
 
 
 
@@ -20,6 +42,7 @@ export default function ShowAsset() {
         <>
             <ImagesModal open={openImages} setOpen={setOpenImages}/>
             <OwnersModal open={openOwners} setOpen={setOpenOwners}/>
+            <HistoryModal open={openHistory} setOpen={setOpenHistory}/>
             <div className={styles.showAssetMain}>
                 <div className={styles.topMainSec}>
                     <div className={styles.topLeftMainSec}>
@@ -48,8 +71,8 @@ export default function ShowAsset() {
                         }
                         <div className={styles.saleMainSec}>
 
-                            <div className={styles.saleStartDate}>
-                                Sale started in December 5, 2021
+                            <div className={styles.saleEndDate}>
+                                Sale ends in December 11, 2021
                             </div>
                             <div className={styles.timeCounterSec}>
                                 <div className={styles.counterSec}>
@@ -77,13 +100,16 @@ export default function ShowAsset() {
                                     </div>
                                 </div>
                             </div>
-                            <div className={styles.saleEndDate}>
-                                Sale ends in December 11, 2021
-                            </div>
+                            {/*<div className={styles.saleEndDate}>*/}
+                            {/*    Sale ends in December 11, 2021*/}
+                            {/*</div>*/}
                         </div>
                         <div className={styles.fractionsMainSec}>
                             <div className={styles.fractionsLeftTxt}>
                                 Fractions left
+                                <CustomWidthTooltip title={longText} arrow placement="top-end">
+                                    <img className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                                </CustomWidthTooltip>
                             </div>
                             <div className={styles.fractionsLeftAmount}>
                                 34/100
@@ -268,7 +294,7 @@ export default function ShowAsset() {
                             <div className={styles.historyTitle}>
                                 History
                             </div>
-                            <div className={styles.viewAllHistory}>
+                            <div onClick={() => setOpenHistory(true)} className={styles.viewAllHistory}>
                                 View All
                             </div>
                         </div>
