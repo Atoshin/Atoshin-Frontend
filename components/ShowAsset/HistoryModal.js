@@ -14,7 +14,7 @@ export default function HistoryModal(props) {
 
     return (
         <Dialog onClose={handleClose} open={open}>
-            <div className={classes.HistoryDialogMain}>
+            <div className={classes.dialogHeaderSticky}>
                 <div className={classes.dialogHeader}>
                     <DialogTitle className={classes.modalTitle}>Other Owners</DialogTitle>
                     <div className={classes.vectorX} onClick={handleClose}>
@@ -27,6 +27,36 @@ export default function HistoryModal(props) {
                     </div>
                     <div className={classes.dateTitle}>
                         Date
+                    </div>
+                </div>
+            </div>
+
+            <div className={classes.HistoryDialogMain}>
+
+                <div className={styles.historyIndexRow}>
+                    <div className={styles.buyerNameSec}>
+                        <div className={styles.boughtBy}>
+                            Bought by
+                        </div>
+                        <div className={styles.buyerName}>
+                            0we6...245rb
+                        </div>
+                    </div>
+                    <div className={styles.dateBought}>
+                        in December 23, 2021
+                    </div>
+                </div>
+                <div className={styles.historyIndexRow}>
+                    <div className={styles.buyerNameSec}>
+                        <div className={styles.boughtBy}>
+                            Bought by
+                        </div>
+                        <div className={styles.buyerName}>
+                            0we6...245rb
+                        </div>
+                    </div>
+                    <div className={styles.dateBought}>
+                        in December 23, 2021
                     </div>
                 </div>
                 <div className={styles.historyIndexRow}>
