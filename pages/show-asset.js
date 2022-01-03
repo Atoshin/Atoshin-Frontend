@@ -7,6 +7,7 @@ import OwnersModal from "../components/ShowAsset/OwnersModal";
 import HistoryModal from "../components/ShowAsset/HistoryModal";
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import styled from "@emotion/styled";
+import * as React from "react";
 
 
 
@@ -134,15 +135,60 @@ export default function ShowAsset() {
                             <img className={styles.artworkMainImg} src="/images/starry-night-main.png" alt=""/>
                         </div>
                         <div className={styles.artworkOtherImgSec}>
-                            <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
-                            <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
-                            <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
-                            <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
-                            <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
-                            <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
-                            <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
-                            <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
-                            <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
+
+                            <div style={{
+                                backgroundImage: 'url("/images/starry-night-main.png")',
+                                width: 93.39,
+                                height: 93.39,
+                                backgroundPosition: 'center'
+                            }}>
+                            </div>
+                            <div style={{
+                                backgroundImage: 'url("/images/starry-night-main.png")',
+                                width: 93.39,
+                                height: 93.39,
+                                backgroundPosition: 'center'
+                            }}>
+                            </div>
+                            <div style={{
+                                backgroundImage: 'url("/images/DD-gallery-main.jpg")',
+                                width: 93.39,
+                                height: 93.39,
+                                backgroundPosition: 'center'
+                            }}>
+                            </div>
+                            <div style={{
+                                backgroundImage: 'url("/images/DD-gallery-main.jpg")',
+                                width: 93.39,
+                                height: 93.39,
+                                backgroundPosition: 'center'
+                            }}>
+                            </div>
+                            <div style={{
+                                backgroundImage: 'url("/images/DD-gallery-main.jpg")',
+                                width: 93.39,
+                                height: 93.39,
+                                backgroundPosition: 'center'
+                            }}>
+                            </div>
+                            <div style={{
+                                backgroundImage: 'url("/images/DD-gallery-main.jpg")',
+                                width: 93.39,
+                                height: 93.39,
+                                backgroundPosition: 'center'
+                            }}>
+                            </div>
+
+
+                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
+                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
+                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
+                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
+                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
+                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
+                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
+                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
+                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
                         </div>
                     </div>
                 </div>
