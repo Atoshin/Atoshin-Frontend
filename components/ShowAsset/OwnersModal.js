@@ -13,25 +13,29 @@ export default function OwnersModal(props) {
 
     return (
         <Dialog onClose={handleClose} open={open}>
-            <div className={classes.OwnersDialogMain}>
-                <div className={classes.dialogHeader}>
-                    <DialogTitle className={classes.modalTitle}>Other Owners</DialogTitle>
-                    <div className={classes.vectorX} onClick={handleClose}>
-                        <img src="/icons/vector-X.png" alt=""/>
+
+                <div className={classes.dialogHeaderSticky}>
+                    <div className={classes.dialogHeader}>
+                        <DialogTitle className={classes.modalTitle}>Other Owners</DialogTitle>
+                        <div className={classes.vectorX} onClick={handleClose}>
+                            <img src="/icons/vector-X.png" alt=""/>
+                        </div>
+                    </div>
+                    <div className={classes.ownersIndexTitlesSec}>
+                        <div className={classes.rankTitle}>
+                            Rank
+                        </div>
+                        <div className={classes.ownersTitle}>
+                            Owner Name
+                        </div>
+                        <div className={classes.quantityTitle}>
+                            Quantity
+                        </div>
                     </div>
                 </div>
-                <div className={classes.ownersIndexTitlesSec}>
-                    <div className={classes.rankTitle}>
-                        Rank
-                    </div>
-                    <div className={classes.ownersTitle}>
-                        Owner Name
-                    </div>
-                    <div className={classes.quantityTitle}>
-                        Quantity
-                    </div>
-                </div>
+
                 <div className={classes.indexSec}>
+
                     <div className={classes.ownersIndexRow}>
                         <div className={classes.rankNum}>
                             1
@@ -43,6 +47,7 @@ export default function OwnersModal(props) {
                             21 Token
                         </div>
                     </div>
+
                     <div className={classes.ownersIndexRow}>
                         <div className={classes.rankNum}>
                             1
@@ -254,7 +259,6 @@ export default function OwnersModal(props) {
                     </div>
 
                 </div>
-            </div>
             {/*<div className={classes.ownersModalIndexMain}>*/}
             {/*<div className={classes.indexSec}>*/}
             {/*        <div className={classes.ownersIndexRow}>*/}

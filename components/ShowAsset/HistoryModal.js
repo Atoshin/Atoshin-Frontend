@@ -14,6 +14,7 @@ export default function HistoryModal(props) {
 
     return (
         <Dialog onClose={handleClose} open={open}>
+
             <div className={classes.dialogHeaderSticky}>
                 <div className={classes.dialogHeader}>
                     <DialogTitle className={classes.modalTitle}>Other Owners</DialogTitle>
