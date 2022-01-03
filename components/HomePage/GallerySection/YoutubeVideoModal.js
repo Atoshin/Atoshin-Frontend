@@ -11,7 +11,8 @@ export default function YoutubeVideoModal({open, setOpen}) {
 
     return (
         <Backdrop
-            sx={{color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1}}
+            sx={{zIndex: (theme) => theme.zIndex.drawer + 1,
+                backgroundColor: 'rgba(0,0,0,0.75)'}}
             open={open}
             onClick={handleClose}
         >

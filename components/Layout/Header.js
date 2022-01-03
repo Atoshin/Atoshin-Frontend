@@ -3,17 +3,18 @@ import Container from '@mui/material/Container';
 import {useTheme} from '@mui/material/styles';
 import classes from '../../styles/Header/Header.module.scss';
 import ConnectWalletModal from '/components/Layout/ConnectWalletModal.js';
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import Menu from '@mui/material/Menu';
 import {useDispatch, useSelector} from "react-redux";
 import Web3 from 'web3'
-import {setAddress} from "../../redux/slices/accountSlice";
+import {setAddress, setBalance} from "../../redux/slices/accountSlice";
+import UserMenu from "./UserMenu";
+import {ethers} from "ethers";
 
 export default function Header({setDrawerMenu}) {
 
     const dispatch = useDispatch()
     const address = useSelector(state => state.account.address)
-
     useEffect(() => {
         const checkConnection = async () => {
             let web3;
@@ -22,6 +23,9 @@ export default function Header({setDrawerMenu}) {
                 web3.eth.getAccounts()
                     .then(async (addr) => {
                         dispatch(setAddress(addr[0]))
+                        web3.eth.getBalance(addr[0]).then(r => {
+                            dispatch(setBalance(ethers.utils.formatEther(r)))
+                        });
                     });
                 providerEventListener()
             } else if (window.web3) {
@@ -29,6 +33,9 @@ export default function Header({setDrawerMenu}) {
                 web3.eth.getAccounts()
                     .then(async (addr) => {
                         dispatch(setAddress(addr[0]))
+                        web3.eth.getBalance(addr[0]).then(r => {
+                            dispatch(setBalance(ethers.utils.formatEther(r)))
+                        });
                     });
                 providerEventListener()
             }
@@ -118,41 +125,7 @@ export default function Header({setDrawerMenu}) {
                     </Container>
                 </>
             }
-            <Menu
-                className={classes.menuMain}
-                // classes={{paper: classes.menuMain}}
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                }}
-            >
-                <div className={classes.menuMainSec}>
-                    <div className={classes.userName}>Mahdi Kholdi</div>
-                    <div className={classes.balanceSec}>
-                        <div className={classes.ethLogoSec}>
-                            <img className={classes.ethLogo} src="/icons/eth-logo.png" alt=""/>
-                        </div>
-                        <div className={classes.balanceAmount}>
-                            300 ETH
-                        </div>
-                    </div>
-                    <div className={classes.myProfileSec}>
-                        <img className={classes.myProfile} src="/icons/avatar-icon-outlined.svg" alt=""/>
-                        <div className={classes.myProfileText}>
-                            My Profile
-                        </div>
-                    </div>
-                    <div className={classes.disconnectSec}>
-                        <img className={classes.disconnectIcon} src="/icons/disconnect-icon.svg" alt=""/>
-                        <div className={classes.disconnectText}>
-                            Disconnect
-                        </div>
-                    </div>
-                </div>
-            </Menu>
+            <UserMenu handleClose={handleClose} anchorEl={anchorEl}/>
             <ConnectWalletModal setIsLoggedIn={setIsLoggedIn} open={openModal} setOpen={setOpenModal}
                                 handleClose={handleCloseModal}/>
         </div>

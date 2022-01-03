@@ -8,6 +8,7 @@ import Menu from '@mui/material/Menu';
 import {useDispatch, useSelector} from "react-redux";
 import Web3 from 'web3'
 import {setAddress} from "../../redux/slices/accountSlice";
+import UserMenu from "./UserMenu";
 
 export default function ScrolledHeader({setDrawerMenu}) {
 
@@ -118,41 +119,7 @@ export default function ScrolledHeader({setDrawerMenu}) {
                     </Container>
                 </>
             }
-            <Menu
-                className={classes.menuMain}
-                // classes={{paper: classes.menuMain}}
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                }}
-            >
-                <div className={classes.menuMainSec}>
-                    <div className={classes.userName}>Mahdi Kholdi</div>
-                    <div className={classes.balanceSec}>
-                        <div className={classes.ethLogoSec}>
-                            <img className={classes.ethLogo} src="/icons/eth-logo.png" alt=""/>
-                        </div>
-                        <div className={classes.balanceAmount}>
-                            300 ETH
-                        </div>
-                    </div>
-                    <div className={classes.myProfileSec}>
-                        <img className={classes.myProfile} src="/icons/avatar-icon-outlined.svg" alt=""/>
-                        <div className={classes.myProfileText}>
-                            My Profile
-                        </div>
-                    </div>
-                    <div className={classes.disconnectSec}>
-                        <img className={classes.disconnectIcon} src="/icons/disconnect-icon.svg" alt=""/>
-                        <div className={classes.disconnectText}>
-                            Disconnect
-                        </div>
-                    </div>
-                </div>
-            </Menu>
+            <UserMenu anchorEl={anchorEl} handleClose={handleClose}/>
             <ConnectWalletModal setIsLoggedIn={setIsLoggedIn} open={openModal} setOpen={setOpenModal}
                                 handleClose={handleCloseModal}/>
         </div>

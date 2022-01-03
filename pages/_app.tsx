@@ -8,7 +8,7 @@ import Container from '@mui/material/Container';
 
 import {store} from '../redux/store'
 import LeftDrawer from "../components/Layout/LeftDrawer";
-import {useRef, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 
 function MyApp({Component, pageProps}: AppProps) {
     const [drawerState, setDrawerState] = useState(false)
@@ -16,21 +16,21 @@ function MyApp({Component, pageProps}: AppProps) {
     const boxRef = useRef(null)
 
 
+    useEffect(() => {
+        const setScrolled = (e) => {
+            console.log(document.body.scrollTop)
+        }
+
+        window.addEventListener('scroll', setScrolled)
+
+        return function cleanup() {
+            window.removeEventListener('scroll', setScrolled)
+        }
+    }, [])
+
     return <>
         <Provider store={store}>
-            <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}
-                 onScroll={() => {
-                     const winScroll =
-                         boxRef.current.scrollTop
-                     const height =
-                         boxRef.current.scrollHeight -
-                         boxRef.current.clientHeight
-                     const scrolled = (winScroll / height) * 100
-                     if (scrolled > 95) {
-                         setScrolled(false)
-                     }
-                 }}
-            >
+            <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
                 {
                     scrolled ?
                         <Header setDrawerMenu={setDrawerState}/>
