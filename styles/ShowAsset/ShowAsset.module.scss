@@ -647,7 +647,11 @@
 
   .dialogBody {
     display: flex;
-  }
+    flex-direction: column;
+    overflow: scroll;
+    height: 500px;
+    width: 537px;
+    flex-flow: wrap;  }
 
   .modalTitle {
     margin-top: 64px;
@@ -669,8 +673,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-height: 533px;
-    overflow: auto;
+    overflow: scroll;
   }
 
   .otherImgesContainer::-webkit-scrollbar {
@@ -703,6 +706,11 @@
       width: 16px;
     }
   }
+}
+
+.main{
+  display: flex;
+  flex-direction: row;
 }
 
 .infoTooltip {

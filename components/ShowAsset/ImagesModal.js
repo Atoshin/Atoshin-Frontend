@@ -19,18 +19,79 @@ export default function ImagesModal(props) {
                     <img src="/icons/vector-X.png" alt=""/>
                 </div>
             </div>
-            <div className={classes.dialogBody}>
+            <div className={classes.main}>
                 <img className={classes.modalMainImg} src="/images/starry-night-main.png" alt=""/>
-                <div className={classes.otherImgesContainer}>
-                    <img src="/images/starry-night-second.png" className={classes.sideImage}/>
-                    <img src="/images/starry-night-second.png" className={classes.sideImage}/>
-                    <img src="/images/starry-night-second.png" className={classes.sideImage}/>
-                    <img src="/images/starry-night-second.png" className={classes.sideImage}/>
-                    <img src="/images/starry-night-second.png" className={classes.sideImage}/>
-                    <img src="/images/starry-night-second.png" className={classes.sideImage}/>
-                    <img src="/images/starry-night-second.png" className={classes.sideImage}/>
-                    <img src="/images/starry-night-second.png" className={classes.sideImage}/>
-                    <img src="/images/starry-night-second.png" className={classes.sideImage}/>
+                <div className={classes.dialogBody}>
+                    <div className={classes.otherImgesContainer}>
+                        <div style={{
+                            backgroundImage: 'url("/images/starry-night-main.png")',
+                            width: 120,
+                            height: 120,
+                            backgroundPosition: 'center',
+                            // background-position: center;
+                            // background-size: 120px, 120px;
+                            marginBottom: 24,
+                            marginLeft: 24,
+                        }}>
+                        </div>
+                        <div style={{
+                            backgroundImage: 'url("/images/starry-night-main.png")',
+                            width: 120,
+                            height: 120,
+                            backgroundPosition: 'center',
+                            // background-position: center;
+                            // background-size: 120px, 120px;
+                            marginBottom: 24,
+                            marginLeft: 24,
+                        }}>
+                        </div>
+                        <div style={{
+                            backgroundImage: 'url("/images/starry-night-main.png")',
+                            width: 120,
+                            height: 120,
+                            backgroundPosition: 'center',
+                            // background-position: center;
+                            // background-size: 120px, 120px;
+                            marginBottom: 24,
+                            marginLeft: 24,
+                        }}>
+                        </div>
+                        <div style={{
+                            backgroundImage: 'url("/images/starry-night-main.png")',
+                            width: 120,
+                            height: 120,
+                            backgroundPosition: 'center',
+                            // background-position: center;
+                            // background-size: 120px, 120px;
+                            marginBottom: 24,
+                            marginLeft: 24,
+                        }}>
+                        </div>
+                        <div style={{
+                            backgroundImage: 'url("/images/starry-night-main.png")',
+                            width: 120,
+                            height: 120,
+                            backgroundPosition: 'center',
+                            // background-position: center;
+                            // background-size: 120px, 120px;
+                            marginBottom: 24,
+                            marginLeft: 24,
+                        }}>
+                        </div>
+                        <div style={{
+                            backgroundImage: 'url("/images/starry-night-main.png")',
+                            width: 120,
+                            height: 120,
+                            backgroundPosition: 'center',
+                            // background-position: center;
+                            // background-size: 120px, 120px;
+                            marginBottom: 24,
+                            marginLeft: 24,
+                        }}>
+                        </div>
+
+                        {/*<img src="/images/starry-night-second.png" className={classes.sideImage}/>*/}
+                    </div>
                 </div>
             </div>
         </Dialog>

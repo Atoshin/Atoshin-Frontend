@@ -1,7 +1,14 @@
+
+.dialogHeaderSticky{
+  background-color: white;
+  position: sticky;
+  top: 0;
+}
+
 .OwnersDialogMain {
-  display: flex;
-  flex-direction: column;
-  overflow: none;
+  //display: flex;
+  //flex-direction: column;
+  //overflow: none;
 }
 
 .dialogHeader {
@@ -55,7 +62,7 @@
   align-items: center;
   justify-content: space-between;
   height: 51px;
-  padding-right: 66px;
+  padding-right: 28px;
   padding-left: 28px;
   border-bottom: 1px solid #E5E5E5;
 
@@ -87,8 +94,10 @@
 .indexSec {
   display: flex;
   flex-direction: column;
-  //max-height: 501px;
-  overflow: auto;
+  overflow: scroll;
+  height: 500px;
+  width: 537px;
+  flex-flow: wrap;
 }
 
 .ownersIndexRow {
@@ -98,9 +107,11 @@
   justify-content: space-between;
   align-items: center;
   height: 85px;
-  padding-left: 28px;
-  padding-right: 66px;
+  padding-left: 40px;
+  padding-right: 28px;
   border-bottom: 1px solid #E5E5E5;
+  //border: 2px solid red;
+  width: 100%;
 }
 
 .rankNum {

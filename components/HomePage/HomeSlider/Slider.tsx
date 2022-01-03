@@ -10,12 +10,12 @@ export default function Slider({images, sliderRef, setCurrentSlide}) {
                slidesToShow={1}
                infinite={true}
                arrows={false}
-               autoplay={false}
+               autoplay={true}
                slidesToScroll={1}
                duration={5000}
-               onChange={(oldIdx, newIdx) => {
-                   setCurrentSlide(newIdx)
-               }}
+            // onChange={(oldIdx, newIdx) => {
+            //     setCurrentSlide(newIdx)
+            // }}
         >
             {
                 images.map((img, i) => (
