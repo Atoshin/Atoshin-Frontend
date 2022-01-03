@@ -17,9 +17,9 @@
   justify-content: space-between;
   align-items: center;
   padding-left: 28px;
-  padding-right: 59px;
+  padding-right: 28px;
   width: 100%;
-  height: 200px;
+  height: 80px;
   border-bottom: 1px solid #E5E5E5;
 }
 .dialogHeader {
@@ -99,7 +99,7 @@
 .buyerNameSec {
   display: flex;
   flex-direction: row;
-  width: 191px;
+  width: 220px;
 }
 
 .boughtBy {
@@ -107,8 +107,7 @@
   font-size: 18px;
   font-weight: 400;
   margin-right: 3px;
-  width: 200px;
-  border: 2px solid red;
+  //width: 200px;
 }
 
 .buyerName {
@@ -121,7 +120,7 @@
   color: #232323;
   font-size: 18px;
   font-weight: 400;
-  width: 174px;
+  width: 200px;
 }
 
 

@@ -33,110 +33,119 @@ export default function HistoryModal(props) {
 
             <div className={classes.HistoryDialogMain}>
 
-                <div className={styles.historyIndexRow}>
-                    <div className={styles.buyerNameSec}>
-                        <div className={styles.boughtBy}>
+                <div className={classes.historyIndexRow}>
+                    <div className={classes.buyerNameSec}>
+                        <div className={classes.boughtBy}>
                             Bought by
                         </div>
-                        <div className={styles.buyerName}>
+                        <div className={classes.buyerName}>
                             0we6...245rb
                         </div>
                     </div>
-                    <div className={styles.dateBought}>
+                    <div className={classes.dateBought}>
                         in December 23, 2021
                     </div>
                 </div>
-                <div className={styles.historyIndexRow}>
-                    <div className={styles.buyerNameSec}>
-                        <div className={styles.boughtBy}>
+
+                <div className={classes.historyIndexRow}>
+                    <div className={classes.buyerNameSec}>
+                        <div className={classes.boughtBy}>
                             Bought by
                         </div>
-                        <div className={styles.buyerName}>
+                        <div className={classes.buyerName}>
                             0we6...245rb
                         </div>
                     </div>
-                    <div className={styles.dateBought}>
+                    <div className={classes.dateBought}>
                         in December 23, 2021
                     </div>
                 </div>
-                <div className={styles.historyIndexRow}>
-                    <div className={styles.buyerNameSec}>
-                        <div className={styles.boughtBy}>
+
+                <div className={classes.historyIndexRow}>
+                    <div className={classes.buyerNameSec}>
+                        <div className={classes.boughtBy}>
                             Bought by
                         </div>
-                        <div className={styles.buyerName}>
+                        <div className={classes.buyerName}>
                             0we6...245rb
                         </div>
                     </div>
-                    <div className={styles.dateBought}>
+                    <div className={classes.dateBought}>
                         in December 23, 2021
                     </div>
                 </div>
-                <div className={styles.historyIndexRow}>
-                    <div className={styles.buyerNameSec}>
-                        <div className={styles.boughtBy}>
+
+                <div className={classes.historyIndexRow}>
+                    <div className={classes.buyerNameSec}>
+                        <div className={classes.boughtBy}>
                             Bought by
                         </div>
-                        <div className={styles.buyerName}>
+                        <div className={classes.buyerName}>
                             0we6...245rb
                         </div>
                     </div>
-                    <div className={styles.dateBought}>
+                    <div className={classes.dateBought}>
                         in December 23, 2021
                     </div>
                 </div>
-                <div className={styles.historyIndexRow}>
-                    <div className={styles.buyerNameSec}>
-                        <div className={styles.boughtBy}>
+
+                <div className={classes.historyIndexRow}>
+                    <div className={classes.buyerNameSec}>
+                        <div className={classes.boughtBy}>
                             Bought by
                         </div>
-                        <div className={styles.buyerName}>
+                        <div className={classes.buyerName}>
                             0we6...245rb
                         </div>
                     </div>
-                    <div className={styles.dateBought}>
+                    <div className={classes.dateBought}>
                         in December 23, 2021
                     </div>
                 </div>
-                <div className={styles.historyIndexRow}>
-                    <div className={styles.buyerNameSec}>
-                        <div className={styles.boughtBy}>
+
+                <div className={classes.historyIndexRow}>
+                    <div className={classes.buyerNameSec}>
+                        <div className={classes.boughtBy}>
                             Bought by
                         </div>
-                        <div className={styles.buyerName}>
+                        <div className={classes.buyerName}>
                             0we6...245rb
                         </div>
                     </div>
-                    <div className={styles.dateBought}>
+                    <div className={classes.dateBought}>
                         in December 23, 2021
                     </div>
                 </div>
-                <div className={styles.historyIndexRow}>
-                    <div className={styles.buyerNameSec}>
-                        <div className={styles.boughtBy}>
+
+                <div className={classes.historyIndexRow}>
+                    <div className={classes.buyerNameSec}>
+                        <div className={classes.boughtBy}>
                             Bought by
                         </div>
-                        <div className={styles.buyerName}>
+                        <div className={classes.buyerName}>
                             0we6...245rb
                         </div>
                     </div>
-                    <div className={styles.dateBought}>
+                    <div className={classes.dateBought}>
                         in December 23, 2021
                     </div>
                 </div>
-                <div className={styles.historyIndexRow}>
-                    <div className={styles.buyerNameSec}>
-                        <div className={styles.boughtBy}>
+
+                <div className={classes.historyIndexRow}>
+                    <div className={classes.buyerNameSec}>
+                        <div className={classes.boughtBy}>
                             Bought by
                         </div>
-                        <div className={styles.buyerName}>
+                        <div className={classes.buyerName}>
                             0we6...245rb
                         </div>
                     </div>
-                    <div className={styles.dateBought}>
+                    <div className={classes.dateBought}>
                         in December 23, 2021
                     </div>
                 </div>
+
+
             </div>
         </Dialog>
     );
