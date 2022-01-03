@@ -21,7 +21,7 @@ export default function UserMenu({anchorEl, handleClose}) {
         }}
     >
         <div className={classes.menuMainSec}>
-            <div className={classes.userName}>{address.slice(0, 4) + '...' + address.slice(address.length - 4)}</div>
+            <div className={classes.userName}>{address && address.slice(0, 4) + '...' + address.slice(address.length - 4)}</div>
             <div className={classes.balanceSec}>
                 <div className={classes.ethLogoSec}>
                     <img className={classes.ethLogo} src="/icons/eth-logo.png" alt=""/>

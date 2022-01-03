@@ -31,12 +31,12 @@ function MyApp({Component, pageProps}: AppProps) {
     return <>
         <Provider store={store}>
             <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
-                {
-                    scrolled ?
-                        <Header setDrawerMenu={setDrawerState}/>
-                        :
+                {/*{*/}
+                {/*    scrolled ?*/}
+                {/*        <Header setDrawerMenu={setDrawerState}/>*/}
+                {/*        :*/}
                         <ScrolledHeader setDrawerMenu={setDrawerState}/>
-                }
+                {/*}*/}
                 <LeftDrawer state={drawerState} setState={setDrawerState}/>
                 <Container className="main-mui-container">
                     <Component {...pageProps} />
