@@ -31,12 +31,7 @@ function MyApp({Component, pageProps}: AppProps) {
                      }
                  }}
             >
-                {
-                    scrolled ?
-                        <Header setDrawerMenu={setDrawerState}/>
-                        :
-                        <ScrolledHeader setDrawerMenu={setDrawerState}/>
-                }
+                <Header setDrawerMenu={setDrawerState}/>
                 <LeftDrawer state={drawerState} setState={setDrawerState}/>
                 <Container className="main-mui-container">
                     <Component {...pageProps} />

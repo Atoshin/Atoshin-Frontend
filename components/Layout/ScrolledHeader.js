@@ -100,7 +100,7 @@ export default function ScrolledHeader({setDrawerMenu}) {
                             </div>
                             <ul className={classes.menuContainer}>
                                 <li className={classes.marketplaceItem}>Marketplace</li>
-                                <li>fuck u</li>
+                                <li>Art Centers</li>
                                 <li>Artists</li>
                                 <li>About NFT</li>
                                 {address ?

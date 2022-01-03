@@ -1,27 +1,13 @@
 import styles from "../styles/ShowAsset/ShowAsset.module.scss";
-import {Button, useMediaQuery} from "@mui/material";
+import {Button, Fade, useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import ImagesModal from "../components/ShowAsset/ImagesModal";
 import {useState} from "react";
 import OwnersModal from "../components/ShowAsset/OwnersModal";
 import HistoryModal from "../components/ShowAsset/HistoryModal";
-import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
-import styled from "@emotion/styled";
 
 
 
-
-const CustomWidthTooltip = styled(({ className, ...props }) => (
-    <Tooltip {...props} classes={{ popper: className }} />
-))({
-    [`& .${tooltipClasses.tooltip}`]: {
-        Width: 226,
-        height:72,
-        backgroundColor: '#ffffff',
-        color : '#000000',
-        marginLeft: 90,
-    },
-});
 
 const longText = `30 fractions belong to DDGallery and 70 fractions can be traded`;
 
@@ -31,7 +17,8 @@ export default function ShowAsset() {
     const [openImages, setOpenImages] = useState(false)
     const [openOwners, setOpenOwners] = useState(false)
     const [openHistory, setOpenHistory] = useState(false)
-
+    const [tooltip, setTooltip] = useState(false)
+    const [secondTooltip, setSecondTooltip] = useState(false)
 
 
     const theme = useTheme();
@@ -107,9 +94,13 @@ export default function ShowAsset() {
                         <div className={styles.fractionsMainSec}>
                             <div className={styles.fractionsLeftTxt}>
                                 Fractions left
-                                <CustomWidthTooltip title={longText} arrow placement="top-end">
-                                    <img className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
-                                </CustomWidthTooltip>
+                                    <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)} className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                                    <Fade in={tooltip}>
+                                        <div className={styles.fractionsTooltip}>
+                                            30 fractions belong to DDGallery and 70 fractions can be traded
+                                            <div className={styles.arrow}></div>
+                                        </div>
+                                    </Fade>
                             </div>
                             <div className={styles.fractionsLeftAmount}>
                                 34/100
@@ -134,9 +125,6 @@ export default function ShowAsset() {
                             <img className={styles.artworkMainImg} src="/images/starry-night-main.png" alt=""/>
                         </div>
                         <div className={styles.artworkOtherImgSec}>
-                            <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
-                            <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
-                            <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
                             <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
                             <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
                             <img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>
@@ -225,9 +213,15 @@ export default function ShowAsset() {
                                 <div className={styles.mintedDateSec}>
                                     Minted on Dec 8, 2021
                                 </div>
-                                <div className={styles.watchArtworkSec}>
+                                <div onMouseEnter={() => setSecondTooltip(true)} onMouseOut={() => setSecondTooltip(false)} className={styles.watchArtworkSec}>
                                     Watch artwork online
                                 </div>
+                                <Fade in={secondTooltip}>
+                                    <div className={styles.watchOnlineTooltip}>
+                                        This item is only active for owners
+                                        <div className={styles.arrow2}></div>
+                                    </div>
+                                </Fade>
                             </div>
                         </div>
                     </div>

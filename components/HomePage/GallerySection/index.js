@@ -34,19 +34,26 @@ export default function GallerySection() {
         <ImagesModal setOpen={setOpenImage} open={openImage}/>
         <YoutubeVideoModal open={openYouTube} setOpen={setOpenYouTube}/>
         <div className={classes.galleryMainSec}>
+            <div className={classes.artCenterSec}>
+                <div className={classes.artCenterTitle}>
+                    Art Centers
+                </div>
+                <div className={classes.viewAllArtCenters}>
+                    View All
+                </div>
+            </div>
             <div className={classes.galleryTopSec}>
                 <div className={classes.galleryDescMainSec}>
                     <div className={classes.galleryName}>
-                        {matches &&
+                        {matches ?
                             <img style={{width: 42,}} className={classes.imgSec} src="/images/DD-logo.png"
                                  alt=""/>
+                            :
+                            <img className={classes.imgSec} src="/images/DD-logo.png" alt=""/>
                         }
                         DD Gallery
                     </div>
                     <div className={classes.galleryDescSec}>
-                        {!matches &&
-                            <img className={classes.imgSec} src="/images/DD-logo.png" alt=""/>
-                        }
                         <div className={classes.galleryDesc}>
                             <div className={classes.galleryDecsTxt}>
                                 The mission of this museum is to further flourish the art and culture of Iran. Apart
@@ -57,7 +64,7 @@ export default function GallerySection() {
                                 to the world.
                             </div>
                             {!matches &&
-                                <ExploreBtn/>
+                            <ExploreBtn/>
                             }
                         </div>
                     </div>
@@ -85,7 +92,7 @@ export default function GallerySection() {
                     </div>
                 }
                 {matches &&
-                    <ExploreBtn/>
+                <ExploreBtn/>
                 }
             </div>
             <div className={classes.galleryBottomSec}>

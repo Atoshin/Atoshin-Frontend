@@ -70,6 +70,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 230px;
 }
 
 .counterSec {
@@ -112,6 +113,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 40px;
+  position: relative;
 }
 
 .fractionsLeftTxt {
@@ -185,7 +187,8 @@
   flex-direction: row;
   /*justify-content: space-between;*/
   width: 100%;
-  height: 331px;
+  height: 100%;
+  min-height: 284px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
   background-color: #FFFFFF;
   border-radius: 5px;
@@ -209,6 +212,7 @@
   font-size: 16px;
   font-weight: 400;
   width: 423px;
+  height: 100%;
 }
 
 .backStoryDivider {
@@ -253,6 +257,7 @@
   padding-bottom: 1px;
   background-color: #E9E6E6;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .originalOwnerSec {
@@ -280,6 +285,7 @@
   padding-bottom: 1px;
   background-color: #E9E6E6;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 
@@ -327,6 +333,7 @@
 .aboutArtworkBottomSec {
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 .mintedDateSec {
@@ -342,6 +349,7 @@
   background-color: #E9E6E6;
   border-radius: 5px;
   margin-right: 24px;
+  cursor: pointer;
 }
 
 .watchArtworkSec {
@@ -356,6 +364,8 @@
   padding-bottom: 1px;
   background-color: #E9E6E6;
   border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.5;
 }
 
 .provenanceDivider {
@@ -607,13 +617,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-width: 640px;
-  overflow: auto;
+  width: 640px;
+  //overflow: auto;
 }
 
-.artworkOtherImgSec::-webkit-scrollbar {
-  display: none;
-}
+//.artworkOtherImgSec::-webkit-scrollbar {
+//  display: none;
+//}
 
 .artworkOtherImg {
   width: 93.39px;
@@ -699,8 +709,70 @@
   width: 30px;
   height: 30px;
   margin-left: 12px;
+  cursor: pointer;
 }
 
+.fractionsTooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 226px;
+  height: 60px;
+  border-radius: 5px;
+  color: #232323;
+  font-size: 14px;
+  font-weight: 300;
+  background-color: #FFFFFF;
+  position:absolute;
+  padding: 11px 14px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  bottom: 64px;
+  left: 87px;
+}
+
+.arrow {
+  content:"";
+  border-color: #FFFFFF transparent transparent transparent;
+  border-style:solid;
+  border-width:10px;
+  width:0;
+  height:0;
+  position:absolute;
+  bottom:-20px;
+  left:20px
+}
+
+
+.watchOnlineTooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 226px;
+  height: 60px;
+  border-radius: 5px;
+  color: #232323;
+  font-size: 14px;
+  font-weight: 300;
+  background-color: #FFFFFF;
+  position:absolute;
+  padding: 11px 14px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  bottom: 50px;
+  left: 201px;
+}
+
+
+.arrow2 {
+  content:"";
+  border-color: #FFFFFF transparent transparent transparent;
+  border-style:solid;
+  border-width:10px;
+  width:0;
+  height:0;
+  position:absolute;
+  bottom:-20px;
+  left:20px
+}
 
 @import "media";
 

@@ -147,6 +147,28 @@
   margin-top: 206px;
 }
 
+.artCenterSec {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.viewAllArtCenters {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.artCenterTitle {
+  color: #000000;
+  font-size: 40px;
+  font-weight: 550;
+  font-family: "Eksell-font";
+}
+
+
 .galleryTopSec {
   display: flex;
   flex-direction: row;
@@ -156,30 +178,30 @@
 .galleryDescMainSec {
   display: flex;
   flex-direction: column;
+  margin-top: 59px;
 }
 
 .galleryName {
   display: flex;
   align-items: center;
   //justify-content: center;
-  font-size: 40px;
-  font-weight: 550;
-  line-height: 48px;
+  font-size: 25px;
+  font-weight: 500;
   color: #000000;
-  font-family: "Eksell-font";
+  //font-family: "Eksell-font";
 }
 
 .galleryDescSec {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 32px;
+  margin-top: 27px;
 
 }
 
 .imgSec {
-  width: 169px;
-  height: 90px;
+  width: 56px;
+  height: 56px;
   margin-right: 24px;
 }
 
@@ -231,6 +253,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  height: 360px;
 }
 
 .galleryPlayPhoto {

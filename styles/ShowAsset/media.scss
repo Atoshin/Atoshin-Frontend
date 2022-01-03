@@ -51,9 +51,12 @@
   }
   .saleEndDate {
     display: none;
+    width: 304px;
+    margin-bottom: 8px;
   }
   .timeCounterSec {
-    width: 70%;
+    //width: 70%;
+    width: 229px;
     margin: auto;
   }
   .counterNum {
@@ -162,6 +165,47 @@
     margin-top: 0px;
     border-radius: 5px;
   }
+
+  .aboutArtworkTxt {
+    margin-bottom: 12px;
+    margin-top: 18px;
+  }
+
+  .rankTitle {
+    font-size: 12px;
+    font-weight: 300;
+  }
+
+  .ownerNameTitle {
+    font-size: 12px;
+  }
+
+  .quantityTitle {
+    font-size: 12px;
+  }
+
+  .rankNum {
+    font-size: 12px;
+  }
+
+  .ownerName {
+    font-size: 12px;
+  }
+
+  .quantity {
+    font-size: 12px;
+
+  }
+  //.saleEndDate {
+  //  width: 304px;
+  //}
+  //.timeCounterSec {
+  //  width: 304px;
+  //}
+
+  //.saleMainSec {
+  //  width: 304px;
+  //}
 }
 
 
