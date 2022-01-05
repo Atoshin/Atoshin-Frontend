@@ -24,8 +24,8 @@ export default function HomeSlider() {
     const sliderImages = [
         '/images/artworks/art-work1.jpg',
         '/images/artworks/art-work2.jpg',
-        '/images/artworks/art-work3.jpg',
-        '/images/artworks/art-work4.jpg',
+        '/images/artworks/art-work3.png',
+        '/images/artworks/art-work4.png',
         '/images/artworks/art-work5.jpg',
     ];
     const descriptions = [

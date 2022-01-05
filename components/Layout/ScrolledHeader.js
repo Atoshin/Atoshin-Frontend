@@ -69,7 +69,7 @@ export default function ScrolledHeader({setDrawerMenu}) {
 
 
     return <>
-        <div className={classes.mainHeader}>
+        <div className={classes.mainHeaderScrolled}>
             {matches ?
                 <>
                     <div className={classes.headerMainMob}>

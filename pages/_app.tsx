@@ -5,38 +5,43 @@ import Header from "../components/Layout/Header";
 import ScrolledHeader from "../components/Layout/ScrolledHeader";
 import Footer from "../components/Layout/Footer";
 import Container from '@mui/material/Container';
-
+import useScrollHeader from '../functions/hooks/useScrollHeader'
 import {store} from '../redux/store'
 import LeftDrawer from "../components/Layout/LeftDrawer";
 import {useEffect, useState, useRef} from "react";
 
 function MyApp({Component, pageProps}: AppProps) {
     const [drawerState, setDrawerState] = useState(false)
-    const [scrolled, setScrolled] = useState(true)
+    const [scrolled, setScrolled] = useState(false)
     const boxRef = useRef(null)
-
+    // const scrollHeader = useScrollHeader()
 
     useEffect(() => {
-        const setScrolled = (e) => {
-            console.log(document.body.scrollTop)
+        const setScroll = (e) => {
+            console.log(window.scrollY)
+            if (window.scrollY > 50) {
+                setScrolled(true)
+            } else {
+                setScrolled(false)
+            }
         }
 
-        window.addEventListener('scroll', setScrolled)
+        window.addEventListener('scroll', setScroll)
 
         return function cleanup() {
-            window.removeEventListener('scroll', setScrolled)
+            window.removeEventListener('scroll', setScroll)
         }
     }, [])
 
     return <>
         <Provider store={store}>
             <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
-                {/*{*/}
-                {/*    scrolled ?*/}
-                {/*        <Header setDrawerMenu={setDrawerState}/>*/}
-                {/*        :*/}
+                {
+                    !scrolled ?
+                        <Header setDrawerMenu={setDrawerState}/>
+                        :
                         <ScrolledHeader setDrawerMenu={setDrawerState}/>
-                {/*}*/}
+                }
                 <LeftDrawer state={drawerState} setState={setDrawerState}/>
                 <Container className="main-mui-container">
                     <Component {...pageProps} />

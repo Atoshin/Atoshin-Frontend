@@ -23,7 +23,7 @@ export default function Slider({images, sliderRef, setCurrentSlide}) {
                         key={i}
                         className={classes.topRightSec}>
                         <div className={classes.artworkImgSec}>
-                            <img className={classes.artWorkImg} src={img} alt=""/>
+                            <div style={{backgroundImage: `url(${img})`, backgroundSize: '640px', backgroundPosition: 'center'}} className={classes.artWorkImg}/>
                         </div>
                         <div className={classes.artWorkDetailSec}>
                             <div className={classes.priceMainSec}>
