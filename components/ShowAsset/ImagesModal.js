@@ -6,7 +6,14 @@ import classes from "../../styles/ShowAsset/ShowAsset.module.scss";
 
 export default function ImagesModal(props) {
     const {open, setOpen} = props;
-
+    const images = [
+        "/images/starry-night-main.png",
+        "/images/starry-night-main.png",
+        "/images/starry-night-main.png",
+        "/images/starry-night-main.png",
+        "/images/starry-night-main.png",
+        "/images/starry-night-main.png",
+    ]
     const handleClose = () => {
         setOpen(false)
     }
@@ -23,73 +30,19 @@ export default function ImagesModal(props) {
                 <img className={classes.modalMainImg} src="/images/starry-night-main.png" alt=""/>
                 <div className={classes.dialogBody}>
                     <div className={classes.otherImgesContainer}>
-                        <div style={{
-                            backgroundImage: 'url("/images/starry-night-main.png")',
-                            width: 120,
-                            height: 120,
-                            backgroundPosition: 'center',
-                            // background-position: center;
-                            // background-size: 120px, 120px;
-                            marginBottom: 24,
-                            marginLeft: 24,
-                        }}>
-                        </div>
-                        <div style={{
-                            backgroundImage: 'url("/images/starry-night-main.png")',
-                            width: 120,
-                            height: 120,
-                            backgroundPosition: 'center',
-                            // background-position: center;
-                            // background-size: 120px, 120px;
-                            marginBottom: 24,
-                            marginLeft: 24,
-                        }}>
-                        </div>
-                        <div style={{
-                            backgroundImage: 'url("/images/starry-night-main.png")',
-                            width: 120,
-                            height: 120,
-                            backgroundPosition: 'center',
-                            // background-position: center;
-                            // background-size: 120px, 120px;
-                            marginBottom: 24,
-                            marginLeft: 24,
-                        }}>
-                        </div>
-                        <div style={{
-                            backgroundImage: 'url("/images/starry-night-main.png")',
-                            width: 120,
-                            height: 120,
-                            backgroundPosition: 'center',
-                            // background-position: center;
-                            // background-size: 120px, 120px;
-                            marginBottom: 24,
-                            marginLeft: 24,
-                        }}>
-                        </div>
-                        <div style={{
-                            backgroundImage: 'url("/images/starry-night-main.png")',
-                            width: 120,
-                            height: 120,
-                            backgroundPosition: 'center',
-                            // background-position: center;
-                            // background-size: 120px, 120px;
-                            marginBottom: 24,
-                            marginLeft: 24,
-                        }}>
-                        </div>
-                        <div style={{
-                            backgroundImage: 'url("/images/starry-night-main.png")',
-                            width: 120,
-                            height: 120,
-                            backgroundPosition: 'center',
-                            // background-position: center;
-                            // background-size: 120px, 120px;
-                            marginBottom: 24,
-                            marginLeft: 24,
-                        }}>
-                        </div>
+                        {images.map((image, idx) => {
+                            return <div style={{
+                                backgroundImage: `url(${image})`,
+                                width: 120,
+                                height: 120,
+                                backgroundPosition: 'center',
+                                // background-position: center;
+                                // background-size: 120px, 120px;
+                                marginBottom: 24,
+                                marginLeft: 24,
+                            }}/>
 
+                        })}
                         {/*<img src="/images/starry-night-second.png" className={classes.sideImage}/>*/}
                     </div>
                 </div>
