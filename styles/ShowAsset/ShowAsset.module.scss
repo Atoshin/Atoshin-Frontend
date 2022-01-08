@@ -51,12 +51,14 @@
   font-size: 16px;
   font-weight: 500;
   margin-top: 8px;
+  //padding-top: 2px;
+  padding-bottom: 5px;
 }
 
 .saleMainSec {
   display: flex;
   flex-direction: column;
-  margin-top: 56px;
+  margin-top: 67px;
 }
 
 .saleStartDate {
@@ -112,7 +114,7 @@
 .fractionsMainSec {
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: 60px;
   position: relative;
 }
 
@@ -604,13 +606,13 @@
 
 .artworkMainImgSec {
   width: 640px;
-  height: 430px;
+  height: 100%;
   margin-bottom: 16px;
 }
 
 .artworkMainImg {
   width: 640px;
-  height: 430px;
+  height: 100%;
 }
 
 .artworkOtherImgSec {

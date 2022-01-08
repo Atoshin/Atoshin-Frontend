@@ -19,7 +19,7 @@ function MyApp({Component, pageProps}: AppProps) {
     useEffect(() => {
         const setScroll = (e) => {
             console.log(window.scrollY)
-            if (window.scrollY > 50) {
+            if (window.scrollY > 90) {
                 setScrolled(true)
             } else {
                 setScrolled(false)

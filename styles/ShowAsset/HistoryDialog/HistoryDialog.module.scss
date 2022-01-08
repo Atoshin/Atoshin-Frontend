@@ -10,6 +10,7 @@
   height: 500px;
   width: 537px;
   flex-flow: wrap;
+  overflow-x: hidden;
 }
 .historyIndexRow {
   display: flex;
@@ -124,6 +125,18 @@
 }
 
 
+
+@media (max-width: 600px) {
+
+  .HistoryDialogMain {
+    width: 100%;
+  }
+
+  .dialogHeader {
+    width: 100%;
+  }
+
+}
 
 
 

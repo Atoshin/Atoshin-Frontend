@@ -96,10 +96,10 @@ export default function GallerySection() {
                 }
             </div>
             <div className={classes.galleryBottomSec}>
-                <div datasrc={"/images/dd-gallery1.jpg"} style={{backgroundImage: 'url("/images/dd-gallery1.jpg")', backgroundSize: '265px 265px'}} className={classes.galleryPhotos} onClick={openImageModal}/>
-                <div datasrc={"/images/dd-gallery2.jpg"} style={{backgroundImage: 'url("/images/dd-gallery2.jpg")', backgroundSize: '265px 265px'}} className={classes.galleryPhotos} onClick={openImageModal}/>
-                <div datasrc={"/images/dd-gallery3.jpg"} style={{backgroundImage: 'url("/images/dd-gallery3.jpg")', backgroundSize: '265px 265px'}} className={classes.galleryPhotos} onClick={openImageModal}/>
-                <div datasrc={"/images/dd-gallery5.jpg"} style={{backgroundImage: 'url("/images/dd-gallery5.jpg")', backgroundSize: '265px 265px'}} className={classes.galleryPhotos} onClick={openImageModal}/>
+                <div datasrc={"/images/dd-gallery1.jpg"} style={{backgroundImage: 'url("/images/dd-gallery1.jpg")', backgroundSize: 'cover', backgroundPosition: "center", backgroundRepeat: "no-repeat",}} className={classes.galleryPhotos} onClick={openImageModal}/>
+                <div datasrc={"/images/dd-gallery2.jpg"} style={{backgroundImage: 'url("/images/dd-gallery2.jpg")', backgroundSize: 'cover', backgroundPosition: "center", backgroundRepeat: "no-repeat",}} className={classes.galleryPhotos} onClick={openImageModal}/>
+                <div datasrc={"/images/dd-gallery3.jpg"} style={{backgroundImage: 'url("/images/dd-gallery3.jpg")', backgroundSize: 'cover', backgroundPosition: "center", backgroundRepeat: "no-repeat",}} className={classes.galleryPhotos} onClick={openImageModal}/>
+                <div datasrc={"/images/dd-gallery5.jpg"} style={{backgroundImage: 'url("/images/dd-gallery5.jpg")', backgroundSize: 'cover', backgroundPosition: "center", backgroundRepeat: "no-repeat",}} className={classes.galleryPhotos} onClick={openImageModal}/>
             </div>
         </div>
     </>

@@ -97,7 +97,9 @@ export default function ShowAsset() {
                         <div className={styles.fractionsMainSec}>
                             <div className={styles.fractionsLeftTxt}>
                                 Fractions left
-                                    <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)} className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                                {!matches &&
+                                <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)} className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                                }
                                     <Fade in={tooltip}>
                                         <div className={styles.fractionsTooltip}>
                                             30 fractions belong to DDGallery and 70 fractions can be traded
@@ -108,6 +110,9 @@ export default function ShowAsset() {
                             <div className={styles.fractionsLeftAmount}>
                                 34/100
                             </div>
+                            {matches &&
+                            <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)} className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                            }
                         </div>
                         <div className={styles.priceMainSec}>
                             <div className={styles.priceSec}>
