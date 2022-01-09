@@ -5,20 +5,17 @@ import Header from "../components/Layout/Header";
 import ScrolledHeader from "../components/Layout/ScrolledHeader";
 import Footer from "../components/Layout/Footer";
 import Container from '@mui/material/Container';
-import useScrollHeader from '../functions/hooks/useScrollHeader'
 import {store} from '../redux/store'
 import LeftDrawer from "../components/Layout/LeftDrawer";
-import {useEffect, useState, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 
 function MyApp({Component, pageProps}: AppProps) {
     const [drawerState, setDrawerState] = useState(false)
     const [scrolled, setScrolled] = useState(false)
     const boxRef = useRef(null)
-    // const scrollHeader = useScrollHeader()
 
     useEffect(() => {
         const setScroll = (e) => {
-            console.log(window.scrollY)
             if (window.scrollY > 90) {
                 setScrolled(true)
             } else {

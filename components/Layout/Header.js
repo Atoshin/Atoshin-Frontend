@@ -23,9 +23,11 @@ export default function Header({setDrawerMenu}) {
                 web3.eth.getAccounts()
                     .then(async (addr) => {
                         dispatch(setAddress(addr[0]))
-                        web3.eth.getBalance(addr[0]).then(r => {
-                            dispatch(setBalance(ethers.utils.formatEther(r)))
-                        });
+                        if (addr[0]) {
+                            web3.eth.getBalance(addr[0]).then(r => {
+                                dispatch(setBalance(ethers.utils.formatEther(r)))
+                            });
+                        }
                     });
                 providerEventListener()
             } else if (window.web3) {
@@ -33,9 +35,11 @@ export default function Header({setDrawerMenu}) {
                 web3.eth.getAccounts()
                     .then(async (addr) => {
                         dispatch(setAddress(addr[0]))
-                        web3.eth.getBalance(addr[0]).then(r => {
-                            dispatch(setBalance(ethers.utils.formatEther(r)))
-                        });
+                        if (addr[0]) {
+                            web3.eth.getBalance(addr[0]).then(r => {
+                                dispatch(setBalance(ethers.utils.formatEther(r)))
+                            });
+                        }
                     });
                 providerEventListener()
             }

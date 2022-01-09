@@ -1,8 +1,15 @@
 import classes from '../../../styles/HomeSlider/HomeSlider.module.scss'
 import {Slide} from "react-slideshow-image";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
+import {useTheme} from "@mui/material/styles";
+import {useMediaQuery} from "@mui/material";
 
 export default function Slider({images, sliderRef, setCurrentSlide}) {
+    const imageRef = useRef({
+        current: {}
+    })
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
         <Slide ref={sliderRef}
@@ -13,9 +20,9 @@ export default function Slider({images, sliderRef, setCurrentSlide}) {
                autoplay={true}
                slidesToScroll={1}
                duration={5000}
-            onChange={(oldIdx, newIdx) => {
-                setCurrentSlide(newIdx)
-            }}
+               onChange={(oldIdx, newIdx) => {
+                   setCurrentSlide(newIdx)
+               }}
         >
             {
                 images.map((img, i) => (
@@ -23,9 +30,16 @@ export default function Slider({images, sliderRef, setCurrentSlide}) {
                         key={i}
                         className={classes.topRightSec}>
                         <div className={classes.artworkImgSec}>
-                            <div style={{backgroundImage: `url(${img})`, backgroundSize: '640px', backgroundPosition: 'center'}} className={classes.artWorkImg}/>
+                            <div style={{
+                                backgroundImage: `url(${img})`,
+                                backgroundSize: `${imageRef.current.clientWidth}px`,
+                                backgroundRepeat: "no-repeat",
+                                backgroundPosition: 'center',
+                                width: imageRef.current.clientWidth,
+                                height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined
+                            }} className={classes.artWorkImg}/>
                         </div>
-                        <div className={classes.artWorkDetailSec}>
+                        <div ref={imageRef} className={classes.artWorkDetailSec}>
                             <div className={classes.priceMainSec}>
                                 <div className={classes.priceSec}>
                                     <div className={classes.titleSec}>

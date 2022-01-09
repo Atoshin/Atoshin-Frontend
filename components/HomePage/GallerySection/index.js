@@ -4,6 +4,7 @@ import {useTheme} from "@mui/material/styles";
 import YoutubeVideoModal from "./YoutubeVideoModal";
 import * as React from "react";
 import ImagesModal from "./ImagesModal";
+import {useRef} from "react";
 
 export default function GallerySection() {
     const [openYouTube, setOpenYouTube] = React.useState(false);
@@ -11,6 +12,9 @@ export default function GallerySection() {
         toggle: false,
         imgSrc: null
     });
+    const imageRef = useRef({
+        current: {}
+    })
     const ExploreBtn = () => {
         return <Button className={classes.exploreBtn}>Explore</Button>
 
@@ -43,28 +47,26 @@ export default function GallerySection() {
                 </div>
             </div>
             {matches &&
-            <div className={classes.galleryVidContainer} onClick={openYouTubeModal}>
-                <div style={{
-                    backgroundImage: 'url("/images/DD-gallery-main.jpg")',
-                    width: '100%',
-                    height: 178,
-                    backgroundPosition: 'center'
-                }}>
-                    {/*<img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""/>*/}
+                <div className={classes.galleryVidContainer} onClick={openYouTubeModal}>
+                    <div ref={imageRef} style={{
+                        backgroundImage: 'url("/images/DD-gallery-main.jpg")',
+                        width: '100%',
+                        height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                        backgroundPosition: 'center'
+                    }}>
+                        {/*<img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""/>*/}
+                    </div>
+                    <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
+                         onClick={openYouTubeModal}/>
                 </div>
-                <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
-                     onClick={openYouTubeModal}/>
-            </div>
             }
             <div className={classes.galleryTopSec}>
                 <div className={classes.galleryDescMainSec}>
                     <div className={classes.galleryName}>
-                        {matches ?
-                            <img style={{width: 42,}} className={classes.imgSec} src="/images/DD-logo.png"
-                                 alt=""/>
-                            :
-                            <img className={classes.imgSec} src="/images/DD-logo.png" alt=""/>
-                        }
+                        <img className={classes.imgSec} src="/images/DD-logo.png"
+                             alt=""/>
                         DD Gallery
                     </div>
                     <div className={classes.galleryDescSec}>
@@ -78,7 +80,7 @@ export default function GallerySection() {
                                 to the world.
                             </div>
                             {!matches &&
-                            <ExploreBtn/>
+                                <ExploreBtn/>
                             }
                         </div>
                     </div>
@@ -92,14 +94,34 @@ export default function GallerySection() {
                     </div>
                 }
                 {matches &&
-                <ExploreBtn/>
+                    <ExploreBtn/>
                 }
             </div>
             <div className={classes.galleryBottomSec}>
-                <div datasrc={"/images/dd-gallery1.jpg"} style={{backgroundImage: 'url("/images/dd-gallery1.jpg")', backgroundSize: 'cover', backgroundPosition: "center", backgroundRepeat: "no-repeat",}} className={classes.galleryPhotos} onClick={openImageModal}/>
-                <div datasrc={"/images/dd-gallery2.jpg"} style={{backgroundImage: 'url("/images/dd-gallery2.jpg")', backgroundSize: 'cover', backgroundPosition: "center", backgroundRepeat: "no-repeat",}} className={classes.galleryPhotos} onClick={openImageModal}/>
-                <div datasrc={"/images/dd-gallery3.jpg"} style={{backgroundImage: 'url("/images/dd-gallery3.jpg")', backgroundSize: 'cover', backgroundPosition: "center", backgroundRepeat: "no-repeat",}} className={classes.galleryPhotos} onClick={openImageModal}/>
-                <div datasrc={"/images/dd-gallery5.jpg"} style={{backgroundImage: 'url("/images/dd-gallery5.jpg")', backgroundSize: 'cover', backgroundPosition: "center", backgroundRepeat: "no-repeat",}} className={classes.galleryPhotos} onClick={openImageModal}/>
+                <div datasrc={"/images/dd-gallery1.jpg"} style={{
+                    backgroundImage: 'url("/images/dd-gallery1.jpg")',
+                    backgroundSize: 'cover',
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }} className={classes.galleryPhotos} onClick={openImageModal}/>
+                <div datasrc={"/images/dd-gallery2.jpg"} style={{
+                    backgroundImage: 'url("/images/dd-gallery2.jpg")',
+                    backgroundSize: 'cover',
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }} className={classes.galleryPhotos} onClick={openImageModal}/>
+                <div datasrc={"/images/dd-gallery3.jpg"} style={{
+                    backgroundImage: 'url("/images/dd-gallery3.jpg")',
+                    backgroundSize: 'cover',
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }} className={classes.galleryPhotos} onClick={openImageModal}/>
+                <div datasrc={"/images/dd-gallery5.jpg"} style={{
+                    backgroundImage: 'url("/images/dd-gallery5.jpg")',
+                    backgroundSize: 'cover',
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }} className={classes.galleryPhotos} onClick={openImageModal}/>
             </div>
         </div>
     </>
