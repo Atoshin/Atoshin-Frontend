@@ -2,7 +2,6 @@ import '../styles/globals.scss'
 import {Provider} from 'react-redux';
 import {AppProps} from 'next/app';
 import Header from "../components/Layout/Header";
-import ScrolledHeader from "../components/Layout/ScrolledHeader";
 import Footer from "../components/Layout/Footer";
 import Container from '@mui/material/Container';
 import {store} from '../redux/store'
@@ -16,7 +15,7 @@ function MyApp({Component, pageProps}: AppProps) {
 
     useEffect(() => {
         const setScroll = (e) => {
-            if (window.scrollY > 90) {
+            if (window.scrollY > 300) {
                 setScrolled(true)
             } else {
                 setScrolled(false)
@@ -33,12 +32,7 @@ function MyApp({Component, pageProps}: AppProps) {
     return <>
         <Provider store={store}>
             <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
-                {
-                    !scrolled ?
-                        <Header setDrawerMenu={setDrawerState}/>
-                        :
-                        <ScrolledHeader setDrawerMenu={setDrawerState}/>
-                }
+                <Header setDrawerMenu={setDrawerState} isScrolled={scrolled}/>
                 <LeftDrawer state={drawerState} setState={setDrawerState}/>
                 <Container className="main-mui-container">
                     <Component {...pageProps} />
