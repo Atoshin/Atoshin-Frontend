@@ -1,0 +1,115 @@
+.mainImgSec {
+  display: flex;
+  justify-content: center;
+  margin-top: 82px;
+}
+
+.mainImg {
+  height: 460px;
+  width: 1120px;
+  background-color: green;
+}
+
+.headerSection {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.socialMediaSec {
+  margin-top: 42px;
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+  align-items: center;
+}
+.title {
+  color: #000000;
+  font-size: 40px;
+  font-weight: 550;
+  font-family: "Eksell-font";
+}
+.text {
+  font-family: Roboto;
+  font-size: 16px;
+  //font-style: normal;
+  //font-weight: 400;
+  line-height: 25px;
+  //letter-spacing: 0em;
+  //text-align: left;
+}
+
+.paragraphSec {
+  width: 100%;
+  margin-top: 100px;
+  //height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paragraph {
+  width: 928px;
+}
+
+.sliderSec {
+  width: 100%;
+  height: 239px;
+  border: 2px solid red;
+  text-align: center;
+  align-items: center;
+}
+
+.detailsSec {
+margin-top: 48px;
+}
+
+.detailsHeader {
+  font-size: 25px;
+  font-family: Roboto;
+
+}
+
+.map{
+  height: 250px;
+  width: 929px;
+  border: 2px solid red;
+  margin: auto;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.table {
+  margin-top: 40px;
+}
+.row{
+  padding: 24px;
+}
+
+.slider2{
+  height: 336px;
+  border: 2px solid red;
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.relatedSec{
+  margin-top: 48px;
+}
+
+.relatedTitle{
+  font-family: Roboto;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.svg{
+  margin-top: 20px;
+}
