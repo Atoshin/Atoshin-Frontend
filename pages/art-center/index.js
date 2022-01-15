@@ -87,19 +87,19 @@ export default function ArtCenter() {
                 </div>
                 <div className={classes.table}>
                     <tr className={classes.row}>
-                        <td>Gallery Owner</td>
-                        <td>DD Owner</td>
+                        <td className={classes.td1}>Gallery Owner</td>
+                        <td className={classes.td2}>DD Owner</td>
                     </tr>
                     <tr>
-                        <td>Address</td>
-                        <td>Iris Watson
+                        <td className={classes.td1}>Address</td>
+                        <td className={classes.td2}>Iris Watson
                             P.O. Box 283 8562 Fusce Rd.
                             Frederick Nebraska 20620
                             (372) 587-2335
                         </td>
                     </tr>
                     <tr>
-                        <td>Location</td>
+                        <td className={classes.td1}>Location</td>
                         <td></td>
                     </tr>
                 </div>

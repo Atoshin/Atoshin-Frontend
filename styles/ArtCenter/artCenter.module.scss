@@ -25,12 +25,14 @@
   width: 150px;
   align-items: center;
 }
+
 .title {
   color: #000000;
   font-size: 40px;
   font-weight: 550;
   font-family: "Eksell-font";
 }
+
 .text {
   font-family: Roboto;
   font-size: 16px;
@@ -63,7 +65,7 @@
 }
 
 .detailsSec {
-margin-top: 48px;
+  margin-top: 48px;
 }
 
 .detailsHeader {
@@ -72,9 +74,9 @@ margin-top: 48px;
 
 }
 
-.map{
+.map {
   height: 250px;
-  width: 929px;
+  width: 90%;
   border: 2px solid red;
   margin: auto;
   margin-top: 24px;
@@ -84,22 +86,23 @@ margin-top: 48px;
 .table {
   margin-top: 40px;
 }
-.row{
+
+.row {
   padding: 24px;
 }
 
-.slider2{
+.slider2 {
   height: 336px;
   border: 2px solid red;
   margin-bottom: 48px;
   text-align: center;
 }
 
-.relatedSec{
+.relatedSec {
   margin-top: 48px;
 }
 
-.relatedTitle{
+.relatedTitle {
   font-family: Roboto;
   font-size: 25px;
   font-style: normal;
@@ -110,6 +113,28 @@ margin-top: 48px;
   margin-bottom: 40px;
 }
 
-.svg{
+.svg {
   margin-top: 20px;
+}
+
+.td1 {
+  //font-family: Roboto;
+  font-size: 16px;
+  //font-style: normal;
+  //font-weight: 400;
+  //line-height: 19px;
+  //letter-spacing: 0em;
+  //text-align: left;
+  padding: 24px;
+}
+
+.td2{
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+
 }
