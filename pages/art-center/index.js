@@ -37,45 +37,25 @@ export default function ArtCenter() {
             </div>
 
             <div className={classes.paragraphSec}>
-                <div className={classes.paragraph}>
-                    <p className={classes.text}>
+                <div className={classes.firstTextPart}>
+                    <div className={classes.textImg}>
                         <svg className={classes.svg} width="120" height="72" viewBox="0 0 120 72" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <rect width="120" height="72" rx="12" fill="#E0E7EC"/>
                         </svg>
-                        Painter, musician and performance artist Reza Derakshani was born in Sangsar, in the northeast
-                        of
-                        Iran.
-                        He grew up in a great black tent on the top of a mountain, among horses and fields of blue and
-                        yellow
-                        wild flowers. Reza moved from the study of constellations of light made by moonlight shining
-                        through
-                        tiny holes Painter, musician and performance artist Reza Derakshani was born in Sangsar, in the
-                        northeast of Iran. He grew up in a great black tent on the top of a mountain, among horses and
-                        fields of
-                        blue and yellow wild flowers. Reza moved from the study of constellations of light made by
-                        moonlight
-                        shining through tiny holes in the tent to the study of mathematics in high school, and visual
-                        arts
-                        in
-                        Tehran and the U.S.
-                        The long and circuitous road of Derakshani’s artistic and geographic migration eventually found
-                        him
-                        in
-                        New York City, where he made a home and worked for sixteen years. He later moved to Italy,
-                        eventually
-                        returning to Tehran for seven years before leaving his homeland once again in 2010 and settling
-                        in
-                        Dubai. He moved back to USA a few years later.
-                        Derakshani currently lives and works between Austin USA and St Petersburg Russiaz
-                        Reza Derakshani’s first solo show at the age of nineteen was held at the renowned Ghandriz Art
-                        Gallery
-                        in Tehran. Following this auspicious debut, he participated in many group and solo exhibits at
-                        other
-                        leading art galleries. His work has been widely exhibited and collected internationally.
+                    </div>
+
+                    <p className={classes.text}>
+                        Painter, musician and performance artist Reza Derakshani was born in Sangsar, in the northeast of Iran. He grew up in a great black tent on the top of a mountain, among horses and fields of blue and yellow wild flowers. Reza moved from the study of constellations of light made by moonlight shining through tiny holes
                     </p>
                 </div>
+
+
+                <p className={classes.text2}>
+                    Painter, musician and performance artist Reza Derakshani was born in Sangsar, in the northeast of Iran. He grew up in a great black tent on the top of a mountain, among horses and fields of blue and yellow wild flowers. Reza moved from the study of constellations of light made by moonlight shining through tiny holes
+                </p>
             </div>
+
 
             <div className={classes.sliderSec}>
                 slider
