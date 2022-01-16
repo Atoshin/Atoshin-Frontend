@@ -98,7 +98,7 @@ export default function HomeSlider() {
                 <img style={{marginRight: 20,}} className={classes.vector} onClick={() => {
                     animateRef.current.goBack()
                 }}
-                     src="/icons/vector-left.png" alt=""/>
+                     src="/icons/vector-left.svg" alt=""/>
                 <div onClick={() => animateRef.current.goTo(0)}
                      className={currentSlide === 0 ? classes.selectedTap : classes.unselectedTab}>
                     Just You Name It
@@ -122,7 +122,7 @@ export default function HomeSlider() {
                 <img style={{marginLeft: 20,}} className={classes.vector} onClick={() => {
                     animateRef.current.goNext()
                 }}
-                     src="/icons/vector-right.png" alt=""/>
+                     src="/icons/vector-right.svg" alt=""/>
             </div>
             {matches &&
                 <BuyBtn/>

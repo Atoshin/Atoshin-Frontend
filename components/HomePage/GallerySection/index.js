@@ -71,6 +71,7 @@ export default function GallerySection() {
                     </div>
                     <div className={classes.galleryDescSec}>
                         <div className={classes.galleryDesc}>
+                            {!matches &&
                             <div className={classes.galleryDecsTxt}>
                                 The mission of this museum is to further flourish the art and culture of Iran. Apart
                                 from the personal desire of its founder, some of the reasons behind the construction
@@ -79,6 +80,17 @@ export default function GallerySection() {
                                 art, supporting artists, introducing the capabilities and talents of Iranian artists
                                 to the world.
                             </div>
+                            }
+                            {matches &&
+                            <div className={classes.galleryDecsTxtMob}>
+                                The mission of this museum is to further flourish the art and culture of Iran. Apart
+                                from the personal desire of its founder, some of the reasons behind the construction
+                                of this art and cultural center were, creating a context where different ideas could
+                                meet, working toward the economic advancement of art, creating demand for work of
+                                art, supporting artists, introducing the capabilities and talents of Iranian artists
+                                to the world.
+                            </div>
+                            }
                             {!matches &&
                                 <ExploreBtn/>
                             }
@@ -86,12 +98,12 @@ export default function GallerySection() {
                     </div>
                 </div>
                 {!matches &&
-                    <div className={classes.galleryVidContainer}>
-                        <img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""
-                             onClick={openYouTubeModal}/>
-                        <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
-                             onClick={openYouTubeModal}/>
-                    </div>
+                <div className={classes.galleryVidContainer}>
+                    <img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""
+                         onClick={openYouTubeModal}/>
+                    <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
+                         onClick={openYouTubeModal}/>
+                </div>
                 }
                 {matches &&
                     <ExploreBtn/>
