@@ -1,10 +1,10 @@
-import styles from "../styles/ShowAsset/ShowAsset.module.scss";
+import styles from "../../styles/ShowAsset/ShowAsset.module.scss";
 import {Button, Fade, useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
-import ImagesModal from "../components/ShowAsset/ImagesModal";
+import ImagesModal from "../../components/ShowAsset/ImagesModal";
 import {useState} from "react";
-import OwnersModal from "../components/ShowAsset/OwnersModal";
-import HistoryModal from "../components/ShowAsset/HistoryModal";
+import OwnersModal from "../../components/ShowAsset/OwnersModal";
+import HistoryModal from "../../components/ShowAsset/HistoryModal";
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import styled from "@emotion/styled";
 import * as React from "react";
@@ -16,7 +16,7 @@ const longText = `30 fractions belong to DDGallery and 70 fractions can be trade
 
 
 
-export default function ShowAsset() {
+export default function Asset() {
     const [openImages, setOpenImages] = useState(false)
     const [openOwners, setOpenOwners] = useState(false)
     const [openHistory, setOpenHistory] = useState(false)
