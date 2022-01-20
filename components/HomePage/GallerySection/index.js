@@ -100,8 +100,8 @@ export default function GallerySection({gallery}) {
                 }
             </div>
             <div className={classes.galleryBottomSec}>
-                {gallery.medias.map(({url}) => {
-                    return <div datasrc={url} style={{
+                {gallery.medias.map(({url}, idx) => {
+                    return <div key={idx} datasrc={url} style={{
                         backgroundImage: `url("${url}")`,
                         backgroundSize: 'cover',
                         backgroundPosition: "center",

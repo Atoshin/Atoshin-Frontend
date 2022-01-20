@@ -2,7 +2,7 @@ import * as React from 'react';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import classes from "../../styles/ShowAsset/ShowAsset.module.scss";
-
+import Zoom from "react-img-zoom";
 
 export default function ImagesModal(props) {
     const {open, setOpen} = props;
@@ -27,7 +27,15 @@ export default function ImagesModal(props) {
                 </div>
             </div>
             <div className={classes.main}>
-                <img className={classes.modalMainImg} src="/images/starry-night-main.png" alt=""/>
+                <div className={classes.modalMainImg}>
+                    <Zoom
+                        img="/images/starry-night-main.png"
+                        zoomScale={2}
+                        width={698}
+                        height={469}
+                    />
+                </div>
+                {/*<img className={classes.modalMainImg} src="/images/starry-night-main.png" alt=""/>*/}
                 <div className={classes.dialogBody}>
                     <div className={classes.otherImgesContainer}>
                         {images.map((image, idx) => {

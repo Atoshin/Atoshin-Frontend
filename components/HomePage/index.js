@@ -1,6 +1,4 @@
 import classes from '../../styles/HomePage/HomePage.module.scss'
-import {Button, useMediaQuery} from "@mui/material";
-import {useTheme} from "@mui/material/styles";
 //TODO change all <img/> elements with next <Image/>
 import ArtistsSlider from "./ArtistsSlider";
 import HomeSlider from "./HomeSlider";

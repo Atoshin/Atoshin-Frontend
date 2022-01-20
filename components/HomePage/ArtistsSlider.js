@@ -6,10 +6,9 @@ import {useMediaQuery} from "@mui/material";
 import {useRef} from "react";
 
 export default function ArtistsSlider({artists}) {
-    console.log(artists)
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
-    const sliderRef = useRef()
+    const sliderRef = useRef();
 
 
     return <div className={classes.artistMainSec}>
@@ -34,9 +33,9 @@ export default function ArtistsSlider({artists}) {
                    transitionDuration={500}
                    duration={5000}>
                 {artists.map(artist => {
-                    return <div className={classes.artist}>
-                        <img src={artist.avatar_url} alt=""/>
-                        <p>{artist.full_name}</p>
+                    return <div key={artist.id} className={classes.artist}>
+                        <img src={artist.avatarUrl} alt=""/>
+                        <p>{artist.fullName}</p>
                     </div>
                 })}
             </Slide>
