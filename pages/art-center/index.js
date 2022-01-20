@@ -1,12 +1,41 @@
 import classes from '../../styles/ArtCenter/artCenter.module.scss'
+import dynamic from "next/dynamic";
+import {Slide} from "react-slideshow-image";
+import 'react-slideshow-image/dist/styles.css';
+import {useTheme} from "@mui/material/styles";
+import {useMediaQuery} from "@mui/material";
+import {useEffect, useRef} from "react";
 
 export default function ArtCenter() {
+    const galleryImages = [
+        "images/img_7.png",
+        "images/img_7.png",
+        "images/img_7.png",
+        "images/img_7.png",
+        "images/img_7.png",
+        "images/img_7.png",
+    ]
+
+    const Map = dynamic(() => {
+        console.log('hi')
+        return import('../../components/ArtCenters/Map')
+    }, {ssr: false})
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const gallerySliderRef = useRef()
+    const relatedSliderRef = useRef()
+
+    useEffect(() => {
+        let marker = document.getElementsByClassName('leaflet-marker-icon')[0];
+        console.log(marker)
+        // marker.src = marker.src.slice(0, 65)
+    }, [])
+
 
     return (
-        <div>
-
+        <>
             <div className={classes.mainImgSec}>
-                <div className={classes.mainImg}></div>
+                <img src="images/img_6.png" className={classes.mainImg}/>
             </div>
 
             <div className={classes.headerSection}>
@@ -46,19 +75,40 @@ export default function ArtCenter() {
                     </div>
 
                     <p className={classes.text}>
-                        Painter, musician and performance artist Reza Derakshani was born in Sangsar, in the northeast of Iran. He grew up in a great black tent on the top of a mountain, among horses and fields of blue and yellow wild flowers. Reza moved from the study of constellations of light made by moonlight shining through tiny holes
+                        Painter, musician and performance artist Reza Derakshani was born in Sangsar, in the northeast
+                        of Iran. He grew up in a great black tent on the top of a mountain, among horses and fields of
+                        blue and yellow wild flowers. Reza moved from the study of constellations of light made by
+                        moonlight shining through tiny holes
                     </p>
                 </div>
 
 
                 <p className={classes.text2}>
-                    Painter, musician and performance artist Reza Derakshani was born in Sangsar, in the northeast of Iran. He grew up in a great black tent on the top of a mountain, among horses and fields of blue and yellow wild flowers. Reza moved from the study of constellations of light made by moonlight shining through tiny holes
+                    Painter, musician and performance artist Reza Derakshani was born in Sangsar, in the northeast of
+                    Iran. He grew up in a great black tent on the top of a mountain, among horses and fields of blue and
+                    yellow wild flowers. Reza moved from the study of constellations of light made by moonlight shining
+                    through tiny holes
                 </p>
             </div>
 
 
             <div className={classes.sliderSec}>
-                slider
+                <Slide ref={gallerySliderRef} autoplay={true} easing={"ease"} slidesToShow={matches ? 2 : 5}
+                       infinite={true}
+                       arrows={false}
+                       slidesToScroll={1}
+                       transitionDuration={500}
+                       duration={5000}>
+                    {galleryImages.map((img, key) => {
+                        return <div key={key} style={{
+                            backgroundImage: `url("${img}")`,
+                            height: 220,
+                            width: 220,
+                            backgroundPosition: "center",
+                            backgroundSize: "cover"
+                        }}/>
+                    })}
+                </Slide>
             </div>
 
             <div className={classes.detailsSec}>
@@ -83,21 +133,96 @@ export default function ArtCenter() {
                         <td></td>
                     </tr>
                 </div>
-
                 <div className={classes.map}>
-                    map
+                    <Map/>
                 </div>
             </div>
-
             <div className={classes.relatedSec}>
                 <div className={classes.relatedTitle}>
                     Related to gallery
                 </div>
                 <div className={classes.slider2}>
-                    slider
+                    <Slide ref={relatedSliderRef} autoplay={true} easing={"ease"} slidesToShow={matches ? 2 : 5}
+                           infinite={true}
+                           arrows={false}
+                           slidesToScroll={1}
+                           transitionDuration={500}
+                           duration={5000}>
+                        <div className={classes.card}>
+                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+                            <div className={classes.relatedDescription}>
+                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
+                                <p className={classes.relatedDescDesc}>
+                                    Derakshani’s passion for beauty and his nuanced
+                                </p>
+                            </div>
+                        </div>
+                        <div className={classes.card}>
+                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+                            <div className={classes.relatedDescription}>
+                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
+                                <p className={classes.relatedDescDesc}>
+                                    Derakshani’s passion for beauty and his nuanced
+                                </p>
+                            </div>
+                        </div>
+                        <div className={classes.card}>
+                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+                            <div className={classes.relatedDescription}>
+                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
+                                <p className={classes.relatedDescDesc}>
+                                    Derakshani’s passion for beauty and his nuanced
+                                </p>
+                            </div>
+                        </div>
+                        <div className={classes.card}>
+                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+                            <div className={classes.relatedDescription}>
+                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
+                                <p className={classes.relatedDescDesc}>
+                                    Derakshani’s passion for beauty and his nuanced
+                                </p>
+                            </div>
+                        </div>
+                        <div className={classes.card}>
+                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+                            <div className={classes.relatedDescription}>
+                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
+                                <p className={classes.relatedDescDesc}>
+                                    Derakshani’s passion for beauty and his nuanced
+                                </p>
+                            </div>
+                        </div>
+                        <div className={classes.card}>
+                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+                            <div className={classes.relatedDescription}>
+                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
+                                <p className={classes.relatedDescDesc}>
+                                    Derakshani’s passion for beauty and his nuanced
+                                </p>
+                            </div>
+                        </div>
+                        <div className={classes.card}>
+                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+                            <div className={classes.relatedDescription}>
+                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
+                                <p className={classes.relatedDescDesc}>
+                                    Derakshani’s passion for beauty and his nuanced
+                                </p>
+                            </div>
+                        </div>
+                        <div className={classes.card}>
+                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+                            <div className={classes.relatedDescription}>
+                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
+                                <p className={classes.relatedDescDesc}>
+                                    Derakshani’s passion for beauty and his nuanced
+                                </p>
+                            </div>
+                        </div>
+                    </Slide>
                 </div>
             </div>
-
-        </div>
+        </>
     )
 }
