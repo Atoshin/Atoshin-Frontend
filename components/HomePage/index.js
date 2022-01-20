@@ -6,13 +6,14 @@ import ArtistsSlider from "./ArtistsSlider";
 import HomeSlider from "./HomeSlider";
 import GallerySection from "./GallerySection";
 
-export default function HomePage() {
+export default function HomePage({artists, gallery, assets}) {
+
 
     return <>
         <div className={classes.main}>
-            <HomeSlider/>
-            <GallerySection/>
-            <ArtistsSlider/>
+            <HomeSlider assets={assets}/>
+            <GallerySection gallery={gallery}/>
+            <ArtistsSlider artists={artists}/>
         </div>
     </>
 }

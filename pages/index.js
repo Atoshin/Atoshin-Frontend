@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import styles from '../styles/Home/Home.module.scss'
 import HomePage from "../components/HomePage";
+import axios from "axios";
 
-export default function Home() {
+export default function Home(props) {
     return (
         <div className={styles.main}>
             <div className={styles.container}>
@@ -12,7 +13,7 @@ export default function Home() {
                     <link rel="icon" href="/favicon.ico"/>
                 </Head>
                 <main className={styles.main}>
-                <HomePage/>
+                    <HomePage {...props}/>
                 </main>
 
 
@@ -31,4 +32,22 @@ export default function Home() {
             </div>
         </div>
     )
+}
+
+
+export async function getServerSideProps(ctx) {
+    const {
+        data: {
+            assets,
+            gallery,
+            artists
+        }
+    } = await axios.get(`${process.env.BASE_URL}/api/home?assetsToShow=5&artistsToShow=5&gallery=1`)
+    return {
+        props: {
+            assets,
+            gallery,
+            artists
+        }
+    }
 }

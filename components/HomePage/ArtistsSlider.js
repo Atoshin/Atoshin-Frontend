@@ -5,8 +5,8 @@ import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import {useRef} from "react";
 
-export default function ArtistsSlider() {
-
+export default function ArtistsSlider({artists}) {
+    console.log(artists)
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const sliderRef = useRef()
@@ -28,36 +28,22 @@ export default function ArtistsSlider() {
             <img className={classes.vectorLeft} onClick={() => {
                 sliderRef.current.goNext()
             }}
-                 src="/icons/vector-left.png" alt=""/>
+                 src="/icons/vector-left.svg" alt=""/>
             <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={false}
                    slidesToScroll={1}
                    transitionDuration={500}
                    duration={5000}>
-                <div className={classes.artist}>
-                    <img src="/images/artists/Ahmad-Nasrollahi.jpg" alt=""/>
-                    <p>Ahmad Nasrollahi</p>
-                </div>
-                <div className={classes.artist}>
-                    <img src="/images/artists/Farideh-Lashai.jpg" alt=""/>
-                    <p>Farideh Lashai</p>
-                </div>
-                <div className={classes.artist}>
-                    <img src="/images/artists/Kambiz-Sabri.jpg" alt=""/>
-                    <p>Kambiz Sabri</p>
-                </div>
-                <div className={classes.artist}>
-                    <img src="/images/artists/Reza-Derakhshani.jpg" alt=""/>
-                    <p>Reza Derakhshani</p>
-                </div>
-                <div className={classes.artist}>
-                    <img src="/images/artists/Sahand-Hesamiyan.jpg" alt=""/>
-                    <p>Sahand Hesamiyan</p>
-                </div>
+                {artists.map(artist => {
+                    return <div className={classes.artist}>
+                        <img src={artist.avatar_url} alt=""/>
+                        <p>{artist.full_name}</p>
+                    </div>
+                })}
             </Slide>
             <img className={classes.vectorRight} onClick={() => {
                 sliderRef.current.goBack()
             }}
-                 src="/icons/vector-right.png" alt=""/>
+                 src="/icons/vector-right.svg" alt=""/>
         </div>
     </div>
 }
