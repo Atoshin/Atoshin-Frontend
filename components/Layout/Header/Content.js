@@ -10,6 +10,7 @@ import Web3 from "web3";
 import {setAddress, setBalance} from "../../../redux/slices/accountSlice";
 import {ethers} from "ethers";
 import {useTheme} from "@mui/material/styles";
+import {useRouter} from "next/router";
 
 export default function HeaderContent({setDrawerMenu}) {
     const dispatch = useDispatch()
@@ -59,7 +60,7 @@ export default function HeaderContent({setDrawerMenu}) {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
-
+    const router = useRouter()
 
     const [openModal, setOpenModal] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -76,6 +77,14 @@ export default function HeaderContent({setDrawerMenu}) {
         setAnchorEl(null);
     };
 
+    const ActiveLink = ({title, href}) => {
+        console.log(href, router.pathname)
+        if (href === router.pathname) {
+            return <li className={classes.marketplaceItemActive}>{title}</li>
+        }else{
+            return <li className={classes.marketplaceItem}>{title}</li>
+        }
+    }
 
     return <>
         {matches ?
@@ -114,7 +123,7 @@ export default function HeaderContent({setDrawerMenu}) {
                         </div>
                         <ul className={classes.menuContainer}>
                             <Link href={"/marketplace"}>
-                                <li className={classes.marketplaceItem}>Marketplace</li>
+                                <ActiveLink title={'Marketplace'} href={"/marketplace"}/>
                             </Link>
                             <li>Art Centers</li>
                             <li>Artists</li>

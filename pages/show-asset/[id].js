@@ -5,18 +5,15 @@ import ImagesModal from "../../components/ShowAsset/ImagesModal";
 import {useState} from "react";
 import OwnersModal from "../../components/ShowAsset/OwnersModal";
 import HistoryModal from "../../components/ShowAsset/HistoryModal";
-import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
-import styled from "@emotion/styled";
 import * as React from "react";
-
-
+import axios from "axios";
 
 
 const longText = `30 fractions belong to DDGallery and 70 fractions can be traded`;
 
 
-
-export default function Asset() {
+export default function ShowAsset({asset}) {
+    console.log(asset)
     const [openImages, setOpenImages] = useState(false)
     const [openOwners, setOpenOwners] = useState(false)
     const [openHistory, setOpenHistory] = useState(false)
@@ -37,27 +34,26 @@ export default function Asset() {
                 <div className={styles.topMainSec}>
                     <div className={styles.topLeftMainSec}>
                         <div className={styles.titleSec}>
-                            <div className={styles.artworkTitle}>
-                                Starry Night
-                            </div>
+                            <div className={styles.artworkTitle}>{asset.title}</div>
                             <div className={styles.artistNameSec}>
                                 <div className={styles.artistText}>
                                     Artist
                                 </div>
                                 <div className={styles.artistName}>
-                                    Vincent Van Gogh
+                                    {asset.artistName}
                                 </div>
                             </div>
                         </div>
                         {matches &&
-                        <div className={styles.artworkMainImgSec}>
-                            <img className={styles.artworkMainImg} src="/images/starry-night-main.png" alt=""/>
-                        </div>
+                            <div className={styles.artworkMainImgSec}>
+                                <img className={styles.artworkMainImg}
+                                     src={asset.medias.find(media => media.main === 1).url} alt=""/>
+                            </div>
                         }
                         {matches &&
-                        <div className={styles.saleEndDateMob}>
-                            Sale ends in December 11, 2021
-                        </div>
+                            <div className={styles.saleEndDateMob}>
+                                Sale ends in December 11, 2021
+                            </div>
                         }
                         <div className={styles.saleMainSec}>
 
@@ -98,20 +94,25 @@ export default function Asset() {
                             <div className={styles.fractionsLeftTxt}>
                                 Fractions left
                                 {!matches &&
-                                <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)} className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                                    <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
+                                         className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                                 }
-                                    <Fade in={tooltip}>
-                                        <div className={styles.fractionsTooltip}>
-                                            30 fractions belong to DDGallery and 70 fractions can be traded
-                                            <div className={styles.arrow}></div>
-                                        </div>
-                                    </Fade>
+                                <Fade in={tooltip}>
+                                    <div className={styles.fractionsTooltip}>
+                                        {(asset.totalFractions * asset.ownershipPercentage) / 100} fractions belong to
+                                        the gallery
+                                        and {((asset.totalFractions * asset.ownershipPercentage) / 100) - asset.totalFractions} fractions
+                                        can be traded
+                                        <div className={styles.arrow}></div>
+                                    </div>
+                                </Fade>
                             </div>
                             <div className={styles.fractionsLeftAmount}>
-                                34/100
+                                {asset.soldFractions}/{asset.totalFractions}
                             </div>
                             {matches &&
-                            <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)} className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                                <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
+                                     className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                             }
                         </div>
                         <div className={styles.priceMainSec}>
@@ -120,7 +121,7 @@ export default function Asset() {
                                     Price
                                 </div>
                                 <div className={styles.priceAmount}>
-                                    0.4 ETH
+                                    {asset.price} ETH
                                 </div>
                             </div>
                             <Button className={styles.BuyBtn}>
@@ -130,63 +131,19 @@ export default function Asset() {
                     </div>
                     <div className={styles.topRightMainSec} onClick={() => setOpenImages(true)}>
                         <div className={styles.artworkMainImgSec}>
-                            <img className={styles.artworkMainImg} src="/images/starry-night-main.png" alt=""/>
+                            <img className={styles.artworkMainImg}
+                                 src={asset.medias.find(media => media.main === 1).url} alt=""/>
                         </div>
                         <div className={styles.artworkOtherImgSec}>
-
-                            <div style={{
-                                backgroundImage: 'url("/images/starry-night-main.png")',
-                                width: 93.39,
-                                height: 93.39,
-                                backgroundPosition: 'center'
-                            }}>
-                            </div>
-                            <div style={{
-                                backgroundImage: 'url("/images/starry-night-main.png")',
-                                width: 93.39,
-                                height: 93.39,
-                                backgroundPosition: 'center'
-                            }}>
-                            </div>
-                            <div style={{
-                                backgroundImage: 'url("/images/DD-gallery-main.jpg")',
-                                width: 93.39,
-                                height: 93.39,
-                                backgroundPosition: 'center'
-                            }}>
-                            </div>
-                            <div style={{
-                                backgroundImage: 'url("/images/DD-gallery-main.jpg")',
-                                width: 93.39,
-                                height: 93.39,
-                                backgroundPosition: 'center'
-                            }}>
-                            </div>
-                            <div style={{
-                                backgroundImage: 'url("/images/DD-gallery-main.jpg")',
-                                width: 93.39,
-                                height: 93.39,
-                                backgroundPosition: 'center'
-                            }}>
-                            </div>
-                            <div style={{
-                                backgroundImage: 'url("/images/DD-gallery-main.jpg")',
-                                width: 93.39,
-                                height: 93.39,
-                                backgroundPosition: 'center'
-                            }}>
-                            </div>
-
-
-                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
-                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
-                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
-                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
-                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
-                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
-                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
-                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
-                            {/*<img className={styles.artworkOtherImg} src="/images/starry-night-second.png" alt=""/>*/}
+                            {asset.medias.map(({url}) => {
+                                return <div style={{
+                                    backgroundImage: `url("${url}")`,
+                                    width: 93.39,
+                                    height: 93.39,
+                                    backgroundPosition: 'center',
+                                    backgroundSize: "cover"
+                                }}/>
+                            })}
                         </div>
                     </div>
                 </div>
@@ -199,11 +156,7 @@ export default function Asset() {
                             <div className={styles.backStoryTitle}>
                                 Back story
                             </div>
-                            <div className={styles.backStoryTxt}>
-                                is an oil-on-canvas painting by the Dutch Post-Impressionist painter Vincent van Gogh.
-                                Painted in June 1889, it depicts the view from the east-facing window of his asylum room
-                                at Saint-Rémy
-                            </div>
+                            <div className={styles.backStoryTxt} dangerouslySetInnerHTML={{__html: asset.bio}}/>
                             <div className={styles.backStoryDivider}>
                             </div>
                             <div className={styles.backStoryBottomSec}>
@@ -211,16 +164,14 @@ export default function Asset() {
                                     <div className={styles.backStoryArtistTxt}>
                                         Artist
                                     </div>
-                                    <div className={styles.backStoryArtistName}>
-                                        Vincent Van Gogh
-                                    </div>
+                                    <div className={styles.backStoryArtistName}>{asset.artistName}</div>
                                 </div>
                                 <div className={styles.originalOwnerSec}>
                                     <div className={styles.originalOwnerTxt}>
-                                        Orginal owner
+                                        Original owner
                                     </div>
                                     <div className={styles.originalOwnerName}>
-                                        DD Gallery
+                                        {asset.gallery.name}
                                     </div>
                                 </div>
                             </div>
@@ -236,7 +187,7 @@ export default function Asset() {
                                     Date of creation
                                 </div>
                                 <div className={styles.detailText}>
-                                    2001
+                                    {new Date(asset.createdAt).getFullYear()}
                                 </div>
                             </div>
                             <div className={styles.detailSec}>
@@ -244,7 +195,7 @@ export default function Asset() {
                                     Materials
                                 </div>
                                 <div className={styles.detailText}>
-                                    Mixed Media on Canvas
+                                    {asset.material}
                                 </div>
                             </div>
                             <div className={styles.detailSec}>
@@ -259,9 +210,7 @@ export default function Asset() {
                                 <div className={styles.detailTitle}>
                                     Located in
                                 </div>
-                                <div className={styles.detailText}>
-                                    DD Gallery
-                                </div>
+                                <div className={styles.detailText}>{asset.gallery.name}</div>
                             </div>
                             <div className={styles.aboutArtworkDivider}>
                             </div>
@@ -269,13 +218,14 @@ export default function Asset() {
                                 <div className={styles.mintedDateSec}>
                                     Minted on Dec 8, 2021
                                 </div>
-                                <div onMouseEnter={() => setSecondTooltip(true)} onMouseOut={() => setSecondTooltip(false)} className={styles.watchArtworkSec}>
+                                <div onMouseEnter={() => setSecondTooltip(true)}
+                                     onMouseOut={() => setSecondTooltip(false)} className={styles.watchArtworkSec}>
                                     Watch artwork online
                                 </div>
                                 <Fade in={secondTooltip}>
                                     <div className={styles.watchOnlineTooltip}>
                                         This item is only active for owners
-                                        <div className={styles.arrow2}></div>
+                                        <div className={styles.arrow2}/>
                                     </div>
                                 </Fade>
                             </div>
@@ -402,4 +352,21 @@ export default function Asset() {
             </div>
         </>
     )
+}
+
+
+export async function getServerSideProps({query}) {
+    const assetId = query.id;
+
+    const {
+        data: {
+            asset
+        }
+    } = await axios.get(`${process.env.BASE_URL}/api/show-asset/${assetId}`)
+
+    return {
+        props: {
+            asset
+        }
+    }
 }

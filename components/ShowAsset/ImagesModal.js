@@ -39,7 +39,7 @@ export default function ImagesModal(props) {
                 <div className={classes.dialogBody}>
                     <div className={classes.otherImgesContainer}>
                         {images.map((image, idx) => {
-                            return <div style={{
+                            return <div key={idx} style={{
                                 backgroundImage: `url(${image})`,
                                 width: 120,
                                 height: 120,

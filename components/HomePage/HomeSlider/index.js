@@ -42,13 +42,14 @@ export default function HomeSlider({assets}) {
         return asset.medias.find(media => media.main === 1).url
     })
 
+
     return <div className={classes.topMainSec}>
         <div className={visibleDesc ? classes.topLeftSecFadeIn : classes.topLeftSecFadeOut}>
             <div className={classes.artWorkName}>
                 {currentDesc.title}
             </div>
             <div className={classes.artistName}>
-                By {currentDesc.artist_name}
+                By {currentDesc.artistName}
             </div>
             <div className={classes.artworkInfo} dangerouslySetInnerHTML={{__html: currentDesc.bio}}/>
             {!matches &&

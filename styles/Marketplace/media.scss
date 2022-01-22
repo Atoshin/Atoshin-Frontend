@@ -1,12 +1,38 @@
 @media (max-width: 600px) {
   .mainTitle {
-    margin-top: 100px;
+    margin-top: 10px;
     font-weight: 550;
     font-size: 30px;
     line-height: 36px;
   }
   .card {
-    width: 100%;
+    width: 312px;
+    height: 489px;
   }
 
+  .total{
+    font-size: 14px;
+  }
+
+  .items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .leftNumbers{
+    font-size: 14px;
+  }
+
+  .fractionsLeft{
+    font-size: 12px;
+  }
+
+  .artistLabel {
+    font-size: 12px;
+  }
+
+  .artworkName {
+    font-size: 16px;
+  }
 }
