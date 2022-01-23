@@ -93,7 +93,7 @@ export default function ArtCenter() {
 
 
             <div className={classes.sliderSec}>
-                <Slide ref={gallerySliderRef} autoplay={true} easing={"ease"} slidesToShow={matches ? 2 : 5}
+                <Slide ref={gallerySliderRef} autoplay={true} easing={"ease"} slidesToShow={matches ? 1 : 4}
                        infinite={true}
                        arrows={false}
                        slidesToScroll={1}
@@ -142,7 +142,7 @@ export default function ArtCenter() {
                     Related to gallery
                 </div>
                 <div className={classes.slider2}>
-                    <Slide ref={relatedSliderRef} autoplay={true} easing={"ease"} slidesToShow={matches ? 2 : 5}
+                    <Slide ref={relatedSliderRef} autoplay={true} easing={"ease"} slidesToShow={matches ? 1 : 4}
                            infinite={true}
                            arrows={false}
                            slidesToScroll={1}
