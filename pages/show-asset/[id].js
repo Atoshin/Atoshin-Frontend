@@ -7,19 +7,18 @@ import OwnersModal from "../../components/ShowAsset/OwnersModal";
 import HistoryModal from "../../components/ShowAsset/HistoryModal";
 import * as React from "react";
 import axios from "axios";
-
-
-const longText = `30 fractions belong to DDGallery and 70 fractions can be traded`;
+import {TimeDifference} from "../../components/ShowAsset/TimeDifference";
 
 
 export default function ShowAsset({asset}) {
-    console.log(asset)
     const [openImages, setOpenImages] = useState(false)
     const [openOwners, setOpenOwners] = useState(false)
     const [openHistory, setOpenHistory] = useState(false)
     const [tooltip, setTooltip] = useState(false)
     const [secondTooltip, setSecondTooltip] = useState(false)
-
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -52,43 +51,17 @@ export default function ShowAsset({asset}) {
                         }
                         {matches &&
                             <div className={styles.saleEndDateMob}>
-                                Sale ends in December 11, 2021
+                                Sale ends
+                                in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
                             </div>
                         }
                         <div className={styles.saleMainSec}>
 
                             <div className={styles.saleEndDate}>
-                                Sale ends in December 11, 2021
+                                Sale ends
+                                in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
                             </div>
-                            <div className={styles.timeCounterSec}>
-                                <div className={styles.counterSec}>
-                                    <div className={styles.counterNum}>
-                                        02
-                                    </div>
-                                    <div className={styles.counterTitle}>
-                                        Days
-                                    </div>
-                                </div>
-                                <div className={styles.counterSec}>
-                                    <div className={styles.counterNum}>
-                                        18
-                                    </div>
-                                    <div className={styles.counterTitle}>
-                                        Hours
-                                    </div>
-                                </div>
-                                <div className={styles.counterSec}>
-                                    <div className={styles.counterNum}>
-                                        40
-                                    </div>
-                                    <div className={styles.counterTitle}>
-                                        Minutes
-                                    </div>
-                                </div>
-                            </div>
-                            {/*<div className={styles.saleEndDate}>*/}
-                            {/*    Sale ends in December 11, 2021*/}
-                            {/*</div>*/}
+                            <TimeDifference time={asset.endDate}/>
                         </div>
                         <div className={styles.fractionsMainSec}>
                             <div className={styles.fractionsLeftTxt}>
@@ -108,7 +81,7 @@ export default function ShowAsset({asset}) {
                                 </Fade>
                             </div>
                             <div className={styles.fractionsLeftAmount}>
-                                {asset.soldFractions}/{asset.totalFractions}
+                                {asset.totalFractions - asset.soldFractions}/{asset.totalFractions}
                             </div>
                             {matches &&
                                 <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
@@ -203,7 +176,7 @@ export default function ShowAsset({asset}) {
                                     Size
                                 </div>
                                 <div className={styles.detailText}>
-                                    160*130cm
+                                    {asset.size}
                                 </div>
                             </div>
                             <div className={styles.detailSec}>
