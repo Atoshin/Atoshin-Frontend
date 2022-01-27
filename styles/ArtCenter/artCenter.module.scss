@@ -75,6 +75,28 @@
   height: 239px;
   text-align: center;
   align-items: center;
+  //justify-content: center;
+  //width: 100%;
+  //margin: auto;
+}
+
+.slider {
+}
+
+.SlideImg {
+  height: 150px;
+  width: 150px;
+  background-position: center;
+  background-size: cover;
+  align-items: center;
+}
+
+.slideImg2 {
+  height: 220px;
+  width: 220px;
+  background-position: center;
+  background-size: cover;
+  align-items: center;
 }
 
 .detailsSec {

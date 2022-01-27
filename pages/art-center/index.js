@@ -21,7 +21,11 @@ export default function ArtCenter() {
         return import('../../components/ArtCenters/Map')
     }, {ssr: false})
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const matches = useMediaQuery(theme.breakpoints.down('xs'));
+    const matches1 = useMediaQuery(theme.breakpoints.down('sm'));
+    const matches2 = useMediaQuery(theme.breakpoints.down('md'));
+    const matches3 = useMediaQuery(theme.breakpoints.down('lg'));
+    const matches4 = useMediaQuery(theme.breakpoints.down('xl'));
     const gallerySliderRef = useRef()
     const relatedSliderRef = useRef()
 
@@ -93,20 +97,27 @@ export default function ArtCenter() {
 
 
             <div className={classes.sliderSec}>
-                <Slide ref={gallerySliderRef} autoplay={true} easing={"ease"} slidesToShow={matches ? 1 : 4}
+                <Slide ref={gallerySliderRef}
+                       autoplay={true}
+                       cssClass={classes.slider}
+                       easing={"ease"}
+                       slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
                        infinite={true}
                        arrows={false}
                        slidesToScroll={1}
                        transitionDuration={500}
-                       duration={5000}>
+                       duration={5000}
+                >
                     {galleryImages.map((img, key) => {
-                        return <div key={key} style={{
-                            backgroundImage: `url("${img}")`,
-                            height: 220,
-                            width: 220,
-                            backgroundPosition: "center",
-                            backgroundSize: "cover"
-                        }}/>
+                        return (
+                            <div
+                                key={key}
+                                className={(matches1 || matches2) ? classes.SlideImg : classes.slideImg2}
+                                style={{
+                                    backgroundImage: `url("${img}")`
+                                }}
+                            />
+                        )
                     })}
                 </Slide>
             </div>
