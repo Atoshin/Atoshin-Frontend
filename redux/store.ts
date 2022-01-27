@@ -1,9 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit'
 import accountReducer from './slices/accountSlice'
+import artCenterMap from './slices/artCenterMap'
 
 export const store = configureStore({
     reducer: {
-        account: accountReducer
+        account: accountReducer,
+        artCenterMap: artCenterMap
     },
 })
 

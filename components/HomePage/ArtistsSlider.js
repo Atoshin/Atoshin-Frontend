@@ -4,6 +4,7 @@ import 'react-slideshow-image/dist/styles.css'
 import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import {useRef} from "react";
+import {useRouter} from "next/router";
 
 export default function ArtistsSlider({artists}) {
     const theme = useTheme();
@@ -33,8 +34,8 @@ export default function ArtistsSlider({artists}) {
                    transitionDuration={500}
                    duration={5000}>
                 {artists.map(artist => {
-                    return <div key={artist.id} className={classes.artist}>
-                        <img src={artist.avatarUrl} alt=""/>
+                    return <div onClick={() => router.push(`/artist-profile/${artist.id}`)} key={artist.id} className={classes.artist}>
+                        <img src={artist.medias.find(media => media.main === 1).url} alt=""/>
                         <p>{artist.fullName}</p>
                     </div>
                 })}

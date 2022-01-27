@@ -1,26 +1,37 @@
-import {useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import Backdrop from '@mui/material/Backdrop';
 
-export default function YoutubeVideoModal({open, setOpen}) {
+export default function YoutubeVideoModal({open, setOpen, video}) {
     const ref = useRef();
     const handleClose = () => {
         setOpen(false);
-        ref.current.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+        const iframe = ref.current.children[0]
+        iframe.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
     };
 
+    useEffect(() => {
+        const backdrop = document.getElementById('mui-backdrop-ytv')
+        const iframe = backdrop.children[0]
+        iframe.width = 853
+        iframe.height = 480
+        const iframeSrc = new URL(iframe.src)
+        iframeSrc.searchParams.set('enablejsapi', '1')
+        iframeSrc.searchParams.set("version", "3")
+        iframeSrc.searchParams.set("playerapiid", "ytplayer")
+        iframe.src = iframeSrc
+    }, [])
 
     return (
         <Backdrop
-            sx={{zIndex: (theme) => theme.zIndex.drawer + 1,
-                backgroundColor: 'rgba(0,0,0,0.75)'}}
+            sx={{
+                zIndex: (theme) => theme.zIndex.drawer + 1,
+                backgroundColor: 'rgba(0,0,0,0.75)'
+            }}
             open={open}
             onClick={handleClose}
-        >
-            <iframe ref={ref} width="853" height="480"
-                    src="https://www.youtube.com/embed/pxX1E6ohM7Q?enablejsapi=1&version=3&playerapiid=ytplayer"
-                    title="YouTube video player" frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen/>
-        </Backdrop>
+            dangerouslySetInnerHTML={{__html: video.link}}
+            id="mui-backdrop-ytv"
+            ref={ref}
+        />
     );
 }

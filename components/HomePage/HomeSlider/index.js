@@ -3,6 +3,7 @@ import {Button, useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import {useEffect, useRef, useState} from "react";
 import Slider from './Slider';
+import {useRouter} from "next/router";
 
 export default function HomeSlider({assets}) {
     const animateRef = useRef({
@@ -12,8 +13,9 @@ export default function HomeSlider({assets}) {
             }
         }
     })
+    const router = useRouter()
     const BuyBtn = () => {
-        return <Button onClick={() => setCurrentSlide(prevState => (prevState + 1))} className={classes.buyBtn}>Buy
+        return <Button onClick={() => router.push(`/show-asset/${assets[currentSlide].id}`)} className={classes.buyBtn}>Buy
             Now</Button>
     }
     const theme = useTheme();
@@ -60,7 +62,8 @@ export default function HomeSlider({assets}) {
             <div className={classes.sliderImages}>
                 {/*<Animation hover={isHovered} images={sliderImages} setImages={setSliderImages}*/}
                 {/*    currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} ref={animateRef} />*/}
-                <Slider images={sliderImages} sliderRef={animateRef} setCurrentSlide={setCurrentSlide}/>
+                <Slider assets={assets} currentSlide={currentSlide} images={sliderImages} sliderRef={animateRef}
+                        setCurrentSlide={setCurrentSlide}/>
             </div>
             <div className={classes.sliderBottomMenu}>
                 <img style={{marginRight: 20,}} className={classes.vector} onClick={() => {
