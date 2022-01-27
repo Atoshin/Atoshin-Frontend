@@ -36,7 +36,7 @@ export default function GallerySection({gallery}) {
 
     return <>
         <ImagesModal setOpen={setOpenImage} open={openImage}/>
-        <YoutubeVideoModal open={openYouTube} setOpen={setOpenYouTube}/>
+        <YoutubeVideoModal video={gallery.videoLinks[0]} open={openYouTube} setOpen={setOpenYouTube}/>
         <div className={classes.galleryMainSec}>
             <div className={classes.artCenterSec}>
                 <div className={classes.artCenterTitle}>
@@ -49,7 +49,7 @@ export default function GallerySection({gallery}) {
             {matches &&
                 <div className={classes.galleryVidContainer} onClick={openYouTubeModal}>
                     <div ref={imageRef} style={{
-                        backgroundImage: 'url("/images/DD-gallery-main.jpg")',
+                        backgroundImage: `url("${gallery.videoLinks[0].media.url}")`,
                         width: '100%',
                         height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
                         backgroundRepeat: "no-repeat",
@@ -65,7 +65,7 @@ export default function GallerySection({gallery}) {
             <div className={classes.galleryTopSec}>
                 <div className={classes.galleryDescMainSec}>
                     <div className={classes.galleryName}>
-                        <img className={classes.imgSec} src={gallery.avatar}
+                        <img className={classes.imgSec} src={gallery.medias.find(media => media.main === 1).url}
                              alt=""/>
                         {gallery.name}
                     </div>
@@ -89,8 +89,20 @@ export default function GallerySection({gallery}) {
                 </div>
                 {!matches &&
                     <div className={classes.galleryVidContainer}>
-                        <img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""
-                             onClick={openYouTubeModal}/>
+                        <div
+                            style={{
+                                backgroundImage: `url("${gallery.videoLinks[0].media.url}")`,
+                                // width: '100%',
+                                height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
+                                backgroundRepeat: "no-repeat",
+                                backgroundSize: "cover",
+                                backgroundPosition: 'center'
+                            }}
+                            className={classes.galleryMainPhoto}
+                            onClick={openYouTubeModal}
+                        />
+                        {/*<img className={classes.galleryMainPhoto} src={gallery.videoLinks[0].media.url} alt=""*/}
+                        {/*     onClick={openYouTubeModal}/>*/}
                         <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
                              onClick={openYouTubeModal}/>
                     </div>
@@ -100,7 +112,8 @@ export default function GallerySection({gallery}) {
                 }
             </div>
             <div className={classes.galleryBottomSec}>
-                {gallery.medias.map(({url}, idx) => {
+                {gallery.medias.filter(media => media.homeapagePicture === 1).map((img, idx) => {
+                    const {url} = img;
                     return <div key={idx} datasrc={url} style={{
                         backgroundImage: `url("${url}")`,
                         backgroundSize: 'cover',

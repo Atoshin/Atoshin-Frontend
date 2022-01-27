@@ -3,11 +3,13 @@ import {Slide} from "react-slideshow-image";
 import {useEffect, useRef, useState} from "react";
 import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
+import {useRouter} from "next/router";
 
-export default function Slider({images, sliderRef, setCurrentSlide}) {
+export default function Slider({images, sliderRef, setCurrentSlide, assets, currentSlide}) {
     const imageRef = useRef({
         current: {}
     })
+    const router = useRouter();
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -27,6 +29,7 @@ export default function Slider({images, sliderRef, setCurrentSlide}) {
             {
                 images.map((img, i) => (
                     <div
+                        onClick={() => router.push(`/show-asset/${assets[currentSlide].id}`)}
                         key={i}
                         className={classes.topRightSec}>
                         <div className={classes.artworkImgSec}>

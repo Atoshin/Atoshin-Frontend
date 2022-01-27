@@ -7,6 +7,8 @@ import {useMediaQuery} from "@mui/material";
 import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import {useMemo} from "react";
+import {useDispatch} from "react-redux";
+import {setCoordinates} from "../../redux/slices/artCenterMap";
 
 export default function ArtCenter({artCenter}) {
     console.log(artCenter)
@@ -27,6 +29,14 @@ export default function ArtCenter({artCenter}) {
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const gallerySliderRef = useRef()
     const relatedSliderRef = useRef()
+    const dispatch = useDispatch()
+    if (artCenter.location){
+        const location = artCenter.location
+        dispatch(setCoordinates({
+            lat: location.lat,
+            long: location.long,
+        }))
+    }
 
     useEffect(() => {
         if (!rendered) {
@@ -34,6 +44,8 @@ export default function ArtCenter({artCenter}) {
                 setRendered(true)
             }, 1000)
         } else {
+            //todo uncomment two lines below after ssr finished
+
             // let marker = document.getElementsByClassName('leaflet-marker-icon')[0];
             // marker.src = marker.src.slice(0, 65)
         }
@@ -140,11 +152,7 @@ export default function ArtCenter({artCenter}) {
                     </tr>
                     <tr>
                         <td className={classes.td1}>Address</td>
-                        <td className={classes.td2}>Iris Watson
-                            P.O. Box 283 8562 Fusce Rd.
-                            Frederick Nebraska 20620
-                            (372) 587-2335
-                        </td>
+                        <td className={classes.td2}>{artCenter.location && artCenter.location.address}</td>
                     </tr>
                     <tr>
                         <td className={classes.td1}>Location</td>
