@@ -26,11 +26,15 @@ export default function ArtCenter({artCenter}) {
         return import('../../components/ArtCenters/Map')
     }, {ssr: false}), [])
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const matches = useMediaQuery(theme.breakpoints.down('xs'));
+    const matches1 = useMediaQuery(theme.breakpoints.down('sm'));
+    const matches2 = useMediaQuery(theme.breakpoints.down('md'));
+    const matches3 = useMediaQuery(theme.breakpoints.down('lg'));
+    const matches4 = useMediaQuery(theme.breakpoints.down('xl'));
     const gallerySliderRef = useRef()
     const relatedSliderRef = useRef()
     const dispatch = useDispatch()
-    if (artCenter.location){
+    if (artCenter.location) {
         const location = artCenter.location
         dispatch(setCoordinates({
             lat: location.lat,
@@ -54,14 +58,7 @@ export default function ArtCenter({artCenter}) {
     return (
         <>
             <div className={classes.mainImgSec}>
-                <img src={() => {
-                    const media = artCenter.medias.find(media => media.main === 1)
-                    if (media) {
-                        return media.url
-                    } else {
-                        return;
-                    }
-                }} className={classes.mainImg}/>
+                <img src={artCenter.medias.find(media => media.galleryLargePicture === 1)} className={classes.mainImg}/>
             </div>
 
             <div className={classes.headerSection}>
@@ -122,8 +119,13 @@ export default function ArtCenter({artCenter}) {
             </div>
 
 
-            <div className={classes.sliderSec}>
-                <Slide ref={gallerySliderRef} autoplay={true} easing={"ease"} slidesToShow={matches ? 1 : 4}
+            <div className={matches1 || matches2 ? classes.sliderSec1 : classes.sliderSec}
+            >
+                <Slide ref={gallerySliderRef}
+                       autoplay={true}
+                       cssClass={classes.slider}
+                       easing={"ease"}
+                       slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
                        infinite={true}
                        arrows={false}
                        slidesToScroll={1}
@@ -168,85 +170,172 @@ export default function ArtCenter({artCenter}) {
                     Related to gallery
                 </div>
                 <div className={classes.slider2}>
-                    <Slide ref={relatedSliderRef} autoplay={true} easing={"ease"} slidesToShow={matches ? 1 : 4}
-                           infinite={true}
-                           arrows={false}
-                           slidesToScroll={1}
-                           transitionDuration={500}
-                           duration={5000}>
-                        <div className={classes.card}>
-                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+
+                    <Slide
+                        ref={relatedSliderRef}
+                        autoplay={true}
+                        easing={"ease"}
+                        slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 5 : 5}
+                        infinite={true}
+                        arrows={false}
+                        slidesToScroll={1}
+                        transitionDuration={500}
+                        duration={5000}
+                    >
+                        <div className={(matches1 || matches2) ? classes.card2 : classes.card}>
+                            <div
+                                className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
+                                style={{backgroundImage: `url("images/img_8.png")`}}/>
                             <div className={classes.relatedDescription}>
-                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                <p className={classes.relatedDescDesc}>
+                                <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>Derakhshani
+                                    Auction
+                                </p>
+                                <div
+                                    className={matches1 || matches2 ? classes.date : classes.date1}>
+                                    Sale ends in Dec 11, 2021
+                                </div>
+                                <p
+                                    className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}
+                                >
                                     Derakshani’s passion for beauty and his nuanced
                                 </p>
                             </div>
                         </div>
-                        <div className={classes.card}>
-                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+
+                        <div className={(matches1 || matches2) ? classes.card2 : classes.card}>
+                            <div
+                                className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
+                                style={{backgroundImage: `url("images/img_8.png")`}}/>
                             <div className={classes.relatedDescription}>
-                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                <p className={classes.relatedDescDesc}>
+                                <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>Derakhshani
+                                    Auction
+                                </p>
+                                <div
+                                    className={matches1 || matches2 ? classes.date : classes.date1}>
+                                </div>
+                                <p
+                                    className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}
+                                >
                                     Derakshani’s passion for beauty and his nuanced
                                 </p>
                             </div>
                         </div>
-                        <div className={classes.card}>
-                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+                        <div className={(matches1 || matches2) ? classes.card2 : classes.card}>
+                            <div
+                                className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
+                                style={{backgroundImage: `url("images/img_8.png")`}}/>
                             <div className={classes.relatedDescription}>
-                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                <p className={classes.relatedDescDesc}>
+                                <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>Derakhshani
+                                    Auction
+                                </p>
+                                <div
+                                    className={matches1 || matches2 ? classes.date : classes.date1}>
+                                    Sale ends in Dec 11, 2021
+                                </div>
+                                <p
+                                    className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}
+                                >
                                     Derakshani’s passion for beauty and his nuanced
                                 </p>
                             </div>
                         </div>
-                        <div className={classes.card}>
-                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+                        <div className={(matches1 || matches2) ? classes.card2 : classes.card}>
+                            <div
+                                className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
+                                style={{backgroundImage: `url("images/img_8.png")`}}/>
                             <div className={classes.relatedDescription}>
-                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                <p className={classes.relatedDescDesc}>
+                                <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>Derakhshani
+                                    Auction
+                                </p>
+                                <div
+                                    className={matches1 || matches2 ? classes.date : classes.date1}>
+                                </div>
+                                <p
+                                    className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}
+                                >
                                     Derakshani’s passion for beauty and his nuanced
                                 </p>
                             </div>
                         </div>
-                        <div className={classes.card}>
-                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+                        <div className={(matches1 || matches2) ? classes.card2 : classes.card}>
+                            <div
+                                className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
+                                style={{backgroundImage: `url("images/img_8.png")`}}/>
                             <div className={classes.relatedDescription}>
-                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                <p className={classes.relatedDescDesc}>
+                                <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>Derakhshani
+                                    Auction
+                                </p>
+                                <div
+                                    className={matches1 || matches2 ? classes.date : classes.date1}>
+                                    Sale ends in Dec 11, 2021
+                                </div>
+                                <p
+                                    className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}
+                                >
                                     Derakshani’s passion for beauty and his nuanced
                                 </p>
                             </div>
                         </div>
-                        <div className={classes.card}>
-                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+                        <div className={(matches1 || matches2) ? classes.card2 : classes.card}>
+                            <div
+                                className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
+                                style={{backgroundImage: `url("images/img_8.png")`}}/>
                             <div className={classes.relatedDescription}>
-                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                <p className={classes.relatedDescDesc}>
+                                <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>Derakhshani
+                                    Auction
+                                </p>
+                                <div
+                                    className={matches1 || matches2 ? classes.date : classes.date1}>
+                                </div>
+                                <p
+                                    className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}
+                                >
                                     Derakshani’s passion for beauty and his nuanced
                                 </p>
                             </div>
                         </div>
-                        <div className={classes.card}>
-                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+
+                        <div className={(matches1 || matches2) ? classes.card2 : classes.card}>
+                            <div
+                                className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
+                                style={{backgroundImage: `url("images/img_8.png")`}}/>
                             <div className={classes.relatedDescription}>
-                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                <p className={classes.relatedDescDesc}>
+                                <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>Derakhshani
+
+                                </p>
+                                <div
+                                    className={matches1 || matches2 ? classes.date : classes.date1}>
+                                    Sale ends in Dec 11, 2021
+                                </div>
+                                <p
+                                    className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}
+                                >
                                     Derakshani’s passion for beauty and his nuanced
                                 </p>
                             </div>
                         </div>
-                        <div className={classes.card}>
-                            <div className={classes.relatedImg} style={{backgroundImage: `url("images/img_8.png")`}}/>
+
+                        <div className={(matches1 || matches2) ? classes.card2 : classes.card}>
+                            <div
+                                className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
+                                style={{backgroundImage: `url("images/img_8.png")`}}/>
                             <div className={classes.relatedDescription}>
-                                <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                <p className={classes.relatedDescDesc}>
+                                <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>
+                                    Derakhshani
+                                </p>
+                                <div
+                                    className={matches1 || matches2 ? classes.date : classes.date1}>
+                                </div>
+                                <p
+                                    className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}
+                                >
                                     Derakshani’s passion for beauty and his nuanced
                                 </p>
                             </div>
                         </div>
+
                     </Slide>
+
                 </div>
             </div>
         </>
