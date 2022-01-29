@@ -34,11 +34,16 @@ export default function artistList() {
 
     return (
         <>
+
+            <div className={classes.ArtistTitle}>
+                Artist
+            </div>
+
             {/*<div className={classes.sortSec}>*/}
-            {/*    <div className={classes.sort}> Sort by</div>*/}
-            {/*    <div className={classes.sortList}>*/}
-            {/*        <div className={classes.sortListText}>Newest</div>*/}
-            {/*    </div>*/}
+                {/*<div className={classes.sort}> Sort by</div>*/}
+                {/*<div className={classes.sortList}>*/}
+                {/*    <div className={classes.sortListText}>Newest</div>*/}
+                {/*</div>*/}
             {/*</div>*/}
 
             <div className={classes.root}>
@@ -55,49 +60,62 @@ export default function artistList() {
                         <div className={classes.img} style={{backgroundImage: `url("images/img_8.png")`}}></div>
                         <div className={classes.imgTitle}>Reza Derakhshani</div>
                     </div>
-                </div>
-                <div className={classes.row}>
+
                     <div className={classes.item}>
-                        <div className={classes.img}></div>
+                        <div className={classes.img} style={{backgroundImage: `url("images/img_8.png")`}}></div>
                         <div className={classes.imgTitle}>Reza Derakhshani</div>
                     </div>
                     <div className={classes.item}>
-                        <div className={classes.img}></div>
+                        <div className={classes.img} style={{backgroundImage: `url("images/img_8.png")`}}></div>
                         <div className={classes.imgTitle}>Reza Derakhshani</div>
                     </div>
                     <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                </div>
-                <div className={classes.row}>
-                    <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                    <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                    <div className={classes.item}>
-                        <div className={classes.img}></div>
+                        <div className={classes.img} style={{backgroundImage: `url("images/img_8.png")`}}></div>
                         <div className={classes.imgTitle}>Reza Derakhshani</div>
                     </div>
                 </div>
-                <div className={classes.row}>
-                    <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                    <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                    <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                </div>
+                {/*<div className={classes.row}>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
+                {/*<div className={classes.row}>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
+                {/*<div className={classes.row}>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
         </>
     )

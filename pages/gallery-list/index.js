@@ -70,49 +70,77 @@ export default function galleryList() {
 
                         </div>
                     </div>
-                </div>
-                <div className={classes.row}>
+
                     <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
+                        <div className={classes.img} style={{backgroundImage: `url("images/img_10.png")`}}></div>
+                        <div className={classes.imgTitle}>DD Gallery</div>
+                        <div className={classes.itemText}>
+                            Painter, musician and performance artist Reza Derakshani was born in Sangsar, in the northeast of Iran. He grew up in a great black tent on the top of a mountain, among horses
+                            <span className={classes.more}> more</span>
+
+                        </div>
                     </div>
                     <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
+                        <div className={classes.img} style={{backgroundImage: `url("images/img_10.png")`}}></div>
+                        <div className={classes.imgTitle}>DD Gallery</div>
+                        <div className={classes.itemText}>
+                            Painter, musician and performance artist Reza Derakshani was born in Sangsar, in the northeast of Iran. He grew up in a great black tent on the top of a mountain, among horses
+                            <span className={classes.more}> more</span>
+
+                        </div>
                     </div>
                     <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                </div>
-                <div className={classes.row}>
-                    <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                    <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                    <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                </div>
-                <div className={classes.row}>
-                    <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                    <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                    <div className={classes.item}>
-                        <div className={classes.img}></div>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
+                        <div className={classes.img} style={{backgroundImage: `url("images/img_10.png")`}}></div>
+                        <div className={classes.imgTitle}>DD Gallery</div>
+                        <div className={classes.itemText}>
+                            Painter, musician and performance artist Reza Derakshani was born in Sangsar, in the northeast of Iran. He grew up in a great black tent on the top of a mountain, among horses
+                            <span className={classes.more}> more</span>
+
+                        </div>
                     </div>
                 </div>
+                {/*<div className={classes.row}>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
+                {/*<div className={classes.row}>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
+                {/*<div className={classes.row}>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*    <div className={classes.item}>*/}
+                {/*        <div className={classes.img}></div>*/}
+                {/*        <div className={classes.imgTitle}>Reza Derakhshani</div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
         </>
     )
