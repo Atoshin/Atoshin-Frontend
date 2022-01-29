@@ -1,5 +1,6 @@
 import styles from "../../styles/ShowAsset/ShowAsset.module.scss";
 import {useEffect, useState} from "react";
+import classes from "../../styles/Marketplace/Marketplace.module.scss";
 
 export function TimeDifference({time}) {
     const [rendered, setRendered] = useState(false)
@@ -70,30 +71,6 @@ export function TimeDifference({time}) {
     }, [calculatedTime])
 
 
-    return <div className={styles.timeCounterSec}>
-        <div className={styles.counterSec}>
-            <div className={styles.counterNum}>
-                {calculatedTime.day}
-            </div>
-            <div className={styles.counterTitle}>
-                Days
-            </div>
-        </div>
-        <div className={styles.counterSec}>
-            <div className={styles.counterNum}>
-                {calculatedTime.hour}
-            </div>
-            <div className={styles.counterTitle}>
-                Hours
-            </div>
-        </div>
-        <div className={styles.counterSec}>
-            <div className={styles.counterNum}>
-                {calculatedTime.min}
-            </div>
-            <div className={styles.counterTitle}>
-                Minutes
-            </div>
-        </div>
-    </div>
+    return <p className={classes.leftNumbers}>{calculatedTime.day}d {calculatedTime.hour}h {calculatedTime.min}m</p>
+
 }

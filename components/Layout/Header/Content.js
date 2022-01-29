@@ -78,11 +78,10 @@ export default function HeaderContent({setDrawerMenu}) {
     };
 
     const ActiveLink = ({title, href}) => {
-        console.log(href, router.pathname)
         if (href === router.pathname) {
-            return <li className={classes.marketplaceItemActive}>{title}</li>
-        }else{
-            return <li className={classes.marketplaceItem}>{title}</li>
+            return <li onClick={() => router.push('/marketplace')} className={classes.marketplaceItemActive}>{title}</li>
+        } else {
+            return <li onClick={() => router.push('/marketplace')} className={classes.marketplaceItem}>{title}</li>
         }
     }
 
@@ -122,9 +121,7 @@ export default function HeaderContent({setDrawerMenu}) {
                             </Link>
                         </div>
                         <ul className={classes.menuContainer}>
-                            <Link href={"/marketplace"}>
-                                <ActiveLink title={'Marketplace'} href={"/marketplace"}/>
-                            </Link>
+                            <ActiveLink title={'Marketplace'} href={"/marketplace"}/>
                             <li>Art Centers</li>
                             <li>Artists</li>
                             <li>About NFT</li>
