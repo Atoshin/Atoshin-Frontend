@@ -1,0 +1,90 @@
+@media (max-width: 600px) {
+  .bioSec {
+    width: 100%;
+    height: auto;
+    line-height: 25px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #232323;
+    margin-top: 0px;
+    margin-left: -20px;
+    //margin-right: -20px;
+  }
+
+
+  .tabTitles {
+    width: 78px!important;
+    color: #232323!important;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .tabTitles:focus {
+    width: 190px;
+    color: #232323;
+    font-size: 14px;
+    font-weight: 500!important;
+    //border-bottom: 2px solid #232323!important;
+  }
+
+  .table {
+    margin-top: 37px!important;
+  }
+
+  .auctionImg {
+    width: 102px;
+    height: 128px;
+    margin-bottom: 8px;
+  }
+
+  .auctionTitle {
+    color: #232323;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .auctionDate {
+    color: #232323;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 32px;
+  }
+
+  .soldPrice {
+    color: #232323;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 46px;
+  }
+
+  .auctionPriceDetails {
+    color: #232323;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .auctionArtDetail {
+    color: #232323;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .auctionMainSec {
+    margin-left: -20px;
+    margin-top: -20px;
+  }
+
+  .auctionRow {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #EEEEEE;
+  }
+
+}

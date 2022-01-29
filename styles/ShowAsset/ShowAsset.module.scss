@@ -1,7 +1,7 @@
 .showAssetMain {
   display: flex;
   flex-direction: column;
-  margin-top: 180px;
+  margin-top: 103px;
 }
 
 .topMainSec {
@@ -82,6 +82,8 @@
 }
 
 .counterNum {
+  display: flex;
+  justify-content: center;
   color: #232323;
   font-size: 32px;
   font-weight: 500;
@@ -788,6 +790,21 @@
   left:20px
 }
 
+
+.showMoreImg {
+  //display: flex;
+  //justify-content: center;
+  //align-content: center;
+  //margin: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showMoreImgInner {
+  position: absolute;
+}
 @import "media";
 
 

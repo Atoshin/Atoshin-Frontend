@@ -27,6 +27,7 @@
     "react-img-zoom": "^0.1.0",
     "react-leaflet": "^3.2.4",
     "react-redux": "^7.2.6",
+    "react-responsive-image-grid": "^1.1.0",
     "react-slideshow-image": "^3.6.0",
     "redux": "^4.1.2",
     "swr": "^1.1.1",
@@ -36,6 +37,8 @@
   "devDependencies": {
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.4",
+    "prop-types": "^15.8.1",
+    "react-swipeable": "^6.2.0",
     "sass": "^1.43.5",
     "typescript": "^4.5.3"
   }

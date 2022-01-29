@@ -34,12 +34,12 @@ export default function artistList() {
 
     return (
         <>
-            <div className={classes.sortSec}>
-                <div className={classes.sort}> Sort by</div>
-                <div className={classes.sortList}>
-                    <div className={classes.sortListText}>Newest</div>
-                </div>
-            </div>
+            {/*<div className={classes.sortSec}>*/}
+            {/*    <div className={classes.sort}> Sort by</div>*/}
+            {/*    <div className={classes.sortList}>*/}
+            {/*        <div className={classes.sortListText}>Newest</div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             <div className={classes.root}>
                 <div className={classes.row}>
