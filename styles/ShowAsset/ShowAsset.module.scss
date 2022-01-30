@@ -683,6 +683,9 @@
     justify-content: space-between;
     overflow: scroll;
   }
+  .dialogBody::-webkit-scrollbar {
+    display: none !important;
+  }
 
   .otherImgesContainer::-webkit-scrollbar {
     display: none;

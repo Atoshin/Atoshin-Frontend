@@ -23,10 +23,27 @@ export default function ShowAsset({asset}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
+    const ArtworkSubImages = () => {
+        return [asset.medias.map(({url}) => {
+            return <div style={{
+                backgroundImage: `url("${url}")`,
+                width: 93.39,
+                height: 93.39,
+                backgroundPosition: 'center',
+                backgroundSize: "cover"
+            }}/>
+        }), (asset.videoLinks[0] && asset.videoLinks[0].media) && <div style={{
+            backgroundImage: `url("${asset.videoLinks[0].media.url}")`,
+            width: 93.39,
+            height: 93.39,
+            backgroundPosition: 'center',
+            backgroundSize: "cover"
+        }}/>]
+    }
 
     return (
         <>
-            <ImagesModal open={openImages} setOpen={setOpenImages}/>
+            <ImagesModal open={openImages} setOpen={setOpenImages} images={asset.medias} title={asset.title} videos={asset.videoLinks}/>
             <OwnersModal open={openOwners} setOpen={setOpenOwners}/>
             <HistoryModal open={openHistory} setOpen={setOpenHistory}/>
             <div className={styles.showAssetMain}>
@@ -56,7 +73,6 @@ export default function ShowAsset({asset}) {
                             </div>
                         }
                         <div className={styles.saleMainSec}>
-
                             <div className={styles.saleEndDate}>
                                 Sale ends
                                 in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
@@ -76,7 +92,7 @@ export default function ShowAsset({asset}) {
                                         the gallery
                                         and {((asset.totalFractions * asset.ownershipPercentage) / 100) - asset.totalFractions} fractions
                                         can be traded
-                                        <div className={styles.arrow}></div>
+                                        <div className={styles.arrow}/>
                                     </div>
                                 </Fade>
                             </div>
@@ -108,15 +124,7 @@ export default function ShowAsset({asset}) {
                                  src={asset.medias.find(media => media.main === 1).url} alt=""/>
                         </div>
                         <div className={styles.artworkOtherImgSec}>
-                            {asset.medias.map(({url}) => {
-                                return <div style={{
-                                    backgroundImage: `url("${url}")`,
-                                    width: 93.39,
-                                    height: 93.39,
-                                    backgroundPosition: 'center',
-                                    backgroundSize: "cover"
-                                }}/>
-                            })}
+                            <ArtworkSubImages/>
                         </div>
                     </div>
                 </div>

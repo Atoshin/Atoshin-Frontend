@@ -1,17 +1,17 @@
-import classes from "../styles/ArtistProfile/ArtistProfile.module.scss";
+import classes from "../../../styles/ArtistProfile/ArtistProfile.module.scss";
 import {Button, Fade, useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import {useRef, useState} from "react";
 import * as React from "react";
 import {Slide} from "react-slideshow-image";
 import 'react-slideshow-image/dist/styles.css';
-import ArtistTabPanel from "../components/ArtistProfile/ArtistTabPanel";
+import ArtistTabPanel from "../../../components/ArtistProfile/ArtistTabPanel";
+import axios from "axios";
 
-export default function ArtistProfile() {
-
+export default function Artist({artist}) {
+    console.log(artist)
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
-    const gallerySliderRef = useRef()
     const relatedSliderRef = useRef()
 
 
@@ -20,29 +20,27 @@ export default function ArtistProfile() {
             <div className={classes.main}>
                 <div className={classes.topSec}>
                     {matches &&
-                    <div className={classes.artistImgSec}>
-                        <img style={{width: 312, height: 242}} src="images/artists/reza-deralkshani-thumbnail.png"
-                             alt=""/>
-                    </div>
+                        <div className={classes.artistImgSec}>
+                            <div style={{
+                                width: 312,
+                                height: 242,
+                                backgroundImage: `url("${artist.medias.find(media => media.main === 1).url}")`,
+                                backgroundPosition: "center",
+                                backgroundSize: "cover"
+                            }}
+                            />
+                        </div>
                     }
                     <div className={classes.artistDetailSec}>
-                        <div className={classes.artistName}>
-                            Reza Derakhshani
-                        </div>
-                        <div className={classes.artistWebsite}>
-                            rezaderakshani.com
-                        </div>
+                        <div className={classes.artistName}>{artist.fullName}</div>
+                        <div className={classes.artistWebsite}>{artist.website}</div>
                         <div className={classes.rankingMainSec}>
-                            <div className={classes.rankingText}>
+                            <a target="_blank" href={artist.rankingLink} className={classes.rankingText}>
                                 Ranking
-                            </div>
+                            </a>
                             <div className={classes.rankingSec}>
-                                <div className={classes.globalRank}>
-                                    Top 100,000.Global
-                                </div>
-                                <div className={classes.domesticRank}>
-                                    Top 100.Iran, Islamic Republic Of
-                                </div>
+                                <div className={classes.globalRank}>{artist.worldRanking}</div>
+                                <div className={classes.domesticRank}>{artist.iranRanking}</div>
                             </div>
                         </div>
                         <div className={classes.newsMainSec}>
@@ -50,23 +48,30 @@ export default function ArtistProfile() {
                                 <div className={classes.newsText}>
                                     News
                                 </div>
-                                <div className={classes.newsLink}>
-                                    www.sophiacontemporary.com
-                                </div>
+                                {artist.news.map((newsSingular, idx) => {
+                                    return <a target="_blank" href={newsSingular.link} className={classes.newsLink}>
+                                        {newsSingular.title}
+                                    </a>
+                                })}
                             </div>
-                            <img src="icons/link-out.svg" alt=""/>
+                            {/*<img src="/icons/link-out.svg" alt=""/>*/}
                         </div>
                     </div>
                     {!matches &&
-                    <div className={classes.artistImgSec}>
-                        <img style={{width: 455, height: 450}} src="images/artists/reza-deralkshani-thumbnail.png"
-                             alt=""/>
-                    </div>
+                        <div className={classes.artistImgSec}>
+                            <div style={{
+                                width: 455,
+                                height: 450,
+                                backgroundImage: `url("${artist.medias.find(media => media.main === 1).url}")`,
+                                backgroundPosition: "center",
+                                backgroundSize: "cover"
+                            }}/>
+                        </div>
                     }
 
                 </div>
                 <div className={classes.midMainSec}>
-                    <ArtistTabPanel/>
+                    <ArtistTabPanel artist={artist}/>
                 </div>
                 <div className={classes.relatedSec}>
                     <div className={classes.relatedTitle}>
@@ -166,4 +171,20 @@ export default function ArtistProfile() {
         </>
     )
 
+}
+
+export async function getServerSideProps({query}) {
+    const {id, artistName} = query;
+
+    const {
+        data: {
+            artist
+        }
+    } = await axios.get(`${process.env.BASE_URL}/api/artist-profile/${id}`)
+
+    return {
+        props: {
+            artist
+        }
+    }
 }

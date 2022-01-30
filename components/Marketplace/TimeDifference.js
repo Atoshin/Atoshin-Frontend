@@ -43,14 +43,31 @@ export function TimeDifference({time}) {
     function calculateTimeDifference() {
         time = new Date(time)
         const now = new Date()
-        const timeDifference = msToTime(time - now)
+        const diffMs = (time - now);
+        const diffDays = Math.floor(diffMs / 86400000);
+        const diffHrs = Math.floor((diffMs % 86400000) / 3600000);
+        const diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000);
         let day;
         let hour;
         let min;
 
-        day = `${timeDifference.days}`
-        hour = `${timeDifference.hours}`
-        min = `${timeDifference.minutes}`
+        if (diffDays < 10){
+            day = `0${diffDays}`
+        }else{
+            day = `${diffDays}`
+        }
+
+        if (diffHrs < 10){
+            hour = `0${diffHrs}`
+        }else{
+            hour = `${diffHrs}`
+        }
+
+        if (diffMins < 10){
+            min = `0${diffMins}`
+        }else{
+            min = `${diffMins}`
+        }
 
         setCalculatedTime({
             day,

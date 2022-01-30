@@ -4,6 +4,7 @@ import {useTheme} from "@mui/material/styles";
 import {useEffect, useRef, useState} from "react";
 import Slider from './Slider';
 import {useRouter} from "next/router";
+import Image from 'next/image';
 
 export default function HomeSlider({assets}) {
     const animateRef = useRef({
@@ -66,7 +67,7 @@ export default function HomeSlider({assets}) {
                         setCurrentSlide={setCurrentSlide}/>
             </div>
             <div className={classes.sliderBottomMenu}>
-                <img style={{marginRight: 20,}} className={classes.vector} onClick={() => {
+                <Image width={10.29} height={20.46} style={{marginRight: 20,}} className={classes.vector} onClick={() => {
                     animateRef.current.goBack()
                 }}
                      src="/icons/vector-left.svg" alt=""/>
@@ -76,7 +77,7 @@ export default function HomeSlider({assets}) {
                         {asset.title}
                     </div>
                 })}
-                <img style={{marginLeft: 20,}} className={classes.vector} onClick={() => {
+                <Image width={10.29} height={20.46} style={{marginLeft: 20,}} className={classes.vector} onClick={() => {
                     animateRef.current.goNext()
                 }}
                      src="/icons/vector-right.svg" alt=""/>
