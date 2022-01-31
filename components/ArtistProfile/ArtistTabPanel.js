@@ -43,7 +43,7 @@ function a11yProps(index) {
     };
 }
 
-export default function BasicTabs() {
+export default function BasicTabs({artist}) {
     const [value, setValue] = React.useState(0);
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -66,40 +66,11 @@ export default function BasicTabs() {
                 </Tabs>
             </Box>
             <ArtistTabPanel value={value} index={0}>
-                <div className={classes.bioSec}>
-                    Painter, musician and performance artist Reza Derakshani was born in Sangsar, in the northeast
-                    of Iran. He grew up in a great black tent on the top of a mountain, among horses and fields of
-                    blue and yellow wild flowers. Reza moved from the study of constellations of light made by
-                    moonlight shining through tiny holes in the tent to the study of mathematics in high school, and
-                    visual arts in Tehran and the U.S.
-                    The long and circuitous road of Derakshani’s artistic and geographic migration eventually found
-                    him in New York City, where he made a home and worked for sixteen years. He later moved to
-                    Italy, eventually returning to Tehran for seven years before leaving his homeland once again in
-                    2010 and settling in Dubai. He moved back to USA a few years later.
-                    Derakshani currently lives and works between Austin USA and St Petersburg Russiaz
-                    Reza Derakshani’s first solo show at the age of nineteen was held at the renowned Ghandriz Art
-                    Gallery in Tehran. Following this auspicious debut, he participated in many group and solo
-                    exhibits at other leading art galleries. His work has been widely exhibited and collected
-                    internationally.
-                    Derakshani’s passion for beauty and his nuanced perception of the light and dark of the world
-                    has found expression in many different forms, from music, graphic design, book illustration,
-                    film animation and calligraphy to studies in traditional and western classical visual arts. Yet
-                    it is within contemporary painting that he has experienced true liberation and fulfillment as an
-                    artist. The challenging techniques, innovation and mental stimulation inherent to contemporary
-                    art have led him to create a meditative solitude that results in pure freedom of
-                    self-expression. Reza’s work, known for its diversity and originality, has gained recognition
-                    for its fearless exploration of form and style, and the skill and vision necessary to merge an
-                    unbending tradition with a wild contemporary spirit.
-                    A vocalist, multi-instrumentalist, composer and performer, Derakshani does not limit his musical
-                    journey to giving concerts, but joins his music with his visual art. Reza’s music serves as a
-                    compliment to his art at many of his openings, in the form of performance that calls to mind
-                    painting with sounds.
-
-                </div>
+                <div className={classes.bioSec} dangerouslySetInnerHTML={{__html: artist.bio}}/>
             </ArtistTabPanel>
             <ArtistTabPanel value={value} index={1}>
                 <div className={classes.artworkSec}>
-                    <ArtworkImages/>
+                    <ArtworkImages artworks={artist.medias}/>
                 </div>
             </ArtistTabPanel>
             <ArtistTabPanel value={value} index={2}>

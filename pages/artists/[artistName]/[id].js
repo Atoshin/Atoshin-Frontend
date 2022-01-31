@@ -7,9 +7,10 @@ import {Slide} from "react-slideshow-image";
 import 'react-slideshow-image/dist/styles.css';
 import ArtistTabPanel from "../../../components/ArtistProfile/ArtistTabPanel";
 import axios from "axios";
+import shortenWords from "../../../functions/shortenWords";
+import extractContent from "../../../functions/getHtmlInnerText";
 
 export default function Artist({artist}) {
-    console.log(artist)
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const relatedSliderRef = useRef()
@@ -33,7 +34,7 @@ export default function Artist({artist}) {
                     }
                     <div className={classes.artistDetailSec}>
                         <div className={classes.artistName}>{artist.fullName}</div>
-                        <div className={classes.artistWebsite}>{artist.website}</div>
+                        <a href={artist.website} target="_blank" className={classes.artistWebsite}>{artist.website}</a>
                         <div className={classes.rankingMainSec}>
                             <a target="_blank" href={artist.rankingLink} className={classes.rankingText}>
                                 Ranking
@@ -84,86 +85,16 @@ export default function Artist({artist}) {
                                slidesToScroll={1}
                                transitionDuration={500}
                                duration={5000}>
-                            <div className={classes.card}>
-                                <div className={classes.relatedImg}
-                                     style={{backgroundImage: `url("images/img_8.png")`}}/>
-                                <div className={classes.relatedDescription}>
-                                    <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                    <p className={classes.relatedDescDesc}>
-                                        Derakshani’s passion for beauty and his nuanced
-                                    </p>
+                            {artist.assets.map((asset, idx) => {
+                                return <div key={idx} className={classes.card}>
+                                    <div className={classes.relatedImg}
+                                         style={{backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`}}/>
+                                    <div className={classes.relatedDescription}>
+                                        <p className={classes.relatedDescTitle}>{asset.title}</p>
+                                        <p className={classes.relatedDescDesc}>{shortenWords(extractContent(asset.bio), 60) + '...'}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className={classes.card}>
-                                <div className={classes.relatedImg}
-                                     style={{backgroundImage: `url("images/img_8.png")`}}/>
-                                <div className={classes.relatedDescription}>
-                                    <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                    <p className={classes.relatedDescDesc}>
-                                        Derakshani’s passion for beauty and his nuanced
-                                    </p>
-                                </div>
-                            </div>
-                            <div className={classes.card}>
-                                <div className={classes.relatedImg}
-                                     style={{backgroundImage: `url("images/img_8.png")`}}/>
-                                <div className={classes.relatedDescription}>
-                                    <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                    <p className={classes.relatedDescDesc}>
-                                        Derakshani’s passion for beauty and his nuanced
-                                    </p>
-                                </div>
-                            </div>
-                            <div className={classes.card}>
-                                <div className={classes.relatedImg}
-                                     style={{backgroundImage: `url("images/img_8.png")`}}/>
-                                <div className={classes.relatedDescription}>
-                                    <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                    <p className={classes.relatedDescDesc}>
-                                        Derakshani’s passion for beauty and his nuanced
-                                    </p>
-                                </div>
-                            </div>
-                            <div className={classes.card}>
-                                <div className={classes.relatedImg}
-                                     style={{backgroundImage: `url("images/img_8.png")`}}/>
-                                <div className={classes.relatedDescription}>
-                                    <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                    <p className={classes.relatedDescDesc}>
-                                        Derakshani’s passion for beauty and his nuanced
-                                    </p>
-                                </div>
-                            </div>
-                            <div className={classes.card}>
-                                <div className={classes.relatedImg}
-                                     style={{backgroundImage: `url("images/img_8.png")`}}/>
-                                <div className={classes.relatedDescription}>
-                                    <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                    <p className={classes.relatedDescDesc}>
-                                        Derakshani’s passion for beauty and his nuanced
-                                    </p>
-                                </div>
-                            </div>
-                            <div className={classes.card}>
-                                <div className={classes.relatedImg}
-                                     style={{backgroundImage: `url("images/img_8.png")`}}/>
-                                <div className={classes.relatedDescription}>
-                                    <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                    <p className={classes.relatedDescDesc}>
-                                        Derakshani’s passion for beauty and his nuanced
-                                    </p>
-                                </div>
-                            </div>
-                            <div className={classes.card}>
-                                <div className={classes.relatedImg}
-                                     style={{backgroundImage: `url("images/img_8.png")`}}/>
-                                <div className={classes.relatedDescription}>
-                                    <p className={classes.relatedDescTitle}>Derakhshani Auction</p>
-                                    <p className={classes.relatedDescDesc}>
-                                        Derakshani’s passion for beauty and his nuanced
-                                    </p>
-                                </div>
-                            </div>
+                            })}
                         </Slide>
                     </div>
                 </div>

@@ -1,7 +1,8 @@
 import classes from '../../styles/ArtistList/artistList.module.scss'
 import {useTheme} from "@mui/material/styles";
+import axios from "axios";
 
-export default function Artists() {
+export default function Artists({artists}) {
 
     const theme = useTheme();
 
@@ -12,42 +13,26 @@ export default function Artists() {
             </div>
             <div className={classes.root}>
                 <div className={classes.row}>
-                    <div className={classes.item}>
-                        <div className={classes.img} style={{backgroundImage: `url("images/img_8.png")`}}/>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                    <div className={classes.item}>
-                        <div className={classes.img} style={{backgroundImage: `url("images/img_8.png")`}}/>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                    <div className={classes.item}>
-                        <div className={classes.img} style={{backgroundImage: `url("images/img_8.png")`}}/>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-
-                    <div className={classes.item}>
-                        <div className={classes.img} style={{backgroundImage: `url("images/img_8.png")`}}/>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                    <div className={classes.item}>
-                        <div className={classes.img} style={{backgroundImage: `url("images/img_8.png")`}}/>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
-                    <div className={classes.item}>
-                        <div className={classes.img} style={{backgroundImage: `url("images/img_8.png")`}}/>
-                        <div className={classes.imgTitle}>Reza Derakhshani</div>
-                    </div>
+                    {artists.map(artist => {
+                        return <div className={classes.item}>
+                            <div className={classes.img}
+                                 style={{backgroundImage: `url("${artist.media.find(media => media.main === 1).url}")`}}/>
+                            <div className={classes.imgTitle}>{artist.fullName}</div>
+                        </div>
+                    })}
                 </div>
             </div>
         </>
     )
 }
 
-// export async function getServerSideProps(ctx){
-//
-//     const {data: {}}
-//
-//     return {
-//         props: {}
-//     }
-// }
+export async function getServerSideProps(ctx) {
+
+    const {data: {artists}} = await axios.get(`${process.env.BASE_URL}/api/artists`);
+
+    return {
+        props: {
+            artists
+        }
+    }
+}
