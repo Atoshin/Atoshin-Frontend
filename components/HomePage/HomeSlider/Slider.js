@@ -50,7 +50,7 @@ export default function Slider({images, sliderRef, setCurrentSlide, assets, curr
                                         Price
                                     </div>
                                     <div className={classes.amountSec}>
-                                        {assets[currentSlide].price} ETH
+                                        {assets[i].price} ETH
                                     </div>
                                 </div>
                                 <div className={classes.quantSec}>
@@ -58,11 +58,11 @@ export default function Slider({images, sliderRef, setCurrentSlide, assets, curr
                                         Quantity
                                     </div>
                                     <div className={classes.amountSec}>
-                                        {assets[currentSlide].totalFractions} Tokens
+                                        {assets[i].totalFractions} Tokens
                                     </div>
                                 </div>
                             </div>
-                            <TimeDifference time={assets[currentSlide].endDate}/>
+                            <TimeDifference time={assets[i].endDate}/>
                         </div>
                     </ div>
                 ))
