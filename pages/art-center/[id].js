@@ -83,7 +83,7 @@ export default function ArtCenter({artCenter}) {
                         </div>
                     }
                     {artCenter.instagram &&
-                        <div style={{cursor: "pointer"}}>
+                        <div style={{cursor: "pointer"}} onClick={() => window.open(artCenter.instagram, '_blank')}>
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -97,12 +97,12 @@ export default function ArtCenter({artCenter}) {
 
             <div className={classes.paragraphSec}>
                 <div className={classes.firstTextPart}>
-                    <div className={classes.textImg}>
+                    {/*<div className={classes.textImg}>*/}
                         {/*<svg className={classes.svg} width="120" height="72" viewBox="0 0 120 72" fill="none"*/}
                         {/*     xmlns="http://www.w3.org/2000/svg">*/}
                         {/*    <rect width="120" height="72" rx="12" fill="#E0E7EC"/>*/}
                         {/*</svg>*/}
-                    </div>
+                    {/*</div>*/}
 
                     <div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio}}/>
                 </div>

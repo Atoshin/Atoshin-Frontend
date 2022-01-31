@@ -29,7 +29,7 @@ export default function galleryList({galleries}) {
                                      style={{backgroundImage: `url("${gallery.medias.find(media => media.galleryLargePicture === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover"}}/>
                                 <div className={classes.imgTitle}>{gallery.name}</div>
                                 <div className={classes.itemText}>
-                                    {shortenWords(gallery.summary, 60)}
+                                    {shortenWords(gallery.summary, 180)}
                                     <span className={classes.more}> more</span>
                                 </div>
                             </div>

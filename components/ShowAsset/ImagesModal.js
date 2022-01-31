@@ -3,10 +3,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import classes from "../../styles/ShowAsset/ShowAsset.module.scss";
 import Zoom from "react-img-zoom";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useMemo, useRef, useState} from "react";
 
 export default function ImagesModal({open, setOpen, images, title, videos}) {
-    const [mainImg, setImg] = useState(images.find(img => img.main === 1).url)
+    const [mainImg, setImg] = useState(images.find(img => img.main === 1))
     const ref = useRef();
     const handleClose = () => {
         setOpen(false);
@@ -17,6 +17,7 @@ export default function ImagesModal({open, setOpen, images, title, videos}) {
     }
 
     useEffect(() => {
+        console.log(mainImg)
         const backdrop = document.getElementById('ytv-asset')
         if (backdrop) {
             const iframe = backdrop.children[0]

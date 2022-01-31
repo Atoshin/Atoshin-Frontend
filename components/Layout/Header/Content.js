@@ -78,10 +78,20 @@ export default function HeaderContent({setDrawerMenu}) {
     };
 
     const ActiveLink = ({title, href}) => {
-        if (href === router.pathname) {
-            return <li onClick={() => router.push('/marketplace')} className={classes.marketplaceItemActive}>{title}</li>
+        if (title === "Marketplace") {
+            if (href === router.pathname) {
+                return <li onClick={() => router.push('/marketplace')}
+                           className={classes.marketplaceItemActive}>{title}</li>
+            } else {
+                return <li onClick={() => router.push('/marketplace')} className={classes.marketplaceItem}>{title}</li>
+            }
         } else {
-            return <li onClick={() => router.push('/marketplace')} className={classes.marketplaceItem}>{title}</li>
+            if (href === router.pathname) {
+                return <li onClick={() => router.push(href)}
+                           className={classes.itemActive}>{title}</li>
+            } else {
+                return <li onClick={() => router.push(href)}>{title}</li>
+            }
         }
     }
 
@@ -122,8 +132,8 @@ export default function HeaderContent({setDrawerMenu}) {
                         </div>
                         <ul className={classes.menuContainer}>
                             <ActiveLink title={'Marketplace'} href={"/marketplace"}/>
-                            <li>Art Centers</li>
-                            <li>Artists</li>
+                            <ActiveLink title={'Art Centers'} href={"/gallery-list"}/>
+                            <ActiveLink title={'Artists'} href={"/artists"}/>
                             <li>About NFT</li>
                             {address ?
                                 <div className={classes.avatarIconSec} onClick={handleClick}>

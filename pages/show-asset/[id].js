@@ -8,7 +8,7 @@ import HistoryModal from "../../components/ShowAsset/HistoryModal";
 import * as React from "react";
 import axios from "axios";
 import {TimeDifference} from "../../components/ShowAsset/TimeDifference";
-
+import Link from 'next/link';
 
 export default function ShowAsset({asset}) {
     const [openImages, setOpenImages] = useState(false)
@@ -24,26 +24,39 @@ export default function ShowAsset({asset}) {
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
     const ArtworkSubImages = () => {
-        return [asset.medias.map(({url}) => {
-            return <div style={{
-                backgroundImage: `url("${url}")`,
+        if (asset.medias.length > 6) {
+            return asset.medias.slice(0, 6).map(({url}) => {
+                return <div style={{
+                    backgroundImage: `url("${url}")`,
+                    width: 93.39,
+                    height: 93.39,
+                    backgroundPosition: 'center',
+                    backgroundSize: "cover"
+                }}/>
+            })
+        } else {
+            return [asset.medias.map(({url}) => {
+                return <div style={{
+                    backgroundImage: `url("${url}")`,
+                    width: 93.39,
+                    height: 93.39,
+                    backgroundPosition: 'center',
+                    backgroundSize: "cover"
+                }}/>
+            }), (asset.videoLinks[0] && asset.videoLinks[0].media) && <div style={{
+                backgroundImage: `url("${asset.videoLinks[0].media.url}")`,
                 width: 93.39,
                 height: 93.39,
                 backgroundPosition: 'center',
                 backgroundSize: "cover"
-            }}/>
-        }), (asset.videoLinks[0] && asset.videoLinks[0].media) && <div style={{
-            backgroundImage: `url("${asset.videoLinks[0].media.url}")`,
-            width: 93.39,
-            height: 93.39,
-            backgroundPosition: 'center',
-            backgroundSize: "cover"
-        }}/>]
+            }}/>]
+        }
     }
 
     return (
         <>
-            <ImagesModal open={openImages} setOpen={setOpenImages} images={asset.medias} title={asset.title} videos={asset.videoLinks}/>
+            <ImagesModal open={openImages} setOpen={setOpenImages} images={asset.medias} title={asset.title}
+                         videos={asset.videoLinks}/>
             <OwnersModal open={openOwners} setOpen={setOpenOwners}/>
             <HistoryModal open={openHistory} setOpen={setOpenHistory}/>
             <div className={styles.showAssetMain}>
@@ -55,9 +68,12 @@ export default function ShowAsset({asset}) {
                                 <div className={styles.artistText}>
                                     Artist
                                 </div>
-                                <div className={styles.artistName}>
-                                    {asset.artistName}
-                                </div>
+                                <Link
+                                    href={`/artists/${asset.artist.fullName.toLowerCase().replace(/ /g, '-')}/${asset.artist.id}`}>
+                                    <div className={styles.artistName}>
+                                        {asset.artistName}
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                         {matches &&
@@ -90,7 +106,7 @@ export default function ShowAsset({asset}) {
                                     <div className={styles.fractionsTooltip}>
                                         {(asset.totalFractions * asset.ownershipPercentage) / 100} fractions belong to
                                         the gallery
-                                        and {((asset.totalFractions * asset.ownershipPercentage) / 100) - asset.totalFractions} fractions
+                                        and {(asset.totalFractions - (asset.totalFractions * asset.ownershipPercentage) / 100)} fractions
                                         can be traded
                                         <div className={styles.arrow}/>
                                     </div>

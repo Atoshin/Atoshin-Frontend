@@ -9,6 +9,7 @@ import ArtistTabPanel from "../../../components/ArtistProfile/ArtistTabPanel";
 import axios from "axios";
 import shortenWords from "../../../functions/shortenWords";
 import extractContent from "../../../functions/getHtmlInnerText";
+import Link from 'next/link';
 
 export default function Artist({artist}) {
     const theme = useTheme();
@@ -79,21 +80,23 @@ export default function Artist({artist}) {
                         Related to Artist
                     </div>
                     <div className={classes.slider2}>
-                        <Slide ref={relatedSliderRef} autoplay={true} easing={"ease"} slidesToShow={matches ? 2 : 5}
+                        <Slide ref={relatedSliderRef} autoplay={artist.assets.length >= 4} easing={"ease"} slidesToShow={artist.assets. length < 4 ? artist.assets.length : (matches ? 2 : 4)}
                                infinite={true}
                                arrows={false}
                                slidesToScroll={1}
                                transitionDuration={500}
                                duration={5000}>
                             {artist.assets.map((asset, idx) => {
-                                return <div key={idx} className={classes.card}>
-                                    <div className={classes.relatedImg}
-                                         style={{backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`}}/>
-                                    <div className={classes.relatedDescription}>
-                                        <p className={classes.relatedDescTitle}>{asset.title}</p>
-                                        <p className={classes.relatedDescDesc}>{shortenWords(extractContent(asset.bio), 60) + '...'}</p>
+                                return <Link href={`/show-asset/${asset.id}`}>
+                                    <div key={idx} className={classes.card}>
+                                        <div className={classes.relatedImg}
+                                             style={{backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover"}}/>
+                                        <div className={classes.relatedDescription}>
+                                            <p className={classes.relatedDescTitle}>{asset.title}</p>
+                                            <p className={classes.relatedDescDesc}>{shortenWords(extractContent(asset.bio), 60) + '...'}</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             })}
                         </Slide>
                     </div>
