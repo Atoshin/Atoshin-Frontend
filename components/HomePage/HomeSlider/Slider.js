@@ -1,9 +1,10 @@
 import classes from '../../../styles/HomeSlider/HomeSlider.module.scss'
 import {Slide} from "react-slideshow-image";
-import {useEffect, useRef, useState} from "react";
+import {useRef} from "react";
 import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import {useRouter} from "next/router";
+import {TimeDifference} from "../TimeDifference";
 
 export default function Slider({images, sliderRef, setCurrentSlide, assets, currentSlide}) {
     const imageRef = useRef({
@@ -49,7 +50,7 @@ export default function Slider({images, sliderRef, setCurrentSlide, assets, curr
                                         Price
                                     </div>
                                     <div className={classes.amountSec}>
-                                        765 ETH
+                                        {assets[currentSlide].price} ETH
                                     </div>
                                 </div>
                                 <div className={classes.quantSec}>
@@ -57,36 +58,11 @@ export default function Slider({images, sliderRef, setCurrentSlide, assets, curr
                                         Quantity
                                     </div>
                                     <div className={classes.amountSec}>
-                                        12 Token
+                                        {assets[currentSlide].totalFractions} Tokens
                                     </div>
                                 </div>
                             </div>
-                            <div className={classes.dayHourMinSec}>
-                                <div className={classes.Sec}>
-                                    <div className={classes.Num}>
-                                        02
-                                    </div>
-                                    <div className={classes.Txt}>
-                                        Day
-                                    </div>
-                                </div>
-                                <div className={classes.Sec}>
-                                    <div className={classes.Num}>
-                                        18
-                                    </div>
-                                    <div className={classes.Txt}>
-                                        Hour
-                                    </div>
-                                </div>
-                                <div className={classes.Sec}>
-                                    <div className={classes.Num}>
-                                        40
-                                    </div>
-                                    <div className={classes.Txt}>
-                                        Min
-                                    </div>
-                                </div>
-                            </div>
+                            <TimeDifference time={assets[currentSlide].endDate}/>
                         </div>
                     </ div>
                 ))
