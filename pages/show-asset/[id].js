@@ -161,15 +161,19 @@ export default function ShowAsset({asset}) {
                                     <div className={styles.backStoryArtistTxt}>
                                         Artist
                                     </div>
-                                    <div className={styles.backStoryArtistName}>{asset.artistName}</div>
+                                    <Link href={`/artists/${asset.artist.fullName.toLowerCase().replace(/ /g, '-')}/${asset.artist.id}`}>
+                                        <div className={styles.backStoryArtistName}>{asset.artistName}</div>
+                                    </Link>
                                 </div>
                                 <div className={styles.originalOwnerSec}>
                                     <div className={styles.originalOwnerTxt}>
                                         Original owner
                                     </div>
-                                    <div className={styles.originalOwnerName}>
-                                        {asset.gallery.name}
-                                    </div>
+                                    <Link href={`/art-center/${asset.gallery.id}`}>
+                                        <div className={styles.originalOwnerName}>
+                                            {asset.gallery.name}
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

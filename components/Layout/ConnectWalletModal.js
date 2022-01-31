@@ -22,7 +22,7 @@ export default function ConnectWalletModal({open, setOpen, handleClose, setIsLog
             const address = await signer.getAddress();
             if (address) {
                 setIsLoggedIn(true)
-                const response = await axios.post('http://localhost:8000/api/v1/wallets/store', {
+                const response = await axios.post(`${process.env.BACKEND_BASE_URL}/wallets/store`, {
                     walletAddress: address
                 });
                 setOpen(false);
