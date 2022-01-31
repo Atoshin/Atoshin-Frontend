@@ -3,7 +3,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import classes from "../../styles/ShowAsset/ShowAsset.module.scss";
 import Zoom from "react-img-zoom";
-import {useEffect, useMemo, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 export default function ImagesModal({open, setOpen, images, title, videos}) {
     const [mainImg, setImg] = useState(images.find(img => img.main === 1))
@@ -14,6 +14,7 @@ export default function ImagesModal({open, setOpen, images, title, videos}) {
             const iframe = ref.current.children[0];
             iframe.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
         }
+        setImg(images.find(img => img.main === 1))
     }
 
     let ZoomImg = () => (<Zoom
@@ -35,9 +36,6 @@ export default function ImagesModal({open, setOpen, images, title, videos}) {
             iframeSrc.searchParams.set("version", "3");
             iframeSrc.searchParams.set("playerapiid", "ytplayer");
             iframe.src = iframeSrc;
-
-            console.log(initialSrc)
-
         } else {
             ZoomImg = () => (<Zoom
                 img={mainImg.url}

@@ -231,20 +231,20 @@
 }
 
 .exploreBtn {
-  background-color: #232323;
-  color: white;
+  background-color: #232323 !important;
+  color: white !important;
   width: 143px;
   height: 53px;
-  border-radius: 5px;
-  margin-top: 24px;
-  text-transform: none;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 21.09px;
+  border-radius: 5px !important;
+  margin-top: 24px !important;
+  text-transform: none !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  line-height: 21.09px !important;
 
 
   &:hover {
-    background-color: rgba(35, 35, 35, 0.90);
+    background-color: rgba(35, 35, 35, 0.90) !important;
   }
 }
 

@@ -164,16 +164,16 @@
 }
 
 .BuyBtn {
-  width: 143px;
-  height: 53px;
-  background-color: #232323;
-  color: #FFFFFF;
-  font-size: 18px;
-  font-weight: 500;
-  text-transform: none;
-  margin-left: 55px;
-  margin-top: 17px;
-  border-radius: 5px;
+  width: 143px !important;
+  height: 53px !important;
+  background-color: #232323 !important;
+  color: #FFFFFF !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  margin-left: 55px !important;
+  margin-top: 17px !important;
+  border-radius: 5px !important;
 }
 
 .midMainSec {
@@ -642,10 +642,10 @@
 
 
 .imgDialog {
-  width: 970px;
-  height: 650px;
-  display: flex;
-  flex-direction: column;
+  width: 970px !important;
+  height: 650px !important;
+  display: flex !important;
+  flex-direction: column !important;
 
   .dialogHeader {
     display: flex;
