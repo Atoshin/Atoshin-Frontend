@@ -22,7 +22,6 @@ export default function ShowAsset({asset}) {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
-
     const ArtworkSubImages = () => {
         if (asset.medias.length > 6) {
             return asset.medias.slice(0, 6).map(({url}) => {

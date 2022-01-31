@@ -16,7 +16,7 @@ export default function Marketplace({assets}) {
         <div className={classes.items}>
             {assets.map(asset => {
                 return <div onMouseOver={() => setHovered({...hovered, [asset.id]: true})} onMouseOut={() => setHovered({...hovered, [asset.id]: false})} onClick={() => router.push(`/show-asset/${asset.id}`)} className={classes.card}>
-                    <Slide pauseOnHover={false} duration={3000} autoplay={hovered[asset.id]} arrows={false} slidesToShow={1} easing={"ease"} infinite={true}>
+                    <Slide pauseOnHover={false} duration={1000} autoplay={hovered[asset.id]} arrows={false} slidesToShow={1} easing={"ease"} infinite={true}>
                         {asset.medias.map(media => {
                             return <div className={classes.cardImg} style={{
                                 backgroundImage: `url("${media.url}")`,

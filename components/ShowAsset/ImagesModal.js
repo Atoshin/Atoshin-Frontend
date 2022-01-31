@@ -10,26 +10,45 @@ export default function ImagesModal({open, setOpen, images, title, videos}) {
     const ref = useRef();
     const handleClose = () => {
         setOpen(false);
-        if (ref) {
+        if (ref.current) {
             const iframe = ref.current.children[0];
             iframe.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
         }
     }
 
+    let ZoomImg = () => (<Zoom
+        img={mainImg.url}
+        zoomScale={2}
+        width={698}
+        height={469}
+    />)
+
     useEffect(() => {
-        console.log(mainImg)
         const backdrop = document.getElementById('ytv-asset')
         if (backdrop) {
-            const iframe = backdrop.children[0]
-            iframe.width = 853
-            iframe.height = 480
-            const iframeSrc = new URL(iframe.src)
-            iframeSrc.searchParams.set('enablejsapi', '1')
-            iframeSrc.searchParams.set("version", "3")
-            iframeSrc.searchParams.set("playerapiid", "ytplayer")
-            iframe.src = iframeSrc
+            const iframe = backdrop.children[0];
+            iframe.width = 698;
+            iframe.height = 469;
+            const initialSrc = iframe.src;
+            const iframeSrc = new URL(initialSrc);
+            iframeSrc.searchParams.set('enablejsapi', '1');
+            iframeSrc.searchParams.set("version", "3");
+            iframeSrc.searchParams.set("playerapiid", "ytplayer");
+            iframe.src = iframeSrc;
+
+            console.log(initialSrc)
+
+        } else {
+            ZoomImg = () => (<Zoom
+                img={mainImg.url}
+                zoomScale={2}
+                width={698}
+                height={469}
+            />)
         }
     }, [mainImg])
+
+    console.log(videos)
 
     return (
         <Dialog onClose={handleClose} open={open} fullWidth maxWidth={"xl"} classes={{paper: classes.imgDialog}}>
@@ -42,18 +61,13 @@ export default function ImagesModal({open, setOpen, images, title, videos}) {
             <div className={classes.main}>
                 <div className={classes.modalMainImg}>
                     {
-                        mainImg.video === 1 ?
+                        mainImg.videoLinkableId ?
                             <div
                                 id="ytv-asset"
                                 ref={ref}
-                                dangerouslySetInnerHTML={{__html: videos.find(video => video.media.id === mainImg.id).link}}/>
+                                dangerouslySetInnerHTML={{__html: mainImg.link}}/>
                             :
-                            <Zoom
-                                img={mainImg.url}
-                                zoomScale={2}
-                                width={698}
-                                height={469}
-                            />
+                    <ZoomImg/>
                     }
                 </div>
                 {/*<img className={classes.modalMainImg} src="/images/starry-night-main.png" alt=""/>*/}
@@ -65,25 +79,30 @@ export default function ImagesModal({open, setOpen, images, title, videos}) {
                                 width: 120,
                                 height: 120,
                                 backgroundPosition: 'center',
-                                // background-position: center;
                                 backgroundSize: "cover",
                                 cursor: "pointer",
                                 marginBottom: 24,
                                 marginLeft: 24,
                             }}/>
                         })}
-                        {videos.map(({media: image}, idx) => {
-                            return <div onClick={() => setImg(image)} key={idx} style={{
-                                backgroundImage: `url(${image})`,
-                                width: 120,
-                                height: 120,
-                                backgroundPosition: 'center',
-                                // background-position: center;
-                                backgroundSize: "cover",
-                                cursor: "pointer",
-                                marginBottom: 24,
-                                marginLeft: 24,
-                            }}/>
+                        {videos.map((video, idx) => {
+                            if (typeof document !== "undefined"){
+                                let span = document.createElement('span');
+                                span.hidden = true;
+                                span.innerHTML = video.link;
+                                const iframe = span.children[0]
+                                const ytvId = iframe.src.slice(-11)
+                                return <div onClick={() => setImg(video)} key={idx} style={{
+                                    backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
+                                    width: 120,
+                                    height: 120,
+                                    backgroundPosition: 'center',
+                                    backgroundSize: "cover",
+                                    cursor: "pointer",
+                                    marginBottom: 24,
+                                    marginLeft: 24,
+                                }}/>
+                            }
                         })}
                         {/*<img src="/images/starry-night-second.png" className={classes.sideImage}/>*/}
                     </div>
