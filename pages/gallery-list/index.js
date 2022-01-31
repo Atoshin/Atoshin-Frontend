@@ -26,7 +26,7 @@ export default function galleryList({galleries}) {
                         return <Link href={`/art-center/${gallery.id}`}>
                             <div className={classes.item}>
                                 <div className={classes.img}
-                                     style={{backgroundImage: `url("${gallery.medias.find(media => media.galleryLargePicture === 1).url}")`}}/>
+                                     style={{backgroundImage: `url("${gallery.medias.find(media => media.galleryLargePicture === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover"}}/>
                                 <div className={classes.imgTitle}>{gallery.name}</div>
                                 <div className={classes.itemText}>
                                     {shortenWords(gallery.summary, 60)}
