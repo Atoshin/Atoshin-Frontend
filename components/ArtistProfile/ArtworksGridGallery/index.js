@@ -8,8 +8,8 @@ export default function ArtworksGridGallery({artworks}) {
             return {
                 src: artwork.url,
                 thumbnail: artwork.url,
-                thumbnailWidth: artwork.size.width,
-                thumbnailHeight: artwork.size.height
+                thumbnailWidth: artwork.size.width * 10,
+                thumbnailHeight: artwork.size.height * 10
             }
     })
 
