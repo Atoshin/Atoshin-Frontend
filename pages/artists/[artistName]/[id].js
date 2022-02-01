@@ -51,7 +51,7 @@ export default function Artist({artist}) {
                                     News
                                 </div>
                                 {artist.news.map((newsSingular, idx) => {
-                                    return <a target="_blank" href={newsSingular.link} className={classes.newsLink}>
+                                    return <a key={idx} target="_blank" href={newsSingular.link} className={classes.newsLink}>
                                         {newsSingular.title}
                                     </a>
                                 })}
@@ -87,8 +87,8 @@ export default function Artist({artist}) {
                                transitionDuration={500}
                                duration={5000}>
                             {artist.assets.map((asset, idx) => {
-                                return <Link href={`/show-asset/${asset.id}`}>
-                                    <div key={idx} className={classes.card}>
+                                return <Link key={idx} href={`/show-asset/${asset.id}`}>
+                                    <div className={classes.card}>
                                         <div className={classes.relatedImg}
                                              style={{backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover"}}/>
                                         <div className={classes.relatedDescription}>

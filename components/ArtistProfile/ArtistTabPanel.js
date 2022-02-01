@@ -5,9 +5,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import ArtworkImages from "./ArtworkImages";
+import ArtworkImages from "./ArtworksGridGallery";
 import {createTheme, useTheme} from '@mui/material/styles';
 import {useMediaQuery} from "@mui/material";
+import addCommas from "../../functions/addCommas";
 
 
 function ArtistTabPanel(props) {
@@ -47,7 +48,9 @@ export default function BasicTabs({artist}) {
     const [value, setValue] = React.useState(0);
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
-
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -75,207 +78,77 @@ export default function BasicTabs({artist}) {
             </ArtistTabPanel>
             <ArtistTabPanel value={value} index={2}>
                 <div className={classes.auctionMainSec}>
-                    <div className={classes.auctionRow}>
-                        <div className={classes.leftSec}>
-                            {!matches &&
-                            <img className={classes.auctionImg} src="/images/img_10.png" alt=""/>
-                            }
-                            {matches &&
-                                <div className={classes.auctionImgMobSec}>
-                                    <img className={classes.auctionImg} src="/images/img_10.png" alt=""/>
-                                    <div className={classes.auctionArtDetail}>
-                                        2018 | Spring Hunt
-                                    </div>
-                                    <div className={classes.auctionArtDetail}>
-                                        99 × 78.7cm
-                                    </div>
-                                    <div className={classes.auctionArtDetail}>
-                                        oil on canvas
-                                    </div>
-                                </div>
-
-                            }
-                            <div className={classes.auctionDetail}>
-                                <div className={classes.auctionTitle}>
-                                    Sporting Art Auction
-                                </div>
-                                <div className={classes.auctionDate}>
-                                    21 Nov 2021
-                                </div>
+                    {artist.auctions.map((auction, idx) => {
+                        return <div key={idx} className={classes.auctionRow}>
+                            <div className={classes.leftSec}>
+                                {!matches &&
+                                    <img className={classes.auctionImg} src={auction.media && auction.media.url} alt=""/>
+                                }
                                 {matches &&
+                                    <div className={classes.auctionImgMobSec}>
+                                        <img className={classes.auctionImg} src={auction.media && auction.media.url} alt=""/>
+                                        <div className={classes.auctionArtDetail}>
+                                            {auction.assetName}
+                                        </div>
+                                        <div className={classes.auctionArtDetail}>
+                                            {auction.size}
+                                        </div>
+                                        <div className={classes.auctionArtDetail}>
+                                            {auction.material}
+                                        </div>
+                                    </div>
+
+                                }
+                                <div className={classes.auctionDetail}>
+                                    <div className={classes.auctionTitle}>
+                                        {auction.auctionName}
+                                    </div>
+                                    <div className={classes.auctionDate}>
+                                        {new Date(auction.auctionDate).getDay() + ' ' + monthNames[new Date(auction.auctionDate).getMonth()] + ' ' + new Date(auction.auctionDate).getFullYear()}
+                                    </div>
+                                    {matches &&
+                                        <div className={classes.rightSec}>
+                                            <div className={classes.soldPrice}>
+                                                Sold price: ${addCommas(auction.soldPrice)}
+                                            </div>
+                                            {/*<div className={classes.auctionPriceDetails}>*/}
+                                            {/*    Estimates: 30,000 - 40,000$*/}
+                                            {/*</div>*/}
+                                            {/*<div className={classes.auctionPriceDetails}>*/}
+                                            {/*    Hammer price: 24,000$*/}
+                                            {/*</div>*/}
+                                        </div>
+                                    }
+                                    {!matches &&
+                                        <>
+                                            <div className={classes.auctionArtDetail}>
+                                                {auction.assetName}
+                                            </div>
+                                            <div className={classes.auctionArtDetail}>
+                                                {auction.size}
+                                            </div>
+                                            <div className={classes.auctionArtDetail}>
+                                                {auction.material}
+                                            </div>
+                                        </>
+                                    }
+                                </div>
+                            </div>
+                            {!matches &&
                                 <div className={classes.rightSec}>
                                     <div className={classes.soldPrice}>
-                                        Sold price: 24,000$
+                                        Sold price: ${addCommas(auction.soldPrice)}
                                     </div>
-                                    <div className={classes.auctionPriceDetails}>
-                                        Estimates: 30,000 - 40,000$
-                                    </div>
-                                    <div className={classes.auctionPriceDetails}>
-                                        Hammer price: 24,000$
-                                    </div>
+                                    {/*<div className={classes.auctionPriceDetails}>*/}
+                                    {/*    Estimates: 30,000 - 40,000$*/}
+                                    {/*</div>*/}
+                                    {/*<div className={classes.auctionPriceDetails}>*/}
+                                    {/*    Hammer price: 24,000$*/}
+                                    {/*</div>*/}
                                 </div>
-                                }
-                                {!matches &&
-                                <>
-                                    <div className={classes.auctionArtDetail}>
-                                        2018 | Spring Hunt
-                                    </div>
-                                    <div className={classes.auctionArtDetail}>
-                                        99 × 78.7cm
-                                    </div>
-                                    <div className={classes.auctionArtDetail}>
-                                        oil on canvas
-                                    </div>
-                                </>
-                                }
-                            </div>
+                            }
                         </div>
-                        {!matches &&
-                        <div className={classes.rightSec}>
-                            <div className={classes.soldPrice}>
-                                Sold price: 24,000$
-                            </div>
-                            <div className={classes.auctionPriceDetails}>
-                                Estimates: 30,000 - 40,000$
-                            </div>
-                            <div className={classes.auctionPriceDetails}>
-                                Hammer price: 24,000$
-                            </div>
-                        </div>
-                        }
-                    </div>
-                    <div className={classes.auctionRow}>
-                        <div className={classes.leftSec}>
-                            <img className={classes.auctionImg} src="/images/img_10.png" alt=""/>
-                            <div className={classes.auctionDetail}>
-                                <div className={classes.auctionTitle}>
-                                    Sporting Art Auction
-                                </div>
-                                <div className={classes.auctionDate}>
-                                    21 Nov 2021
-                                </div>
-                                <div className={classes.auctionArtDetail}>
-                                    2018 | Spring Hunt
-                                </div>
-                                <div className={classes.auctionArtDetail}>
-                                    99 × 78.7cm
-                                </div>
-                                <div className={classes.auctionArtDetail}>
-                                    oil on canvas
-                                </div>
-                            </div>
-                        </div>
-                        <div className={classes.rightSec}>
-                            <div className={classes.soldPrice}>
-                                Sold price: 24,000$
-                            </div>
-                            <div className={classes.auctionPriceDetails}>
-                                Estimates: 30,000 - 40,000$
-                            </div>
-                            <div className={classes.auctionPriceDetails}>
-                                Hammer price: 24,000$
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes.auctionRow}>
-                        <div className={classes.leftSec}>
-                            <img className={classes.auctionImg} src="/images/img_10.png" alt=""/>
-                            <div className={classes.auctionDetail}>
-                                <div className={classes.auctionTitle}>
-                                    Sporting Art Auction
-                                </div>
-                                <div className={classes.auctionDate}>
-                                    21 Nov 2021
-                                </div>
-                                <div className={classes.auctionArtDetail}>
-                                    2018 | Spring Hunt
-                                </div>
-                                <div className={classes.auctionArtDetail}>
-                                    99 × 78.7cm
-                                </div>
-                                <div className={classes.auctionArtDetail}>
-                                    oil on canvas
-                                </div>
-                            </div>
-                        </div>
-                        <div className={classes.rightSec}>
-                            <div className={classes.soldPrice}>
-                                Sold price: 24,000$
-                            </div>
-                            <div className={classes.auctionPriceDetails}>
-                                Estimates: 30,000 - 40,000$
-                            </div>
-                            <div className={classes.auctionPriceDetails}>
-                                Hammer price: 24,000$
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes.auctionRow}>
-                        <div className={classes.leftSec}>
-                            <img className={classes.auctionImg} src="/images/img_10.png" alt=""/>
-                            <div className={classes.auctionDetail}>
-                                <div className={classes.auctionTitle}>
-                                    Sporting Art Auction
-                                </div>
-                                <div className={classes.auctionDate}>
-                                    21 Nov 2021
-                                </div>
-                                <div className={classes.auctionArtDetail}>
-                                    2018 | Spring Hunt
-                                </div>
-                                <div className={classes.auctionArtDetail}>
-                                    99 × 78.7cm
-                                </div>
-                                <div className={classes.auctionArtDetail}>
-                                    oil on canvas
-                                </div>
-                            </div>
-                        </div>
-                        <div className={classes.rightSec}>
-                            <div className={classes.soldPrice}>
-                                Sold price: 24,000$
-                            </div>
-                            <div className={classes.auctionPriceDetails}>
-                                Estimates: 30,000 - 40,000$
-                            </div>
-                            <div className={classes.auctionPriceDetails}>
-                                Hammer price: 24,000$
-                            </div>
-                        </div>
-                    </div>
-                    <div className={classes.auctionRow}>
-                        <div className={classes.leftSec}>
-                            <img className={classes.auctionImg} src="/images/img_10.png" alt=""/>
-                            <div className={classes.auctionDetail}>
-                                <div className={classes.auctionTitle}>
-                                    Sporting Art Auction
-                                </div>
-                                <div className={classes.auctionDate}>
-                                    21 Nov 2021
-                                </div>
-                                <div className={classes.auctionArtDetail}>
-                                    2018 | Spring Hunt
-                                </div>
-                                <div className={classes.auctionArtDetail}>
-                                    99 × 78.7cm
-                                </div>
-                                <div className={classes.auctionArtDetail}>
-                                    oil on canvas
-                                </div>
-                            </div>
-                        </div>
-                        <div className={classes.rightSec}>
-                            <div className={classes.soldPrice}>
-                                Sold price: 24,000$
-                            </div>
-                            <div className={classes.auctionPriceDetails}>
-                                Estimates: 30,000 - 40,000$
-                            </div>
-                            <div className={classes.auctionPriceDetails}>
-                                Hammer price: 24,000$
-                            </div>
-                        </div>
-                    </div>
+                    })}
                 </div>
             </ArtistTabPanel>
         </Box>
