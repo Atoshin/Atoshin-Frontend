@@ -26,7 +26,7 @@ export default function ArtistsSlider({artists}) {
         </div>
         <div className={classes.artistsSlider}>
             <img className={classes.vectorLeft} onClick={() => {
-                sliderRef.current.goNext()
+                sliderRef.current.goBack()
             }}
                  src="/icons/vector-left.svg" alt=""/>
             <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={false}
@@ -42,7 +42,7 @@ export default function ArtistsSlider({artists}) {
                 })}
             </Slide>
             <img className={classes.vectorRight} onClick={() => {
-                sliderRef.current.goBack()
+                sliderRef.current.goNext()
             }}
                  src="/icons/vector-right.svg" alt=""/>
         </div>

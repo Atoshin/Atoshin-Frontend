@@ -54,6 +54,15 @@ a {
   height: 100vh;
 }
 
-.leaflet-container{
+.leaflet-container {
   height: inherit;
+}
+
+#main-img-container {
+  .indicators {
+    position: absolute;
+    bottom: 0;
+    left: 45%;
+    padding-left: 0;
+  }
 }

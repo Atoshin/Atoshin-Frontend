@@ -5,7 +5,7 @@ import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import {useRouter} from "next/router";
 import {TimeDifference} from "../TimeDifference";
-
+import 'react-slideshow-image/dist/styles.css';
 export default function Slider({images, sliderRef, setCurrentSlide, assets, currentSlide}) {
     const imageRef = useRef({
         current: {}

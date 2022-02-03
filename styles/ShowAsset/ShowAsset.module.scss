@@ -614,6 +614,7 @@
   width: 640px;
   height: 100%;
   margin-bottom: 16px;
+  position: relative;
 }
 
 .artworkMainImg {
@@ -659,7 +660,8 @@
     overflow: scroll;
     height: 500px;
     width: 537px;
-    flex-flow: wrap;  }
+    flex-flow: wrap;
+  }
 
   .modalTitle {
     margin-top: 64px;
@@ -684,6 +686,7 @@
     justify-content: space-between;
     overflow: scroll;
   }
+
   .dialogBody::-webkit-scrollbar {
     display: none !important;
   }
@@ -720,7 +723,7 @@
   }
 }
 
-.main{
+.main {
   display: flex;
   flex-direction: row;
 }
@@ -743,7 +746,7 @@
   font-size: 14px;
   font-weight: 300;
   background-color: #FFFFFF;
-  position:absolute;
+  position: absolute;
   padding: 11px 14px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   bottom: 64px;
@@ -751,15 +754,15 @@
 }
 
 .arrow {
-  content:"";
+  content: "";
   border-color: #FFFFFF transparent transparent transparent;
-  border-style:solid;
-  border-width:10px;
-  width:0;
-  height:0;
-  position:absolute;
-  bottom:-20px;
-  left:20px
+  border-style: solid;
+  border-width: 10px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: -20px;
+  left: 20px
 }
 
 
@@ -774,7 +777,7 @@
   font-size: 14px;
   font-weight: 300;
   background-color: #FFFFFF;
-  position:absolute;
+  position: absolute;
   padding: 11px 14px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   bottom: 50px;
@@ -783,15 +786,15 @@
 
 
 .arrow2 {
-  content:"";
+  content: "";
   border-color: #FFFFFF transparent transparent transparent;
-  border-style:solid;
-  border-width:10px;
-  width:0;
-  height:0;
-  position:absolute;
-  bottom:-20px;
-  left:20px
+  border-style: solid;
+  border-width: 10px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: -20px;
+  left: 20px
 }
 
 
@@ -809,6 +812,7 @@
 .showMoreImgInner {
   position: absolute;
 }
+
 @import "media";
 
 
