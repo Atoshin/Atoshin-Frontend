@@ -1,5 +1,5 @@
 import styles from "../../styles/ShowAsset/ShowAsset.module.scss";
-import {Button, Fade, useMediaQuery} from "@mui/material";
+import {Button, Slide as MUISlide, Fade, useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import ImagesModal from "../../components/ShowAsset/ImagesModal";
 import {useEffect, useState} from "react";
@@ -19,6 +19,7 @@ export default function ShowAsset({asset}) {
     const [openHistory, setOpenHistory] = useState(false)
     const [rendered, setRendered] = useState(false)
     const [tooltip, setTooltip] = useState(false)
+    const [scrolled, setScrolled] = useState(false)
     const [sliderAutoplay, setSliderAutoplay] = useState(true)
     const [secondTooltip, setSecondTooltip] = useState(false)
     const [currentSlide, setCurrentSlide] = useState(asset.medias.find(media => media.main === 1))
@@ -29,6 +30,27 @@ export default function ShowAsset({asset}) {
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
+
+    useEffect(() => {
+        const onScroll = (e) => {
+            const container = document.getElementsByClassName(styles.showAssetMain)[0]
+            const topSec = document.getElementsByClassName(styles.topMainSec)[0]
+            if (window.scrollY > container.clientHeight || window.scrollY < topSec.clientHeight - 100) {
+                setScrolled(false)
+            } else {
+                setScrolled(true)
+            }
+        }
+
+
+        window.addEventListener('scroll', onScroll)
+
+
+        return function () {
+            window.removeEventListener('scroll', onScroll)
+        }
+    }, [])
+
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -209,19 +231,39 @@ export default function ShowAsset({asset}) {
                                      className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                             }
                         </div>
-                        <div className={styles.priceMainSec}>
-                            <div className={styles.priceSec}>
-                                <div className={styles.priceTxt}>
-                                    Price
+                        {(matches) &&
+                            <MUISlide in={scrolled} direction={"up"}>
+                                <div className={styles.priceMainSec}>
+                                    <div className={styles.priceSec}>
+                                        <div className={styles.priceTxt}>
+                                            Price
+                                        </div>
+                                        <div className={styles.priceAmount}>
+                                            {asset.price} ETH
+                                        </div>
+                                    </div>
+                                    <Button className={styles.BuyBtn}>
+                                        Buy now
+                                    </Button>
                                 </div>
-                                <div className={styles.priceAmount}>
-                                    {asset.price} ETH
+                            </MUISlide>
+                        }
+                        {
+                            !matches &&
+                            <div className={styles.priceMainSec}>
+                                <div className={styles.priceSec}>
+                                    <div className={styles.priceTxt}>
+                                        Price
+                                    </div>
+                                    <div className={styles.priceAmount}>
+                                        {asset.price} ETH
+                                    </div>
                                 </div>
+                                <Button className={styles.BuyBtn}>
+                                    Buy now
+                                </Button>
                             </div>
-                            <Button className={styles.BuyBtn}>
-                                Buy now
-                            </Button>
-                        </div>Buy
+                        }
                     </div>
                     <div className={styles.topRightMainSec} onClick={() => setOpenImages(true)}>
                         <div className={styles.artworkMainImgSec}>
