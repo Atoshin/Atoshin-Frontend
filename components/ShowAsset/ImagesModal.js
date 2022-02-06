@@ -46,7 +46,6 @@ export default function ImagesModal({open, setOpen, images, title, videos}) {
         }
     }, [mainImg])
 
-    console.log(videos)
 
     return (
         <Dialog onClose={handleClose} open={open} fullWidth maxWidth={"xl"} classes={{paper: classes.imgDialog}}>
@@ -90,6 +89,7 @@ export default function ImagesModal({open, setOpen, images, title, videos}) {
                                 span.innerHTML = video.link;
                                 const iframe = span.children[0]
                                 const ytvId = iframe.src.slice(-11)
+                                span.remove()
                                 return <div onClick={() => setImg(video)} key={idx} style={{
                                     backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
                                     width: 120,
