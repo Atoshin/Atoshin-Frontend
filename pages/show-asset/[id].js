@@ -1,32 +1,130 @@
 import styles from "../../styles/ShowAsset/ShowAsset.module.scss";
-import {Button, Fade, useMediaQuery} from "@mui/material";
+import {Button, Slide as MUISlide, Fade, useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import ImagesModal from "../../components/ShowAsset/ImagesModal";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import OwnersModal from "../../components/ShowAsset/OwnersModal";
 import HistoryModal from "../../components/ShowAsset/HistoryModal";
 import * as React from "react";
 import axios from "axios";
 import {TimeDifference} from "../../components/ShowAsset/TimeDifference";
-
+import Link from 'next/link';
+import {Slide} from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
+import Youtube from 'react-youtube';
 
 export default function ShowAsset({asset}) {
     const [openImages, setOpenImages] = useState(false)
     const [openOwners, setOpenOwners] = useState(false)
     const [openHistory, setOpenHistory] = useState(false)
+    const [rendered, setRendered] = useState(false)
     const [tooltip, setTooltip] = useState(false)
+    const [scrolled, setScrolled] = useState(false)
+    const [sliderAutoplay, setSliderAutoplay] = useState(true)
     const [secondTooltip, setSecondTooltip] = useState(false)
+    const [currentSlide, setCurrentSlide] = useState(asset.medias.find(media => media.main === 1))
+    const [mainImgSize, setMainImgSize] = useState({
+        width: '',
+        height: ''
+    })
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
 
+    useEffect(() => {
+        const onScroll = (e) => {
+            const container = document.getElementsByClassName(styles.showAssetMain)[0]
+            const topSec = document.getElementsByClassName(styles.topMainSec)[0]
+            if (window.scrollY > container.clientHeight || window.scrollY < topSec.clientHeight - 100) {
+                setScrolled(false)
+            } else {
+                setScrolled(true)
+            }
+        }
+
+
+        window.addEventListener('scroll', onScroll)
+
+
+        return function () {
+            window.removeEventListener('scroll', onScroll)
+        }
+    }, [])
+
+
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const ArtworkSubImages = () => {
+        if (asset.videoLinks[0]) {
+            if (typeof document !== 'undefined') {
+                let span = document.createElement('span');
+                span.hidden = true;
+                span.innerHTML = asset.videoLinks[0].link;
+                const iframe = span.children[0];
+                const ytvId = iframe.src.slice(-11)
+                span.remove()
+                return [asset.medias.slice(0, 5).map(({url}) => {
+                    return <div style={{
+                        backgroundImage: `url("${url}")`,
+                        width: 93.39,
+                        height: 93.39,
+                        backgroundPosition: 'center',
+                        backgroundSize: "cover"
+                    }}/>
+                }), <div style={{
+                    backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
+                    width: 93.39,
+                    height: 93.39,
+                    backgroundPosition: 'center',
+                    backgroundSize: "cover"
+                }}/>]
+            } else {
+                return null;
+            }
+        } else {
+            return asset.medias.slice(0, 6).map(({url}) => {
+                return <div style={{
+                    backgroundImage: `url("${url}")`,
+                    width: 93.39,
+                    height: 93.39,
+                    backgroundPosition: 'center',
+                    backgroundSize: "cover"
+                }}/>
+            })
+        }
+    }
 
+
+    useEffect(() => {
+        const imgContainer = document.getElementById('main-img-container')
+        if (imgContainer) {
+            if (currentSlide.url) {
+                const height = (imgContainer.clientWidth * currentSlide.size.height) / currentSlide.size.width
+                setMainImgSize({
+                    height,
+                    width: imgContainer.clientWidth
+                })
+            } else {
+                // const iframe = document.getElementById(`asset-ytv-${currentSlide.id}`).children[0]
+                // iframe.width = imgContainer.clientWidth;
+                // iframe.height = imgContainer.clientWidth * 2 / 3;
+                // const initialSrc = iframe.src;
+                // const iframeSrc = new URL(initialSrc);
+                // iframeSrc.searchParams.set('enablejsapi', '1');
+                // iframeSrc.searchParams.set("version", "3");
+                // iframeSrc.searchParams.set("playerapiid", "ytplayer");
+                // iframe.src = iframeSrc;
+            }
+        }
+        if (!rendered) {
+            setRendered(true)
+        }
+    }, [currentSlide, rendered])
 
     return (
         <>
-            <ImagesModal open={openImages} setOpen={setOpenImages}/>
+            <ImagesModal open={openImages} setOpen={setOpenImages} images={asset.medias} title={asset.title}
+                         videos={asset.videoLinks}/>
             <OwnersModal open={openOwners} setOpen={setOpenOwners}/>
             <HistoryModal open={openHistory} setOpen={setOpenHistory}/>
             <div className={styles.showAssetMain}>
@@ -38,15 +136,61 @@ export default function ShowAsset({asset}) {
                                 <div className={styles.artistText}>
                                     Artist
                                 </div>
-                                <div className={styles.artistName}>
-                                    {asset.artistName}
-                                </div>
+                                <Link
+                                    href={`/artists/${asset.artist.fullName.toLowerCase().replace(/ /g, '-')}/${asset.artist.id}`}>
+                                    <div className={styles.artistName}>
+                                        {asset.artistName}
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                         {matches &&
-                            <div className={styles.artworkMainImgSec}>
-                                <img className={styles.artworkMainImg}
-                                     src={asset.medias.find(media => media.main === 1).url} alt=""/>
+                            <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease'}}
+                                 className={styles.artworkMainImgSec}>
+                                <Slide
+                                    easing='ease'
+                                    slidesToShow={1}
+                                    infinite={true}
+                                    autoplay={sliderAutoplay}
+                                    duration={5000}
+                                    indicators
+                                    onChange={(oldIdx, newIdx) => {
+                                        const mediaIndexes = asset.medias.filter(media => media.main !== 1).length - 1
+                                        if (newIdx > mediaIndexes) {
+                                            newIdx = newIdx - (mediaIndexes + 1);
+                                            setCurrentSlide(asset.videoLinks[newIdx])
+                                        } else {
+                                            setCurrentSlide(asset.medias.filter(media => media.main !== 1)[newIdx])
+                                        }
+                                    }}
+                                >
+                                    {asset.medias.filter(media => media.main !== 1).map(media => {
+                                        return <img key={media.id}
+                                                    style={{...mainImgSize, transition: 'all 500ms ease'}}
+                                                    className={styles.artworkMainImg}
+                                                    src={media.url} alt=""/>
+                                    })}
+                                    {asset.videoLinks.map(video => {
+                                        let span = document.createElement('span');
+                                        span.hidden = true;
+                                        span.innerHTML = video.link;
+                                        const iframe = span.children[0]
+                                        const ytvId = iframe.src.slice(-11)
+                                        span.remove()
+                                        return <Youtube
+                                            // videoId={video.videoId}
+                                            videoId={ytvId}
+                                            containerClassName={styles.artworkMainImgMobile}
+                                            opts={mainImgSize}
+                                            onPlay={() => {
+                                                setSliderAutoplay(false)
+                                            }}
+                                            onPause={() => {
+                                                setSliderAutoplay(true)
+                                            }}
+                                        />
+                                    })}
+                                </Slide>
                             </div>
                         }
                         {matches &&
@@ -56,7 +200,6 @@ export default function ShowAsset({asset}) {
                             </div>
                         }
                         <div className={styles.saleMainSec}>
-
                             <div className={styles.saleEndDate}>
                                 Sale ends
                                 in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
@@ -74,9 +217,9 @@ export default function ShowAsset({asset}) {
                                     <div className={styles.fractionsTooltip}>
                                         {(asset.totalFractions * asset.ownershipPercentage) / 100} fractions belong to
                                         the gallery
-                                        and {((asset.totalFractions * asset.ownershipPercentage) / 100) - asset.totalFractions} fractions
+                                        and {(asset.totalFractions - (asset.totalFractions * asset.ownershipPercentage) / 100)} fractions
                                         can be traded
-                                        <div className={styles.arrow}></div>
+                                        <div className={styles.arrow}/>
                                     </div>
                                 </Fade>
                             </div>
@@ -88,19 +231,39 @@ export default function ShowAsset({asset}) {
                                      className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                             }
                         </div>
-                        <div className={styles.priceMainSec}>
-                            <div className={styles.priceSec}>
-                                <div className={styles.priceTxt}>
-                                    Price
+                        {(matches) &&
+                            <MUISlide in={scrolled} direction={"up"}>
+                                <div className={styles.priceMainSec}>
+                                    <div className={styles.priceSec}>
+                                        <div className={styles.priceTxt}>
+                                            Price
+                                        </div>
+                                        <div className={styles.priceAmount}>
+                                            {asset.price} ETH
+                                        </div>
+                                    </div>
+                                    <Button className={styles.BuyBtn}>
+                                        Buy now
+                                    </Button>
                                 </div>
-                                <div className={styles.priceAmount}>
-                                    {asset.price} ETH
+                            </MUISlide>
+                        }
+                        {
+                            !matches &&
+                            <div className={styles.priceMainSec}>
+                                <div className={styles.priceSec}>
+                                    <div className={styles.priceTxt}>
+                                        Price
+                                    </div>
+                                    <div className={styles.priceAmount}>
+                                        {asset.price} ETH
+                                    </div>
                                 </div>
+                                <Button className={styles.BuyBtn}>
+                                    Buy now
+                                </Button>
                             </div>
-                            <Button className={styles.BuyBtn}>
-                                Buy now
-                            </Button>
-                        </div>
+                        }
                     </div>
                     <div className={styles.topRightMainSec} onClick={() => setOpenImages(true)}>
                         <div className={styles.artworkMainImgSec}>
@@ -108,15 +271,7 @@ export default function ShowAsset({asset}) {
                                  src={asset.medias.find(media => media.main === 1).url} alt=""/>
                         </div>
                         <div className={styles.artworkOtherImgSec}>
-                            {asset.medias.map(({url}) => {
-                                return <div style={{
-                                    backgroundImage: `url("${url}")`,
-                                    width: 93.39,
-                                    height: 93.39,
-                                    backgroundPosition: 'center',
-                                    backgroundSize: "cover"
-                                }}/>
-                            })}
+                            <ArtworkSubImages/>
                         </div>
                     </div>
                 </div>
@@ -137,15 +292,20 @@ export default function ShowAsset({asset}) {
                                     <div className={styles.backStoryArtistTxt}>
                                         Artist
                                     </div>
-                                    <div className={styles.backStoryArtistName}>{asset.artistName}</div>
+                                    <Link
+                                        href={`/artists/${asset.artist.fullName.toLowerCase().replace(/ /g, '-')}/${asset.artist.id}`}>
+                                        <div className={styles.backStoryArtistName}>{asset.artistName}</div>
+                                    </Link>
                                 </div>
                                 <div className={styles.originalOwnerSec}>
                                     <div className={styles.originalOwnerTxt}>
                                         Original owner
                                     </div>
-                                    <div className={styles.originalOwnerName}>
-                                        {asset.gallery.name}
-                                    </div>
+                                    <Link href={`/art-center/${asset.gallery.id}`}>
+                                        <div className={styles.originalOwnerName}>
+                                            {asset.gallery.name}
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -195,12 +355,15 @@ export default function ShowAsset({asset}) {
                                      onMouseOut={() => setSecondTooltip(false)} className={styles.watchArtworkSec}>
                                     Watch artwork online
                                 </div>
-                                <Fade in={secondTooltip}>
-                                    <div className={styles.watchOnlineTooltip}>
-                                        This item is only active for owners
-                                        <div className={styles.arrow2}/>
-                                    </div>
-                                </Fade>
+                                {
+                                    secondTooltip &&
+                                    <Fade in={secondTooltip}>
+                                        <div className={styles.watchOnlineTooltip}>
+                                            This item is only active for owners
+                                            <div className={styles.arrow2}/>
+                                        </div>
+                                    </Fade>
+                                }
                             </div>
                         </div>
                     </div>

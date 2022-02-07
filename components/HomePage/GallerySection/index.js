@@ -5,6 +5,7 @@ import YoutubeVideoModal from "./YoutubeVideoModal";
 import * as React from "react";
 import ImagesModal from "./ImagesModal";
 import {useRef} from "react";
+import {useRouter} from "next/router";
 
 export default function GallerySection({gallery}) {
     const [openYouTube, setOpenYouTube] = React.useState(false);
@@ -12,11 +13,12 @@ export default function GallerySection({gallery}) {
         toggle: false,
         imgSrc: null
     });
+    const router = useRouter();
     const imageRef = useRef({
         current: {}
     })
     const ExploreBtn = () => {
-        return <Button className={classes.exploreBtn}>Explore</Button>
+        return <Button onClick={() => router.push(`/art-center/1`)} className={classes.exploreBtn}>Explore</Button>
 
     }
 
@@ -42,7 +44,7 @@ export default function GallerySection({gallery}) {
                 <div className={classes.artCenterTitle}>
                     Art Centers
                 </div>
-                <div className={classes.viewAllArtCenters}>
+                <div onClick={() => router.push('gallery-list')} className={classes.viewAllArtCenters}>
                     View All
                 </div>
             </div>

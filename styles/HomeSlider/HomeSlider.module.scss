@@ -90,17 +90,17 @@
 .buyBtn {
   width: 164px;
   height: 55px;
-  background-color: #EE574C;
-  color: #FFFFFF;
-  border-radius: 5px;
-  margin-top: 24px;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 24px;
-  text-transform: none;
+  background-color: #EE574C !important;
+  color: #FFFFFF !important;
+  border-radius: 5px !important;
+  margin-top: 24px !important;
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  line-height: 24px !important;
+  text-transform: none !important;
 
   &:hover {
-    background-color: #EE574C;
+    background-color: #EE574C !important;
   }
 }
 

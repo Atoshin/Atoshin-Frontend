@@ -53,9 +53,11 @@ export default function HomeSlider({assets}) {
             <div className={classes.artistName}>
                 By {currentDesc.artistName}
             </div>
-            <div className={classes.artworkInfo} dangerouslySetInnerHTML={{__html: currentDesc.bio}}/>
             {!matches &&
-                <BuyBtn/>
+                <>
+                    <div className={classes.artworkInfo} dangerouslySetInnerHTML={{__html: currentDesc.bio}}/>
+                    <BuyBtn/>
+                </>
             }
         </div>
         <div className={classes.topRightMainSec}>

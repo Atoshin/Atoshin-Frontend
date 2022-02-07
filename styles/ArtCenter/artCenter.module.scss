@@ -26,6 +26,9 @@
 }
 
 .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #000000;
   font-size: 40px;
   font-weight: 550;
@@ -116,8 +119,8 @@
 }
 
 .logoImg{
-  margin-top: 15px;
   max-width: 120px;
+  margin-right: 10px;
 }
 
 .map {

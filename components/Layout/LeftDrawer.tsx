@@ -5,11 +5,24 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import classes from '../../styles/Header/LeftDrawer.module.scss';
-
+import Link from 'next/link';
+import {useRouter} from "next/router";
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 export default function LeftDrawer({state, setState}) {
+    const router = useRouter();
+
+    const ActiveLink = ({title, href = undefined}) => {
+        if (href === router.pathname) {
+            return <Link href={href}>
+                <ListItemText className={classes.activeLink} primary={title}/>
+            </Link>
+        }
+        return <Link href={href}>
+            <ListItemText primary={title}/>
+        </Link>
+    }
 
     const toggleDrawer =
         (open: boolean) =>
@@ -33,18 +46,18 @@ export default function LeftDrawer({state, setState}) {
             onKeyDown={toggleDrawer(false)}
         >
             <div className={classes.menuTopSec}>
-                <img className={classes.logoImg} src="/images/atoshin-logo.png" alt=""/>
-                <img  onClick={() => setState(false)} className={classes.vectorXIcon} src="/icons/vector-x.svg" alt=""/>
+                <img className={classes.logoImg} src="/images/Atoshin-logo.png" alt=""/>
+                <img onClick={() => setState(false)} className={classes.vectorXIcon} src="/icons/vector-x.svg" alt=""/>
             </div>
             <List>
                 <ListItem button>
-                    <ListItemText primary="Marketplace"/>
+                    <ActiveLink title={"Marketplace"} href={"/marketplace"}/>
                 </ListItem>
                 <ListItem button>
-                    <ListItemText primary="Art Centers"/>
+                    <ActiveLink title="Art Centers" href={'/gallery-list'}/>
                 </ListItem>
                 <ListItem button>
-                    <ListItemText primary="Artists"/>
+                    <ActiveLink title="Artists" href='/artists'/>
                 </ListItem>
                 <ListItem button>
                     <ListItemText primary="About NFT"/>

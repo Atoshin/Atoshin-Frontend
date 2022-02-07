@@ -53,6 +53,7 @@
   margin-top: 8px;
   //padding-top: 2px;
   padding-bottom: 5px;
+  cursor: pointer;
 }
 
 .saleMainSec {
@@ -163,16 +164,16 @@
 }
 
 .BuyBtn {
-  width: 143px;
-  height: 53px;
-  background-color: #232323;
-  color: #FFFFFF;
-  font-size: 18px;
-  font-weight: 500;
-  text-transform: none;
-  margin-left: 55px;
-  margin-top: 17px;
-  border-radius: 5px;
+  width: 143px !important;
+  height: 53px !important;
+  background-color: #232323 !important;
+  color: #FFFFFF !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  margin-left: 55px !important;
+  margin-top: 17px !important;
+  border-radius: 5px !important;
 }
 
 .midMainSec {
@@ -613,11 +614,28 @@
   width: 640px;
   height: 100%;
   margin-bottom: 16px;
+  position: relative;
 }
 
 .artworkMainImg {
   width: 640px;
   height: 100%;
+}
+
+.artworkMainImgMobile {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+
+  iframe, object, embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .artworkOtherImgSec {
@@ -641,10 +659,10 @@
 
 
 .imgDialog {
-  width: 970px;
-  height: 650px;
-  display: flex;
-  flex-direction: column;
+  width: 970px !important;
+  height: 650px !important;
+  display: flex !important;
+  flex-direction: column !important;
 
   .dialogHeader {
     display: flex;
@@ -658,7 +676,8 @@
     overflow: scroll;
     height: 500px;
     width: 537px;
-    flex-flow: wrap;  }
+    flex-flow: wrap;
+  }
 
   .modalTitle {
     margin-top: 64px;
@@ -682,6 +701,10 @@
     flex-direction: column;
     justify-content: space-between;
     overflow: scroll;
+  }
+
+  .dialogBody::-webkit-scrollbar {
+    display: none !important;
   }
 
   .otherImgesContainer::-webkit-scrollbar {
@@ -716,7 +739,7 @@
   }
 }
 
-.main{
+.main {
   display: flex;
   flex-direction: row;
 }
@@ -739,7 +762,7 @@
   font-size: 14px;
   font-weight: 300;
   background-color: #FFFFFF;
-  position:absolute;
+  position: absolute;
   padding: 11px 14px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   bottom: 64px;
@@ -747,15 +770,15 @@
 }
 
 .arrow {
-  content:"";
+  content: "";
   border-color: #FFFFFF transparent transparent transparent;
-  border-style:solid;
-  border-width:10px;
-  width:0;
-  height:0;
-  position:absolute;
-  bottom:-20px;
-  left:20px
+  border-style: solid;
+  border-width: 10px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: -20px;
+  left: 20px
 }
 
 
@@ -770,7 +793,7 @@
   font-size: 14px;
   font-weight: 300;
   background-color: #FFFFFF;
-  position:absolute;
+  position: absolute;
   padding: 11px 14px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   bottom: 50px;
@@ -779,15 +802,15 @@
 
 
 .arrow2 {
-  content:"";
+  content: "";
   border-color: #FFFFFF transparent transparent transparent;
-  border-style:solid;
-  border-width:10px;
-  width:0;
-  height:0;
-  position:absolute;
-  bottom:-20px;
-  left:20px
+  border-style: solid;
+  border-width: 10px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: -20px;
+  left: 20px
 }
 
 
@@ -805,6 +828,7 @@
 .showMoreImgInner {
   position: absolute;
 }
+
 @import "media";
 
 

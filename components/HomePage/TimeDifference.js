@@ -1,4 +1,4 @@
-import styles from "../../styles/ShowAsset/ShowAsset.module.scss";
+import classes from '../../styles/HomeSlider/HomeSlider.module.scss'
 import {useEffect, useState} from "react";
 
 export function TimeDifference({time}) {
@@ -89,29 +89,29 @@ export function TimeDifference({time}) {
     }, [calculatedTime])
 
 
-    return <div className={styles.timeCounterSec}>
-        <div className={styles.counterSec}>
-            <div className={styles.counterNum}>
+    return <div className={classes.dayHourMinSec}>
+        <div className={classes.Sec}>
+            <div className={classes.Num}>
                 {calculatedTime.day}
             </div>
-            <div className={styles.counterTitle}>
-                Days
+            <div className={classes.Txt}>
+                Day
             </div>
         </div>
-        <div className={styles.counterSec}>
-            <div className={styles.counterNum}>
+        <div className={classes.Sec}>
+            <div className={classes.Num}>
                 {calculatedTime.hour}
             </div>
-            <div className={styles.counterTitle}>
-                Hours
+            <div className={classes.Txt}>
+                Hour
             </div>
         </div>
-        <div className={styles.counterSec}>
-            <div className={styles.counterNum}>
+        <div className={classes.Sec}>
+            <div className={classes.Num}>
                 {calculatedTime.min}
             </div>
-            <div className={styles.counterTitle}>
-                Minutes
+            <div className={classes.Txt}>
+                Min
             </div>
         </div>
     </div>

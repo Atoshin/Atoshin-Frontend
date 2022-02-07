@@ -38,20 +38,20 @@
 }
 
 .registerBtn {
-  background-color: #F4F4EF;
-  color: #232323;
-  width: 117px;
-  height: 37px;
-  border-radius: 5px;
-  margin-left: 5px;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 21.09px;
-  text-align: center;
-  text-transform: none;
+  background-color: #F4F4EF !important;
+  color: #232323 !important;
+  width: 117px !important;
+  height: 37px !important;
+  border-radius: 5px !important;
+  margin-left: 5px !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  line-height: 21.09px !important;
+  text-align: center !important;
+  text-transform: none !important;
 
   &:hover {
-    background-color: #F4F4EF;
+    background-color: #F4F4EF !important;
   }
 }
 

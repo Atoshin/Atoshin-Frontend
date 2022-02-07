@@ -6,14 +6,9 @@
 }
 
 .row {
-  display: flex;
-  flex-direction: row;
-  //border: 2px solid red;
-  justify-content: space-between;
-  margin-bottom: 25px;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 36px;
 }
 
 .item {

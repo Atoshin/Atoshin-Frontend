@@ -6,7 +6,7 @@
   width: 96%;
   height: 87px;
   top: 16px;
-  z-index: 1000000;
+  z-index: 100;
   background-color: white;
   font-family: Roboto, sans-serif;
   //padding: 0 4rem;
@@ -104,16 +104,16 @@
 }
 
 .registerBtnMob {
-  background-color: #232323;
-  color: white;
-  text-transform: none;
-  height: 32px;
-  width: 71px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  padding: 0;
-  border-radius: 5px;
+  background-color: #232323 !important;
+  color: white !important;
+  text-transform: none !important;
+  height: 32px !important;
+  width: 71px !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  line-height: 14px !important;
+  padding: 0 !important;
+  border-radius: 5px !important;
 }
 
 .menuContainer {
@@ -129,6 +129,10 @@
 
   .marketplaceItemActive {
     margin-right: 104px;
+    font-weight: 700;
+    border-bottom: 2px solid #000000;
+  }
+  .itemActive {
     font-weight: 700;
     border-bottom: 2px solid #000000;
   }

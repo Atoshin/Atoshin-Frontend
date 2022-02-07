@@ -13,16 +13,7 @@ import extractContent from "../../functions/getHtmlInnerText";
 import shortenWords from "../../functions/shortenWords";
 
 export default function ArtCenter({artCenter}) {
-    console.log(artCenter)
     const [rendered, setRendered] = useState(false)
-    const galleryImages = [
-        "images/img_7.png",
-        "images/img_7.png",
-        "images/img_7.png",
-        "images/img_7.png",
-        "images/img_7.png",
-        "images/img_7.png",
-    ]
 
 
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -54,8 +45,8 @@ export default function ArtCenter({artCenter}) {
                 setRendered(true)
             }, 1000)
         } else {
-            let marker = document.getElementsByClassName('leaflet-marker-icon')[0];
-            marker.src = marker.src.slice(0, 65)
+            // let marker = document.getElementsByClassName('leaflet-marker-icon')[0];
+            // marker.src = marker.src.slice(0, 65)
         }
     }, [rendered])
 
@@ -66,7 +57,10 @@ export default function ArtCenter({artCenter}) {
                      className={classes.mainImg}/>
             </div>
             <div className={classes.headerSection}>
-                <div className={classes.title}>{artCenter.name}</div>
+                <div className={classes.title}>
+                    <img src={artCenter.medias.find(media => media.main === 1).url} className={classes.logoImg}
+                         alt=""/>
+                    {artCenter.name}</div>
                 <div className={classes.socialMediaSec}>
                     {artCenter.website &&
                         <div style={{cursor: "pointer"}} onClick={() => window.open(artCenter.website, '_blank')}>
@@ -89,7 +83,7 @@ export default function ArtCenter({artCenter}) {
                         </div>
                     }
                     {artCenter.instagram &&
-                        <div style={{cursor: "pointer"}}>
+                        <div style={{cursor: "pointer"}} onClick={() => window.open(artCenter.instagram, '_blank')}>
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -103,14 +97,12 @@ export default function ArtCenter({artCenter}) {
 
             <div className={classes.paragraphSec}>
                 <div className={classes.firstTextPart}>
-                    <div className={classes.textImg}>
-                        <img src={artCenter.medias.find(media => media.main === 1).url} className={classes.logoImg}
-                             alt=""/>
+                    {/*<div className={classes.textImg}>*/}
                         {/*<svg className={classes.svg} width="120" height="72" viewBox="0 0 120 72" fill="none"*/}
                         {/*     xmlns="http://www.w3.org/2000/svg">*/}
                         {/*    <rect width="120" height="72" rx="12" fill="#E0E7EC"/>*/}
                         {/*</svg>*/}
-                    </div>
+                    {/*</div>*/}
 
                     <div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio}}/>
                 </div>
@@ -187,11 +179,15 @@ export default function ArtCenter({artCenter}) {
                         transitionDuration={500}
                         duration={5000}
                     >
-                        {[artCenter.assets[0], artCenter.assets[0], artCenter.assets[0], artCenter.assets[0], artCenter.assets[0]].map(asset => {
+                        {artCenter.assets.map(asset => {
                             return <div className={(matches1 || matches2) ? classes.card2 : classes.card}>
                                 <div
                                     className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
-                                    style={{backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`, backgroundSize: "cover", backgroundPosition: "center"}}/>
+                                    style={{
+                                        backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center"
+                                    }}/>
                                 <div className={classes.relatedDescription}>
                                     <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>
                                         {asset.title}
@@ -199,7 +195,8 @@ export default function ArtCenter({artCenter}) {
                                     {(new Date(asset.endDate) > new Date()) &&
                                         <div
                                             className={matches1 || matches2 ? classes.date : classes.date1}>
-                                            Sale ends in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                            Sale ends
+                                            in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
                                         </div>
                                     }
                                     <p
