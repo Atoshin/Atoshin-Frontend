@@ -1,0 +1,98 @@
+.profileMain {
+  display: flex;
+  flex-direction: row;
+  margin-top: 90px;
+  margin-bottom: 104px;
+}
+
+.leftSec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  background-color: #FFFFFF;
+  margin-right: 34px;
+}
+
+.profileImg {
+  width: 250px;
+  height: 250px;
+  //margin-top: 24px;
+}
+
+.profileName {
+  color: #232323;
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 24px;
+}
+
+.walletAddressSec {
+  display: flex;
+  flex-direction: row;
+  margin-top: 16px;
+}
+
+.walletAddress {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.copyImg {
+  width: 24px;
+  height: 22px;
+  margin-left: 24px;
+}
+
+.linkOutImg {
+  width: 24px;
+  height: 24px;
+  margin-left: 11px;
+}
+
+.valueTxt {
+  color: #232323;
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 48px;
+}
+
+.valueSec {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.valueNum {
+  color: #000000;
+  font-size: 22px;
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.ethTxt {
+  color: #000000;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.rightSec {
+  display: flex;
+  width: 66%;
+}
+
+.editProfileSec {
+  display: flex;
+  width: 100%;
+  //float: right;
+  direction: rtl;
+  color: #193EFF;
+  font-size: 12px;
+  font-weight: 300;
+  margin-top: 12px;
+  padding-right: 16px;
+}
+
+@import "media";

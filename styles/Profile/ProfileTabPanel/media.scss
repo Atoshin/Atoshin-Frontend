@@ -1,0 +1,116 @@
+@media (max-width: 600px) {
+  .profileBoxArtwork {
+    display: flex;
+    justify-content: center;
+    background-color: #FFFFFF;
+    margin-top: 24px;
+    padding-top: 40px;
+    height: 316px;
+  }
+
+  .artworkSec {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+    //display: inline-grid;
+    //grid-template-columns: auto auto auto;
+    //grid-column-gap: 31px;
+    //grid-row-gap: 16px;
+    //margin-top: 40px;
+    //margin-left: 40px;
+    width: 100%;
+    height: 316px!important;
+    //overflow-y: auto;
+    overflow-x: auto;
+    //margin-bottom: 92px;
+  }
+
+  .tabTitles {
+    width: 156px;
+    color: #232323 !important;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .tabTitles:focus {
+    width: 156px;
+    color: #232323;
+    font-size: 14px;
+    font-weight: 500 !important;
+    //border-bottom: 2px solid #232323!important;
+  }
+
+  .itemsTitle {
+    display: flex;
+    justify-content: center;
+    width: 140px;
+    color: #232323;
+    font-size: 10px;
+    font-weight: 300;
+    margin-left: 0px;
+  }
+
+  .statusTitle {
+    width: 51px;
+    color: #232323;
+    font-size: 10px;
+    font-weight: 300;
+  }
+
+  .dateTitle {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    color: #232323;
+    font-size: 10px;
+    font-weight: 300;
+  }
+
+  .transactionTitle {
+    width: 83px;
+    color: #232323;
+    font-size: 10px;
+    font-weight: 300;
+    margin-right: 12px;
+  }
+
+  .smallImg {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+  }
+
+  .artworkNameIndex {
+    color: #232323;
+    font-size: 10px;
+    font-weight: 400;
+  }
+
+  .statusSec {
+    display: flex;
+    justify-content: center;
+    width: 51px;
+    color: #232323;
+    font-size: 10px;
+    font-weight: 400;
+  }
+
+  .dateSec {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    color: #232323;
+    font-size: 10px;
+    font-weight: 400;
+  }
+
+  .transactionSec {
+    width: 83px;
+    color: #232323;
+    font-size: 10px;
+    font-weight: 400;
+    margin-right: 12px;
+  }
+}
