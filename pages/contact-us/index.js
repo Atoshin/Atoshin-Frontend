@@ -28,11 +28,24 @@ export default function contactUs({galleries}) {
                     </div>
                 </div>
                 <div>
-                    <div>Name</div>
-                    <div>Email</div>
-                    <div>Subject</div>
-                    <div>Message</div>
-                    <div>Submit</div>
+                    <div className={classes.tableBox}>
+                        <div className={classes.name1}>
+                            <div className={classes.innerBox}>Name</div>
+                        </div>
+                        <div className={classes.name}>
+                            <div className={classes.innerBox}>Email</div>
+                        </div>
+                        <div className={classes.name}>
+                            <div className={classes.innerBox}>Subject</div>
+                        </div>
+                        <div className={classes.name}>
+                            <div className={classes.innerBox}>Message</div>
+                        </div>
+                        <div className={classes.submit}>
+                            Submit
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </>
