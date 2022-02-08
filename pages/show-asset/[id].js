@@ -35,7 +35,10 @@ export default function ShowAsset({asset}) {
         const onScroll = (e) => {
             const container = document.getElementsByClassName(styles.showAssetMain)[0]
             const topSec = document.getElementsByClassName(styles.topMainSec)[0]
-            if (window.scrollY > container.clientHeight || window.scrollY < topSec.clientHeight - 100) {
+            var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+            console.log(window.scrollY, container.clientHeight)
+            if (window.scrollY + height > container.clientHeight) {
                 setScrolled(false)
             } else {
                 setScrolled(true)

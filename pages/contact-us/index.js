@@ -1,9 +1,6 @@
-import classes from '../../styles/contactUs/contactUs.module.scss'
+import classes from '../../styles/ContactUs/contactUs.module.scss'
 import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
-import axios from "axios";
-import shortenWords from "../../functions/shortenWords";
-import Link from 'next/link';
 
 export default function contactUs({galleries}) {
 
