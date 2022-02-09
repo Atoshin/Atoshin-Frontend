@@ -4,6 +4,7 @@ import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import {useEffect, useRef} from "react";
 import ProfileTabPanel from "../../components/Profile/ProfileTabPanel";
+import {useSelector} from "react-redux";
 
 
 export default function Profile() {
@@ -91,4 +92,12 @@ export default function Profile() {
         </div>
     )
 
+}
+
+export async function getServerSideProps(ctx){
+    console.log(ctx.store)
+
+    return {
+        props: {}
+    }
 }
