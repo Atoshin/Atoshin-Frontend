@@ -4,6 +4,7 @@ import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import {useEffect, useRef} from "react";
 import ProfileTabPanel from "../../components/Profile/ProfileTabPanel";
+import axios from "axios";
 
 
 export default function Profile() {
@@ -94,8 +95,8 @@ export default function Profile() {
 }
 
 export async function getServerSideProps(ctx){
-    console.log(ctx.store)
-
+    const data = await axios.get(`${process.env.BASE_URL}/api/cookies/token`)
+    console.log(data)
     return {
         props: {}
     }

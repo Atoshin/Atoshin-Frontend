@@ -11,10 +11,12 @@ import {selectAddress, setAddress, setBalance} from "../../../redux/slices/accou
 import {ethers} from "ethers";
 import {useTheme} from "@mui/material/styles";
 import {useRouter} from "next/router";
+import {useCookies} from "react-cookie";
 
 export default function HeaderContent({setDrawerMenu}) {
     const dispatch = useAppDispatch()
     const address = useAppSelector(selectAddress)
+    const [cookie, setCookie, removeCookie] = useCookies()
     useEffect(() => {
         const checkConnection = async () => {
             let web3;
@@ -23,6 +25,11 @@ export default function HeaderContent({setDrawerMenu}) {
                 web3.eth.getAccounts()
                     .then(async (addr) => {
                         dispatch(setAddress(addr[0]))
+                        setCookie('token', addr[0], {
+                            path: "/",
+                            sameSite: true,
+                            maxAge: 365 * 24 * 60 * 60
+                        })
                         if (addr[0]) {
                             web3.eth.getBalance(addr[0]).then(r => {
                                 dispatch(setBalance(ethers.utils.formatEther(r)))
@@ -35,6 +42,11 @@ export default function HeaderContent({setDrawerMenu}) {
                 web3.eth.getAccounts()
                     .then(async (addr) => {
                         dispatch(setAddress(addr[0]))
+                        setCookie('token', addr[0], {
+                            path: "/",
+                            sameSite: true,
+                            maxAge: 365 * 24 * 60 * 60
+                        })
                         if (addr[0]) {
                             web3.eth.getBalance(addr[0]).then(r => {
                                 dispatch(setBalance(ethers.utils.formatEther(r)))
@@ -49,8 +61,14 @@ export default function HeaderContent({setDrawerMenu}) {
             window.ethereum.on('accountsChanged', function (accounts) {
                 if (accounts.length > 0) {
                     dispatch(setAddress(accounts[0]))
+                    setCookie('token', accounts[0], {
+                        path: "/",
+                        sameSite: true,
+                        maxAge: 365 * 24 * 60 * 60
+                    })
                 } else {
                     dispatch(setAddress(''))
+                    removeCookie(['token'])
                 }
             })
 

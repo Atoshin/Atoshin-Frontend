@@ -1,26 +1,42 @@
-import {configureStore, ThunkAction, Action} from '@reduxjs/toolkit'
-
+import {
+    Action,
+    AnyAction,
+    combineReducers,
+    configureStore,
+    ThunkAction,
+} from '@reduxjs/toolkit';
+import { createWrapper, HYDRATE } from 'next-redux-wrapper';
 import account from './slices/accountSlice';
 import artCenterMap from './slices/artCenterMap';
 
-export function makeStore() {
-    return configureStore({
-        reducer: {
-            account,
-            artCenterMap
-        },
-    })
-}
+const combinedReducer = combineReducers({
+    account,
+    artCenterMap,
+});
 
-const store = makeStore()
+const reducer = (state: ReturnType<typeof combinedReducer>, action: AnyAction) => {
+    if (action.type === HYDRATE) {
+        return {
+            ...state, // use previous state
+            ...action.payload, // apply delta from hydration
+        };
+    } else {
+        return combinedReducer(state, action);
+    }
+};
 
-export type AppState = ReturnType<typeof store.getState>
+export const makeStore = () =>
+    configureStore({
+        reducer,
+    });
 
-export type AppDispatch = typeof store.dispatch
+type Store = ReturnType<typeof makeStore>;
 
+export type AppDispatch = Store['dispatch'];
+export type RootState = ReturnType<Store['getState']>;
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType,
-    AppState,
+    RootState,
     unknown,
-    Action<string>>
+    Action<string>>;
 
-export default store
+export const wrapper = createWrapper(makeStore, {debug: true});

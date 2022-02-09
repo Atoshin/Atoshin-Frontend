@@ -1,17 +1,15 @@
 import '../styles/globals.scss'
-import {Provider} from 'react-redux';
 import {AppProps} from 'next/app';
 import Header from "../components/Layout/Header";
 import Footer from "../components/Layout/Footer";
 import Container from '@mui/material/Container';
-import store from '../redux/store'
 import LeftDrawer from "../components/Layout/LeftDrawer";
 import {useEffect, useRef, useState} from "react";
+import {wrapper} from "../redux/store";
 
 function MyApp({Component, pageProps}: AppProps) {
     const [drawerState, setDrawerState] = useState(false)
     const [scrolled, setScrolled] = useState(false)
-    const boxRef = useRef(null)
 
     useEffect(() => {
         const setScroll = (e) => {
@@ -30,17 +28,15 @@ function MyApp({Component, pageProps}: AppProps) {
     }, [])
 
     return <>
-        <Provider store={store}>
-            <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
-                <Header setDrawerMenu={setDrawerState} isScrolled={scrolled}/>
-                <LeftDrawer state={drawerState} setState={setDrawerState}/>
-                <Container className="main-mui-container">
-                    <Component {...pageProps} />
-                </Container>
-                <Footer/>
-            </div>
-        </Provider>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
+            <Header setDrawerMenu={setDrawerState} isScrolled={scrolled}/>
+            <LeftDrawer state={drawerState} setState={setDrawerState}/>
+            <Container className="main-mui-container">
+                <Component {...pageProps} />
+            </Container>
+            <Footer/>
+        </div>
     </>
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)
