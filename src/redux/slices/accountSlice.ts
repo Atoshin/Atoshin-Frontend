@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
-import type {AppState} from "../store";
+import type {RootState as AppState} from "../store";
 
 export interface AccountState {
     address: string,
