@@ -6,15 +6,18 @@ export default function FAQ() {
     const [state, setState] = useState(false)
 
     return <div>
-        <div>
+        <div className={classes.faqTitleSec}>
             <p className={classes.FAQ}>FAQ</p>
             <h1 className={classes.faqTitle}>Frequently Asked Questions</h1>
         </div>
 
         <div className={classes.QaContainer}>
             <div className={classes.item} onClick={() => setState(!state)}>
+                <div className={classes.number}>
+                    1
+                </div>
                 <div className={classes.qMainSection}>
-                    <h3 className={classes.question}>What is NFT?</h3>
+                    <h3 className={classes.question}>What is an NFT?</h3>
                     {state ?
                         <img src={"/icons/arrowDown.svg"} alt="" style={{marginRight: 15}}/>
                         :
@@ -31,6 +34,7 @@ export default function FAQ() {
                     </div>
                 </Collapse>
             </div>
+
         </div>
     </div>
 }

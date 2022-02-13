@@ -186,174 +186,176 @@ export default function BasicTabs() {
                                     Transaction
                                 </div>
                             </div>
-                            <div className={classes.indexRowSec}>
-                                <div className={classes.itemsSec}>
-                                    <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
-                                    <div className={classes.artworkNameIndex}>
-                                        Starry Night
+                            <div className={classes.historyRowSec}>
+                                <div className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
+                                        <div className={classes.artworkNameIndex}>
+                                            Starry Night
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        Dec 23, 2021
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        4.6 ETH
                                     </div>
                                 </div>
-                                <div className={classes.statusSec}>
-                                    Sold
-                                </div>
-                                <div className={classes.dateSec}>
-                                    Dec 23, 2021
-                                </div>
-                                <div className={classes.transactionSec}>
-                                    4.6 ETH
-                                </div>
-                            </div>
-                            <div className={classes.indexRowSec}>
-                                <div className={classes.itemsSec}>
-                                    <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
-                                    <div className={classes.artworkNameIndex}>
-                                        Starry Night
+                                <div className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
+                                        <div className={classes.artworkNameIndex}>
+                                            Starry Night
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        Dec 23, 2021
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        4.6 ETH
                                     </div>
                                 </div>
-                                <div className={classes.statusSec}>
-                                    Sold
-                                </div>
-                                <div className={classes.dateSec}>
-                                    Dec 23, 2021
-                                </div>
-                                <div className={classes.transactionSec}>
-                                    4.6 ETH
-                                </div>
-                            </div>
-                            <div className={classes.indexRowSec}>
-                                <div className={classes.itemsSec}>
-                                    <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
-                                    <div className={classes.artworkNameIndex}>
-                                        Starry Night
+                                <div className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
+                                        <div className={classes.artworkNameIndex}>
+                                            Starry Night
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        Dec 23, 2021
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        4.6 ETH
                                     </div>
                                 </div>
-                                <div className={classes.statusSec}>
-                                    Sold
-                                </div>
-                                <div className={classes.dateSec}>
-                                    Dec 23, 2021
-                                </div>
-                                <div className={classes.transactionSec}>
-                                    4.6 ETH
-                                </div>
-                            </div>
-                            <div className={classes.indexRowSec}>
-                                <div className={classes.itemsSec}>
-                                    <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
-                                    <div className={classes.artworkNameIndex}>
-                                        Starry Night
+                                <div className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
+                                        <div className={classes.artworkNameIndex}>
+                                            Starry Night
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        Dec 23, 2021
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        4.6 ETH
                                     </div>
                                 </div>
-                                <div className={classes.statusSec}>
-                                    Sold
-                                </div>
-                                <div className={classes.dateSec}>
-                                    Dec 23, 2021
-                                </div>
-                                <div className={classes.transactionSec}>
-                                    4.6 ETH
-                                </div>
-                            </div>
-                            <div className={classes.indexRowSec}>
-                                <div className={classes.itemsSec}>
-                                    <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
-                                    <div className={classes.artworkNameIndex}>
-                                        Starry Night
+                                <div className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
+                                        <div className={classes.artworkNameIndex}>
+                                            Starry Night
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        Dec 23, 2021
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        4.6 ETH
                                     </div>
                                 </div>
-                                <div className={classes.statusSec}>
-                                    Sold
-                                </div>
-                                <div className={classes.dateSec}>
-                                    Dec 23, 2021
-                                </div>
-                                <div className={classes.transactionSec}>
-                                    4.6 ETH
-                                </div>
-                            </div>
-                            <div className={classes.indexRowSec}>
-                                <div className={classes.itemsSec}>
-                                    <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
-                                    <div className={classes.artworkNameIndex}>
-                                        Starry Night
+                                <div className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
+                                        <div className={classes.artworkNameIndex}>
+                                            Starry Night
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        Dec 23, 2021
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        4.6 ETH
                                     </div>
                                 </div>
-                                <div className={classes.statusSec}>
-                                    Sold
-                                </div>
-                                <div className={classes.dateSec}>
-                                    Dec 23, 2021
-                                </div>
-                                <div className={classes.transactionSec}>
-                                    4.6 ETH
-                                </div>
-                            </div>
-                            <div className={classes.indexRowSec}>
-                                <div className={classes.itemsSec}>
-                                    <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
-                                    <div className={classes.artworkNameIndex}>
-                                        Starry Night
+                                <div className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
+                                        <div className={classes.artworkNameIndex}>
+                                            Starry Night
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        Dec 23, 2021
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        4.6 ETH
                                     </div>
                                 </div>
-                                <div className={classes.statusSec}>
-                                    Sold
-                                </div>
-                                <div className={classes.dateSec}>
-                                    Dec 23, 2021
-                                </div>
-                                <div className={classes.transactionSec}>
-                                    4.6 ETH
-                                </div>
-                            </div>
-                            <div className={classes.indexRowSec}>
-                                <div className={classes.itemsSec}>
-                                    <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
-                                    <div className={classes.artworkNameIndex}>
-                                        Starry Night
+                                <div className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
+                                        <div className={classes.artworkNameIndex}>
+                                            Starry Night
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        Dec 23, 2021
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        4.6 ETH
                                     </div>
                                 </div>
-                                <div className={classes.statusSec}>
-                                    Sold
-                                </div>
-                                <div className={classes.dateSec}>
-                                    Dec 23, 2021
-                                </div>
-                                <div className={classes.transactionSec}>
-                                    4.6 ETH
-                                </div>
-                            </div>
-                            <div className={classes.indexRowSec}>
-                                <div className={classes.itemsSec}>
-                                    <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
-                                    <div className={classes.artworkNameIndex}>
-                                        Starry Night
+                                <div className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
+                                        <div className={classes.artworkNameIndex}>
+                                            Starry Night
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        Dec 23, 2021
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        4.6 ETH
                                     </div>
                                 </div>
-                                <div className={classes.statusSec}>
-                                    Sold
-                                </div>
-                                <div className={classes.dateSec}>
-                                    Dec 23, 2021
-                                </div>
-                                <div className={classes.transactionSec}>
-                                    4.6 ETH
-                                </div>
-                            </div>
-                            <div className={classes.indexRowSec}>
-                                <div className={classes.itemsSec}>
-                                    <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
-                                    <div className={classes.artworkNameIndex}>
-                                        Starry Night
+                                <div className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>
+                                        <div className={classes.artworkNameIndex}>
+                                            Starry Night
+                                        </div>
                                     </div>
-                                </div>
-                                <div className={classes.statusSec}>
-                                    Sold
-                                </div>
-                                <div className={classes.dateSec}>
-                                    Dec 23, 2021
-                                </div>
-                                <div className={classes.transactionSec}>
-                                    4.6 ETH
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        Dec 23, 2021
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        4.6 ETH
+                                    </div>
                                 </div>
                             </div>
 
