@@ -6,6 +6,7 @@ import Container from '@mui/material/Container';
 import LeftDrawer from "../components/Layout/LeftDrawer";
 import {useEffect, useRef, useState} from "react";
 import {wrapper} from "../redux/store";
+import {CookiesProvider} from "react-cookie"
 
 function MyApp({Component, pageProps}: AppProps) {
     const [drawerState, setDrawerState] = useState(false)
@@ -28,14 +29,16 @@ function MyApp({Component, pageProps}: AppProps) {
     }, [])
 
     return <>
-        <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
-            <Header setDrawerMenu={setDrawerState} isScrolled={scrolled}/>
-            <LeftDrawer state={drawerState} setState={setDrawerState}/>
-            <Container className="main-mui-container">
-                <Component {...pageProps} />
-            </Container>
-            <Footer/>
-        </div>
+        <CookiesProvider>
+            <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
+                <Header setDrawerMenu={setDrawerState} isScrolled={scrolled}/>
+                <LeftDrawer state={drawerState} setState={setDrawerState}/>
+                <Container className="main-mui-container">
+                    <Component {...pageProps} />
+                </Container>
+                <Footer/>
+            </div>
+        </CookiesProvider>
     </>
 }
 

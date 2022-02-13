@@ -5,18 +5,74 @@ import {useMediaQuery} from "@mui/material";
 import {useEffect, useRef} from "react";
 import ProfileTabPanel from "../../components/Profile/ProfileTabPanel";
 import axios from "axios";
+import Web3 from "web3";
+import {selectAddress, selectBalance, setAddress, setBalance} from "../../redux/slices/accountSlice";
+import {ethers} from "ethers";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 
 
 export default function Profile() {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
-
+    const dispatch = useAppDispatch();
+    const address = useAppSelector(selectAddress)
+    const balance = useAppSelector(selectBalance)
 
     useEffect(() => {
-        const body = document.getElementsByTagName('body')[0]
-        body.style.backgroundColor = '#E5E5E5'
-        body.style.backgroundImage = 'none'
+        //region change background color for profile page
+        const body = document.getElementsByTagName('body')[0];
+        body.style.backgroundColor = '#E5E5E5';
+        body.style.backgroundImage = 'none';
+        //endregion
+
+        //region fetch profile data
+        const checkConnection = async () => {
+            let web3;
+            if (window.ethereum) {
+                web3 = new Web3(window.ethereum);
+                web3.eth.getAccounts()
+                    .then(async (addr) => {
+                        dispatch(setAddress(addr[0]))
+                        if (addr[0]) {
+                            web3.eth.getBalance(addr[0]).then(r => {
+                                dispatch(setBalance(ethers.utils.formatEther(r)))
+                            });
+                        }
+                    });
+                providerEventListener()
+            } else if (window.web3) {
+                web3 = new Web3(window.web3.currentProvider);
+                web3.eth.getAccounts()
+                    .then(async (addr) => {
+                        dispatch(setAddress(addr[0]))
+                        if (addr[0]) {
+                            web3.eth.getBalance(addr[0]).then(r => {
+                                dispatch(setBalance(ethers.utils.formatEther(r)))
+                            });
+                        }
+                    });
+                providerEventListener()
+            }
+        };
+
+        const providerEventListener = () => {
+            window.ethereum.on('accountsChanged', function (accounts) {
+                if (accounts.length > 0) {
+                    dispatch(setAddress(accounts[0]))
+                    setCookie('token', accounts[0], {
+                        path: "/",
+                        sameSite: true,
+                        maxAge: 365 * 24 * 60 * 60
+                    })
+                } else {
+                    dispatch(setAddress(''))
+                }
+            })
+
+        }
+        checkConnection();
+        //endregion
     }, [])
 
 
@@ -91,13 +147,4 @@ export default function Profile() {
             </div>
         </div>
     )
-
-}
-
-export async function getServerSideProps(ctx){
-    const data = await axios.get(`${process.env.BASE_URL}/api/cookies/token`)
-    console.log(data)
-    return {
-        props: {}
-    }
 }

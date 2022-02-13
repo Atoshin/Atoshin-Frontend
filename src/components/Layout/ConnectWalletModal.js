@@ -6,12 +6,36 @@ import Modal from '@mui/material/Modal';
 import {useTheme} from "@mui/material/styles";
 import {ethers} from "ethers";
 import classes from '../../styles/ConnectWalletModal/ConnectWalletModal.module.scss';
-import axios from 'axios'
+import axios from 'axios';
+import {useCookies} from "react-cookie";
 
 export default function ConnectWalletModal({open, setOpen, handleClose, setIsLoggedIn}) {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const [cookie, setCookie] = useCookies(['token'])
+
+    const signMessage = async () => {
+        await window.ethereum.send("eth_requestAccounts");
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = await provider.getSigner();
+        const walletAddress = await signer.getAddress();
+        try {
+            const signature = await signer.signMessage("This website uses this cryptographic signature in place of a password, verifying that you are the owner of this Ethereum address.");
+            await axios.post(`/api/signature`, {
+                signature,
+                walletAddress
+            })
+            setOpen(false);
+            setCookie('token', signature, {
+                path: "/",
+                sameSite: true,
+                maxAge: 365 * 24 * 60 * 60
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const connectWallet = async (e) => {
         e.preventDefault();
@@ -22,10 +46,19 @@ export default function ConnectWalletModal({open, setOpen, handleClose, setIsLog
             const address = await signer.getAddress();
             if (address) {
                 setIsLoggedIn(true)
-                const response = await axios.post(`${process.env.BACKEND_BASE_URL}/wallets/store`, {
+                axios.post(`/api/wallet`, {
                     walletAddress: address
+                }).then(r => {
+                    if (!r.data.data) {
+                        signMessage()
+                    }
+                }).catch(e => {
+                    if (typeof e.response !== 'undefined') {
+                        if (!e.response.data.data) {
+                            signMessage()
+                        }
+                    }
                 });
-                setOpen(false);
             }
         } else {
             window.open('https://metamask.io/download', '_blank')
