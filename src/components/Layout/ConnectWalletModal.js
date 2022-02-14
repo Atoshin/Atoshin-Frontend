@@ -43,11 +43,11 @@ export default function ConnectWalletModal({open, setOpen, handleClose, setIsLog
             const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
             await provider.send("eth_requestAccounts", []);
             const signer = provider.getSigner();
-            const address = await signer.getAddress();
-            if (address) {
+            const walletAddress = await signer.getAddress();
+            if (walletAddress) {
                 setIsLoggedIn(true)
                 axios.post(`/api/wallet`, {
-                    walletAddress: address
+                    walletAddress
                 }).then(r => {
                     if (!r.data.data) {
                         signMessage()
