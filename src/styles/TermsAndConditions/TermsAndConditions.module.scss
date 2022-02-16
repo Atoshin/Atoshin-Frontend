@@ -1,5 +1,5 @@
 
-.title {
+.pageTitle {
   font-size: 35px;
   margin-top: 100px;
   font-weight: 700;
@@ -40,18 +40,17 @@
   color: #232323;
   margin-bottom: 16px;
 }
-.paragraph2{
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 25px;
-  text-align: justify;
-  margin-bottom: 8px;
-}
+//.paragraph2{
+//  font-size: 14px;
+//  font-style: normal;
+//  font-weight: 400;
+//  line-height: 25px;
+//  text-align: justify;
+//  margin-bottom: 8px;
+//}
 .guideline{
   display: flex;
-  align-items: center;
-  border: solid red 1px;
+  //border: solid red 1px;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -59,21 +58,35 @@
   text-align: justify;
   color: #232323;
   margin-bottom: 24px;
+  word-wrap: break-word;
+}
+.lastGuideline{
+  display: flex;
+  //border: solid red 1px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+  text-align: justify;
+  color: #232323;
+  margin-bottom: 110px;
+  word-wrap: break-word;
 }
 .bullet{
   width: 10px;
   height: 10px;
-  margin-right: 16px;
+  //margin-right: 16px;
   background-color: #000000;
   border-radius: 20px;
+  margin-top: 7px;
 }
 .guidelinesItem{
-  //font-size: 14px;
-  //font-style: normal;
-  //font-weight: 400;
-  //line-height: 25px;
-  //text-align: justify;
-  //color: #232323;
-  //margin-bottom: 24px;
   word-wrap: break-word;
+  margin-left: 16px;
+  //border: solid 1px;
+  width: 98%;
+
 }
+
+
+@import "media";

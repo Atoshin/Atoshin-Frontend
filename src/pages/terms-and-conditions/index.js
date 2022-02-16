@@ -1,19 +1,19 @@
+import classes from '../../styles/TermsAndConditions/TermsAndConditions.module.scss'
 import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import {useEffect, useRef, useState} from "react";
 import * as React from "react";
 import axios from "axios";
 import Web3 from "web3";
-import classes from '../../styles/termsAndConditions/TermsAndConditions.module.scss'
 
-export default function Profile() {
+export default function TermsAndConditions() {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
         <>
-            <div className={classes.title}>Terms and Conditions</div>
+            <div className={classes.pageTitle}>Terms and Conditions</div>
             <div className={classes.lastUpdate}>LAST UPDATED – March 2022</div>
             <div className={classes.firstP}>
                 If you choose to utilize the Services and your visit to ATOSHIN.art, any privacy dispute are governed by
@@ -123,7 +123,7 @@ export default function Profile() {
             {/*</div>*/}
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     tamper with the price of a NFT for Physical Asset or Digital Artwork in any manner, including
                     bidding on
                     your own things, restricting bids, or hiding economic activities with ATOSHIN.
@@ -145,7 +145,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     interfere with or disrupt the Platform, its servers or networks, or disobey any requirements,
                     procedures, rules, or regulations of networks linked to the Platform; or
                 </div>
@@ -153,7 +153,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     breach any applicable local, state, national, or international law, or any laws with legal force,
                     including but not limited to the Office of Foreign Assets Control ("OFAC") of the United States
                     Department of Treasury, or include proceeds of any illicit action;
@@ -162,7 +162,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     impersonate someone or something, or fraudulently assert or otherwise misrepresent your affiliation
                     with someone or something;
                 </div>
@@ -170,14 +170,14 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     ask anyone under the age of 18 for personal information;
                 </div>
             </div>
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     use electronic or other means to harvest or collect email addresses or other contact information
                     from other Users on the Platform for the purpose of sending unsolicited emails or other
                     communications;
@@ -186,14 +186,14 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     sell or acquire any goods or services for any business purpose that isn't officially approved;
                 </div>
             </div>
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     support or promote any criminal activity or enterprise, or offer instructional material on illegal
                     activities, including to hide economic activity, launder money, or finance terrorism;
                 </div>
@@ -202,7 +202,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     access or attempt to access or gain any items or information through any means other than those made
                     available or provided for by the Platform;
                 </div>
@@ -210,7 +210,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     retrieve or index any portion of the Platform or the material posted on the Platform, or gather
                     information about its Users for any unlawful purpose, using any robot, spider, site search/retrieval
                     program, or other technology;
@@ -220,7 +220,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     establish user accounts by automated means or on the basis of inaccurate or fraudulent information;
                 </div>
             </div>
@@ -228,7 +228,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     access or use the Platform in order to develop a product or service that is competitive with any of
                     ours.
                 </div>
@@ -257,7 +257,7 @@ export default function Profile() {
             }}>
                 Rights of the Creator
             </div>
-            <div className={classes.paragraph2}>
+            <div className={classes.paragraph} style={{marginBottom:10}}>
                 All intellectual property rights underlying Physical Asset or the Digital Artwork created by the Creator
                 on the Platform, including but not limited to copyrights and trademarks, are owned by the Creator. The
                 Creator has the right to reproduce, generate derivative Digital Artwork, distribute, and exhibit or
@@ -283,7 +283,6 @@ export default function Profile() {
                 fontSize: 18,
                 fontWeight: 500,
                 textAlign: 'left',
-                marginTop: 2,
                 marginBottom: 8,
             }}>
                 Rights of Collectors
@@ -392,7 +391,7 @@ export default function Profile() {
             </div>
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     the signature of the person authorized to act on behalf of the owner of the copyright or other
                     intellectual property rights, whether electronic or physical;
                 </div>
@@ -400,7 +399,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     a description of the allegedly infringed copyrighted work or other intellectual property;
                 </div>
             </div>
@@ -408,7 +407,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     a description of where the allegedly infringing material is located on the Platform, with enough
                     specificity that we can locate it;
                 </div>
@@ -417,7 +416,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     your name, mailing address, phone number, and email address;
                 </div>
             </div>
@@ -425,7 +424,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     a statement from you that the disputed use is not authorized by the copyright or intellectual
                     property owner, its agent, or the law;
                 </div>
@@ -434,7 +433,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     a statement signed under penalty of perjury that the above information in your Notice is correct and
                     that you are the copyright or intellectual property owner or authorized to act on behalf of the
                     copyright or intellectual property owner.
@@ -450,14 +449,14 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     your signature (physical or electronic);
                 </div>
             </div>
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     the content that has been removed or to which access has been disabled, as well as the place where
                     the content was available before it was removed or disabled;
                 </div>
@@ -466,7 +465,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     a statement if you believe the item was removed or disabled due to a mistake or misidentification of
                     the content; and
                 </div>
@@ -475,7 +474,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     your name, address, phone number, and email address, as well as a statement that you consent to the
                     jurisdiction of the federal court in the State of Delaware and that you will accept serving of
                     process from the individual who reported the alleged infringement.
@@ -520,21 +519,21 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     In the case of an Initial Sale, creators receive 85% of the entire sale price.
                 </div>
             </div>
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     The ATOSHIN receives 15% of the entire sale price from an Initial Sale.
                 </div>
             </div>
 
             <div className={classes.guideline} style={{marginBottom: 10}}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     You acknowledge and agree that any fees, commissions, and royalties will be transferred, processed,
                     or triggered directly through one or more of the Ethereum blockchain network's smart contracts.
                 </div>
@@ -549,14 +548,14 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     In the case of an Initial Sale, creators receive 85% of the entire sale price.
                 </div>
             </div>
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     The ATOSHIN receives 15% of the entire sale price from an Initial Sale.
                 </div>
             </div>
@@ -564,7 +563,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     You acknowledge and agree that any fees, commissions, and royalties will be transferred, processed,
                     or triggered directly through one or more of the Ethereum blockchain network's smart contracts.
                 </div>
@@ -572,7 +571,7 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     The following are the fees for a secondary sale of NFTs for Physical Assets or Digital Artwork on
                     ATOSHIN:
                 </div>
@@ -580,28 +579,28 @@ export default function Profile() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     In a Secondary Transaction, the seller receives 90% of the entire sale price.
                 </div>
             </div>
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     In the case of a Secondary Sale, the Original Creator receives 6% of the total sale price.
                 </div>
             </div>
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     The ATOSHIN receives 4% of the entire sale price from a Secondary Sale.
                 </div>
             </div>
 
             <div className={classes.guideline} style={{marginBottom: 10}}>
                 <div className={classes.bullet}></div>
-                <div>
+                <div className={classes.guidelinesItem}>
                     You acknowledge and agree that any fees, commissions, and royalties will be transferred, processed,
                     or triggered directly through one or more of the Ethereum blockchain network's smart contracts.
                 </div>
@@ -651,7 +650,7 @@ export default function Profile() {
                 in his or her favor at the time of execution of the release and that, if known, would have materially
                 affected his or her settlement with the debtor or released party." You waive any analogous statute or
                 doctrine if you are a resident of another jurisdiction.
-                <div style={{fontWeight:700}}>Disclaimer of Warranties:</div>
+                <div style={{fontWeight: 700}}>Disclaimer of Warranties:</div>
                 Platform transactions, such as primary and secondary market sales, listings, offers, bids, acceptances,
                 and other operations, make use of experimental smart contract and blockchain technology, such as
                 non-fungible tokens, cryptocurrencies, consensus algorithms, and decentralized or peer-to-peer networks
@@ -667,7 +666,7 @@ export default function Profile() {
                 ATOSHIN MAKES NO WARRANTY THAT (I) THE PLATFORM WILL MEET YOUR EXPECTATIONS, (II) THE PLATFORM WILL BE
                 UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE, (III) THE RESULTS THAT MAY BE OBTAINED FROM THE USE OF THE
                 PLATFORM WILL BE ACCURATE OR RELIABLE, OR (IV) THE QUALITY OF ANY PRODUCTS, PLATFORM
-                <div style={{fontWeight:700}}>LIMITATION OF LIABILITY:</div>
+                <div style={{fontWeight: 700}}>LIMITATION OF LIABILITY:</div>
                 YOU EXPRESSLY UNDERSTAND AND AGREE THAT ATOSHIN SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL,
                 SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR EXEMPLARY DAMAGES, OR DAMAGES FOR LOSS OF PROFITS, INCLUDING BUT
                 NOT LIMITED TO, LOSS IN VALUE OF ANY DIGITAL ARTWORK, DAMAGES FOR LOSS OF GOODWILL, USE, ATOSHIN'S TOTAL
@@ -699,6 +698,175 @@ export default function Profile() {
                 not the duty, to intervene in any way in disputes between you and other Platform users.
             </div>
             <div className={classes.paragraphTitle}>Terms of Law in General</div>
+            <div className={classes.paragraph}>
+                These Terms of Service govern your use of the Platform and supersede all earlier agreements between you
+                and ATOSHIN with respect to the Platform. When you utilize affiliate or third-party services,
+                third-party content, or third-party software, you may be subject to additional terms and restrictions.
+                The laws of the State of California, without respect to its conflict of law rules, will govern these
+                Terms of Service. You and ATOSHIN agree to submit to the personal and exclusive jurisdiction of the
+                state and federal courts located in Delaware in any disputes or claims not subject to arbitration as set
+                forth above. The failure of ATOSHIN to exert or enforce any right or term of these Terms of Service does
+                not imply that such right or provision has been waived. If a court of competent jurisdiction finds any
+                provision of these Terms of Service to be invalid, the parties agree that the court should endeavor to
+                give effect to the parties' intentions as reflected in the provision, and the remaining provisions of
+                these Terms of Service will remain in full force and effect. You agree that, regardless of any
+                legislation or law to the contrary, any claim or cause of action arising out of or related to the
+                Platform or these Terms of Service must be filed within one (1) year of the day the claim or cause of
+                action began, otherwise it will be irrevocably barred. In judicial or administrative proceedings based
+                on or relating to this agreement, a printed version of this agreement and any notice given in electronic
+                form will be admissible to the same extent and subject to the same conditions as other business
+                documents and records originally generated and maintained in printed form. You may not assign these
+                Terms of Service without ATOSHIN's prior written agreement, but ATOSHIN may assign or transfer this
+                Terms of Service without restriction, in whole or in part. The section titles in these Terms of Service
+                are merely descriptive and have no legal or contractual significance. Email or traditional mail may be
+                used to send you notices. By displaying notifications or links to notices on the Platform, the Platform
+                may also provide you with notices of changes to these Terms of Service or other topics.
+            </div>
+            <div className={classes.paragraphTitle}>Your Personal Information</div>
+            <div className={classes.paragraph} style={{marginBottom: 10}}>
+                The privacy of our users is important to us at ATOSHIN. Please visit our Privacy Policy for more
+                information. You consent to our collection and use of personal data as defined in the Platform by using
+                it.
+                Users in California Should Be Aware
+                Users of the Platform from California are entitled to the following special consumer rights notification
+                under California Civil Code Section 1789.3: The Complaint Assistance Unit of the California Department
+                of Consumer Affairs' Division of Consumer Platforms can be reached by mail at 1625 North Market Blvd.,
+                Suite N 112, Sacramento, CA 95834, or by phone at (916) 445-1254 or (800) 952-5210. ATOSHIN, Inc., 11420
+                Santa Monica Blvd, PO Box 252111, Los Angeles, CA 90025, or (657) 229-1518 are the places to contact.
+                <div style={{fontWeight: 700}}>Binding Arbitration for Dispute Resolution:</div>
+                THIS SECTION AFFECTS YOUR RIGHTS, SO READ IT CAREFULLY.
+            </div>
+
+            <div className={classes.guideline}>
+                <div className={classes.bullet}></div>
+                <div className={classes.guidelinesItem}>
+                    Arbitration Agreement This portion of the Terms of Service titled "Dispute Resolution by Binding
+                    Arbitration" is referred to as the "Arbitration Agreement." You agree that any and all disputes or
+                    claims that have arisen or may arise between you and ATOSHIN, whether arising out of or relating to
+                    this Terms of Service (including any alleged breach thereof), the Platforms, any advertising, or any
+                    aspect of our relationship or transactions, shall be resolved exclusively through final and binding
+                    arbitration, rather than a court, in accordance with the terms of this Arbitration Agreement.
+                    Furthermore, this Arbitration Agreement does not prevent you from bringing matters to the notice of
+                    federal, state, or municipal agencies, which can seek remedies against us on your behalf if the law
+                    allows it. By agreeing to these Terms of Service, you and ATOSHIN are each renouncing the right to a
+                    jury trial or to join a class action lawsuit. A neutral arbitrator, not a judge or jury, will decide
+                    your rights. The interpretation and enforcement of this Arbitration Agreement are governed by the
+                    Federal Arbitration Act.
+                </div>
+            </div>
+
+            <div className={classes.guideline} style={{marginBottom: 10}}>
+                <div className={classes.bullet}></div>
+                <div className={classes.guidelinesItem}>
+                    Non-Individualized Relief and Class and Representative Actions are Prohibited
+                </div>
+            </div>
+
+            <div className={classes.paragraph} style={{marginBottom: 10}}>
+                YOU AND THE ATOSHIN AGREE THAT WE MAY BRING CLAIMS AGAINST EACH OTHER ONLY ON AN INDIVIDUAL BASIS, NOT
+                AS A PLAINTIFF OR CLASS MEMBER IN ANY PRETENDED CLASS OR REPRESENTATIVE ACTION OR PROCEEDING. THE
+                ARBITRATOR MAY NOT CONSOLIDATE OR JOIN MORE THAN ONE PERSON'S OR PARTY'S CLAIMS AND MAY NOT OTHERWISE
+                PRESIDE OVER ANY FORM OF CONSOLIDATED, REPRESENTATIVE, OR CLASS PROCEEDING UNLESS BOTH YOU AND THE
+                ATOSHIN AGREE OTHERWISE. ALSO, THE ARBITRATOR MAY ONLY AWARD RELIEF (INCLUDING MONETARY, INJUNCTIVE, AND
+                DECLARATORY RELIEF) IN FAVOR OF THE INDIVIDUAL PARTY SEEKING RELIEF AND ONLY TO THE EXTENT NECESSARY TO
+                PROVIDE RELIEF NECESSITATED BY THAT PARTY'S INDIVIDUAL CLAIM(S), WITH THE EXCEPTION THAT YOU MAY PURSUE
+                A
+            </div>
+            <div className={classes.guideline} style={{marginBottom: 10}}>
+                <div className={classes.bullet}></div>
+                <div className={classes.guidelinesItem}>
+                    Non-Individualized Relief and Class and Representative Actions are Prohibited
+                </div>
+            </div>
+            <div className={classes.paragraph} style={{marginBottom: 10}}>
+                Most customer complaints can be resolved promptly and to the client's satisfaction by emailing customer
+                service at help@ ATOSHIN.art . ATOSHIN is always interested in resolving disputes politely and
+                expeditiously. If those attempts fail, a party who wants to go to arbitration must first send a formal
+                Notice of Dispute ("Notice") to the other party via certified mail.
+                ____________________________________________________ ("Notice Address"). The Notice must I outline the
+                claim or dispute's nature and basis, and (ii) state the precise relief requested. You or ATOSHIN may
+                initiate an arbitration action if ATOSHIN and you do not resolve the issue within sixty (60) calendar
+                days of receiving the Notice. The amount of any settlement offer made by ATOSHIN or you during the
+                arbitration shall not be disclosed to the arbitrator until the arbitrator determines the amount to which
+                you or ATOSHIN is entitled, if any.
+            </div>
+            <div className={classes.guideline} style={{marginBottom: 16}}>
+                <div className={classes.bullet}></div>
+                <div className={classes.guidelinesItem}>
+                    Dispute Resolution Procedures The arbitration shall be conducted by a neutral arbitrator in
+                    accordance with the rules and procedures of the American Arbitration Association ("AAA"), including
+                    the AAA's Consumer Arbitration Rules (collectively, the "AAA Rules"), as amended by this Arbitration
+                    Agreement. Visit the AAA's website at http://www.adr.org for further information. The AAA's consumer
+                    arbitration page, http://www.adr.org/, contains information regarding the AAA Rules and costs for
+                    consumer disputes, which may be changed from time to time. If any term of the AAA Rules conflicts
+                    with a term of this Arbitration Agreement, the applicable terms of this Arbitration Agreement will
+                    take precedence unless the arbitrator determines that applying the contradictory Arbitration
+                    Agreement terms would result in a fundamentally unfair arbitration. In the same way as a court
+                    would, the arbitrator must observe the provisions of these Terms of Service. All questions,
+                    including but not limited to matters relating to the scope, enforcement, and arbitrability of this
+                    Arbitration Agreement, are for the arbitrator to decide. Although arbitration hearings are typically
+                    less formal and time-consuming than trials and other judicial proceedings, an arbitrator can award
+                    the same damages and relief to an individual as a court can under the Terms of Service and
+                    applicable legislation. Arbitrator decisions are enforceable in court and can only be overturned by
+                    a court for very specific grounds.
+                    Unless ATOSHIN and you agree otherwise, any arbitration hearings will be held at a location that is
+                    fairly convenient for both parties, taking into account their capacity to travel and other relevant
+                    factors. If the parties are unable to agree on a location, AAA will make the decision. If your claim
+                    is for $10,000 or less, ATOSHIN undertakes to let you select whether the arbitration will be
+                    conducted purely on the basis of papers presented to the arbitrator, through a telephonic hearing,
+                    or through an in-person hearing, as set forth in the AAA Rules. If your claim is worth more than
+                    $10,000, the AAA Rules will assess whether you have a right to a hearing. The arbitrator must give a
+                    reasoned written decision sufficient to explain the fundamental findings and conclusions on which
+                    the award is based, regardless of how the arbitration is conducted.
+                </div>
+            </div>
+            <div className={classes.paragraphTitle}>Why Arbitration Fees?</div>
+            <div className={classes.paragraph} style={{marginBottom: 10}}>
+                Unless otherwise specified in this Arbitration Agreement, all filing, administration, and arbitrator
+                fees (collectively, the "Arbitration Fees") will be regulated by the AAA Rules. And paid respectively by
+                the parties.
+            </div>
+
+            <div className={classes.guideline}>
+                <div className={classes.bullet}></div>
+                <div className={classes.guidelinesItem}>
+                    Confidentiality
+                    For the advantage of all parties, all aspects of the arbitration proceeding, as well as any ruling,
+                    decision, or award made by the arbitrator, will be kept totally confidential.
+                </div>
+            </div>
+            <div className={classes.guideline}>
+                <div className={classes.bullet}></div>
+                <div className={classes.guidelinesItem}>
+                    Severability
+                    If a court or arbitrator rules that any term or provision of this Arbitration Agreement is invalid
+                    or unenforceable (other than subsection (b) above titled "Prohibition of Class and Representative
+                    Actions and Non-Individualized Relief"), the parties agree to replace it with a term or provision
+                    that is valid and enforceable and comes closest to expressing the invalid or unenforceable term or
+                    provision, and this Arbitration Agreement will be void. If any of the provisions of subsection (b)
+                    above titled "Prohibition of Class and Representative Actions and Non-Individualized Relief" are
+                    found to be invalid or unenforceable by a court or arbitrator, then the entire Arbitration Agreement
+                    will be null and void, unless such provisions are found to be invalid or unenforceable solely with
+                    respect to claims for public injunctive relief. The rest of the Terms of Service will remain in
+                    effect.
+                </div>
+            </div>
+
+            <div className={classes.lastGuideline}>
+                <div className={classes.bullet}></div>
+                <div className={classes.guidelinesItem}>
+                    Future Modifications to the Arbitration Agreement
+                    Regardless of any other provision in these Terms of Service, ATOSHIN agrees that you may reject any
+                    future change to this Arbitration Agreement (other than a change to the Notice Address) while you
+                    are a user of the Platforms by sending ATOSHIN written notice within thirty (30) calendar days of
+                    the change to the Notice Address provided above. You agree to arbitrate any disagreement between us
+                    in accordance with the language of this Arbitration Agreement as of the date you initially accepted
+                    these Terms of Service by rejecting any future amendment (or accepted any subsequent changes to
+                    these Terms of Service).
+                </div>
+            </div>
+
+
         </>
     )
 }
