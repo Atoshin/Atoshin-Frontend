@@ -2,9 +2,19 @@ import classes from '../../styles/ArtistList/artistList.module.scss'
 import {useTheme} from "@mui/material/styles";
 import axios from "axios";
 import Link from 'next/link';
+import {useEffect} from "react";
 
 export default function Artists({artists}) {
     const theme = useTheme();
+
+    useEffect(() => {
+        //region change background color for profile page
+        const body = document.getElementsByTagName('body')[0];
+        const style = body.style
+        style.backgroundColor = '#FFFFFF';
+        style.backgroundImage = 'none';
+        //endregion
+    }, [])
 
     return (
         <>

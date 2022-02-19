@@ -4,11 +4,20 @@ import 'react-slideshow-image/dist/styles.css'
 import axios from "axios";
 import {TimeDifference} from "../components/Marketplace/TimeDifference";
 import {useRouter} from "next/router";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export default function Marketplace({assets}) {
     const router = useRouter();
     const [hovered, setHovered] = useState({})
+
+    useEffect(() => {
+        //region change background color for profile page
+        const body = document.getElementsByTagName('body')[0];
+        const style = body.style
+        style.backgroundColor = '#FFFFFF';
+        style.backgroundImage = 'none';
+        //endregion
+    }, [])
 
     return <div className={classes.main}>
         <h1 className={classes.mainTitle}>Marketplace</h1>

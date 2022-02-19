@@ -11,6 +11,15 @@ export default function TermsAndConditions() {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
+    useEffect(() => {
+        //region change background color for profile page
+        const body = document.getElementsByTagName('body')[0];
+        const style = body.style
+        style.backgroundColor = '#FFFFFF';
+        style.backgroundImage = 'none';
+        //endregion
+    }, [])
+
     return (
         <>
             <div className={classes.pageTitle}>Terms and Conditions</div>

@@ -2,11 +2,22 @@ import classes from "../../styles/PrivacyPolicy/PrivacyPolicy.module.scss"
 import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import * as React from "react";
+import {useEffect} from "react";
 
 export default function PrivacyPolicy() {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
+    useEffect(() => {
+        //region change background color for profile page
+        const body = document.getElementsByTagName('body')[0];
+        const style = body.style
+        style.backgroundColor = '#FFFFFF';
+        style.backgroundImage = 'none';
+        //endregion
+    }, [])
+
     return (
         <>
             <div className={classes.pageTitle}>Privacy Policy</div>

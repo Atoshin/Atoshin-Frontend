@@ -40,6 +40,15 @@ export default function ArtCenter({artCenter}) {
     }
 
     useEffect(() => {
+        //region change background color for profile page
+        const body = document.getElementsByTagName('body')[0];
+        const style = body.style
+        style.backgroundColor = '#FFFFFF';
+        style.backgroundImage = 'none';
+        //endregion
+    }, [])
+
+    useEffect(() => {
         if (!rendered) {
             setTimeout(() => {
                 setRendered(true)
