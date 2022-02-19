@@ -6,11 +6,14 @@ import Container from '@mui/material/Container';
 import LeftDrawer from "../components/Layout/LeftDrawer";
 import {useEffect, useRef, useState} from "react";
 import {wrapper} from "../redux/store";
-import {CookiesProvider} from "react-cookie"
+import {CookiesProvider} from "react-cookie";
+import {useRouter} from 'next/router';
 
 function MyApp({Component, pageProps}: AppProps) {
     const [drawerState, setDrawerState] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const router = useRouter()
+
 
     useEffect(() => {
         const setScroll = (e) => {
@@ -31,12 +34,20 @@ function MyApp({Component, pageProps}: AppProps) {
     return <>
         <CookiesProvider>
             <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
+                {router.pathname !== '/landing' &&
                 <Header setDrawerMenu={setDrawerState} isScrolled={scrolled}/>
+                }
                 <LeftDrawer state={drawerState} setState={setDrawerState}/>
-                <Container className="main-mui-container">
-                    <Component {...pageProps} />
-                </Container>
+                {router.pathname === '/landing' ?
+                    <Component {...pageProps}/>
+                    :
+                    <Container className="main-mui-container">
+                        <Component {...pageProps}/>
+                    </Container>
+                }
+                {router.pathname !== '/landing' &&
                 <Footer/>
+                }
             </div>
         </CookiesProvider>
     </>
