@@ -31,11 +31,14 @@ export default function Profile({token}) {
     useEffect(() => {
         //region change background color for profile page
         const body = document.getElementsByTagName('body')[0];
-        body.style.backgroundColor = '#E5E5E5';
-        body.style.backgroundImage = 'none';
+        const style = body.style
+        style.backgroundColor = '#e5e5e5';
+        style.backgroundImage = 'none';
         //endregion
+    }, [])
 
-        //region fetch profile data
+    useEffect(() => {
+                //region fetch profile data
         const signMessage = async () => {
             await window.ethereum.send("eth_requestAccounts");
             const provider = new ethers.providers.Web3Provider(window.ethereum);

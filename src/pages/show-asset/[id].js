@@ -32,6 +32,18 @@ export default function ShowAsset({asset}) {
     ];
 
     useEffect(() => {
+        //region change background color for profile page
+        const body = document.getElementsByTagName('body')[0];
+        const style = body.style
+        style.backgroundColor = 'initial';
+        style.backgroundImage = ' url("/backgrounds/left.svg"), url("/backgrounds/right.svg")';
+        style.backgroundRepeat = 'no-repeat, no-repeat';
+        style.backgroundPosition = 'left top, right top';
+        style.backgroundSize = '60%, 30%';
+        //endregion
+    }, [])
+
+    useEffect(() => {
         const onScroll = (e) => {
             const container = document.getElementsByClassName(styles.showAssetMain)[0]
             const topSec = document.getElementsByClassName(styles.topMainSec)[0]

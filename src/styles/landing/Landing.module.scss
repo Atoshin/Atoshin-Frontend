@@ -1,0 +1,46 @@
+.bgVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.bgVideo {
+  overflow: hidden;
+}
+
+.topLogo {
+  position: absolute;
+  width: 172px;
+  height: 24px;
+  top: 32px;
+  left: 123px;
+}
+
+.midLogo {
+  position: absolute;
+  width: 45px;
+  height: 62px;
+  top: 228px;
+  left: 123px;
+}
+
+.midText {
+  position: absolute;
+  color: #FFFFFF;
+  font-size: 32px;
+  font-weight: 500;
+  width: 400px;
+  top: 295px;
+  left: 123px;
+}
+
+.vector {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: 42px;
+  left: auto;
+  cursor: pointer;
+}

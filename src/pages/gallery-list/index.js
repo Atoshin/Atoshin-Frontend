@@ -4,12 +4,21 @@ import {useMediaQuery} from "@mui/material";
 import axios from "axios";
 import shortenWords from "../../functions/shortenWords";
 import Link from 'next/link';
+import {useEffect} from "react";
 
 export default function galleryList({galleries}) {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
+    useEffect(() => {
+        //region change background color for profile page
+        const body = document.getElementsByTagName('body')[0];
+        const style = body.style
+        style.backgroundColor = '#FFFFFF';
+        style.backgroundImage = 'none';
+        //endregion
+    }, [])
 
     return (
         <>
