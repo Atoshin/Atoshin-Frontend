@@ -14,6 +14,7 @@
 .editProfileImg {
   width: 178px;
   height: 178px;
+  border-radius: 178px;
 }
 
 .changePhoto {
@@ -22,6 +23,7 @@
   font-size: 14px;
   font-weight: 300;
   text-decoration-line: underline;
+  cursor: pointer;
 }
 
 .rightSec {
@@ -68,6 +70,10 @@
 .vectorX {
   width: 16px;
   height: 16px;
+}
+.vectorCheck {
+  width: 28px;
+  height: 28px;
 }
 
 .modalMainSec {

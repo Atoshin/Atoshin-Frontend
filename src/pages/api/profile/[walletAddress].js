@@ -11,14 +11,25 @@ export default async (req, res) => {
             })
             return;
         }
-        const {
-            data,
-            headers: returnedHeaders
-        } = await axios.get(`${process.env.BACKEND_BASE_URL}/user/${query.walletAddress}/show`, {
-            headers: {
-                Authorization: token
-            }
-        })
+        if (req.method === 'GET') {
+            const {
+                data,
+                headers: returnedHeaders
+            } = await axios.get(`${process.env.BACKEND_BASE_URL}/user/${query.walletAddress}/show`, {
+                headers: {
+                    Authorization: token
+                }
+            })
+        } else {
+            const {
+                data,
+                headers: returnedHeaders
+            } = await axios.post(`${process.env.BACKEND_BASE_URL}/user/${query.walletAddress}/show`, {
+                headers: {
+                    Authorization: token
+                }
+            })
+        }
 
         Object.entries(returnedHeaders).forEach((keyArr) =>
             res.setHeader(keyArr[0], keyArr[1])

@@ -57,17 +57,26 @@ export function TimeDifference({time}) {
         }else{
             day = `${diffDays}`
         }
+        if (diffDays < 0){
+            day = `00`
+        }
 
         if (diffHrs < 10){
             hour = `0${diffHrs}`
         }else{
             hour = `${diffHrs}`
         }
+        if (diffHrs < 0){
+            hour = `00`
+        }
 
         if (diffMins < 10){
             min = `0${diffMins}`
         }else{
             min = `${diffMins}`
+        }
+        if (diffMins < 0){
+            min = `00`
         }
 
         setCalculatedTime({

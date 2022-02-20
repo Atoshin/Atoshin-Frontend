@@ -26,6 +26,7 @@ export default function Profile({token}) {
     const address = useAppSelector(selectAddress)
     const balance = useAppSelector(selectBalance)
     const [cookie, setCookie, removeCookie] = useCookies(['token'])
+    const [userData, setUserData] = useState({})
 
     useEffect(() => {
         //region change background color for profile page
@@ -101,6 +102,7 @@ export default function Profile({token}) {
             }
             const {data: {user}} =
                 await axios.get(`/api/profile/${address}`)
+            setUserData(user)
         }
 
         checkConnection();
@@ -121,11 +123,11 @@ export default function Profile({token}) {
                             </div>
                             <img className={classes.profileImg} src="/icons/profile-icon.svg" alt=""/>
                             <div className={classes.profileName}>
-                                Unknown
+                                {userData.firstName ? userData.firstName + ' ' + userData.lastName : 'Unknown'}
                             </div>
                             <div className={classes.walletAddressSec}>
                                 <div className={classes.walletAddress}>
-                                    0we6...245rb
+                                    {address.slice(0, 4) + '...' + address.slice(-4)}
                                 </div>
                                 <img className={classes.copyImg} src="/icons/copy-icon.svg" alt=""/>
                                 <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
@@ -135,7 +137,7 @@ export default function Profile({token}) {
                             </div>
                             <div className={classes.valueSec}>
                                 <div className={classes.valueNum}>
-                                    8.664
+                                    {balance}
                                 </div>
                                 <div className={classes.ethTxt}>
                                     ETH
@@ -192,11 +194,11 @@ export async function getServerSideProps({req}) {
         token = cookies.token;
     }
 
-    if (!token){
-        return {
-            notFound: true
-        }
-    }
+    // if (!token){
+    //     return {
+    //         notFound: true
+    //     }
+    // }
 
     return {
         props: {

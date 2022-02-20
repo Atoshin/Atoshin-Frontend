@@ -52,22 +52,31 @@ export function TimeDifference({time}) {
         let hour;
         let min;
 
-        if (diffDays < 10){
+        if (diffDays < 10) {
             day = `0${diffDays}`
-        }else{
+        } else {
             day = `${diffDays}`
         }
-
-        if (diffHrs < 10){
-            hour = `0${diffHrs}`
-        }else{
-            hour = `${diffHrs}`
+        if (diffDays < 0) {
+            day = '00'
         }
 
-        if (diffMins < 10){
+        if (diffHrs < 10) {
+            hour = `0${diffHrs}`
+        } else {
+            hour = `${diffHrs}`
+        }
+        if (diffHrs < 0) {
+            hour = '00'
+        }
+
+        if (diffMins < 10) {
             min = `0${diffMins}`
-        }else{
+        } else {
             min = `${diffMins}`
+        }
+        if (diffMins < 0) {
+            min = '00'
         }
 
         setCalculatedTime({
