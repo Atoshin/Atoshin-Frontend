@@ -130,7 +130,7 @@ export default function Profile({token}) {
                             </div>
                             <div className={classes.walletAddressSec}>
                                 <div className={classes.walletAddress}>
-                                    {address.slice(0, 4) + '...' + address.slice(-4)}
+                                    {address && address.slice(0, 4) + '...' + address.slice(-4)}
                                 </div>
                                 <img className={classes.copyImg} src="/icons/copy-icon.svg" alt=""/>
                                 <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>

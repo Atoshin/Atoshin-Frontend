@@ -1,14 +1,28 @@
 import classes from '../../styles/Footer/Footer.module.scss'
-import {Button, useMediaQuery} from "@mui/material";
+import {Button, CircularProgress, useMediaQuery} from "@mui/material";
 import Head from "next/head";
 import {useTheme} from "@mui/material/styles";
 import Link from 'next/link';
+import {useState} from "react";
+import axios from "axios";
 
 export default function Footer() {
-
+    const [state, setState] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
+    const submit = () => {
+        setLoading(true)
+        axios.post('/api/newsletter', {
+            email: state
+        }).then(r => {
+            setLoading(false)
+        }).catch(e => {
+            setLoading(false)
+        })
+    }
 
     return <>
         <Head>
@@ -19,8 +33,10 @@ export default function Footer() {
                 Register to our newsletter
             </div>
             <div className={classes.emailSec}>
-                <input className={classes.emailInput} type="text" placeholder='Email Address'/>
-                <Button className={classes.registerBtn}>Register</Button>
+                <input onChange={e => setState(e.target.value)} value={state} className={classes.emailInput} type="text"
+                       placeholder='Email Address'/>
+                <Button onClick={submit} className={classes.registerBtn}>{loading ?
+                    <CircularProgress size={20} style={{color: "black"}}/> : 'Register'}</Button>
             </div>
             <div className={classes.dividingLine}>
             </div>
