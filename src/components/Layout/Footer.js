@@ -2,7 +2,7 @@ import classes from '../../styles/Footer/Footer.module.scss'
 import {Button, useMediaQuery} from "@mui/material";
 import Head from "next/head";
 import {useTheme} from "@mui/material/styles";
-
+import Link from 'next/link';
 
 export default function Footer() {
 
@@ -20,7 +20,7 @@ export default function Footer() {
             </div>
             <div className={classes.emailSec}>
                 <input className={classes.emailInput} type="text" placeholder='Email Address'/>
-                <Button className={classes.registerBtn} >Register</Button>
+                <Button className={classes.registerBtn}>Register</Button>
             </div>
             <div className={classes.dividingLine}>
             </div>
@@ -39,7 +39,9 @@ export default function Footer() {
                         Support
                     </div>
                     <div className={classes.linkSubtitle}>
-                        Contact Us
+                        <Link href={'/contact-us'}>
+                            Contact Us
+                        </Link>
                     </div>
                     <div className={classes.linkSubtitle}>
                         About Us
@@ -53,10 +55,14 @@ export default function Footer() {
                         Legal
                     </div>
                     <div className={classes.linkSubtitle}>
-                        Terms of Service
+                        <Link href={'/terms-and-conditions'}>
+                            Terms of Service
+                        </Link>
                     </div>
                     <div className={classes.linkSubtitle}>
-                        Privacy Policy
+                        <Link href={'/privacy-policy'}>
+                            Privacy Policy
+                        </Link>
                     </div>
                 </div>
             </div>
