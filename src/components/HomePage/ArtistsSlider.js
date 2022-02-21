@@ -5,6 +5,7 @@ import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import {useRef} from "react";
 import {useRouter} from "next/router";
+import Link from "next/link";
 
 export default function ArtistsSlider({artists}) {
     const theme = useTheme();
@@ -34,11 +35,15 @@ export default function ArtistsSlider({artists}) {
                    transitionDuration={500}
                    duration={5000}>
                 {artists.map(artist => {
-                    return <div onClick={() => router.push(`/artists/${artist.fullName.toLowerCase().replace(/ /g, '-')}/${artist.id}`)} key={artist.id}
-                                className={classes.artist}>
-                        <img src={artist.medias.find(media => media.main === 1).url} alt=""/>
-                        <p>{artist.fullName}</p>
-                    </div>
+                    return <Link href={`/artists/${artist.fullName.toLowerCase().replace(/ /g, '-')}/${artist.id}`}>
+                        <a>
+                            {/*onClick={() => router.push(`/artists/${artist.fullName.toLowerCase().replace(/ /g, '-')}/${artist.id}`)}*/}
+                            <div key={artist.id} className={classes.artist}>
+                                <img src={artist.medias.find(media => media.main === 1).url} alt=""/>
+                                <p>{artist.fullName}</p>
+                            </div>
+                        </a>
+                    </Link>
                 })}
             </Slide>
             <img className={classes.vectorRight} onClick={() => {

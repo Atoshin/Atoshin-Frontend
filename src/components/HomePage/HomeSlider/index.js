@@ -4,6 +4,7 @@ import {useTheme} from "@mui/material/styles";
 import {useEffect, useRef, useState} from "react";
 import Slider from './Slider';
 import {useRouter} from "next/router";
+import Link from "next/link";
 
 export default function HomeSlider({assets}) {
     const animateRef = useRef({
@@ -15,8 +16,11 @@ export default function HomeSlider({assets}) {
     })
     const router = useRouter()
     const BuyBtn = () => {
-        return <Button onClick={() => router.push(`/show-asset/${assets[currentSlide].id}`)} className={classes.buyBtn}>Buy
-            Now</Button>
+        return <Link href={`/show-asset/${assets[currentSlide].id}`}>
+            <a>
+                <Button className={classes.buyBtn}>Buy Now</Button>
+            </a>
+        </Link>
     }
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
