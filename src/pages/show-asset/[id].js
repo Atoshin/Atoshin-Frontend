@@ -153,9 +153,11 @@ export default function ShowAsset({asset}) {
                                 </div>
                                 <Link
                                     href={`/artists/${asset.artist.fullName.toLowerCase().replace(/ /g, '-')}/${asset.artist.id}`}>
-                                    <div className={styles.artistName}>
-                                        {asset.artistName}
-                                    </div>
+                                    <a>
+                                        <div className={styles.artistName}>
+                                            {asset.artistName}
+                                        </div>
+                                    </a>
                                 </Link>
                             </div>
                         </div>
@@ -309,7 +311,9 @@ export default function ShowAsset({asset}) {
                                     </div>
                                     <Link
                                         href={`/artists/${asset.artist.fullName.toLowerCase().replace(/ /g, '-')}/${asset.artist.id}`}>
-                                        <div className={styles.backStoryArtistName}>{asset.artistName}</div>
+                                        <a>
+                                            <div className={styles.backStoryArtistName}>{asset.artistName}</div>
+                                        </a>
                                     </Link>
                                 </div>
                                 <div className={styles.originalOwnerSec}>
@@ -317,9 +321,11 @@ export default function ShowAsset({asset}) {
                                         Original owner
                                     </div>
                                     <Link href={`/art-center/${asset.gallery.id}`}>
-                                        <div className={styles.originalOwnerName}>
-                                            {asset.gallery.name}
-                                        </div>
+                                        <a>
+                                            <div className={styles.originalOwnerName}>
+                                                {asset.gallery.name}
+                                            </div>
+                                        </a>
                                     </Link>
                                 </div>
                             </div>
