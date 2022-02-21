@@ -88,14 +88,16 @@ export default function Artist({artist}) {
                                duration={5000}>
                             {artist.assets.map((asset, idx) => {
                                 return <Link key={idx} href={`/show-asset/${asset.id}`}>
-                                    <div className={classes.card}>
-                                        <div className={classes.relatedImg}
-                                             style={{backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover"}}/>
-                                        <div className={classes.relatedDescription}>
-                                            <p className={classes.relatedDescTitle}>{asset.title}</p>
-                                            <p className={classes.relatedDescDesc}>{shortenWords(extractContent(asset.bio), 60) + '...'}</p>
+                                    <a>
+                                        <div className={classes.card}>
+                                            <div className={classes.relatedImg}
+                                                 style={{backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover"}}/>
+                                            <div className={classes.relatedDescription}>
+                                                <p className={classes.relatedDescTitle}>{asset.title}</p>
+                                                <p className={classes.relatedDescDesc}>{shortenWords(extractContent(asset.bio), 60) + '...'}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </Link>
                             })}
                         </Slide>
