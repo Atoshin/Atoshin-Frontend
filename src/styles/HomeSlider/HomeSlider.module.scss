@@ -43,6 +43,9 @@
     opacity: 1;
     transition: opacity 1s ease;
     text-align: left;
+    //border:solid red;
+    height: 200px;
+    overflow: hidden;
   }
 }
 
@@ -94,6 +97,7 @@
   color: #FFFFFF !important;
   border-radius: 5px !important;
   margin-top: 24px !important;
+  //margin-top: 33px !important;
   font-size: 20px !important;
   font-weight: 500 !important;
   line-height: 24px !important;
@@ -310,8 +314,8 @@
   user-select: none;
   cursor: pointer;
   font-size: 16px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   font-weight: 700;
   color: #EE574C;
 }
@@ -328,7 +332,8 @@
   font-size: 16px;
   font-weight: 300;
   color: #232323;
-  margin-right: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 @import "media";

@@ -6,6 +6,7 @@ import * as React from "react";
 import ImagesModal from "./ImagesModal";
 import {useRef} from "react";
 import {useRouter} from "next/router";
+import Link from "next/link";
 
 export default function GallerySection({gallery}) {
     const [openYouTube, setOpenYouTube] = React.useState(false);
@@ -18,9 +19,14 @@ export default function GallerySection({gallery}) {
         current: {}
     })
     const ExploreBtn = () => {
-        return <Button onClick={() => router.push(`/art-center/1`)} className={classes.exploreBtn}>Explore</Button>
-
+        // onClick={() => router.push(`/art-center/1`)}
+        return <Link href={`/art-center/1`}>
+            <a>
+                <Button className={classes.exploreBtn}>Explore</Button>
+            </a>
+        </Link>
     }
+
 
     const openYouTubeModal = (e) => {
         setOpenYouTube(true)

@@ -63,7 +63,9 @@ export default function Footer() {
                         About Us
                     </div>
                     <div className={classes.linkSubtitle}>
-                        FAQ
+                        <Link href={'/faq'}>
+                            FAQ
+                        </Link>
                     </div>
                 </div>
                 <div className={classes.linksSec}>
