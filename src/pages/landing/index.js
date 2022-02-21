@@ -14,7 +14,7 @@ export default function Landing() {
     return (
         <>
             <video className={classes.bgVideo} width="500" autoPlay muted loop id="myVideo">
-                <source src="/videos/landing-intro.webm"
+                <source src="/public/videos/landing-intro.webm"
                         type="video/webm"/>
             </video>
             <img className={classes.topLogo} src="/images/atoshin-logo-typography-white.svg" alt=""/>
