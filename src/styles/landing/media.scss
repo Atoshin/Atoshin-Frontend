@@ -1,0 +1,46 @@
+@media (max-width: 600px) {
+  .topLogo {
+    position: absolute;
+    width: 141px;
+    height: 20px;
+    top: 32px;
+    left: 24px;
+  }
+
+  .midLogo {
+    position: absolute;
+    width: 42px;
+    height: 48px;
+    top: 235px;
+    left: 24px;
+  }
+
+  .midText {
+    position: absolute;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 500;
+    width: 300px;
+    top: 299px;
+    left: 24px;
+  }
+
+  .vector {
+    position: absolute;
+    width: 11px;
+    height: 20px;
+    bottom: 23px;
+    left: auto;
+    cursor: pointer;
+  }
+
+  .bgVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
