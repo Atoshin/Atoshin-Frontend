@@ -43,7 +43,12 @@ export default function EditProfileModal(props) {
 
     const submitForm = async (e) => {
         setLoadingSubmit(true);
-        axios.patch(`/api/profile/${address}`, inputs).then(r => {
+        const formData = new FormData();
+        formData.append('avatar', inputs.avatar)
+        formData.append('firstName', inputs.firstName)
+        formData.append('lastName', inputs.lastName)
+        formData.append('email', inputs.email)
+        axios.patch(`/api/profile/${address}`, formData).then(r => {
 
         }).catch(({response}) => {
                 if (response) {
