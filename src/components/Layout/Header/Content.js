@@ -67,7 +67,6 @@ export default function HeaderContent({setDrawerMenu}) {
     const router = useRouter()
 
     const [openModal, setOpenModal] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const handleOpen = () => setOpenModal(true);
     const handleCloseModal = () => setOpenModal(false);
 
@@ -173,7 +172,7 @@ export default function HeaderContent({setDrawerMenu}) {
             </>
         }
         <UserMenu handleClose={handleClose} anchorEl={anchorEl}/>
-        <ConnectWalletModal setIsLoggedIn={setIsLoggedIn} open={openModal} setOpen={setOpenModal}
+        <ConnectWalletModal open={openModal} setOpen={setOpenModal}
                             handleClose={handleCloseModal}/>
     </>
 }

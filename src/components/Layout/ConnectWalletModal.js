@@ -9,16 +9,14 @@ import classes from '../../styles/ConnectWalletModal/ConnectWalletModal.module.s
 import axios from 'axios';
 import {useCookies} from "react-cookie";
 
-export default function ConnectWalletModal({open, setOpen, handleClose, setIsLoggedIn}) {
+export default function ConnectWalletModal({open, setOpen, handleClose}) {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const [cookie, setCookie] = useCookies(['token'])
 
-    const signMessage = async () => {
-        await window.ethereum.send("eth_requestAccounts");
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = await provider.getSigner();
+
+    const signMessage = async (signer) => {
         const walletAddress = await signer.getAddress();
         try {
             const signature = await signer.signMessage("This website uses this cryptographic signature in place of a password, verifying that you are the owner of this Ethereum address.");
@@ -45,17 +43,16 @@ export default function ConnectWalletModal({open, setOpen, handleClose, setIsLog
             const signer = provider.getSigner();
             const walletAddress = await signer.getAddress();
             if (walletAddress) {
-                setIsLoggedIn(true)
                 axios.post(`/api/wallet`, {
                     walletAddress
                 }).then(r => {
                     if (!r.data.data) {
-                        signMessage()
+                        signMessage(signer)
                     }
                 }).catch(e => {
                     if (typeof e.response !== 'undefined') {
                         if (!e.response.data.data) {
-                            signMessage()
+                            signMessage(signer)
                         }
                     }
                 });
