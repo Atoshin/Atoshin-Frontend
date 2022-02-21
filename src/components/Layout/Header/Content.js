@@ -131,13 +131,31 @@ export default function HeaderContent({setDrawerMenu}) {
                     <div className={classes.mainHeaderDesktop}>
                         <div className={classes.logoContainer}>
                             <Link href="/">
-                                <img className={classes.AtoshinLogo} src="/images/Atoshin-logo.png" alt=""/>
+                                <a>
+                                    <img className={classes.AtoshinLogo} src="/images/Atoshin-logo.png" alt=""/>
+                                </a>
                             </Link>
                         </div>
                         <ul className={classes.menuContainer}>
-                            <ActiveLink title={'Marketplace'} href={"/marketplace"}/>
-                            <ActiveLink title={'Art Centers'} href={"/gallery-list"}/>
-                            <ActiveLink title={'Artists'} href={"/artists"}/>
+                            <Link href={'/marketplace'}>
+                                <a>
+                                    <ActiveLink title={'Marketplace'} href={"/marketplace"}/>
+                                </a>
+                            </Link>
+                            <Link href={"/gallery-list"}>
+                                <a>
+                                    <ActiveLink title={'Art Centers'} href={"/gallery-list"}/>
+                                </a>
+                            </Link>
+                           <Link href={"/artists"}>
+                               <a>
+                                   <ActiveLink title={'Artists'} href={"/artists"}/>
+                               </a>
+                           </Link>
+
+                            {/*<ActiveLink title={'Marketplace'} href={"/marketplace"}/>*/}
+                            {/*<ActiveLink title={'Art Centers'} href={"/gallery-list"}/>*/}
+                            {/*<ActiveLink title={'Artists'} href={"/artists"}/>*/}
                             <li>About NFT</li>
                             {address ?
                                 <div className={classes.avatarIconSec} onClick={handleClick}>
