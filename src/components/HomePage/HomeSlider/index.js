@@ -47,8 +47,15 @@ export default function HomeSlider({assets}) {
     const sliderImages = assets.map(asset => {
         return asset.medias.find(media => media.main === 1).url
     })
-
-
+    const artworkInfo = () => {
+        if (currentDesc) {
+            if (currentDesc.bio.slice(3, -4).length >= 388) {
+                return {__html: currentDesc.bio.slice(3, -4).slice(0, 386)}
+            } else {
+                return {__html: currentDesc.bio}
+            }
+        }
+    }
     return <div className={classes.topMainSec}>
         <div className={visibleDesc ? classes.topLeftSecFadeIn : classes.topLeftSecFadeOut}>
             <div className={classes.artWorkName}>
@@ -58,10 +65,14 @@ export default function HomeSlider({assets}) {
                 By {currentDesc.artistName}
             </div>
             {!matches &&
-                <>
-                    <div className={classes.artworkInfo} dangerouslySetInnerHTML={{__html: currentDesc.bio}}/>
-                    <BuyBtn/>
-                </>
+
+            <>
+                {/*<div className={classes.artworkInfo} dangerouslySetInnerHTML={{__html: currentDesc.bio}}/>*/}
+                <div style={{height: 180, marginBottom: 25}}>
+                    <div className={classes.artworkInfo} dangerouslySetInnerHTML={artworkInfo()}/>
+                </div>
+                <BuyBtn/>
+            </>
             }
         </div>
         <div className={classes.topRightMainSec}>
@@ -88,7 +99,7 @@ export default function HomeSlider({assets}) {
                      src="/icons/vector-right.svg" alt=""/>
             </div>
             {matches &&
-                <BuyBtn/>
+            <BuyBtn/>
             }
         </div>
     </div>
