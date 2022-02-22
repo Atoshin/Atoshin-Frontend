@@ -42,6 +42,15 @@ export default function GallerySection({gallery}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
+    const gallerySummery = () => {
+        if (gallery.summary.length > 426) {
+            return gallery.summary.slice(0,423) + '...'
+        }
+        else {
+            return gallery.summary
+        }
+    }
+
     return <>
         <ImagesModal setOpen={setOpenImage} open={openImage}/>
         <YoutubeVideoModal video={gallery.videoLinks[0]} open={openYouTube} setOpen={setOpenYouTube}/>
@@ -55,20 +64,20 @@ export default function GallerySection({gallery}) {
                 </div>
             </div>
             {matches &&
-                <div className={classes.galleryVidContainer} onClick={openYouTubeModal}>
-                    <div ref={imageRef} style={{
-                        backgroundImage: `url("${gallery.videoLinks[0].media.url}")`,
-                        width: '100%',
-                        height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
-                        backgroundRepeat: "no-repeat",
-                        backgroundSize: "cover",
-                        backgroundPosition: 'center'
-                    }}>
-                        {/*<img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""/>*/}
-                    </div>
-                    <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
-                         onClick={openYouTubeModal}/>
+            <div className={classes.galleryVidContainer} onClick={openYouTubeModal}>
+                <div ref={imageRef} style={{
+                    backgroundImage: `url("${gallery.videoLinks[0].media.url}")`,
+                    width: '100%',
+                    height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    backgroundPosition: 'center'
+                }}>
+                    {/*<img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""/>*/}
                 </div>
+                <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
+                     onClick={openYouTubeModal}/>
+            </div>
             }
             <div className={classes.galleryTopSec}>
                 <div className={classes.galleryDescMainSec}>
@@ -80,43 +89,43 @@ export default function GallerySection({gallery}) {
                     <div className={classes.galleryDescSec}>
                         <div className={classes.galleryDesc}>
                             {!matches &&
-                                <div className={classes.galleryDecsTxt}>
-                                    {gallery.summary}
-                                </div>
+                            <div className={classes.galleryDecsTxt}>
+                                {gallerySummery()}
+                            </div>
                             }
                             {matches &&
-                                <div className={classes.galleryDecsTxtMob}>
-                                    {gallery.summary}
-                                </div>
+                            <div className={classes.galleryDecsTxtMob}>
+                                {gallery.summary}
+                            </div>
                             }
                             {!matches &&
-                                <ExploreBtn/>
+                            <ExploreBtn/>
                             }
                         </div>
                     </div>
                 </div>
                 {!matches &&
-                    <div className={classes.galleryVidContainer}>
-                        <div
-                            style={{
-                                backgroundImage: `url("${gallery.videoLinks[0].media.url}")`,
-                                // width: '100%',
-                                height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
-                                backgroundRepeat: "no-repeat",
-                                backgroundSize: "cover",
-                                backgroundPosition: 'center'
-                            }}
-                            className={classes.galleryMainPhoto}
-                            onClick={openYouTubeModal}
-                        />
-                        {/*<img className={classes.galleryMainPhoto} src={gallery.videoLinks[0].media.url} alt=""*/}
-                        {/*     onClick={openYouTubeModal}/>*/}
-                        <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
-                             onClick={openYouTubeModal}/>
-                    </div>
+                <div className={classes.galleryVidContainer}>
+                    <div
+                        style={{
+                            backgroundImage: `url("${gallery.videoLinks[0].media.url}")`,
+                            // width: '100%',
+                            height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
+                            backgroundRepeat: "no-repeat",
+                            backgroundSize: "cover",
+                            backgroundPosition: 'center'
+                        }}
+                        className={classes.galleryMainPhoto}
+                        onClick={openYouTubeModal}
+                    />
+                    {/*<img className={classes.galleryMainPhoto} src={gallery.videoLinks[0].media.url} alt=""*/}
+                    {/*     onClick={openYouTubeModal}/>*/}
+                    <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
+                         onClick={openYouTubeModal}/>
+                </div>
                 }
                 {matches &&
-                    <ExploreBtn/>
+                <ExploreBtn/>
                 }
             </div>
             <div className={classes.galleryBottomSec}>
