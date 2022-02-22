@@ -158,7 +158,11 @@ export default function Profile({token}) {
                             {/*    Edit Profile*/}
                             {/*</div>*/}a
                             <div className={classes.profileImgSecMob}>
-                                <img className={classes.profileImg} src="/icons/profile-icon.svg" alt=""/>
+                                <div className={classes.profileImg} style={{
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    backgroundImage: `url(${userData.avatar ? userData.avatar : "/icons/profile-icon.svg"})`
+                                }}/>
                                 <div className={classes.profileName}>
                                     {userData.firstName ? userData.firstName + ' ' + userData.lastName : 'Unknown'}
                                 </div>
