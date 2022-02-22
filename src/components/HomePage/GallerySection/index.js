@@ -113,7 +113,10 @@ export default function GallerySection({gallery}) {
                             height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "cover",
-                            backgroundPosition: 'center'
+                            backgroundPosition: 'center',
+                            // filter: 'contrast(50%)',
+                            // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)'
+                            filter: 'saturate(100%) brightness(0.50)'
                         }}
                         className={classes.galleryMainPhoto}
                         onClick={openYouTubeModal}

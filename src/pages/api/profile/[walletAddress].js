@@ -24,7 +24,7 @@ export default async (req, res) => {
             returnedHeaders = response.headers;
         } else if (req.method === "PATCH") {
             const
-                response = await axios.patch(`${process.env.BACKEND_BASE_URL}/user/${query.walletAddress}/update`, {body}, {
+                response = await axios.patch(`${process.env.BACKEND_BASE_URL}/user/${query.walletAddress}/update`, body, {
                     headers: {
                         Authorization: token
                     }

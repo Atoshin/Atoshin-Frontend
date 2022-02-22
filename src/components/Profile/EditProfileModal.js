@@ -8,7 +8,7 @@ import {useRef, useState} from "react";
 import axios from "axios";
 import {useAppSelector} from "../../redux/hooks";
 import {selectAddress} from "../../redux/slices/accountSlice";
-import {TextField} from "@mui/material";
+import {CircularProgress, TextField} from "@mui/material";
 
 
 const style = {
@@ -26,7 +26,7 @@ const style = {
 };
 
 export default function EditProfileModal(props) {
-    const {open, setOpen} = props;
+    const {open, setOpen, setUserData} = props;
     const [inputs, setInputs] = useState({});
     const [loadingSubmit, setLoadingSubmit] = useState(false);
     const [error, setError] = useState({});
@@ -46,12 +46,16 @@ export default function EditProfileModal(props) {
         const formData = new FormData();
         formData.append('File', inputs.avatar)
         let path;
-        if (inputs.avatar){
+        if (inputs.avatar) {
             const response = await axios.post('https://atoshinadmin.satratech.ir/api/v1/file', formData)
             path = response.data.path;
         }
         axios.patch(`/api/profile/${address}`, {...inputs, avatar: path}).then(r => {
-
+            axios.get(`/api/profile/${address}`).then(r => {
+                setOpen(false)
+                setLoadingSubmit(false)
+                setUserData(r.data.user)
+            })
         }).catch(({response}) => {
                 if (response) {
                     if (response.status === 422) setError(response.data.errors)
@@ -73,11 +77,15 @@ export default function EditProfileModal(props) {
                     <div className={classes.modalMainSec}>
                         <div className={classes.closeVectorSec}>
                             <div className={classes.closeVector} style={{marginLeft: 5}} onClick={submitForm}>
-                                <img className={classes.vectorCheck} src="/icons/check.svg" alt=""/>
+                                {loadingSubmit ?
+                                    <CircularProgress style={{color: 'black'}}/>
+                                    :
+                                    <img className={classes.vectorCheck} src="/icons/check.svg" alt=""/>
+                                }
                             </div>
-                            <div className={classes.closeVector} onClick={handleClose}>
+                            {!loadingSubmit && <div className={classes.closeVector} onClick={handleClose}>
                                 <img className={classes.vectorX} src="/icons/vector-X.png" alt=""/>
-                            </div>
+                            </div>}
                         </div>
                         <div className={classes.modalMain}>
                             <div className={classes.leftSec}>
