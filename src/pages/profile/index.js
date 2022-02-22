@@ -38,7 +38,7 @@ export default function Profile({token}) {
     }, [])
 
     useEffect(() => {
-                //region fetch profile data
+        //region fetch profile data
         const signMessage = async () => {
             await window.ethereum.send("eth_requestAccounts");
             const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -137,8 +137,11 @@ export default function Profile({token}) {
                                 <div className={classes.walletAddress}>
                                     {address && address.slice(0, 4) + '...' + address.slice(-4)}
                                 </div>
-                                <img className={classes.copyImg} src="/icons/copy-icon.svg" alt=""/>
-                                <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
+                                <img onClick={() => copyText(address)} className={classes.copyImg}
+                                     src="/icons/copy-icon.svg" alt=""/>
+                                <a target="_blank" href={`https://etherscan.io/address/${address}`}>
+                                    <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
+                                </a>
                             </div>
                             <div className={classes.valueTxt}>
                                 The value of your account
@@ -172,8 +175,11 @@ export default function Profile({token}) {
                                     <div className={classes.walletAddress}>
                                         {address && address.slice(0, 4) + '...' + address.slice(-4)}
                                     </div>
-                                    <img onClick={() => copyText(address)} className={classes.copyImg} src="/icons/copy-icon.svg" alt=""/>
-                                    <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
+                                    <img onClick={() => copyText(address)} className={classes.copyImg}
+                                         src="/icons/copy-icon.svg" alt=""/>
+                                    <a target="_blank" href={`https://etherscan.io/address/${address}`}>
+                                        <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
+                                    </a>
                                 </div>
                                 <div className={classes.valueTxt}>
                                     The value of your account
