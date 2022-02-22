@@ -43,7 +43,14 @@ export default function EditProfileModal(props) {
 
     const submitForm = async (e) => {
         setLoadingSubmit(true);
-        axios.patch(`/api/profile/${address}`, inputs).then(r => {
+        const formData = new FormData();
+        formData.append('File', inputs.avatar)
+        let path;
+        if (inputs.avatar){
+            const response = await axios.post('https://atoshinadmin.satratech.ir/api/v1/file', formData)
+            path = response.data.path;
+        }
+        axios.patch(`/api/profile/${address}`, {...inputs, avatar: path}).then(r => {
 
         }).catch(({response}) => {
                 if (response) {
