@@ -5,7 +5,17 @@ import classes from "../../styles/ShowAsset/ShowAsset.module.scss";
 import Zoom from "react-img-zoom";
 import {useEffect, useRef, useState} from "react";
 
-export default function ImagesModal({open, setOpen, images, title, videos, clickedImageId, clickedVideoId, setClickedImageId, setClickedVideoId}) {
+export default function ImagesModal({
+                                        open,
+                                        setOpen,
+                                        images,
+                                        title,
+                                        videos,
+                                        clickedImageId,
+                                        clickedVideoId,
+                                        setClickedImageId,
+                                        setClickedVideoId
+                                    }) {
     const [mainImg, setImg] = useState(images.find(img => img.main === 1))
     const ref = useRef();
     const handleClose = () => {
@@ -18,15 +28,17 @@ export default function ImagesModal({open, setOpen, images, title, videos, click
     }
 
     useEffect(() => {
-        if(clickedImageId){
+        if (clickedImageId) {
             setImg(images.find(img => img.id === clickedImageId))
             setClickedImageId('')
         }
-        if(clickedVideoId){
+        if (clickedVideoId) {
             setImg(videos.find(video => video.id === clickedVideoId))
             setClickedVideoId('')
         }
     }, [open])
+
+
 
 
     let ZoomImg = () => (<Zoom
@@ -75,26 +87,50 @@ export default function ImagesModal({open, setOpen, images, title, videos, click
                                 ref={ref}
                                 dangerouslySetInnerHTML={{__html: mainImg.link}}/>
                             :
-                    <ZoomImg/>
+                            <ZoomImg/>
                     }
                 </div>
                 {/*<img className={classes.modalMainImg} src="/images/starry-night-main.png" alt=""/>*/}
                 <div className={classes.dialogBody}>
                     <div className={classes.otherImgesContainer}>
                         {images.map((image, idx) => {
-                            return <div onClick={() => setImg(image)} key={idx} style={{
-                                backgroundImage: `url(${image.url})`,
-                                width: 120,
-                                height: 120,
-                                backgroundPosition: 'center',
-                                backgroundSize: "cover",
-                                cursor: "pointer",
-                                marginBottom: 24,
-                                marginLeft: 24,
-                            }}/>
+                            if (image.id === mainImg.id) {
+                                // location.href = "#test";
+                                // if (typeof window !== 'undefined') {
+                                //     document.querySelector('#test').scrollIntoView({
+                                //         behavior: 'smooth'
+                                //     });
+                                // }
+                                return <div id='test'  onClick={() => setImg(image)} key={idx} style={{
+                                    backgroundImage: `url(${image.url})`,
+                                    width: 120,
+                                    height: 120,
+                                    // boxShadow: '0px 7px 12px rgba(0, 0, 0, 0.1)',
+                                    // boxShadow: 'rgb(0 0 0 / 93%) 0px 7px 12px',
+                                    boxShadow: '#FD6108 0px 7px 12px',
+                                    backgroundPosition: 'center',
+                                    backgroundSize: "cover",
+                                    cursor: "pointer",
+                                    marginBottom: 24,
+                                    marginLeft: 24,
+                                }}/>
+                            } else {
+                                return <div onClick={() => setImg(image)} key={idx} style={{
+                                    backgroundImage: `url(${image.url})`,
+                                    width: 120,
+                                    height: 120,
+                                    // boxShadow: '0px 7px 12px rgba(0, 0, 0, 0.1)',
+                                    // boxShadow: 'rgb(0 0 0 / 93%) 0px 7px 12px',
+                                    backgroundPosition: 'center',
+                                    backgroundSize: "cover",
+                                    cursor: "pointer",
+                                    marginBottom: 24,
+                                    marginLeft: 24,
+                                }}/>
+                            }
                         })}
                         {videos.map((video, idx) => {
-                            if (typeof document !== "undefined"){
+                            if (typeof document !== "undefined") {
                                 let span = document.createElement('span');
                                 span.hidden = true;
                                 span.innerHTML = video.link;
