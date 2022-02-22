@@ -205,18 +205,19 @@ export default function Profile({token}) {
     )
 }
 
-export async function getServerSideProps({req}) {
+export async function getServerSideProps({req, res}) {
     let token = null;
     const cookies = parseCookies(req);
     if (cookies.token) {
         token = cookies.token;
     }
 
-    // if (!token){
-    //     return {
-    //         notFound: true
-    //     }
-    // }
+
+    if (!token) {
+        res.setHeader("location", "/")
+        res.statusCode = 302
+        res.end()
+    }
 
     return {
         props: {
