@@ -8,6 +8,7 @@ import {useRef, useState} from "react";
 import axios from "axios";
 import {useAppSelector} from "../../redux/hooks";
 import {selectAddress} from "../../redux/slices/accountSlice";
+import {TextField} from "@mui/material";
 
 
 const style = {
@@ -28,6 +29,7 @@ export default function EditProfileModal(props) {
     const {open, setOpen} = props;
     const [inputs, setInputs] = useState({});
     const [loadingSubmit, setLoadingSubmit] = useState(false);
+    const [error, setError] = useState({});
     const address = useAppSelector(selectAddress);
     const ref = useRef(null);
     const handleClose = () => {
@@ -41,7 +43,21 @@ export default function EditProfileModal(props) {
 
     const submitForm = async (e) => {
         setLoadingSubmit(true);
-        await axios.post(`/api/profile/${address}`, inputs);
+        const formData = new FormData();
+        formData.append('File', inputs.avatar)
+        let path;
+        if (inputs.avatar){
+            const response = await axios.post('https://atoshinadmin.satratech.ir/api/v1/file', formData)
+            path = response.data.path;
+        }
+        axios.patch(`/api/profile/${address}`, {...inputs, avatar: path}).then(r => {
+
+        }).catch(({response}) => {
+                if (response) {
+                    if (response.status === 422) setError(response.data.errors)
+                }
+            }
+        );
         setLoadingSubmit(false);
     }
 
@@ -68,33 +84,39 @@ export default function EditProfileModal(props) {
                                 <div className={classes.editProfileImg} style={{
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
-                                    backgroundImage: `url(${inputs.profile ? (URL.createObjectURL(inputs.profile)) : "/icons/profile-icon.svg"})`
+                                    backgroundImage: `url(${inputs.avatar ? (URL.createObjectURL(inputs.avatar)) : "/icons/profile-icon.svg"})`
                                 }}/>
                                 <div onClick={chooseImage} className={classes.changePhoto}>
                                     Change Photo
                                 </div>
                                 <input type="file" hidden ref={ref}
-                                       onChange={e => setInputs({...inputs, profile: e.target.files[0]})}/>
+                                       onChange={e => setInputs({...inputs, avatar: e.target.files[0]})}/>
                             </div>
                             <div className={classes.rightSec}>
                                 <div className={classes.inputTitle}>
                                     First name
                                 </div>
-                                <input value={inputs.firstName}
-                                       onChange={e => setInputs({...inputs, firstName: e.target.value})}
-                                       className={classes.input} placeholder="Enter First name" type="text"/>
+                                <TextField value={inputs.firstName}
+                                           error={error.firstName}
+                                           helperText={error.firstName}
+                                           onChange={e => setInputs({...inputs, firstName: e.target.value})}
+                                           classes={{input: classes.input}} placeholder="Enter First name" type="text"/>
                                 <div className={classes.inputTitle}>
                                     Last name
                                 </div>
-                                <input value={inputs.lastName}
-                                       onChange={e => setInputs({...inputs, lastName: e.target.value})}
-                                       className={classes.input} placeholder="Enter Last name" type="text"/>
+                                <TextField value={inputs.lastName}
+                                           error={error.lastName}
+                                           helperText={error.lastName}
+                                           onChange={e => setInputs({...inputs, lastName: e.target.value})}
+                                           classes={{input: classes.input}} placeholder="Enter Last name" type="text"/>
                                 <div className={classes.inputTitle}>
                                     Email
                                 </div>
-                                <input value={inputs.email}
-                                       onChange={e => setInputs({...inputs, email: e.target.value})}
-                                       className={classes.input} placeholder="Enter Email" type="text"/>
+                                <TextField value={inputs.email}
+                                           error={error.email}
+                                           helperText={error.email}
+                                           onChange={e => setInputs({...inputs, email: e.target.value})}
+                                           classes={{input: classes.input}} placeholder="Enter Email" type="text"/>
                             </div>
                         </div>
                     </div>
