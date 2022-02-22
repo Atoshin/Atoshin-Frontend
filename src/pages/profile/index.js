@@ -116,7 +116,7 @@ export default function Profile({token}) {
 
     return (
         <>
-            <EditProfileModal open={openModal} setOpen={setOpenModal}/>
+            <EditProfileModal setUserData={setUserData} open={openModal} setOpen={setOpenModal}/>
             <div className={classes.profileMain}>
                 <div className={classes.leftSec}>
                     {!matches ?
@@ -124,7 +124,12 @@ export default function Profile({token}) {
                             <div className={classes.editProfileSec} onClick={() => setOpenModal(true)}>
                                 Edit Profile
                             </div>
-                            <img className={classes.profileImg} src="/icons/profile-icon.svg" alt=""/>
+                            <div className={classes.profileImg} style={{
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                                backgroundImage: `url(${userData.avatar ? userData.avatar : "/icons/profile-icon.svg"})`
+                            }}/>
+                            {/*<img className={classes.profileImg} src={userData.avatar ? userData.avatar : "/icons/profile-icon.svg"} alt=""/>*/}
                             <div className={classes.profileName}>
                                 {userData.firstName ? userData.firstName + ' ' + userData.lastName : 'Unknown'}
                             </div>
@@ -155,13 +160,13 @@ export default function Profile({token}) {
                             <div className={classes.profileImgSecMob}>
                                 <img className={classes.profileImg} src="/icons/profile-icon.svg" alt=""/>
                                 <div className={classes.profileName}>
-                                    Unknown
+                                    {userData.firstName ? userData.firstName + ' ' + userData.lastName : 'Unknown'}
                                 </div>
                             </div>
                             <div className={classes.detailSecMob}>
                                 <div className={classes.walletAddressSec}>
                                     <div className={classes.walletAddress}>
-                                        0we6...245rb
+                                        {address && address.slice(0, 4) + '...' + address.slice(-4)}
                                     </div>
                                     <img className={classes.copyImg} src="/icons/copy-icon.svg" alt=""/>
                                     <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
@@ -171,7 +176,7 @@ export default function Profile({token}) {
                                 </div>
                                 <div className={classes.valueSec}>
                                     <div className={classes.valueNum}>
-                                        8.664
+                                        {balance}
                                     </div>
                                     <div className={classes.ethTxt}>
                                         ETH
