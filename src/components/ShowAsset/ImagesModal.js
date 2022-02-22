@@ -5,7 +5,7 @@ import classes from "../../styles/ShowAsset/ShowAsset.module.scss";
 import Zoom from "react-img-zoom";
 import {useEffect, useRef, useState} from "react";
 
-export default function ImagesModal({open, setOpen, images, title, videos}) {
+export default function ImagesModal({open, setOpen, images, title, videos, clickedImageId, clickedVideoId, setClickedImageId, setClickedVideoId}) {
     const [mainImg, setImg] = useState(images.find(img => img.main === 1))
     const ref = useRef();
     const handleClose = () => {
@@ -16,6 +16,18 @@ export default function ImagesModal({open, setOpen, images, title, videos}) {
         }
         setImg(images.find(img => img.main === 1))
     }
+
+    useEffect(() => {
+        if(clickedImageId){
+            setImg(images.find(img => img.id === clickedImageId))
+            setClickedImageId('')
+        }
+        if(clickedVideoId){
+            setImg(videos.find(video => video.id === clickedVideoId))
+            setClickedVideoId('')
+        }
+    }, [open])
+
 
     let ZoomImg = () => (<Zoom
         img={mainImg.url}
@@ -45,7 +57,6 @@ export default function ImagesModal({open, setOpen, images, title, videos}) {
             />)
         }
     }, [mainImg])
-
 
     return (
         <Dialog onClose={handleClose} open={open} fullWidth maxWidth={"xl"} classes={{paper: classes.imgDialog}}>
