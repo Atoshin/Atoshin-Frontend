@@ -2,11 +2,11 @@ import classes from '../../styles/Profile/Profile.module.scss'
 import 'react-slideshow-image/dist/styles.css';
 import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
-import {useEffect, useRef, useState} from "react";
+import * as React from "react";
+import {useEffect, useState} from "react";
 import ProfileTabPanel from "../../components/Profile/ProfileTabPanel";
 import EditProfileModal from "../../components/Profile/EditProfileModal";
-import * as React from "react";
-import HistoryModal from "../../components/ShowAsset/HistoryModal";
+import copyText from '../../functions/copyText'
 import axios from "axios";
 import Web3 from "web3";
 import {selectAddress, selectBalance, setAddress, setBalance} from "../../redux/slices/accountSlice";
@@ -172,7 +172,7 @@ export default function Profile({token}) {
                                     <div className={classes.walletAddress}>
                                         {address && address.slice(0, 4) + '...' + address.slice(-4)}
                                     </div>
-                                    <img className={classes.copyImg} src="/icons/copy-icon.svg" alt=""/>
+                                    <img onClick={() => copyText(address)} className={classes.copyImg} src="/icons/copy-icon.svg" alt=""/>
                                     <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
                                 </div>
                                 <div className={classes.valueTxt}>
