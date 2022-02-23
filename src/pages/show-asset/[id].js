@@ -12,6 +12,8 @@ import Link from 'next/link';
 import {Slide} from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import Youtube from 'react-youtube';
+import {useRouter} from "next/router";
+import CryptoJS from 'crypto-js';
 
 export default function ShowAsset({asset}) {
     const [openImages, setOpenImages] = useState(false)
@@ -20,6 +22,7 @@ export default function ShowAsset({asset}) {
     const [rendered, setRendered] = useState(false)
     const [tooltip, setTooltip] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const [quantity, setQuantity] = useState(1)
     const [sliderAutoplay, setSliderAutoplay] = useState(true)
     const [secondTooltip, setSecondTooltip] = useState(false)
     const [currentSlide, setCurrentSlide] = useState(asset.medias.find(media => media.main === 1))
@@ -27,6 +30,7 @@ export default function ShowAsset({asset}) {
         width: '',
         height: ''
     })
+    const {query} = useRouter();
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
@@ -60,7 +64,6 @@ export default function ShowAsset({asset}) {
 
 
         window.addEventListener('scroll', onScroll)
-
 
 
         return function () {
@@ -153,7 +156,7 @@ export default function ShowAsset({asset}) {
             }
         } else {
             return asset.medias.slice(0, 6).map((data, idx) => {
-                if (idx === parseInt(Object.keys(asset.medias)[Object.keys(asset.medias).length - 1]) || idx === 5 ) {
+                if (idx === parseInt(Object.keys(asset.medias)[Object.keys(asset.medias).length - 1]) || idx === 5) {
                     return <div onClick={() => openImageModal(data.id)} style={{
                         backgroundImage: `url("${data.url}")`,
                         width: 93.39,
@@ -181,6 +184,12 @@ export default function ShowAsset({asset}) {
         }
     }
 
+    const submitOrder = async () => {
+        const {data: encrypted} = await axios.post(`/api/contracts/asset/${query.id}`, {amount: quantity})
+        const decrypted = await CryptoJS.AES.decrypt(encrypted, '@atoshin201020202')
+        const resData = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
+        console.log(resData)
+    }
 
     useEffect(() => {
         const imgContainer = document.getElementById('main-img-container')
@@ -240,59 +249,59 @@ export default function ShowAsset({asset}) {
                             </div>
                         </div>
                         {matches &&
-                        <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease'}}
-                             className={styles.artworkMainImgSec}>
-                            <Slide
-                                easing='ease'
-                                slidesToShow={1}
-                                infinite={true}
-                                autoplay={sliderAutoplay}
-                                duration={5000}
-                                indicators
-                                onChange={(oldIdx, newIdx) => {
-                                    const mediaIndexes = asset.medias.filter(media => media.main !== 1).length - 1
-                                    if (newIdx > mediaIndexes) {
-                                        newIdx = newIdx - (mediaIndexes + 1);
-                                        setCurrentSlide(asset.videoLinks[newIdx])
-                                    } else {
-                                        setCurrentSlide(asset.medias.filter(media => media.main !== 1)[newIdx])
-                                    }
-                                }}
-                            >
-                                {asset.medias.filter(media => media.main !== 1).map(media => {
-                                    return <img key={media.id}
-                                                style={{...mainImgSize, transition: 'all 500ms ease'}}
-                                                className={styles.artworkMainImg}
-                                                src={media.url} alt=""/>
-                                })}
-                                {asset.videoLinks.map(video => {
-                                    let span = document.createElement('span');
-                                    span.hidden = true;
-                                    span.innerHTML = video.link;
-                                    const iframe = span.children[0]
-                                    const ytvId = iframe.src.slice(-11)
-                                    span.remove()
-                                    return <Youtube
-                                        // videoId={video.videoId}
-                                        videoId={ytvId}
-                                        containerClassName={styles.artworkMainImgMobile}
-                                        opts={mainImgSize}
-                                        onPlay={() => {
-                                            setSliderAutoplay(false)
-                                        }}
-                                        onPause={() => {
-                                            setSliderAutoplay(true)
-                                        }}
-                                    />
-                                })}
-                            </Slide>
-                        </div>
+                            <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease'}}
+                                 className={styles.artworkMainImgSec}>
+                                <Slide
+                                    easing='ease'
+                                    slidesToShow={1}
+                                    infinite={true}
+                                    autoplay={sliderAutoplay}
+                                    duration={5000}
+                                    indicators
+                                    onChange={(oldIdx, newIdx) => {
+                                        const mediaIndexes = asset.medias.filter(media => media.main !== 1).length - 1
+                                        if (newIdx > mediaIndexes) {
+                                            newIdx = newIdx - (mediaIndexes + 1);
+                                            setCurrentSlide(asset.videoLinks[newIdx])
+                                        } else {
+                                            setCurrentSlide(asset.medias.filter(media => media.main !== 1)[newIdx])
+                                        }
+                                    }}
+                                >
+                                    {asset.medias.filter(media => media.main !== 1).map(media => {
+                                        return <img key={media.id}
+                                                    style={{...mainImgSize, transition: 'all 500ms ease'}}
+                                                    className={styles.artworkMainImg}
+                                                    src={media.url} alt=""/>
+                                    })}
+                                    {asset.videoLinks.map(video => {
+                                        let span = document.createElement('span');
+                                        span.hidden = true;
+                                        span.innerHTML = video.link;
+                                        const iframe = span.children[0]
+                                        const ytvId = iframe.src.slice(-11)
+                                        span.remove()
+                                        return <Youtube
+                                            // videoId={video.videoId}
+                                            videoId={ytvId}
+                                            containerClassName={styles.artworkMainImgMobile}
+                                            opts={mainImgSize}
+                                            onPlay={() => {
+                                                setSliderAutoplay(false)
+                                            }}
+                                            onPause={() => {
+                                                setSliderAutoplay(true)
+                                            }}
+                                        />
+                                    })}
+                                </Slide>
+                            </div>
                         }
                         {matches &&
-                        <div className={styles.saleEndDateMob}>
-                            Sale ends
-                            in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
-                        </div>
+                            <div className={styles.saleEndDateMob}>
+                                Sale ends
+                                in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                            </div>
                         }
                         <div className={styles.saleMainSec}>
                             <div className={styles.saleEndDate}>
@@ -305,8 +314,8 @@ export default function ShowAsset({asset}) {
                             <div className={styles.fractionsLeftTxt}>
                                 Fractions left
                                 {!matches &&
-                                <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
-                                     className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                                    <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
+                                         className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                                 }
                                 <Fade in={tooltip}>
                                     <div className={styles.fractionsTooltip}>
@@ -322,26 +331,26 @@ export default function ShowAsset({asset}) {
                                 {asset.totalFractions - asset.soldFractions}/{asset.totalFractions}
                             </div>
                             {matches &&
-                            <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
-                                 className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                                <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
+                                     className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                             }
                         </div>
                         {(matches) &&
-                        <MUISlide in={scrolled} direction={"up"}>
-                            <div className={styles.priceMainSec}>
-                                <div className={styles.priceSec}>
-                                    <div className={styles.priceTxt}>
-                                        Price
+                            <MUISlide in={scrolled} direction={"up"}>
+                                <div className={styles.priceMainSec}>
+                                    <div className={styles.priceSec}>
+                                        <div className={styles.priceTxt}>
+                                            Price
+                                        </div>
+                                        <div className={styles.priceAmount}>
+                                            {asset.price} ETH
+                                        </div>
                                     </div>
-                                    <div className={styles.priceAmount}>
-                                        {asset.price} ETH
-                                    </div>
+                                    <Button className={styles.BuyBtn}>
+                                        Buy now
+                                    </Button>
                                 </div>
-                                <Button className={styles.BuyBtn}>
-                                    Buy now
-                                </Button>
-                            </div>
-                        </MUISlide>
+                            </MUISlide>
                         }
                         {
                             !matches &&
@@ -354,8 +363,10 @@ export default function ShowAsset({asset}) {
                                         {asset.price} ETH
                                     </div>
                                 </div>
-                                <Button className={styles.BuyBtn}>
-                                    Buy now
+                                <input value={quantity} onChange={e => setQuantity(e.target.value)}
+                                       className={styles.quantityInput} type="text"/>
+                                <Button onClick={submitOrder} className={styles.BuyBtnDesktop}>
+                                    Buy {quantity ? quantity : 0} Tokens Now
                                 </Button>
                             </div>
                         }
