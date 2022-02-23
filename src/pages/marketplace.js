@@ -1,11 +1,11 @@
 import classes from '../styles/Marketplace/Marketplace.module.scss'
-import {Slide} from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import axios from "axios";
 import {TimeDifference} from "../components/Marketplace/TimeDifference";
 import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import Link from "next/link";
+import Slider from "../components/Marketplace/Slider";
 
 export default function Marketplace({assets}) {
     const router = useRouter();
@@ -20,27 +20,29 @@ export default function Marketplace({assets}) {
         //endregion
     }, [])
 
+    const mouseOver = (a) => {
+        setHovered({...hovered, [a]: true})
+    }
+    const mouseOut = (a) => {
+        setHovered({...hovered, [a]: false})
+    }
+
     return <div className={classes.main}>
         <h1 className={classes.mainTitle}>Marketplace</h1>
         <hr className={classes.hr}/>
-        <div className={classes.items}>
+        <div
+            className={classes.items}>
             {assets.map(asset => {
                 return <Link href={`/show-asset/${asset.id}`}>
                     <a>
-                        {/*onClick={() => router.push(`/show-asset/${asset.id}`)}*/}
-                        <div onMouseOver={() => setHovered({...hovered, [asset.id]: true})}
-                             onMouseOut={() => setHovered({...hovered, [asset.id]: false})}
-                             className={classes.card}>
-                            <Slide pauseOnHover={false} duration={1000} autoplay={hovered[asset.id]} arrows={false} slidesToShow={1} easing={"ease"} infinite={true}>
-                                {asset.medias.map(media => {
-                                    return <div className={classes.cardImg} style={{
-                                        backgroundImage: `url("${media.url}")`,
-                                        backgroundRepeat: "no-repeat",
-                                        backgroundSize: "cover",
-                                        backgroundPosition: "center"
-                                    }}/>
-                                })}
-                            </Slide>
+                        <div
+                            onMouseEnter={() => mouseOver(asset.id)}
+                            onMouseLeave={() => mouseOut(asset.id)}
+                            className={classes.card}>
+
+                            <Slider
+                                hovered={hovered} assets={assets} asset={asset} setHovered={setHovered}
+                            />
                             <div className={classes.cardDetails}>
                                 <div>
                                     <h3 className={classes.artworkName}>{asset.title}</h3>
