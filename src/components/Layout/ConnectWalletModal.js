@@ -8,6 +8,7 @@ import {ethers} from "ethers";
 import classes from '../../styles/ConnectWalletModal/ConnectWalletModal.module.scss';
 import axios from 'axios';
 import {useCookies} from "react-cookie";
+import {parseCookies} from "../../functions/parseCookies";
 
 export default function ConnectWalletModal({open, setOpen, handleClose}) {
 
@@ -46,9 +47,7 @@ export default function ConnectWalletModal({open, setOpen, handleClose}) {
                 axios.post(`/api/wallet`, {
                     walletAddress
                 }).then(r => {
-                    if (!r.data.data) {
-                        signMessage(signer)
-                    }
+                    signMessage(signer)
                 }).catch(e => {
                     if (typeof e.response !== 'undefined') {
                         if (!e.response.data.data) {
