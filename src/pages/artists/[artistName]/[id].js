@@ -41,8 +41,14 @@ export default function Artist({artist}) {
                                 Ranking
                             </a>
                             <div className={classes.rankingSec}>
-                                <div className={classes.globalRank}>{artist.worldRanking}</div>
-                                <div className={classes.domesticRank}>{artist.iranRanking}</div>
+                                <div className={classes.globalRank}>
+                                    {/*{artist.worldRanking}*/}
+                                    Top {artist.worldRanking}. Global
+                                </div>
+                                <div className={classes.domesticRank}>
+                                    {/*{artist.iranRanking}*/}
+                                    Top {artist.iranRanking}.Iran, Islamic Republic Of Iran
+                                </div>
                             </div>
                         </div>
                         <div className={classes.newsMainSec}>
@@ -66,13 +72,14 @@ export default function Artist({artist}) {
                                 height: 450,
                                 backgroundImage: `url("${artist.medias.find(media => media.main === 1).url}")`,
                                 backgroundPosition: "center",
-                                backgroundSize: "cover"
+                                backgroundSize: "cover",
+                                borderRadius: 3,
                             }}/>
                         </div>
                     }
 
                 </div>
-                <div className={classes.midMainSec}>
+                <div className={classes.midMainSec} style={{border:'solid red'}}>
                     <ArtistTabPanel artist={artist}/>
                 </div>
                 <div className={classes.relatedSec}>
