@@ -8,6 +8,7 @@ import {ethers} from "ethers";
 import classes from '../../styles/ConnectWalletModal/ConnectWalletModal.module.scss';
 import axios from 'axios';
 import {useCookies} from "react-cookie";
+import {parseCookies} from "../../functions/parseCookies";
 
 export default function ConnectWalletModal({open, setOpen, handleClose}) {
 
@@ -46,9 +47,7 @@ export default function ConnectWalletModal({open, setOpen, handleClose}) {
                 axios.post(`/api/wallet`, {
                     walletAddress
                 }).then(r => {
-                    if (!r.data.data) {
-                        signMessage(signer)
-                    }
+                    signMessage(signer)
                 }).catch(e => {
                     if (typeof e.response !== 'undefined') {
                         if (!e.response.data.data) {
@@ -114,9 +113,16 @@ export default function ConnectWalletModal({open, setOpen, handleClose}) {
                                     <img className={classes.vectorX} src="/icons/vector-X.png" alt=""/>
                                 </div>
                             </div>
-                            <div className={classes.connectWalletDesc}>
-                                For Sign up you only need to connect your <br/> MetaMask wallet
-                            </div>
+                            {
+                                matches ?
+                                    <div className={classes.connectWalletDesc}>
+                                        For Sign up you only need to connect your MetaMask <br/> wallet
+                                    </div> :
+                                    <div className={classes.connectWalletDesc}>
+                                        For Sign up you only need to connect your MetaMask wallet
+                                    </div>
+                            }
+
                             <div onClick={connectWallet} className={classes.metaMaskMainSec}>
                                 <div className={classes.metaMaskLogoMain}>
                                     <div className={classes.metaMaskLogoSec}>
@@ -126,18 +132,18 @@ export default function ConnectWalletModal({open, setOpen, handleClose}) {
                                         MetaMask
                                     </div>
                                 </div>
-                                <img className={classes.vectorRight} src="/icons/vector-right.png" alt=""/>
+                                <img className={classes.vectorRight} src="/icons/vector-right.svg" alt=""/>
                             </div>
                             <div className={classes.moreInfoMainSec}>
                                 <div className={classes.noAccSec}>
                                     Don’t have account?
                                 </div>
-                                <div className={classes.moreInfoSec}>
-                                    More Info
-                                </div>
+                                {/*<div className={classes.moreInfoSec}>*/}
+                                {/*    More Info*/}
+                                {/*</div>*/}
                             </div>
                         </div>
-                        <div className={classes.bottomMainSec}>
+                        <div className={classes.bottomMainSec} >
                             <div className={classes.downloadMainSec}>
                                 <div className={classes.downloadIconSec}>
                                     <img className={classes.downloadIcon} src="/icons/download-icon.svg" alt=""/>
@@ -147,9 +153,9 @@ export default function ConnectWalletModal({open, setOpen, handleClose}) {
                                 </div>
                             </div>
                             <div>
-                                <img className={classes.vectorRight2} src="/icons/vector-right.png" alt=""/>
+                                <img className={classes.vectorRight2} src="/icons/vector-right.svg" alt=""/>
                             </div>
-                            <div className={classes.createWalletSec}>
+                            <div className={classes.createWalletSec} >
                                 <div className={classes.walletIconSec}>
                                     <img className={classes.walletIcon} src="/icons/wallet-icon.svg" alt=""/>
                                 </div>
@@ -158,7 +164,7 @@ export default function ConnectWalletModal({open, setOpen, handleClose}) {
                                 </div>
                             </div>
                             <div>
-                                <img className={classes.vectorRight2} src="/icons/vector-right.png" alt=""/>
+                                <img className={classes.vectorRight2} src="/icons/vector-right.svg" alt=""/>
                             </div>
                             <div className={classes.refreshSec}>
                                 <div className={classes.refreshIconSec}>

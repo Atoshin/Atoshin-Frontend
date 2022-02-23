@@ -2,11 +2,11 @@ import classes from '../../styles/Profile/Profile.module.scss'
 import 'react-slideshow-image/dist/styles.css';
 import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
-import {useEffect, useRef, useState} from "react";
+import * as React from "react";
+import {useEffect, useState} from "react";
 import ProfileTabPanel from "../../components/Profile/ProfileTabPanel";
 import EditProfileModal from "../../components/Profile/EditProfileModal";
-import * as React from "react";
-import HistoryModal from "../../components/ShowAsset/HistoryModal";
+import copyText from '../../functions/copyText'
 import axios from "axios";
 import Web3 from "web3";
 import {selectAddress, selectBalance, setAddress, setBalance} from "../../redux/slices/accountSlice";
@@ -38,7 +38,7 @@ export default function Profile({token}) {
     }, [])
 
     useEffect(() => {
-                //region fetch profile data
+        //region fetch profile data
         const signMessage = async () => {
             await window.ethereum.send("eth_requestAccounts");
             const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -127,7 +127,7 @@ export default function Profile({token}) {
                             <div className={classes.profileImg} style={{
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
-                                backgroundImage: `url(${userData.avatar ? userData.avatar : "/icons/profile-icon.svg"})`
+                                backgroundImage: `url(${userData.avatarUrl ? userData.avatarUrl : "/icons/profile-icon.svg"})`
                             }}/>
                             {/*<img className={classes.profileImg} src={userData.avatar ? userData.avatar : "/icons/profile-icon.svg"} alt=""/>*/}
                             <div className={classes.profileName}>
@@ -137,8 +137,11 @@ export default function Profile({token}) {
                                 <div className={classes.walletAddress}>
                                     {address && address.slice(0, 4) + '...' + address.slice(-4)}
                                 </div>
-                                <img className={classes.copyImg} src="/icons/copy-icon.svg" alt=""/>
-                                <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
+                                <img onClick={() => copyText(address)} className={classes.copyImg}
+                                     src="/icons/copy-icon.svg" alt=""/>
+                                <a target="_blank" href={`https://etherscan.io/address/${address}`}>
+                                    <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
+                                </a>
                             </div>
                             <div className={classes.valueTxt}>
                                 The value of your account
@@ -161,7 +164,7 @@ export default function Profile({token}) {
                                 <div className={classes.profileImg} style={{
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
-                                    backgroundImage: `url(${userData.avatar ? userData.avatar : "/icons/profile-icon.svg"})`
+                                    backgroundImage: `url(${userData.avatarUrl ? userData.avatarUrl : "/icons/profile-icon.svg"})`
                                 }}/>
                                 <div className={classes.profileName}>
                                     {userData.firstName ? userData.firstName + ' ' + userData.lastName : 'Unknown'}
@@ -172,8 +175,11 @@ export default function Profile({token}) {
                                     <div className={classes.walletAddress}>
                                         {address && address.slice(0, 4) + '...' + address.slice(-4)}
                                     </div>
-                                    <img className={classes.copyImg} src="/icons/copy-icon.svg" alt=""/>
-                                    <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
+                                    <img onClick={() => copyText(address)} className={classes.copyImg}
+                                         src="/icons/copy-icon.svg" alt=""/>
+                                    <a target="_blank" href={`https://etherscan.io/address/${address}`}>
+                                        <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
+                                    </a>
                                 </div>
                                 <div className={classes.valueTxt}>
                                     The value of your account
@@ -199,18 +205,19 @@ export default function Profile({token}) {
     )
 }
 
-export async function getServerSideProps({req}) {
+export async function getServerSideProps({req, res}) {
     let token = null;
     const cookies = parseCookies(req);
     if (cookies.token) {
         token = cookies.token;
     }
 
-    // if (!token){
-    //     return {
-    //         notFound: true
-    //     }
-    // }
+
+    if (!token) {
+        res.setHeader("location", "/")
+        res.statusCode = 302
+        res.end()
+    }
 
     return {
         props: {

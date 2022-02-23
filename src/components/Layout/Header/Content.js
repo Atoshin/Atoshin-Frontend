@@ -19,31 +19,29 @@ export default function HeaderContent({setDrawerMenu}) {
 
     const [_, __, removeCookie] = useCookies()
     useEffect(() => {
+        const getAccountAndBalance = (web3) => {
+            web3.eth.getAccounts()
+                .then(async (addr) => {
+                    if (addr[0]) {
+                        dispatch(setAddress(addr[0]));
+                        web3.eth.getBalance(addr[0]).then(r => {
+                            dispatch(setBalance(ethers.utils.formatEther(r)))
+                        });
+                    } else {
+                        removeCookie(['token'])
+                    }
+                });
+        }
+
         const checkConnection = async () => {
             let web3;
             if (window.ethereum) {
                 web3 = new Web3(window.ethereum);
-                web3.eth.getAccounts()
-                    .then(async (addr) => {
-                        dispatch(setAddress(addr[0]))
-                        if (addr[0]) {
-                            web3.eth.getBalance(addr[0]).then(r => {
-                                dispatch(setBalance(ethers.utils.formatEther(r)))
-                            });
-                        }
-                    });
+                getAccountAndBalance(web3)
                 providerEventListener()
             } else if (window.web3) {
                 web3 = new Web3(window.web3.currentProvider);
-                web3.eth.getAccounts()
-                    .then(async (addr) => {
-                        dispatch(setAddress(addr[0]))
-                        if (addr[0]) {
-                            web3.eth.getBalance(addr[0]).then(r => {
-                                dispatch(setBalance(ethers.utils.formatEther(r)))
-                            });
-                        }
-                    });
+                getAccountAndBalance(web3)
                 providerEventListener()
             }
         };
@@ -146,11 +144,11 @@ export default function HeaderContent({setDrawerMenu}) {
                                     <ActiveLink title={'Art Centers'} href={"/gallery-list"}/>
                                 </a>
                             </Link>
-                           <Link href={"/artists"}>
-                               <a>
-                                   <ActiveLink title={'Artists'} href={"/artists"}/>
-                               </a>
-                           </Link>
+                            <Link href={"/artists"}>
+                                <a>
+                                    <ActiveLink title={'Artists'} href={"/artists"}/>
+                                </a>
+                            </Link>
 
                             {/*<ActiveLink title={'Marketplace'} href={"/marketplace"}/>*/}
                             {/*<ActiveLink title={'Art Centers'} href={"/gallery-list"}/>*/}
