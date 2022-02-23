@@ -30,7 +30,8 @@ export default function ShowAsset({asset}) {
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
-
+    const [clickedImageId, setClickedImageId] = useState('');
+    const [clickedVideoId, setClickedVideoId] = useState('');
     useEffect(() => {
         //region change background color for profile page
         const body = document.getElementsByTagName('body')[0];
@@ -49,7 +50,7 @@ export default function ShowAsset({asset}) {
             const topSec = document.getElementsByClassName(styles.topMainSec)[0]
             var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
-            console.log(window.scrollY, container.clientHeight)
+            // console.log(window.scrollY, container.clientHeight)
             if (window.scrollY + height > container.clientHeight) {
                 setScrolled(false)
             } else {
@@ -61,11 +62,17 @@ export default function ShowAsset({asset}) {
         window.addEventListener('scroll', onScroll)
 
 
+
         return function () {
             window.removeEventListener('scroll', onScroll)
         }
     }, [])
 
+
+    const openImageModal = (id) => {
+        setClickedImageId(id)
+        setOpenImages(true);
+    }
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -78,33 +85,98 @@ export default function ShowAsset({asset}) {
                 const iframe = span.children[0];
                 const ytvId = iframe.src.slice(-11)
                 span.remove()
-                return [asset.medias.slice(0, 5).map(({url}) => {
-                    return <div style={{
-                        backgroundImage: `url("${url}")`,
+                return [
+                    <div onClick={() => {
+                        setClickedVideoId(asset.videoLinks[0].id)
+                        setOpenImages(true)
+                    }} style={{
+                        backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
                         width: 93.39,
                         height: 93.39,
                         backgroundPosition: 'center',
-                        backgroundSize: "cover"
+                        backgroundSize: "cover",
+                        marginRight: 15.73,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                     }}/>
-                }), <div style={{
-                    backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
-                    width: 93.39,
-                    height: 93.39,
-                    backgroundPosition: 'center',
-                    backgroundSize: "cover"
-                }}/>]
+                    ,
+                    asset.medias.slice(0, 5).map((data, idx) => {
+                        if (idx === parseInt(Object.keys(asset.medias)[Object.keys(asset.medias).length - 1]) || idx === 4) {
+                            return <div onClick={() => openImageModal(data.id)} style={{
+                                backgroundImage: `url("${data.url}")`,
+                                width: 93.39,
+                                height: 93.39,
+                                backgroundPosition: 'center',
+                                backgroundSize: "cover",
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                            }}>
+                                <img src="/images/show-asset/more.svg" style={{width: 54.07, height: 54.07}}/>
+                            </div>
+                        } else {
+                            return <div onClick={() => openImageModal(data.id)} style={{
+                                backgroundImage: `url("${data.url}")`,
+                                width: 93.39,
+                                height: 93.39,
+                                backgroundPosition: 'center',
+                                backgroundSize: "cover",
+                                marginRight: 15.73,
+                            }}/>
+                        }
+                    })]
+                // return [asset.medias.slice(0, 5).map((data, idx) => {
+                //     return <div style={{
+                //         backgroundImage: `url("${data.url}")`,
+                //         width: 93.39,
+                //         height: 93.39,
+                //         backgroundPosition: 'center',
+                //         backgroundSize: "cover",
+                //         marginRight: 15.73,
+                //     }}/>
+                // }), <div style={{
+                //     backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
+                //     width: 93.39,
+                //     height: 93.39,
+                //     backgroundPosition: 'center',
+                //     backgroundSize: "cover",
+                //     // marginRight: 15.73,
+                //     display:'flex',
+                //     justifyContent:'center',
+                //     alignItems:'center',
+                // }}>
+                //     <img src="/images/show-asset/more.svg" style={{width: 54.07, height: 54.07}}/>
+                // </div>]
             } else {
                 return null;
             }
         } else {
-            return asset.medias.slice(0, 6).map(({url}) => {
-                return <div style={{
-                    backgroundImage: `url("${url}")`,
-                    width: 93.39,
-                    height: 93.39,
-                    backgroundPosition: 'center',
-                    backgroundSize: "cover"
-                }}/>
+            return asset.medias.slice(0, 6).map((data, idx) => {
+                if (idx === parseInt(Object.keys(asset.medias)[Object.keys(asset.medias).length - 1]) || idx === 5 ) {
+                    return <div onClick={() => openImageModal(data.id)} style={{
+                        backgroundImage: `url("${data.url}")`,
+                        width: 93.39,
+                        height: 93.39,
+                        backgroundPosition: 'center',
+                        backgroundSize: "cover",
+                        marginRight: 15.73,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}>
+                        <img src="/images/show-asset/more.svg" style={{width: 54.07, height: 54.07}}/>
+                    </div>
+                } else {
+                    return <div onClick={() => openImageModal(data.id)} style={{
+                        backgroundImage: `url("${data.url}")`,
+                        width: 93.39,
+                        height: 93.39,
+                        backgroundPosition: 'center',
+                        backgroundSize: "cover",
+                        marginRight: 15.73,
+                    }}/>
+                }
             })
         }
     }
@@ -139,7 +211,13 @@ export default function ShowAsset({asset}) {
     return (
         <>
             <ImagesModal open={openImages} setOpen={setOpenImages} images={asset.medias} title={asset.title}
-                         videos={asset.videoLinks}/>
+                         videos={asset.videoLinks}
+                         clickedImageId={clickedImageId}
+                         setClickedImageId={setClickedImageId}
+                         setClickedVideoId={setClickedVideoId}
+                         clickedVideoId={clickedVideoId}/>
+            {/*imageId={imageId}*/}
+            {/*pass*/}
             <OwnersModal open={openOwners} setOpen={setOpenOwners}/>
             <HistoryModal open={openHistory} setOpen={setOpenHistory}/>
             <div className={styles.showAssetMain}>
@@ -162,59 +240,59 @@ export default function ShowAsset({asset}) {
                             </div>
                         </div>
                         {matches &&
-                            <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease'}}
-                                 className={styles.artworkMainImgSec}>
-                                <Slide
-                                    easing='ease'
-                                    slidesToShow={1}
-                                    infinite={true}
-                                    autoplay={sliderAutoplay}
-                                    duration={5000}
-                                    indicators
-                                    onChange={(oldIdx, newIdx) => {
-                                        const mediaIndexes = asset.medias.filter(media => media.main !== 1).length - 1
-                                        if (newIdx > mediaIndexes) {
-                                            newIdx = newIdx - (mediaIndexes + 1);
-                                            setCurrentSlide(asset.videoLinks[newIdx])
-                                        } else {
-                                            setCurrentSlide(asset.medias.filter(media => media.main !== 1)[newIdx])
-                                        }
-                                    }}
-                                >
-                                    {asset.medias.filter(media => media.main !== 1).map(media => {
-                                        return <img key={media.id}
-                                                    style={{...mainImgSize, transition: 'all 500ms ease'}}
-                                                    className={styles.artworkMainImg}
-                                                    src={media.url} alt=""/>
-                                    })}
-                                    {asset.videoLinks.map(video => {
-                                        let span = document.createElement('span');
-                                        span.hidden = true;
-                                        span.innerHTML = video.link;
-                                        const iframe = span.children[0]
-                                        const ytvId = iframe.src.slice(-11)
-                                        span.remove()
-                                        return <Youtube
-                                            // videoId={video.videoId}
-                                            videoId={ytvId}
-                                            containerClassName={styles.artworkMainImgMobile}
-                                            opts={mainImgSize}
-                                            onPlay={() => {
-                                                setSliderAutoplay(false)
-                                            }}
-                                            onPause={() => {
-                                                setSliderAutoplay(true)
-                                            }}
-                                        />
-                                    })}
-                                </Slide>
-                            </div>
+                        <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease'}}
+                             className={styles.artworkMainImgSec}>
+                            <Slide
+                                easing='ease'
+                                slidesToShow={1}
+                                infinite={true}
+                                autoplay={sliderAutoplay}
+                                duration={5000}
+                                indicators
+                                onChange={(oldIdx, newIdx) => {
+                                    const mediaIndexes = asset.medias.filter(media => media.main !== 1).length - 1
+                                    if (newIdx > mediaIndexes) {
+                                        newIdx = newIdx - (mediaIndexes + 1);
+                                        setCurrentSlide(asset.videoLinks[newIdx])
+                                    } else {
+                                        setCurrentSlide(asset.medias.filter(media => media.main !== 1)[newIdx])
+                                    }
+                                }}
+                            >
+                                {asset.medias.filter(media => media.main !== 1).map(media => {
+                                    return <img key={media.id}
+                                                style={{...mainImgSize, transition: 'all 500ms ease'}}
+                                                className={styles.artworkMainImg}
+                                                src={media.url} alt=""/>
+                                })}
+                                {asset.videoLinks.map(video => {
+                                    let span = document.createElement('span');
+                                    span.hidden = true;
+                                    span.innerHTML = video.link;
+                                    const iframe = span.children[0]
+                                    const ytvId = iframe.src.slice(-11)
+                                    span.remove()
+                                    return <Youtube
+                                        // videoId={video.videoId}
+                                        videoId={ytvId}
+                                        containerClassName={styles.artworkMainImgMobile}
+                                        opts={mainImgSize}
+                                        onPlay={() => {
+                                            setSliderAutoplay(false)
+                                        }}
+                                        onPause={() => {
+                                            setSliderAutoplay(true)
+                                        }}
+                                    />
+                                })}
+                            </Slide>
+                        </div>
                         }
                         {matches &&
-                            <div className={styles.saleEndDateMob}>
-                                Sale ends
-                                in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
-                            </div>
+                        <div className={styles.saleEndDateMob}>
+                            Sale ends
+                            in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                        </div>
                         }
                         <div className={styles.saleMainSec}>
                             <div className={styles.saleEndDate}>
@@ -227,8 +305,8 @@ export default function ShowAsset({asset}) {
                             <div className={styles.fractionsLeftTxt}>
                                 Fractions left
                                 {!matches &&
-                                    <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
-                                         className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                                <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
+                                     className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                                 }
                                 <Fade in={tooltip}>
                                     <div className={styles.fractionsTooltip}>
@@ -244,26 +322,26 @@ export default function ShowAsset({asset}) {
                                 {asset.totalFractions - asset.soldFractions}/{asset.totalFractions}
                             </div>
                             {matches &&
-                                <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
-                                     className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                            <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
+                                 className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                             }
                         </div>
                         {(matches) &&
-                            <MUISlide in={scrolled} direction={"up"}>
-                                <div className={styles.priceMainSec}>
-                                    <div className={styles.priceSec}>
-                                        <div className={styles.priceTxt}>
-                                            Price
-                                        </div>
-                                        <div className={styles.priceAmount}>
-                                            {asset.price} ETH
-                                        </div>
+                        <MUISlide in={scrolled} direction={"up"}>
+                            <div className={styles.priceMainSec}>
+                                <div className={styles.priceSec}>
+                                    <div className={styles.priceTxt}>
+                                        Price
                                     </div>
-                                    <Button className={styles.BuyBtn}>
-                                        Buy now
-                                    </Button>
+                                    <div className={styles.priceAmount}>
+                                        {asset.price} ETH
+                                    </div>
                                 </div>
-                            </MUISlide>
+                                <Button className={styles.BuyBtn}>
+                                    Buy now
+                                </Button>
+                            </div>
+                        </MUISlide>
                         }
                         {
                             !matches &&
@@ -282,13 +360,17 @@ export default function ShowAsset({asset}) {
                             </div>
                         }
                     </div>
-                    <div className={styles.topRightMainSec} onClick={() => setOpenImages(true)}>
-                        <div className={styles.artworkMainImgSec}>
+                    <div className={styles.topRightMainSec}>
+                        <div className={styles.artworkMainImgSec} onClick={() => {
+                            setOpenImages(true)
+                            setClickedImageId(asset.medias.find(media => media.main === 1).id)
+                        }}>
                             <img className={styles.artworkMainImg}
                                  src={asset.medias.find(media => media.main === 1).url} alt=""/>
                         </div>
                         <div className={styles.artworkOtherImgSec}>
                             <ArtworkSubImages/>
+                            {/*hereeeeeeeeee*/}
                         </div>
                     </div>
                 </div>
