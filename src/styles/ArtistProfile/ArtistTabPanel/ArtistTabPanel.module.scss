@@ -17,7 +17,7 @@
 .bioSec {
   //display: flex;
   width: 928px;
-  height: 525px;
+  //height: 525px;
   line-height: 25px;
   font-size: 16px;
   font-weight: 400;
@@ -42,6 +42,14 @@
   margin-top: 40px;
   padding-bottom: 40px;
   border-bottom: 2px solid #EEEEEE;
+}
+.lastAuctionRow{
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-bottom: 40px;
 }
 
 .leftSec {
