@@ -176,6 +176,34 @@
   border-radius: 5px !important;
 }
 
+.BuyBtnDesktop {
+  //width: 143px !important;
+  height: 53px !important;
+  background-color: #232323 !important;
+  color: #FFFFFF !important;
+  font-size: 18px !important;
+  text-transform: none !important;
+  margin-top: 17px !important;
+  font-weight: 500 !important;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.quantityInput {
+  height: 53px !important;
+  border-radius: 5px 0px 0px 5px;
+  margin-top: 17px !important;
+  width: 70px !important;
+  font-size: 25px !important;
+  padding-left: 10px;
+  font-weight: 500 !important;
+  margin-left: 50px !important;
+
+  &:focus{
+    border-radius: 5px 0px 0px 5px;
+    border: none;
+  }
+}
+
 .midMainSec {
   display: flex;
   flex-direction: column;
