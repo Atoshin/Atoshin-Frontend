@@ -86,7 +86,7 @@ export default function ArtCenter({artCenter}) {
         slidesToScroll:1,
         transitionDuration:500,
         duration:5000,
-        nextArrow: <div clasName={classes.previous}> <img style={{width:10, height:20}} src={'/icons/vector-right.svg'}/> </div>,
+        nextArrow: <div className={classes.previous}> <img style={{width:10, height:20}} src={'/icons/vector-right.svg'}/> </div>,
         prevArrow:<div></div>,
         // indicators: true,
     };
@@ -289,7 +289,6 @@ export default function ArtCenter({artCenter}) {
                 </div>
                 <div className={classes.slider2}>
                     <Slide
-                        ref={relatedSliderRef}
                         autoplay={true}
                         easing={"ease"}
                         slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 5 : 5}
@@ -298,7 +297,7 @@ export default function ArtCenter({artCenter}) {
                         slidesToScroll={1}
                         transitionDuration={500}
                         duration={5000}
-                    >
+                        ref={relatedSliderRef}>
                         {artCenter.assets.map(asset => {
                             return <div className={(matches1 || matches2) ? classes.card2 : classes.card}>
                                 <div
