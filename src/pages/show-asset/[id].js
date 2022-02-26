@@ -102,7 +102,9 @@ export default function ShowAsset({asset}) {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                    }}/>
+                    }}>
+                        <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
+                    </div>
                     ,
                     asset.medias.slice(0, 5).map((data, idx) => {
                         if (idx === parseInt(Object.keys(asset.medias)[Object.keys(asset.medias).length - 1]) || idx === 4) {
@@ -116,7 +118,7 @@ export default function ShowAsset({asset}) {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                             }}>
-                                <img src="/images/show-asset/more.svg" style={{width: 54.07, height: 54.07}}/>
+                                <img src="/images/show-asset/more.svg" style={{width: 53.84, height: 53.84}}/>
                             </div>
                         } else {
                             return <div onClick={() => openImageModal(data.id)} style={{
