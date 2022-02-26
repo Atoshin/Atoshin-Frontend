@@ -61,6 +61,36 @@ export default function ArtCenter({artCenter}) {
         }
     }, [rendered])
 
+
+    // const properties = {
+    //     autoplay:true,
+    //     cssClass:classes.slider,
+    //     easing:"ease",
+    //     slidesToShow:matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5,
+    //     infinite:true,
+    //     arrows:false,
+    //     slidesToScroll:1,
+    //     transitionDuration:500,
+    //     duration:5000,
+    //     prevArrow: <div className={classes.previous}>  </div>,
+    //     // nextArrow: <div className={classes.next}><img src={'/img/icon/arrowRight.svg'}/></div>
+    //     // indicators: true,
+    // };
+    const properties = {
+        autoplay:true,
+        cssClass:classes.slider,
+        easing:"ease",
+        slidesToShow:matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5,
+        infinite:true,
+        // arrows:false,
+        slidesToScroll:1,
+        transitionDuration:500,
+        duration:5000,
+        nextArrow: <div clasName={classes.previous}> <img style={{width:10, height:20}} src={'/icons/vector-right.svg'}/> </div>,
+        prevArrow:<div></div>,
+        // indicators: true,
+    };
+
     return (
         <>
             <div className={classes.mainImgSec}>
@@ -164,26 +194,71 @@ export default function ArtCenter({artCenter}) {
 
             <div className={matches1 || matches2 ? classes.sliderSec1 : classes.sliderSec}
             >
-                <Slide ref={gallerySliderRef}
-                       autoplay={true}
-                       cssClass={classes.slider}
-                       easing={"ease"}
-                       slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
-                       infinite={true}
-                       arrows={false}
-                       slidesToScroll={1}
-                       transitionDuration={500}
-                       duration={5000}>
-                    {artCenter.medias.filter(media => media.homeapagePicture === 1).map((img, key) => {
-                        return <div key={key} style={{
-                            backgroundImage: `url("${img.url}")`,
-                            height: 220,
-                            width: 220,
-                            backgroundPosition: "center",
-                            backgroundSize: "cover"
-                        }}/>
-                    })}
-                </Slide>
+                {
+                    artCenter.medias ?
+                        artCenter.medias.length > 5 ?
+                            <Slide {...properties} ref={gallerySliderRef}>
+                                {artCenter.medias.filter(media => media.homeapagePicture === 1).map((img, key) => {
+                                    return <div key={key} style={{
+                                        backgroundImage: `url("${img.url}")`,
+                                        height: 220,
+                                        width: 220,
+                                        backgroundPosition: "center",
+                                        backgroundSize: "cover",
+                                        // border:'solid red',
+                                        marginRight:16
+                                    }}/>
+                                })}
+                            </Slide>
+                        :
+                           <div style={{display:'flex'}}>
+                               {artCenter.medias.map((img, key) => {
+                                   console.log(key)
+                                   if(parseInt(Object.keys(artCenter.medias)[Object.keys(artCenter.medias).length - 1]) === key){
+                                       return <div key={key} style={{
+                                           backgroundImage: `url("${img.url}")`,
+                                           height: 220,
+                                           width: 220,
+                                           backgroundPosition: "center",
+                                           backgroundSize: "cover",
+                                       }}/>
+                                   }
+                                   else{
+                                       return <div key={key} style={{
+                                           backgroundImage: `url("${img.url}")`,
+                                           height: 220,
+                                           width: 220,
+                                           backgroundPosition: "center",
+                                           backgroundSize: "cover",
+                                           marginRight:16
+                                       }}/>
+                                   }
+                               })}
+                           </div>
+                        :''
+                }
+                {/*<Slide ref={gallerySliderRef}*/}
+                {/*       autoplay={true}*/}
+                {/*       cssClass={classes.slider}*/}
+                {/*       easing={"ease"}*/}
+                {/*       slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}*/}
+                {/*       infinite={true}*/}
+                {/*       arrows={false}*/}
+                {/*       slidesToScroll={1}*/}
+                {/*       transitionDuration={500}*/}
+                {/*       duration={5000}>*/}
+                {/*    {artCenter.medias.filter(media => media.homeapagePicture === 1).map((img, key) => {*/}
+                {/*        console.log(artCenter.medias.length)*/}
+                {/*        return <div key={key} style={{*/}
+                {/*            backgroundImage: `url("${img.url}")`,*/}
+                {/*            height: 220,*/}
+                {/*            width: 220,*/}
+                {/*            backgroundPosition: "center",*/}
+                {/*            backgroundSize: "cover",*/}
+                {/*            border:'solid red'*/}
+                {/*        }}/>*/}
+                {/*    })}*/}
+                {/*</Slide>*/}
             </div>
 
             <div className={classes.detailsSec}>
@@ -191,10 +266,10 @@ export default function ArtCenter({artCenter}) {
                     Details
                 </div>
                 <div className={classes.table}>
-                    <tr className={classes.row}>
-                        <td className={classes.td1}>Gallery Owner</td>
-                        <td className={classes.td2}>DD Owner</td>
-                    </tr>
+                    {/*<tr className={classes.row}>*/}
+                    {/*    <td className={classes.td1}>Gallery Owner</td>*/}
+                    {/*    <td className={classes.td2}>DD Owner</td>*/}
+                    {/*</tr>*/}
                     <tr>
                         <td className={classes.td1}>Address</td>
                         <td className={classes.td2}>{artCenter.location && artCenter.location.address}</td>
