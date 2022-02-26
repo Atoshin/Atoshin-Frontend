@@ -17,14 +17,14 @@ export default function HistoryModal(props) {
 
             <div className={classes.dialogHeaderSticky}>
                 <div className={classes.dialogHeader}>
-                    <DialogTitle className={classes.modalTitle}>Other Owners</DialogTitle>
+                    <DialogTitle className={classes.modalTitle}>History</DialogTitle>
                     <div className={classes.vectorX} onClick={handleClose}>
                         <img src="/icons/vector-X.png" alt=""/>
                     </div>
                 </div>
                 <div className={classes.HistoryIndexTitlesSec}>
                     <div className={classes.buyerNameTitle}>
-                        Buyer Name
+                        Buyers
                     </div>
                     <div className={classes.dateTitle}>
                         Date

@@ -26,7 +26,7 @@ export default function OwnersModal(props) {
                             Rank
                         </div>
                         <div className={classes.ownersTitle}>
-                            Owner Name
+                            Owners
                         </div>
                         <div className={classes.quantityTitle}>
                             Quantity

@@ -460,6 +460,7 @@
   font-weight: 300;
   /*margin-right: 35px;*/
   width: 125px;
+  text-align: center;
 }
 
 .quantityTitle {
@@ -567,7 +568,7 @@
 .buyerNameSec {
   display: flex;
   flex-direction: row;
-  width: 191px;
+  width: 200px;
 }
 
 .boughtBy {
@@ -587,7 +588,7 @@
   color: #232323;
   font-size: 18px;
   font-weight: 400;
-  width: 174px;
+  width: 190px;
 }
 
 .historyTitleSec {

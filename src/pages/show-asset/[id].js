@@ -486,7 +486,7 @@ export default function ShowAsset({asset}) {
                     <div className={styles.ownersMainSec}>
                         <div className={styles.ownersTitleSec}>
                             <div className={styles.ownersTitle}>
-                                Top 10 Owners
+                                Top Owners
                             </div>
                             <div onClick={() => setOpenOwners(true)} className={styles.viewAllOwners}>
                                 View All
@@ -498,7 +498,7 @@ export default function ShowAsset({asset}) {
                                     Rank
                                 </div>
                                 <div className={styles.ownerNameTitle}>
-                                    Owner Name
+                                    Owners
                                 </div>
                                 <div className={styles.quantityTitle}>
                                     Quantity
@@ -551,7 +551,7 @@ export default function ShowAsset({asset}) {
                         <div className={styles.historyIndexSec}>
                             <div className={styles.historyIndexTitles}>
                                 <div className={styles.buyerNameTitle}>
-                                    Buyer Name
+                                    Buyers
                                 </div>
                                 <div className={styles.dateTitle}>
                                     Date
