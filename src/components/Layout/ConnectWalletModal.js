@@ -143,12 +143,12 @@ export default function ConnectWalletModal({open, setOpen, handleClose}) {
                                 {/*</div>*/}
                             </div>
                         </div>
-                        <div className={classes.bottomMainSec} >
+                        <div className={classes.bottomMainSec}>
                             <div className={classes.downloadMainSec}>
                                 <div className={classes.downloadIconSec}>
                                     <img className={classes.downloadIcon} src="/icons/download-icon.svg" alt=""/>
                                 </div>
-                                <div className={classes.downloadTxt}>
+                                <div className={classes.creatWalletTxt}>
                                     Download extention
                                 </div>
                             </div>
@@ -170,8 +170,8 @@ export default function ConnectWalletModal({open, setOpen, handleClose}) {
                                 <div className={classes.refreshIconSec}>
                                     <img className={classes.refreshIcon} src="/icons/refresh-icon.svg" alt=""/>
                                 </div>
-                                <div className={classes.refreshTxt}>
-                                    Creat wallet
+                                <div className={classes.creatWalletTxt}>
+                                    Refresh web page
                                 </div>
                             </div>
                         </div>
