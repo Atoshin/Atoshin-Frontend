@@ -43,6 +43,7 @@ export default function ImagesModal({
 
     let ZoomImg = () => (<Zoom
         img={mainImg.url}
+        style={{borderRadius:3}}
         zoomScale={2}
         width={698}
         height={469}
@@ -85,50 +86,15 @@ export default function ImagesModal({
                             <div
                                 id="ytv-asset"
                                 ref={ref}
+                                style={{borderRadius:3}}
                                 dangerouslySetInnerHTML={{__html: mainImg.link}}/>
                             :
-                            <ZoomImg/>
+                           <div style={{borderRadius:3}}><ZoomImg/></div>
                     }
                 </div>
                 {/*<img className={classes.modalMainImg} src="/images/starry-night-main.png" alt=""/>*/}
                 <div className={classes.dialogBody}>
                     <div className={classes.otherImgesContainer}>
-                        {images.map((image, idx) => {
-                            if (image.id === mainImg.id) {
-                                // location.href = "#test";
-                                // if (typeof window !== 'undefined') {
-                                //     document.querySelector('#test').scrollIntoView({
-                                //         behavior: 'smooth'
-                                //     });
-                                // }
-                                return <div id='test'  onClick={() => setImg(image)} key={idx} style={{
-                                    backgroundImage: `url(${image.url})`,
-                                    width: 120,
-                                    height: 120,
-                                    // boxShadow: '0px 7px 12px rgba(0, 0, 0, 0.1)',
-                                    // boxShadow: 'rgb(0 0 0 / 93%) 0px 7px 12px',
-                                    boxShadow: '#FD6108 0px 7px 12px',
-                                    backgroundPosition: 'center',
-                                    backgroundSize: "cover",
-                                    cursor: "pointer",
-                                    marginBottom: 24,
-                                    marginLeft: 24,
-                                }}/>
-                            } else {
-                                return <div onClick={() => setImg(image)} key={idx} style={{
-                                    backgroundImage: `url(${image.url})`,
-                                    width: 120,
-                                    height: 120,
-                                    // boxShadow: '0px 7px 12px rgba(0, 0, 0, 0.1)',
-                                    // boxShadow: 'rgb(0 0 0 / 93%) 0px 7px 12px',
-                                    backgroundPosition: 'center',
-                                    backgroundSize: "cover",
-                                    cursor: "pointer",
-                                    marginBottom: 24,
-                                    marginLeft: 24,
-                                }}/>
-                            }
-                        })}
                         {videos.map((video, idx) => {
                             if (typeof document !== "undefined") {
                                 let span = document.createElement('span');
@@ -141,6 +107,73 @@ export default function ImagesModal({
                                     backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
                                     width: 120,
                                     height: 120,
+                                    borderRadius:3,
+                                    backgroundPosition: 'center',
+                                    backgroundSize: "cover",
+                                    cursor: "pointer",
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    marginBottom: 24,
+                                    marginLeft: 24,
+                                }}>
+                                    <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
+
+                                </div>
+                            }
+                        })}
+                        {images.map((image, idx) => {
+                            if (image.id === mainImg.id) {
+                                // location.href = "#test";
+                                // if (typeof window !== 'undefined') {
+                                //     document.querySelector('#test').scrollIntoView({
+                                //         behavior: 'smooth'
+                                //     });
+                                // }
+                                // return <div className={classes.selectedItem}>
+                                //     <div id='test'  onClick={() => setImg(image)} key={idx} style={{
+                                //         backgroundImage: `url(${image.url})`,
+                                //         width: 120,
+                                //         height: 120,
+                                //         // boxShadow: '0px 7px 12px rgba(0, 0, 0, 0.1)',
+                                //         // boxShadow: 'rgb(0 0 0 / 93%) 0px 7px 12px',
+                                //         boxShadow: '#FD6108 0px 7px 12px',
+                                //         backgroundPosition: 'center',
+                                //         backgroundSize: "cover",
+                                //         cursor: "pointer",
+                                //         marginBottom: 24,
+                                //         marginLeft: 24,
+                                //     }}/>
+                                // </div>
+                                return <div style={{
+                                    width: 120,
+                                    height: 120,
+                                    border: '2px solid #FD6E19',
+                                    borderRadius:3 ,
+                                    marginBottom: 24,
+                                    marginLeft: 24,
+                                    padding:3,
+                                    display:'flex',
+                                    justifyContent:'center'
+                                }}>
+                                    <div id='test'  onClick={() => setImg(image)} key={idx} style={{
+                                        backgroundImage: `url(${image.url})`,
+                                        width: 110,
+                                        height: 110,
+                                        borderRadius:3,
+                                        // boxShadow: '#FD6108 0px 7px 12px',
+                                        backgroundPosition: 'center',
+                                        backgroundSize: "cover",
+                                        cursor: "pointer",
+
+                                    }}/>
+                                </div>
+                            } else {
+                                return <div onClick={() => setImg(image)} key={idx} style={{
+                                    backgroundImage: `url(${image.url})`,
+                                    width: 120,
+                                    height: 120,
+                                    borderRadius:3,
                                     backgroundPosition: 'center',
                                     backgroundSize: "cover",
                                     cursor: "pointer",
@@ -149,6 +182,7 @@ export default function ImagesModal({
                                 }}/>
                             }
                         })}
+
                         {/*<img src="/images/starry-night-second.png" className={classes.sideImage}/>*/}
                     </div>
                 </div>
