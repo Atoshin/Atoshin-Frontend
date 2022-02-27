@@ -13,11 +13,16 @@ import extractContent from "../../functions/getHtmlInnerText";
 import shortenWords from "../../functions/shortenWords";
 import Link from 'next/link';
 import {Map} from "../../components/ArtCenters/Map";
+import ImagesModal from '../../components/ShowAsset/ImagesModal'
+import * as React from "react";
 
 export default function ArtCenter({artCenter}) {
     const [rendered, setRendered] = useState(false)
-
-
+    const [openImages, setOpenImages] = useState(false)
+    const [clickedImageId, setClickedImageId] = useState('');
+    const [clickedVideoId, setClickedVideoId] = useState('');
+    // const [isGallery, setIsGallery] = useState(true);
+    const [two, setTwo] = useState(true);
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
@@ -61,38 +66,159 @@ export default function ArtCenter({artCenter}) {
         }
     }, [rendered])
 
+    const showImageModal = (id) => {
+        setOpenImages(true)
+        setClickedImageId(id)
 
-    // const properties = {
-    //     autoplay:true,
-    //     cssClass:classes.slider,
-    //     easing:"ease",
-    //     slidesToShow:matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5,
-    //     infinite:true,
-    //     arrows:false,
-    //     slidesToScroll:1,
-    //     transitionDuration:500,
-    //     duration:5000,
-    //     prevArrow: <div className={classes.previous}>  </div>,
-    //     // nextArrow: <div className={classes.next}><img src={'/img/icon/arrowRight.svg'}/></div>
-    //     // indicators: true,
-    // };
+    }
     const properties = {
-        autoplay:true,
-        cssClass:classes.slider,
-        easing:"ease",
-        slidesToShow:matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5,
-        infinite:true,
+        autoplay: true,
+        cssClass: classes.slider,
+        easing: "ease",
+        slidesToShow: matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5,
+        infinite: true,
         // arrows:false,
-        slidesToScroll:1,
-        transitionDuration:500,
-        duration:5000,
-        nextArrow: <div className={classes.previous}> <img style={{width:10, height:20}} src={'/icons/vector-right.svg'}/> </div>,
-        prevArrow:<div></div>,
-        // indicators: true,
+        slidesToScroll: 1,
+        transitionDuration: 500,
+        duration: 5000,
+        nextArrow: <div className={classes.previous}><img src={'/icons/vector-right.svg'}/></div>,
+        prevArrow: <div></div>,
     };
+
+    const VideoShow = () => {
+        if (artCenter.videoLinks[0]) {
+            if (typeof document !== 'undefined') {
+                let span = document.createElement('span');
+                span.hidden = true;
+                span.innerHTML = artCenter.videoLinks[0].link;
+                const iframe = span.children[0];
+                const ytvId = iframe.src.slice(-11)
+                span.remove()
+                if (artCenter.medias.filter(media => media.homeapagePicture === 1).length > 4) {
+                    return <Slide style={{position: 'relative'}} {...properties} ref={gallerySliderRef}>
+                        <div onClick={() => {
+                            setClickedVideoId(artCenter.videoLinks[0].id)
+                            setOpenImages(true)
+                        }} style={{
+                            backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
+                            height: 220,
+                            width: 220,
+                            cursor: 'pointer',
+                            backgroundPosition: "center",
+                            backgroundSize: "cover",
+                            borderRadius: 3,
+                            marginRight: 16,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}>
+                            <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
+                        </div>
+                        {
+                            artCenter.medias.filter(media => media.homeapagePicture === 1).map((data, idx) => {
+                                if (idx === parseInt(Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1))[Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1)).length - 1]) || idx === 4) {
+                                    return <div onClick={() => showImageModal(data.id)} style={{
+                                        backgroundImage: `url("${data.url}")`,
+                                        height: 220,
+                                        width: 220,
+                                        cursor: 'pointer',
+                                        backgroundPosition: "center",
+                                        backgroundSize: "cover",
+                                        borderRadius: 3,
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                    }}>
+                                    </div>
+                                } else {
+                                    return <div onClick={() => showImageModal(data.id)} style={{
+                                        backgroundImage: `url("${data.url}")`,
+                                        height: 220,
+                                        width: 220,
+                                        cursor: 'pointer',
+                                        backgroundPosition: "center",
+                                        backgroundSize: "cover",
+                                        borderRadius: 3,
+                                        marginRight: 16,
+                                    }}/>
+                                }
+                            })
+                        }
+                    </Slide>
+                } else {
+                    return <div style={{display: 'flex'}}>
+                        {
+                            [
+                                <div onClick={() => {
+                                    setClickedVideoId(artCenter.videoLinks[0].id)
+                                    setOpenImages(true)
+                                }} style={{
+                                    backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
+                                    height: 220,
+                                    width: 220,
+                                    cursor: 'pointer',
+                                    backgroundPosition: "center",
+                                    backgroundSize: "cover",
+                                    borderRadius: 3,
+                                    marginRight: 16,
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                }}>
+                                    <img src={'/images/show-asset/videoPlay.svg'}
+                                         style={{width: 53.84, height: 53.84}}/>
+                                </div>
+                                ,
+                                artCenter.medias.filter(media => media.homeapagePicture === 1).map((data, idx) => {
+                                    if (idx === parseInt(Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1))[Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1)).length - 1]) || idx === 4) {
+                                        return <div onClick={() => showImageModal(data.id)} style={{
+                                            backgroundImage: `url("${data.url}")`,
+                                            height: 220,
+                                            width: 220,
+                                            cursor: 'pointer',
+                                            backgroundPosition: "center",
+                                            backgroundSize: "cover",
+                                            borderRadius: 3,
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                        }}>
+                                        </div>
+                                    } else {
+                                        return <div onClick={() => showImageModal(data.id)} style={{
+                                            backgroundImage: `url("${data.url}")`,
+                                            height: 220,
+                                            width: 220,
+                                            cursor: 'pointer',
+                                            backgroundPosition: "center",
+                                            backgroundSize: "cover",
+                                            borderRadius: 3,
+                                            marginRight: 16,
+                                        }}/>
+                                    }
+                                })]
+                        }
+                    </div>
+                }
+
+            } else {
+                return null;
+            }
+        }
+    }
 
     return (
         <>
+            <ImagesModal open={openImages} setOpen={setOpenImages}
+                         images={artCenter.medias} title={artCenter.name}
+                         videos={artCenter.videoLinks}
+                         clickedImageId={clickedImageId}
+                         setClickedImageId={setClickedImageId}
+                         setClickedVideoId={setClickedVideoId}
+                         clickedVideoId={clickedVideoId}
+                         two={two}
+                         setTwo={setTwo}
+            />
             <div className={classes.mainImgSec}>
                 <img src={artCenter.medias.find(media => media.galleryLargePicture === 1).url}
                      className={classes.mainImg}/>
@@ -105,29 +231,29 @@ export default function ArtCenter({artCenter}) {
                 <div className={classes.socialMediaSec}>
 
                     {artCenter.website &&
-                       <Link href={artCenter.website}>
-                                   <a target='_blank'>
-                                       <div
-                                           style={!artCenter.instagram && !artCenter.linkedin ?
-                                                   {cursor: "pointer"}
-                                               :
-                                                   !artCenter.linkedin ?
-                                                       {cursor: "pointer", marginRight:36.62}
-                                                       :
-                                                       !artCenter.instagram ?
-                                                           {cursor: "pointer",marginRight:36.62}
-                                                           :
-                                                           {cursor: "pointer", marginRight:36.62}
-                                           }>
-                                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                               <path
-                                                   d="M14.36 12C14.44 11.34 14.5 10.68 14.5 10C14.5 9.32 14.44 8.66 14.36 8H17.74C17.9 8.64 18 9.31 18 10C18 10.69 17.9 11.36 17.74 12H14.36ZM12.59 17.56C13.19 16.45 13.65 15.25 13.97 14H16.92C15.9512 15.6683 14.4141 16.932 12.59 17.56V17.56ZM12.34 12H7.66C7.56 11.34 7.5 10.68 7.5 10C7.5 9.32 7.56 8.65 7.66 8H12.34C12.43 8.65 12.5 9.32 12.5 10C12.5 10.68 12.43 11.34 12.34 12ZM10 17.96C9.17 16.76 8.5 15.43 8.09 14H11.91C11.5 15.43 10.83 16.76 10 17.96ZM6 6H3.08C4.03886 4.32721 5.5748 3.06149 7.4 2.44C6.8 3.55 6.35 4.75 6 6ZM3.08 14H6C6.35 15.25 6.8 16.45 7.4 17.56C5.57862 16.9317 4.04485 15.6677 3.08 14V14ZM2.26 12C2.1 11.36 2 10.69 2 10C2 9.31 2.1 8.64 2.26 8H5.64C5.56 8.66 5.5 9.32 5.5 10C5.5 10.68 5.56 11.34 5.64 12H2.26ZM10 2.03C10.83 3.23 11.5 4.57 11.91 6H8.09C8.5 4.57 9.17 3.23 10 2.03V2.03ZM16.92 6H13.97C13.657 4.76146 13.1936 3.5659 12.59 2.44C14.43 3.07 15.96 4.34 16.92 6ZM10 0C4.47 0 0 4.5 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C3.85752 17.9997 4.95991 18.7362 6.17317 19.2388C7.38642 19.7413 8.68678 20 10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 8.68678 19.7413 7.38642 19.2388 6.17317C18.7362 4.95991 17.9997 3.85752 17.0711 2.92893C16.1425 2.00035 15.0401 1.26375 13.8268 0.761205C12.6136 0.258658 11.3132 0 10 0V0Z"
-                                                   fill="black"/>
-                                           </svg>
-                                       </div>
-                                   </a>
-                       </Link>
+                    <Link href={artCenter.website}>
+                        <a target='_blank'>
+                            <div
+                                style={!artCenter.instagram && !artCenter.linkedin ?
+                                    {cursor: "pointer"}
+                                    :
+                                    !artCenter.linkedin ?
+                                        {cursor: "pointer", marginRight: 36.62}
+                                        :
+                                        !artCenter.instagram ?
+                                            {cursor: "pointer", marginRight: 36.62}
+                                            :
+                                            {cursor: "pointer", marginRight: 36.62}
+                                }>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M14.36 12C14.44 11.34 14.5 10.68 14.5 10C14.5 9.32 14.44 8.66 14.36 8H17.74C17.9 8.64 18 9.31 18 10C18 10.69 17.9 11.36 17.74 12H14.36ZM12.59 17.56C13.19 16.45 13.65 15.25 13.97 14H16.92C15.9512 15.6683 14.4141 16.932 12.59 17.56V17.56ZM12.34 12H7.66C7.56 11.34 7.5 10.68 7.5 10C7.5 9.32 7.56 8.65 7.66 8H12.34C12.43 8.65 12.5 9.32 12.5 10C12.5 10.68 12.43 11.34 12.34 12ZM10 17.96C9.17 16.76 8.5 15.43 8.09 14H11.91C11.5 15.43 10.83 16.76 10 17.96ZM6 6H3.08C4.03886 4.32721 5.5748 3.06149 7.4 2.44C6.8 3.55 6.35 4.75 6 6ZM3.08 14H6C6.35 15.25 6.8 16.45 7.4 17.56C5.57862 16.9317 4.04485 15.6677 3.08 14V14ZM2.26 12C2.1 11.36 2 10.69 2 10C2 9.31 2.1 8.64 2.26 8H5.64C5.56 8.66 5.5 9.32 5.5 10C5.5 10.68 5.56 11.34 5.64 12H2.26ZM10 2.03C10.83 3.23 11.5 4.57 11.91 6H8.09C8.5 4.57 9.17 3.23 10 2.03V2.03ZM16.92 6H13.97C13.657 4.76146 13.1936 3.5659 12.59 2.44C14.43 3.07 15.96 4.34 16.92 6ZM10 0C4.47 0 0 4.5 0 10C0 12.6522 1.05357 15.1957 2.92893 17.0711C3.85752 17.9997 4.95991 18.7362 6.17317 19.2388C7.38642 19.7413 8.68678 20 10 20C12.6522 20 15.1957 18.9464 17.0711 17.0711C18.9464 15.1957 20 12.6522 20 10C20 8.68678 19.7413 7.38642 19.2388 6.17317C18.7362 4.95991 17.9997 3.85752 17.0711 2.92893C16.1425 2.00035 15.0401 1.26375 13.8268 0.761205C12.6136 0.258658 11.3132 0 10 0V0Z"
+                                        fill="black"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </Link>
                     }
                     {/*onClick={() => window.open(artCenter.linkedin, '_blank')}*/}
                     {artCenter.linkedin &&
@@ -194,48 +320,61 @@ export default function ArtCenter({artCenter}) {
 
             <div className={matches1 || matches2 ? classes.sliderSec1 : classes.sliderSec}
             >
+
                 {
-                    artCenter.medias ?
-                        artCenter.medias.length > 5 ?
-                            <Slide {...properties} ref={gallerySliderRef}>
-                                {artCenter.medias.filter(media => media.homeapagePicture === 1).map((img, key) => {
-                                    return <div key={key} style={{
-                                        backgroundImage: `url("${img.url}")`,
-                                        height: 220,
-                                        width: 220,
-                                        backgroundPosition: "center",
-                                        backgroundSize: "cover",
-                                        // border:'solid red',
-                                        marginRight:16
-                                    }}/>
-                                })}
-                            </Slide>
+                    artCenter.videoLinks[0] ?
+                        <VideoShow/>
                         :
-                           <div style={{display:'flex'}}>
-                               {artCenter.medias.map((img, key) => {
-                                   console.log(key)
-                                   if(parseInt(Object.keys(artCenter.medias)[Object.keys(artCenter.medias).length - 1]) === key){
-                                       return <div key={key} style={{
-                                           backgroundImage: `url("${img.url}")`,
-                                           height: 220,
-                                           width: 220,
-                                           backgroundPosition: "center",
-                                           backgroundSize: "cover",
-                                       }}/>
-                                   }
-                                   else{
-                                       return <div key={key} style={{
-                                           backgroundImage: `url("${img.url}")`,
-                                           height: 220,
-                                           width: 220,
-                                           backgroundPosition: "center",
-                                           backgroundSize: "cover",
-                                           marginRight:16
-                                       }}/>
-                                   }
-                               })}
-                           </div>
-                        :''
+                        artCenter.medias ?
+                            artCenter.medias.filter(media => media.homeapagePicture === 1).length > 5 ?
+                                <Slide style={{position: 'relative'}} {...properties} ref={gallerySliderRef}>
+                                    {
+                                        artCenter.medias.filter(media => media.homeapagePicture === 1).map((img, key) => {
+                                            return <div
+                                                onClick={() => showImageModal(img.id)}
+                                                key={key} style={{
+                                                backgroundImage: `url("${img.url}")`,
+                                                height: 220,
+                                                width: 220,
+                                                cursor: 'pointer',
+                                                backgroundPosition: "center",
+                                                backgroundSize: "cover",
+                                                borderRadius: 3,
+                                                marginRight: 16,
+                                            }}/>
+                                        })
+                                    }
+                                </Slide>
+                                :
+                                <div style={{display: 'flex'}}>
+                                    {artCenter.medias.filter(media => media.homeapagePicture === 1).map((img, key) => {
+                                        if (parseInt(Object.keys(artCenter.medias)[Object.keys(artCenter.medias).length - 1]) === key) {
+                                            return <div key={key}
+                                                        onClick={() => showImageModal(img.id)}
+                                                        style={{
+                                                            cursor: 'pointer',
+                                                            backgroundImage: `url("${img.url}")`,
+                                                            height: 220,
+                                                            width: 220,
+                                                            backgroundPosition: "center",
+                                                            backgroundSize: "cover",
+                                                        }}/>
+                                        } else {
+                                            return <div key={key}
+                                                        onClick={() => showImageModal(img.id)}
+                                                        style={{
+                                                            cursor: 'pointer',
+                                                            backgroundImage: `url("${img.url}")`,
+                                                            height: 220,
+                                                            width: 220,
+                                                            backgroundPosition: "center",
+                                                            backgroundSize: "cover",
+                                                            marginRight: 16
+                                                        }}/>
+                                        }
+                                    })}
+                                </div>
+                            : ''
                 }
                 {/*<Slide ref={gallerySliderRef}*/}
                 {/*       autoplay={true}*/}
