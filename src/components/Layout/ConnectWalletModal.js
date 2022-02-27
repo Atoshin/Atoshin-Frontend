@@ -20,7 +20,7 @@ export default function ConnectWalletModal({open, setOpen, handleClose}) {
     const signMessage = async (signer) => {
         const walletAddress = await signer.getAddress();
         try {
-            const signature = await signer.signMessage("This website uses this cryptographic signature in place of a password, verifying that you are the owner of this Ethereum address.");
+            const signature = await signer.signMessage(process.env.NEXT_PUBLIC_SIGNATURE_PHRASE);
             await axios.post(`/api/signature`, {
                 signature,
                 walletAddress
@@ -143,7 +143,7 @@ export default function ConnectWalletModal({open, setOpen, handleClose}) {
                                 {/*</div>*/}
                             </div>
                         </div>
-                        <div className={classes.bottomMainSec} >
+                        <div className={classes.bottomMainSec}>
                             <div className={classes.downloadMainSec}>
                                 <div className={classes.downloadIconSec}>
                                     <img className={classes.downloadIcon} src="/icons/download-icon.svg" alt=""/>
@@ -155,7 +155,7 @@ export default function ConnectWalletModal({open, setOpen, handleClose}) {
                             <div>
                                 <img className={classes.vectorRight2} src="/icons/vector-right.svg" alt=""/>
                             </div>
-                            <div className={classes.createWalletSec} >
+                            <div className={classes.createWalletSec}>
                                 <div className={classes.walletIconSec}>
                                     <img className={classes.walletIcon} src="/icons/wallet-icon.svg" alt=""/>
                                 </div>

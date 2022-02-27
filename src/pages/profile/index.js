@@ -44,7 +44,7 @@ export default function Profile({token}) {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = await provider.getSigner();
             try {
-                const signature = await signer.signMessage("This website uses this cryptographic signature in place of a password, verifying that you are the owner of this Ethereum address.");
+                const signature = await signer.signMessage(process.env.NEXT_PUBLIC_SIGNATURE_PHRASE);
                 setCookie('token', signature, {
                     path: "/",
                     sameSite: true,
@@ -139,7 +139,7 @@ export default function Profile({token}) {
                                 </div>
                                 <img onClick={() => copyText(address)} className={classes.copyImg}
                                      src="/icons/copy-icon.svg" alt=""/>
-                                <a target="_blank" href={`https://etherscan.io/address/${address}`}>
+                                <a target="_blank" href={`https://etherscan.io/address/${address}`} rel="noreferrer">
                                     <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
                                 </a>
                             </div>
@@ -177,7 +177,7 @@ export default function Profile({token}) {
                                     </div>
                                     <img onClick={() => copyText(address)} className={classes.copyImg}
                                          src="/icons/copy-icon.svg" alt=""/>
-                                    <a target="_blank" href={`https://etherscan.io/address/${address}`}>
+                                    <a target="_blank" href={`https://etherscan.io/address/${address}`} rel="noreferrer">
                                         <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
                                     </a>
                                 </div>
