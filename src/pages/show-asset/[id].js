@@ -106,7 +106,9 @@ export default function ShowAsset({asset, token}) {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                    }}/>
+                    }}>
+                        <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
+                    </div>
                     ,
                     asset.medias.slice(0, 5).map((data, idx) => {
                         if (idx === parseInt(Object.keys(asset.medias)[Object.keys(asset.medias).length - 1]) || idx === 4) {
@@ -120,7 +122,7 @@ export default function ShowAsset({asset, token}) {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                             }}>
-                                <img src="/images/show-asset/more.svg" style={{width: 54.07, height: 54.07}}/>
+                                <img src="/images/show-asset/more.svg" style={{width: 53.84, height: 53.84}}/>
                             </div>
                         } else {
                             return <div onClick={() => openImageModal(data.id)} style={{
@@ -558,7 +560,7 @@ export default function ShowAsset({asset, token}) {
                     <div className={styles.ownersMainSec}>
                         <div className={styles.ownersTitleSec}>
                             <div className={styles.ownersTitle}>
-                                Top 10 Owners
+                                Top Owners
                             </div>
                             <div onClick={() => setOpenOwners(true)} className={styles.viewAllOwners}>
                                 View All
@@ -570,7 +572,7 @@ export default function ShowAsset({asset, token}) {
                                     Rank
                                 </div>
                                 <div className={styles.ownerNameTitle}>
-                                    Owner Name
+                                    Owners
                                 </div>
                                 <div className={styles.quantityTitle}>
                                     Quantity
@@ -623,7 +625,7 @@ export default function ShowAsset({asset, token}) {
                         <div className={styles.historyIndexSec}>
                             <div className={styles.historyIndexTitles}>
                                 <div className={styles.buyerNameTitle}>
-                                    Buyer Name
+                                    Buyers
                                 </div>
                                 <div className={styles.dateTitle}>
                                     Date

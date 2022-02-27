@@ -56,7 +56,6 @@ export default function BasicTabs({artist}) {
         setValue(newValue);
     };
 
-
     return (
         <Box sx={{width: '100%'}}>
             <Box className={classes.table} sx={{borderBottom: 1, borderColor: 'divider', marginTop: '125px',}}>
@@ -68,25 +67,31 @@ export default function BasicTabs({artist}) {
                     <Tab className={classes.tabTitles} label="Auctions" {...a11yProps(2)} />
                 </Tabs>
             </Box>
-            <ArtistTabPanel value={value} index={0}>
+            <ArtistTabPanel value={value} index={0} style={{marginBottom:64}}>
                 <div className={classes.bioSec} dangerouslySetInnerHTML={{__html: artist.bio}}/>
             </ArtistTabPanel>
-            <ArtistTabPanel value={value} index={1}>
+            <ArtistTabPanel value={value} index={1} style={{marginBottom:80}}>
                 <div className={classes.artworkSec}>
                     <ArtworkImages artworks={artist.medias}/>
                 </div>
             </ArtistTabPanel>
-            <ArtistTabPanel value={value} index={2}>
+            <ArtistTabPanel value={value} index={2} style={{marginBottom:40}}>
                 <div className={classes.auctionMainSec}>
                     {artist.auctions.map((auction, idx) => {
-                        return <div key={idx} className={classes.auctionRow}>
-                            <div className={classes.leftSec}>
-                                {!matches &&
-                                    <img className={classes.auctionImg} src={auction.media && auction.media.url} alt=""/>
-                                }
-                                {matches &&
+                        // console.log(auction)
+                        // console.log(idx)
+                        // console.log(Object.keys(artist.auctions)[Object.keys(artist.auctions).length - 1])
+                        if (parseInt(Object.keys(artist.auctions)[Object.keys(artist.auctions).length - 1]) === idx) {
+                            return <div key={idx} className={classes.lastAuctionRow}>
+                                <div className={classes.leftSec}>
+                                    {!matches &&
+                                    <img className={classes.auctionImg} src={auction.media && auction.media.url}
+                                         alt=""/>
+                                    }
+                                    {matches &&
                                     <div className={classes.auctionImgMobSec}>
-                                        <img className={classes.auctionImg} src={auction.media && auction.media.url} alt=""/>
+                                        <img className={classes.auctionImg} src={auction.media && auction.media.url}
+                                             alt=""/>
                                         <div className={classes.auctionArtDetail}>
                                             {auction.assetName}
                                         </div>
@@ -98,15 +103,15 @@ export default function BasicTabs({artist}) {
                                         </div>
                                     </div>
 
-                                }
-                                <div className={classes.auctionDetail}>
-                                    <div className={classes.auctionTitle}>
-                                        {auction.auctionName}
-                                    </div>
-                                    <div className={classes.auctionDate}>
-                                        {new Date(auction.auctionDate).getDay() + ' ' + monthNames[new Date(auction.auctionDate).getMonth()] + ' ' + new Date(auction.auctionDate).getFullYear()}
-                                    </div>
-                                    {matches &&
+                                    }
+                                    <div className={classes.auctionDetail}>
+                                        <div className={classes.auctionTitle}>
+                                            {auction.auctionName}
+                                        </div>
+                                        <div className={classes.auctionDate}>
+                                            {new Date(auction.auctionDate).getDay() + ' ' + monthNames[new Date(auction.auctionDate).getMonth()] + ' ' + new Date(auction.auctionDate).getFullYear()}
+                                        </div>
+                                        {matches &&
                                         <div className={classes.rightSec}>
                                             <div className={classes.soldPrice}>
                                                 Sold price: ${addCommas(auction.soldPrice)}
@@ -118,8 +123,8 @@ export default function BasicTabs({artist}) {
                                             {/*    Hammer price: 24,000$*/}
                                             {/*</div>*/}
                                         </div>
-                                    }
-                                    {!matches &&
+                                        }
+                                        {!matches &&
                                         <>
                                             <div className={classes.auctionArtDetail}>
                                                 {auction.assetName}
@@ -131,10 +136,10 @@ export default function BasicTabs({artist}) {
                                                 {auction.material}
                                             </div>
                                         </>
-                                    }
+                                        }
+                                    </div>
                                 </div>
-                            </div>
-                            {!matches &&
+                                {!matches &&
                                 <div className={classes.rightSec}>
                                     <div className={classes.soldPrice}>
                                         Sold price: ${addCommas(auction.soldPrice)}
@@ -146,8 +151,81 @@ export default function BasicTabs({artist}) {
                                     {/*    Hammer price: 24,000$*/}
                                     {/*</div>*/}
                                 </div>
-                            }
-                        </div>
+                                }
+                            </div>
+                        } else {
+                            return <div key={idx} className={classes.auctionRow}>
+                                <div className={classes.leftSec}>
+                                    {!matches &&
+                                    <img className={classes.auctionImg} src={auction.media && auction.media.url}
+                                         alt=""/>
+                                    }
+                                    {matches &&
+                                    <div className={classes.auctionImgMobSec}>
+                                        <img className={classes.auctionImg} src={auction.media && auction.media.url}
+                                             alt=""/>
+                                        <div className={classes.auctionArtDetail}>
+                                            {auction.assetName}
+                                        </div>
+                                        <div className={classes.auctionArtDetail}>
+                                            {auction.size}
+                                        </div>
+                                        <div className={classes.auctionArtDetail}>
+                                            {auction.material}
+                                        </div>
+                                    </div>
+
+                                    }
+                                    <div className={classes.auctionDetail}>
+                                        <div className={classes.auctionTitle}>
+                                            {auction.auctionName}
+                                        </div>
+                                        <div className={classes.auctionDate}>
+                                            {new Date(auction.auctionDate).getDay() + ' ' + monthNames[new Date(auction.auctionDate).getMonth()] + ' ' + new Date(auction.auctionDate).getFullYear()}
+                                        </div>
+                                        {matches &&
+                                        <div className={classes.rightSec}>
+                                            <div className={classes.soldPrice}>
+                                                Sold price: ${addCommas(auction.soldPrice)}
+                                            </div>
+                                            {/*<div className={classes.auctionPriceDetails}>*/}
+                                            {/*    Estimates: 30,000 - 40,000$*/}
+                                            {/*</div>*/}
+                                            {/*<div className={classes.auctionPriceDetails}>*/}
+                                            {/*    Hammer price: 24,000$*/}
+                                            {/*</div>*/}
+                                        </div>
+                                        }
+                                        {!matches &&
+                                        <>
+                                            <div className={classes.auctionArtDetail}>
+                                                {auction.assetName}
+                                            </div>
+                                            <div className={classes.auctionArtDetail}>
+                                                {auction.size}
+                                            </div>
+                                            <div className={classes.auctionArtDetail}>
+                                                {auction.material}
+                                            </div>
+                                        </>
+                                        }
+                                    </div>
+                                </div>
+                                {!matches &&
+                                <div className={classes.rightSec}>
+                                    <div className={classes.soldPrice}>
+                                        Sold price: ${addCommas(auction.soldPrice)}
+                                    </div>
+                                    {/*<div className={classes.auctionPriceDetails}>*/}
+                                    {/*    Estimates: 30,000 - 40,000$*/}
+                                    {/*</div>*/}
+                                    {/*<div className={classes.auctionPriceDetails}>*/}
+                                    {/*    Hammer price: 24,000$*/}
+                                    {/*</div>*/}
+                                </div>
+                                }
+                            </div>
+                        }
                     })}
                 </div>
             </ArtistTabPanel>

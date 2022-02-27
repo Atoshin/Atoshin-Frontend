@@ -79,7 +79,7 @@ export default function Artist({artist}) {
                     }
 
                 </div>
-                <div className={classes.midMainSec} style={{border:'solid red'}}>
+                <div className={classes.midMainSec}>
                     <ArtistTabPanel artist={artist}/>
                 </div>
                 <div className={classes.relatedSec}>

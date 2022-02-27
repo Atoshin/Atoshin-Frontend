@@ -460,6 +460,7 @@
   font-weight: 300;
   /*margin-right: 35px;*/
   width: 125px;
+  text-align: center;
 }
 
 .quantityTitle {
@@ -567,7 +568,7 @@
 .buyerNameSec {
   display: flex;
   flex-direction: row;
-  width: 191px;
+  width: 200px;
 }
 
 .boughtBy {
@@ -587,7 +588,7 @@
   color: #232323;
   font-size: 18px;
   font-weight: 400;
-  width: 174px;
+  width: 190px;
 }
 
 .historyTitleSec {
@@ -689,6 +690,8 @@
 .imgDialog {
   width: 970px !important;
   height: 650px !important;
+  //width: 906px !important;
+  //height: 597px !important;
   display: flex !important;
   flex-direction: column !important;
 
@@ -706,15 +709,18 @@
     width: 537px;
     flex-flow: wrap;
   }
+  .selectedItem{}
 
   .modalTitle {
-    margin-top: 64px;
-    margin-left: 64px;
+    margin-top: 46px;
+    margin-left: 32px;
     padding-left: 0;
     padding-top: 0;
+    padding-bottom: 24px !important;
     display: flex;
     justify-content: space-between;
     font-weight: 700;
+    font-size: 22px;
   }
 
   .modalMainImg {
@@ -722,6 +728,7 @@
     height: 469px;
     margin-left: 64px;
     cursor: crosshair;
+    border-radius:3px;
   }
 
   .otherImgesContainer {
@@ -757,8 +764,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 24px;
-    margin-right: 24px;
+    margin-top: 32px;
+    margin-right: 32px;
     cursor: pointer;
 
     img {
