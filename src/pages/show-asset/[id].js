@@ -14,8 +14,11 @@ import 'react-slideshow-image/dist/styles.css';
 import Youtube from 'react-youtube';
 import {useRouter} from "next/router";
 import CryptoJS from 'crypto-js';
+import {parseCookies} from "../../functions/parseCookies";
+import {ethers} from "ethers";
+import {useCookies} from "react-cookie";
 
-export default function ShowAsset({asset}) {
+export default function ShowAsset({asset, token}) {
     const [openImages, setOpenImages] = useState(false)
     const [openOwners, setOpenOwners] = useState(false)
     const [openHistory, setOpenHistory] = useState(false)
@@ -25,6 +28,7 @@ export default function ShowAsset({asset}) {
     const [quantity, setQuantity] = useState(1)
     const [sliderAutoplay, setSliderAutoplay] = useState(true)
     const [secondTooltip, setSecondTooltip] = useState(false)
+    const [cookie, setCookie] = useCookies()
     const [currentSlide, setCurrentSlide] = useState(asset.medias.find(media => media.main === 1))
     const [mainImgSize, setMainImgSize] = useState({
         width: '',
@@ -89,7 +93,7 @@ export default function ShowAsset({asset}) {
                 const ytvId = iframe.src.slice(-11)
                 span.remove()
                 return [
-                    <div onClick={() => {
+                    <div key={5000} onClick={() => {
                         setClickedVideoId(asset.videoLinks[0].id)
                         setOpenImages(true)
                     }} style={{
@@ -185,12 +189,79 @@ export default function ShowAsset({asset}) {
             })
         }
     }
+    const signMessage = async (signer) => {
+        const walletAddress = await signer.getAddress();
+        try {
+            const signature = await signer.signMessage(process.env.NEXT_PUBLIC_SIGNATURE_PHRASE);
+            await axios.post(`/api/signature`, {
+                signature,
+                walletAddress,
+                type: true
+            })
+            setCookie('buyToken', signature, {
+                path: "/",
+                sameSite: true,
+                maxAge: 10 * 60
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const submitOrder = async () => {
-        const {data: encrypted} = await axios.post(`/api/contracts/asset/${query.id}`, {amount: quantity})
-        const decrypted = await CryptoJS.AES.decrypt(encrypted, '@atoshin201020202')
-        const resData = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
-        console.log(resData)
+        try {
+            if (window.ethereum) {
+                const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+                await provider.send("eth_requestAccounts", []);
+                const signer = provider.getSigner();
+                const walletAddress = await signer.getAddress();
+                if (walletAddress) {
+                    await axios.post(`/api/wallet`, {
+                        walletAddress
+                    }).then(async (r) => {
+                        await signMessage(signer)
+                    }).catch(async e => {
+                        if (typeof e.response !== 'undefined') {
+                            if (!e.response.data.data) {
+                                await signMessage(signer)
+                            }
+                        }
+                    });
+                }
+                const {data: encrypted} = await axios.post(`/api/contracts/asset/${query.id}`, {amount: quantity})
+                const decrypted = await CryptoJS.AES.decrypt(encrypted, process.env.NEXT_PUBLIC_CRYPT_KEY)
+                const resData = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
+                const ppf = ethers.utils.parseUnits(resData.ppf.toString(), 'ether')
+                const totalPrice = ethers.utils.parseUnits((resData.ppf * resData.contracts.length).toString(), 'ether')
+
+                let contract = new ethers.Contract(resData.Market.address, resData.Market.abi, signer)
+                const tokenIds = [];
+                const mintedAts = [];
+                console.log(resData)
+                for (let i = 0; i < resData.contracts.length; i++) {
+                    tokenIds.push(resData.contracts[i].minted.tokenId)
+                    mintedAts.push(new Date(resData.contracts[i].minted.createdAt).getTime())
+                }
+                const address = await signer.getAddress();
+                let transaction = await contract.createMarketItems(
+                    resData.NFT.address,
+                    tokenIds,
+                    ppf,
+                    resData.royaltyPercentage,
+                    resData.totalFractions,
+                    resData.creator,
+                    address,
+                    mintedAts,
+                    {value: totalPrice}
+                )
+
+                await transaction.wait()
+            } else {
+
+            }
+        } catch (e) {
+            console.error(e)
+        }
     }
 
     useEffect(() => {
@@ -284,6 +355,7 @@ export default function ShowAsset({asset}) {
                                         const ytvId = iframe.src.slice(-11)
                                         span.remove()
                                         return <Youtube
+                                            key={ytvId}
                                             // videoId={video.videoId}
                                             videoId={ytvId}
                                             containerClassName={styles.artworkMainImgMobile}
@@ -345,7 +417,7 @@ export default function ShowAsset({asset}) {
                                             Price
                                         </div>
                                         <div className={styles.priceAmount}>
-                                            {asset.price} ETH
+                                            {asset.ethPricePerFraction} ETH
                                         </div>
                                     </div>
                                     <Button className={styles.BuyBtn}>
@@ -362,7 +434,7 @@ export default function ShowAsset({asset}) {
                                         Price
                                     </div>
                                     <div className={styles.priceAmount}>
-                                        {asset.price} ETH
+                                        {asset.ethPricePerFraction} ETH
                                     </div>
                                 </div>
                                 <input value={quantity} onChange={e => setQuantity(e.target.value)}
@@ -607,9 +679,9 @@ export default function ShowAsset({asset}) {
 }
 
 
-export async function getServerSideProps({query}) {
+export async function getServerSideProps({query, req}) {
     const assetId = query.id;
-
+    const token = parseCookies(req).token
     const {
         data: {
             asset
@@ -618,7 +690,8 @@ export async function getServerSideProps({query}) {
 
     return {
         props: {
-            asset
+            asset,
+            token
         }
     }
 }
