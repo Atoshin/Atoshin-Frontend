@@ -740,7 +740,7 @@ export async function getStaticPaths() {
     const paths = galleries.map(gallery => ({
         params: {id: gallery.id.toString()}
     }))
-    console.log(paths)
+
     return {
         paths,
         fallback: 'blocking'
@@ -757,7 +757,8 @@ export async function getStaticProps({params: {id}}) {
     return {
         props: {
             asset,
-        }
+        },
+        revalidate: 30
     }
 }
 
