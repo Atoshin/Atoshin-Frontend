@@ -702,7 +702,7 @@ export async function getStaticProps({params: {id}}) {
         data: {
             asset
         }
-    } = await axios.get(`${process.env.BACKEND_BASE_URL}/gallery/${id}/show`)
+    } = await axios.get(`${process.env.BACKEND_BASE_URL}/asset/${id}/show`)
 
     return {
         props: {
