@@ -18,7 +18,7 @@ import {parseCookies} from "../../functions/parseCookies";
 import {ethers} from "ethers";
 import {useCookies} from "react-cookie";
 
-export default function ShowAsset({asset, token}) {
+export default function ShowAsset({asset}) {
     const [openImages, setOpenImages] = useState(false)
     const [openOwners, setOpenOwners] = useState(false)
     const [openHistory, setOpenHistory] = useState(false)
@@ -267,7 +267,7 @@ export default function ShowAsset({asset, token}) {
 
             }
         } catch (e) {
-            console.error(e)
+            console.log(e)
         }
     }
 
@@ -685,20 +685,29 @@ export default function ShowAsset({asset, token}) {
     )
 }
 
+export async function getStaticPaths() {
+    const {data: {galleries}} = await axios.get(`${process.env.BASE_URL}/api/art-center/list`)
+    const paths = galleries.map(gallery => {
+        return {params: {id: gallery.id}}
+    })
 
-export async function getServerSideProps({query, req}) {
-    const assetId = query.id;
-    const token = parseCookies(req).token
+    return {
+        paths,
+        fallback: 'blocking'
+    }
+}
+
+export async function getStaticProps({params: {id}}) {
     const {
         data: {
             asset
         }
-    } = await axios.get(`${process.env.BASE_URL}/api/show-asset/${assetId}`)
+    } = await axios.get(`${process.env.BASE_URL}/api/show-asset/${id}`)
 
     return {
         props: {
             asset,
-            token
         }
     }
 }
+
