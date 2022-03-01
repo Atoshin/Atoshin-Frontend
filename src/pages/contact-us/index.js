@@ -36,7 +36,7 @@ export default function ContactUs({galleries}) {
                             <div className={classes.emailC}>contact@atoshin.com</div>
                         </div>
                         <div className={classes.sec2}>
-                            <img src="/icons/email.svg" alt=""/>
+                            <img className={classes.emailIcon} src="/icons/email.svg" alt=""/>
                         </div>
                     </div>
 
@@ -46,7 +46,7 @@ export default function ContactUs({galleries}) {
                             <div className={classes.emailC}>joinus@atoshin.art</div>
                         </div>
                         <div className={classes.sec2}>
-                            <img src="/icons/email.svg" alt=""/>
+                            <img className={classes.emailIcon} src="/icons/email.svg" alt=""/>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@ export default function ContactUs({galleries}) {
                         {/*<div className={classes.name} style={{height:124, display: 'block'}}>*/}
                         {/*    <div className={classes.innerBox} >Message</div>*/}
                         {/*</div>*/}
-                        <input type="text" style={{height:124, display: 'block'}} className={classes.name} placeholder='Message'/>
+                        <input type="text"  className={classes.message} placeholder='Message'/>
 
                         <Button variant="contained" className={classes.submit}>
                             <span style={{textTransform: 'upperCase'}}>S</span>ubmit

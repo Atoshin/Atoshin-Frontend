@@ -65,6 +65,10 @@
   margin-bottom: 12px;
 }
 
+.emailIcon{
+  width: 26px;
+  height: 20px;
+}
 .emailC{
   font-family: Roboto;
   font-size: 14px;
@@ -108,6 +112,20 @@
   margin-bottom: 16px;
   padding-left: 14px;
 }
+
+.message {
+  //height: 44px;
+  width: 416px;
+  border-radius: 3px;
+  border: 1px solid #E8ECF2;
+  background-color: white;
+  //display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-left: 14px;
+  height:124px;
+  display: block;
+}
 .name:focus {
   border: 1px solid #E8ECF2 !important;
 }
@@ -128,7 +146,7 @@
   padding-left: 14px;
 }
 
-.name1::-webkit-input-placeholder , .name::-webkit-input-placeholder {
+.name1::-webkit-input-placeholder , .name::-webkit-input-placeholder , .message::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
   font-size: 14px;
   font-style: normal;
@@ -137,7 +155,7 @@
   text-align: left;
   color: #A2B2C2;
 }
-.name1:-moz-placeholder , .name:-moz-placeholder {
+.name1:-moz-placeholder , .name:-moz-placeholder, .message:-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
   font-size: 14px;
   font-style: normal;
@@ -146,7 +164,7 @@
   text-align: left;
   color: #A2B2C2;
 }
-.name1::-moz-placeholder , .name::-moz-placeholder {
+.name1::-moz-placeholder , .name::-moz-placeholder, .message::-moz-placeholder {
   /* Mozilla Firefox 19+ */
   font-size: 14px;
   font-style: normal;
@@ -155,7 +173,7 @@
   text-align: left;
   color: #A2B2C2;
 }
-.name1:-ms-input-placeholder, .name:-ms-input-placeholder {
+.name1:-ms-input-placeholder, .name:-ms-input-placeholder, .message:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
   font-size: 14px;
   font-style: normal;

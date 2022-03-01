@@ -14,8 +14,10 @@
   }
 
   .box1 {
-    height: 71px;
-    width: 430px;
+    //height: 71px;
+    //width: 430px;
+    height: 56px;
+    width: 312px;
     border-radius: 3px;
     border: 1px solid #A7A7A7;
     display: flex;
@@ -25,16 +27,84 @@
     margin-bottom: 24px;
   }
 
+  .contactUs{
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+
+  .howCan {
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    text-align: left;
+    margin-top: 8px;
+
+  }
+
+  .email{
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  .emailC{
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+
+  }
+.emailIcon{
+  width: 20px;
+  height: 16px;
+}
+  .fill {
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 8px;
+    color: #68758E;
+  }
+
   .tableBox {
     background-color: #F3F5F8;
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 430px;
-    width: 480px;
+    height: 423px;
+    width: 360px;
     border-radius: 3px;
     margin-top: 0px;
     padding-bottom: 24px;
 
+  }
+
+  .name{
+width: 312px;
+    height: 44px;
+  }
+  .name1{
+    width: 312px;
+    height: 44px;
+  }
+  .message{
+    width: 312px;
+    height: 124px
+  }
+  .submit{
+    width: 312px;
+    height: 47px;
   }
 }
