@@ -688,9 +688,9 @@ export default function ShowAsset({asset}) {
 export async function getStaticPaths() {
     const {data: {galleries}} = await axios.get(`${process.env.BACKEND_BASE_URL}/galleries`)
     const paths = galleries.map(gallery => ({
-        params: {id: gallery.id}
+        params: {id: gallery.id.toString()}
     }))
-
+    console.log(paths)
     return {
         paths,
         fallback: 'blocking'
