@@ -94,7 +94,12 @@ export default function ImagesModal({
                                 style={{borderRadius: 3}}
                                 dangerouslySetInnerHTML={{__html: mainImg.link}}/>
                             :
-                            <div style={{borderRadius: 3}}><ZoomImg/></div>
+                            <div  style={{width:698, height:469, display:'flex', justifyContent:'center'}}>
+                                <img src={mainImg.url}
+                                    // style={{width:698, height:469}}
+                                />
+                            </div>
+                            // <div style={{borderRadius: 3}}><ZoomImg/></div>
                     }
                 </div>
                 {/*<img className={classes.modalMainImg} src="/images/starry-night-main.png" alt=""/>*/}
