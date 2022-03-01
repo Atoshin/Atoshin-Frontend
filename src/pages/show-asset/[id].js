@@ -686,7 +686,7 @@ export default function ShowAsset({asset}) {
 }
 
 export async function getStaticPaths() {
-    const {data: {galleries}} = await axios.get(`${process.env.BASE_URL}/api/art-center/list`)
+    const {data: {galleries}} = await axios.get(`${process.env.BACKEND_BASE_URL}/galleries`)
     const paths = galleries.map(gallery => {
         return {params: {id: gallery.id}}
     })
@@ -702,7 +702,7 @@ export async function getStaticProps({params: {id}}) {
         data: {
             asset
         }
-    } = await axios.get(`${process.env.BASE_URL}/api/show-asset/${id}`)
+    } = await axios.get(`${process.env.BACKEND_BASE_URL}/gallery/${id}/show`)
 
     return {
         props: {
