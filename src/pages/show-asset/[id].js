@@ -237,10 +237,11 @@ export default function ShowAsset({asset, token}) {
                 let contract = new ethers.Contract(resData.Market.address, resData.Market.abi, signer)
                 const tokenIds = [];
                 const mintedAts = [];
-                console.log(resData)
+                const mintedIds = [];
                 for (let i = 0; i < resData.contracts.length; i++) {
-                    tokenIds.push(resData.contracts[i].minted.tokenId)
-                    mintedAts.push(new Date(resData.contracts[i].minted.createdAt).getTime())
+                    tokenIds.push(resData.contracts[i].minted.tokenId);
+                    mintedAts.push(new Date(resData.contracts[i].minted.createdAt).getTime());
+                    mintedIds.push(resData.contracts[i].minted.id);
                 }
                 const address = await signer.getAddress();
                 let transaction = await contract.createMarketItems(
@@ -255,7 +256,13 @@ export default function ShowAsset({asset, token}) {
                     {value: totalPrice}
                 )
 
-                await transaction.wait()
+                const tx = await transaction.wait()
+                const txnHash = tx.transactionHash
+                await axios.patch(`/api/contracts/asset/${query.id}`, {
+                    txnHash,
+                    mintedIds,
+                    txnStatus: 'sold'
+                })
             } else {
 
             }

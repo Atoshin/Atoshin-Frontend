@@ -1,10 +1,8 @@
 import classes from '../../styles/TermsAndConditions/TermsAndConditions.module.scss'
 import {useTheme} from "@mui/material/styles";
-import {useMediaQuery} from "@mui/material";
-import {useEffect, useRef, useState} from "react";
-import * as React from "react";
-import axios from "axios";
-import Web3 from "web3";
+import {useMediaQuery} from '@mui/material';
+import {useEffect} from 'react';
+import * as React from 'react';
 
 export default function TermsAndConditions() {
 
@@ -34,22 +32,23 @@ export default function TermsAndConditions() {
                 Welcome
             </div>
 
-            <div className={classes.paragraph}>
-                NEEI LLC, Atoshin.com ("ATOSHIN," "we," "us," or "our") makes its marketplace and services (described
-                below) available to you ("you" or "User") via its website, platform, and marketplace at www.ATOSHIN.art
-                (the "Platform"), subject to the following Terms of Service (as amended from time to time, the "Terms").
-                You confirm that you have read and agree to these Terms by creating an account on the Platform or
-                otherwise using or accessing the Platform. The User expressly agrees to and acknowledges the Privacy
-                Policy and all other terms, guidelines, and rules set forth on the Platform, which are hereby
-                incorporated by reference into these Terms.
-                PLEASE READ THESE PLATFORM TERMS CAREFULLY, AS THEY CONTAIN AN ARBITRATION AGREEMENT AND OTHER IMPORTANT
-                INFORMATION ABOUT YOUR LEGAL RIGHTS, REMEDIES, AND OBLIGATIONS. THE ARBITRATION AGREEMENT REQUIRES (WITH
-                LIMITED EXCEPTION) THAT YOU SUBMIT ANY CLAIMS YOU MAY HAVE AGAINST ATOSHIN TO BINDING AND FINAL
-                ARBITRATION, AND FURTHER THAT (1) YOU WILL ONLY BE PERMITTED TO PURSUE CLAIMS AGAINST ATOSHIN ON AN
-                INDIVIDUAL BASIS, NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY CLASS OR REPRESENTATIVE ACTION
-                At any time, we reserve the right to update or modify elements of these Terms of Service at our sole
+            <div className={classes.paragraph}>NEEI LLC, Atoshin.com
+                (&quot;ATOSHIN,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) makes its marketplace and
+                services (described below) available to you (&quot;you&quot; or &quot;User&quot;) via its website,
+                platform, and marketplace at www.ATOSHIN.art (the &quot;Platform&quot;), subject to the following Terms
+                of Service (as amended from time to time, the &quot;Terms&quot;). You confirm that you have read and
+                agree to these Terms by creating an account on the Platform or otherwise using or accessing the
+                Platform. The User expressly agrees to and acknowledges the Privacy Policy and all other terms,
+                guidelines, and rules set forth on the Platform, which are hereby incorporated by reference into these
+                Terms. PLEASE READ THESE PLATFORM TERMS CAREFULLY, AS THEY CONTAIN AN ARBITRATION AGREEMENT AND OTHER
+                IMPORTANT INFORMATION ABOUT YOUR LEGAL RIGHTS, REMEDIES, AND OBLIGATIONS. THE ARBITRATION AGREEMENT
+                REQUIRES (WITH LIMITED EXCEPTION) THAT YOU SUBMIT ANY CLAIMS YOU MAY HAVE AGAINST ATOSHIN TO BINDING AND
+                FINAL ARBITRATION, AND FURTHER THAT (1) YOU WILL ONLY BE PERMITTED TO PURSUE CLAIMS AGAINST ATOSHIN ON
+                AN INDIVIDUAL BASIS, NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY CLASS OR REPRESENTATIVE ACTION At any
+                time, we reserve the right to update or modify elements of these Terms of Service at our sole
                 discretion. If we do this, we will post the modifications on this page and mention the date these terms
-                were last changed at the top of the page. We'll also let you know via the Platform's user interface, an
+                were last changed at the top of the page. We&apos;ll also let you know via the Platform&apos;s user
+                interface, an
                 email message, or some other appropriate way. Any such changes will take effect fourteen (14) days after
                 they are posted, with the exception of changes addressing new Platform functions, which will take effect
                 immediately. Continued use of the Platform after the effective date of any such modifications signifies
@@ -59,16 +58,17 @@ export default function TermsAndConditions() {
                 What is the definition of ATOSHIN?
             </div>
             <div className={classes.paragraph}>
-                ATOSHIN is a platform that allows Museums, Permanent collection and artists ("Creators") and collectors
-                ("Collectors") to sell, buy, list for auction, make offers, and bid on Non-fungible tokens(NFTs) for
-                Physical arts and collectibles, digital art that is represented by non-fungible Ethereum-based tokens
-                (“Physical Assets” & "Digital Artwork").
-                Smart-Contract Supporting the NFTs on ATOSHIN is represented on the Ethereum blockchain through smart
-                contracts, which offer an immutable ledger of all ATOSHIN transactions ("Smart Contracts"). This means
-                that all Physical Assets and Digital Artwork is uncontrollable by any single entity, including ATOSHIN,
-                and is susceptible to several dangers and uncertainties. MetaMask, Coinbase, the Ethereum network, your
+                ATOSHIN is a platform that allows Museums, Permanent collection and artists (&quot;Creators&quot;) and
+                collectors (&quot;Collectors&quot;) to sell, buy, list for auction, make offers, and bid on Non-fungible
+                tokens(NFTs) for Physical arts and collectibles, digital art that is represented by non-fungible
+                Ethereum-based tokens (&ldquo;Physical Assets&rdquo; &amp; &quot;Digital Artwork&quot;). Smart-Contract
+                Supporting the NFTs on ATOSHIN is represented on the Ethereum blockchain through smart contracts, which
+                offer an immutable ledger of all ATOSHIN transactions (&quot;Smart Contracts&quot;). This means that all
+                Physical Assets and Digital Artwork is uncontrollable by any single entity, including ATOSHIN, and is
+                susceptible to several dangers and uncertainties. MetaMask, Coinbase, the Ethereum network, your
                 browser, or any other third-party site, product, or service that you could access, visit, or utilize to
-                enable you to enjoy the Platform's different features are not owned or controlled by us. We will not be
+                enable you to enjoy the Platform&apos;s different features are not owned or controlled by us. We will
+                not be
                 liable for any damage you may incur as a result of your transactions or other interactions with such
                 third parties, nor will we be liable for any acts or omissions of such third parties. The User
                 acknowledges that every time you engage in a transaction on the Platform, your Ethereum public address
@@ -98,7 +98,7 @@ export default function TermsAndConditions() {
                 be at least 13 years old, and you must be at least 18 years old to bid on any Digital Artwork. You must
                 have the express approval of a parent or legal guardian who can accept these Terms on your behalf if you
                 are between the ages of 13 and 18. You are responsible for anything that happens when someone else uses
-                your account, as well as the account's security.
+                your account, as well as the account&apos;s security.
                 <div style={{fontWeight: 700}}> Member Account, Password, and Security:</div>
                 You are solely responsible for the security of your account and password, if any, and for any and all
                 activities carried out under your password or account. When visiting ATOSHIN, you undertake to (a)
@@ -116,7 +116,7 @@ export default function TermsAndConditions() {
                 portion of it) temporarily or permanently. You agree that ATOSHIN will not be liable to you or any third
                 person if the Platform is modified, suspended, or discontinued.
             </div>
-            <div className={classes.paragraphTitle}>What are the ATOSHIN's guidelines?</div>
+            <div className={classes.paragraphTitle}>What are the ATOSHIN&apos;s guidelines?</div>
             <div style={{
                 fontSize: 14,
                 fontWeight: 400,
@@ -141,14 +141,15 @@ export default function TermsAndConditions() {
 
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
-                <div className={classes.guidelinesItem}>
-                    send or otherwise upload any content that (i) infringes on any party's intellectual property or
-                    other proprietary rights; (ii) you don't have a legal or contractual or fiduciary right to post;
-                    (iv) constitutes unsolicited or unauthorized advertising, promotional materials, commercial
-                    activities and/or sales, "junk mail," "spam," "chain letters," "pyramid schemes," "contests,"
-                    "sweepstakes," or an equivalent; (v) constitutes unsolicited or unauthorized advertising,
-                    promotional materials, commercial activities and/or sales, "junk mail," "spam," "chain letters,"
-                    "pyramid schemes," "contests," "sweep
+                <div className={classes.guidelinesItem}>send or otherwise upload any content that (i) infringes on any
+                    party&apos;s intellectual property or other proprietary rights; (ii) you don&apos;t have a legal or
+                    contractual or fiduciary right to post; (iv) constitutes unsolicited or unauthorized advertising,
+                    promotional materials, commercial activities and/or sales, &quot;junk
+                    mail,&quot; &quot;spam,&quot; &quot;chain letters,&quot; &quot;pyramid
+                    schemes,&quot; &quot;contests,&quot; &quot;sweepstakes,&quot; or an equivalent; (v) constitutes
+                    unsolicited or unauthorized advertising, promotional materials, commercial activities and/or
+                    sales, &quot;junk mail,&quot; &quot;spam,&quot; &quot;chain letters,&quot; &quot;pyramid
+                    schemes,&quot; &quot;contests,&quot; &quot;sweep
                 </div>
             </div>
 
@@ -164,7 +165,8 @@ export default function TermsAndConditions() {
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
                     breach any applicable local, state, national, or international law, or any laws with legal force,
-                    including but not limited to the Office of Foreign Assets Control ("OFAC") of the United States
+                    including but not limited to the Office of Foreign Assets Control (&quot;OFAC&quot;) of the United
+                    States
                     Department of Treasury, or include proceeds of any illicit action;
                 </div>
             </div>
@@ -196,7 +198,7 @@ export default function TermsAndConditions() {
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
-                    sell or acquire any goods or services for any business purpose that isn't officially approved;
+                    sell or acquire any goods or services for any business purpose that isn&apos;t officially approved;
                 </div>
             </div>
 
@@ -255,7 +257,7 @@ export default function TermsAndConditions() {
                 marketplace and offers no guarantees or promises that any artists will be authorized as Creators.
             </div>
             <div className={classes.paragraphTitle}>
-                What are the Platform's intellectual property rights?
+                What are the Platform&apos;s intellectual property rights?
             </div>
             <div style={{
                 fontSize: 18,
@@ -266,7 +268,7 @@ export default function TermsAndConditions() {
             }}>
                 Rights of the Creator
             </div>
-            <div className={classes.paragraph} style={{marginBottom:10}}>
+            <div className={classes.paragraph} style={{marginBottom: 10}}>
                 All intellectual property rights underlying Physical Asset or the Digital Artwork created by the Creator
                 on the Platform, including but not limited to copyrights and trademarks, are owned by the Creator. The
                 Creator has the right to reproduce, generate derivative Digital Artwork, distribute, and exhibit or
@@ -297,7 +299,8 @@ export default function TermsAndConditions() {
                 Rights of Collectors
             </div>
             <div className={classes.paragraph}>
-                Collectors acquire a cryptographic token that serves as a piece of property representing the Creator's
+                Collectors acquire a cryptographic token that serves as a piece of property representing the
+                Creator&apos;s
                 Physical Asset or portion thereof and Digital Artwork, but they do not own the creative work itself.
                 Collectors may display and share the representation of the Physical Asset or Digital Artwork, but they
                 do not have any legal ownership, right, or title to the copyrights, trademarks, or other intellectual
@@ -305,15 +308,18 @@ export default function TermsAndConditions() {
                 limited, global, non-assignable, non-sublicensable, royalty-free permission to display the
                 representation of the Physical Asset as provided in the NFT or Digital Artwork lawfully owned and
                 properly obtained by the Collector upon purchasing an NFT on ATOSHIN.
-                The Collector's limited license to display the Information about the Physical Asset including videos and
+                The Collector&apos;s limited license to display the Information about the Physical Asset including
+                videos and
                 photographs, Digital Artwork includes, but is not limited to, the right to display the Digital Artwork
-                privately or publicly (i) for the purpose of promoting or sharing the Collector's purchase, ownership,
+                privately or publicly (i) for the purpose of promoting or sharing the Collector&apos;s purchase,
+                ownership,
                 or interest; (ii) for the purpose of sharing, promoting, discussing, or commenting on the NFT’s value;
                 and (iii) on third-party marketplaces, exchanges, platforms, or applications in connection with an offer
                 to sell, or trade, the NFT.
                 Collectors have the right to sell, trade, transfer, or utilize their NFT, but they are not permitted to
-                use it for "commercial purposes."
-                Without the Creator's express prior written agreement in each circumstance, the Collector acknowledges
+                use it for &quot;commercial purposes.&quot;
+                Without the Creator&apos;s express prior written agreement in each circumstance, the Collector
+                acknowledges
                 that it may not do or attempt to do any of the following, nor may it permit any third party to do so:
                 (i) use the NFT and or its related information and content in connection with images, videos, or other
                 forms of media that depict hatred, intolerance, violence, cruelty, or anything else that could
@@ -322,7 +328,8 @@ export default function TermsAndConditions() {
                 Digital Artwork in connection with images, videos, or other forms of media that depict hatred,
                 intolerance, violence, cruelty, or anything (iv) use the NFT and or its related information and content
                 for commercial purposes in movies, videos, video games, or other forms of media, save to the extent that
-                such use is specifically approved by these Terms or solely for your Collector's personal, non-commercial
+                such use is specifically approved by these Terms or solely for your Collector&apos;s personal,
+                non-commercial
                 use; (v) sell, distribute for profit, or otherwise commercialize merchandise that includes, contains, or
                 consists of the NFT and or its related information and content ; (vi) attempt to trademark, copyright,
                 or otherwise acquire additional intellectual property rights in or to the NFT and or its related
@@ -331,11 +338,12 @@ export default function TermsAndConditions() {
                 falsify, misrepresent, or conceal the Physical Asset or Digital Artwork;
                 Collectors release, acquit, and forever discharge NEEI, LLC and ATOSHIN, its subsidiaries, affiliates,
                 executives, and successors from any and all liability for direct or indirect copyright or trademark
-                infringement as a result of ATOSHIN's use of a Physical Asset or Digital Artwork in line with these
+                infringement as a result of ATOSHIN&apos;s use of a Physical Asset or Digital Artwork in line with these
                 Terms.
                 <div style={{fontWeight: 700}}>Platform Information, Software, and Trademarks:</div>
                 You acknowledge and agree that the Platform may contain copyright, patent, trademark, trade secret, or
-                other proprietary rights and laws-protected content or features ("Platform Content"). You undertake not
+                other proprietary rights and laws-protected content or features (&quot;Platform Content&quot;). You
+                undertake not
                 to modify, copy, frame, scrape, rent, lease, loan, sell, distribute, or create derivative works based on
                 the Platform or Platform Content, in whole or in part, unless ATOSHIN expressly authorizes you to do so.
                 You will not engage in or utilize any data mining, robots, scraping, or similar data collection or
@@ -344,12 +352,15 @@ export default function TermsAndConditions() {
                 circumvent this restriction (e.g., by masking your IP address or using a proxy IP address). Any use of
                 the Platform or Platform Content that is not expressly permitted above is strictly prohibited. NEEI LLC,
                 ATOSHIN, our affiliates, and our partners own the technology and software that underpins the Platform or
-                is distributed in connection with it (the "Software"). You undertake not to duplicate, alter, adapt,
+                is distributed in connection with it (the &quot;Software&quot;). You undertake not to duplicate, alter,
+                adapt,
                 translate, create a derivative work from, reverse engineer, reverse assemble, or otherwise seek to
                 discover any source code, sell, assign, sublicense, or otherwise transfer any right in the Software.
                 ATOSHIN reserves all rights not expressly granted herein.
-                NEEI’s name, & Atoshin’s name and emblems are trademarks and service marks (collectively, the "ATOSHIN
-                Trademarks"). Other company, product, and service names and logos that appear on the Platform may be
+                NEEI’s name, & Atoshin’s name and emblems are trademarks and service marks (collectively,
+                the &quot;ATOSHIN
+                Trademarks&quot;). Other company, product, and service names and logos that appear on the Platform may
+                be
                 trademarks or service marks of their respective owners, who may or may not endorse, be affiliated with,
                 or be related to ATOSHIN. Without our prior written permission in each instance, nothing in these Terms
                 of Service or the Platform should be regarded as providing, by implication, estoppel, or otherwise, any
@@ -364,26 +375,31 @@ export default function TermsAndConditions() {
                 limiting the foregoing, ATOSHIN and its designees will have the right to delete any content that
                 violates these Terms of Service or that Platform deems to be otherwise objectionable in its sole
                 discretion. You agree to assess and assume all risks associated with the use of any content and the
-                purchase of any NFT for Physical Assets or Digital Artwork, including any reliance on such content's
+                purchase of any NFT for Physical Assets or Digital Artwork, including any reliance on such
+                content&apos;s
                 accuracy, completeness, or usefulness.
                 <div style={{fontWeight: 700}}>User Content Transmitted Through the Platform:</div>
                 You represent and warrant that you own all right, title, and interest in and to the content, Digital
                 Artwork, or other materials you upload through the Platform or share with other users or recipients
-                (collectively, "User Content"), including, without limitation, all copyrights and rights of publicity
+                (collectively, &quot;User Content&quot;), including, without limitation, all copyrights and rights of
+                publicity
                 contained therein. By uploading any User Content, you grant and will grant ATOSHIN and its affiliated
                 companies a nonexclusive, worldwide, royalty-free, fully paid up, transferable, sublicensable,
                 perpetual, irrevocable license to copy, display, upload, perform, distribute, store, modify, and
-                otherwise use your User Content in connection with the Platform's operation, promotion, advertising, and
+                otherwise use your User Content in connection with the Platform&apos;s operation, promotion,
+                advertising, and
                 marketing in any form, medium, or technology now known or later developed.
                 Any questions, comments, suggestions, ideas, feedback, or other information you provide to ATOSHIN about
-                the Platform ("Submissions") is non-confidential, and ATOSHIN will be entitled to use and disseminate
+                the Platform (&quot;Submissions&quot;) is non-confidential, and ATOSHIN will be entitled to use and
+                disseminate
                 these Submissions for any purpose, commercial or otherwise, without acknowledgment or compensation to
                 you.
                 If required by law or in the good faith belief that such preservation or disclosure is reasonably
                 necessary to: (a) comply with legal process, applicable laws, or government requests; (b) enforce these
                 Terms of Service; (c) respond to claims that any content violates the rights of third parties; or (d)
                 protect the rights, property, or personal safety of ATOSHIN, its users, or the public, ATOSHIN, its
-                users, and the public may preserve and disclose content. You acknowledge that the Platform's technical
+                users, and the public may preserve and disclose content. You acknowledge that the Platform&apos;s
+                technical
                 processing and transmission, including your content, may entail (a) transmissions over multiple
                 networks; and (b) adjustments to conform and adapt to technical requirements of connecting networks or
                 devices.
@@ -393,9 +409,10 @@ export default function TermsAndConditions() {
                 intellectual property rights have been violated in any other way, you should contact ATOSHIN via the
                 procedure outlined below.
                 With respect to any claimed or actual infringement, the ATOSHIN will process and investigate reports of
-                alleged infringement and take necessary action under the Digital Millennium Copyright Act ("DMCA") and
+                alleged infringement and take necessary action under the Digital Millennium Copyright Act
+                (&quot;DMCA&quot;) and
                 other applicable intellectual property laws. A copyright infringement notification should be addressed
-                to ATOSHIN's at Legal@atoshin.art (Subject line: "DMCA Takedown Request").
+                to ATOSHIN&apos;s at Legal@atoshin.art (Subject line: &quot;DMCA Takedown Request&quot;).
                 The notification must be in written and include the following details to be effective:
             </div>
             <div className={classes.guideline}>
@@ -451,7 +468,8 @@ export default function TermsAndConditions() {
             <div className={classes.paragraph}>
                 <div style={{fontWeight: 700}}>Counter-Notice:</div>
                 If you believe your removed (or disabled) User Content is not infringing, or that you have permission
-                from the copyright owner, the copyright owner's agent, or the law to upload and use the content in your
+                from the copyright owner, the copyright owner&apos;s agent, or the law to upload and use the content in
+                your
                 User Content, you may send a written counter-notice to the Copyright Agent containing the following
                 information:
             </div>
@@ -497,7 +515,8 @@ export default function TermsAndConditions() {
                 owner launches an action seeking a court order against the content provider, member, or user.
                 <div style={{fontWeigth: 700}}>Repeat Infringer Policy:</div>
                 In compliance with the DMCA and other applicable law, ATOSHIN has adopted a policy of terminating Users
-                who are found to be repeat infringers in suitable circumstances and at ATOSHIN's sole discretion. In
+                who are found to be repeat infringers in suitable circumstances and at ATOSHIN&apos;s sole discretion.
+                In
                 addition, ATOSHIN may, in its sole discretion, restrict access to the Platform and/or terminate the
                 memberships of any users who infringe on the intellectual property rights of others, whether or not the
                 violation is repeated.
@@ -510,15 +529,17 @@ export default function TermsAndConditions() {
                 request for which the Creator failed to timely submit an effective DMCA Counternotification to the
                 Collector and/or ATOSHIN. For deleting allegedly infringing works from the Platform or otherwise
                 satisfying its legal obligations under the DMCA, the ATOSHIN will not be held accountable to any User.
-                Creators, Collectors, and all Users expressly agree to assist with the ATOSHIN's investigations,
+                Creators, Collectors, and all Users expressly agree to assist with the ATOSHIN&apos;s investigations,
                 requests, and enquiries relating to DMCA disputes or allegations of infringement, and to react in a
-                timely manner. Users agree to conduct a "burn" transaction for the NFT of the Physical Asset or Digital
+                timely manner. Users agree to conduct a &quot;burn&quot; transaction for the NFT of the Physical Asset
+                or Digital
                 Artwork that has been permanently removed from the ATOSHIN marketplace due to a valid DMCA Take-Down
-                Notice, or that is otherwise suspected to be infringing, at ATOSHIN's request.
+                Notice, or that is otherwise suspected to be infringing, at ATOSHIN&apos;s request.
             </div>
-            <div className={classes.paragraphTitle}>What are the ATOSHIN's fees?</div>
+            <div className={classes.paragraphTitle}>What are the ATOSHIN&apos;s fees?</div>
             <div className={classes.paragraph}>
-                Auction. The Auctions' terms and mechanics are detailed in our Help Center and are integrated into these
+                Auction. The Auctions&apos; terms and mechanics are detailed in our Help Center and are integrated into
+                these
                 Terms.
             </div>
             <div className={classes.paragraphTitle} style={{marginBottom: 10}}>
@@ -544,7 +565,7 @@ export default function TermsAndConditions() {
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
                     You acknowledge and agree that any fees, commissions, and royalties will be transferred, processed,
-                    or triggered directly through one or more of the Ethereum blockchain network's smart contracts.
+                    or triggered directly through one or more of the Ethereum blockchain network&apos;s smart contracts.
                 </div>
             </div>
             <div className={classes.paragraph}>
@@ -574,7 +595,7 @@ export default function TermsAndConditions() {
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
                     You acknowledge and agree that any fees, commissions, and royalties will be transferred, processed,
-                    or triggered directly through one or more of the Ethereum blockchain network's smart contracts.
+                    or triggered directly through one or more of the Ethereum blockchain network&apos;s smart contracts.
                 </div>
             </div>
 
@@ -611,33 +632,32 @@ export default function TermsAndConditions() {
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
                     You acknowledge and agree that any fees, commissions, and royalties will be transferred, processed,
-                    or triggered directly through one or more of the Ethereum blockchain network's smart contracts.
+                    or triggered directly through one or more of the Ethereum blockchain network&apos;s smart contracts.
                 </div>
             </div>
-            <div className={classes.paragraph}>
-                For transactions that take place outside of ATOSHIN, no fees, commissions, or royalties are usually
-                collected. Users release, acquit, and forever discharge ATOSHIN, its subsidiaries, affiliates,
-                executives, and successors from any and all liability for royalties, fines, or fees not collected from
-                any off-market transaction.
-                Smart contracts on the Ethereum network facilitate all ATOSHIN transactions, including but not limited
-                to minting, tokenizing, bidding, listing, offering, purchasing, or verifying. Every transaction that
-                occurs on the Ethereum network, and thus every transaction that occurs on ATOSHIN, involves the payment
-                of a transaction fee (a "Gas fee"). The value of the Gas Fee fluctuates, frequently unpredictably, and
-                is completely outside ATOSHIN's control. The User agrees that a contract, agreement, offer, sale, bid,
-                or other ATOSHIN transaction will not be invalidated, revocable, retractable, or otherwise unenforceable
-                because the Gas Fee for the transaction was unknown, too expensive, or otherwise inappropriate.
-                Taxes. Users are liable for all sales, use, value-added, and other taxes, fees, and levies now or in the
-                future claimed or imposed by any governmental entity "related with your use of ATOSHIN" (including,
-                without limitation, any taxes that may become payable as the result of your ownership, transfer,
-                purchase, sale, or creation of any artworks).
-                Platforms in beta. Certain ATOSHIN features may be available while they are still in "beta" version
-                ("Beta Platforms"). By designating Beta Platforms on its Platform, the ATOSHIN will make every attempt
-                to identify them. You understand and agree that the Beta Platforms are supplied as a "Beta" version and
-                made available on a "As Is" or "As Available" basis by accepting these Terms or using the Beta
-                Platforms. Bugs, mistakes, and other issues may exist on the Beta Platforms. YOU ASSUME ALL RISKS AND
-                COSTS ASSOCIATED WITH YOUR USE OF THE BETA PLATFORMS, INCLUDING ANY INTERNET ACCESS FEES, BACK-UP
-                EXPENSES, COSTS INCURRED FOR THE USE OF YOUR DEVICE AND PERIPHERALS, AND ANY DAMAGE TO ANY EQUIPMENT,
-                SOFTWARE, INFORMATION, OR DATA. Furthermore, we are not bound to provide any Beta Platforms maintenance,
+            <div className={classes.paragraph}>For transactions that take place outside of ATOSHIN, no fees,
+                commissions, or royalties are usually collected. Users release, acquit, and forever discharge ATOSHIN,
+                its subsidiaries, affiliates, executives, and successors from any and all liability for royalties,
+                fines, or fees not collected from any off-market transaction. Smart contracts on the Ethereum network
+                facilitate all ATOSHIN transactions, including but not limited to minting, tokenizing, bidding, listing,
+                offering, purchasing, or verifying. Every transaction that occurs on the Ethereum network, and thus
+                every transaction that occurs on ATOSHIN, involves the payment of a transaction fee (a &quot;Gas
+                fee&quot;). The value of the Gas Fee fluctuates, frequently unpredictably, and is completely outside
+                ATOSHIN&apos;s control. The User agrees that a contract, agreement, offer, sale, bid, or other ATOSHIN
+                transaction will not be invalidated, revocable, retractable, or otherwise unenforceable because the Gas
+                Fee for the transaction was unknown, too expensive, or otherwise inappropriate. Taxes. Users are liable
+                for all sales, use, value-added, and other taxes, fees, and levies now or in the future claimed or
+                imposed by any governmental entity &quot;related with your use of ATOSHIN&quot; (including, without
+                limitation, any taxes that may become payable as the result of your ownership, transfer, purchase, sale,
+                or creation of any artworks). Platforms in beta. Certain ATOSHIN features may be available while they
+                are still in &quot;beta&quot; version (&quot;Beta Platforms&quot;). By designating Beta Platforms on its
+                Platform, the ATOSHIN will make every attempt to identify them. You understand and agree that the Beta
+                Platforms are supplied as a &quot;Beta&quot; version and made available on a &quot;As
+                Is&quot; or &quot;As Available&quot; basis by accepting these Terms or using the Beta Platforms. Bugs,
+                mistakes, and other issues may exist on the Beta Platforms. YOU ASSUME ALL RISKS AND COSTS ASSOCIATED
+                WITH YOUR USE OF THE BETA PLATFORMS, INCLUDING ANY INTERNET ACCESS FEES, BACK-UP EXPENSES, COSTS
+                INCURRED FOR THE USE OF YOUR DEVICE AND PERIPHERALS, AND ANY DAMAGE TO ANY EQUIPMENT, SOFTWARE,
+                INFORMATION, OR DATA. Furthermore, we are not bound to provide any Beta Platforms maintenance,
                 technical, or other assistance.
             </div>
             <div className={classes.paragraphTitle}>What about my personal space?</div>
@@ -648,16 +668,20 @@ export default function TermsAndConditions() {
             <div className={classes.paragraphTitle}>Other Legal Terminologies</div>
             <div className={classes.paragraph}>
                 You agree to release, indemnify, and hold NEEI LLC, ATOSHIN and its affiliates, as well as their
-                officers, employees, directors, and agents (collectively, "Indemnitees"), harmless from any and all
-                losses, damages, expenses, including reasonable attorneys' fees, rights, claims, actions of any kind,
+                officers, employees, directors, and agents (collectively, &quot;Indemnitees&quot;), harmless from any
+                and all
+                losses, damages, expenses, including reasonable attorneys&apos; fees, rights, claims, actions of any
+                kind,
                 and injury (including death) arising out of or relating to your use of the Platform, any User Content,
                 your connection to the Platform, or your violation of these Terms and Conditions. Despite the foregoing,
                 you will not be obligated to indemnify or keep any Indemnitee harmless from or against any liabilities,
-                losses, damages, or expenditures incurred as a result of such Indemnitee's actions or inactions. If you
-                live in California, you agree to waive California Civil Code Section 1542, which states: "A general
+                losses, damages, or expenditures incurred as a result of such Indemnitee&apos;s actions or inactions. If
+                you
+                live in California, you agree to waive California Civil Code Section 1542, which states: &quot;A general
                 release does not extend to claims that the creditor or releasing party does not know or suspect to exist
                 in his or her favor at the time of execution of the release and that, if known, would have materially
-                affected his or her settlement with the debtor or released party." You waive any analogous statute or
+                affected his or her settlement with the debtor or released party.&quot; You waive any analogous statute
+                or
                 doctrine if you are a resident of another jurisdiction.
                 <div style={{fontWeight: 700}}>Disclaimer of Warranties:</div>
                 Platform transactions, such as primary and secondary market sales, listings, offers, bids, acceptances,
@@ -665,10 +689,12 @@ export default function TermsAndConditions() {
                 non-fungible tokens, cryptocurrencies, consensus algorithms, and decentralized or peer-to-peer networks
                 and systems. Users acknowledge and agree that such technologies are experimental, speculative, and
                 inherently risky, and that they may be subject to bugs, malfunctions, timing errors, hacking and theft,
-                or changes to the Ethereum blockchain protocol rules (i.e., "forks"), all of which can negatively affect
+                or changes to the Ethereum blockchain protocol rules (i.e., &quot;forks&quot;), all of which can
+                negatively affect
                 smart contracts and expose you to the risk of total loss, forfeiture of your digital currency or Digital
                 Artwork, or lost opportunities to buy or sell Digital Artwork. THE PLATFORM IS USED SOLELY AT YOUR OWN
-                RISK. THE PLATFORM IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTY OF ANY KIND. ATOSHIN
+                RISK. THE PLATFORM IS PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE,&quot; WITHOUT WARRANTY OF ANY
+                KIND. ATOSHIN
                 EXPRESSLY DISCLAIMS ALL WARRANTIES OF ANY KIND, EXPRESS, IMPLIED, OR STATUTORY, INCLUDING, BUT NOT
                 LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND
                 NON-INFRINGEMENT.
@@ -678,7 +704,8 @@ export default function TermsAndConditions() {
                 <div style={{fontWeight: 700}}>LIMITATION OF LIABILITY:</div>
                 YOU EXPRESSLY UNDERSTAND AND AGREE THAT ATOSHIN SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL,
                 SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR EXEMPLARY DAMAGES, OR DAMAGES FOR LOSS OF PROFITS, INCLUDING BUT
-                NOT LIMITED TO, LOSS IN VALUE OF ANY DIGITAL ARTWORK, DAMAGES FOR LOSS OF GOODWILL, USE, ATOSHIN'S TOTAL
+                NOT LIMITED TO, LOSS IN VALUE OF ANY DIGITAL ARTWORK, DAMAGES FOR LOSS OF GOODWILL, USE, ATOSHIN&apos;S
+                TOTAL
                 LIABILITY TO YOU FOR ALL DAMAGES, LOSSES, OR CAUSES OF ACTION WILL IN NO EVENT EXCEED THE AMOUNT YOU
                 HAVE PAID ATOSHIN IN THE LAST SIX (6) MONTHS, OR, IF GREATER, ONE HUNDRED DOLLARS ($100).
                 THE DISCLAIMER OR EXCLUSION OF CERTAIN WARRANTIES, AS WELL AS THE LIMITATION OR EXCLUSION OF LIABILITY
@@ -686,8 +713,10 @@ export default function TermsAndConditions() {
                 LIMITATIONS MAY NOT APPLY TO YOU OR BE ENFORCEABLE WITH RESPECT TO YOU, AS A RESULT. YOUR SOLE AND
                 EXCLUSIVE REMEDY IF YOU ARE DISSATISFIED WITH ANY PORTION OF THE PLATFORM OR WITH THESE TERMS OF
                 PLATFORM IS TO STOP USING THE PLATFORM.
-                IF YOU ARE A NEW JERSEY USER, THE ABOVE SECTIONS TITLED "DISCLAIMER OF WARRANTIES" AND "LIMITATION OF
-                LIABILITY" ARE INTENDED TO BE ONLY AS GENERAL AS THE STATE OF NEW JERSEY ALLOWS. THE INVALIDITY OF ANY
+                IF YOU ARE A NEW JERSEY USER, THE ABOVE SECTIONS TITLED &quot;DISCLAIMER OF
+                WARRANTIES&quot; AND &quot;LIMITATION OF
+                LIABILITY&quot; ARE INTENDED TO BE ONLY AS GENERAL AS THE STATE OF NEW JERSEY ALLOWS. THE INVALIDITY OF
+                ANY
                 PORTION OF THESE SECTIONS WILL NOT AFFECT THE VALIDITY OF THE REMAINING PORTIONS OF THE APPLICABLE
                 SECTIONS UNDER THE LAWS OF THE STATE OF NEW JERSEY.
                 Here are our options for terminating our contract.
@@ -701,7 +730,7 @@ export default function TermsAndConditions() {
                 account and all connected information and files in your account, and/or restrict any further access to
                 such files or the Platform, if any provision of this Terms of Service is violated. You further agree
                 that ATOSHIN will not be liable to you or any third party if your access to the Platform is terminated.
-                We don't get involved in disagreements between users.
+                We don&apos;t get involved in disagreements between users.
                 You acknowledge that you are solely responsible for your interactions with other Users on the Platform,
                 and that the ATOSHIN has no obligation or responsibility in this regard. ATOSHIN reserves the right, but
                 not the duty, to intervene in any way in disputes between you and other Platform users.
@@ -717,7 +746,7 @@ export default function TermsAndConditions() {
                 forth above. The failure of ATOSHIN to exert or enforce any right or term of these Terms of Service does
                 not imply that such right or provision has been waived. If a court of competent jurisdiction finds any
                 provision of these Terms of Service to be invalid, the parties agree that the court should endeavor to
-                give effect to the parties' intentions as reflected in the provision, and the remaining provisions of
+                give effect to the parties&apos; intentions as reflected in the provision, and the remaining provisions of
                 these Terms of Service will remain in full force and effect. You agree that, regardless of any
                 legislation or law to the contrary, any claim or cause of action arising out of or related to the
                 Platform or these Terms of Service must be filed within one (1) year of the day the claim or cause of
@@ -725,7 +754,7 @@ export default function TermsAndConditions() {
                 on or relating to this agreement, a printed version of this agreement and any notice given in electronic
                 form will be admissible to the same extent and subject to the same conditions as other business
                 documents and records originally generated and maintained in printed form. You may not assign these
-                Terms of Service without ATOSHIN's prior written agreement, but ATOSHIN may assign or transfer this
+                Terms of Service without ATOSHIN&apos;s prior written agreement, but ATOSHIN may assign or transfer this
                 Terms of Service without restriction, in whole or in part. The section titles in these Terms of Service
                 are merely descriptive and have no legal or contractual significance. Email or traditional mail may be
                 used to send you notices. By displaying notifications or links to notices on the Platform, the Platform
@@ -739,7 +768,7 @@ export default function TermsAndConditions() {
                 Users in California Should Be Aware
                 Users of the Platform from California are entitled to the following special consumer rights notification
                 under California Civil Code Section 1789.3: The Complaint Assistance Unit of the California Department
-                of Consumer Affairs' Division of Consumer Platforms can be reached by mail at 1625 North Market Blvd.,
+                of Consumer Affairs&apos; Division of Consumer Platforms can be reached by mail at 1625 North Market Blvd.,
                 Suite N 112, Sacramento, CA 95834, or by phone at (916) 445-1254 or (800) 952-5210. ATOSHIN, Inc., 11420
                 Santa Monica Blvd, PO Box 252111, Los Angeles, CA 90025, or (657) 229-1518 are the places to contact.
                 <div style={{fontWeight: 700}}>Binding Arbitration for Dispute Resolution:</div>
@@ -749,8 +778,10 @@ export default function TermsAndConditions() {
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
-                    Arbitration Agreement This portion of the Terms of Service titled "Dispute Resolution by Binding
-                    Arbitration" is referred to as the "Arbitration Agreement." You agree that any and all disputes or
+                    Arbitration Agreement This portion of the Terms of Service titled &quot;Dispute Resolution by
+                    Binding
+                    Arbitration&quot; is referred to as the &quot;Arbitration Agreement.&quot; You agree that any and
+                    all disputes or
                     claims that have arisen or may arise between you and ATOSHIN, whether arising out of or relating to
                     this Terms of Service (including any alleged breach thereof), the Platforms, any advertising, or any
                     aspect of our relationship or transactions, shall be resolved exclusively through final and binding
@@ -774,11 +805,11 @@ export default function TermsAndConditions() {
             <div className={classes.paragraph} style={{marginBottom: 10}}>
                 YOU AND THE ATOSHIN AGREE THAT WE MAY BRING CLAIMS AGAINST EACH OTHER ONLY ON AN INDIVIDUAL BASIS, NOT
                 AS A PLAINTIFF OR CLASS MEMBER IN ANY PRETENDED CLASS OR REPRESENTATIVE ACTION OR PROCEEDING. THE
-                ARBITRATOR MAY NOT CONSOLIDATE OR JOIN MORE THAN ONE PERSON'S OR PARTY'S CLAIMS AND MAY NOT OTHERWISE
+                ARBITRATOR MAY NOT CONSOLIDATE OR JOIN MORE THAN ONE PERSON&apos;S OR PARTY&apos;S CLAIMS AND MAY NOT OTHERWISE
                 PRESIDE OVER ANY FORM OF CONSOLIDATED, REPRESENTATIVE, OR CLASS PROCEEDING UNLESS BOTH YOU AND THE
                 ATOSHIN AGREE OTHERWISE. ALSO, THE ARBITRATOR MAY ONLY AWARD RELIEF (INCLUDING MONETARY, INJUNCTIVE, AND
                 DECLARATORY RELIEF) IN FAVOR OF THE INDIVIDUAL PARTY SEEKING RELIEF AND ONLY TO THE EXTENT NECESSARY TO
-                PROVIDE RELIEF NECESSITATED BY THAT PARTY'S INDIVIDUAL CLAIM(S), WITH THE EXCEPTION THAT YOU MAY PURSUE
+                PROVIDE RELIEF NECESSITATED BY THAT PARTY&apos;S INDIVIDUAL CLAIM(S), WITH THE EXCEPTION THAT YOU MAY PURSUE
                 A
             </div>
             <div className={classes.guideline} style={{marginBottom: 10}}>
@@ -788,12 +819,13 @@ export default function TermsAndConditions() {
                 </div>
             </div>
             <div className={classes.paragraph} style={{marginBottom: 10}}>
-                Most customer complaints can be resolved promptly and to the client's satisfaction by emailing customer
+                Most customer complaints can be resolved promptly and to the client&apos;s satisfaction by emailing customer
                 service at help@ ATOSHIN.art . ATOSHIN is always interested in resolving disputes politely and
                 expeditiously. If those attempts fail, a party who wants to go to arbitration must first send a formal
-                Notice of Dispute ("Notice") to the other party via certified mail.
-                ____________________________________________________ ("Notice Address"). The Notice must I outline the
-                claim or dispute's nature and basis, and (ii) state the precise relief requested. You or ATOSHIN may
+                Notice of Dispute (&quot;Notice&quot;) to the other party via certified mail.
+                ____________________________________________________ (&quot;Notice Address&quot;). The Notice must I
+                outline the
+                claim or dispute&apos;s nature and basis, and (ii) state the precise relief requested. You or ATOSHIN may
                 initiate an arbitration action if ATOSHIN and you do not resolve the issue within sixty (60) calendar
                 days of receiving the Notice. The amount of any settlement offer made by ATOSHIN or you during the
                 arbitration shall not be disclosed to the arbitrator until the arbitrator determines the amount to which
@@ -803,9 +835,11 @@ export default function TermsAndConditions() {
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
                     Dispute Resolution Procedures The arbitration shall be conducted by a neutral arbitrator in
-                    accordance with the rules and procedures of the American Arbitration Association ("AAA"), including
-                    the AAA's Consumer Arbitration Rules (collectively, the "AAA Rules"), as amended by this Arbitration
-                    Agreement. Visit the AAA's website at http://www.adr.org for further information. The AAA's consumer
+                    accordance with the rules and procedures of the American Arbitration Association (&quot;AAA&quot;),
+                    including
+                    the AAA&apos;s Consumer Arbitration Rules (collectively, the &quot;AAA Rules&quot;), as amended by this
+                    Arbitration
+                    Agreement. Visit the AAA&apos;s website at http://www.adr.org for further information. The AAA&apos;s consumer
                     arbitration page, http://www.adr.org/, contains information regarding the AAA Rules and costs for
                     consumer disputes, which may be changed from time to time. If any term of the AAA Rules conflicts
                     with a term of this Arbitration Agreement, the applicable terms of this Arbitration Agreement will
@@ -832,7 +866,8 @@ export default function TermsAndConditions() {
             <div className={classes.paragraphTitle}>Why Arbitration Fees?</div>
             <div className={classes.paragraph} style={{marginBottom: 10}}>
                 Unless otherwise specified in this Arbitration Agreement, all filing, administration, and arbitrator
-                fees (collectively, the "Arbitration Fees") will be regulated by the AAA Rules. And paid respectively by
+                fees (collectively, the &quot;Arbitration Fees&quot;) will be regulated by the AAA Rules. And paid
+                respectively by
                 the parties.
             </div>
 
@@ -849,11 +884,14 @@ export default function TermsAndConditions() {
                 <div className={classes.guidelinesItem}>
                     Severability
                     If a court or arbitrator rules that any term or provision of this Arbitration Agreement is invalid
-                    or unenforceable (other than subsection (b) above titled "Prohibition of Class and Representative
-                    Actions and Non-Individualized Relief"), the parties agree to replace it with a term or provision
+                    or unenforceable (other than subsection (b) above titled &quot;Prohibition of Class and
+                    Representative
+                    Actions and Non-Individualized Relief&quot;), the parties agree to replace it with a term or
+                    provision
                     that is valid and enforceable and comes closest to expressing the invalid or unenforceable term or
                     provision, and this Arbitration Agreement will be void. If any of the provisions of subsection (b)
-                    above titled "Prohibition of Class and Representative Actions and Non-Individualized Relief" are
+                    above titled &quot;Prohibition of Class and Representative Actions and Non-Individualized
+                    Relief&quot; are
                     found to be invalid or unenforceable by a court or arbitrator, then the entire Arbitration Agreement
                     will be null and void, unless such provisions are found to be invalid or unenforceable solely with
                     respect to claims for public injunctive relief. The rest of the Terms of Service will remain in

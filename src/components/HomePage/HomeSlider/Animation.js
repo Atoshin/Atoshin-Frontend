@@ -4,6 +4,7 @@ import usePrevious from "../../../functions/hooks/usePrevious";
 import useEffectDebugger from "../../../functions/hooks/useEffectDebugger";
 
 let IMAGES_LENGTH;
+// eslint-disable-next-line react/display-name
 const Animation = forwardRef(({ images, currentSlide, setImages, hover, setCurrentSlide }, ref) => {
     const [styles, setStyles] = useState({});
     const [timeoutId, setTimeoutId] = useState(undefined);
@@ -232,7 +233,7 @@ const Animation = forwardRef(({ images, currentSlide, setImages, hover, setCurre
     // }, [hover, Object.keys(styles).length, currentSlide])
 
     return images.map((img, i) => (
-        <div style={styles[i]} onTransitionEnd={transitionEnd}
+        <div key={i} style={styles[i]} onTransitionEnd={transitionEnd}
             className={currentSlide === i ? classes.topRightSec : classes.topRightSecBehind}
             onClick={() => slideOnClick(i)}>
             <div className={classes.artworkImgSec}>

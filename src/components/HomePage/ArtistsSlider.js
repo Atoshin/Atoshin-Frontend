@@ -34,8 +34,8 @@ export default function ArtistsSlider({artists}) {
                    slidesToScroll={1}
                    transitionDuration={500}
                    duration={5000}>
-                {artists.map(artist => {
-                    return <Link href={`/artists/${artist.fullName.toLowerCase().replace(/ /g, '-')}/${artist.id}`}>
+                {artists.map((artist, idx) => {
+                    return <Link key={idx} href={`/artists/${artist.fullName.toLowerCase().replace(/ /g, '-')}/${artist.id}`}>
                         <a>
                             {/*onClick={() => router.push(`/artists/${artist.fullName.toLowerCase().replace(/ /g, '-')}/${artist.id}`)}*/}
                             <div key={artist.id} className={classes.artist}>
