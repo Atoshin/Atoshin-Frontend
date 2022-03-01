@@ -281,7 +281,18 @@
   height: 92.91px;
   cursor: pointer;
 }
-
+.sliderNextArrow{
+  position: absolute;
+  right: -45px;
+  width: 10.29px;
+  height: 20.46px;
+}
+.sliderPrevArrow{
+  position: absolute;
+  left: -47px;
+  width: 10.29px;
+  height: 20.46px;
+}
 .galleryBottomSec {
   display: flex;
   flex-direction: row;
@@ -289,10 +300,29 @@
   margin-top: 48px;
 }
 
+.gallerySec{
+  width: 265px;;
+  height: 274px;
+  box-shadow: 0px 1px 3px 0px #00000026;
+  border-radius: 3px;
+
+
+}
+.galleryTitle{
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-top: 16px;
+
+}
 .galleryPhotos {
   border-radius: 3px;
   width: 265px;
-  height: 265px;
+  height: 221px;
   cursor: pointer;
   user-select: none;
   //margin-right: 20px;

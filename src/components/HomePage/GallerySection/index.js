@@ -7,7 +7,8 @@ import ImagesModal from "./ImagesModal";
 import {useRef} from "react";
 import {useRouter} from "next/router";
 import Link from "next/link";
-
+import {Slide} from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
 export default function GallerySection({gallery}) {
     const [openYouTube, setOpenYouTube] = React.useState(false);
     const [openImage, setOpenImage] = React.useState({
@@ -15,6 +16,8 @@ export default function GallerySection({gallery}) {
         imgSrc: null
     });
     const router = useRouter();
+    const sliderRef = useRef();
+
     const imageRef = useRef({
         current: {}
     })
@@ -51,6 +54,19 @@ export default function GallerySection({gallery}) {
         }
     }
 
+    const properties ={
+        easing:"ease",
+        slidesToShow:matches ? 2 : 4 ,
+        infinite:true ,
+        // arrows:false,
+        nextArrow:<img className={classes.sliderNextArrow} src='/icons/vector-right.svg' alt="vector-right"/>,
+        prevArrow:   <img className={classes.sliderPrevArrow} src="/icons/vector-left.svg" alt="vector-left"/>,
+        slidesToScroll:1,
+        transitionDuration:500,
+        duration:5000,
+    }
+
+    console.log(gallery)
     return <>
         <ImagesModal setOpen={setOpenImage} open={openImage}/>
         <YoutubeVideoModal video={gallery.videoLinks[0]} open={openYouTube} setOpen={setOpenYouTube}/>
@@ -132,15 +148,46 @@ export default function GallerySection({gallery}) {
                 }
             </div>
             <div className={classes.galleryBottomSec}>
-                {gallery.medias.filter(media => media.homeapagePicture === 1).map((img, idx) => {
-                    const {url} = img;
-                    return <div key={idx} datasrc={url} style={{
-                        backgroundImage: `url("${url}")`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: "center",
-                        backgroundRepeat: "no-repeat",
-                    }} className={classes.galleryPhotos} onClick={openImageModal}/>
-                })}
+                {/*{gallery.medias.filter(media => media.homeapagePicture === 1).map((img, idx) => {*/}
+                {/*    const {url} = img;*/}
+                {/*    return <div key={idx} datasrc={url} style={{*/}
+                {/*        backgroundImage: `url("${url}")`,*/}
+                {/*        backgroundSize: 'cover',*/}
+                {/*        backgroundPosition: "center",*/}
+                {/*        backgroundRepeat: "no-repeat",*/}
+                {/*    }} className={classes.galleryPhotos} onClick={openImageModal}/>*/}
+                {/*})}*/}
+                {/*{gallery.medias.filter(media => media.homeapagePicture === 1).map((img, idx) => {*/}
+                {/*    const {url} = img;*/}
+                {/*    return <div className={classes.gallerySec}><div key={idx} datasrc={url} style={{*/}
+                {/*            backgroundImage: `url("${url}")`,*/}
+                {/*            backgroundSize: 'cover',*/}
+                {/*            backgroundPosition: "center",*/}
+                {/*            backgroundRepeat: "no-repeat",*/}
+                {/*        }} className={classes.galleryPhotos} onClick={openImageModal}/>*/}
+                {/*        <div className={classes.galleryTitle}>Borghese Gallery</div>*/}
+                {/*    </div>*/}
+                {/*})}*/}
+                {/*the simple one */}
+
+
+            <div style={{width:'100%'}}>
+                <Slide ref={sliderRef} style={{position: 'relative'}} {...properties}>
+                    {gallery.medias.filter(media => media.homeapagePicture === 1).map((img, idx) => {
+                        const {url} = img;
+                        return <div key={idx} className={classes.gallerySec}><div datasrc={url} style={{
+                            backgroundImage: `url("${url}")`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                        }} className={classes.galleryPhotos} onClick={openImageModal}/>
+                            <div className={classes.galleryTitle}>Borghese Gallery</div>
+                        </div>
+                    })}
+                </Slide>
+            </div>
+                {/*the slider one */}
+
             </div>
         </div>
     </>
