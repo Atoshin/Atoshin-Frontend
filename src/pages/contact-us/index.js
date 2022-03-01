@@ -3,7 +3,7 @@ import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import {useEffect} from "react";
 
-export default function contactUs({galleries}) {
+export default function ContactUs({galleries}) {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));

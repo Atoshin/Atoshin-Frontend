@@ -6,7 +6,7 @@ import shortenWords from "../../functions/shortenWords";
 import Link from 'next/link';
 import {useEffect} from "react";
 
-export default function galleryList({galleries}) {
+export default function GalleryList({galleries}) {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -31,8 +31,8 @@ export default function galleryList({galleries}) {
 
             <div className={classes.root}>
                 <div className={classes.row}>
-                    {galleries.map(gallery => {
-                        return <Link href={`/art-center/${gallery.id}`}>
+                    {galleries.map((gallery, idx) => {
+                        return <Link key={idx} href={`/art-center/${gallery.id}`}>
                             <a>
                                 <div className={classes.item}>
                                     <div className={classes.img}

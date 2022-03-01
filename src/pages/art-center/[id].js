@@ -81,8 +81,8 @@ export default function ArtCenter({artCenter}) {
         slidesToScroll: 1,
         transitionDuration: 500,
         duration: 5000,
-        nextArrow: <div className={classes.previous}><img src={'/icons/vector-right.svg'}/></div>,
-        prevArrow: <div></div>,
+        nextArrow: <div className={classes.previous}><img alt={"vector-right"} src={'/icons/vector-right.svg'}/></div>,
+        prevArrow: <div/>,
     };
 
     const VideoShow = () => {
@@ -117,7 +117,7 @@ export default function ArtCenter({artCenter}) {
                         {
                             artCenter.medias.filter(media => media.homeapagePicture === 1).map((data, idx) => {
                                 if (idx === parseInt(Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1))[Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1)).length - 1]) || idx === 4) {
-                                    return <div onClick={() => showImageModal(data.id)} style={{
+                                    return <div key={idx} onClick={() => showImageModal(data.id)} style={{
                                         backgroundImage: `url("${data.url}")`,
                                         height: 220,
                                         width: 220,
@@ -131,7 +131,7 @@ export default function ArtCenter({artCenter}) {
                                     }}>
                                     </div>
                                 } else {
-                                    return <div onClick={() => showImageModal(data.id)} style={{
+                                    return <div key={idx} onClick={() => showImageModal(data.id)} style={{
                                         backgroundImage: `url("${data.url}")`,
                                         height: 220,
                                         width: 220,
@@ -149,7 +149,7 @@ export default function ArtCenter({artCenter}) {
                     return <div style={{display: 'flex'}}>
                         {
                             [
-                                <div onClick={() => {
+                                <div key={Math.random()} onClick={() => {
                                     setClickedVideoId(artCenter.videoLinks[0].id)
                                     setOpenImages(true)
                                 }} style={{
@@ -171,7 +171,7 @@ export default function ArtCenter({artCenter}) {
                                 ,
                                 artCenter.medias.filter(media => media.homeapagePicture === 1).map((data, idx) => {
                                     if (idx === parseInt(Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1))[Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1)).length - 1]) || idx === 4) {
-                                        return <div onClick={() => showImageModal(data.id)} style={{
+                                        return <div key={idx} onClick={() => showImageModal(data.id)} style={{
                                             backgroundImage: `url("${data.url}")`,
                                             height: 220,
                                             width: 220,
@@ -185,7 +185,7 @@ export default function ArtCenter({artCenter}) {
                                         }}>
                                         </div>
                                     } else {
-                                        return <div onClick={() => showImageModal(data.id)} style={{
+                                        return <div key={idx} onClick={() => showImageModal(data.id)} style={{
                                             backgroundImage: `url("${data.url}")`,
                                             height: 220,
                                             width: 220,
@@ -376,30 +376,7 @@ export default function ArtCenter({artCenter}) {
                                 </div>
                             : ''
                 }
-                {/*<Slide ref={gallerySliderRef}*/}
-                {/*       autoplay={true}*/}
-                {/*       cssClass={classes.slider}*/}
-                {/*       easing={"ease"}*/}
-                {/*       slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}*/}
-                {/*       infinite={true}*/}
-                {/*       arrows={false}*/}
-                {/*       slidesToScroll={1}*/}
-                {/*       transitionDuration={500}*/}
-                {/*       duration={5000}>*/}
-                {/*    {artCenter.medias.filter(media => media.homeapagePicture === 1).map((img, key) => {*/}
-                {/*        console.log(artCenter.medias.length)*/}
-                {/*        return <div key={key} style={{*/}
-                {/*            backgroundImage: `url("${img.url}")`,*/}
-                {/*            height: 220,*/}
-                {/*            width: 220,*/}
-                {/*            backgroundPosition: "center",*/}
-                {/*            backgroundSize: "cover",*/}
-                {/*            border:'solid red'*/}
-                {/*        }}/>*/}
-                {/*    })}*/}
-                {/*</Slide>*/}
             </div>
-
             <div className={classes.detailsSec}>
                 <div className={classes.detailsHeader}>
                     Details
@@ -437,8 +414,8 @@ export default function ArtCenter({artCenter}) {
                         transitionDuration={500}
                         duration={5000}
                         ref={relatedSliderRef}>
-                        {artCenter.assets.map(asset => {
-                            return <div className={(matches1 || matches2) ? classes.card2 : classes.card}>
+                        {artCenter.assets.map((asset, idx) => {
+                            return <div key={idx} className={(matches1 || matches2) ? classes.card2 : classes.card}>
                                 <div
                                     className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
                                     style={{

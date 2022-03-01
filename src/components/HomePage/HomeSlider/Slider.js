@@ -7,6 +7,7 @@ import {useRouter} from "next/router";
 import {TimeDifference} from "../TimeDifference";
 import 'react-slideshow-image/dist/styles.css';
 import Link from "next/link";
+
 export default function Slider({images, sliderRef, setCurrentSlide, assets, currentSlide}) {
     const imageRef = useRef({
         current: {}
@@ -30,46 +31,46 @@ export default function Slider({images, sliderRef, setCurrentSlide, assets, curr
         >
             {
                 images.map((img, i) => (
-                  <Link href={`/show-asset/${assets[currentSlide].id}`}>
-                      <a>
-                          <div
-                              // onClick={() => router.push(`/show-asset/${assets[currentSlide].id}`)}
-                               key={i}
-                               className={classes.topRightSec}>
-                              <div className={classes.artworkImgSec}>
-                                  <div style={{
-                                      backgroundImage: `url(${img})`,
-                                      backgroundSize: `${imageRef.current.clientWidth}px`,
-                                      backgroundRepeat: "no-repeat",
-                                      backgroundPosition: 'center',
-                                      width: imageRef.current.clientWidth,
-                                      height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined
-                                  }} className={classes.artWorkImg}/>
-                              </div>
-                              <div ref={imageRef} className={classes.artWorkDetailSec}>
-                                  <div className={classes.priceMainSec}>
-                                      <div className={classes.priceSec}>
-                                          <div className={classes.titleSec}>
-                                              Price
-                                          </div>
-                                          <div className={classes.amountSec}>
-                                              {assets[i].price} ETH
-                                          </div>
-                                      </div>
-                                      <div className={classes.quantSec}>
-                                          <div className={classes.title2Sec}>
-                                              Quantity
-                                          </div>
-                                          <div className={classes.amountSec}>
-                                              {assets[i].totalFractions} Tokens
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <TimeDifference time={assets[i].endDate}/>
-                              </div>
-                          </ div>
-                      </a>
-                  </Link>
+                    <Link key={i}
+                          href={`/show-asset/${assets[currentSlide].id}`}>
+                        <a>
+                            <div
+                                // onClick={() => router.push(`/show-asset/${assets[currentSlide].id}`)}
+                                className={classes.topRightSec}>
+                                <div className={classes.artworkImgSec}>
+                                    <div style={{
+                                        backgroundImage: `url(${img})`,
+                                        backgroundSize: `${imageRef.current.clientWidth}px`,
+                                        backgroundRepeat: "no-repeat",
+                                        backgroundPosition: 'center',
+                                        width: imageRef.current.clientWidth,
+                                        height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined
+                                    }} className={classes.artWorkImg}/>
+                                </div>
+                                <div ref={imageRef} className={classes.artWorkDetailSec}>
+                                    <div className={classes.priceMainSec}>
+                                        <div className={classes.priceSec}>
+                                            <div className={classes.titleSec}>
+                                                Price
+                                            </div>
+                                            <div className={classes.amountSec}>
+                                                {assets[i].price} ETH
+                                            </div>
+                                        </div>
+                                        <div className={classes.quantSec}>
+                                            <div className={classes.title2Sec}>
+                                                Quantity
+                                            </div>
+                                            <div className={classes.amountSec}>
+                                                {assets[i].totalFractions} Tokens
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <TimeDifference time={assets[i].endDate}/>
+                                </div>
+                            </ div>
+                        </a>
+                    </Link>
                 ))
             }
         </Slide>

@@ -35,9 +35,9 @@ export default function Artist({artist}) {
                     }
                     <div className={classes.artistDetailSec}>
                         <div className={classes.artistName}>{artist.fullName}</div>
-                        <a href={artist.website} target="_blank" className={classes.artistWebsite}>{artist.website}</a>
+                        <a href={artist.website} target="_blank" rel="noreferrer" className={classes.artistWebsite}>{artist.website}</a>
                         <div className={classes.rankingMainSec}>
-                            <a target="_blank" href={artist.rankingLink} className={classes.rankingText}>
+                            <a target="_blank" href={artist.rankingLink} rel="noreferrer" className={classes.rankingText}>
                                 Ranking
                             </a>
                             <div className={classes.rankingSec}>
@@ -57,7 +57,7 @@ export default function Artist({artist}) {
                                     News
                                 </div>
                                 {artist.news.map((newsSingular, idx) => {
-                                    return <a key={idx} target="_blank" href={newsSingular.link} className={classes.newsLink}>
+                                    return <a key={idx} target="_blank" rel="noreferrer" href={newsSingular.link} className={classes.newsLink}>
                                         {newsSingular.title}
                                     </a>
                                 })}

@@ -23,8 +23,8 @@ export default function Artists({artists}) {
             </div>
             <div className={classes.root}>
                 <div className={classes.row}>
-                    {artists.map(artist => {
-                        return <Link href={`/artists/${artist.fullName.toLowerCase().replace(/ /g, "-")}/${artist.id}`}>
+                    {artists.map((artist, idx) => {
+                        return <Link key={idx} href={`/artists/${artist.fullName.toLowerCase().replace(/ /g, "-")}/${artist.id}`}>
                             <a>
                                 <div className={classes.item}>
                                     <div className={classes.img}

@@ -32,8 +32,8 @@ export default function Marketplace({assets}) {
         <hr className={classes.hr}/>
         <div
             className={classes.items}>
-            {assets.map(asset => {
-                return <Link href={`/show-asset/${asset.id}`}>
+            {assets.map((asset, idx) => {
+                return <Link key={idx} href={`/show-asset/${asset.id}`}>
                     <a>
                         <div
                             onMouseEnter={() => mouseOver(asset.id)}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import {parseCookies} from "../../../functions/parseCookies";
 
-export default async (req, res) => {
+export default async function handler(req, res) {
     const {token} = parseCookies(req);
     console.log("token is:", token)
     try {

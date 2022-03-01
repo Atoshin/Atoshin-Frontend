@@ -66,6 +66,7 @@ export default function ImagesModal({
             iframeSrc.searchParams.set("playerapiid", "ytplayer");
             iframe.src = iframeSrc;
         } else {
+            // eslint-disable-next-line react/display-name
             ZoomImg = () => (<Zoom
                 img={mainImg.url}
                 zoomScale={2}

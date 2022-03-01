@@ -24,10 +24,14 @@ export default function PrivacyPolicy() {
             <div className={classes.lastUpdate}>LAST UPDATED – March 2022</div>
 
             <div className={classes.paragraph}>
-                Thank you for visiting with ATOSHIN.com (hereinafter referred to as the "Website"). We value your
-                privacy very much. This Privacy Policy (the "Policy") explains the sorts of information that NEEI, LLC
-                (the "Company," "us," "we," or "our") may collect from you or that you may supply when you use the
-                Website and the products, features, materials, and services we provide (collectively, the "Services").
+                Thank you for visiting with ATOSHIN.com (hereinafter referred to as the &quot;Website&quot;). We value
+                your
+                privacy very much. This Privacy Policy (the &quot;Policy&quot;) explains the sorts of information that
+                NEEI, LLC
+                (the &quot;Company,&quot; &quot;us,&quot; &quot;we,&quot; or &quot;our&quot;) may collect from you or
+                that you may supply when you use the
+                Website and the products, features, materials, and services we provide (collectively,
+                the &quot;Services&quot;).
                 This Policy also explains our rules and practices for gathering, using, retaining, protecting, and
                 releasing that data.
                 This Policy covers information we collect on the Website and through your use of the Services in general
@@ -38,8 +42,10 @@ export default function PrivacyPolicy() {
                 obtained by the Company offline or by any other means, including any other website we or any third party
                 (including our affiliates and subsidiaries) operates.]
                 Please read this policy thoroughly. You agree to the terms of this Policy on behalf of yourself or the
-                entity or organization that you represent by accessing or using the Services (or by clicking "accept" or
-                "agree" to this Policy when prompted). If you do not agree to any of the terms in this Policy, you
+                entity or organization that you represent by accessing or using the Services (or by
+                clicking &quot;accept&quot; or
+                &quot;agree&quot; to this Policy when prompted). If you do not agree to any of the terms in this Policy,
+                you
                 should stop using our Services.
             </div>
             <div className={classes.paragraphTitle}>1. Children who use or have access to the services</div>
@@ -99,7 +105,8 @@ export default function PrivacyPolicy() {
                 <div className={classes.guidelinesItem}>
                     User-Generated Content. You may submit information or content to be published or displayed in public
                     parts of the Services, or to be communicated to other users of the Services or third parties
-                    (collectively, "User Content"). You are solely responsible for the User Content you upload and send
+                    (collectively, &quot;User Content&quot;). You are solely responsible for the User Content you upload
+                    and send
                     to others. The Company has no control over what other users of the Services do with your User
                     Content if you choose to share it with them. As a result, we cannot and do not guarantee that
                     unauthorized parties will not read your User Content.
@@ -131,7 +138,7 @@ export default function PrivacyPolicy() {
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
-                    (ii) Equipment Specifications Your computer's operating system, IP address, browser type, and
+                    (ii) Equipment Specifications Your computer&apos;s operating system, IP address, browser type, and
                     browser language, as well as information about your computer and internet connection.
                 </div>
             </div>
@@ -140,10 +147,11 @@ export default function PrivacyPolicy() {
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
                     (iii) Information about the location. For the purpose of improving or facilitating the Services,
-                    information about your device's location, including GPS position. Such information, for example, may
+                    information about your device&apos;s location, including GPS position. Such information, for
+                    example, may
                     be used to enable the functionality or features of the Services that provide you with information
                     about stores near you or allow you to order and pay for the Services remotely. We may also utilize
-                    information about your device's location to better understand how you use the Services and
+                    information about your device&apos;s location to better understand how you use the Services and
                     functionality, as well as to deliver more relevant advertising.
                 </div>
             </div>
@@ -156,9 +164,12 @@ export default function PrivacyPolicy() {
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
-                    Cookies A cookie is a small data file that is stored on your computer's hard disk for the length of
-                    your visit to a website ("session cookies") or for a set amount of time ("permanent cookies")
-                    ("persistent cookies"). Cookies store information that a web server can read later. Cookies may be
+                    Cookies A cookie is a small data file that is stored on your computer&apos;s hard disk for the
+                    length of
+                    your visit to a website (&quot;session cookies&quot;) or for a set amount of time (&quot;permanent
+                    cookies&quot;)
+                    (&quot;persistent cookies&quot;). Cookies store information that a web server can read later.
+                    Cookies may be
                     used to give you a more personalized and interactive experience while using the Services.
                 </div>
             </div>
@@ -167,7 +178,8 @@ export default function PrivacyPolicy() {
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
                     Web Beacons Web beacons are little files that can be found on websites, in apps, and in emails (also
-                    known as "clear gifs", "pixel tags", "web bugs", and "single-pixel gifs"). Web beacons, for example,
+                    known as &quot;clear gifs&quot;, &quot;pixel tags&quot;, &quot;web bugs&quot;,
+                    and &quot;single-pixel gifs&quot;). Web beacons, for example,
                     allow the Company to track who has visited particular webpages or opened an email, as well as to
                     analyze the efficiency of our marketing and gather other website statistics.
                 </div>
@@ -185,7 +197,8 @@ export default function PrivacyPolicy() {
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
-                    Entity Tags are HTTP code mechanisms that allow portions of websites to be stored or "cached" within
+                    Entity Tags are HTTP code mechanisms that allow portions of websites to be stored
+                    or &quot;cached&quot; within
                     your browser and validate these caches when the website is opened, allowing the web server to avoid
                     sending a full response if the content has not changed. This speeds up website performance because
                     the web server does not need to send a full response if the content has not changed.
@@ -194,7 +207,8 @@ export default function PrivacyPolicy() {
             <div className={classes.guideline}>
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
-                    Local Storage in HTML5. HTML5 local storage allows data from websites to be saved or "cached" within
+                    Local Storage in HTML5. HTML5 local storage allows data from websites to be saved
+                    or &quot;cached&quot; within
                     your browser so that material in HTML5 pages can be preserved and retrieved when the website is
                     visited again.
                 </div>
@@ -203,9 +217,11 @@ export default function PrivacyPolicy() {
             <div className={classes.guideline} style={{marginBottom: 10}}>
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
-                    Device Identifiers That Can Be Reset Resettable device identifiers (also known as "advertising
-                    identifiers") are similar to cookies and are found on many mobile and tablet devices (for example,
-                    the "Identifier for Advertisers" or "IDFA" on Apple iOS devices and the "Google Advertising ID" on
+                    Device Identifiers That Can Be Reset Resettable device identifiers (also known as &quot;advertising
+                    identifiers&quot;) are similar to cookies and are found on many mobile and tablet devices (for
+                    example,
+                    the &quot;Identifier for Advertisers&quot; or &quot;IDFA&quot; on Apple iOS devices and
+                    the &quot;Google Advertising ID&quot; on
                     Android devices), as well as some streaming media devices. Resettable device identifiers, like
                     cookies, are used to make internet advertising more relevant.
                 </div>
@@ -235,7 +251,8 @@ export default function PrivacyPolicy() {
             <div className={classes.paragraph}>
                 We may get information about you from other sources and combine it with the information we have on file
                 about you. We safeguard this information using the processes outlined in this Policy, as well as any
-                additional constraints imposed by the data's source. Online and offline data providers from which we
+                additional constraints imposed by the data&apos;s source. Online and offline data providers from which
+                we
                 obtain demographic, interest-based, and online advertising-related data; publicly-available sources such
                 as open government databases or social networks; and service providers who provide us with information,
                 or updates to that information, based on their relationship with you are examples of these sources. We
@@ -337,8 +354,8 @@ export default function PrivacyPolicy() {
             <div className={classes.guideline} style={{marginBottom: 16}}>
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
-                    share information across the Company's goods and devices to give you a more personalized and
-                    consistent experience across all of the Company's products;
+                    share information across the Company&apos;s goods and devices to give you a more personalized and
+                    consistent experience across all of the Company&apos;s products;
                 </div>
             </div>
 
@@ -359,8 +376,8 @@ export default function PrivacyPolicy() {
             <div className={classes.guideline}>
                 <div className={classes.symbol}>A</div>
                 <div className={classes.guidelinesItem}>
-                    share information across the Company's goods and devices to give you a more personalized and
-                    consistent experience across all of the Company's products;
+                    share information across the Company&apos;s goods and devices to give you a more personalized and
+                    consistent experience across all of the Company&apos;s products;
                 </div>
             </div>
 
@@ -380,7 +397,7 @@ export default function PrivacyPolicy() {
                 <div className={classes.guidelinesItem}>
                     In the event that the Company is sold or transferred. If we become involved in a merger,
                     divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of
-                    the Company's assets to business entities or people involved in the negotiation or transfer (whether
+                    the Company&apos;s assets to business entities or people involved in the negotiation or transfer (whether
                     as a going concern or as part of bankruptcy, liquidation, or similar proceeding).
                 </div>
             </div>
@@ -405,7 +422,8 @@ export default function PrivacyPolicy() {
                 <div className={classes.symbol}>F</div>
                 <div className={classes.guidelinesItem}>
                     To assist in the protection of legitimate interests. If we feel that disclosing information may aid
-                    in the protection of the Company's, our users', partners', agents', and others' rights, property, or
+                    in the protection of the Company&apos;s, our users&apos;, partners&apos;, agents&apos;, and
+                    others&apos; rights, property, or
                     safety. This involves exchanging information with other businesses and organizations to guard
                     against fraud and avoid spam and malware.
                 </div>
@@ -423,14 +441,16 @@ export default function PrivacyPolicy() {
             <div className={classes.guideline} style={{marginBottom: 10}}>
                 <div className={classes.symbol}>H</div>
                 <div className={classes.guidelinesItem}>
-                    When we're collaborating with marketing service providers. To marketing service providers in order
+                    When we&apos;re collaborating with marketing service providers. To marketing service providers in
+                    order
                     for them to assess, develop, and supply you with promotions and special offers that may be of
                     interest to you, as well as to administer contests, sweepstakes, and events, and for other
                     promotional purposes.
                 </div>
             </div>
             <div className={classes.paragraph}>
-                Information you submit in or through the Services' public areas (e.g., chat rooms, bulletin boards, and
+                Information you submit in or through the Services&apos; public areas (e.g., chat rooms, bulletin boards,
+                and
                 discussion groups) is usually accessible to, and may be collected and utilized by, others, and may
                 result in unsolicited messages or other interactions. When providing personal information about
                 themselves in public or interactive places, users of the Services are reminded to use caution.
@@ -440,7 +460,7 @@ export default function PrivacyPolicy() {
             </div>
             <div className={classes.paragraph} style={{marginBottom: 10}}>
                 We make every effort to give you options when it comes to the personal information you supply to us.
-                We've put in place measures to provide you the following control over your data:
+                We&apos;ve put in place measures to provide you the following control over your data:
             </div>
 
             <div className={classes.guideline}>
@@ -452,7 +472,8 @@ export default function PrivacyPolicy() {
                     technologies before they are set or installed, as well as remove or reject the usage or installation
                     of certain technologies entirely. To understand how to change your browser settings, we recommend
                     using the Help menu on your browser. Please keep in mind that changing your browser settings will
-                    not remove Flash cookies. Visit the Adobe website's Flash player settings page to discover how to
+                    not remove Flash cookies. Visit the Adobe website&apos;s Flash player settings page to discover how
+                    to
                     manage your Flash cookie settings. Please be aware that if you disable or refuse cookies, some
                     elements of the Services may become inaccessible or stop working properly.
                 </div>
@@ -460,7 +481,8 @@ export default function PrivacyPolicy() {
             <div className={classes.guideline} style={{marginBottom: 10}}>
                 <div className={classes.bullet}></div>
                 <div className={classes.guidelinesItem}>
-                    The Company's Promotional Communications. If you do not want your contact information to be used by
+                    The Company&apos;s Promotional Communications. If you do not want your contact information to be
+                    used by
                     the Company to promote our own or third-party products or services, you can opt-out by (i) informing
                     us of your preference when you sign up for our newsletter or fill out any other form on or through
                     the Services where we collect your data; (ii) modifying your user preferences in your account
@@ -474,7 +496,8 @@ export default function PrivacyPolicy() {
                 6.2 What We Do When We Get Do Not Track Signals
             </div>
             <div className={classes.paragraph}>
-                Most online browsers allow you to enable a privacy choice called "Do Not Track." When you enable
+                Most online browsers allow you to enable a privacy choice called &quot;Do Not Track.&quot; When you
+                enable
                 this choice, it sends a signal to the websites you visit saying that you do not want to be
                 monitored. Please be aware that we do not currently respond to browser Do Not Track settings.
             </div>
@@ -489,7 +512,7 @@ export default function PrivacyPolicy() {
                 Copies of your User Content may remain viewable in cached and archived pages or may have been copied or
                 kept by other users of the Services, if you delete your User Content from the Services or your account.
             </div>
-            <div className={classes.paragraphTitle}>8. California's Right to Privacy.</div>
+            <div className={classes.paragraphTitle}>8. California&apos;s Right to Privacy.</div>
             <div className={classes.paragraph}>
                 California residents have the right to request a notice identifying the categories of personal customer
                 information that we share with our affiliates and third parties for marketing purposes, as well as
@@ -510,11 +533,13 @@ export default function PrivacyPolicy() {
                 You are also responsible for the safety and security of your data. You are responsible for keeping your
                 password secure if we have given you (or you have selected) one for access to certain portions of the
                 Services. We ask that you do not reveal your password to anyone.
-                While we've used security technologies and procedures to help protect your personal data, no system or
+                While we&apos;ve used security technologies and procedures to help protect your personal data, no system
+                or
                 network can be guaranteed to be completely secure. Unauthorized entrance or usage, hardware or software
                 failure, and other reasons could jeopardize the security of user data at any time. Personal information
-                is transmitted at your own risk. We are not liable for any unauthorized use of the Website's or other
-                Services' privacy settings or security features.
+                is transmitted at your own risk. We are not liable for any unauthorized use of the Website&apos;s or
+                other
+                Services&apos; privacy settings or security features.
             </div>
             <div className={classes.paragraphTitle}>10.GDPR</div>
             <div className={classes.lastParagraph}>
