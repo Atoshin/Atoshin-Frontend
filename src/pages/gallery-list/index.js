@@ -32,7 +32,7 @@ export default function GalleryList({galleries}) {
             <div className={classes.root}>
                 <div className={classes.row}>
                     {galleries.map((gallery, idx) => {
-                        return <Link key={idx} href={`/art-center/${gallery.id}`}>
+                        return <Link key={idx} href={`/museums-and-galleries/${gallery.id}`}>
                             <a>
                                 <div className={classes.item}>
                                     <div className={classes.img}

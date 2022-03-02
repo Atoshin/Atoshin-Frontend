@@ -141,7 +141,7 @@ export default function HeaderContent({setDrawerMenu}) {
                             </Link>
                             <Link href={"/gallery-list"}>
                                 <a>
-                                    <ActiveLink title={'Art Centers'} href={"/gallery-list"}/>
+                                    <ActiveLink title={'Museums and Galleries'} href={"/gallery-list"}/>
                                 </a>
                             </Link>
                             <Link href={"/artists"}>

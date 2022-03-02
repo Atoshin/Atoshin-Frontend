@@ -82,7 +82,7 @@ export default function ContactUs({galleries}) {
 
 // export async function getServerSideProps(ctx) {
 //
-//     const {data: {galleries}} = await axios.get(`${process.env.BASE_URL}/api/art-center/list`)
+//     const {data: {galleries}} = await axios.get(`${process.env.BASE_URL}/api/museums-and-galleries/list`)
 //
 //
 //     return {

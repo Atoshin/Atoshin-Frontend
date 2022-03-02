@@ -22,7 +22,7 @@ export default function GallerySection({gallery}) {
         current: {}
     })
     const ExploreBtn = () => {
-        // onClick={() => router.push(`/art-center/1`)}
+        // onClick={() => router.push(`/museums-and-galleries/1`)}
         return <Link href={`/art-center/1`}>
             <a>
                 <Button className={classes.exploreBtn}>Explore</Button>
