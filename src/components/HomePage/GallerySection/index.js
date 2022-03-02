@@ -23,7 +23,7 @@ export default function GallerySection({gallery}) {
     })
     const ExploreBtn = () => {
         // onClick={() => router.push(`/museums-and-galleries/1`)}
-        return <Link href={`/art-center/1`}>
+        return <Link href={`/museums-and-galleries//1`}>
             <a>
                 <Button className={classes.exploreBtn}>Explore</Button>
             </a>
@@ -73,7 +73,7 @@ export default function GallerySection({gallery}) {
         <div className={classes.galleryMainSec}>
             <div className={classes.artCenterSec}>
                 <div className={classes.artCenterTitle}>
-                    Art Centers
+                    Museums and Galleries
                 </div>
                 <div onClick={() => router.push('gallery-list')} className={classes.viewAllArtCenters}>
                     View All
@@ -175,7 +175,8 @@ export default function GallerySection({gallery}) {
                 <Slide ref={sliderRef} style={{position: 'relative'}} {...properties}>
                     {gallery.medias.filter(media => media.homeapagePicture === 1).map((img, idx) => {
                         const {url} = img;
-                        return <div key={idx} className={classes.gallerySec}><div datasrc={url} style={{
+                        return <div key={idx} className={classes.gallerySec}>
+                            <div datasrc={url} style={{
                             backgroundImage: `url("${url}")`,
                             backgroundSize: 'cover',
                             backgroundPosition: "center",

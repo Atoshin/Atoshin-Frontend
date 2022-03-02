@@ -544,9 +544,9 @@ export default function ShowAsset({asset}) {
                                     <div className={styles.originalOwnerTxt}>
                                         Original owner
                                     </div>
-                                    <Link href={`/art-center/${asset.gallery.id}`}>
+                                    <Link href={`/museums-and-galleries/${asset.gallery.id}`}>
                                         <a>
-                                            <div className={styles.originalOwnerName}>
+                                            <div className={styles.originalOwnerName} style={{border:'solid red'}}>
                                                 {asset.gallery.name}
                                             </div>
                                         </a>

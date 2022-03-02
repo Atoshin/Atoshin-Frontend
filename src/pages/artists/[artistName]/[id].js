@@ -10,15 +10,17 @@ import axios from "axios";
 import shortenWords from "../../../functions/shortenWords";
 import extractContent from "../../../functions/getHtmlInnerText";
 import Link from 'next/link';
+import NewsModal from "../../../components/ArtistProfile/NewsModal";
 
 export default function Artist({artist}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const relatedSliderRef = useRef()
-
+const [openNewsModal, setOpenNewsModal] = useState(false);
 
     return (
         <>
+            <NewsModal open={openNewsModal} setOpen={setOpenNewsModal} news={artist.news} />
             <div className={classes.main}>
                 <div className={classes.topSec}>
                     {matches &&
@@ -51,16 +53,17 @@ export default function Artist({artist}) {
                                 </div>
                             </div>
                         </div>
-                        <div className={classes.newsMainSec}>
+                        <div className={classes.newsMainSec} onClick={() => setOpenNewsModal(true)}>
                             <div className={classes.newsSec}>
                                 <div className={classes.newsText}>
                                     News
                                 </div>
-                                {artist.news.map((newsSingular, idx) => {
-                                    return <a key={idx} target="_blank" rel="noreferrer" href={newsSingular.link} className={classes.newsLink}>
-                                        {newsSingular.title}
-                                    </a>
-                                })}
+                                <div className={classes.newsTitle}>Interesting news and stories about artist</div>
+                                {/*{artist.news.map((newsSingular, idx) => {*/}
+                                {/*    return <a key={idx} target="_blank" rel="noreferrer" href={newsSingular.link} className={classes.newsLink}>*/}
+                                {/*        {newsSingular.title}*/}
+                                {/*    </a>*/}
+                                {/*})}*/}
                             </div>
                             {/*<img src="/icons/link-out.svg" alt=""/>*/}
                         </div>
