@@ -8,6 +8,7 @@ import {useEffect, useRef, useState} from "react";
 import {wrapper} from "../redux/store";
 import {CookiesProvider} from "react-cookie";
 import {useRouter} from 'next/router';
+import AppSnackbar from '../components/Layout/Snackbar';
 
 function MyApp({Component, pageProps}: AppProps) {
     const [drawerState, setDrawerState] = useState(false)
@@ -49,6 +50,7 @@ function MyApp({Component, pageProps}: AppProps) {
                 <Footer/>
                 }
             </div>
+            <AppSnackbar/>
         </CookiesProvider>
     </>
 }
