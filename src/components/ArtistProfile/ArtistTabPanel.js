@@ -58,7 +58,7 @@ export default function BasicTabs({artist}) {
     console.log(Object.keys(artist.medias).length < 1)
     return (
         <Box sx={{width: '100%'}}>
-            <Box className={classes.table} sx={{borderBottom: 1, borderColor: 'divider', marginTop: '125px',}}>
+            <Box className={classes.table} sx={{borderBottom: 2, borderColor: '#A7A7A7', marginTop: '125px'}}>
                 <Tabs value={value} onChange={handleChange} style={{width: '100%'}}
                       TabIndicatorProps={{style: {background: '#232323'}}} textColor="secondary"
                       indicatorColor="secondary" aria-label="basic tabs example">
