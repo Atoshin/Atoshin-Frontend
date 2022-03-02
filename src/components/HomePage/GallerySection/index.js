@@ -23,7 +23,7 @@ export default function GallerySection({gallery}) {
     })
     const ExploreBtn = () => {
         // onClick={() => router.push(`/museums-and-galleries/1`)}
-        return <Link href={`/art-center/1`}>
+        return <Link href={`/museums-and-galleries//1`}>
             <a>
                 <Button className={classes.exploreBtn}>Explore</Button>
             </a>
@@ -73,7 +73,7 @@ export default function GallerySection({gallery}) {
         <div className={classes.galleryMainSec}>
             <div className={classes.artCenterSec}>
                 <div className={classes.artCenterTitle}>
-                    Art Centers
+                    Museums and Galleries
                 </div>
                 <div onClick={() => router.push('gallery-list')} className={classes.viewAllArtCenters}>
                     View All

@@ -45,7 +45,7 @@ export default function LeftDrawer({state, setState}) {
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
-            <div className={classes.menuTopSec}>
+            <div className={classes.menuTopSec} style={{border:'solid red'}}>
                 <img className={classes.logoImg} src="/images/Atoshin-logo.png" alt=""/>
                 <img onClick={() => setState(false)} className={classes.vectorXIcon} src="/icons/vector-x.svg" alt=""/>
             </div>
@@ -54,7 +54,7 @@ export default function LeftDrawer({state, setState}) {
                     <ActiveLink title={"Marketplace"} href={"/marketplace"}/>
                 </ListItem>
                 <ListItem button>
-                    <ActiveLink title="Art Centers" href={'/gallery-list'}/>
+                    <ActiveLink title="Museums and Galleries" href={'/gallery-list'}/>
                 </ListItem>
                 <ListItem button>
                     <ActiveLink title="Artists" href='/artists'/>
