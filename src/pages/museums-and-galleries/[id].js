@@ -405,7 +405,7 @@ export default function ArtCenter({artCenter}) {
                     </tr>
                 </div>
                 <div className={classes.map}>
-                    <Map/>
+                    <Map artCenter={artCenter}/>
                 </div>
             </div>
             <div className={classes.relatedSec}>
