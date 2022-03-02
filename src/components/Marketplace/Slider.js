@@ -50,7 +50,8 @@ export default function Slider({assets, asset, setHovered, hovered}) {
                                     backgroundImage: `url("${media.url}")`,
                                     backgroundRepeat: "no-repeat",
                                     backgroundSize: "cover",
-                                    backgroundPosition: "center"
+                                    backgroundPosition: "center",
+                                    borderRadius: '3px 3px 0px 0px',
                                 }}
                                 />
                             </>
