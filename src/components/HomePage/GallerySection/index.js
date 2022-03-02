@@ -175,7 +175,8 @@ export default function GallerySection({gallery}) {
                 <Slide ref={sliderRef} style={{position: 'relative'}} {...properties}>
                     {gallery.medias.filter(media => media.homeapagePicture === 1).map((img, idx) => {
                         const {url} = img;
-                        return <div key={idx} className={classes.gallerySec}><div datasrc={url} style={{
+                        return <div key={idx} className={classes.gallerySec}>
+                            <div datasrc={url} style={{
                             backgroundImage: `url("${url}")`,
                             backgroundSize: 'cover',
                             backgroundPosition: "center",
