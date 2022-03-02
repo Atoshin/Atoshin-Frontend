@@ -45,7 +45,7 @@ export default function LeftDrawer({state, setState}) {
             onClick={toggleDrawer(false)}
             onKeyDown={toggleDrawer(false)}
         >
-            <div className={classes.menuTopSec} style={{border:'solid red'}}>
+            <div className={classes.menuTopSec}>
                 <img className={classes.logoImg} src="/images/Atoshin-logo.png" alt=""/>
                 <img onClick={() => setState(false)} className={classes.vectorXIcon} src="/icons/vector-x.svg" alt=""/>
             </div>
