@@ -10,25 +10,15 @@ export default function Slider({assets, asset, setHovered, hovered}) {
     const slideRef = useRef();
 
     useEffect(() => {
-        console.log(!hovered[asset.id]);
-        if (!hovered[asset.id]) {
+        if (!hovered) {
             goto()
         }
-    }, [hovered[asset.id]])
-
-    // const mouseOver = () => {
-    //     console.log('in:');
-    //     setHovered(true)
-    // }
-    // const mouseOut = () => {
-    //     console.log('out:');
-    //     setHovered(false)
-    //     goto()
-    // }
-
+    }, [hovered])
 
     const goto = () => {
-        slideRef.current.goTo(0);
+        setTimeout(()=>{
+            slideRef.current.goTo(0);
+        }, 500)
     }
 
     return (
@@ -42,10 +32,12 @@ export default function Slider({assets, asset, setHovered, hovered}) {
                     easing={"ease"}
                     infinite={true}
                     pauseOnHover={false}
-                    duration={2000}
-                    transitionDuration={150}
+                    // duration={2000}
+                    duration={1000}
+                    // transitionDuration={150}
+                    transitionDuration={300}
                     arrows={false}
-                    autoplay={hovered[asset.id]}
+                    autoplay={hovered}
                     ref={slideRef}
                 >
                     {asset.medias.map((media, id) => {
@@ -58,10 +50,10 @@ export default function Slider({assets, asset, setHovered, hovered}) {
                                     backgroundImage: `url("${media.url}")`,
                                     backgroundRepeat: "no-repeat",
                                     backgroundSize: "cover",
-                                    backgroundPosition: "center"
+                                    backgroundPosition: "center",
+                                    borderRadius: '3px 3px 0px 0px',
                                 }}
                                 />
-                                <div>{id}</div>
                             </>
                         )
                     })}

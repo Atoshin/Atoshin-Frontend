@@ -32,11 +32,11 @@ export default function GalleryList({galleries}) {
             <div className={classes.root}>
                 <div className={classes.row}>
                     {galleries.map((gallery, idx) => {
-                        return <Link key={idx} href={`/art-center/${gallery.id}`}>
+                        return <Link key={idx} href={`/museums-and-galleries/${gallery.id}`}>
                             <a>
                                 <div className={classes.item}>
                                     <div className={classes.img}
-                                         style={{backgroundImage: `url("${gallery.medias.find(media => media.galleryLargePicture === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover"}}/>
+                                         style={{backgroundImage: `url("${gallery.medias.find(media => media.galleryLargePicture === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover", borderRadius: '3px 3px 0px 0px'}}/>
                                     <div className={classes.imgTitle}>{gallery.name}</div>
                                     <div className={classes.itemText}>
                                         {shortenWords(gallery.summary, 180)}...

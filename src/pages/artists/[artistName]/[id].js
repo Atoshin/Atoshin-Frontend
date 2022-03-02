@@ -10,15 +10,17 @@ import axios from "axios";
 import shortenWords from "../../../functions/shortenWords";
 import extractContent from "../../../functions/getHtmlInnerText";
 import Link from 'next/link';
+import NewsModal from "../../../components/ArtistProfile/NewsModal";
 
 export default function Artist({artist}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const relatedSliderRef = useRef()
-
+const [openNewsModal, setOpenNewsModal] = useState(false);
 
     return (
         <>
+            <NewsModal open={openNewsModal} setOpen={setOpenNewsModal} news={artist.news} />
             <div className={classes.main}>
                 <div className={classes.topSec}>
                     {matches &&
@@ -28,7 +30,8 @@ export default function Artist({artist}) {
                                 height: 242,
                                 backgroundImage: `url("${artist.medias.find(media => media.main === 1).url}")`,
                                 backgroundPosition: "center",
-                                backgroundSize: "cover"
+                                backgroundSize: "cover",
+                                boxShadow: "0px 1px 3px 0px #00000026",
                             }}
                             />
                         </div>
@@ -51,16 +54,17 @@ export default function Artist({artist}) {
                                 </div>
                             </div>
                         </div>
-                        <div className={classes.newsMainSec}>
+                        <div className={classes.newsMainSec} onClick={() => setOpenNewsModal(true)}>
                             <div className={classes.newsSec}>
                                 <div className={classes.newsText}>
                                     News
                                 </div>
-                                {artist.news.map((newsSingular, idx) => {
-                                    return <a key={idx} target="_blank" rel="noreferrer" href={newsSingular.link} className={classes.newsLink}>
-                                        {newsSingular.title}
-                                    </a>
-                                })}
+                                <div className={classes.newsTitle}>Interesting news and stories about artist</div>
+                                {/*{artist.news.map((newsSingular, idx) => {*/}
+                                {/*    return <a key={idx} target="_blank" rel="noreferrer" href={newsSingular.link} className={classes.newsLink}>*/}
+                                {/*        {newsSingular.title}*/}
+                                {/*    </a>*/}
+                                {/*})}*/}
                             </div>
                             {/*<img src="/icons/link-out.svg" alt=""/>*/}
                         </div>
@@ -98,7 +102,7 @@ export default function Artist({artist}) {
                                     <a>
                                         <div className={classes.card}>
                                             <div className={classes.relatedImg}
-                                                 style={{backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover"}}/>
+                                                 style={{backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover", borderRadius: 3}}/>
                                             <div className={classes.relatedDescription}>
                                                 <p className={classes.relatedDescTitle}>{asset.title}</p>
                                                 <p className={classes.relatedDescDesc}>{shortenWords(extractContent(asset.bio), 60) + '...'}</p>

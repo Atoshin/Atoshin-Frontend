@@ -113,6 +113,8 @@ export default function ShowAsset({asset}) {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
+                        borderRadius: 3,
+                        boxShadow: '0px 1px 3px 0px #00000026'
                     }}>
                         <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
                     </div>
@@ -128,6 +130,8 @@ export default function ShowAsset({asset}) {
                                 display: 'flex',
                                 justifyContent: 'center',
                                 alignItems: 'center',
+                                borderRadius: 3,
+                                boxShadow: '0px 1px 3px 0px #00000026'
                             }}>
                                 <img src="/images/show-asset/more.svg" style={{width: 53.84, height: 53.84}}/>
                             </div>
@@ -139,6 +143,8 @@ export default function ShowAsset({asset}) {
                                 backgroundPosition: 'center',
                                 backgroundSize: "cover",
                                 marginRight: 15.73,
+                                borderRadius: 3,
+                                boxShadow: '0px 1px 3px 0px #00000026'
                             }}/>
                         }
                     })]
@@ -180,6 +186,8 @@ export default function ShowAsset({asset}) {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
+                        borderRadius: 3,
+                        boxShadow: '0px 1px 3px 0px #00000026'
                     }}>
                         <img src="/images/show-asset/more.svg" style={{width: 54.07, height: 54.07}}/>
                     </div>
@@ -191,6 +199,8 @@ export default function ShowAsset({asset}) {
                         backgroundPosition: 'center',
                         backgroundSize: "cover",
                         marginRight: 15.73,
+                        borderRadius: 3,
+                        boxShadow: '0px 1px 3px 0px #00000026'
                     }}/>
                 }
             })
@@ -553,7 +563,7 @@ export default function ShowAsset({asset}) {
                                     <div className={styles.originalOwnerTxt}>
                                         Original owner
                                     </div>
-                                    <Link href={`/art-center/${asset.gallery.id}`}>
+                                    <Link href={`/museums-and-galleries/${asset.gallery.id}`}>
                                         <a>
                                             <div className={styles.originalOwnerName}>
                                                 {asset.gallery.name}
