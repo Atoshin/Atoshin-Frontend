@@ -36,7 +36,7 @@ export default function GalleryList({galleries}) {
                             <a>
                                 <div className={classes.item}>
                                     <div className={classes.img}
-                                         style={{backgroundImage: `url("${gallery.medias.find(media => media.galleryLargePicture === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover"}}/>
+                                         style={{backgroundImage: `url("${gallery.medias.find(media => media.galleryLargePicture === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover", borderRadius: '3px 3px 0px 0px'}}/>
                                     <div className={classes.imgTitle}>{gallery.name}</div>
                                     <div className={classes.itemText}>
                                         {shortenWords(gallery.summary, 180)}...

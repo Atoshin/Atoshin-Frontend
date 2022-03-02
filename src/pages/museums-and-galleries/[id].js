@@ -111,6 +111,7 @@ export default function ArtCenter({artCenter}) {
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
+                            boxShadow: '0px 1px 3px 0px #00000026',
                         }}>
                             <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
                         </div>
@@ -128,6 +129,7 @@ export default function ArtCenter({artCenter}) {
                                         display: 'flex',
                                         justifyContent: 'center',
                                         alignItems: 'center',
+                                        boxShadow: '0px 1px 3px 0px #00000026',
                                     }}>
                                     </div>
                                 } else {
@@ -140,6 +142,7 @@ export default function ArtCenter({artCenter}) {
                                         backgroundSize: "cover",
                                         borderRadius: 3,
                                         marginRight: 16,
+                                        boxShadow: '0px 1px 3px 0px #00000026',
                                     }}/>
                                 }
                             })
@@ -164,6 +167,7 @@ export default function ArtCenter({artCenter}) {
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
+                                    boxShadow: '0px 1px 3px 0px #00000026',
                                 }}>
                                     <img src={'/images/show-asset/videoPlay.svg'}
                                          style={{width: 53.84, height: 53.84}}/>
@@ -182,6 +186,7 @@ export default function ArtCenter({artCenter}) {
                                             display: 'flex',
                                             justifyContent: 'center',
                                             alignItems: 'center',
+                                            boxShadow: '0px 1px 3px 0px #00000026',
                                         }}>
                                         </div>
                                     } else {
@@ -194,6 +199,7 @@ export default function ArtCenter({artCenter}) {
                                             backgroundSize: "cover",
                                             borderRadius: 3,
                                             marginRight: 16,
+                                            boxShadow: '0px 1px 3px 0px #00000026',
                                         }}/>
                                     }
                                 })]
@@ -341,6 +347,7 @@ export default function ArtCenter({artCenter}) {
                                                 backgroundSize: "cover",
                                                 borderRadius: 3,
                                                 marginRight: 16,
+                                                boxShadow: '0px 1px 3px 0px #00000026',
                                             }}/>
                                         })
                                     }
@@ -358,6 +365,7 @@ export default function ArtCenter({artCenter}) {
                                                             width: 220,
                                                             backgroundPosition: "center",
                                                             backgroundSize: "cover",
+                                                            boxShadow: '0px 1px 3px 0px #00000026',
                                                         }}/>
                                         } else {
                                             return <div key={key}
@@ -369,7 +377,8 @@ export default function ArtCenter({artCenter}) {
                                                             width: 220,
                                                             backgroundPosition: "center",
                                                             backgroundSize: "cover",
-                                                            marginRight: 16
+                                                            marginRight: 16,
+                                                            boxShadow: '0px 1px 3px 0px #00000026',
                                                         }}/>
                                         }
                                     })}
@@ -421,7 +430,8 @@ export default function ArtCenter({artCenter}) {
                                     style={{
                                         backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
                                         backgroundSize: "cover",
-                                        backgroundPosition: "center"
+                                        backgroundPosition: "center",
+                                        borderRadius:3
                                     }}/>
                                 <div className={classes.relatedDescription}>
                                     <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>

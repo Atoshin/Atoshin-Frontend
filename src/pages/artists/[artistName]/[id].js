@@ -30,7 +30,8 @@ const [openNewsModal, setOpenNewsModal] = useState(false);
                                 height: 242,
                                 backgroundImage: `url("${artist.medias.find(media => media.main === 1).url}")`,
                                 backgroundPosition: "center",
-                                backgroundSize: "cover"
+                                backgroundSize: "cover",
+                                boxShadow: "0px 1px 3px 0px #00000026",
                             }}
                             />
                         </div>
@@ -101,7 +102,7 @@ const [openNewsModal, setOpenNewsModal] = useState(false);
                                     <a>
                                         <div className={classes.card}>
                                             <div className={classes.relatedImg}
-                                                 style={{backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover"}}/>
+                                                 style={{backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover", borderRadius: 3}}/>
                                             <div className={classes.relatedDescription}>
                                                 <p className={classes.relatedDescTitle}>{asset.title}</p>
                                                 <p className={classes.relatedDescDesc}>{shortenWords(extractContent(asset.bio), 60) + '...'}</p>
