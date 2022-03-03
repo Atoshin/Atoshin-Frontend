@@ -374,7 +374,9 @@ export default function ShowAsset({asset}) {
                          clickedImageId={clickedImageId}
                          setClickedImageId={setClickedImageId}
                          setClickedVideoId={setClickedVideoId}
-                         clickedVideoId={clickedVideoId}/>
+                         clickedVideoId={clickedVideoId}
+                         two={false}
+            />
             {/*imageId={imageId}*/}
             {/*pass*/}
             <OwnersModal owners={asset.buyTransactions} open={openOwners} setOpen={setOpenOwners}/>

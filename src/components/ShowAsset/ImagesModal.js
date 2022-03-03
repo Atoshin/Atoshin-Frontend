@@ -16,7 +16,6 @@ export default function ImagesModal({
                                         setClickedImageId,
                                         setClickedVideoId,
                                         two,
-                                        setTwo
                                     }) {
     const [mainImg, setImg] = useState(images.find(img => img.main === 1))
     const ref = useRef();
