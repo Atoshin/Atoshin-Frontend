@@ -420,7 +420,7 @@ export default function ArtCenter({artCenter}) {
                         easing={"ease"}
                         slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 4}
                         infinite={true}
-                        arrows={false}
+                        arrows={true}
                         slidesToScroll={1}
                         transitionDuration={500}
                         duration={5000}
