@@ -16,11 +16,11 @@ export default function Artist({artist}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const relatedSliderRef = useRef()
-const [openNewsModal, setOpenNewsModal] = useState(false);
+    const [openNewsModal, setOpenNewsModal] = useState(false);
 
     return (
         <>
-            <NewsModal open={openNewsModal} setOpen={setOpenNewsModal} news={artist.news} />
+            <NewsModal open={openNewsModal} setOpen={setOpenNewsModal} news={artist.news}/>
             <div className={classes.main}>
                 <div className={classes.topSec}>
                     {matches &&
@@ -38,9 +38,11 @@ const [openNewsModal, setOpenNewsModal] = useState(false);
                     }
                     <div className={classes.artistDetailSec}>
                         <div className={classes.artistName}>{artist.fullName}</div>
-                        <a href={artist.website} target="_blank" rel="noreferrer" className={classes.artistWebsite}>{artist.website}</a>
+                        <a href={artist.website} target="_blank" rel="noreferrer"
+                           className={classes.artistWebsite}>{artist.website}</a>
                         <div className={classes.rankingMainSec}>
-                            <a target="_blank" href={artist.rankingLink} rel="noreferrer" className={classes.rankingText}>
+                            <a target="_blank" href={artist.rankingLink} rel="noreferrer"
+                               className={classes.rankingText}>
                                 Ranking
                             </a>
                             <div className={classes.rankingSec}>
@@ -91,7 +93,8 @@ const [openNewsModal, setOpenNewsModal] = useState(false);
                         Related to Artist
                     </div>
                     <div className={classes.slider2}>
-                        <Slide ref={relatedSliderRef} autoplay={artist.assets.length >= 4} easing={"ease"} slidesToShow={artist.assets. length < 4 ? artist.assets.length : (matches ? 2 : 4)}
+                        <Slide ref={relatedSliderRef} autoplay={artist.assets.length >= 4} easing={"ease"}
+                               slidesToShow={artist.assets.length < 4 ? artist.assets.length : (matches ? 2 : 4)}
                                infinite={true}
                                arrows={false}
                                slidesToScroll={1}
@@ -102,7 +105,12 @@ const [openNewsModal, setOpenNewsModal] = useState(false);
                                     <a>
                                         <div className={classes.card}>
                                             <div className={classes.relatedImg}
-                                                 style={{backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover", borderRadius: 3}}/>
+                                                 style={{
+                                                     backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
+                                                     backgroundPosition: "center",
+                                                     backgroundSize: "cover",
+                                                     borderRadius: 3
+                                                 }}/>
                                             <div className={classes.relatedDescription}>
                                                 <p className={classes.relatedDescTitle}>{asset.title}</p>
                                                 <p className={classes.relatedDescDesc}>{shortenWords(extractContent(asset.bio), 60) + '...'}</p>
