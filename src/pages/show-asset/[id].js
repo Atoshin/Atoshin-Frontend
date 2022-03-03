@@ -17,6 +17,10 @@ import CryptoJS from 'crypto-js';
 import {parseCookies} from "../../functions/parseCookies";
 import {ethers} from "ethers";
 import {useCookies} from "react-cookie";
+import calculateDecimalPrecision from "../../functions/calculateDecimalPrecision";
+import {useAppDispatch} from "../../redux/hooks";
+import {setAlert} from "../../redux/slices/alertSlice";
+import LoadingBackdrop from "../../components/Layout/Backdrop";
 
 export default function ShowAsset({asset}) {
     const [openImages, setOpenImages] = useState(false)
@@ -28,12 +32,15 @@ export default function ShowAsset({asset}) {
     const [quantity, setQuantity] = useState(1)
     const [sliderAutoplay, setSliderAutoplay] = useState(true)
     const [secondTooltip, setSecondTooltip] = useState(false)
+    const [loadingTxn, setLoadingTxn] = useState(false)
+    const [isAuctionOver, setIsAuctionOver] = useState(false)
     const [cookie, setCookie] = useCookies()
     const [currentSlide, setCurrentSlide] = useState(asset.medias.find(media => media.main === 1))
     const [mainImgSize, setMainImgSize] = useState({
         width: '',
         height: ''
     })
+    const dispatch = useAppDispatch()
     const {query} = useRouter();
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -221,6 +228,7 @@ export default function ShowAsset({asset}) {
     const submitOrder = async () => {
         try {
             if (window.ethereum) {
+                setLoadingTxn(true)
                 const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
                 await provider.send("eth_requestAccounts", []);
                 const signer = provider.getSigner();
@@ -273,11 +281,24 @@ export default function ShowAsset({asset}) {
                     mintedIds,
                     txnStatus: 'sold'
                 })
+                setLoadingTxn(false)
             } else {
-
             }
         } catch (e) {
-            console.log(e)
+            setLoadingTxn(false)
+            if (e.response) {
+                dispatch(setAlert({
+                    open: true,
+                    message: e.response.data.message,
+                    severity: 'error'
+                }))
+            } else {
+                dispatch(setAlert({
+                    open: true,
+                    message: e.message,
+                    severity: 'error'
+                }))
+            }
         }
     }
 
@@ -328,6 +349,7 @@ export default function ShowAsset({asset}) {
             })
         }
     }
+
     const inputHandler = (e) => {
         let fractionsLeft = asset.totalFractions - asset.soldFractions;
         if (parseInt(e.target.value) > fractionsLeft || parseInt(e.target.value) < 1 || isNaN(e.target.value)) {
@@ -343,9 +365,10 @@ export default function ShowAsset({asset}) {
         // }
     }
 
-
+    console.log(asset)
     return (
         <>
+            <LoadingBackdrop setOpen={setLoadingTxn} open={loadingTxn}/>
             <ImagesModal open={openImages} setOpen={setOpenImages} images={asset.medias} title={asset.title}
                          videos={asset.videoLinks}
                          clickedImageId={clickedImageId}
@@ -354,7 +377,7 @@ export default function ShowAsset({asset}) {
                          clickedVideoId={clickedVideoId}/>
             {/*imageId={imageId}*/}
             {/*pass*/}
-            <OwnersModal open={openOwners} setOpen={setOpenOwners}/>
+            <OwnersModal owners={asset.buyTransactions} open={openOwners} setOpen={setOpenOwners}/>
             <HistoryModal open={openHistory} setOpen={setOpenHistory}/>
             <div className={styles.showAssetMain}>
                 <div className={styles.topMainSec}>
@@ -376,74 +399,74 @@ export default function ShowAsset({asset}) {
                             </div>
                         </div>
                         {matches &&
-                        <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease'}}
-                             className={styles.artworkMainImgSec}>
-                            <Slide
-                                easing='ease'
-                                slidesToShow={1}
-                                infinite={true}
-                                autoplay={sliderAutoplay}
-                                duration={5000}
-                                indicators
-                                onChange={(oldIdx, newIdx) => {
-                                    const mediaIndexes = asset.medias.filter(media => media.main !== 1).length - 1
-                                    if (newIdx > mediaIndexes) {
-                                        newIdx = newIdx - (mediaIndexes + 1);
-                                        setCurrentSlide(asset.videoLinks[newIdx])
-                                    } else {
-                                        setCurrentSlide(asset.medias.filter(media => media.main !== 1)[newIdx])
-                                    }
-                                }}
-                            >
-                                {asset.medias.filter(media => media.main !== 1).map(media => {
-                                    return <img key={media.id}
-                                                style={{...mainImgSize, transition: 'all 500ms ease'}}
-                                                className={styles.artworkMainImg}
-                                                src={media.url} alt=""/>
-                                })}
-                                {asset.videoLinks.map(video => {
-                                    let span = document.createElement('span');
-                                    span.hidden = true;
-                                    span.innerHTML = video.link;
-                                    const iframe = span.children[0]
-                                    const ytvId = iframe.src.slice(-11)
-                                    span.remove()
-                                    return <Youtube
-                                        key={ytvId}
-                                        // videoId={video.videoId}
-                                        videoId={ytvId}
-                                        containerClassName={styles.artworkMainImgMobile}
-                                        opts={mainImgSize}
-                                        onPlay={() => {
-                                            setSliderAutoplay(false)
-                                        }}
-                                        onPause={() => {
-                                            setSliderAutoplay(true)
-                                        }}
-                                    />
-                                })}
-                            </Slide>
-                        </div>
+                            <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease'}}
+                                 className={styles.artworkMainImgSec}>
+                                <Slide
+                                    easing='ease'
+                                    slidesToShow={1}
+                                    infinite={true}
+                                    autoplay={sliderAutoplay}
+                                    duration={5000}
+                                    indicators
+                                    onChange={(oldIdx, newIdx) => {
+                                        const mediaIndexes = asset.medias.filter(media => media.main !== 1).length - 1
+                                        if (newIdx > mediaIndexes) {
+                                            newIdx = newIdx - (mediaIndexes + 1);
+                                            setCurrentSlide(asset.videoLinks[newIdx])
+                                        } else {
+                                            setCurrentSlide(asset.medias.filter(media => media.main !== 1)[newIdx])
+                                        }
+                                    }}
+                                >
+                                    {asset.medias.filter(media => media.main !== 1).map(media => {
+                                        return <img key={media.id}
+                                                    style={{...mainImgSize, transition: 'all 500ms ease'}}
+                                                    className={styles.artworkMainImg}
+                                                    src={media.url} alt=""/>
+                                    })}
+                                    {asset.videoLinks.map(video => {
+                                        let span = document.createElement('span');
+                                        span.hidden = true;
+                                        span.innerHTML = video.link;
+                                        const iframe = span.children[0]
+                                        const ytvId = iframe.src.slice(-11)
+                                        span.remove()
+                                        return <Youtube
+                                            key={ytvId}
+                                            // videoId={video.videoId}
+                                            videoId={ytvId}
+                                            containerClassName={styles.artworkMainImgMobile}
+                                            opts={mainImgSize}
+                                            onPlay={() => {
+                                                setSliderAutoplay(false)
+                                            }}
+                                            onPause={() => {
+                                                setSliderAutoplay(true)
+                                            }}
+                                        />
+                                    })}
+                                </Slide>
+                            </div>
                         }
                         {matches &&
-                        <div className={styles.saleEndDateMob}>
-                            Sale ends
-                            in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
-                        </div>
+                            <div className={styles.saleEndDateMob}>
+                                {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
+                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                            </div>
                         }
                         <div className={styles.saleMainSec}>
                             <div className={styles.saleEndDate}>
-                                Sale ends
-                                in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
+                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
                             </div>
-                            <TimeDifference time={asset.endDate}/>
+                            <TimeDifference setIsOver={setIsAuctionOver} time={asset.endDate}/>
                         </div>
                         <div className={styles.fractionsMainSec}>
                             <div className={styles.fractionsLeftTxt}>
                                 Fractions left
                                 {!matches &&
-                                <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
-                                     className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                                    <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
+                                         className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                                 }
                                 <Fade in={tooltip}>
                                     <div className={styles.fractionsTooltip}>
@@ -460,31 +483,30 @@ export default function ShowAsset({asset}) {
                                 style={{fontWeight: 400}}>/{asset.totalFractions}</span>
                             </div>
                             {matches &&
-                            <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
-                                 className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                                <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
+                                     className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                             }
                         </div>
                         {(matches) &&
-                        <MUISlide in={scrolled} direction={"up"}>
-                            <div className={styles.priceMainSec}>
-                                <div className={styles.priceSec}>
-                                    <div className={styles.priceTxt}>
-                                        Price
+                            <MUISlide in={scrolled} direction={"up"}>
+                                <div className={styles.priceMainSec}>
+                                    <div className={styles.priceSec}>
+                                        <div className={styles.priceTxt}>
+                                            Price
+                                        </div>
+                                        <div className={styles.priceAmount}>
+                                            {asset.ethPricePerFraction} ETH
+                                        </div>
                                     </div>
-                                    <div className={styles.priceAmount}>
-                                        {asset.ethPricePerFraction} ETH
-                                    </div>
+                                    <Button className={styles.BuyBtn}>
+                                        Buy now
+                                    </Button>
                                 </div>
-                                <Button className={styles.BuyBtn}>
-                                    Buy now
-                                </Button>
-                            </div>
-                        </MUISlide>
+                            </MUISlide>
                         }
                         {
-                            !matches &&
+                            (!matches) &&
                             <div className={styles.priceMainSec}>
-
                                 <div className={styles.counterPart}>
                                     <img src="/images/show-asset/minus.svg" style={{marginLeft: 32, width: 56.5}}
                                          onClick={minus}/>
@@ -493,22 +515,10 @@ export default function ShowAsset({asset}) {
                                     <img src="/images/show-asset/plus.svg" style={{marginRight: 37, width: 56.5}}
                                          onClick={add}/>
                                 </div>
-                                <Button onClick={submitOrder} className={styles.BuyBtnDesktop}>
-                                    Buy {quantity ? quantity : 0} - {asset.price * quantity} ETH
+                                <Button disabled={isAuctionOver} classes={{disabled: styles.disabledBtn}}
+                                        onClick={submitOrder} className={styles.BuyBtnDesktop}>
+                                    Buy {quantity ? quantity : 0} - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH
                                 </Button>
-                                {/*<div className={styles.priceSec}>*/}
-                                {/*    <div className={styles.priceTxt}>*/}
-                                {/*        Price*/}
-                                {/*    </div>*/}
-                                {/*    <div className={styles.priceAmount}>*/}
-                                {/*        {asset.ethPricePerFraction} ETH*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<input value={quantity} onChange={e => setQuantity(e.target.value)}*/}
-                                {/*       className={styles.quantityInput} type="text"/>*/}
-                                {/*<Button onClick={submitOrder} className={styles.BuyBtnDesktop}>*/}
-                                {/*    Buy {quantity ? quantity : 0} Tokens Now*/}
-                                {/*</Button>*/}
                             </div>
                         }
                     </div>
@@ -522,7 +532,6 @@ export default function ShowAsset({asset}) {
                         </div>
                         <div className={styles.artworkOtherImgSec}>
                             <ArtworkSubImages/>
-                            {/*hereeeeeeeeee*/}
                         </div>
                     </div>
                 </div>
@@ -603,9 +612,17 @@ export default function ShowAsset({asset}) {
                             <div className={styles.aboutArtworkDivider}>
                             </div>
                             <div className={styles.aboutArtworkBottomSec}>
-                                <div className={styles.mintedDateSec}>
-                                    Minted on Dec 8, 2021
-                                </div>
+                                {asset.mintTransactions.length > 0 ?
+                                    <a target="_blank"
+                                       href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + asset.mintTransactions[0].txnHash}
+                                       className={styles.mintedDateSec} rel="noreferrer">
+                                        Minted on
+                                        {
+                                            ' ' + monthNames[new Date(asset.mintTransactions[0].createdAt).getMonth()] + ' ' + new Date(asset.mintTransactions[0].createdAt).getDay() + ' ' + new Date(asset.mintTransactions[0].createdAt).getFullYear()
+                                        }
+                                    </a>
+                                    :
+                                    <div style={{width: 177}}/>}
                                 <div onMouseEnter={() => setSecondTooltip(true)}
                                      onMouseOut={() => setSecondTooltip(false)} className={styles.watchArtworkSec}>
                                     Watch artwork online
@@ -645,39 +662,19 @@ export default function ShowAsset({asset}) {
                                     Quantity
                                 </div>
                             </div>
-                            <div className={styles.ownersIndexRow}>
-                                <div className={styles.rankNum}>
-                                    1
+                            {asset.buyTransactions && asset.buyTransactions.slice(0, 3).map((txn, idx) => {
+                                return <div key={idx} className={styles.ownersIndexRow}>
+                                    <div className={styles.rankNum}>
+                                        {idx + 1}
+                                    </div>
+                                    <div className={styles.ownerName}>
+                                        {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
+                                    </div>
+                                    <div className={styles.quantity}>
+                                        {txn.tokenQuantity} Token{txn.tokenQuantity > 1 && 's'}
+                                    </div>
                                 </div>
-                                <div className={styles.ownerName}>
-                                    0we6...245rb
-                                </div>
-                                <div className={styles.quantity}>
-                                    21 Token
-                                </div>
-                            </div>
-                            <div className={styles.ownersIndexRow}>
-                                <div className={styles.rankNum}>
-                                    2
-                                </div>
-                                <div className={styles.ownerName}>
-                                    0as7...345il
-                                </div>
-                                <div className={styles.quantity}>
-                                    10 Token
-                                </div>
-                            </div>
-                            <div className={styles.ownersIndexRow}>
-                                <div className={styles.rankNum}>
-                                    3
-                                </div>
-                                <div className={styles.ownerName}>
-                                    0wr6...256jh
-                                </div>
-                                <div className={styles.quantity}>
-                                    8 Token
-                                </div>
-                            </div>
+                            })}
                         </div>
                     </div>
                     <div className={styles.historyMainSec}>

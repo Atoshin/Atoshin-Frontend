@@ -2,11 +2,13 @@ import {Action, configureStore, ThunkAction} from '@reduxjs/toolkit';
 import {createWrapper, HYDRATE} from 'next-redux-wrapper';
 import account from './slices/accountSlice';
 import artCenterMap from "./slices/artCenterMap";
+import alert from "./slices/alertSlice";
 
 const store = configureStore({
     reducer: {
         account,
         artCenterMap,
+        alert
     },
 });
 
