@@ -165,15 +165,17 @@
 }
 
 .card {
+  height: 419px;
+  width: 256px;
   * {
     user-select: none;
   }
 
-  margin: 20px 0px 20px 20px;
-  width: 220px;
-  height: 336px;
+  margin: 20px 0px 20px 18px;
+  //width: 220px;
+  //height: 336px;
   //box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px 2px 20px 0px #00000040;
+  box-shadow: 0px 2px 15px 0px #00000040;
   border-radius: 3px;
   background-color: white;
   display: flex;
@@ -206,10 +208,13 @@
 }
 
 .relatedImg {
-  width: 172px;
-  height: 152px;
-  margin: 24px 24px 16px 24px;
+  //width: 172px;
+  //height: 152px;
+  //margin: 24px 24px 16px 24px;
   background-size: cover;
+  width: 208px;
+  height: 188px;
+  margin: 24px auto 0 auto;
 }
 
 .relatedImg2 {
@@ -223,13 +228,13 @@
 }
 
 .relatedDescTitle {
-  margin: 0;
+  margin: 0 24px 16px 24px;
   font-weight: 500;
   font-size: 16px;
   line-height: 18.75px;
   color: #232323;
   text-align: left;
-  width: 172px;
+  //width: 172px;
 }
 
 .date {
@@ -272,12 +277,13 @@
 .relatedDescDesc {
   font-family: Roboto;
   text-align: left;
-  width: 172px;
-  margin-top: 8px;
-  margin-bottom: 0;
+  //width: 172px;
+  //margin-top: 8px;
+  //margin-bottom: 0;
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;
+  margin: 0 24px 16px 24px;
 }
 
 .relatedDescDesc2 {
@@ -327,9 +333,8 @@
 .relatedDescription {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 8px;
+  margin-top: 24px;
+
 }
 
 .td2 {

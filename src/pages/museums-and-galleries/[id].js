@@ -22,7 +22,6 @@ export default function ArtCenter({artCenter}) {
     const [clickedImageId, setClickedImageId] = useState('');
     const [clickedVideoId, setClickedVideoId] = useState('');
     // const [isGallery, setIsGallery] = useState(true);
-    const [two, setTwo] = useState(true);
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
@@ -224,8 +223,7 @@ export default function ArtCenter({artCenter}) {
                          setClickedImageId={setClickedImageId}
                          setClickedVideoId={setClickedVideoId}
                          clickedVideoId={clickedVideoId}
-                         two={two}
-                         setTwo={setTwo}
+                         two={true}
             />
             <div className={classes.mainImgSec}>
                 <img src={artCenter.medias.find(media => media.galleryLargePicture === 1).url}
@@ -420,7 +418,7 @@ export default function ArtCenter({artCenter}) {
                         easing={"ease"}
                         slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 4}
                         infinite={true}
-                        arrows={false}
+                        arrows={true}
                         slidesToScroll={1}
                         transitionDuration={500}
                         duration={5000}
