@@ -95,59 +95,61 @@ export default function ArtCenter({artCenter}) {
                 const ytvId = iframe.src.slice(-11)
                 span.remove()
                 if (artCenter.medias.filter(media => media.homeapagePicture === 1).length > 4) {
-                    return <Slide style={{position: 'relative'}} {...properties} ref={gallerySliderRef}>
-                        <div onClick={() => {
-                            setClickedVideoId(artCenter.videoLinks[0].id)
-                            setOpenImages(true)
-                        }} style={{
-                            backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
-                            height: 220,
-                            width: 220,
-                            cursor: 'pointer',
-                            backgroundPosition: "center",
-                            backgroundSize: "cover",
-                            borderRadius: 3,
-                            marginRight: 16,
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            boxShadow: '0px 1px 3px 0px #00000026',
-                        }}>
-                            <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
-                        </div>
-                        {
-                            artCenter.medias.filter(media => media.homeapagePicture === 1).map((data, idx) => {
-                                if (idx === parseInt(Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1))[Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1)).length - 1]) || idx === 4) {
-                                    return <div key={idx} onClick={() => showImageModal(data.id)} style={{
-                                        backgroundImage: `url("${data.url}")`,
-                                        height: 220,
-                                        width: 220,
-                                        cursor: 'pointer',
-                                        backgroundPosition: "center",
-                                        backgroundSize: "cover",
-                                        borderRadius: 3,
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        boxShadow: '0px 1px 3px 0px #00000026',
-                                    }}>
-                                    </div>
-                                } else {
-                                    return <div key={idx} onClick={() => showImageModal(data.id)} style={{
-                                        backgroundImage: `url("${data.url}")`,
-                                        height: 220,
-                                        width: 220,
-                                        cursor: 'pointer',
-                                        backgroundPosition: "center",
-                                        backgroundSize: "cover",
-                                        borderRadius: 3,
-                                        marginRight: 16,
-                                        boxShadow: '0px 1px 3px 0px #00000026',
-                                    }}/>
-                                }
-                            })
-                        }
-                    </Slide>
+                    return (
+                        <Slide style={{position: 'relative'}} {...properties} ref={gallerySliderRef}>
+                            <div onClick={() => {
+                                setClickedVideoId(artCenter.videoLinks[0].id)
+                                setOpenImages(true)
+                            }} style={{
+                                backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
+                                height: 220,
+                                width: 220,
+                                cursor: 'pointer',
+                                backgroundPosition: "center",
+                                backgroundSize: "cover",
+                                borderRadius: 3,
+                                marginRight: 16,
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                boxShadow: '0px 1px 3px 0px #00000026',
+                            }}>
+                                <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
+                            </div>
+                            {
+                                artCenter.medias.filter(media => media.homeapagePicture === 1).map((data, idx) => {
+                                    if (idx === parseInt(Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1))[Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1)).length - 1]) || idx === 4) {
+                                        return <div key={idx} onClick={() => showImageModal(data.id)} style={{
+                                            backgroundImage: `url("${data.url}")`,
+                                            height: 220,
+                                            width: 220,
+                                            cursor: 'pointer',
+                                            backgroundPosition: "center",
+                                            backgroundSize: "cover",
+                                            borderRadius: 3,
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            boxShadow: '0px 1px 3px 0px #00000026',
+                                        }}>
+                                        </div>
+                                    } else {
+                                        return <div key={idx} onClick={() => showImageModal(data.id)} style={{
+                                            backgroundImage: `url("${data.url}")`,
+                                            height: 220,
+                                            width: 220,
+                                            cursor: 'pointer',
+                                            backgroundPosition: "center",
+                                            backgroundSize: "cover",
+                                            borderRadius: 3,
+                                            marginRight: 16,
+                                            boxShadow: '0px 1px 3px 0px #00000026',
+                                        }}/>
+                                    }
+                                })
+                            }
+                        </Slide>
+                    )
                 } else {
                     return <div style={{display: 'flex'}}>
                         {
@@ -416,7 +418,7 @@ export default function ArtCenter({artCenter}) {
                     <Slide
                         autoplay={true}
                         easing={"ease"}
-                        slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 5 : 5}
+                        slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 4}
                         infinite={true}
                         arrows={false}
                         slidesToScroll={1}
@@ -424,33 +426,37 @@ export default function ArtCenter({artCenter}) {
                         duration={5000}
                         ref={relatedSliderRef}>
                         {artCenter.assets.map((asset, idx) => {
-                            return <div key={idx} className={(matches1 || matches2) ? classes.card2 : classes.card}>
-                                <div
-                                    className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
-                                    style={{
-                                        backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
-                                        backgroundSize: "cover",
-                                        backgroundPosition: "center",
-                                        borderRadius:3
-                                    }}/>
-                                <div className={classes.relatedDescription}>
-                                    <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>
-                                        {asset.title}
-                                    </p>
-                                    {(new Date(asset.endDate) > new Date()) &&
+                            return (
+                                <div key={idx} className={(matches1 || matches2) ? classes.card2 : classes.card}>
                                     <div
-                                        className={matches1 || matches2 ? classes.date : classes.date1}>
-                                        Sale ends
-                                        in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
-                                    </div>
-                                    }
-                                    <p
-                                        className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}
+                                        className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
+                                        style={{
+                                            backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
+                                            backgroundSize: "cover",
+                                            backgroundPosition: "center",
+                                            borderRadius:3,
+                                        }}
                                     >
-                                        {shortenWords(extractContent(asset.bio), 60) + '...'}
-                                    </p>
+                                    </div>
+                                    <div className={classes.relatedDescription}>
+                                        <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>
+                                            {asset.title}
+                                        </p>
+                                        {(new Date(asset.endDate) > new Date()) &&
+                                            <div
+                                                className={matches1 || matches2 ? classes.date : classes.date1}>
+                                                Sale ends
+                                                in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                            </div>
+                                        }
+                                        <p
+                                            className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}
+                                        >
+                                            {shortenWords(extractContent(asset.bio), 60) + '...'}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
+                            )
                         })}
                     </Slide>
                 </div>
