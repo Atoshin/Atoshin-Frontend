@@ -29,7 +29,7 @@ export default function aboutUs() {
                 </div>
                 <hr className={classes.line}/>
                 <div className={classes.paragraph}>
-                    ATOSHIN is in a unique position to provide access to a once exclusive and mostly... art collector's
+                    ATOSHIN is in a unique position to provide access to a once exclusive and mostly... art collector&apos;s
                     world. It is the first solution to provide fractional ownership of real art pieces housed in museums
                     and permanent collections. When you purchase an NFT for physical art on ATOSHIN, you will be among
                     the very first global art owners who transcend the physical geography of your location and the
