@@ -17,7 +17,7 @@ export default function GallerySection({gallery}) {
         toggle: false,
         imgSrc: null
     });
-    const [selectedGallery, setSelectedGallery] = useState(gallery.find(item => item.id === 1));
+    const [selectedGallery, setSelectedGallery] = useState(gallery[0]);
     const router = useRouter();
     const sliderRef = useRef();
 
@@ -64,7 +64,8 @@ export default function GallerySection({gallery}) {
         transitionDuration: 500,
         duration: 5000,
     }
-
+    console.log(Object.keys(gallery).length)
+    console.log(gallery)
     return <>
         <ImagesModal setOpen={setOpenImage} open={openImage}/>
         {
@@ -244,8 +245,7 @@ export default function GallerySection({gallery}) {
                                                             backgroundSize: 'cover',
                                                             backgroundPosition: "center",
                                                             backgroundRepeat: "no-repeat",
-                                                        }} className={classes.selectedGalleryPhotos}
-                                                             onClick={openImageModal}/>
+                                                        }} className={classes.selectedGalleryPhotos}/>
                                                         <div className={classes.galleryTitle}>{data.name}</div>
                                                     </div>
                                                 </div>
@@ -260,7 +260,7 @@ export default function GallerySection({gallery}) {
                                                         backgroundSize: 'cover',
                                                         backgroundPosition: "center",
                                                         backgroundRepeat: "no-repeat",
-                                                    }} className={classes.galleryPhotos} onClick={openImageModal}/>
+                                                    }} className={classes.galleryPhotos}/>
                                                     <div className={classes.galleryTitle}>{data.name}</div>
                                                 </div>
                                             })
@@ -283,8 +283,7 @@ export default function GallerySection({gallery}) {
                                                                 backgroundSize: 'cover',
                                                                 backgroundPosition: "center",
                                                                 backgroundRepeat: "no-repeat",
-                                                            }} className={classes.selectedGalleryPhotos}
-                                                                 onClick={openImageModal}/>
+                                                            }} className={classes.selectedGalleryPhotos}/>
                                                             <div className={classes.galleryTitle}>{data.name}</div>
                                                         </div>
                                                     </div>
@@ -299,7 +298,7 @@ export default function GallerySection({gallery}) {
                                                             backgroundSize: 'cover',
                                                             backgroundPosition: "center",
                                                             backgroundRepeat: "no-repeat",
-                                                        }} className={classes.galleryPhotos} onClick={openImageModal}/>
+                                                        }} className={classes.galleryPhotos}/>
                                                         <div className={classes.galleryTitle}>{data.name}</div>
                                                     </div>
                                                 })
