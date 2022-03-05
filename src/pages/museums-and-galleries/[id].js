@@ -480,7 +480,7 @@ export async function getStaticProps({params: {id}}) {
         data: {
             artCenter
         }
-    } = await axios.get(`${process.env.BASE_URL}/api/art-center/${id}`)
+    } = await axios.get(`${process.env.BACKEND_BASE_URL}/gallery/${id}/show`)
 
     return {
         props: {
