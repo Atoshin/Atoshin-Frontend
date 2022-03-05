@@ -45,6 +45,8 @@ export default function ArtCenter({artCenter}) {
         }))
     }
 
+    console.log(artCenter)
+    console.log(artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1 ).length)
     useEffect(() => {
         //region change background color for profile page
         const body = document.getElementsByTagName('body')[0];
@@ -85,7 +87,7 @@ export default function ArtCenter({artCenter}) {
     };
 
     const VideoShow = () => {
-        if (artCenter.videoLinks[0]) {
+        if (Object.keys(artCenter.videoLinks).length > 0) {
             if (typeof document !== 'undefined') {
                 let span = document.createElement('span');
                 span.hidden = true;
@@ -93,31 +95,54 @@ export default function ArtCenter({artCenter}) {
                 const iframe = span.children[0];
                 const ytvId = iframe.src.slice(-11)
                 span.remove()
-                if (artCenter.medias.filter(media => media.homeapagePicture === 1).length > 4) {
+                if (artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1 ).length + Object.keys(artCenter.videoLinks).length > 4) {
                     return (
                         <Slide style={{position: 'relative'}} {...properties} ref={gallerySliderRef}>
-                            <div onClick={() => {
-                                setClickedVideoId(artCenter.videoLinks[0].id)
-                                setOpenImages(true)
-                            }} style={{
-                                backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
-                                height: 220,
-                                width: 220,
-                                cursor: 'pointer',
-                                backgroundPosition: "center",
-                                backgroundSize: "cover",
-                                borderRadius: 3,
-                                marginRight: 16,
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                boxShadow: '0px 1px 3px 0px #00000026',
-                            }}>
-                                <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
-                            </div>
                             {
-                                artCenter.medias.filter(media => media.homeapagePicture === 1).map((data, idx) => {
-                                    if (idx === parseInt(Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1))[Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1)).length - 1]) || idx === 4) {
+                                artCenter.videoLinks.map((idx, data) => {
+                                    return  <div key={idx} onClick={() => {
+                                        setClickedVideoId(data.id)
+                                        setOpenImages(true)
+                                    }} style={{
+                                        backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
+                                        height: 220,
+                                        width: 220,
+                                        cursor: 'pointer',
+                                        backgroundPosition: "center",
+                                        backgroundSize: "cover",
+                                        borderRadius: 3,
+                                        marginRight: 16,
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        boxShadow: '0px 1px 3px 0px #00000026',
+                                    }}>
+                                        <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
+                                    </div>
+                                })
+                            }
+                            {/*<div onClick={() => {*/}
+                            {/*    setClickedVideoId(artCenter.videoLinks[0].id)*/}
+                            {/*    setOpenImages(true)*/}
+                            {/*}} style={{*/}
+                            {/*    backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,*/}
+                            {/*    height: 220,*/}
+                            {/*    width: 220,*/}
+                            {/*    cursor: 'pointer',*/}
+                            {/*    backgroundPosition: "center",*/}
+                            {/*    backgroundSize: "cover",*/}
+                            {/*    borderRadius: 3,*/}
+                            {/*    marginRight: 16,*/}
+                            {/*    display: 'flex',*/}
+                            {/*    justifyContent: 'center',*/}
+                            {/*    alignItems: 'center',*/}
+                            {/*    boxShadow: '0px 1px 3px 0px #00000026',*/}
+                            {/*}}>*/}
+                            {/*    <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>*/}
+                            {/*</div>*/}
+                            {
+                                artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1).map((data, idx) => {
+                                    if (idx === parseInt(Object.keys(artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1))[Object.keys(artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1)).length - 1]) || idx === 4) {
                                         return <div key={idx} onClick={() => showImageModal(data.id)} style={{
                                             backgroundImage: `url("${data.url}")`,
                                             height: 220,
@@ -151,60 +176,63 @@ export default function ArtCenter({artCenter}) {
                     )
                 } else {
                     return <div style={{display: 'flex'}}>
+                            {
+                                artCenter.videoLinks.map((data) => {
+                                    return   <div key={Math.random()} onClick={() => {
+                                        setClickedVideoId(data.id)
+                                        setOpenImages(true)
+                                    }} style={{
+                                        backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
+                                        height: 220,
+                                        width: 220,
+                                        cursor: 'pointer',
+                                        backgroundPosition: "center",
+                                        backgroundSize: "cover",
+                                        borderRadius: 3,
+                                        marginRight: 16,
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        boxShadow: '0px 1px 3px 0px #00000026',
+                                    }}>
+                                        <img src={'/images/show-asset/videoPlay.svg'}
+                                             style={{width: 53.84, height: 53.84}}/>
+                                    </div>
+                                })
+                            }
                         {
-                            [
-                                <div key={Math.random()} onClick={() => {
-                                    setClickedVideoId(artCenter.videoLinks[0].id)
-                                    setOpenImages(true)
-                                }} style={{
-                                    backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
-                                    height: 220,
-                                    width: 220,
-                                    cursor: 'pointer',
-                                    backgroundPosition: "center",
-                                    backgroundSize: "cover",
-                                    borderRadius: 3,
-                                    marginRight: 16,
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    boxShadow: '0px 1px 3px 0px #00000026',
-                                }}>
-                                    <img src={'/images/show-asset/videoPlay.svg'}
-                                         style={{width: 53.84, height: 53.84}}/>
-                                </div>
-                                ,
-                                artCenter.medias.filter(media => media.homeapagePicture === 1).map((data, idx) => {
-                                    if (idx === parseInt(Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1))[Object.keys(artCenter.medias.filter(media => media.homeapagePicture === 1)).length - 1]) || idx === 4) {
-                                        return <div key={idx} onClick={() => showImageModal(data.id)} style={{
-                                            backgroundImage: `url("${data.url}")`,
-                                            height: 220,
-                                            width: 220,
-                                            cursor: 'pointer',
-                                            backgroundPosition: "center",
-                                            backgroundSize: "cover",
-                                            borderRadius: 3,
-                                            display: 'flex',
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
-                                            boxShadow: '0px 1px 3px 0px #00000026',
-                                        }}>
-                                        </div>
-                                    } else {
-                                        return <div key={idx} onClick={() => showImageModal(data.id)} style={{
-                                            backgroundImage: `url("${data.url}")`,
-                                            height: 220,
-                                            width: 220,
-                                            cursor: 'pointer',
-                                            backgroundPosition: "center",
-                                            backgroundSize: "cover",
-                                            borderRadius: 3,
-                                            marginRight: 16,
-                                            boxShadow: '0px 1px 3px 0px #00000026',
-                                        }}/>
-                                    }
-                                })]
+                            artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1).map((data, idx) => {
+                                if (idx === parseInt(Object.keys(artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1))[Object.keys(artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1)).length - 1]) || idx === 4) {
+                                    return <div key={idx} onClick={() => showImageModal(data.id)} style={{
+                                        backgroundImage: `url("${data.url}")`,
+                                        height: 220,
+                                        width: 220,
+                                        cursor: 'pointer',
+                                        backgroundPosition: "center",
+                                        backgroundSize: "cover",
+                                        borderRadius: 3,
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        boxShadow: '0px 1px 3px 0px #00000026',
+                                    }}>
+                                    </div>
+                                } else {
+                                    return <div key={idx} onClick={() => showImageModal(data.id)} style={{
+                                        backgroundImage: `url("${data.url}")`,
+                                        height: 220,
+                                        width: 220,
+                                        cursor: 'pointer',
+                                        backgroundPosition: "center",
+                                        backgroundSize: "cover",
+                                        borderRadius: 3,
+                                        marginRight: 16,
+                                        boxShadow: '0px 1px 3px 0px #00000026',
+                                    }}/>
+                                }
+                            })
                         }
+
                     </div>
                 }
 
@@ -328,14 +356,14 @@ export default function ArtCenter({artCenter}) {
             >
 
                 {
-                    artCenter.videoLinks[0] ?
+                    Object.keys(artCenter.videoLinks).length > 0 ?
                         <VideoShow/>
                         :
                         artCenter.medias ?
-                            artCenter.medias.filter(media => media.homeapagePicture === 1).length > 5 ?
+                            artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1).length > 5 ?
                                 <Slide style={{position: 'relative'}} {...properties} ref={gallerySliderRef}>
                                     {
-                                        artCenter.medias.filter(media => media.homeapagePicture === 1).map((img, key) => {
+                                        artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1 ).map((img, key) => {
                                             return <div
                                                 onClick={() => showImageModal(img.id)}
                                                 key={key} style={{
@@ -354,7 +382,7 @@ export default function ArtCenter({artCenter}) {
                                 </Slide>
                                 :
                                 <div style={{display: 'flex'}}>
-                                    {artCenter.medias.filter(media => media.homeapagePicture === 1).map((img, key) => {
+                                    {artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1).map((img, key) => {
                                         if (parseInt(Object.keys(artCenter.medias)[Object.keys(artCenter.medias).length - 1]) === key) {
                                             return <div key={key}
                                                         onClick={() => showImageModal(img.id)}
