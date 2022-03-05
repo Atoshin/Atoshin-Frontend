@@ -244,8 +244,7 @@ export default function GallerySection({gallery}) {
                                                             backgroundSize: 'cover',
                                                             backgroundPosition: "center",
                                                             backgroundRepeat: "no-repeat",
-                                                        }} className={classes.selectedGalleryPhotos}
-                                                             onClick={openImageModal}/>
+                                                        }} className={classes.selectedGalleryPhotos}/>
                                                         <div className={classes.galleryTitle}>{data.name}</div>
                                                     </div>
                                                 </div>
@@ -260,7 +259,7 @@ export default function GallerySection({gallery}) {
                                                         backgroundSize: 'cover',
                                                         backgroundPosition: "center",
                                                         backgroundRepeat: "no-repeat",
-                                                    }} className={classes.galleryPhotos} onClick={openImageModal}/>
+                                                    }} className={classes.galleryPhotos}/>
                                                     <div className={classes.galleryTitle}>{data.name}</div>
                                                 </div>
                                             })
@@ -283,8 +282,7 @@ export default function GallerySection({gallery}) {
                                                                 backgroundSize: 'cover',
                                                                 backgroundPosition: "center",
                                                                 backgroundRepeat: "no-repeat",
-                                                            }} className={classes.selectedGalleryPhotos}
-                                                                 onClick={openImageModal}/>
+                                                            }} className={classes.selectedGalleryPhotos}/>
                                                             <div className={classes.galleryTitle}>{data.name}</div>
                                                         </div>
                                                     </div>
@@ -299,7 +297,7 @@ export default function GallerySection({gallery}) {
                                                             backgroundSize: 'cover',
                                                             backgroundPosition: "center",
                                                             backgroundRepeat: "no-repeat",
-                                                        }} className={classes.galleryPhotos} onClick={openImageModal}/>
+                                                        }} className={classes.galleryPhotos}/>
                                                         <div className={classes.galleryTitle}>{data.name}</div>
                                                     </div>
                                                 })
