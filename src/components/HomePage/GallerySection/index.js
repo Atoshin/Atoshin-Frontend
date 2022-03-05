@@ -17,7 +17,7 @@ export default function GallerySection({gallery}) {
         toggle: false,
         imgSrc: null
     });
-    const [selectedGallery, setSelectedGallery] = useState(gallery.find(item => item.id === 1));
+    const [selectedGallery, setSelectedGallery] = useState(gallery[0]);
     const router = useRouter();
     const sliderRef = useRef();
 
