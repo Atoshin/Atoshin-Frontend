@@ -64,8 +64,6 @@ export default function GallerySection({gallery}) {
         transitionDuration: 500,
         duration: 5000,
     }
-    console.log(Object.keys(gallery).length)
-    console.log(gallery)
     return <>
         <ImagesModal setOpen={setOpenImage} open={openImage}/>
         {

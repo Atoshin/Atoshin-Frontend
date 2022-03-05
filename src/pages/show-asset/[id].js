@@ -151,7 +151,7 @@ export default function ShowAsset({asset}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const ArtworkSubImages = () => {
-        if (asset.videoLinks[0]) {
+        if (Object.keys(asset.videoLinks).length > 0) {
             if (typeof document !== 'undefined') {
                 let span = document.createElement('span');
                 span.hidden = true;
@@ -159,27 +159,28 @@ export default function ShowAsset({asset}) {
                 const iframe = span.children[0];
                 const ytvId = iframe.src.slice(-11)
                 span.remove()
-                return [
-                    <div key={5000} onClick={() => {
-                        setClickedVideoId(asset.videoLinks[0].id)
-                        setOpenImages(true)
-                    }} style={{
-                        backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
-                        width: 93.39,
-                        height: 93.39,
-                        backgroundPosition: 'center',
-                        backgroundSize: "cover",
-                        marginRight: 15.73,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        borderRadius: 3,
-                        boxShadow: '0px 1px 3px 0px #00000026'
-                    }}>
-                        <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
-                    </div>
-                    ,
-                    asset.medias.slice(0, 5).map((data, idx) => {
+              return  [
+                     asset.videoLinks.slice(0, 5).map((data, idx) => {
+                        return  <div key={5000} onClick={() => {
+                            setClickedVideoId(data.id)
+                            setOpenImages(true)
+                        }} style={{
+                            backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
+                            width: 93.39,
+                            height: 93.39,
+                            backgroundPosition: 'center',
+                            backgroundSize: "cover",
+                            marginRight: 15.73,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: 3,
+                            boxShadow: '0px 1px 3px 0px #00000026'
+                        }}>
+                            <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
+                        </div>
+                    }) ,
+                    asset.medias.slice(0, (6 - asset.videoLinks.length)+1).map((data, idx) => {
                         if (idx === parseInt(Object.keys(asset.medias)[Object.keys(asset.medias).length - 1]) || idx === 4) {
                             return <div onClick={() => openImageModal(data.id)} style={{
                                 backgroundImage: `url("${data.url}")`,
@@ -207,29 +208,59 @@ export default function ShowAsset({asset}) {
                                 boxShadow: '0px 1px 3px 0px #00000026'
                             }}/>
                         }
-                    })]
-                // return [asset.medias.slice(0, 5).map((data, idx) => {
-                //     return <div style={{
-                //         backgroundImage: `url("${data.url}")`,
+                    })
+                ]
+
+
+                // return [
+                //     <div key={5000} onClick={() => {
+                //         setClickedVideoId(asset.videoLinks[0].id)
+                //         setOpenImages(true)
+                //     }} style={{
+                //         backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
                 //         width: 93.39,
                 //         height: 93.39,
                 //         backgroundPosition: 'center',
                 //         backgroundSize: "cover",
                 //         marginRight: 15.73,
-                //     }}/>
-                // }), <div style={{
-                //     backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
-                //     width: 93.39,
-                //     height: 93.39,
-                //     backgroundPosition: 'center',
-                //     backgroundSize: "cover",
-                //     // marginRight: 15.73,
-                //     display:'flex',
-                //     justifyContent:'center',
-                //     alignItems:'center',
-                // }}>
-                //     <img src="/images/show-asset/more.svg" style={{width: 54.07, height: 54.07}}/>
-                // </div>]
+                //         display: 'flex',
+                //         justifyContent: 'center',
+                //         alignItems: 'center',
+                //         borderRadius: 3,
+                //         boxShadow: '0px 1px 3px 0px #00000026'
+                //     }}>
+                //         <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
+                //     </div>
+                //     ,
+                //     asset.medias.slice(0, 5).map((data, idx) => {
+                //         if (idx === parseInt(Object.keys(asset.medias)[Object.keys(asset.medias).length - 1]) || idx === 4) {
+                //             return <div onClick={() => openImageModal(data.id)} style={{
+                //                 backgroundImage: `url("${data.url}")`,
+                //                 width: 93.39,
+                //                 height: 93.39,
+                //                 backgroundPosition: 'center',
+                //                 backgroundSize: "cover",
+                //                 display: 'flex',
+                //                 justifyContent: 'center',
+                //                 alignItems: 'center',
+                //                 borderRadius: 3,
+                //                 boxShadow: '0px 1px 3px 0px #00000026'
+                //             }}>
+                //                 <img src="/images/show-asset/more.svg" style={{width: 53.84, height: 53.84}}/>
+                //             </div>
+                //         } else {
+                //             return <div onClick={() => openImageModal(data.id)} style={{
+                //                 backgroundImage: `url("${data.url}")`,
+                //                 width: 93.39,
+                //                 height: 93.39,
+                //                 backgroundPosition: 'center',
+                //                 backgroundSize: "cover",
+                //                 marginRight: 15.73,
+                //                 borderRadius: 3,
+                //                 boxShadow: '0px 1px 3px 0px #00000026'
+                //             }}/>
+                //         }
+                //     })]
             } else {
                 return null;
             }
