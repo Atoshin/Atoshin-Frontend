@@ -213,11 +213,11 @@ export async function getServerSideProps({req, res}) {
     }
 
 
-    // if (!token) {
-    //     res.setHeader("location", "/")
-    //     res.statusCode = 302
-    //     res.end()
-    // }
+    if (!token) {
+        res.setHeader("location", "/")
+        res.statusCode = 302
+        res.end()
+    }
 
     return {
         props: {

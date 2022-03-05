@@ -28,6 +28,7 @@
   border-radius: 3px;
   border: 1px solid #A7A7A7;
   cursor: pointer;
+  position: relative;
   margin-bottom: 16px;
 }
 
@@ -81,6 +82,7 @@
   color: #FFFFFF;
   padding-bottom: 3px;
   margin-left: -10px;
+  top: 20px;
 }
 
 @media (max-width: 782px) {
