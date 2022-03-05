@@ -100,8 +100,7 @@ export default function GallerySection({gallery}) {
                             </div>
                         } else {
                             return selectedGallery.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((data, key) => {
-                                return <div key={key} className={classes.galleryVidContainer}
-                                            onClick={openYouTubeModal}>
+                                return <div key={key} className={classes.galleryVidContainer}>
                                     <div ref={imageRef} style={{
                                         backgroundImage: `url("${data.url}")`,
                                         width: '100%',
@@ -111,8 +110,8 @@ export default function GallerySection({gallery}) {
                                         backgroundPosition: 'center',
                                     }}>
                                     </div>
-                                    <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
-                                         onClick={openYouTubeModal}/>
+                                    {/*<img style={{border:'solid red'}} src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""*/}
+                                    {/*     onClick={openYouTubeModal}/>*/}
                                 </div>
                             })
 
@@ -120,8 +119,8 @@ export default function GallerySection({gallery}) {
 
                     })
                     :
-                    selectedGallery.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((data) => {
-                        return <div className={classes.galleryVidContainer}>
+                    selectedGallery.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((data, idx) => {
+                        return <div key={idx} className={classes.galleryVidContainer}>
                             <div ref={imageRef} style={{
                                 backgroundImage: `url("${data.url}")`,
                                 width: '100%',
@@ -194,19 +193,18 @@ export default function GallerySection({gallery}) {
                                             backgroundSize: "cover",
                                             backgroundPosition: 'center',
                                             // filter: 'contrast(50%)',
-                                            // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)'
-                                            filter: 'saturate(100%) brightness(0.50)'
+                                            // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)',
+                                            // filter: 'saturate(100%) brightness(0.50)'
                                         }}
-                                             className={classes.galleryMainPhoto}
-                                             onClick={openYouTubeModal}/>
-                                        <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
-                                             onClick={openYouTubeModal}/>
+                                             className={classes.galleryMainPhoto}/>
+                                        {/*<img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""*/}
+                                        {/*     onClick={openYouTubeModal}/>*/}
                                     </div>
                                 })
                             }
                         }) :
-                        selectedGallery.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((data) => {
-                            return <div className={classes.galleryVidContainer}>
+                        selectedGallery.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((data, idx) => {
+                            return <div key={idx} className={classes.galleryVidContainer}>
                                 <div
                                     style={{
                                         backgroundImage: `url("${data.url}")`,
@@ -238,7 +236,7 @@ export default function GallerySection({gallery}) {
                                         if (data.id === selectedGallery.id) {
                                             return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
                                                 const {url} = img;
-                                                return <div className={classes.selectedGallerySec}>
+                                                return <div key={idx} className={classes.selectedGallerySec}>
                                                     <div onClick={() => setSelectedGallery(data)}
                                                          key={idx} className={classes.selectedGallery}>
                                                         <div datasrc={url} style={{
@@ -278,7 +276,7 @@ export default function GallerySection({gallery}) {
                                             if (data.id === selectedGallery.id) {
                                                 return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
                                                     const {url} = img;
-                                                    return <div className={classes.selectedGallerySec}>
+                                                    return <div key={idx} className={classes.selectedGallerySec}>
                                                         <div key={idx} className={classes.selectedGallery}>
                                                             <div datasrc={url} style={{
                                                                 backgroundImage: `url("${url}")`,

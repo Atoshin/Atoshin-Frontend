@@ -63,7 +63,7 @@ export default function FAQ() {
             // answer: 'include image'
             answer: <div className={classes.realBenefits}>
                 <div style={{marginBottom: 16}}>
-                    Asset fractional ownership isn't a new concept. The concept has been successfully used in a variety
+                    Asset fractional ownership  isn&apos;t a new concept. The concept has been successfully used in a variety
                     of industries, from real estate to fashion, and for a variety of physical assets, including stock,
                     designer items, and high-end assets such as yachts and private jets.
                 </div>
@@ -84,7 +84,7 @@ export default function FAQ() {
                     time at a property every year.
                     All of the benefits and costs that come with owning property are shared by fractional owners. The
                     revenue, usage rights, and access to the shared property are split proportionally to the percentage
-                    of the asset that each coowner owns. Individual shares will improve in value if the vacation home's
+                    of the asset that each coowner owns. Individual shares will improve in value if the vacation home&apos;s
                     total value increases over a decade. Of course, if the value of the property depreciates, the value
                     of the shares will likewise depreciate.
                 </div>
@@ -103,7 +103,7 @@ export default function FAQ() {
                 <div style={{marginBottom: 8}}>F-NFTs are of value for three primary reasons:</div>
                 <div style={{marginBottom: 16}}>1. Smaller investors may be unable to participate due to the excessive
                     pricing of some NFTs. Fractionalizing a costly NFT lowers ownership expenses and opens it up to a
-                    wider group of investors. It's also worth noting that when the price of an NFT rises, the value of
+                    wider group of investors. It&apos;s also worth noting that when the price of an NFT rises, the value of
                     all of its fractions climbs in lockstep. If its value falls abruptly, as it often does in the crypto
                     market, the value of all fractions falls with it.
                 </div>
