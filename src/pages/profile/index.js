@@ -127,7 +127,7 @@ export default function Profile({token}) {
                             <div className={classes.profileImg} style={{
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
-                                backgroundImage: `url(${userData.avatarUrl ? userData.avatarUrl : "/icons/profile-icon.svg"})`
+                                backgroundImage: `url(${!userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL ? userData.avatarUrl : "/icons/profile-icon.svg"})`
                             }}/>
                             {/*<img className={classes.profileImg} src={userData.avatar ? userData.avatar : "/icons/profile-icon.svg"} alt=""/>*/}
                             <div className={classes.profileName}>
@@ -164,7 +164,7 @@ export default function Profile({token}) {
                                 <div className={classes.profileImg} style={{
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
-                                    backgroundImage: `url(${userData.avatarUrl ? userData.avatarUrl : "/icons/profile-icon.svg"})`
+                                    backgroundImage: `url(${!userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL ? userData.avatarUrl : "/icons/profile-icon.svg"})`
                                 }}/>
                                 <div className={classes.profileName}>
                                     {userData.firstName ? userData.firstName + ' ' + userData.lastName : 'Unknown'}
@@ -213,11 +213,11 @@ export async function getServerSideProps({req, res}) {
     }
 
 
-    if (!token) {
-        res.setHeader("location", "/")
-        res.statusCode = 302
-        res.end()
-    }
+    // if (!token) {
+    //     res.setHeader("location", "/")
+    //     res.statusCode = 302
+    //     res.end()
+    // }
 
     return {
         props: {

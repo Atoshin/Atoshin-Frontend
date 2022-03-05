@@ -214,6 +214,7 @@ export default function ArtCenter({artCenter}) {
         }
     }
 
+    console.log(artCenter.assets)
     return (
         <>
             <ImagesModal open={openImages} setOpen={setOpenImages}
@@ -408,57 +409,62 @@ export default function ArtCenter({artCenter}) {
                     <Map artCenter={artCenter}/>
                 </div>
             </div>
-            <div className={classes.relatedSec}>
-                <div className={classes.relatedTitle}>
-                    Related to gallery
-                </div>
-                <div className={classes.slider2}>
-                    <Slide
-                        autoplay={true}
-                        easing={"ease"}
-                        slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 4}
-                        infinite={true}
-                        arrows={true}
-                        slidesToScroll={1}
-                        transitionDuration={500}
-                        duration={5000}
-                        ref={relatedSliderRef}>
-                        {artCenter.assets.map((asset, idx) => {
-                            return (
-                                <div key={idx} className={(matches1 || matches2) ? classes.card2 : classes.card}>
-                                    <div
-                                        className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
-                                        style={{
-                                            backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
-                                            backgroundSize: "cover",
-                                            backgroundPosition: "center",
-                                            borderRadius:3,
-                                        }}
-                                    >
-                                    </div>
-                                    <div className={classes.relatedDescription}>
-                                        <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>
-                                            {asset.title}
-                                        </p>
-                                        {(new Date(asset.endDate) > new Date()) &&
+            {
+                !artCenter.assets.length > 0 ?
+                    <div className={classes.relatedSec}>
+                        <div className={classes.relatedTitle}>
+                            Related to gallery
+                        </div>
+                        <div className={classes.slider2}>
+                            <Slide
+                                autoplay={true}
+                                easing={"ease"}
+                                slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 4}
+                                infinite={true}
+                                arrows={true}
+                                slidesToScroll={1}
+                                transitionDuration={500}
+                                duration={5000}
+                                ref={relatedSliderRef}>
+                                {artCenter.assets.map((asset, idx) => {
+                                    return (
+                                        <div key={idx} className={(matches1 || matches2) ? classes.card2 : classes.card}>
                                             <div
-                                                className={matches1 || matches2 ? classes.date : classes.date1}>
-                                                Sale ends
-                                                in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                                className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
+                                                style={{
+                                                    backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
+                                                    backgroundSize: "cover",
+                                                    backgroundPosition: "center",
+                                                    borderRadius:3,
+                                                }}
+                                            >
                                             </div>
-                                        }
-                                        <p
-                                            className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}
-                                        >
-                                            {shortenWords(extractContent(asset.bio), 60) + '...'}
-                                        </p>
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </Slide>
-                </div>
-            </div>
+                                            <div className={classes.relatedDescription}>
+                                                <p className={(matches1 || matches2) ? classes.relatedDescTitle2 : classes.relatedDescTitle}>
+                                                    {asset.title}
+                                                </p>
+                                                {(new Date(asset.endDate) > new Date()) &&
+                                                <div
+                                                    className={matches1 || matches2 ? classes.date : classes.date1}>
+                                                    Sale ends
+                                                    in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                                </div>
+                                                }
+                                                <p
+                                                    className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}
+                                                >
+                                                    {shortenWords(extractContent(asset.bio), 60) + '...'}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </Slide>
+                        </div>
+                    </div>
+                    :
+                    <div style={{height:'250px'}}/>
+            }
         </>
     )
 }
