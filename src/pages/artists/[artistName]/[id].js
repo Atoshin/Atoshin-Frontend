@@ -48,7 +48,7 @@ export default function Artist({artist}) {
                             <div className={classes.rankingSec}>
                                 <div className={classes.globalRank}>
                                     {/*{artist.worldRanking}*/}
-                                    Top {artist.worldRanking}. Global
+                                    Top {artist.worldRanking}.Global
                                 </div>
                                 <div className={classes.domesticRank}>
                                     {/*{artist.iranRanking}*/}
