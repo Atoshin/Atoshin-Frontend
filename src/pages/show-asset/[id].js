@@ -22,6 +22,8 @@ import {useAppDispatch} from "../../redux/hooks";
 import {setAlert} from "../../redux/slices/alertSlice";
 import LoadingBackdrop from "../../components/Layout/Backdrop";
 
+
+const nullAddress = "0x0000000000000000000000000000000000000000";
 export default function ShowAsset({asset}) {
     const [openImages, setOpenImages] = useState(false)
     const [openOwners, setOpenOwners] = useState(false)
@@ -34,6 +36,7 @@ export default function ShowAsset({asset}) {
     const [secondTooltip, setSecondTooltip] = useState(false)
     const [loadingTxn, setLoadingTxn] = useState(false)
     const [isAuctionOver, setIsAuctionOver] = useState(false)
+    const [owners, setOwners] = useState([])
     const [cookie, setCookie] = useCookies()
     const [currentSlide, setCurrentSlide] = useState(asset.medias.find(media => media.main === 1))
     const [mainImgSize, setMainImgSize] = useState({
@@ -59,6 +62,21 @@ export default function ShowAsset({asset}) {
         //endregion
     }, [])
 
+    function removeDuplicates(originalArray, prop) {
+        var newArray = [];
+        var lookupObject = {};
+
+        for (var i in originalArray) {
+            lookupObject[originalArray[i][prop]] = originalArray[i];
+        }
+
+        for (i in lookupObject) {
+            newArray.push(lookupObject[i]);
+        }
+        return newArray;
+    }
+
+
     useEffect(() => {
         const onScroll = (e) => {
             const container = document.getElementsByClassName(styles.showAssetMain)[0]
@@ -76,10 +94,53 @@ export default function ShowAsset({asset}) {
 
         window.addEventListener('scroll', onScroll)
 
+        const loadOwners = async () => {
+            try {
+                const tokenIds = asset.contracts.map((contract) => {
+                    return contract.minted.tokenId
+                });
+                const {data: encData} = await axios.get('/api/contracts/abi-info');
+                const decrypted = await CryptoJS.AES.decrypt(encData, process.env.NEXT_PUBLIC_CRYPT_KEY)
+                const {
+                    Market: {address: nftMarketAddress, abi: marketAbi},
+                    RPCEndPoint: rpcEndpoint
+                } = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
 
+                const provider = new ethers.providers.JsonRpcProvider(rpcEndpoint)
+                // const provider = new ethers.providers.JsonRpcProvider()
+                const marketContract = new ethers.Contract(nftMarketAddress, marketAbi, provider)
+                const data = await marketContract.getArtworkOwners(tokenIds[0], tokenIds[tokenIds.length - 1])
+                let items = await Promise.all(data.map(async i => {
+                    return i
+                }))
+
+                items = items.map(item => {
+                    // if (item !== nullAddress) {
+                        const occurrences = items.filter(address => address === item).length;
+                        return {
+                            tokens: occurrences,
+                            address: item
+                        }
+                    // }
+                });
+                let nftOwners = [];
+                for (let i = 0; i < items.length; i++) {
+                    if (items[i]) nftOwners.push(items[i])
+                }
+                nftOwners = removeDuplicates(nftOwners, 'address')
+                nftOwners.sort((a,b) => (a.tokens > b.tokens) ? 1 : ((b.tokens > a.tokens) ? -1 : 0));
+                console.log(nftOwners)
+
+            } catch (e) {
+                console.error(e)
+            }
+        }
+
+        loadOwners()
         return function () {
             window.removeEventListener('scroll', onScroll)
         }
+
     }, [])
 
 
@@ -745,9 +806,9 @@ export default function ShowAsset({asset}) {
 }
 
 export async function getStaticPaths() {
-    const {data: {galleries}} = await axios.get(`${process.env.BACKEND_BASE_URL}/galleries`)
-    const paths = galleries.map(gallery => ({
-        params: {id: gallery.id.toString()}
+    const {data: {assets}} = await axios.get(`${process.env.BACKEND_BASE_URL}/marketplace`)
+    const paths = assets.map(asset => ({
+        params: {id: asset.id.toString()}
     }))
 
     return {

@@ -7,6 +7,7 @@ import {useRouter} from "next/router";
 import {TimeDifference} from "../TimeDifference";
 import 'react-slideshow-image/dist/styles.css';
 import Link from "next/link";
+import calculateDecimalPrecision from "../../../functions/calculateDecimalPrecision";
 
 export default function Slider({images, sliderRef, setCurrentSlide, assets, currentSlide}) {
     const imageRef = useRef({
@@ -54,7 +55,7 @@ export default function Slider({images, sliderRef, setCurrentSlide, assets, curr
                                                 Price
                                             </div>
                                             <div className={classes.amountSec}>
-                                                {assets[i].price} ETH
+                                                {calculateDecimalPrecision(assets[i].ethPricePerFraction, 5)} ETH
                                             </div>
                                         </div>
                                         <div className={classes.quantSec}>
