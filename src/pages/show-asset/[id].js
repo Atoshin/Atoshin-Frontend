@@ -709,7 +709,7 @@ export default function ShowAsset({asset}) {
                         </div>
                     </div>
                 </div>
-                {asset.buyTransactions &&
+                {asset.buyTransactions.length > 0 &&
                     <div className={styles.bottomMainSec}>
                         <div className={styles.ownersMainSec}>
                             <div className={styles.ownersTitleSec}>
