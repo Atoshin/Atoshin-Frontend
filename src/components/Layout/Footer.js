@@ -60,7 +60,9 @@ export default function Footer() {
                         </Link>
                     </div>
                     <div className={classes.linkSubtitle}>
+                        <Link href={'/about-us'}>
                         About Us
+                        </Link>
                     </div>
                     <div className={classes.linkSubtitle}>
                         <Link href={'/faq'}>
