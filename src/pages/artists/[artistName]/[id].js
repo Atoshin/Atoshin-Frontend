@@ -10,15 +10,17 @@ import axios from "axios";
 import shortenWords from "../../../functions/shortenWords";
 import extractContent from "../../../functions/getHtmlInnerText";
 import Link from 'next/link';
+import NewsModal from "../../../components/ArtistProfile/NewsModal";
 
 export default function Artist({artist}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const relatedSliderRef = useRef()
-
+    const [openNewsModal, setOpenNewsModal] = useState(false);
 
     return (
         <>
+            <NewsModal open={openNewsModal} setOpen={setOpenNewsModal} news={artist.news}/>
             <div className={classes.main}>
                 <div className={classes.topSec}>
                     {matches &&
@@ -28,16 +30,19 @@ export default function Artist({artist}) {
                                 height: 242,
                                 backgroundImage: `url("${artist.medias.find(media => media.main === 1).url}")`,
                                 backgroundPosition: "center",
-                                backgroundSize: "cover"
+                                backgroundSize: "cover",
+                                boxShadow: "0px 1px 3px 0px #00000026",
                             }}
                             />
                         </div>
                     }
                     <div className={classes.artistDetailSec}>
                         <div className={classes.artistName}>{artist.fullName}</div>
-                        <a href={artist.website} target="_blank" rel="noreferrer" className={classes.artistWebsite}>{artist.website}</a>
+                        <a href={artist.website} target="_blank" rel="noreferrer"
+                           className={classes.artistWebsite}>{artist.website}</a>
                         <div className={classes.rankingMainSec}>
-                            <a target="_blank" href={artist.rankingLink} rel="noreferrer" className={classes.rankingText}>
+                            <a target="_blank" href={artist.rankingLink} rel="noreferrer"
+                               className={classes.rankingText}>
                                 Ranking
                             </a>
                             <div className={classes.rankingSec}>
@@ -51,16 +56,17 @@ export default function Artist({artist}) {
                                 </div>
                             </div>
                         </div>
-                        <div className={classes.newsMainSec}>
+                        <div className={classes.newsMainSec} onClick={() => setOpenNewsModal(true)}>
                             <div className={classes.newsSec}>
                                 <div className={classes.newsText}>
                                     News
                                 </div>
-                                {artist.news.map((newsSingular, idx) => {
-                                    return <a key={idx} target="_blank" rel="noreferrer" href={newsSingular.link} className={classes.newsLink}>
-                                        {newsSingular.title}
-                                    </a>
-                                })}
+                                <div className={classes.newsTitle}>Interesting news and stories about artist</div>
+                                {/*{artist.news.map((newsSingular, idx) => {*/}
+                                {/*    return <a key={idx} target="_blank" rel="noreferrer" href={newsSingular.link} className={classes.newsLink}>*/}
+                                {/*        {newsSingular.title}*/}
+                                {/*    </a>*/}
+                                {/*})}*/}
                             </div>
                             {/*<img src="/icons/link-out.svg" alt=""/>*/}
                         </div>
@@ -87,9 +93,10 @@ export default function Artist({artist}) {
                         Related to Artist
                     </div>
                     <div className={classes.slider2}>
-                        <Slide ref={relatedSliderRef} autoplay={artist.assets.length >= 4} easing={"ease"} slidesToShow={artist.assets. length < 4 ? artist.assets.length : (matches ? 2 : 4)}
+                        <Slide ref={relatedSliderRef} autoplay={artist.assets.length >= 4} easing={"ease"}
+                               slidesToShow={artist.assets.length < 4 ? artist.assets.length : (matches ? 2 : 4)}
                                infinite={true}
-                               arrows={false}
+                               arrows={true}
                                slidesToScroll={1}
                                transitionDuration={500}
                                duration={5000}>
@@ -98,7 +105,12 @@ export default function Artist({artist}) {
                                     <a>
                                         <div className={classes.card}>
                                             <div className={classes.relatedImg}
-                                                 style={{backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`, backgroundPosition: "center", backgroundSize: "cover"}}/>
+                                                 style={{
+                                                     backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
+                                                     backgroundPosition: "center",
+                                                     backgroundSize: "cover",
+                                                     borderRadius: 3
+                                                 }}/>
                                             <div className={classes.relatedDescription}>
                                                 <p className={classes.relatedDescTitle}>{asset.title}</p>
                                                 <p className={classes.relatedDescDesc}>{shortenWords(extractContent(asset.bio), 60) + '...'}</p>

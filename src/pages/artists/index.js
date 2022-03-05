@@ -31,7 +31,8 @@ export default function Artists({artists}) {
                                          style={{
                                              backgroundImage: `url("${artist.medias.find(media => media.main === 1).url}")`,
                                              backgroundSize: "cover",
-                                             backgroundPosition: "center"
+                                             backgroundPosition: "center",
+                                             borderRadius: '3px 3px 0px 0px'
                                          }}/>
                                     <div className={classes.imgTitle}>{artist.fullName}</div>
                                 </div>

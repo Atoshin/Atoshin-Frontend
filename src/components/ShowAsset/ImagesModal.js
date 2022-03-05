@@ -16,7 +16,6 @@ export default function ImagesModal({
                                         setClickedImageId,
                                         setClickedVideoId,
                                         two,
-                                        setTwo
                                     }) {
     const [mainImg, setImg] = useState(images.find(img => img.main === 1))
     const ref = useRef();
@@ -96,6 +95,7 @@ export default function ImagesModal({
                             :
                             <div  style={{width:698, height:469, display:'flex', justifyContent:'center'}}>
                                 <img src={mainImg.url}
+                                     style={{borderRadius: 3, boxShadow:" 0px 1px 3px 0px #00000026"}}
                                     // style={{width:698, height:469}}
                                 />
                             </div>
@@ -136,6 +136,7 @@ export default function ImagesModal({
                                             display: 'flex',
                                             justifyContent: 'center',
                                             alignItems: 'center',
+                                            boxShadow: "0px 1px 3px 0px #00000026",
                                         }}>
                                             <img src={'/images/show-asset/videoPlay.svg'}
                                                  style={{width: 53.84, height: 53.84}}/>
@@ -157,6 +158,7 @@ export default function ImagesModal({
                                         alignItems: 'center',
                                         marginBottom: 24,
                                         marginLeft: 24,
+                                        boxShadow: '0px 1px 3px 0px #00000026',
                                     }}>
                                         <img src={'/images/show-asset/videoPlay.svg'}
                                              style={{width: 53.84, height: 53.84}}/>
@@ -178,18 +180,17 @@ export default function ImagesModal({
                                             marginLeft: 24,
                                             padding: 3,
                                             display: 'flex',
-                                            justifyContent: 'center'
+                                            justifyContent: 'center',
                                         }}>
                                             <div id='test' onClick={() => setImg(image)} key={idx} style={{
                                                 backgroundImage: `url(${image.url})`,
                                                 width: 110,
                                                 height: 110,
                                                 borderRadius: 3,
-                                                // boxShadow: '#FD6108 0px 7px 12px',
                                                 backgroundPosition: 'center',
                                                 backgroundSize: "cover",
                                                 cursor: "pointer",
-
+                                                boxShadow: '0px 1px 3px 0px #00000026',
                                             }}/>
                                         </div>
                                     } else {
@@ -203,6 +204,7 @@ export default function ImagesModal({
                                             cursor: "pointer",
                                             marginBottom: 24,
                                             marginLeft: 24,
+                                            boxShadow: '0px 1px 3px 0px #00000026',
                                         }}/>
                                     }
                                 })
@@ -239,18 +241,17 @@ export default function ImagesModal({
                                             marginLeft: 24,
                                             padding: 3,
                                             display: 'flex',
-                                            justifyContent: 'center'
+                                            justifyContent: 'center',
                                         }}>
                                             <div id='test' onClick={() => setImg(image)} key={idx} style={{
                                                 backgroundImage: `url(${image.url})`,
                                                 width: 110,
                                                 height: 110,
                                                 borderRadius: 3,
-                                                // boxShadow: '#FD6108 0px 7px 12px',
                                                 backgroundPosition: 'center',
                                                 backgroundSize: "cover",
                                                 cursor: "pointer",
-
+                                                boxShadow: '0px 1px 3px 0px #00000026',
                                             }}/>
                                         </div>
                                     } else {
@@ -264,6 +265,7 @@ export default function ImagesModal({
                                             cursor: "pointer",
                                             marginBottom: 24,
                                             marginLeft: 24,
+                                            boxShadow: '0px 1px 3px 0px #00000026',
                                         }}/>
                                     }
                                 })

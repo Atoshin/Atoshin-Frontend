@@ -141,7 +141,7 @@ export default function HeaderContent({setDrawerMenu}) {
                             </Link>
                             <Link href={"/gallery-list"}>
                                 <a>
-                                    <ActiveLink title={'Art Centers'} href={"/gallery-list"}/>
+                                    <ActiveLink title={'Museums and Galleries'} href={"/gallery-list"}/>
                                 </a>
                             </Link>
                             <Link href={"/artists"}>
@@ -153,7 +153,12 @@ export default function HeaderContent({setDrawerMenu}) {
                             {/*<ActiveLink title={'Marketplace'} href={"/marketplace"}/>*/}
                             {/*<ActiveLink title={'Art Centers'} href={"/gallery-list"}/>*/}
                             {/*<ActiveLink title={'Artists'} href={"/artists"}/>*/}
-                            <li>About NFT</li>
+                            {/*<li>About NFT</li>*/}
+                            <Link href={"/about-nft"}>
+                                <a>
+                                    <ActiveLink title={'About NFT'} href={"/about-nft"}/>
+                                </a>
+                            </Link>
                             {address ?
                                 <div className={classes.avatarIconSec} onClick={handleClick}>
                                     <img className={classes.avatarIcon} src="/icons/avatar-icon.png" alt=""/>

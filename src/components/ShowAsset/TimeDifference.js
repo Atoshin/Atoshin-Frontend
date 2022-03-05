@@ -1,7 +1,7 @@
 import styles from "../../styles/ShowAsset/ShowAsset.module.scss";
 import {useEffect, useState} from "react";
 
-export function TimeDifference({time}) {
+export function TimeDifference({time, setIsOver}) {
     const [rendered, setRendered] = useState(false)
     const [calculatedTime, setCalculatedTime] = useState({
         day: '',
@@ -9,35 +9,6 @@ export function TimeDifference({time}) {
         min: ''
     })
 
-    function msToTime(s) {
-
-        // Pad to 2 or 3 digits, default is 2
-        function pad(n, z) {
-            z = z || 2;
-            return ('00' + n).slice(-z);
-        }
-
-        let ms = s % 1000;
-        s = (s - ms) / 1000;
-        let secs = s % 60;
-        s = (s - secs) / 60;
-        let mins = s % 60;
-        let hrs = (s - mins) / 60;
-        let days = "00";
-        hrs = pad(hrs)
-        mins = pad(mins)
-
-        if (hrs > 24) {
-            days = (hrs / 24).toFixed(0)
-            hrs = hrs - (24 * days)
-        }
-
-        return {
-            days: days,
-            hours: hrs,
-            minutes: mins
-        }
-    }
 
     function calculateTimeDifference() {
         time = new Date(time)
@@ -52,33 +23,36 @@ export function TimeDifference({time}) {
         let hour;
         let min;
 
-        if (diffDays < 10){
+        if (diffDays < 10) {
             day = `0${diffDays}`
-        }else{
+        } else {
             day = `${diffDays}`
         }
-        if (diffDays < 0){
+        if (diffDays < 0) {
             day = `00`
         }
 
-        if (diffHrs < 10){
+        if (diffHrs < 10) {
             hour = `0${diffHrs}`
-        }else{
+        } else {
             hour = `${diffHrs}`
         }
-        if (diffHrs < 0){
+        if (diffHrs < 0) {
             hour = `00`
         }
 
-        if (diffMins < 10){
+        if (diffMins < 10) {
             min = `0${diffMins}`
-        }else{
+        } else {
             min = `${diffMins}`
         }
-        if (diffMins < 0){
+        if (diffMins < 0) {
             min = `00`
         }
 
+        if (min === '00' && hour === '00' && day === '00') {
+            setIsOver(true)
+        }
         setCalculatedTime({
             day,
             hour,

@@ -33,7 +33,7 @@ export default function ContactUs({galleries}) {
                     <div className={classes.box1}>
                         <div className={classes.sec1}>
                             <div className={classes.email}>have you any question or problems?</div>
-                            <div className={classes.emailC}>contact@atoshin.com</div>
+                            <a href = "mailto:contact@atoshin.com"><div className={classes.emailC}>contact@atoshin.com</div></a>
                         </div>
                         <div className={classes.sec2}>
                             <img className={classes.emailIcon} src="/icons/email.svg" alt=""/>
@@ -43,7 +43,8 @@ export default function ContactUs({galleries}) {
                     <div className={classes.box1}>
                         <div className={classes.sec1}>
                             <div className={classes.email}>want to show your museum or gallery in Atoshin?</div>
-                            <div className={classes.emailC}>joinus@atoshin.art</div>
+                            {/*<div className={classes.emailC}>joinus@atoshin.art</div>*/}
+                            <a href = "mailto:joinus@atoshin.art"><div className={classes.emailC}>joinus@atoshin.art</div></a>
                         </div>
                         <div className={classes.sec2}>
                             <img className={classes.emailIcon} src="/icons/email.svg" alt=""/>
@@ -81,7 +82,7 @@ export default function ContactUs({galleries}) {
 
 // export async function getServerSideProps(ctx) {
 //
-//     const {data: {galleries}} = await axios.get(`${process.env.BASE_URL}/api/art-center/list`)
+//     const {data: {galleries}} = await axios.get(`${process.env.BASE_URL}/api/museums-and-galleries/list`)
 //
 //
 //     return {

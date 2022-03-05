@@ -39,7 +39,7 @@ export default function ArtistsSlider({artists}) {
                         <a>
                             {/*onClick={() => router.push(`/artists/${artist.fullName.toLowerCase().replace(/ /g, '-')}/${artist.id}`)}*/}
                             <div key={artist.id} className={classes.artist}>
-                                <img src={artist.medias.find(media => media.main === 1).url} alt=""/>
+                                <img src={artist.medias.find(media => media.main === 1).url} alt="" style={{borderRadius:" 3px 3px 0px 0px"}}/>
                                 <p>{artist.fullName}</p>
                             </div>
                         </a>
