@@ -106,8 +106,8 @@ export default function ShowAsset({asset}) {
                     RPCEndPoint: rpcEndpoint
                 } = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
 
-                const provider = new ethers.providers.JsonRpcProvider(rpcEndpoint)
-                // const provider = new ethers.providers.JsonRpcProvider()
+                // const provider = new ethers.providers.JsonRpcProvider(rpcEndpoint)
+                const provider = new ethers.providers.JsonRpcProvider()
                 const marketContract = new ethers.Contract(nftMarketAddress, marketAbi, provider)
                 const data = await marketContract.getArtworkOwners(tokenIds[0], tokenIds[tokenIds.length - 1])
                 let items = await Promise.all(data.map(async i => {
@@ -115,22 +115,21 @@ export default function ShowAsset({asset}) {
                 }))
 
                 items = items.map(item => {
-                    // if (item !== nullAddress) {
+                    if (item !== nullAddress) {
                         const occurrences = items.filter(address => address === item).length;
                         return {
                             tokens: occurrences,
                             address: item
                         }
-                    // }
+                    }
                 });
                 let nftOwners = [];
                 for (let i = 0; i < items.length; i++) {
                     if (items[i]) nftOwners.push(items[i])
                 }
                 nftOwners = removeDuplicates(nftOwners, 'address')
-                nftOwners.sort((a,b) => (a.tokens > b.tokens) ? 1 : ((b.tokens > a.tokens) ? -1 : 0));
-                console.log(nftOwners)
-
+                nftOwners.sort((a, b) => (a.tokens < b.tokens) ? 1 : ((b.tokens < a.tokens) ? -1 : 0));
+                setOwners(nftOwners);
             } catch (e) {
                 console.error(e)
             }
@@ -362,6 +361,7 @@ export default function ShowAsset({asset}) {
             }
         }
     }
+    console.log(asset);
 
     useEffect(() => {
         const imgContainer = document.getElementById('main-img-container')
@@ -425,8 +425,6 @@ export default function ShowAsset({asset}) {
         //     setQuantity(e.target.value)
         // }
     }
-
-    console.log(asset)
     return (
         <>
             <LoadingBackdrop setOpen={setLoadingTxn} open={loadingTxn}/>
@@ -440,8 +438,8 @@ export default function ShowAsset({asset}) {
             />
             {/*imageId={imageId}*/}
             {/*pass*/}
-            <OwnersModal owners={asset.buyTransactions} open={openOwners} setOpen={setOpenOwners}/>
-            <HistoryModal open={openHistory} setOpen={setOpenHistory}/>
+            <OwnersModal owners={owners} open={openOwners} setOpen={setOpenOwners}/>
+            <HistoryModal txns={asset.buyTransactions} open={openHistory} setOpen={setOpenHistory}/>
             <div className={styles.showAssetMain}>
                 <div className={styles.topMainSec}>
                     <div className={styles.topLeftMainSec}>
@@ -578,7 +576,7 @@ export default function ShowAsset({asset}) {
                                     <img src="/images/show-asset/plus.svg" style={{marginRight: 37, width: 56.5}}
                                          onClick={add}/>
                                 </div>
-                                <Button disabled={isAuctionOver} classes={{disabled: styles.disabledBtn}}
+                                <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions} classes={{disabled: styles.disabledBtn}}
                                         onClick={submitOrder} className={styles.BuyBtnDesktop}>
                                     Buy {quantity ? quantity : 0} - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH
                                 </Button>
@@ -725,16 +723,16 @@ export default function ShowAsset({asset}) {
                                     Quantity
                                 </div>
                             </div>
-                            {asset.buyTransactions && asset.buyTransactions.slice(0, 3).map((txn, idx) => {
+                            {owners.slice(0, 3).map((owner, idx) => {
                                 return <div key={idx} className={styles.ownersIndexRow}>
                                     <div className={styles.rankNum}>
                                         {idx + 1}
                                     </div>
-                                    <div className={styles.ownerName}>
-                                        {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
-                                    </div>
+                                    <a target="_blank" href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'address/' + owner.address} className={styles.ownerName} rel="noreferrer">
+                                        {owner.address.slice(0, 4) + '...' + owner.address.slice(-4)}
+                                    </a>
                                     <div className={styles.quantity}>
-                                        {txn.tokenQuantity} Token{txn.tokenQuantity > 1 && 's'}
+                                        {owner.tokens} Token{owner.tokens > 1 && 's'}
                                     </div>
                                 </div>
                             })}
@@ -758,45 +756,21 @@ export default function ShowAsset({asset}) {
                                     Date
                                 </div>
                             </div>
-                            <div className={styles.historyIndexRow}>
-                                <div className={styles.buyerNameSec}>
-                                    <div className={styles.boughtBy}>
-                                        Bought by
+                            {asset.buyTransactions && asset.buyTransactions.map((txn, idx) => {
+                                return <div key={idx} className={styles.historyIndexRow}>
+                                    <div className={styles.buyerNameSec}>
+                                        <div className={styles.boughtBy}>
+                                            Bought by
+                                        </div>
+                                        <a target="_blank" href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + txn.txnHash} className={styles.buyerName} rel="noreferrer">
+                                            {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
+                                        </a>
                                     </div>
-                                    <div className={styles.buyerName}>
-                                        0we6...245rb
-                                    </div>
-                                </div>
-                                <div className={styles.dateBought}>
-                                    in December 23, 2021
-                                </div>
-                            </div>
-                            <div className={styles.historyIndexRow}>
-                                <div className={styles.buyerNameSec}>
-                                    <div className={styles.boughtBy}>
-                                        Bought by
-                                    </div>
-                                    <div className={styles.buyerName}>
-                                        0as7...345il
+                                    <div className={styles.dateBought}>
+                                        in {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDay()}, {new Date(txn.createdAt).getFullYear()}
                                     </div>
                                 </div>
-                                <div className={styles.dateBought}>
-                                    in December 18, 2021
-                                </div>
-                            </div>
-                            <div className={styles.historyIndexRow}>
-                                <div className={styles.buyerNameSec}>
-                                    <div className={styles.boughtBy}>
-                                        Bought by
-                                    </div>
-                                    <div className={styles.buyerName}>
-                                        0wr6...256jh
-                                    </div>
-                                </div>
-                                <div className={styles.dateBought}>
-                                    in December 11, 2021
-                                </div>
-                            </div>
+                            })}
                         </div>
                     </div>
                 </div>
