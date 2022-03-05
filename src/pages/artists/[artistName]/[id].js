@@ -127,19 +127,28 @@ export default function Artist({artist}) {
     )
 
 }
+export async function getStaticPaths() {
+    const {data: {artists}} = await axios.get(`${process.env.BACKEND_BASE_URL}/artists`)
+    const paths = artists.map(artist => ({
+        params: {id: artist.id.toString()}
+    }))
 
-export async function getServerSideProps({query}) {
-    const {id, artistName} = query;
+    return {
+        paths,
+        fallback: 'blocking'
+    }
+}
 
+export async function getStaticProps({params: {id}}) {
     const {
         data: {
             artist
         }
-    } = await axios.get(`${process.env.BASE_URL}/api/artist-profile/${id}`)
+    } = await axios.get(`${process.env.BACKEND_BASE_URL}/artist/${id}/show`)
 
     return {
         props: {
             artist
-        }
+        },
     }
 }
