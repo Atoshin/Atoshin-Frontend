@@ -701,79 +701,81 @@ export default function ShowAsset({asset}) {
                         </div>
                     </div>
                 </div>
-                <div className={styles.bottomMainSec}>
-                    <div className={styles.ownersMainSec}>
-                        <div className={styles.ownersTitleSec}>
-                            <div className={styles.ownersTitle}>
-                                Top Owners
-                            </div>
-                            <div onClick={() => setOpenOwners(true)} className={styles.viewAllOwners}>
-                                View All
-                            </div>
-                        </div>
-                        <div className={styles.ownersIndexSec}>
-                            <div className={styles.indexTitles}>
-                                <div className={styles.rankTitle}>
-                                    Rank
+                {asset.buyTransactions &&
+                    <div className={styles.bottomMainSec}>
+                        <div className={styles.ownersMainSec}>
+                            <div className={styles.ownersTitleSec}>
+                                <div className={styles.ownersTitle}>
+                                    Top Owners
                                 </div>
-                                <div className={styles.ownerNameTitle}>
-                                    Owners
-                                </div>
-                                <div className={styles.quantityTitle}>
-                                    Quantity
+                                <div onClick={() => setOpenOwners(true)} className={styles.viewAllOwners}>
+                                    View All
                                 </div>
                             </div>
-                            {owners.slice(0, 3).map((owner, idx) => {
-                                return <div key={idx} className={styles.ownersIndexRow}>
-                                    <div className={styles.rankNum}>
-                                        {idx + 1}
+                            <div className={styles.ownersIndexSec}>
+                                <div className={styles.indexTitles}>
+                                    <div className={styles.rankTitle}>
+                                        Rank
                                     </div>
-                                    <a target="_blank" href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'address/' + owner.address} className={styles.ownerName} rel="noreferrer">
-                                        {owner.address.slice(0, 4) + '...' + owner.address.slice(-4)}
-                                    </a>
-                                    <div className={styles.quantity}>
-                                        {owner.tokens} Token{owner.tokens > 1 && 's'}
+                                    <div className={styles.ownerNameTitle}>
+                                        Owners
+                                    </div>
+                                    <div className={styles.quantityTitle}>
+                                        Quantity
                                     </div>
                                 </div>
-                            })}
-                        </div>
-                    </div>
-                    <div className={styles.historyMainSec}>
-                        <div className={styles.historyTitleSec}>
-                            <div className={styles.historyTitle}>
-                                History
-                            </div>
-                            <div onClick={() => setOpenHistory(true)} className={styles.viewAllHistory}>
-                                View All
-                            </div>
-                        </div>
-                        <div className={styles.historyIndexSec}>
-                            <div className={styles.historyIndexTitles}>
-                                <div className={styles.buyerNameTitle}>
-                                    Buyers
-                                </div>
-                                <div className={styles.dateTitle}>
-                                    Date
-                                </div>
-                            </div>
-                            {asset.buyTransactions && asset.buyTransactions.map((txn, idx) => {
-                                return <div key={idx} className={styles.historyIndexRow}>
-                                    <div className={styles.buyerNameSec}>
-                                        <div className={styles.boughtBy}>
-                                            Bought by
+                                {owners.slice(0, 3).map((owner, idx) => {
+                                    return <div key={idx} className={styles.ownersIndexRow}>
+                                        <div className={styles.rankNum}>
+                                            {idx + 1}
                                         </div>
-                                        <a target="_blank" href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + txn.txnHash} className={styles.buyerName} rel="noreferrer">
-                                            {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
+                                        <a target="_blank" href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'address/' + owner.address} className={styles.ownerName} rel="noreferrer">
+                                            {owner.address.slice(0, 4) + '...' + owner.address.slice(-4)}
                                         </a>
+                                        <div className={styles.quantity}>
+                                            {owner.tokens} Token{owner.tokens > 1 && 's'}
+                                        </div>
                                     </div>
-                                    <div className={styles.dateBought}>
-                                        in {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDay()}, {new Date(txn.createdAt).getFullYear()}
+                                })}
+                            </div>
+                        </div>
+                        <div className={styles.historyMainSec}>
+                            <div className={styles.historyTitleSec}>
+                                <div className={styles.historyTitle}>
+                                    History
+                                </div>
+                                <div onClick={() => setOpenHistory(true)} className={styles.viewAllHistory}>
+                                    View All
+                                </div>
+                            </div>
+                            <div className={styles.historyIndexSec}>
+                                <div className={styles.historyIndexTitles}>
+                                    <div className={styles.buyerNameTitle}>
+                                        Buyers
+                                    </div>
+                                    <div className={styles.dateTitle}>
+                                        Date
                                     </div>
                                 </div>
-                            })}
+                                {asset.buyTransactions && asset.buyTransactions.map((txn, idx) => {
+                                    return <div key={idx} className={styles.historyIndexRow}>
+                                        <div className={styles.buyerNameSec}>
+                                            <div className={styles.boughtBy}>
+                                                Bought by
+                                            </div>
+                                            <a target="_blank" href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + txn.txnHash} className={styles.buyerName} rel="noreferrer">
+                                                {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
+                                            </a>
+                                        </div>
+                                        <div className={styles.dateBought}>
+                                            in {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDay()}, {new Date(txn.createdAt).getFullYear()}
+                                        </div>
+                                    </div>
+                                })}
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             </div>
         </>
     )
