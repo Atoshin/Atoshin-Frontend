@@ -361,7 +361,6 @@ export default function ShowAsset({asset}) {
             }
         }
     }
-    console.log(asset);
 
     useEffect(() => {
         const imgContainer = document.getElementById('main-img-container')
@@ -593,6 +592,7 @@ export default function ShowAsset({asset}) {
                         </div>
                         <div className={styles.artworkOtherImgSec}>
                             <ArtworkSubImages/>
+                            {/*hereeeeeeeeee*/}
                         </div>
                     </div>
                 </div>
@@ -601,102 +601,110 @@ export default function ShowAsset({asset}) {
                         Provenance
                     </div>
                     <div className={styles.provenanceMainSec}>
-                        <div className={styles.backStorySec}>
-                            <div className={styles.backStoryTitle}>
-                                Back story
-                            </div>
-                            <div className={styles.backStoryTxt} dangerouslySetInnerHTML={{__html: asset.bio}}/>
-                            <div className={styles.backStoryDivider}>
-                            </div>
-                            <div className={styles.backStoryBottomSec}>
-                                <div className={styles.backStoryArtistSec}>
-                                    <div className={styles.backStoryArtistTxt}>
-                                        Artist
-                                    </div>
-                                    <Link
-                                        href={`/artists/${asset.artist.fullName.toLowerCase().replace(/ /g, '-')}/${asset.artist.id}`}>
-                                        <a>
-                                            <div className={styles.backStoryArtistName}>{asset.artistName}</div>
-                                        </a>
-                                    </Link>
+                        <div className={styles.provenanceSec}>
+                            <div className={styles.backStorySec}>
+                                <div className={styles.backStoryTitle}>
+                                    Back story
                                 </div>
-                                <div className={styles.originalOwnerSec}>
-                                    <div className={styles.originalOwnerTxt}>
-                                        Original owner
+                                <div className={styles.backStoryTxt} dangerouslySetInnerHTML={{__html: asset.bio}}/>
+                            </div>
+                            <div className={styles.provenanceDivider}>
+                            </div>
+                            <div className={styles.aboutArtworkSec}>
+                                <div className={styles.aboutArtworkTxt}>
+                                    About artwork
+                                </div>
+                                <div className={styles.detailSec}>
+                                    <div className={styles.detailTitle}>
+                                        Date of creation
                                     </div>
-                                    <Link href={`/museums-and-galleries/${asset.gallery.id}`}>
-                                        <a>
-                                            <div className={styles.originalOwnerName}>
-                                                {asset.gallery.name}
-                                            </div>
-                                        </a>
-                                    </Link>
+                                    <div className={styles.detailText}>
+                                        {new Date(asset.creation).getFullYear()}
+                                    </div>
+                                </div>
+                                <div className={styles.detailSec}>
+                                    <div className={styles.detailTitle}>
+                                        Materials
+                                    </div>
+                                    <div className={styles.detailText}>
+                                        {asset.material}
+                                    </div>
+                                </div>
+                                <div className={styles.detailSec}>
+                                    <div className={styles.detailTitle}>
+                                        Size
+                                    </div>
+                                    <div className={styles.detailText}>
+                                        {asset.size}
+                                    </div>
+                                </div>
+                                <div className={styles.detailSec}>
+                                    <div className={styles.detailTitle}>
+                                        Located in
+                                    </div>
+                                    <div className={styles.detailText}>{asset.gallery.name}</div>
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.provenanceDivider}>
-                        </div>
-                        <div className={styles.aboutArtworkSec}>
-                            <div className={styles.aboutArtworkTxt}>
-                                About artwork
-                            </div>
-                            <div className={styles.detailSec}>
-                                <div className={styles.detailTitle}>
-                                    Date of creation
+                        <div className={styles.provenanceBottomSec}>
+                            <div className={styles.leftBottomSec}>
+                                <div className={styles.backStoryDivider}>
                                 </div>
-                                <div className={styles.detailText}>
-                                    {new Date(asset.createdAt).getFullYear()}
-                                </div>
-                            </div>
-                            <div className={styles.detailSec}>
-                                <div className={styles.detailTitle}>
-                                    Materials
-                                </div>
-                                <div className={styles.detailText}>
-                                    {asset.material}
-                                </div>
-                            </div>
-                            <div className={styles.detailSec}>
-                                <div className={styles.detailTitle}>
-                                    Size
-                                </div>
-                                <div className={styles.detailText}>
-                                    {asset.size}
-                                </div>
-                            </div>
-                            <div className={styles.detailSec}>
-                                <div className={styles.detailTitle}>
-                                    Located in
-                                </div>
-                                <div className={styles.detailText}>{asset.gallery.name}</div>
-                            </div>
-                            <div className={styles.aboutArtworkDivider}>
-                            </div>
-                            <div className={styles.aboutArtworkBottomSec}>
-                                {asset.mintTransactions.length > 0 ?
-                                    <a target="_blank"
-                                       href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + asset.mintTransactions[0].txnHash}
-                                       className={styles.mintedDateSec} rel="noreferrer">
-                                        Minted on
-                                        {
-                                            ' ' + monthNames[new Date(asset.mintTransactions[0].createdAt).getMonth()] + ' ' + new Date(asset.mintTransactions[0].createdAt).getDay() + ' ' + new Date(asset.mintTransactions[0].createdAt).getFullYear()
-                                        }
-                                    </a>
-                                    :
-                                    <div style={{width: 177}}/>}
-                                <div onMouseEnter={() => setSecondTooltip(true)}
-                                     onMouseOut={() => setSecondTooltip(false)} className={styles.watchArtworkSec}>
-                                    Watch artwork online
-                                </div>
-                                {
-                                    secondTooltip &&
-                                    <Fade in={secondTooltip}>
-                                        <div className={styles.watchOnlineTooltip}>
-                                            This item is only active for owners
-                                            <div className={styles.arrow2}/>
+                                <div className={styles.backStoryBottomSec}>
+                                    <div className={styles.backStoryArtistSec}>
+                                        <div className={styles.backStoryArtistTxt}>
+                                            Artist
                                         </div>
-                                    </Fade>
-                                }
+                                        <Link
+                                            href={`/artists/${asset.artist.fullName.toLowerCase().replace(/ /g, '-')}/${asset.artist.id}`}>
+                                            <a>
+                                                <div className={styles.backStoryArtistName}>{asset.artistName}</div>
+                                            </a>
+                                        </Link>
+                                    </div>
+                                    <div className={styles.originalOwnerSec}>
+                                        <div className={styles.originalOwnerTxt}>
+                                            Original owner
+                                        </div>
+                                        <Link href={`/museums-and-galleries/${asset.gallery.id}`}>
+                                            <a>
+                                                <div className={styles.originalOwnerName}>
+                                                    {asset.gallery.name}
+                                                </div>
+                                            </a>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={styles.rightBottomSec}>
+                                <div className={styles.aboutArtworkDivider}>
+                                </div>
+                                <div className={styles.aboutArtworkBottomSec}>
+                                    {asset.mintTransactions.length > 0 ?
+                                        <a target="_blank"
+                                           href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + asset.mintTransactions[0].txnHash}
+                                           className={styles.mintedDateSec} rel="noreferrer">
+                                            Minted on
+                                            {
+                                                ' ' + monthNames[new Date(asset.mintTransactions[0].createdAt).getMonth()] + ' ' + new Date(asset.mintTransactions[0].createdAt).getDay() + ' ' + new Date(asset.mintTransactions[0].createdAt).getFullYear()
+                                            }
+                                        </a>
+                                        :
+                                        <div style={{width: 177}}/>}
+                                    <div onMouseEnter={() => setSecondTooltip(true)}
+                                         onMouseOut={() => setSecondTooltip(false)} className={styles.watchArtworkSec}>
+                                        Watch artwork online
+                                    </div>
+                                    {
+                                        secondTooltip &&
+                                        <Fade in={secondTooltip}>
+                                            <div className={styles.watchOnlineTooltip}>
+                                                This item is only active for owners
+                                                <div className={styles.arrow2}/>
+                                            </div>
+                                        </Fade>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
