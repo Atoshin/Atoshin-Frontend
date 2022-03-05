@@ -130,7 +130,7 @@ export default function Artist({artist}) {
 export async function getStaticPaths() {
     const {data: {artists}} = await axios.get(`${process.env.BACKEND_BASE_URL}/artists`)
     const paths = artists.map(artist => ({
-        params: {id: artist.id.toString()}
+        params: {id: artist.id.toString(), artistName: artist.fullName.replace(/ /g, '-').toLowerCase()}
     }))
 
     return {
