@@ -93,7 +93,7 @@ export default function ArtCenter({artCenter}) {
                 const iframe = span.children[0];
                 const ytvId = iframe.src.slice(-11)
                 span.remove()
-                if (artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1 ).length + Object.keys(artCenter.videoLinks).length > 4) {
+                if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 4) {
                     return (
                         <Slide style={{position: 'relative'}} {...properties} ref={gallerySliderRef}>
                             {
@@ -139,8 +139,8 @@ export default function ArtCenter({artCenter}) {
                             {/*    <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>*/}
                             {/*</div>*/}
                             {
-                                artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1).map((data, idx) => {
-                                    if (idx === parseInt(Object.keys(artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1))[Object.keys(artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1)).length - 1]) || idx === 4) {
+                                artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((data, idx) => {
+                                    if (idx === parseInt(Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1))[Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1)).length - 1]) || idx === 4) {
                                         return <div key={idx} onClick={() => showImageModal(data.id)} style={{
                                             backgroundImage: `url("${data.url}")`,
                                             height: 220,
@@ -199,8 +199,8 @@ export default function ArtCenter({artCenter}) {
                                 })
                             }
                         {
-                            artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1).map((data, idx) => {
-                                if (idx === parseInt(Object.keys(artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1))[Object.keys(artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1)).length - 1]) || idx === 4) {
+                            artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((data, idx) => {
+                                if (idx === parseInt(Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1))[Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1)).length - 1]) || idx === 4) {
                                     return <div key={idx} onClick={() => showImageModal(data.id)} style={{
                                         backgroundImage: `url("${data.url}")`,
                                         height: 220,
@@ -239,8 +239,6 @@ export default function ArtCenter({artCenter}) {
             }
         }
     }
-
-    console.log(artCenter.assets)
     return (
         <>
             <ImagesModal open={openImages} setOpen={setOpenImages}
@@ -359,10 +357,10 @@ export default function ArtCenter({artCenter}) {
                         <VideoShow/>
                         :
                         artCenter.medias ?
-                            artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1).length > 5 ?
+                            artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length > 5 ?
                                 <Slide style={{position: 'relative'}} {...properties} ref={gallerySliderRef}>
                                     {
-                                        artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1 ).map((img, key) => {
+                                        artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((img, key) => {
                                             return <div
                                                 onClick={() => showImageModal(img.id)}
                                                 key={key} style={{
@@ -381,8 +379,8 @@ export default function ArtCenter({artCenter}) {
                                 </Slide>
                                 :
                                 <div style={{display: 'flex'}}>
-                                    {artCenter.medias.filter(media => media.main !== 1 || media.galleryLargePicture !== 1).map((img, key) => {
-                                        if (parseInt(Object.keys(artCenter.medias)[Object.keys(artCenter.medias).length - 1]) === key) {
+                                    {artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((img, key) => {
+                                        if (parseInt(Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1))[Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1)).length - 1]) === key) {
                                             return <div key={key}
                                                         onClick={() => showImageModal(img.id)}
                                                         style={{
