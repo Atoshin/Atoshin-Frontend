@@ -173,18 +173,6 @@ export default function FAQ() {
                     </Collapse>
                 </div>
             })}
-            <div className={classes.finalWords}>
-                Final Words on NFT Fractionalization
-            </div>
-            <div className={classes.realBenefits} style={{marginBottom:40}}>
-                The NFT industry continues to grow in popularity and demand, and as blockchain technology advances, we
-                should expect to see even more fascinating advancements and application cases.
-                Fractional NFTs are still a new concept, but they appear to be the next big thing in the ever-growing
-                crypto sector. NFT fractionalization allows for higher liquidity and, as a result, limitless investing
-                ideas. It brings a significantly larger pool of investors into the market, assuring that F-NFTs will be
-                at the forefront of the next wave of digital asset monetization. Find out more about how NFT loans work
-                or NFT staking to learn more about investing in NFTs.
-            </div>
             <div className={classes.referencesTitle}>
                 References and Notes: We have greatly benefitted from the material provided in the following web sites
                 and research papers for the above information:
