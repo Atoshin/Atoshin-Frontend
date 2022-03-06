@@ -3,6 +3,7 @@ import 'react-slideshow-image/dist/styles.css';
 import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import * as React from "react";
+import Head from "next/head";
 
 
 export default function Landing() {
@@ -13,6 +14,9 @@ export default function Landing() {
 
     return (
         <>
+            <Head>
+                <title>Welcome to Atoshin</title>
+            </Head>
             <video className={classes.bgVideo} width="500" autoPlay muted loop id="myVideo">
                 <source src="/public/videos/landing-intro.webm"
                         type="video/webm"/>

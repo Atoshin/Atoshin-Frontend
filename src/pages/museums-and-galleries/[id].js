@@ -15,6 +15,7 @@ import Link from 'next/link';
 import {Map} from "../../components/ArtCenters/Map";
 import ImagesModal from '../../components/ShowAsset/ImagesModal'
 import * as React from "react";
+import Head from "next/head";
 
 export default function ArtCenter({artCenter}) {
     const [rendered, setRendered] = useState(false)
@@ -240,9 +241,12 @@ export default function ArtCenter({artCenter}) {
         }
     }
 
-    console.log(artCenter.assets)
     return (
+
         <>
+            <Head>
+                <title>{artCenter.name}</title>
+            </Head>
             <ImagesModal open={openImages} setOpen={setOpenImages}
                          images={artCenter.medias} title={artCenter.name}
                          videos={artCenter.videoLinks}

@@ -7,6 +7,7 @@ import {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 import Slider from "../components/Marketplace/Slider";
 import SliderMain from "../components/Marketplace/SliderMain";
+import Head from "next/head";
 
 export default function Marketplace({assets}) {
     const router = useRouter();
@@ -29,6 +30,11 @@ export default function Marketplace({assets}) {
     }
 
     return <div className={classes.main}>
+        <Head>
+            <title>Marketplace</title>
+            <meta name="description" content="Atoshin Marketplace"/>
+            <link rel="icon" href="/favicon.ico"/>
+        </Head>
         <h1 className={classes.mainTitle}>Marketplace</h1>
         <hr className={classes.hr}/>
         <div

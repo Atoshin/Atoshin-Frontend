@@ -11,6 +11,7 @@ import shortenWords from "../../../functions/shortenWords";
 import extractContent from "../../../functions/getHtmlInnerText";
 import Link from 'next/link';
 import NewsModal from "../../../components/ArtistProfile/NewsModal";
+import Head from "next/head";
 
 export default function Artist({artist}) {
     const theme = useTheme();
@@ -20,6 +21,9 @@ export default function Artist({artist}) {
 
     return (
         <>
+            <Head>
+                <title>{artist.fullName}</title>
+            </Head>
             <NewsModal open={openNewsModal} setOpen={setOpenNewsModal} news={artist.news}/>
             <div className={classes.main}>
                 <div className={classes.topSec}>
