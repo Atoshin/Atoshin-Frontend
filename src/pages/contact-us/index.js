@@ -25,31 +25,44 @@ export default function ContactUs({galleries}) {
 
             <div className={classes.root}>
                 <div
-                    style={{paddingLeft:'24px',paddingRight: '24px'}}
+                    style={{paddingLeft: '24px', paddingRight: '24px'}}
                 >
                     <div className={classes.contactUs}>CONTACT US</div>
                     <div className={classes.howCan}>How can we help you?</div>
-                    <div className={classes.fill}>Fill in the form or drop an email for us </div>
-                    <div className={classes.box1}>
-                        <div className={classes.sec1}>
-                            <div className={classes.email}>have you any question or problems?</div>
-                            <a href = "mailto:contact@atoshin.com"><div className={classes.emailC}>contact@atoshin.com</div></a>
-                        </div>
-                        <div className={classes.sec2}>
-                            <img className={classes.emailIcon} src="/icons/email.svg" alt=""/>
-                        </div>
-                    </div>
+                    <div className={classes.fill}>Fill in the form or drop an email for us</div>
 
-                    <div className={classes.box1}>
-                        <div className={classes.sec1}>
-                            <div className={classes.email}>want to show your museum or gallery in Atoshin?</div>
-                            {/*<div className={classes.emailC}>joinus@atoshin.art</div>*/}
-                            <a href = "mailto:joinus@atoshin.art"><div className={classes.emailC}>joinus@atoshin.art</div></a>
+
+                    <a href="mailto:support@atoshin.com">
+                        <div className={classes.box1}>
+                            <div className={classes.sec1}>
+                                <div className={classes.email}>have you any question or problems?</div>
+                                {/*<a href = "mailto:support@atoshin.com">*/}
+                                <div className={classes.emailC}>
+                                    support@atoshin.com
+                                </div>
+                                {/*</a>*/}
+                            </div>
+                            <div className={classes.sec2}>
+                                <img className={classes.emailIcon} src="/icons/email.svg" alt=""/>
+                            </div>
                         </div>
-                        <div className={classes.sec2}>
-                            <img className={classes.emailIcon} src="/icons/email.svg" alt=""/>
+                    </a>
+
+                    <a href="mailto:joinus@atoshin.art">
+                        <div className={classes.box1}>
+                            <div className={classes.sec1}>
+                                <div className={classes.email}>want to show your museum or gallery in Atoshin?</div>
+                                {/*<div className={classes.emailC}>joinus@atoshin.art</div>*/}
+                                {/*<a href="mailto:joinus@atoshin.art">*/}
+                                    <div className={classes.emailC}>joinus@atoshin.art</div>
+                                {/*</a>*/}
+                            </div>
+                            <div className={classes.sec2}>
+                                <img className={classes.emailIcon} src="/icons/email.svg" alt=""/>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
                 </div>
                 <div>
                     <div className={classes.tableBox}>
@@ -67,7 +80,7 @@ export default function ContactUs({galleries}) {
                         {/*<div className={classes.name} style={{height:124, display: 'block'}}>*/}
                         {/*    <div className={classes.innerBox} >Message</div>*/}
                         {/*</div>*/}
-                        <input type="text"  className={classes.message} placeholder='Message'/>
+                        <input type="text" className={classes.message} placeholder='Message'/>
 
                         <Button variant="contained" className={classes.submit}>
                             <span style={{textTransform: 'upperCase'}}>S</span>ubmit

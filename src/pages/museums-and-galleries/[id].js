@@ -436,7 +436,7 @@ export default function ArtCenter({artCenter}) {
                 </div>
             </div>
             {
-                !artCenter.assets.length > 0 ?
+                artCenter.assets.length ?
                     <div className={classes.relatedSec}>
                         <div className={classes.relatedTitle}>
                             Related to gallery
@@ -447,7 +447,7 @@ export default function ArtCenter({artCenter}) {
                                 easing={"ease"}
                                 slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 4}
                                 infinite={true}
-                                arrows={true}
+                                arrows={artCenter.assets.length >= 5}
                                 slidesToScroll={1}
                                 transitionDuration={500}
                                 duration={5000}
