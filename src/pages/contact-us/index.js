@@ -32,13 +32,12 @@ export default function ContactUs({galleries}) {
                     <div className={classes.fill}>Fill in the form or drop an email for us</div>
 
 
-                    <a href="mailto:support@atoshin.com">
+                    <a href="mailto:support@atoshin.art">
                         <div className={classes.box1}>
                             <div className={classes.sec1}>
                                 <div className={classes.email}>have you any question or problems?</div>
-                                {/*<a href = "mailto:support@atoshin.com">*/}
                                 <div className={classes.emailC}>
-                                    support@atoshin.com
+                                    support@atoshin.art
                                 </div>
                                 {/*</a>*/}
                             </div>
