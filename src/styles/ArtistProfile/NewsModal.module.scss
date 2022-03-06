@@ -1,6 +1,6 @@
 .imgDialog {
   width: 820px !important;
-  height: 490px !important;
+  //height: 490px !important;
   //width: 906px !important;
   //height: 597px !important;
   display: flex !important;
@@ -11,6 +11,7 @@
     justify-content: space-between;
     width: 100%;
   }
+
   .newsLink {
     color: #232323;
     font-size: 16px;
@@ -20,6 +21,7 @@
     word-break: break-all;
     text-decoration: none;
   }
+
   //.dialogBody {
   //  display: flex;
   //  flex-direction: column;
@@ -102,10 +104,75 @@
   }
 }
 
-.dialogBody{
+
+.imgDialogScroll {
+  width: 820px !important;
+  height: 490px !important;
+  //width: 906px !important;
+  //height: 597px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  //overflow-y: scroll;
+
+  .dialogHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .newsLink {
+    color: #232323;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 8px;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    text-decoration: none;
+  }
+
+  .modalTitle {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    margin-left: 32px;
+    padding-left: 0;
+    padding-top: 0;
+    //padding-bottom: 24px !important;
+    padding-bottom: 0px !important;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-family: Roboto;
+    font-size: 22px;
+    font-style: normal;
+    line-height: 26px;
+    text-align: left;
+
+  }
+
+  .vectorX {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #ECECEC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    margin-right: 24px;
+    cursor: pointer;
+
+    img {
+      width: 16px;
+    }
+  }
+}
+
+
+.dialogBody {
   margin-left: 32px;
   margin-right: 32px;
 }
+
 .item {
   width: 756px;
   height: 71px;
@@ -117,7 +184,18 @@
   margin-bottom: 8px;
 }
 
-.item:hover {
+.lastItem {
+  width: 756px;
+  height: 71px;
+  border-radius: 5px;
+  border: 1px solid #A7A7A7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.item:hover, .lastItem:hover {
   border: 1px solid #FD6E19;
   cursor: pointer;
 }
