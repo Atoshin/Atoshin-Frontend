@@ -154,7 +154,6 @@ export default function ShowAsset({asset}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const ArtworkSubImages = () => {
-        console.log((6 - asset.videoLinks.length))
         if (Object.keys(asset.videoLinks).length > 0) {
             if (typeof document !== 'undefined') {
                 let span = document.createElement('span');
@@ -269,7 +268,6 @@ export default function ShowAsset({asset}) {
                 return null;
             }
         } else {
-            console.log(asset.medias)
             return asset.medias.slice(0, 6).map((data, idx) => {
                 if (idx === parseInt(Object.keys(asset.medias.slice(0, 6))[Object.keys(asset.medias.slice(0, 6)).length - 1]) || idx === 5) {
                     return <div onClick={() => openImageModal(data.id)} style={{
@@ -278,7 +276,7 @@ export default function ShowAsset({asset}) {
                         height: 93.39,
                         backgroundPosition: 'center',
                         backgroundSize: "cover",
-                        marginRight: 15.73,
+                        // marginRight: 15.73,
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -472,7 +470,7 @@ export default function ShowAsset({asset}) {
                          setClickedImageId={setClickedImageId}
                          setClickedVideoId={setClickedVideoId}
                          clickedVideoId={clickedVideoId}
-                         two={false}
+                         isGallary={false}
             />
             {/*imageId={imageId}*/}
             <OwnersModal owners={owners} open={openOwners} setOpen={setOpenOwners}/>

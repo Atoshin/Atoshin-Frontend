@@ -15,7 +15,7 @@ export default function ImagesModal({
                                         clickedVideoId,
                                         setClickedImageId,
                                         setClickedVideoId,
-                                        two,
+                                        isGallary,
                                     }) {
     const [mainImg, setImg] = useState(images.find(img => img.main === 1))
     const ref = useRef();
@@ -46,7 +46,7 @@ export default function ImagesModal({
 
     let ZoomImg = () => (<Zoom
         img={mainImg.url}
-        style={{borderRadius: 3}}
+        // style={{borderRadius: 3}}
         zoomScale={2}
         width={698}
         height={469}
@@ -93,12 +93,16 @@ export default function ImagesModal({
                                 style={{borderRadius: 3}}
                                 dangerouslySetInnerHTML={{__html: mainImg.link}}/>
                             :
-                            <div  style={{width:698, height:469, display:'flex', justifyContent:'center'}}>
-                                <img src={mainImg.url}
-                                     style={{borderRadius: 3, boxShadow:" 0px 1px 3px 0px #00000026",width:698, height:469}}
-                                />
-                            </div>
-                            // <div style={{borderRadius: 3}}><ZoomImg/></div>
+                            isGallary ?
+                                <div  style={{width:698, height:469, display:'flex', justifyContent:'center'}}>
+                                    <img src={mainImg.url}
+                                         style={{borderRadius: 3, boxShadow:" 0px 1px 3px 0px #00000026",width:698, height:469}}
+                                    />
+                                </div>
+                                :
+                            // <div style={{borderRadius: 3}}>
+                                <ZoomImg/>
+                            // </div>
                     }
                 </div>
                 {/*<img className={classes.modalMainImg} src="/images/starry-night-main.png" alt=""/>*/}
@@ -167,7 +171,7 @@ export default function ImagesModal({
                             }
                         })}
                         {
-                            two ?
+                            isGallary ?
                                 images.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((image, idx) => {
                                     if (image.id === mainImg.id) {
                                         return <div style={{

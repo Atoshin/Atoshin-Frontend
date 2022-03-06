@@ -253,7 +253,7 @@ export default function ArtCenter({artCenter}) {
                          setClickedImageId={setClickedImageId}
                          setClickedVideoId={setClickedVideoId}
                          clickedVideoId={clickedVideoId}
-                         two={true}
+                         isGallary={true}
             />
             <div className={classes.mainImgSec}>
                 <img src={artCenter.medias.find(media => media.galleryLargePicture === 1).url}
