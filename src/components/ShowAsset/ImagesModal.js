@@ -95,8 +95,7 @@ export default function ImagesModal({
                             :
                             <div  style={{width:698, height:469, display:'flex', justifyContent:'center'}}>
                                 <img src={mainImg.url}
-                                     style={{borderRadius: 3, boxShadow:" 0px 1px 3px 0px #00000026"}}
-                                    // style={{width:698, height:469}}
+                                     style={{borderRadius: 3, boxShadow:" 0px 1px 3px 0px #00000026",width:698, height:469}}
                                 />
                             </div>
                             // <div style={{borderRadius: 3}}><ZoomImg/></div>

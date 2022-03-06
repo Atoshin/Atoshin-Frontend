@@ -48,7 +48,7 @@ export default function Artist({artist}) {
                             <div className={classes.rankingSec}>
                                 <div className={classes.globalRank}>
                                     {/*{artist.worldRanking}*/}
-                                    Top {artist.worldRanking}. Global
+                                    Top {artist.worldRanking}.Global
                                 </div>
                                 <div className={classes.domesticRank}>
                                     {/*{artist.iranRanking}*/}
@@ -127,19 +127,28 @@ export default function Artist({artist}) {
     )
 
 }
+export async function getStaticPaths() {
+    const {data: {artists}} = await axios.get(`${process.env.BACKEND_BASE_URL}/artists`)
+    const paths = artists.map(artist => ({
+        params: {id: artist.id.toString(), artistName: artist.fullName.replace(/ /g, '-').toLowerCase()}
+    }))
 
-export async function getServerSideProps({query}) {
-    const {id, artistName} = query;
+    return {
+        paths,
+        fallback: 'blocking'
+    }
+}
 
+export async function getStaticProps({params: {id}}) {
     const {
         data: {
             artist
         }
-    } = await axios.get(`${process.env.BASE_URL}/api/artist-profile/${id}`)
+    } = await axios.get(`${process.env.BACKEND_BASE_URL}/artist/${id}/show`)
 
     return {
         props: {
             artist
-        }
+        },
     }
 }

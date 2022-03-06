@@ -4,6 +4,7 @@ import {useEffect, useRef, useState} from "react";
 import Slider from "./Slider";
 import {TimeDifference} from "./TimeDifference";
 import Link from "next/link";
+import calculateDecimalPrecision from "../../functions/calculateDecimalPrecision";
 
 export default function SliderMain({asset, idx}) {
 
@@ -47,7 +48,7 @@ export default function SliderMain({asset, idx}) {
                             <div className={classes.column}>
                                 <p className={classes.fractionsLeft}>Price</p>
                                 <span className={classes.fractions}>
-                            <p className={classes.leftNumbers}>{asset.price}</p>
+                            <p className={classes.leftNumbers}>{calculateDecimalPrecision(asset.ethPricePerFraction, 5)}</p>
                             <p className={classes.total}>ETH</p>
                             </span>
                             </div>

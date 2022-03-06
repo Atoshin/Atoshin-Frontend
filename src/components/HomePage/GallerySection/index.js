@@ -4,18 +4,20 @@ import {useTheme} from "@mui/material/styles";
 import YoutubeVideoModal from "./YoutubeVideoModal";
 import * as React from "react";
 import ImagesModal from "./ImagesModal";
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import {Slide} from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
-import axios from "axios";
+
+
 export default function GallerySection({gallery}) {
     const [openYouTube, setOpenYouTube] = React.useState(false);
     const [openImage, setOpenImage] = React.useState({
         toggle: false,
         imgSrc: null
     });
+    const [selectedGallery, setSelectedGallery] = useState(gallery[0]);
     const router = useRouter();
     const sliderRef = useRef();
 
@@ -23,14 +25,12 @@ export default function GallerySection({gallery}) {
         current: {}
     })
     const ExploreBtn = () => {
-        // onClick={() => router.push(`/museums-and-galleries/1`)}
-        return <Link href={`/museums-and-galleries//1`}>
+        return <Link href={`/museums-and-galleries/${selectedGallery.id}`}>
             <a>
                 <Button className={classes.exploreBtn}>Explore</Button>
             </a>
         </Link>
     }
-
 
     const openYouTubeModal = (e) => {
         setOpenYouTube(true)
@@ -42,193 +42,272 @@ export default function GallerySection({gallery}) {
             imgSrc: e.target.getAttribute('datasrc')
         })
     }
-
-    useEffect(() => {
-        axios.get('https://atoshinadmin.satratech.ir/api/v1/homepage/material').then((r) => {
-            console.log(r.data)
-        })
-    }, [])
-
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
     const gallerySummery = (gallery) => {
-        console.log(gallery)
         if (gallery.summary.length > 426) {
-            return gallery.summary.slice(0,423) + '...'
-        }
-        else {
+            return gallery.summary.slice(0, 423) + '...'
+        } else {
             return gallery.summary
         }
     }
 
-    const properties ={
-        easing:"ease",
-        slidesToShow:matches ? 2 : 4 ,
-        infinite:true ,
+    const properties = {
+        easing: "ease",
+        slidesToShow: matches ? 2 : 4,
+        infinite: true,
         // arrows:false,
-        nextArrow:<img className={classes.sliderNextArrow} src='/icons/vector-right.svg' alt="vector-right"/>,
-        prevArrow:   <img className={classes.sliderPrevArrow} src="/icons/vector-left.svg" alt="vector-left"/>,
-        slidesToScroll:1,
-        transitionDuration:500,
-        duration:5000,
+        nextArrow: <img className={classes.sliderNextArrow} src='/icons/vector-right.svg' alt="vector-right"/>,
+        prevArrow: <img className={classes.sliderPrevArrow} src="/icons/vector-left.svg" alt="vector-left"/>,
+        slidesToScroll: 1,
+        transitionDuration: 500,
+        duration: 5000,
     }
-
-    console.log(gallery)
-    // console.log(gallery.videoLinks[0])
     return <>
         <ImagesModal setOpen={setOpenImage} open={openImage}/>
         {
-            gallery.map((data) => {
-                return (
-                    <>
-                        {/*<YoutubeVideoModal video={data.videoLinks[0]} open={openYouTube} setOpen={setOpenYouTube}/>*/}
-                        <div className={classes.galleryMainSec}>
-                            <div className={classes.artCenterSec}>
-                                <div className={classes.artCenterTitle}>
-                                    Museums and Galleries
+            selectedGallery.videoLinks[0] &&
+            <YoutubeVideoModal video={selectedGallery.videoLinks[0]} open={openYouTube} setOpen={setOpenYouTube}/>
+        }
+        {
+            <div className={classes.galleryMainSec}>
+                <div className={classes.artCenterSec}>
+                    <div className={classes.artCenterTitle}>
+                        Museums and Galleries
+                    </div>
+                    <div onClick={() => router.push('gallery-list')} className={classes.viewAllArtCenters}>
+                        View All
+                    </div>
+                </div>
+                {matches &&
+                Object.keys(selectedGallery.videoLinks).length > 0 ?
+                    selectedGallery.videoLinks.slice(0, 1).map((videoLinks) => {
+                        if (videoLinks.media !== null) {
+                            return <div className={classes.galleryVidContainer} onClick={openYouTubeModal}>
+                                <div ref={imageRef} style={{
+                                    backgroundImage: `url("${videoLinks.media.url}")`,
+                                    width: '100%',
+                                    height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
+                                    backgroundRepeat: "no-repeat",
+                                    backgroundSize: "cover",
+                                    backgroundPosition: 'center'
+                                }}>
                                 </div>
-                                <div onClick={() => router.push('gallery-list')} className={classes.viewAllArtCenters}>
-                                    View All
-                                </div>
+                                <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
+                                     onClick={openYouTubeModal}/>
                             </div>
-                            {/*{matches &&*/}
-                            {/*<div className={classes.galleryVidContainer} onClick={openYouTubeModal}>*/}
-                            {/*    <div ref={imageRef} style={{*/}
-                            {/*        backgroundImage: `url("${data.videoLinks[0].media.url}")`,*/}
-                            {/*        width: '100%',*/}
-                            {/*        height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,*/}
-                            {/*        backgroundRepeat: "no-repeat",*/}
-                            {/*        backgroundSize: "cover",*/}
-                            {/*        backgroundPosition: 'center'*/}
-                            {/*    }}>*/}
-                            {/*        /!*<img className={classes.galleryMainPhoto} src="/images/DD-gallery-main.jpg" alt=""/>*!/*/}
-                            {/*    </div>*/}
-                            {/*    <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""*/}
-                            {/*         onClick={openYouTubeModal}/>*/}
-                            {/*</div>*/}
-                            {/*}*/}
-                            <div className={classes.galleryTopSec}>
-                                <div className={classes.galleryDescMainSec}>
-                                    <div className={classes.galleryName}>
-                                        <img className={classes.imgSec} src={data.medias.find(media => media.main === 1).url}
-                                             alt=""/>
-                                        {data.name}
+                        } else {
+                            return selectedGallery.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((data, key) => {
+                                return <div key={key} className={classes.galleryVidContainer}>
+                                    <div ref={imageRef} style={{
+                                        backgroundImage: `url("${data.url}")`,
+                                        width: '100%',
+                                        height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
+                                        backgroundRepeat: "no-repeat",
+                                        backgroundSize: "cover",
+                                        backgroundPosition: 'center',
+                                    }}>
                                     </div>
-                                    <div className={classes.galleryDescSec}>
-                                        <div className={classes.galleryDesc}>
-                                            {!matches &&
-                                            <div className={classes.galleryDecsTxt}>
-                                                {gallerySummery(data)}
-                                            </div>
-                                            }
-                                            {matches &&
-                                            <div className={classes.galleryDecsTxtMob}>
-                                                {data.summary}
-                                            </div>
-                                            }
-                                            {!matches &&
-                                            <ExploreBtn/>
-                                            }
-                                        </div>
-                                    </div>
+                                    {/*<img style={{border:'solid red'}} src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""*/}
+                                    {/*     onClick={openYouTubeModal}/>*/}
                                 </div>
-                                {/*{!matches &&*/}
-                                {/*data.videoLinks.map((videoLinks) => {*/}
-                                {/*    console.log(videoLinks.media.url)*/}
-                                {/*    return <div className={classes.galleryVidContainer}>*/}
-                                {/*        <div*/}
-                                {/*            style={{*/}
-                                {/*                backgroundImage: `url("${videoLinks.media.url}")`,*/}
-                                {/*                // width: '100%',*/}
-                                {/*                height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,*/}
-                                {/*                backgroundRepeat: "no-repeat",*/}
-                                {/*                backgroundSize: "cover",*/}
-                                {/*                backgroundPosition: 'center',*/}
-                                {/*                // filter: 'contrast(50%)',*/}
-                                {/*                // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)'*/}
-                                {/*                filter: 'saturate(100%) brightness(0.50)'*/}
-                                {/*            }}*/}
-                                {/*            className={classes.galleryMainPhoto}*/}
-                                {/*            onClick={openYouTubeModal}*/}
-                                {/*        />*/}
-                                {/*        <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""*/}
-                                {/*             onClick={openYouTubeModal}/>*/}
-                                {/*    </div>*/}
-                                {/*})*/}
-                                {/*    // <div className={classes.galleryVidContainer}>*/}
-                                {/*    //     <div*/}
-                                {/*    //         style={{*/}
-                                {/*    //             backgroundImage: `url("${gallery.videoLinks[0].media.url}")`,*/}
-                                {/*    //             // width: '100%',*/}
-                                {/*    //             height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,*/}
-                                {/*    //             backgroundRepeat: "no-repeat",*/}
-                                {/*    //             backgroundSize: "cover",*/}
-                                {/*    //             backgroundPosition: 'center',*/}
-                                {/*    //             // filter: 'contrast(50%)',*/}
-                                {/*    //             // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)'*/}
-                                {/*    //             filter: 'saturate(100%) brightness(0.50)'*/}
-                                {/*    //         }}*/}
-                                {/*    //         className={classes.galleryMainPhoto}*/}
-                                {/*    //         onClick={openYouTubeModal}*/}
-                                {/*    //     />*/}
-                                {/*    //     /!*<img className={classes.galleryMainPhoto} src={gallery.videoLinks[0].media.url} alt=""*!/*/}
-                                {/*    //     /!*     onClick={openYouTubeModal}/>*!/*/}
-                                {/*    //     <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""*/}
-                                {/*    //          onClick={openYouTubeModal}/>*/}
-                                {/*    // </div>*/}
-                                {/*}*/}
+                            })
+
+                        }
+
+                    })
+                    :
+                    selectedGallery.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((data, idx) => {
+                        return <div key={idx} className={classes.galleryVidContainer}>
+                            <div ref={imageRef} style={{
+                                backgroundImage: `url("${data.url}")`,
+                                width: '100%',
+                                height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
+                                backgroundRepeat: "no-repeat",
+                                backgroundSize: "cover",
+                                backgroundPosition: 'center'
+                            }}>
+                            </div>
+                        </div>
+                    })
+                }
+                <div className={classes.galleryTopSec}>
+                    <div className={classes.galleryDescMainSec}>
+                        <div className={classes.galleryName}>
+                            <img className={classes.imgSec}
+                                 src={selectedGallery.medias.find(media => media.main === 1).url}
+                                 alt=""/>
+                            {selectedGallery.name}
+                        </div>
+                        <div className={classes.galleryDescSec}>
+                            <div className={classes.galleryDesc}>
+                                {!matches &&
+                                <div className={classes.galleryDecsTxt}>
+                                    {gallerySummery(selectedGallery)}
+                                </div>
+                                }
                                 {matches &&
+                                <div className={classes.galleryDecsTxtMob}>
+                                    {selectedGallery.summary}
+                                </div>
+                                }
+                                {!matches &&
                                 <ExploreBtn/>
                                 }
                             </div>
-                            <div className={classes.galleryBottomSec}>
-                                {/*{gallery.medias.filter(media => media.homeapagePicture === 1).map((img, idx) => {*/}
-                                {/*    const {url} = img;*/}
-                                {/*    return <div key={idx} datasrc={url} style={{*/}
-                                {/*        backgroundImage: `url("${url}")`,*/}
-                                {/*        backgroundSize: 'cover',*/}
-                                {/*        backgroundPosition: "center",*/}
-                                {/*        backgroundRepeat: "no-repeat",*/}
-                                {/*    }} className={classes.galleryPhotos} onClick={openImageModal}/>*/}
-                                {/*})}*/}
-                                {/*{gallery.medias.filter(media => media.homeapagePicture === 1).map((img, idx) => {*/}
-                                {/*    const {url} = img;*/}
-                                {/*    return <div className={classes.gallerySec}><div key={idx} datasrc={url} style={{*/}
-                                {/*            backgroundImage: `url("${url}")`,*/}
-                                {/*            backgroundSize: 'cover',*/}
-                                {/*            backgroundPosition: "center",*/}
-                                {/*            backgroundRepeat: "no-repeat",*/}
-                                {/*        }} className={classes.galleryPhotos} onClick={openImageModal}/>*/}
-                                {/*        <div className={classes.galleryTitle}>Borghese Gallery</div>*/}
-                                {/*    </div>*/}
-                                {/*})}*/}
-                                {/*the simple one */}
-
-
-                                <div style={{width:'100%'}}>
-                                    <Slide ref={sliderRef} style={{position: 'relative'}} {...properties}>
-                                        {data.medias.filter(media => media.homeapagePicture === 1).map((img, idx) => {
-                                            const {url} = img;
-                                            return <div key={idx} className={classes.gallerySec}>
-                                                <div datasrc={url} style={{
-                                                backgroundImage: `url("${url}")`,
-                                                backgroundSize: 'cover',
-                                                backgroundPosition: "center",
-                                                backgroundRepeat: "no-repeat",
-                                            }} className={classes.galleryPhotos} onClick={openImageModal}/>
-                                                <div className={classes.galleryTitle}>Borghese Gallery</div>
-                                            </div>
-                                        })}
-                                    </Slide>
-                                </div>
-                                {/*the slider one */}
-
-                            </div>
                         </div>
-                    </>
-                )
-            })
+                    </div>
+                    {!matches &&
+                    Object.keys(selectedGallery.videoLinks).length > 0 ?
+                        selectedGallery.videoLinks.slice(0, 1).map((videoLinks) => {
+                            if (videoLinks.media !== null) {
+                                return <div className={classes.galleryVidContainer}>
+                                    <div
+                                        style={{
+                                            backgroundImage: `url("${videoLinks.media.url}")`,
+                                            // width: '100%',
+                                            height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
+                                            backgroundRepeat: "no-repeat",
+                                            backgroundSize: "cover",
+                                            backgroundPosition: 'center',
+                                            // filter: 'contrast(50%)',
+                                            // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)'
+                                            filter: 'saturate(100%) brightness(0.50)'
+                                        }}
+                                        className={classes.galleryMainPhoto}
+                                        onClick={openYouTubeModal}
+                                    />
+                                    <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
+                                         onClick={openYouTubeModal}/>
+                                </div>
+                            } else {
+                                return selectedGallery.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((data, key) => {
+                                    return <div key={key} className={classes.galleryVidContainer}>
+                                        <div style={{
+                                            backgroundImage: `url("${data.url}")`,
+                                            // width: '100%',
+                                            height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
+                                            backgroundRepeat: "no-repeat",
+                                            backgroundSize: "cover",
+                                            backgroundPosition: 'center',
+                                            // filter: 'contrast(50%)',
+                                            // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)',
+                                            // filter: 'saturate(100%) brightness(0.50)'
+                                        }}
+                                             className={classes.galleryMainPhoto}/>
+                                        {/*<img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""*/}
+                                        {/*     onClick={openYouTubeModal}/>*/}
+                                    </div>
+                                })
+                            }
+                        }) :
+                        selectedGallery.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((data, idx) => {
+                            return <div key={idx} className={classes.galleryVidContainer}>
+                                <div
+                                    style={{
+                                        backgroundImage: `url("${data.url}")`,
+                                        // width: '100%',
+                                        height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined,
+                                        backgroundRepeat: "no-repeat",
+                                        backgroundSize: "cover",
+                                        backgroundPosition: 'center',
+                                        // filter: 'contrast(50%)',
+                                        // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)'
+                                        // filter: 'saturate(100%) brightness(0.50)'
+                                    }}
+                                    className={classes.galleryMainPhoto}
+                                />
+                            </div>
+                        })
+                    }
+                    {matches &&
+                    <ExploreBtn/>
+                    }
+                </div>
+                <div className={classes.galleryBottomSec}>
+                    {
+                        Object.keys(gallery).length < 4 || Object.keys(gallery).length === 4 ?
+                                // Object.keys(gallery).length > 4 ?
+                            <div style={{width: '100%', display: 'flex'}}>
+                                {
+                                    gallery.map((data) => {
+                                        if (data.id === selectedGallery.id) {
+                                            return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
+                                                const {url} = img;
+                                                return <div key={idx} className={classes.selectedGallerySec}>
+                                                    <div onClick={() => setSelectedGallery(data)}
+                                                         key={idx} className={classes.selectedGallery}>
+                                                        <div datasrc={url} style={{
+                                                            backgroundImage: `url("${url}")`,
+                                                            backgroundSize: 'cover',
+                                                            backgroundPosition: "center",
+                                                            backgroundRepeat: "no-repeat",
+                                                        }} className={classes.selectedGalleryPhotos}/>
+                                                        <div className={classes.galleryTitle}>{data.name}</div>
+                                                    </div>
+                                                </div>
+                                            })
+                                        } else {
+                                            return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
+                                                const {url} = img;
+                                                return <div onClick={() => setSelectedGallery(data)}
+                                                            key={idx} className={classes.gallerySec}>
+                                                    <div datasrc={url} style={{
+                                                        backgroundImage: `url("${url}")`,
+                                                        backgroundSize: 'cover',
+                                                        backgroundPosition: "center",
+                                                        backgroundRepeat: "no-repeat",
+                                                    }} className={classes.galleryPhotos}/>
+                                                    <div className={classes.galleryTitle}>{data.name}</div>
+                                                </div>
+                                            })
+                                        }
+                                    })
+                                }
+                            </div>
+                            :
+                            <div style={{width: '100%'}}>
+                                <Slide ref={sliderRef} style={{position: 'relative'}} {...properties}>
+                                    {
+                                        gallery.map((data) => {
+                                            if (data.id === selectedGallery.id) {
+                                                return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
+                                                    const {url} = img;
+                                                    return <div key={idx} className={classes.selectedGallerySec}>
+                                                        <div key={idx} className={classes.selectedGallery}>
+                                                            <div datasrc={url} style={{
+                                                                backgroundImage: `url("${url}")`,
+                                                                backgroundSize: 'cover',
+                                                                backgroundPosition: "center",
+                                                                backgroundRepeat: "no-repeat",
+                                                            }} className={classes.selectedGalleryPhotos}/>
+                                                            <div className={classes.galleryTitle}>{data.name}</div>
+                                                        </div>
+                                                    </div>
+                                                })
+                                            } else {
+                                                return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
+                                                    const {url} = img;
+                                                    return <div onClick={() => setSelectedGallery(data)} key={idx}
+                                                                className={classes.gallerySec}>
+                                                        <div datasrc={url} style={{
+                                                            backgroundImage: `url("${url}")`,
+                                                            backgroundSize: 'cover',
+                                                            backgroundPosition: "center",
+                                                            backgroundRepeat: "no-repeat",
+                                                        }} className={classes.galleryPhotos}/>
+                                                        <div className={classes.galleryTitle}>{data.name}</div>
+                                                    </div>
+                                                })
+                                            }
+                                        })
+                                    }
+                                </Slide>
+                            </div>
+                    }
+                </div>
+            </div>
         }
     </>
 }

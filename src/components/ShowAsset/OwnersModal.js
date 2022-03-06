@@ -35,16 +35,16 @@ export default function OwnersModal(props) {
             </div>
 
             <div className={classes.indexSec}>
-                {owners && owners.map((txn, idx) => {
+                {owners.map((owner, idx) => {
                     return <div key={idx} className={classes.ownersIndexRow}>
                         <div className={classes.rankNum}>
                             {idx + 1}
                         </div>
-                        <div className={classes.ownerName}>
-                            {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
-                        </div>
+                        <a rel="noreferrer" target="_blank" href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'address/' + owner.address} className={classes.ownerName}>
+                            {owner.address.slice(0, 4) + '...' + owner.address.slice(-4)}
+                        </a>
                         <div className={classes.quantity}>
-                            {txn.tokenQuantity} Token{txn.tokenQuantity > 1 && 's'}
+                            {owner.tokens} Token{owner.tokens > 1 && 's'}
                         </div>
                     </div>
                 })}

@@ -287,12 +287,14 @@
   right: -45px;
   width: 10.29px;
   height: 20.46px;
+  cursor: pointer;
 }
 .sliderPrevArrow{
   position: absolute;
   left: -47px;
   width: 10.29px;
   height: 20.46px;
+  cursor: pointer;
 }
 .galleryBottomSec {
   display: flex;
@@ -307,6 +309,30 @@
   box-shadow: 0px 1px 3px 0px #00000026;
   margin: 10px 5px 10px 5px;
   border-radius: 3px;
+  cursor: pointer;
+}
+
+.selectedGallerySec{
+  border:solid #FD6108 2px;
+  border-radius:3px;
+  margin:6px 1px 6px 1px;
+  width: 265px;
+  height: 274px;
+  display:flex;
+  justify-content:center;
+  cursor: pointer;
+}
+
+.selectedGallery{
+  //width: 255px;;
+  //height: 265px;
+  box-shadow: 0px 1px 3px 0px #00000026;
+  //margin:'6px 1px 6px 1px'
+  margin: 2px 2px 2px 2px;
+  border-radius: 3px;
+}
+.selectedGallery:hover{
+  box-shadow: 0px 2px 20px 0px #00000033;
 }
 .gallerySec:hover{
   box-shadow: 0px 2px 20px 0px #00000033;
@@ -325,11 +351,20 @@
 .galleryPhotos {
   //border-radius: 3px;
   border-radius: 3px 3px 0px 0px;
+  //width: 255px;
+  //height: 216px;
   width: 265px;
   height: 221px;
   cursor: pointer;
   user-select: none;
   //margin-right: 20px;
+}
+.selectedGalleryPhotos{
+  border-radius: 3px 3px 0px 0px;
+  width: 255px;
+  height: 216px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .galleryImgModal {

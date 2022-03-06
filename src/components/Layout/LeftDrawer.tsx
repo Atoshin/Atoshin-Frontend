@@ -60,7 +60,7 @@ export default function LeftDrawer({state, setState}) {
                     <ActiveLink title="Artists" href='/artists'/>
                 </ListItem>
                 <ListItem button>
-                    <ListItemText primary="About NFT"/>
+                    <ActiveLink title="About NFT" href='/about-nft'/>
                 </ListItem>
             </List>
         </Box>

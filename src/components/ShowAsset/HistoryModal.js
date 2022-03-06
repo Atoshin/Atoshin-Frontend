@@ -6,11 +6,15 @@ import styles from "../../styles/ShowAsset/ShowAsset.module.scss";
 
 
 export default function HistoryModal(props) {
-    const {open, setOpen} = props;
+    const {open, setOpen, txns} = props;
 
     const handleClose = () => {
         setOpen(false)
     }
+
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
 
     return (
         <Dialog onClose={handleClose} open={open}>
@@ -33,120 +37,21 @@ export default function HistoryModal(props) {
             </div>
 
             <div className={classes.HistoryDialogMain}>
-
-                <div className={classes.historyIndexRow}>
-                    <div className={classes.buyerNameSec}>
-                        <div className={classes.boughtBy}>
-                            Bought by
-                        </div>
-                        <div className={classes.buyerName}>
-                            0we6...245rb
-                        </div>
-                    </div>
-                    <div className={classes.dateBought}>
-                        in December 23, 2021
-                    </div>
-                </div>
-
-                <div className={classes.historyIndexRow}>
-                    <div className={classes.buyerNameSec}>
-                        <div className={classes.boughtBy}>
-                            Bought by
-                        </div>
-                        <div className={classes.buyerName}>
-                            0we6...245rb
-                        </div>
-                    </div>
-                    <div className={classes.dateBought}>
-                        in December 23, 2021
-                    </div>
-                </div>
-
-                <div className={classes.historyIndexRow}>
-                    <div className={classes.buyerNameSec}>
-                        <div className={classes.boughtBy}>
-                            Bought by
-                        </div>
-                        <div className={classes.buyerName}>
-                            0we6...245rb
-                        </div>
-                    </div>
-                    <div className={classes.dateBought}>
-                        in December 23, 2021
-                    </div>
-                </div>
-
-                <div className={classes.historyIndexRow}>
-                    <div className={classes.buyerNameSec}>
-                        <div className={classes.boughtBy}>
-                            Bought by
-                        </div>
-                        <div className={classes.buyerName}>
-                            0we6...245rb
-                        </div>
-                    </div>
-                    <div className={classes.dateBought}>
-                        in December 23, 2021
-                    </div>
-                </div>
-
-                <div className={classes.historyIndexRow}>
-                    <div className={classes.buyerNameSec}>
-                        <div className={classes.boughtBy}>
-                            Bought by
-                        </div>
-                        <div className={classes.buyerName}>
-                            0we6...245rb
-                        </div>
-                    </div>
-                    <div className={classes.dateBought}>
-                        in December 23, 2021
-                    </div>
-                </div>
-
-                <div className={classes.historyIndexRow}>
-                    <div className={classes.buyerNameSec}>
-                        <div className={classes.boughtBy}>
-                            Bought by
-                        </div>
-                        <div className={classes.buyerName}>
-                            0we6...245rb
-                        </div>
-                    </div>
-                    <div className={classes.dateBought}>
-                        in December 23, 2021
-                    </div>
-                </div>
-
-                <div className={classes.historyIndexRow}>
-                    <div className={classes.buyerNameSec}>
-                        <div className={classes.boughtBy}>
-                            Bought by
-                        </div>
-                        <div className={classes.buyerName}>
-                            0we6...245rb
-                        </div>
-                    </div>
-                    <div className={classes.dateBought}>
-                        in December 23, 2021
-                    </div>
-                </div>
-
-                <div className={classes.historyIndexRow}>
-                    <div className={classes.buyerNameSec}>
-                        <div className={classes.boughtBy}>
-                            Bought by
-                        </div>
-                        <div className={classes.buyerName}>
-                            0we6...245rb
-                        </div>
-                    </div>
-                    <div className={classes.dateBought}>
-                        in December 23, 2021
-                    </div>
-                </div>
-
-
+                {txns.map((txn, idx) => {
+                   return <div key={idx} className={classes.historyIndexRow}>
+                       <div className={classes.buyerNameSec}>
+                           <div className={classes.boughtBy}>
+                               Bought by
+                           </div>
+                           <a rel="noreferrer" target="_blank" href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + txn.txnHash} className={classes.buyerName}>
+                               {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
+                           </a>
+                       </div>
+                       <div className={classes.dateBought}>
+                           in {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDay()}, {new Date(txn.createdAt).getFullYear()}
+                       </div>
+                   </div>
+                })}
             </div>
         </Dialog>
     );

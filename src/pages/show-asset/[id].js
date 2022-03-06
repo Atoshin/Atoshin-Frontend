@@ -18,10 +18,13 @@ import {parseCookies} from "../../functions/parseCookies";
 import {ethers} from "ethers";
 import {useCookies} from "react-cookie";
 import calculateDecimalPrecision from "../../functions/calculateDecimalPrecision";
-import {useAppDispatch} from "../../redux/hooks";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {setAlert} from "../../redux/slices/alertSlice";
 import LoadingBackdrop from "../../components/Layout/Backdrop";
+import {selectAddress} from "../../redux/slices/accountSlice";
 
+
+const nullAddress = "0x0000000000000000000000000000000000000000";
 export default function ShowAsset({asset}) {
     const [openImages, setOpenImages] = useState(false)
     const [openOwners, setOpenOwners] = useState(false)
@@ -34,6 +37,7 @@ export default function ShowAsset({asset}) {
     const [secondTooltip, setSecondTooltip] = useState(false)
     const [loadingTxn, setLoadingTxn] = useState(false)
     const [isAuctionOver, setIsAuctionOver] = useState(false)
+    const [owners, setOwners] = useState([])
     const [cookie, setCookie] = useCookies()
     const [currentSlide, setCurrentSlide] = useState(asset.medias.find(media => media.main === 1))
     const [mainImgSize, setMainImgSize] = useState({
@@ -41,6 +45,7 @@ export default function ShowAsset({asset}) {
         height: ''
     })
     const dispatch = useAppDispatch()
+    const userAddress = useAppSelector(selectAddress);
     const {query} = useRouter();
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -59,6 +64,21 @@ export default function ShowAsset({asset}) {
         //endregion
     }, [])
 
+    function removeDuplicates(originalArray, prop) {
+        var newArray = [];
+        var lookupObject = {};
+
+        for (var i in originalArray) {
+            lookupObject[originalArray[i][prop]] = originalArray[i];
+        }
+
+        for (i in lookupObject) {
+            newArray.push(lookupObject[i]);
+        }
+        return newArray;
+    }
+
+
     useEffect(() => {
         const onScroll = (e) => {
             const container = document.getElementsByClassName(styles.showAssetMain)[0]
@@ -76,10 +96,52 @@ export default function ShowAsset({asset}) {
 
         window.addEventListener('scroll', onScroll)
 
+        const loadOwners = async () => {
+            try {
+                const tokenIds = asset.contracts.map((contract) => {
+                    return contract.minted.tokenId
+                });
+                const {data: encData} = await axios.get('/api/contracts/abi-info');
+                const decrypted = await CryptoJS.AES.decrypt(encData, process.env.NEXT_PUBLIC_CRYPT_KEY)
+                const {
+                    Market: {address: nftMarketAddress, abi: marketAbi},
+                    RPCEndPoint: rpcEndpoint
+                } = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
 
+                // const provider = new ethers.providers.JsonRpcProvider(rpcEndpoint)
+                const provider = new ethers.providers.JsonRpcProvider()
+                const marketContract = new ethers.Contract(nftMarketAddress, marketAbi, provider)
+                const data = await marketContract.getArtworkOwners(tokenIds[0], tokenIds[tokenIds.length - 1])
+                let items = await Promise.all(data.map(async i => {
+                    return i
+                }))
+
+                items = items.map(item => {
+                    if (item !== nullAddress) {
+                        const occurrences = items.filter(address => address === item).length;
+                        return {
+                            tokens: occurrences,
+                            address: item
+                        }
+                    }
+                });
+                let nftOwners = [];
+                for (let i = 0; i < items.length; i++) {
+                    if (items[i]) nftOwners.push(items[i])
+                }
+                nftOwners = removeDuplicates(nftOwners, 'address')
+                nftOwners.sort((a, b) => (a.tokens < b.tokens) ? 1 : ((b.tokens < a.tokens) ? -1 : 0));
+                setOwners(nftOwners);
+            } catch (e) {
+                console.error(e)
+            }
+        }
+
+        loadOwners()
         return function () {
             window.removeEventListener('scroll', onScroll)
         }
+
     }, [])
 
 
@@ -91,7 +153,8 @@ export default function ShowAsset({asset}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const ArtworkSubImages = () => {
-        if (asset.videoLinks[0]) {
+        console.log((6 - asset.videoLinks.length))
+        if (Object.keys(asset.videoLinks).length > 0) {
             if (typeof document !== 'undefined') {
                 let span = document.createElement('span');
                 span.hidden = true;
@@ -99,29 +162,30 @@ export default function ShowAsset({asset}) {
                 const iframe = span.children[0];
                 const ytvId = iframe.src.slice(-11)
                 span.remove()
-                return [
-                    <div key={5000} onClick={() => {
-                        setClickedVideoId(asset.videoLinks[0].id)
-                        setOpenImages(true)
-                    }} style={{
-                        backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
-                        width: 93.39,
-                        height: 93.39,
-                        backgroundPosition: 'center',
-                        backgroundSize: "cover",
-                        marginRight: 15.73,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        borderRadius: 3,
-                        boxShadow: '0px 1px 3px 0px #00000026'
-                    }}>
-                        <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
-                    </div>
-                    ,
-                    asset.medias.slice(0, 5).map((data, idx) => {
-                        if (idx === parseInt(Object.keys(asset.medias)[Object.keys(asset.medias).length - 1]) || idx === 4) {
-                            return <div onClick={() => openImageModal(data.id)} style={{
+              return  [
+                     asset.videoLinks.slice(0, 5).map((data, idx) => {
+                        return  <div key={5000} onClick={() => {
+                            setClickedVideoId(data.id)
+                            setOpenImages(true)
+                        }} style={{
+                            backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
+                            width: 93.39,
+                            height: 93.39,
+                            backgroundPosition: 'center',
+                            backgroundSize: "cover",
+                            marginRight: 15.73,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: 3,
+                            boxShadow: '0px 1px 3px 0px #00000026'
+                        }}>
+                            <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
+                        </div>
+                    }) ,
+                    asset.medias.slice(0, (6 - asset.videoLinks.length)).map((data, idx) => {
+                        if (idx === parseInt(Object.keys(asset.medias.slice(0, (6 - asset.videoLinks.length)))[Object.keys(asset.medias.slice(0, (6 - asset.videoLinks.length))).length - 1]) || idx === 4) {
+                            return <div key={idx} onClick={() => openImageModal(data.id)} style={{
                                 backgroundImage: `url("${data.url}")`,
                                 width: 93.39,
                                 height: 93.39,
@@ -147,35 +211,66 @@ export default function ShowAsset({asset}) {
                                 boxShadow: '0px 1px 3px 0px #00000026'
                             }}/>
                         }
-                    })]
-                // return [asset.medias.slice(0, 5).map((data, idx) => {
-                //     return <div style={{
-                //         backgroundImage: `url("${data.url}")`,
+                    })
+                ]
+
+
+                // return [
+                //     <div key={5000} onClick={() => {
+                //         setClickedVideoId(asset.videoLinks[0].id)
+                //         setOpenImages(true)
+                //     }} style={{
+                //         backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
                 //         width: 93.39,
                 //         height: 93.39,
                 //         backgroundPosition: 'center',
                 //         backgroundSize: "cover",
                 //         marginRight: 15.73,
-                //     }}/>
-                // }), <div style={{
-                //     backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
-                //     width: 93.39,
-                //     height: 93.39,
-                //     backgroundPosition: 'center',
-                //     backgroundSize: "cover",
-                //     // marginRight: 15.73,
-                //     display:'flex',
-                //     justifyContent:'center',
-                //     alignItems:'center',
-                // }}>
-                //     <img src="/images/show-asset/more.svg" style={{width: 54.07, height: 54.07}}/>
-                // </div>]
+                //         display: 'flex',
+                //         justifyContent: 'center',
+                //         alignItems: 'center',
+                //         borderRadius: 3,
+                //         boxShadow: '0px 1px 3px 0px #00000026'
+                //     }}>
+                //         <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
+                //     </div>
+                //     ,
+                //     asset.medias.slice(0, 5).map((data, idx) => {
+                //         if (idx === parseInt(Object.keys(asset.medias)[Object.keys(asset.medias).length - 1]) || idx === 4) {
+                //             return <div onClick={() => openImageModal(data.id)} style={{
+                //                 backgroundImage: `url("${data.url}")`,
+                //                 width: 93.39,
+                //                 height: 93.39,
+                //                 backgroundPosition: 'center',
+                //                 backgroundSize: "cover",
+                //                 display: 'flex',
+                //                 justifyContent: 'center',
+                //                 alignItems: 'center',
+                //                 borderRadius: 3,
+                //                 boxShadow: '0px 1px 3px 0px #00000026'
+                //             }}>
+                //                 <img src="/images/show-asset/more.svg" style={{width: 53.84, height: 53.84}}/>
+                //             </div>
+                //         } else {
+                //             return <div onClick={() => openImageModal(data.id)} style={{
+                //                 backgroundImage: `url("${data.url}")`,
+                //                 width: 93.39,
+                //                 height: 93.39,
+                //                 backgroundPosition: 'center',
+                //                 backgroundSize: "cover",
+                //                 marginRight: 15.73,
+                //                 borderRadius: 3,
+                //                 boxShadow: '0px 1px 3px 0px #00000026'
+                //             }}/>
+                //         }
+                //     })]
             } else {
                 return null;
             }
         } else {
+            console.log(asset.medias)
             return asset.medias.slice(0, 6).map((data, idx) => {
-                if (idx === parseInt(Object.keys(asset.medias)[Object.keys(asset.medias).length - 1]) || idx === 5) {
+                if (idx === parseInt(Object.keys(asset.medias.slice(0, 6))[Object.keys(asset.medias.slice(0, 6)).length - 1]) || idx === 5) {
                     return <div onClick={() => openImageModal(data.id)} style={{
                         backgroundImage: `url("${data.url}")`,
                         width: 93.39,
@@ -364,8 +459,6 @@ export default function ShowAsset({asset}) {
         //     setQuantity(e.target.value)
         // }
     }
-
-    console.log(asset)
     return (
         <>
             <LoadingBackdrop setOpen={setLoadingTxn} open={loadingTxn}/>
@@ -378,9 +471,8 @@ export default function ShowAsset({asset}) {
                          two={false}
             />
             {/*imageId={imageId}*/}
-            {/*pass*/}
-            <OwnersModal owners={asset.buyTransactions} open={openOwners} setOpen={setOpenOwners}/>
-            <HistoryModal open={openHistory} setOpen={setOpenHistory}/>
+            <OwnersModal owners={owners} open={openOwners} setOpen={setOpenOwners}/>
+            <HistoryModal txns={asset.buyTransactions} open={openHistory} setOpen={setOpenHistory}/>
             <div className={styles.showAssetMain}>
                 <div className={styles.topMainSec}>
                     <div className={styles.topLeftMainSec}>
@@ -517,7 +609,7 @@ export default function ShowAsset({asset}) {
                                     <img src="/images/show-asset/plus.svg" style={{marginRight: 37, width: 56.5}}
                                          onClick={add}/>
                                 </div>
-                                <Button disabled={isAuctionOver} classes={{disabled: styles.disabledBtn}}
+                                <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions} classes={{disabled: styles.disabledBtn}}
                                         onClick={submitOrder} className={styles.BuyBtnDesktop}>
                                     Buy {quantity ? quantity : 0} - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH
                                 </Button>
@@ -534,6 +626,7 @@ export default function ShowAsset({asset}) {
                         </div>
                         <div className={styles.artworkOtherImgSec}>
                             <ArtworkSubImages/>
+                            {/*hereeeeeeeeee*/}
                         </div>
                     </div>
                 </div>
@@ -542,212 +635,198 @@ export default function ShowAsset({asset}) {
                         Provenance
                     </div>
                     <div className={styles.provenanceMainSec}>
-                        <div className={styles.backStorySec}>
-                            <div className={styles.backStoryTitle}>
-                                Back story
-                            </div>
-                            <div className={styles.backStoryTxt} dangerouslySetInnerHTML={{__html: asset.bio}}/>
-                            <div className={styles.backStoryDivider}>
-                            </div>
-                            <div className={styles.backStoryBottomSec}>
-                                <div className={styles.backStoryArtistSec}>
-                                    <div className={styles.backStoryArtistTxt}>
-                                        Artist
-                                    </div>
-                                    <Link
-                                        href={`/artists/${asset.artist.fullName.toLowerCase().replace(/ /g, '-')}/${asset.artist.id}`}>
-                                        <a>
-                                            <div className={styles.backStoryArtistName}>{asset.artistName}</div>
-                                        </a>
-                                    </Link>
+                        <div className={styles.provenanceSec}>
+                            <div className={styles.backStorySec}>
+                                <div className={styles.backStoryTitle}>
+                                    Back story
                                 </div>
-                                <div className={styles.originalOwnerSec}>
-                                    <div className={styles.originalOwnerTxt}>
-                                        Original owner
+                                <div className={styles.backStoryTxt} dangerouslySetInnerHTML={{__html: asset.bio}}/>
+                            </div>
+                            <div className={styles.provenanceDivider}>
+                            </div>
+                            <div className={styles.aboutArtworkSec}>
+                                <div className={styles.aboutArtworkTxt}>
+                                    About artwork
+                                </div>
+                                <div className={styles.detailSec}>
+                                    <div className={styles.detailTitle}>
+                                        Date of creation
                                     </div>
-                                    <Link href={`/museums-and-galleries/${asset.gallery.id}`}>
-                                        <a>
-                                            <div className={styles.originalOwnerName}>
-                                                {asset.gallery.name}
-                                            </div>
-                                        </a>
-                                    </Link>
+                                    <div className={styles.detailText}>
+                                        {new Date(asset.creation).getFullYear()}
+                                    </div>
+                                </div>
+                                <div className={styles.detailSec}>
+                                    <div className={styles.detailTitle}>
+                                        Materials
+                                    </div>
+                                    <div className={styles.detailText}>
+                                        {asset.material}
+                                    </div>
+                                </div>
+                                <div className={styles.detailSec}>
+                                    <div className={styles.detailTitle}>
+                                        Size
+                                    </div>
+                                    <div className={styles.detailText}>
+                                        {asset.size}
+                                    </div>
+                                </div>
+                                <div className={styles.detailSec}>
+                                    <div className={styles.detailTitle}>
+                                        Located in
+                                    </div>
+                                    <div className={styles.detailText}>{asset.gallery.name}</div>
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.provenanceDivider}>
-                        </div>
-                        <div className={styles.aboutArtworkSec}>
-                            <div className={styles.aboutArtworkTxt}>
-                                About artwork
-                            </div>
-                            <div className={styles.detailSec}>
-                                <div className={styles.detailTitle}>
-                                    Date of creation
+                        <div className={styles.provenanceBottomSec}>
+                            <div className={styles.leftBottomSec}>
+                                <div className={styles.backStoryDivider}>
                                 </div>
-                                <div className={styles.detailText}>
-                                    {new Date(asset.createdAt).getFullYear()}
-                                </div>
-                            </div>
-                            <div className={styles.detailSec}>
-                                <div className={styles.detailTitle}>
-                                    Materials
-                                </div>
-                                <div className={styles.detailText}>
-                                    {asset.material}
-                                </div>
-                            </div>
-                            <div className={styles.detailSec}>
-                                <div className={styles.detailTitle}>
-                                    Size
-                                </div>
-                                <div className={styles.detailText}>
-                                    {asset.size}
-                                </div>
-                            </div>
-                            <div className={styles.detailSec}>
-                                <div className={styles.detailTitle}>
-                                    Located in
-                                </div>
-                                <div className={styles.detailText}>{asset.gallery.name}</div>
-                            </div>
-                            <div className={styles.aboutArtworkDivider}>
-                            </div>
-                            <div className={styles.aboutArtworkBottomSec}>
-                                {asset.mintTransactions.length > 0 ?
-                                    <a target="_blank"
-                                       href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + asset.mintTransactions[0].txnHash}
-                                       className={styles.mintedDateSec} rel="noreferrer">
-                                        Minted on
-                                        {
-                                            ' ' + monthNames[new Date(asset.mintTransactions[0].createdAt).getMonth()] + ' ' + new Date(asset.mintTransactions[0].createdAt).getDay() + ' ' + new Date(asset.mintTransactions[0].createdAt).getFullYear()
-                                        }
-                                    </a>
-                                    :
-                                    <div style={{width: 177}}/>}
-                                <div onMouseEnter={() => setSecondTooltip(true)}
-                                     onMouseOut={() => setSecondTooltip(false)} className={styles.watchArtworkSec}>
-                                    Watch artwork online
-                                </div>
-                                {
-                                    secondTooltip &&
-                                    <Fade in={secondTooltip}>
-                                        <div className={styles.watchOnlineTooltip}>
-                                            This item is only active for owners
-                                            <div className={styles.arrow2}/>
+                                <div className={styles.backStoryBottomSec}>
+                                    <div className={styles.backStoryArtistSec}>
+                                        <div className={styles.backStoryArtistTxt}>
+                                            Artist
                                         </div>
-                                    </Fade>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className={styles.bottomMainSec}>
-                    <div className={styles.ownersMainSec}>
-                        <div className={styles.ownersTitleSec}>
-                            <div className={styles.ownersTitle}>
-                                Top Owners
-                            </div>
-                            <div onClick={() => setOpenOwners(true)} className={styles.viewAllOwners}>
-                                View All
-                            </div>
-                        </div>
-                        <div className={styles.ownersIndexSec}>
-                            <div className={styles.indexTitles}>
-                                <div className={styles.rankTitle}>
-                                    Rank
-                                </div>
-                                <div className={styles.ownerNameTitle}>
-                                    Owners
-                                </div>
-                                <div className={styles.quantityTitle}>
-                                    Quantity
-                                </div>
-                            </div>
-                            {asset.buyTransactions && asset.buyTransactions.slice(0, 3).map((txn, idx) => {
-                                return <div key={idx} className={styles.ownersIndexRow}>
-                                    <div className={styles.rankNum}>
-                                        {idx + 1}
+                                        <Link
+                                            href={`/artists/${asset.artist.fullName.toLowerCase().replace(/ /g, '-')}/${asset.artist.id}`}>
+                                            <a>
+                                                <div className={styles.backStoryArtistName}>{asset.artistName}</div>
+                                            </a>
+                                        </Link>
                                     </div>
-                                    <div className={styles.ownerName}>
-                                        {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
-                                    </div>
-                                    <div className={styles.quantity}>
-                                        {txn.tokenQuantity} Token{txn.tokenQuantity > 1 && 's'}
+                                    <div className={styles.originalOwnerSec}>
+                                        <div className={styles.originalOwnerTxt}>
+                                            Original owner
+                                        </div>
+                                        <Link href={`/museums-and-galleries/${asset.gallery.id}`}>
+                                            <a>
+                                                <div className={styles.originalOwnerName}>
+                                                    {asset.gallery.name}
+                                                </div>
+                                            </a>
+                                        </Link>
                                     </div>
                                 </div>
-                            })}
-                        </div>
-                    </div>
-                    <div className={styles.historyMainSec}>
-                        <div className={styles.historyTitleSec}>
-                            <div className={styles.historyTitle}>
-                                History
                             </div>
-                            <div onClick={() => setOpenHistory(true)} className={styles.viewAllHistory}>
-                                View All
-                            </div>
-                        </div>
-                        <div className={styles.historyIndexSec}>
-                            <div className={styles.historyIndexTitles}>
-                                <div className={styles.buyerNameTitle}>
-                                    Buyers
+                            <div className={styles.rightBottomSec}>
+                                <div className={styles.aboutArtworkDivider}>
                                 </div>
-                                <div className={styles.dateTitle}>
-                                    Date
-                                </div>
-                            </div>
-                            <div className={styles.historyIndexRow}>
-                                <div className={styles.buyerNameSec}>
-                                    <div className={styles.boughtBy}>
-                                        Bought by
+                                <div className={styles.aboutArtworkBottomSec}>
+                                    {asset.mintTransactions.length > 0 ?
+                                        <a target="_blank"
+                                           href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + asset.mintTransactions[0].txnHash}
+                                           className={styles.mintedDateSec} rel="noreferrer">
+                                            Minted on
+                                            {
+                                                ' ' + monthNames[new Date(asset.mintTransactions[0].createdAt).getMonth()] + ' ' + new Date(asset.mintTransactions[0].createdAt).getDay() + ' ' + new Date(asset.mintTransactions[0].createdAt).getFullYear()
+                                            }
+                                        </a>
+                                        :
+                                        <div style={{width: 177}}/>}
+                                    <div onMouseEnter={() => setSecondTooltip(true)}
+                                         onMouseOut={() => setSecondTooltip(false)} className={owners.find(owner => owner.address === userAddress) ? styles.watchArtworkSecActive : styles.watchArtworkSec}>
+                                        Watch artwork online
                                     </div>
-                                    <div className={styles.buyerName}>
-                                        0we6...245rb
-                                    </div>
-                                </div>
-                                <div className={styles.dateBought}>
-                                    in December 23, 2021
-                                </div>
-                            </div>
-                            <div className={styles.historyIndexRow}>
-                                <div className={styles.buyerNameSec}>
-                                    <div className={styles.boughtBy}>
-                                        Bought by
-                                    </div>
-                                    <div className={styles.buyerName}>
-                                        0as7...345il
-                                    </div>
-                                </div>
-                                <div className={styles.dateBought}>
-                                    in December 18, 2021
-                                </div>
-                            </div>
-                            <div className={styles.historyIndexRow}>
-                                <div className={styles.buyerNameSec}>
-                                    <div className={styles.boughtBy}>
-                                        Bought by
-                                    </div>
-                                    <div className={styles.buyerName}>
-                                        0wr6...256jh
-                                    </div>
-                                </div>
-                                <div className={styles.dateBought}>
-                                    in December 11, 2021
+                                    {
+                                        secondTooltip &&
+                                        <Fade in={secondTooltip}>
+                                            <div className={styles.watchOnlineTooltip}>
+                                                This item is only active for owners
+                                                <div className={styles.arrow2}/>
+                                            </div>
+                                        </Fade>
+                                    }
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {asset.buyTransactions.length > 0 &&
+                    <div className={styles.bottomMainSec}>
+                        <div className={styles.ownersMainSec}>
+                            <div className={styles.ownersTitleSec}>
+                                <div className={styles.ownersTitle}>
+                                    Top Owners
+                                </div>
+                                <div onClick={() => setOpenOwners(true)} className={styles.viewAllOwners}>
+                                    View All
+                                </div>
+                            </div>
+                            <div className={styles.ownersIndexSec}>
+                                <div className={styles.indexTitles}>
+                                    <div className={styles.rankTitle}>
+                                        Rank
+                                    </div>
+                                    <div className={styles.ownerNameTitle}>
+                                        Owners
+                                    </div>
+                                    <div className={styles.quantityTitle}>
+                                        Quantity
+                                    </div>
+                                </div>
+                                {owners.slice(0, 3).map((owner, idx) => {
+                                    return <div key={idx} className={styles.ownersIndexRow}>
+                                        <div className={styles.rankNum}>
+                                            {idx + 1}
+                                        </div>
+                                        <a target="_blank" href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'address/' + owner.address} className={styles.ownerName} rel="noreferrer">
+                                            {owner.address.slice(0, 4) + '...' + owner.address.slice(-4)}
+                                        </a>
+                                        <div className={styles.quantity}>
+                                            {owner.tokens} Token{owner.tokens > 1 && 's'}
+                                        </div>
+                                    </div>
+                                })}
+                            </div>
+                        </div>
+                        <div className={styles.historyMainSec}>
+                            <div className={styles.historyTitleSec}>
+                                <div className={styles.historyTitle}>
+                                    History
+                                </div>
+                                <div onClick={() => setOpenHistory(true)} className={styles.viewAllHistory}>
+                                    View All
+                                </div>
+                            </div>
+                            <div className={styles.historyIndexSec}>
+                                <div className={styles.historyIndexTitles}>
+                                    <div className={styles.buyerNameTitle}>
+                                        Buyers
+                                    </div>
+                                    <div className={styles.dateTitle}>
+                                        Date
+                                    </div>
+                                </div>
+                                {asset.buyTransactions && asset.buyTransactions.map((txn, idx) => {
+                                    return <div key={idx} className={styles.historyIndexRow}>
+                                        <div className={styles.buyerNameSec}>
+                                            <div className={styles.boughtBy}>
+                                                Bought by
+                                            </div>
+                                            <a target="_blank" href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + txn.txnHash} className={styles.buyerName} rel="noreferrer">
+                                                {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
+                                            </a>
+                                        </div>
+                                        <div className={styles.dateBought}>
+                                            in {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDay()}, {new Date(txn.createdAt).getFullYear()}
+                                        </div>
+                                    </div>
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </>
     )
 }
 
 export async function getStaticPaths() {
-    const {data: {galleries}} = await axios.get(`${process.env.BACKEND_BASE_URL}/galleries`)
-    const paths = galleries.map(gallery => ({
-        params: {id: gallery.id.toString()}
+    const {data: {assets}} = await axios.get(`${process.env.BACKEND_BASE_URL}/marketplace`)
+    const paths = assets.map(asset => ({
+        params: {id: asset.id.toString()}
     }))
 
     return {
