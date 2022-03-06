@@ -442,6 +442,21 @@
   opacity: 0.5;
 }
 
+.watchArtworkSecActive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 177px;
+  height: 30px;
+  color: #232323;
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 1px;
+  background-color: #E9E6E6;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .provenanceDivider {
   height: 196px;
   border: 1px solid #232323;

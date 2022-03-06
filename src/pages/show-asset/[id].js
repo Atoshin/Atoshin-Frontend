@@ -18,9 +18,10 @@ import {parseCookies} from "../../functions/parseCookies";
 import {ethers} from "ethers";
 import {useCookies} from "react-cookie";
 import calculateDecimalPrecision from "../../functions/calculateDecimalPrecision";
-import {useAppDispatch} from "../../redux/hooks";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {setAlert} from "../../redux/slices/alertSlice";
 import LoadingBackdrop from "../../components/Layout/Backdrop";
+import {selectAddress} from "../../redux/slices/accountSlice";
 
 
 const nullAddress = "0x0000000000000000000000000000000000000000";
@@ -44,6 +45,7 @@ export default function ShowAsset({asset}) {
         height: ''
     })
     const dispatch = useAppDispatch()
+    const userAddress = useAppSelector(selectAddress);
     const {query} = useRouter();
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -723,7 +725,7 @@ export default function ShowAsset({asset}) {
                                         :
                                         <div style={{width: 177}}/>}
                                     <div onMouseEnter={() => setSecondTooltip(true)}
-                                         onMouseOut={() => setSecondTooltip(false)} className={styles.watchArtworkSec}>
+                                         onMouseOut={() => setSecondTooltip(false)} className={owners.find(owner => owner.address === userAddress) ? styles.watchArtworkSecActive : styles.watchArtworkSec}>
                                         Watch artwork online
                                     </div>
                                     {
