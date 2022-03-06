@@ -153,6 +153,7 @@ export default function ShowAsset({asset}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const ArtworkSubImages = () => {
+        console.log((6 - asset.videoLinks.length))
         if (Object.keys(asset.videoLinks).length > 0) {
             if (typeof document !== 'undefined') {
                 let span = document.createElement('span');
@@ -182,9 +183,9 @@ export default function ShowAsset({asset}) {
                             <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
                         </div>
                     }) ,
-                    asset.medias.slice(0, (6 - asset.videoLinks.length)+1).map((data, idx) => {
-                        if (idx === parseInt(Object.keys(asset.medias)[Object.keys(asset.medias).length - 1]) || idx === 4) {
-                            return <div onClick={() => openImageModal(data.id)} style={{
+                    asset.medias.slice(0, (6 - asset.videoLinks.length)).map((data, idx) => {
+                        if (idx === parseInt(Object.keys(asset.medias.slice(0, (6 - asset.videoLinks.length)))[Object.keys(asset.medias.slice(0, (6 - asset.videoLinks.length))).length - 1]) || idx === 4) {
+                            return <div key={idx} onClick={() => openImageModal(data.id)} style={{
                                 backgroundImage: `url("${data.url}")`,
                                 width: 93.39,
                                 height: 93.39,
@@ -267,8 +268,9 @@ export default function ShowAsset({asset}) {
                 return null;
             }
         } else {
+            console.log(asset.medias)
             return asset.medias.slice(0, 6).map((data, idx) => {
-                if (idx === parseInt(Object.keys(asset.medias)[Object.keys(asset.medias).length - 1]) || idx === 5) {
+                if (idx === parseInt(Object.keys(asset.medias.slice(0, 6))[Object.keys(asset.medias.slice(0, 6)).length - 1]) || idx === 5) {
                     return <div onClick={() => openImageModal(data.id)} style={{
                         backgroundImage: `url("${data.url}")`,
                         width: 93.39,
@@ -469,7 +471,6 @@ export default function ShowAsset({asset}) {
                          two={false}
             />
             {/*imageId={imageId}*/}
-            {/*pass*/}
             <OwnersModal owners={owners} open={openOwners} setOpen={setOpenOwners}/>
             <HistoryModal txns={asset.buyTransactions} open={openHistory} setOpen={setOpenHistory}/>
             <div className={styles.showAssetMain}>
