@@ -95,8 +95,7 @@ export default function ImagesModal({
                             :
                             <div  style={{width:698, height:469, display:'flex', justifyContent:'center'}}>
                                 <img src={mainImg.url}
-                                     style={{borderRadius: 3, boxShadow:" 0px 1px 3px 0px #00000026"}}
-                                    // style={{width:698, height:469}}
+                                     style={{borderRadius: 3, boxShadow:" 0px 1px 3px 0px #00000026",width:698, height:469}}
                                 />
                             </div>
                             // <div style={{borderRadius: 3}}><ZoomImg/></div>
@@ -169,7 +168,7 @@ export default function ImagesModal({
                         })}
                         {
                             two ?
-                                images.filter(media => media.homeapagePicture === 1).map((image, idx) => {
+                                images.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((image, idx) => {
                                     if (image.id === mainImg.id) {
                                         return <div style={{
                                             width: 120,

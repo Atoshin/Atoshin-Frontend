@@ -287,12 +287,14 @@
   right: -45px;
   width: 10.29px;
   height: 20.46px;
+  cursor: pointer;
 }
 .sliderPrevArrow{
   position: absolute;
   left: -47px;
   width: 10.29px;
   height: 20.46px;
+  cursor: pointer;
 }
 .galleryBottomSec {
   display: flex;
@@ -307,6 +309,7 @@
   box-shadow: 0px 1px 3px 0px #00000026;
   margin: 10px 5px 10px 5px;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .selectedGallerySec{
@@ -317,6 +320,7 @@
   height: 274px;
   display:flex;
   justify-content:center;
+  cursor: pointer;
 }
 
 .selectedGallery{
