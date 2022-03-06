@@ -168,7 +168,7 @@ export default function ImagesModal({
                         })}
                         {
                             two ?
-                                images.filter(media => media.homeapagePicture === 1).map((image, idx) => {
+                                images.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((image, idx) => {
                                     if (image.id === mainImg.id) {
                                         return <div style={{
                                             width: 120,
