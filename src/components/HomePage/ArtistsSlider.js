@@ -6,6 +6,7 @@ import {useMediaQuery} from "@mui/material";
 import {useRef} from "react";
 import {useRouter} from "next/router";
 import Link from "next/link";
+import * as React from "react";
 
 export default function ArtistsSlider({artists}) {
     const theme = useTheme();
@@ -39,7 +40,16 @@ export default function ArtistsSlider({artists}) {
                         <a>
                             {/*onClick={() => router.push(`/artists/${artist.fullName.toLowerCase().replace(/ /g, '-')}/${artist.id}`)}*/}
                             <div key={artist.id} className={classes.artist}>
-                                <img src={artist.medias.find(media => media.main === 1).url} alt="" style={{borderRadius:" 3px 3px 0px 0px"}}/>
+                                {/*<img src={artist.medias.find(media => media.main === 1).url} alt="" style={{borderRadius:" 3px 3px 0px 0px"}}/>*/}
+                                <div style={{
+                                    backgroundImage: `url("${artist.medias.find(media => media.main === 1).url}")`,
+                                    width: '100%',
+                                    height: '221px',
+                                    backgroundRepeat: "no-repeat",
+                                    backgroundSize: "cover",
+                                    backgroundPosition: 'center'
+                                }}>
+                                </div>
                                 <p>{artist.fullName}</p>
                             </div>
                         </a>

@@ -96,7 +96,7 @@ export default function Artist({artist}) {
                         <Slide ref={relatedSliderRef} autoplay={artist.assets.length >= 4} easing={"ease"}
                                slidesToShow={artist.assets.length < 4 ? artist.assets.length : (matches ? 2 : 4)}
                                infinite={true}
-                               arrows={true}
+                               arrows={artist.assets.length >= 5}
                                slidesToScroll={1}
                                transitionDuration={500}
                                duration={5000}>
