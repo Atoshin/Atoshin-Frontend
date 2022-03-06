@@ -18,6 +18,9 @@ export default function Artist({artist}) {
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const relatedSliderRef = useRef()
     const [openNewsModal, setOpenNewsModal] = useState(false);
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
 
     return (
         <>
@@ -117,6 +120,13 @@ export default function Artist({artist}) {
                                                  }}/>
                                             <div className={classes.relatedDescription}>
                                                 <p className={classes.relatedDescTitle}>{asset.title}</p>
+                                                {(new Date(asset.endDate) > new Date()) &&
+                                                    <div
+                                                        className={classes.date1}>
+                                                        Sale ends
+                                                        in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                                    </div>
+                                                }
                                                 <p className={classes.relatedDescDesc}>{shortenWords(extractContent(asset.bio), 60) + '...'}</p>
                                             </div>
                                         </div>

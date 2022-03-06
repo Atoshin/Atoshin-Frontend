@@ -724,7 +724,7 @@ export default function ShowAsset({asset}) {
                                            className={styles.mintedDateSec} rel="noreferrer">
                                             Minted on
                                             {
-                                                ' ' + monthNames[new Date(asset.mintTransactions[0].createdAt).getMonth()] + ' ' + new Date(asset.mintTransactions[0].createdAt).getDay() + ' ' + new Date(asset.mintTransactions[0].createdAt).getFullYear()
+                                                ' ' + monthNames[new Date(asset.mintTransactions[0].createdAt).getMonth()] + ' '  + new Date(asset.mintTransactions[0].createdAt).getFullYear()
                                             }
                                         </a>
                                         :
