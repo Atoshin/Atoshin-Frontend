@@ -3,6 +3,7 @@ import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import * as React from "react";
 import {useEffect} from "react";
+import Head from "next/head";
 
 export default function PrivacyPolicy() {
 
@@ -20,6 +21,9 @@ export default function PrivacyPolicy() {
 
     return (
         <>
+            <Head>
+                <title>Privacy Policy</title>
+            </Head>
             <div className={classes.pageTitle}>Privacy Policy</div>
             <div className={classes.lastUpdate}>LAST UPDATED – March 2022</div>
 

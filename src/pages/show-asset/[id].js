@@ -22,6 +22,7 @@ import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {setAlert} from "../../redux/slices/alertSlice";
 import LoadingBackdrop from "../../components/Layout/Backdrop";
 import {selectAddress} from "../../redux/slices/accountSlice";
+import Head from "next/head";
 
 
 const nullAddress = "0x0000000000000000000000000000000000000000";
@@ -461,6 +462,9 @@ export default function ShowAsset({asset}) {
     }
     return (
         <>
+            <Head>
+                <title>{asset.title}</title>
+            </Head>
             <LoadingBackdrop setOpen={setLoadingTxn} open={loadingTxn}/>
             <ImagesModal open={openImages} setOpen={setOpenImages} images={asset.medias} title={asset.title}
                          videos={asset.videoLinks}

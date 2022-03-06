@@ -14,6 +14,7 @@ import {ethers} from "ethers";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {parseCookies} from "../../functions/parseCookies";
 import {useCookies} from "react-cookie";
+import Head from "next/head";
 
 
 export default function Profile({token}) {
@@ -116,6 +117,9 @@ export default function Profile({token}) {
 
     return (
         <>
+            <Head>
+                <title>Profile</title>
+            </Head>
             <EditProfileModal setUserData={setUserData} open={openModal} setOpen={setOpenModal}/>
             <div className={classes.profileMain}>
                 <div className={classes.leftSec}>

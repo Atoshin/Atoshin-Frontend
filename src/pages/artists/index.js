@@ -3,6 +3,8 @@ import {useTheme} from "@mui/material/styles";
 import axios from "axios";
 import Link from 'next/link';
 import {useEffect} from "react";
+import Head from "next/head";
+import * as React from "react";
 
 export default function Artists({artists}) {
     const theme = useTheme();
@@ -18,6 +20,9 @@ export default function Artists({artists}) {
 
     return (
         <>
+            <Head>
+                <title>Artists</title>
+            </Head>
             <div className={classes.ArtistTitle}>
                 Artists
             </div>

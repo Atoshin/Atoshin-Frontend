@@ -5,6 +5,8 @@ import axios from "axios";
 import shortenWords from "../../functions/shortenWords";
 import Link from 'next/link';
 import {useEffect} from "react";
+import Head from "next/head";
+import * as React from "react";
 
 export default function GalleryList({galleries}) {
 
@@ -22,6 +24,9 @@ export default function GalleryList({galleries}) {
     console.log(galleries)
     return (
         <>
+            <Head>
+                <title>Museums and Galleries</title>
+            </Head>
             <div className={classes.sortSec}>
                 {/*<div className={classes.sort}> Sort by</div>*/}
                 {/*<div className={classes.sortList}>*/}

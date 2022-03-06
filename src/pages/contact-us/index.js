@@ -4,6 +4,8 @@ import {useMediaQuery} from "@mui/material";
 import Button from '@mui/material/Button';
 
 import {useEffect} from "react";
+import Head from "next/head";
+import * as React from "react";
 
 export default function ContactUs({galleries}) {
 
@@ -22,7 +24,9 @@ export default function ContactUs({galleries}) {
 
     return (
         <>
-
+            <Head>
+                <title>Contact Us</title>
+            </Head>
             <div className={classes.root}>
                 <div
                     style={{paddingLeft: '24px', paddingRight: '24px'}}
