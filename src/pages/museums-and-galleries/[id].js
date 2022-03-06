@@ -476,7 +476,7 @@ export default function ArtCenter({artCenter}) {
                                                 <div
                                                     className={matches1 || matches2 ? classes.date : classes.date1}>
                                                     Sale ends
-                                                    in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                                    in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
                                                 </div>
                                                 }
                                                 <p

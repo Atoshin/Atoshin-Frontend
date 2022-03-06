@@ -124,7 +124,7 @@ export default function Artist({artist}) {
                                                     <div
                                                         className={classes.date1}>
                                                         Sale ends
-                                                        in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                                        in {new Date(asset.endDate).getDate()} {monthNames[new Date(asset.endDate).getMonth()]}  {new Date(asset.endDate).getFullYear()}
                                                     </div>
                                                 }
                                                 <p className={classes.relatedDescDesc}>{shortenWords(extractContent(asset.bio), 60) + '...'}</p>

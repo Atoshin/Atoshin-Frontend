@@ -51,6 +51,9 @@ export default function ShowAsset({asset}) {
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
+    // const monthNames = ["January", "February", "March", "April", "May", "June",
+    //     "July", "August", "September", "October", "November", "December"
+    // ];
     const [clickedImageId, setClickedImageId] = useState('');
     const [clickedVideoId, setClickedVideoId] = useState('');
     useEffect(() => {
@@ -452,10 +455,8 @@ export default function ShowAsset({asset}) {
             setQuantity(e.target.value)
         }
         // if(e.target.value.slice(0,1) === fractionsLeft.toString().slice(0,1) && parseInt(e.target.value.charAt(e.target.value.length - 1)) >= parseInt(fractionsLeft.toString().charAt(fractionsLeft.toString().length - 1)) ){
-        //     console.log(e.target.value)
         // }
         // else{
-        //     setQuantity(e.target.value)
         // }
     }
     return (
@@ -547,13 +548,13 @@ export default function ShowAsset({asset}) {
                         {matches &&
                             <div className={styles.saleEndDateMob}>
                                 {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
-                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
                             </div>
                         }
                         <div className={styles.saleMainSec}>
                             <div className={styles.saleEndDate}>
                                 {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
-                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
                             </div>
                             <TimeDifference setIsOver={setIsAuctionOver} time={asset.endDate}/>
                         </div>
@@ -722,7 +723,7 @@ export default function ShowAsset({asset}) {
                                            className={styles.mintedDateSec} rel="noreferrer">
                                             Minted on
                                             {
-                                                ' ' + monthNames[new Date(asset.mintTransactions[0].createdAt).getMonth()] + ' '  + new Date(asset.mintTransactions[0].createdAt).getFullYear()
+                                                ' '+new Date(asset.mintTransactions[0].createdAt).getDate() + ' ' + monthNames[new Date(asset.mintTransactions[0].createdAt).getMonth()] + ' '  + new Date(asset.mintTransactions[0].createdAt).getFullYear()
                                             }
                                         </a>
                                         :
@@ -811,8 +812,8 @@ export default function ShowAsset({asset}) {
                                                 {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
                                             </a>
                                         </div>
-                                        <div className={styles.dateBought}>
-                                            in {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDay()}, {new Date(txn.createdAt).getFullYear()}
+                                        <div className={styles.dateBought} >
+                                            in {new Date(txn.createdAt).getDate()}  {monthNames[new Date(txn.createdAt).getMonth()]}  {new Date(txn.createdAt).getFullYear()}
                                         </div>
                                     </div>
                                 })}

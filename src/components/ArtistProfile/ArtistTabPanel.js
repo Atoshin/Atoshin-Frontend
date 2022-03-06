@@ -55,7 +55,6 @@ export default function BasicTabs({artist}) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    console.log(Object.keys(artist.medias).length < 1)
     return (
         <Box sx={{width: '100%'}}>
             <Box className={classes.table} sx={{borderBottom: 2, borderColor: '#A7A7A7', marginTop: '125px'}}>
@@ -91,9 +90,6 @@ export default function BasicTabs({artist}) {
                     <ArtistTabPanel value={value} index={2} style={{marginBottom:40}}>
                         <div className={classes.auctionMainSec}>
                             {artist.auctions.map((auction, idx) => {
-                                // console.log(auction)
-                                // console.log(idx)
-                                // console.log(Object.keys(artist.auctions)[Object.keys(artist.auctions).length - 1])
                                 if (parseInt(Object.keys(artist.auctions)[Object.keys(artist.auctions).length - 1]) === idx) {
                                     return <div key={idx} className={classes.lastAuctionRow}>
                                         <div className={classes.leftSec}>
@@ -122,7 +118,8 @@ export default function BasicTabs({artist}) {
                                                     {auction.auctionName}
                                                 </div>
                                                 <div className={classes.auctionDate}>
-                                                    {new Date(auction.auctionDate).getDay() + ' ' + monthNames[new Date(auction.auctionDate).getMonth()] + ' ' + new Date(auction.auctionDate).getFullYear()}
+                                                    {auction.auctionDate}
+                                                    {/*{new Date(auction.auctionDate).getDate() + ' ' + monthNames[new Date(auction.auctionDate).getMonth()] + ' ' + new Date(auction.auctionDate).getFullYear()}*/}
                                                 </div>
                                                 {matches &&
                                                 <div className={classes.rightSec}>
@@ -194,7 +191,8 @@ export default function BasicTabs({artist}) {
                                                     {auction.auctionName}
                                                 </div>
                                                 <div className={classes.auctionDate}>
-                                                    {new Date(auction.auctionDate).getDay() + ' ' + monthNames[new Date(auction.auctionDate).getMonth()] + ' ' + new Date(auction.auctionDate).getFullYear()}
+                                                    {auction.auctionDate}
+                                                    {/*{new Date(auction.auctionDate).getDate() + ' ' + monthNames[new Date(auction.auctionDate).getMonth()] + ' ' + new Date(auction.auctionDate).getFullYear()}*/}
                                                 </div>
                                                 {matches &&
                                                 <div className={classes.rightSec}>
