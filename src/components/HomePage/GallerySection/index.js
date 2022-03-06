@@ -228,7 +228,7 @@ export default function GallerySection({gallery}) {
                 <div className={classes.galleryBottomSec}>
                     {
                         Object.keys(gallery).length < 4 || Object.keys(gallery).length === 4 ?
-                            //     Object.keys(gallery).length > 4 ?
+                                // Object.keys(gallery).length > 4 ?
                             <div style={{width: '100%', display: 'flex'}}>
                                 {
                                     gallery.map((data) => {
