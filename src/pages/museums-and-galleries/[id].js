@@ -93,7 +93,7 @@ export default function ArtCenter({artCenter}) {
                 const iframe = span.children[0];
                 const ytvId = iframe.src.slice(-11)
                 span.remove()
-                if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 4) {
+                if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5) {
                     return (
                         <Slide style={{position: 'relative'}} {...properties} ref={gallerySliderRef}>
                             {
