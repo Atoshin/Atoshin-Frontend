@@ -60,8 +60,10 @@ export default function ShowAsset({asset}) {
         //region change background color for profile page
         const body = document.getElementsByTagName('body')[0];
         const style = body.style
-        style.backgroundColor = 'initial';
-        style.backgroundImage = ' url("/backgrounds/left.svg"), url("/backgrounds/right.svg")';
+        style.backgroundColor = '#FFFFFF';
+        style.backgroundImage = 'none';
+        // style.backgroundColor = 'initial';
+        // style.backgroundImage = ' url("/backgrounds/left.svg"), url("/backgrounds/right.svg")';
         style.backgroundRepeat = 'no-repeat, no-repeat';
         style.backgroundPosition = 'left top, right top';
         style.backgroundSize = '60%, 30%';
