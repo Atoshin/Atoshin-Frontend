@@ -228,25 +228,23 @@ export default function GallerySection({gallery}) {
                 <div className={classes.galleryBottomSec}>
                     {
                         Object.keys(gallery).length < 4 || Object.keys(gallery).length === 4 ?
-                                // Object.keys(gallery).length > 4 ?
+                        //         Object.keys(gallery).length > 4 ?
                             <div style={{width: '100%', display: 'flex'}}>
                                 {
                                     gallery.map((data) => {
                                         if (data.id === selectedGallery.id) {
                                             return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
                                                 const {url} = img;
-                                                return <div key={idx} className={classes.selectedGallerySec}>
-                                                    <div onClick={() => setSelectedGallery(data)}
+                                                return<div onClick={() => setSelectedGallery(data)}
                                                          key={idx} className={classes.selectedGallery}>
                                                         <div datasrc={url} style={{
                                                             backgroundImage: `url("${url}")`,
                                                             backgroundSize: 'cover',
                                                             backgroundPosition: "center",
                                                             backgroundRepeat: "no-repeat",
-                                                        }} className={classes.selectedGalleryPhotos}/>
+                                                        }} className={classes.galleryPhotos}/>
                                                         <div className={classes.galleryTitle}>{data.name}</div>
                                                     </div>
-                                                </div>
                                             })
                                         } else {
                                             return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
@@ -274,17 +272,15 @@ export default function GallerySection({gallery}) {
                                             if (data.id === selectedGallery.id) {
                                                 return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
                                                     const {url} = img;
-                                                    return <div key={idx} className={classes.selectedGallerySec}>
-                                                        <div key={idx} className={classes.selectedGallery}>
+                                                    return <div key={idx} className={classes.selectedGallery}>
                                                             <div datasrc={url} style={{
                                                                 backgroundImage: `url("${url}")`,
                                                                 backgroundSize: 'cover',
                                                                 backgroundPosition: "center",
                                                                 backgroundRepeat: "no-repeat",
-                                                            }} className={classes.selectedGalleryPhotos}/>
+                                                            }} className={classes.galleryPhotos}/>
                                                             <div className={classes.galleryTitle}>{data.name}</div>
                                                         </div>
-                                                    </div>
                                                 })
                                             } else {
                                                 return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
