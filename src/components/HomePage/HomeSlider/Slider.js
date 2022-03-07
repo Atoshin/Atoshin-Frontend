@@ -25,6 +25,7 @@ export default function Slider({images, sliderRef, setCurrentSlide, assets, curr
                arrows={false}
                autoplay={true}
                slidesToScroll={1}
+               cssClass={classes.slider}
                duration={5000}
                onChange={(oldIdx, newIdx) => {
                    setCurrentSlide(newIdx)
