@@ -607,16 +607,16 @@ export default function ShowAsset({asset}) {
                             (!matches) &&
                             <div className={styles.priceMainSec}>
                                 <div className={styles.counterPart}>
-                                    <img src="/images/show-asset/minus.svg" style={{marginLeft: 32, width: 56.5}}
+                                    <img src="/images/show-asset/minus.svg" style={{marginLeft: 20, width: 56.5}}
                                          onClick={minus}/>
                                     <input value={quantity} onChange={inputHandler}
                                            className={styles.quantityInput} type="text"/>
-                                    <img src="/images/show-asset/plus.svg" style={{marginRight: 37, width: 56.5}}
+                                    <img src="/images/show-asset/plus.svg" style={{marginRight: 20, width: 56.5}}
                                          onClick={add}/>
                                 </div>
                                 <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions} classes={{disabled: styles.disabledBtn}}
                                         onClick={submitOrder} className={styles.BuyBtnDesktop}>
-                                    Buy {quantity ? quantity : 0} - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH
+                                    Buy - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH
                                 </Button>
                             </div>
                         }
