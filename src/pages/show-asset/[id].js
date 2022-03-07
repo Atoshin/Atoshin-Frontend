@@ -23,10 +23,13 @@ import {setAlert} from "../../redux/slices/alertSlice";
 import LoadingBackdrop from "../../components/Layout/Backdrop";
 import {selectAddress} from "../../redux/slices/accountSlice";
 import Head from "next/head";
+import {setOpen} from "../../redux/slices/connectWalletModalSlice";
+
 
 
 const nullAddress = "0x0000000000000000000000000000000000000000";
 export default function ShowAsset({asset}) {
+    const address = useAppSelector(selectAddress);
     const [openImages, setOpenImages] = useState(false)
     const [openOwners, setOpenOwners] = useState(false)
     const [openHistory, setOpenHistory] = useState(false)
@@ -614,10 +617,17 @@ export default function ShowAsset({asset}) {
                                     <img src="/images/show-asset/plus.svg" style={{marginRight: 20, width: 56.5}}
                                          onClick={add}/>
                                 </div>
-                                <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions} classes={{disabled: styles.disabledBtn}}
-                                        onClick={submitOrder} className={styles.BuyBtnDesktop}>
-                                    Buy - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH
-                                </Button>
+                                { address ?
+                                    <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions} classes={{disabled: styles.disabledBtn}}
+                                            onClick={submitOrder} className={styles.BuyBtnDesktop}>
+                                        Buy - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH
+                                    </Button>
+                                    :
+                                    <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions} classes={{disabled: styles.disabledBtn}}
+                                            onClick={() => dispatch(setOpen(true))} className={styles.BuyBtnDesktop}>
+                                        Buy - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH
+                                    </Button>
+                                }
                             </div>
                         }
                     </div>

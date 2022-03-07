@@ -9,9 +9,12 @@ import classes from '../../styles/ConnectWalletModal/ConnectWalletModal.module.s
 import axios from 'axios';
 import {useCookies} from "react-cookie";
 import {parseCookies} from "../../functions/parseCookies";
+import {selectOpen, setOpen} from "../../redux/slices/connectWalletModalSlice";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 
-export default function ConnectWalletModal({open, setOpen, handleClose}) {
-
+export default function ConnectWalletModal({handleClose}) {
+    const open = useAppSelector(selectOpen);
+    const dispatch = useAppDispatch();
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const [cookie, setCookie] = useCookies(['token'])
@@ -25,7 +28,7 @@ export default function ConnectWalletModal({open, setOpen, handleClose}) {
                 signature,
                 walletAddress
             })
-            setOpen(false);
+            dispatch(setOpen(false));
             setCookie('token', signature, {
                 path: "/",
                 sameSite: true,
