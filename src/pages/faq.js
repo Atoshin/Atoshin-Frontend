@@ -1,6 +1,8 @@
 import classes from '../styles/FAQ/FAQ.module.scss'
 import {Collapse} from "@mui/material";
 import {useEffect, useState} from "react";
+import Head from "next/head";
+import * as React from "react";
 
 export default function FAQ() {
     const [state, setState] = useState({})
@@ -77,6 +79,9 @@ export default function FAQ() {
 
 
     return <div>
+        <Head>
+            <title>FAQ</title>
+        </Head>
         <div className={classes.faqTitleSec}>
             <p className={classes.FAQ}>FAQ</p>
             <h1 className={classes.faqTitle}>Frequently Asked Questions</h1>

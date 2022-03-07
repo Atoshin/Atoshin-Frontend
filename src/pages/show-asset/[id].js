@@ -22,6 +22,7 @@ import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {setAlert} from "../../redux/slices/alertSlice";
 import LoadingBackdrop from "../../components/Layout/Backdrop";
 import {selectAddress} from "../../redux/slices/accountSlice";
+import Head from "next/head";
 
 
 const nullAddress = "0x0000000000000000000000000000000000000000";
@@ -50,6 +51,9 @@ export default function ShowAsset({asset}) {
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
+    // const monthNames = ["January", "February", "March", "April", "May", "June",
+    //     "July", "August", "September", "October", "November", "December"
+    // ];
     const [clickedImageId, setClickedImageId] = useState('');
     const [clickedVideoId, setClickedVideoId] = useState('');
     useEffect(() => {
@@ -153,7 +157,6 @@ export default function ShowAsset({asset}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const ArtworkSubImages = () => {
-        console.log((6 - asset.videoLinks.length))
         if (Object.keys(asset.videoLinks).length > 0) {
             if (typeof document !== 'undefined') {
                 let span = document.createElement('span');
@@ -268,7 +271,6 @@ export default function ShowAsset({asset}) {
                 return null;
             }
         } else {
-            console.log(asset.medias)
             return asset.medias.slice(0, 6).map((data, idx) => {
                 if (idx === parseInt(Object.keys(asset.medias.slice(0, 6))[Object.keys(asset.medias.slice(0, 6)).length - 1]) || idx === 5) {
                     return <div onClick={() => openImageModal(data.id)} style={{
@@ -277,7 +279,7 @@ export default function ShowAsset({asset}) {
                         height: 93.39,
                         backgroundPosition: 'center',
                         backgroundSize: "cover",
-                        marginRight: 15.73,
+                        // marginRight: 15.73,
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -453,14 +455,15 @@ export default function ShowAsset({asset}) {
             setQuantity(e.target.value)
         }
         // if(e.target.value.slice(0,1) === fractionsLeft.toString().slice(0,1) && parseInt(e.target.value.charAt(e.target.value.length - 1)) >= parseInt(fractionsLeft.toString().charAt(fractionsLeft.toString().length - 1)) ){
-        //     console.log(e.target.value)
         // }
         // else{
-        //     setQuantity(e.target.value)
         // }
     }
     return (
         <>
+            <Head>
+                <title>{asset.title}</title>
+            </Head>
             <LoadingBackdrop setOpen={setLoadingTxn} open={loadingTxn}/>
             <ImagesModal open={openImages} setOpen={setOpenImages} images={asset.medias} title={asset.title}
                          videos={asset.videoLinks}
@@ -468,7 +471,7 @@ export default function ShowAsset({asset}) {
                          setClickedImageId={setClickedImageId}
                          setClickedVideoId={setClickedVideoId}
                          clickedVideoId={clickedVideoId}
-                         two={false}
+                         isGallary={false}
             />
             {/*imageId={imageId}*/}
             <OwnersModal owners={owners} open={openOwners} setOpen={setOpenOwners}/>
@@ -545,13 +548,13 @@ export default function ShowAsset({asset}) {
                         {matches &&
                             <div className={styles.saleEndDateMob}>
                                 {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
-                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
                             </div>
                         }
                         <div className={styles.saleMainSec}>
                             <div className={styles.saleEndDate}>
                                 {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
-                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
                             </div>
                             <TimeDifference setIsOver={setIsAuctionOver} time={asset.endDate}/>
                         </div>
@@ -626,11 +629,10 @@ export default function ShowAsset({asset}) {
                         </div>
                         <div className={styles.artworkOtherImgSec}>
                             <ArtworkSubImages/>
-                            {/*hereeeeeeeeee*/}
                         </div>
                     </div>
                 </div>
-                <div className={styles.midMainSec}>
+                <div className={asset.buyTransactions.length > 0 ? styles.midMainSec1 : styles.midMainSec2 }>
                     <div className={styles.provenanceTitle}>
                         Provenance
                     </div>
@@ -720,7 +722,7 @@ export default function ShowAsset({asset}) {
                                            className={styles.mintedDateSec} rel="noreferrer">
                                             Minted on
                                             {
-                                                ' ' + monthNames[new Date(asset.mintTransactions[0].createdAt).getMonth()] + ' ' + new Date(asset.mintTransactions[0].createdAt).getDay() + ' ' + new Date(asset.mintTransactions[0].createdAt).getFullYear()
+                                                ' '+new Date(asset.mintTransactions[0].createdAt).getDate() + ' ' + monthNames[new Date(asset.mintTransactions[0].createdAt).getMonth()] + ' '  + new Date(asset.mintTransactions[0].createdAt).getFullYear()
                                             }
                                         </a>
                                         :
@@ -809,8 +811,8 @@ export default function ShowAsset({asset}) {
                                                 {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
                                             </a>
                                         </div>
-                                        <div className={styles.dateBought}>
-                                            in {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDay()}, {new Date(txn.createdAt).getFullYear()}
+                                        <div className={styles.dateBought} >
+                                            in {new Date(txn.createdAt).getDate()}  {monthNames[new Date(txn.createdAt).getMonth()]}  {new Date(txn.createdAt).getFullYear()}
                                         </div>
                                     </div>
                                 })}

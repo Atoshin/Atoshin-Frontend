@@ -3,6 +3,7 @@ import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from '@mui/material';
 import {useEffect} from 'react';
 import * as React from 'react';
+import Head from "next/head";
 
 export default function TermsAndConditions() {
 
@@ -20,6 +21,9 @@ export default function TermsAndConditions() {
 
     return (
         <>
+            <Head>
+                <title>Terms and conditions</title>
+            </Head>
             <div className={classes.pageTitle}>Terms and Conditions</div>
             <div className={classes.lastUpdate}>LAST UPDATED – March 2022</div>
             <div className={classes.firstP}>

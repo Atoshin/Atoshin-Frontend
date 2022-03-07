@@ -11,15 +11,22 @@ import shortenWords from "../../../functions/shortenWords";
 import extractContent from "../../../functions/getHtmlInnerText";
 import Link from 'next/link';
 import NewsModal from "../../../components/ArtistProfile/NewsModal";
+import Head from "next/head";
 
 export default function Artist({artist}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const relatedSliderRef = useRef()
     const [openNewsModal, setOpenNewsModal] = useState(false);
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
 
     return (
         <>
+            <Head>
+                <title>{artist.fullName}</title>
+            </Head>
             <NewsModal open={openNewsModal} setOpen={setOpenNewsModal} news={artist.news}/>
             <div className={classes.main}>
                 <div className={classes.topSec}>
@@ -96,7 +103,7 @@ export default function Artist({artist}) {
                         <Slide ref={relatedSliderRef} autoplay={artist.assets.length >= 4} easing={"ease"}
                                slidesToShow={artist.assets.length < 4 ? artist.assets.length : (matches ? 2 : 4)}
                                infinite={true}
-                               arrows={true}
+                               arrows={artist.assets.length >= 5}
                                slidesToScroll={1}
                                transitionDuration={500}
                                duration={5000}>
@@ -113,6 +120,13 @@ export default function Artist({artist}) {
                                                  }}/>
                                             <div className={classes.relatedDescription}>
                                                 <p className={classes.relatedDescTitle}>{asset.title}</p>
+                                                {(new Date(asset.endDate) > new Date()) &&
+                                                    <div
+                                                        className={classes.date1}>
+                                                        Sale ends
+                                                        in {new Date(asset.endDate).getDate()} {monthNames[new Date(asset.endDate).getMonth()]}  {new Date(asset.endDate).getFullYear()}
+                                                    </div>
+                                                }
                                                 <p className={classes.relatedDescDesc}>{shortenWords(extractContent(asset.bio), 60) + '...'}</p>
                                             </div>
                                         </div>

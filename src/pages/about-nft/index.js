@@ -1,6 +1,8 @@
 import classes from '../../styles/AboutNft/AboutNft.module.scss'
 import {Collapse} from "@mui/material";
 import {useEffect, useState} from "react";
+import Head from "next/head";
+import * as React from "react";
 
 export default function FAQ() {
     const [state, setState] = useState({})
@@ -144,57 +146,62 @@ export default function FAQ() {
     }, [])
 
 
-    return <div style={{fontFamily: 'Roboto'}}>
-        <div className={classes.faqTitleSec}>
-            {/*<p className={classes.FAQ}>FAQ</p>*/}
-            <h1 className={classes.faqTitle}>What is Fractional NFT?</h1>
-        </div>
-        <div className={classes.txt}>
-            “Oh, how I wish I could shut up like a telescope! I think I could, if only I knew how to begin.” For, you
-            see, so many out-of-the-way things had happened lately, that Alice had begun to think that very few things
-            indeed were really impossible. —Chapter 1, Down the Rabbit-Hole-Alice in the Wonderland!
-        </div>
-        <div className={classes.QaContainer}>
-            {qAndAs.map((q, idx) => {
-                return <div key={idx} className={classes.item} onClick={() => setState({...state, [idx]: !state[idx]})}>
-                    <div className={classes.number}>
-                        {idx + 1}
+    return <>
+        <Head>
+            <title>About NFT</title>
+        </Head>
+        <div style={{fontFamily: 'Roboto'}}>
+            <div className={classes.faqTitleSec}>
+                {/*<p className={classes.FAQ}>FAQ</p>*/}
+                <h1 className={classes.faqTitle}>What is Fractional NFT?</h1>
+            </div>
+            <div className={classes.txt}>
+                “Oh, how I wish I could shut up like a telescope! I think I could, if only I knew how to begin.” For, you
+                see, so many out-of-the-way things had happened lately, that Alice had begun to think that very few things
+                indeed were really impossible. —Chapter 1, Down the Rabbit-Hole-Alice in the Wonderland!
+            </div>
+            <div className={classes.QaContainer}>
+                {qAndAs.map((q, idx) => {
+                    return <div key={idx} className={classes.item} onClick={() => setState({...state, [idx]: !state[idx]})}>
+                        <div className={classes.number}>
+                            {idx + 1}
+                        </div>
+                        <div className={classes.qMainSection}>
+                            <h3 className={classes.question}>{q.question}</h3>
+                            {state ?
+                                <img src={"/icons/arrowDown.svg"} alt="" style={{marginRight: 15}}/>
+                                :
+                                <img src={"/icons/arrowRight.svg"} alt="" style={{marginRight: 15}}/>
+                            }
+                        </div>
+                        <Collapse in={state[idx]}>
+                            <div className={classes.answer}>{q.answer}</div>
+                        </Collapse>
                     </div>
-                    <div className={classes.qMainSection}>
-                        <h3 className={classes.question}>{q.question}</h3>
-                        {state ?
-                            <img src={"/icons/arrowDown.svg"} alt="" style={{marginRight: 15}}/>
-                            :
-                            <img src={"/icons/arrowRight.svg"} alt="" style={{marginRight: 15}}/>
-                        }
-                    </div>
-                    <Collapse in={state[idx]}>
-                        <div className={classes.answer}>{q.answer}</div>
-                    </Collapse>
+                })}
+                <div className={classes.referencesTitle}>
+                    References and Notes: We have greatly benefitted from the material provided in the following web sites
+                    and research papers for the above information:
                 </div>
-            })}
-            <div className={classes.referencesTitle}>
-                References and Notes: We have greatly benefitted from the material provided in the following web sites
-                and research papers for the above information:
-            </div>
-            <div className={classes.url}>
-                https://learn.bybit.com/nft/what-are-fractional-nfts/
-            </div>
-            <div className={classes.referencesTxt}>
-                {` “Understanding Security Issues in the NFT Ecosystem Dipanjan” Das, Priyanka Bose, Nicola Ruaro,
+                <div className={classes.url}>
+                    https://learn.bybit.com/nft/what-are-fractional-nfts/
+                </div>
+                <div className={classes.referencesTxt}>
+                    {` “Understanding Security Issues in the NFT Ecosystem Dipanjan” Das, Priyanka Bose, Nicola Ruaro,
                 Christopher Kruegel, and Giovanni Vigna {dipanjan, priyanka, ruaronicola, chris, vigna}@cs.ucsb.edu
                 University of California, Santa Barbara`}
-            </div>
-            <div className={classes.referencesTxt}>
-                “Non-Fungible Tokens (NFT)”. The Analysis of Risk and Return. Mieszko Mazur, IESEG School of Management
-                This version: 31 October 2021
-            </div>
-            <div className={classes.url}>
-                https://www.argent.xyz/learn/fractionalized-nfts/
-            </div>
-            <div className={classes.referencesTxt} style={{marginBottom:0}}>
-                https://hackernoon.com/fractionalized-nfts-are-the-future-of-fractionalized-assets
+                </div>
+                <div className={classes.referencesTxt}>
+                    “Non-Fungible Tokens (NFT)”. The Analysis of Risk and Return. Mieszko Mazur, IESEG School of Management
+                    This version: 31 October 2021
+                </div>
+                <div className={classes.url}>
+                    https://www.argent.xyz/learn/fractionalized-nfts/
+                </div>
+                <div className={classes.referencesTxt} style={{marginBottom:0}}>
+                    https://hackernoon.com/fractionalized-nfts-are-the-future-of-fractionalized-assets
+                </div>
             </div>
         </div>
-    </div>
+    </>
 }

@@ -1,9 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import classes from '../../styles/AboutUs/aboutUs.module.scss'
+import Head from "next/head";
 
 export default function aboutUs() {
     return (
         <>
+            <Head>
+                <title>About Us</title>
+            </Head>
             <div className={classes.root}>
                 <div className={classes.pageTitle}>About Atoshin</div>
                 <div className={classes.paragraph}>
