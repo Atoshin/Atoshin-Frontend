@@ -629,11 +629,10 @@ export default function ShowAsset({asset}) {
                         </div>
                         <div className={styles.artworkOtherImgSec}>
                             <ArtworkSubImages/>
-                            {/*hereeeeeeeeee*/}
                         </div>
                     </div>
                 </div>
-                <div className={styles.midMainSec}>
+                <div className={asset.buyTransactions.length > 0 ? styles.midMainSec1 : styles.midMainSec2 }>
                     <div className={styles.provenanceTitle}>
                         Provenance
                     </div>
