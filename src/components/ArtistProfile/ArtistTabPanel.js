@@ -55,6 +55,8 @@ export default function BasicTabs({artist}) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    console.log(artist.auctions)
+    // console.log(Object.keys(artist.medias).length < 1)
     return (
         <Box sx={{width: '100%'}}>
             <Box className={classes.table} sx={{borderBottom: 2, borderColor: '#A7A7A7', marginTop: '125px'}}>
@@ -90,17 +92,38 @@ export default function BasicTabs({artist}) {
                     <ArtistTabPanel value={value} index={2} style={{marginBottom:40}}>
                         <div className={classes.auctionMainSec}>
                             {artist.auctions.map((auction, idx) => {
+                                // console.log(auction)
+                                // console.log(idx)
+                                // console.log(Object.keys(artist.auctions)[Object.keys(artist.auctions).length - 1])
                                 if (parseInt(Object.keys(artist.auctions)[Object.keys(artist.auctions).length - 1]) === idx) {
                                     return <div key={idx} className={classes.lastAuctionRow}>
                                         <div className={classes.leftSec}>
                                             {!matches &&
-                                            <img className={classes.auctionImg} src={auction.media && auction.media.url}
-                                                 alt=""/>
+                                            <div style={{
+                                                backgroundImage: `url("${auction.medias && auction.medias.url}")`,
+                                                width: '226px',
+                                                height: '283px',
+                                                backgroundRepeat: "no-repeat",
+                                                backgroundSize: "cover",
+                                                backgroundPosition: 'center'
+                                            }}>
+                                            </div>
+                                            // <img className={classes.auctionImg} src={auction.medias && auction.medias.url}
+                                            //      alt=""/>
                                             }
                                             {matches &&
                                             <div className={classes.auctionImgMobSec}>
-                                                <img className={classes.auctionImg} src={auction.media && auction.media.url}
-                                                     alt=""/>
+                                                <div style={{
+                                                    backgroundImage: `url("${auction.medias && auction.medias.url}")`,
+                                                    width: '226px',
+                                                    height: '283px',
+                                                    backgroundRepeat: "no-repeat",
+                                                    backgroundSize: "cover",
+                                                    backgroundPosition: 'center'
+                                                }}>
+                                                </div>
+                                                {/*<img className={classes.auctionImg} src={auction.medias && auction.medias.url}*/}
+                                                {/*     alt=""/>*/}
                                                 <div className={classes.auctionArtDetail}>
                                                     {auction.assetName}
                                                 </div>
@@ -167,13 +190,31 @@ export default function BasicTabs({artist}) {
                                     return <div key={idx} className={classes.auctionRow}>
                                         <div className={classes.leftSec}>
                                             {!matches &&
-                                            <img className={classes.auctionImg} src={auction.media && auction.media.url}
-                                                 alt=""/>
+                                            <div style={{
+                                                backgroundImage: `url("${auction.medias && auction.medias.url}")`,
+                                                width: '226px',
+                                                height: '283px',
+                                                backgroundRepeat: "no-repeat",
+                                                backgroundSize: "cover",
+                                                backgroundPosition: 'center'
+                                            }}>
+                                            </div>
+                                            // <img className={classes.auctionImg} src={auction.medias && auction.medias.url}
+                                            //      alt=""/>
                                             }
                                             {matches &&
                                             <div className={classes.auctionImgMobSec}>
-                                                <img className={classes.auctionImg} src={auction.media && auction.media.url}
-                                                     alt=""/>
+                                                <div style={{
+                                                    backgroundImage: `url("${auction.medias && auction.medias.url}")`,
+                                                    width: '226px',
+                                                    height: '283px',
+                                                    backgroundRepeat: "no-repeat",
+                                                    backgroundSize: "cover",
+                                                    backgroundPosition: 'center'
+                                                }}>
+                                                </div>
+                                                {/*<img className={classes.auctionImg} src={auction.medias && auction.medias.url}*/}
+                                                {/*     alt=""/>*/}
                                                 <div className={classes.auctionArtDetail}>
                                                     {auction.assetName}
                                                 </div>

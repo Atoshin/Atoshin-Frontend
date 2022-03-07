@@ -129,7 +129,7 @@ export default function HeaderContent({setDrawerMenu}) {
                         <div className={classes.logoContainer}>
                             <Link href="/">
                                 <a>
-                                    <img className={classes.AtoshinLogo} src="/images/Atoshin-logo.png" alt=""/>
+                                    <img className={classes.AtoshinLogo} src="/images/Atoshin-logo-typography.svg" alt=""/>
                                 </a>
                             </Link>
                         </div>
