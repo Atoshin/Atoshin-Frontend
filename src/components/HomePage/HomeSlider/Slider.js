@@ -23,7 +23,8 @@ export default function Slider({images, sliderRef, setCurrentSlide, assets, curr
                slidesToShow={1}
                infinite={true}
                arrows={false}
-               autoplay={true}
+               // autoplay={true}
+               autoplay={false}
                slidesToScroll={1}
                cssClass={classes.slider}
                duration={5000}
