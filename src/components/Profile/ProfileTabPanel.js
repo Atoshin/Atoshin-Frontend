@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import {createTheme, useTheme} from '@mui/material/styles';
 import {useMediaQuery} from "@mui/material";
+import calculateDecimalPrecision from "../../functions/calculateDecimalPrecision";
 
 
 function ProfileTabPanel(props) {
@@ -42,7 +43,7 @@ function a11yProps(index) {
     };
 }
 
-export default function BasicTabs() {
+export default function BasicTabs({artworks, history}) {
     const [value, setValue] = React.useState(0);
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -52,7 +53,9 @@ export default function BasicTabs() {
         setValue(newValue);
     };
 
-
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
     return (
         <Box sx={{width: '100%'}}>
             <Box className={classes.table} sx={{borderBottom: 1, borderColor: 'divider',}}>
@@ -66,105 +69,22 @@ export default function BasicTabs() {
             <ProfileTabPanel value={value} index={0}>
                 <div className={classes.profileBoxArtwork}>
                     <div className={classes.artworkSec}>
-                        {/*<div className={classes.artworkCard}>*/}
-                        {/*    <img className={classes.artworkImg} src="/images/img_11.png" alt=""/>*/}
-                        {/*    <div className={classes.cardBottomSec}>*/}
-                        {/*        <div className={classes.artworkName}>*/}
-                        {/*            Starry Night*/}
-                        {/*        </div>*/}
-                        {/*        <div className={classes.artworkTokens}>*/}
-                        {/*            2 Tokens*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-                        {/*<div className={classes.artworkCard}>*/}
-                        {/*    <img className={classes.artworkImg} src="/images/img_11.png" alt=""/>*/}
-                        {/*    <div className={classes.cardBottomSec}>*/}
-                        {/*        <div className={classes.artworkName}>*/}
-                        {/*            Starry Night*/}
-                        {/*        </div>*/}
-                        {/*        <div className={classes.artworkTokens}>*/}
-                        {/*            2 Tokens*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-                        {/*<div className={classes.artworkCard}>*/}
-                        {/*    <img className={classes.artworkImg} src="/images/img_11.png" alt=""/>*/}
-                        {/*    <div className={classes.cardBottomSec}>*/}
-                        {/*        <div className={classes.artworkName}>*/}
-                        {/*            Starry Night*/}
-                        {/*        </div>*/}
-                        {/*        <div className={classes.artworkTokens}>*/}
-                        {/*            2 Tokens*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-                        {/*<div className={classes.artworkCard}>*/}
-                        {/*    <img className={classes.artworkImg} src="/images/img_11.png" alt=""/>*/}
-                        {/*    <div className={classes.cardBottomSec}>*/}
-                        {/*        <div className={classes.artworkName}>*/}
-                        {/*            Starry Night*/}
-                        {/*        </div>*/}
-                        {/*        <div className={classes.artworkTokens}>*/}
-                        {/*            2 Tokens*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-                        {/*<div className={classes.artworkCard}>*/}
-                        {/*    <img className={classes.artworkImg} src="/images/img_11.png" alt=""/>*/}
-                        {/*    <div className={classes.cardBottomSec}>*/}
-                        {/*        <div className={classes.artworkName}>*/}
-                        {/*            Starry Night*/}
-                        {/*        </div>*/}
-                        {/*        <div className={classes.artworkTokens}>*/}
-                        {/*            2 Tokens*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-                        {/*<div className={classes.artworkCard}>*/}
-                        {/*    <img className={classes.artworkImg} src="/images/img_11.png" alt=""/>*/}
-                        {/*    <div className={classes.cardBottomSec}>*/}
-                        {/*        <div className={classes.artworkName}>*/}
-                        {/*            Starry Night*/}
-                        {/*        </div>*/}
-                        {/*        <div className={classes.artworkTokens}>*/}
-                        {/*            2 Tokens*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-                        {/*<div className={classes.artworkCard}>*/}
-                        {/*    <img className={classes.artworkImg} src="/images/img_11.png" alt=""/>*/}
-                        {/*    <div className={classes.cardBottomSec}>*/}
-                        {/*        <div className={classes.artworkName}>*/}
-                        {/*            Starry Night*/}
-                        {/*        </div>*/}
-                        {/*        <div className={classes.artworkTokens}>*/}
-                        {/*            2 Tokens*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-                        {/*<div className={classes.artworkCard}>*/}
-                        {/*    <img className={classes.artworkImg} src="/images/img_11.png" alt=""/>*/}
-                        {/*    <div className={classes.cardBottomSec}>*/}
-                        {/*        <div className={classes.artworkName}>*/}
-                        {/*            Starry Night*/}
-                        {/*        </div>*/}
-                        {/*        <div className={classes.artworkTokens}>*/}
-                        {/*            2 Tokens*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-                        {/*<div className={classes.artworkCard}>*/}
-                        {/*    <img className={classes.artworkImg} src="/images/img_11.png" alt=""/>*/}
-                        {/*    <div className={classes.cardBottomSec}>*/}
-                        {/*        <div className={classes.artworkName}>*/}
-                        {/*            Starry Night*/}
-                        {/*        </div>*/}
-                        {/*        <div className={classes.artworkTokens}>*/}
-                        {/*            2 Tokens*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
+                        {artworks.map((artwork, idx) => {
+                            return <div key={idx} className={classes.artworkCard}>
+                                <div className={classes.artworkImg} style={{
+                                    backgroundImage: `url(${artwork.assetImage})`,
+                                    backgroundPosition: "center",
+                                    backgroundSize: "cover"
+                                }}/>
+                                <div className={classes.cardBottomSec}>
+                                    <div className={classes.artworkName}>
+                                        {artwork.name}
+                                    </div>
+                                    {/*<div className={classes.artworkTokens}>*/}
+                                    {/*</div>*/}
+                                </div>
+                            </div>
+                        })}
                     </div>
                 </div>
             </ProfileTabPanel>
@@ -187,178 +107,30 @@ export default function BasicTabs() {
                                 </div>
                             </div>
                             <div className={classes.historyRowSec}>
-                                {/*<div className={classes.indexRowSec}>*/}
-                                {/*    <div className={classes.itemsSec}>*/}
-                                {/*        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>*/}
-                                {/*        <div className={classes.artworkNameIndex}>*/}
-                                {/*            Starry Night*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.statusSec}>*/}
-                                {/*        Sold*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.dateSec}>*/}
-                                {/*        Dec 23, 2021*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.transactionSec}>*/}
-                                {/*        4.6 ETH*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<div className={classes.indexRowSec}>*/}
-                                {/*    <div className={classes.itemsSec}>*/}
-                                {/*        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>*/}
-                                {/*        <div className={classes.artworkNameIndex}>*/}
-                                {/*            Starry Night*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.statusSec}>*/}
-                                {/*        Sold*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.dateSec}>*/}
-                                {/*        Dec 23, 2021*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.transactionSec}>*/}
-                                {/*        4.6 ETH*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<div className={classes.indexRowSec}>*/}
-                                {/*    <div className={classes.itemsSec}>*/}
-                                {/*        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>*/}
-                                {/*        <div className={classes.artworkNameIndex}>*/}
-                                {/*            Starry Night*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.statusSec}>*/}
-                                {/*        Sold*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.dateSec}>*/}
-                                {/*        Dec 23, 2021*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.transactionSec}>*/}
-                                {/*        4.6 ETH*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<div className={classes.indexRowSec}>*/}
-                                {/*    <div className={classes.itemsSec}>*/}
-                                {/*        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>*/}
-                                {/*        <div className={classes.artworkNameIndex}>*/}
-                                {/*            Starry Night*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.statusSec}>*/}
-                                {/*        Sold*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.dateSec}>*/}
-                                {/*        Dec 23, 2021*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.transactionSec}>*/}
-                                {/*        4.6 ETH*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<div className={classes.indexRowSec}>*/}
-                                {/*    <div className={classes.itemsSec}>*/}
-                                {/*        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>*/}
-                                {/*        <div className={classes.artworkNameIndex}>*/}
-                                {/*            Starry Night*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.statusSec}>*/}
-                                {/*        Sold*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.dateSec}>*/}
-                                {/*        Dec 23, 2021*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.transactionSec}>*/}
-                                {/*        4.6 ETH*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<div className={classes.indexRowSec}>*/}
-                                {/*    <div className={classes.itemsSec}>*/}
-                                {/*        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>*/}
-                                {/*        <div className={classes.artworkNameIndex}>*/}
-                                {/*            Starry Night*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.statusSec}>*/}
-                                {/*        Sold*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.dateSec}>*/}
-                                {/*        Dec 23, 2021*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.transactionSec}>*/}
-                                {/*        4.6 ETH*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<div className={classes.indexRowSec}>*/}
-                                {/*    <div className={classes.itemsSec}>*/}
-                                {/*        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>*/}
-                                {/*        <div className={classes.artworkNameIndex}>*/}
-                                {/*            Starry Night*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.statusSec}>*/}
-                                {/*        Sold*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.dateSec}>*/}
-                                {/*        Dec 23, 2021*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.transactionSec}>*/}
-                                {/*        4.6 ETH*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<div className={classes.indexRowSec}>*/}
-                                {/*    <div className={classes.itemsSec}>*/}
-                                {/*        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>*/}
-                                {/*        <div className={classes.artworkNameIndex}>*/}
-                                {/*            Starry Night*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.statusSec}>*/}
-                                {/*        Sold*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.dateSec}>*/}
-                                {/*        Dec 23, 2021*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.transactionSec}>*/}
-                                {/*        4.6 ETH*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<div className={classes.indexRowSec}>*/}
-                                {/*    <div className={classes.itemsSec}>*/}
-                                {/*        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>*/}
-                                {/*        <div className={classes.artworkNameIndex}>*/}
-                                {/*            Starry Night*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.statusSec}>*/}
-                                {/*        Sold*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.dateSec}>*/}
-                                {/*        Dec 23, 2021*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.transactionSec}>*/}
-                                {/*        4.6 ETH*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<div className={classes.indexRowSec}>*/}
-                                {/*    <div className={classes.itemsSec}>*/}
-                                {/*        <img className={classes.smallImg} src="/images/img_12.png" alt=""/>*/}
-                                {/*        <div className={classes.artworkNameIndex}>*/}
-                                {/*            Starry Night*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.statusSec}>*/}
-                                {/*        Sold*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.dateSec}>*/}
-                                {/*        Dec 23, 2021*/}
-                                {/*    </div>*/}
-                                {/*    <div className={classes.transactionSec}>*/}
-                                {/*        4.6 ETH*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
+                                {history.txns.map((txn, idx) => {
+                                    return <div key={idx} className={classes.indexRowSec}>
+                                        <div className={classes.itemsSec}>
+                                            <div className={classes.smallImg} style={{
+                                                backgroundImage: `url(${history.assets[idx].medias.find(media => media.main === 1).url})`,
+                                                backgroundPosition: "center",
+                                                backgroundSize: "cover"
+                                            }}/>
+                                            <div className={classes.artworkNameIndex}>
+                                                {history.assets[idx].title}
+                                            </div>
+                                        </div>
+                                        <div className={classes.statusSec}>
+                                            Sold
+                                        </div>
+                                        <div className={classes.dateSec}>
+                                            {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDay()}, {new Date(txn.createdAt).getFullYear()}
+                                        </div>
+                                        <div className={classes.transactionSec}>
+                                            {calculateDecimalPrecision(history.assets[idx].ethPricePerFraction * txn.tokenQuantity, 3) + ' ETH'}
+                                        </div>
+                                    </div>
+                                })}
                             </div>
-
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,6 @@ import Gallery from 'react-grid-gallery';
 
 export default function ArtworksGridGallery({artworks}) {
 
-    console.log(artworks)
     const images = artworks.filter(artwork => artwork.main !== 1).map(artwork => {
             return {
                 src: artwork.url,

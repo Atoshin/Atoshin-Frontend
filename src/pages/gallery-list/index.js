@@ -21,7 +21,6 @@ export default function GalleryList({galleries}) {
         style.backgroundImage = 'none';
         //endregion
     }, [])
-    console.log(galleries)
     return (
         <>
             <Head>

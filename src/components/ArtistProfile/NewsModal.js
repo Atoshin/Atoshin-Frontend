@@ -13,8 +13,6 @@ export default function NewsModal({open, setOpen, news}) {
         // }
         // setImg(images.find(img => img.main === 1))
     }
-    console.log(news)
-    // console.log(news.link.indexOf('com'))
 
     const linkHandler = (news) => {
         const url = new URL(news.link);
