@@ -123,7 +123,7 @@ export default function BasicTabs({artworks, history}) {
                                             Sold
                                         </div>
                                         <div className={classes.dateSec}>
-                                            {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDay()}, {new Date(txn.createdAt).getFullYear()}
+                                            {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDate()}, {new Date(txn.createdAt).getFullYear()}
                                         </div>
                                         <div className={classes.transactionSec}>
                                             {calculateDecimalPrecision(history.assets[idx].ethPricePerFraction * txn.tokenQuantity, 3) + ' ETH'}
