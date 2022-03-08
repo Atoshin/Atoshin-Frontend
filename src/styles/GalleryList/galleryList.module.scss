@@ -6,12 +6,19 @@
 }
 
 .row{
-  display: flex;
+  //display: flex;
   flex-direction: row;
   //border: 2px solid red;
   justify-content: space-between;
   margin-bottom: 25px;
   flex-wrap: wrap;
+  //display: inline-grid;
+  //grid-template-columns: auto auto auto;
+  //grid-column-gap: 50px;
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 31px;
+  grid-row-gap: 16px;
 }
 
 .item{

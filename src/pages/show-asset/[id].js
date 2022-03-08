@@ -23,10 +23,13 @@ import {setAlert} from "../../redux/slices/alertSlice";
 import LoadingBackdrop from "../../components/Layout/Backdrop";
 import {selectAddress} from "../../redux/slices/accountSlice";
 import Head from "next/head";
+import {setOpen} from "../../redux/slices/connectWalletModalSlice";
+
 
 
 const nullAddress = "0x0000000000000000000000000000000000000000";
 export default function ShowAsset({asset}) {
+    const address = useAppSelector(selectAddress);
     const [openImages, setOpenImages] = useState(false)
     const [openOwners, setOpenOwners] = useState(false)
     const [openHistory, setOpenHistory] = useState(false)
@@ -51,14 +54,19 @@ export default function ShowAsset({asset}) {
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
+    // const monthNames = ["January", "February", "March", "April", "May", "June",
+    //     "July", "August", "September", "October", "November", "December"
+    // ];
     const [clickedImageId, setClickedImageId] = useState('');
     const [clickedVideoId, setClickedVideoId] = useState('');
     useEffect(() => {
         //region change background color for profile page
         const body = document.getElementsByTagName('body')[0];
         const style = body.style
-        style.backgroundColor = 'initial';
-        style.backgroundImage = ' url("/backgrounds/left.svg"), url("/backgrounds/right.svg")';
+        style.backgroundColor = '#FFFFFF';
+        style.backgroundImage = 'none';
+        // style.backgroundColor = 'initial';
+        // style.backgroundImage = ' url("/backgrounds/left.svg"), url("/backgrounds/right.svg")';
         style.backgroundRepeat = 'no-repeat, no-repeat';
         style.backgroundPosition = 'left top, right top';
         style.backgroundSize = '60%, 30%';
@@ -547,13 +555,13 @@ export default function ShowAsset({asset}) {
                         {matches &&
                             <div className={styles.saleEndDateMob}>
                                 {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
-                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
                             </div>
                         }
                         <div className={styles.saleMainSec}>
                             <div className={styles.saleEndDate}>
                                 {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
-                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDay()}, {new Date(asset.endDate).getFullYear()}
+                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
                             </div>
                             <TimeDifference setIsOver={setIsAuctionOver} time={asset.endDate}/>
                         </div>
@@ -604,17 +612,24 @@ export default function ShowAsset({asset}) {
                             (!matches) &&
                             <div className={styles.priceMainSec}>
                                 <div className={styles.counterPart}>
-                                    <img src="/images/show-asset/minus.svg" style={{marginLeft: 32, width: 56.5}}
+                                    <img src="/images/show-asset/minus.svg" style={{marginLeft: 20, width: 56.5}}
                                          onClick={minus}/>
                                     <input value={quantity} onChange={inputHandler}
                                            className={styles.quantityInput} type="text"/>
-                                    <img src="/images/show-asset/plus.svg" style={{marginRight: 37, width: 56.5}}
+                                    <img src="/images/show-asset/plus.svg" style={{marginRight: 20, width: 56.5}}
                                          onClick={add}/>
                                 </div>
-                                <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions} classes={{disabled: styles.disabledBtn}}
-                                        onClick={submitOrder} className={styles.BuyBtnDesktop}>
-                                    Buy {quantity ? quantity : 0} - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH
-                                </Button>
+                                { address ?
+                                    <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions} classes={{disabled: styles.disabledBtn}}
+                                            onClick={submitOrder} className={styles.BuyBtnDesktop}>
+                                        Buy - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH
+                                    </Button>
+                                    :
+                                    <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions} classes={{disabled: styles.disabledBtn}}
+                                            onClick={() => dispatch(setOpen(true))} className={styles.BuyBtnDesktop}>
+                                        Buy - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH
+                                    </Button>
+                                }
                             </div>
                         }
                     </div>
@@ -628,11 +643,10 @@ export default function ShowAsset({asset}) {
                         </div>
                         <div className={styles.artworkOtherImgSec}>
                             <ArtworkSubImages/>
-                            {/*hereeeeeeeeee*/}
                         </div>
                     </div>
                 </div>
-                <div className={styles.midMainSec}>
+                <div className={asset.buyTransactions.length > 0 ? styles.midMainSec1 : styles.midMainSec2 }>
                     <div className={styles.provenanceTitle}>
                         Provenance
                     </div>
@@ -722,7 +736,7 @@ export default function ShowAsset({asset}) {
                                            className={styles.mintedDateSec} rel="noreferrer">
                                             Minted on
                                             {
-                                                ' ' + monthNames[new Date(asset.mintTransactions[0].createdAt).getMonth()] + ' '  + new Date(asset.mintTransactions[0].createdAt).getFullYear()
+                                                ' '+new Date(asset.mintTransactions[0].createdAt).getDate() + ' ' + monthNames[new Date(asset.mintTransactions[0].createdAt).getMonth()] + ' '  + new Date(asset.mintTransactions[0].createdAt).getFullYear()
                                             }
                                         </a>
                                         :
@@ -811,8 +825,8 @@ export default function ShowAsset({asset}) {
                                                 {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
                                             </a>
                                         </div>
-                                        <div className={styles.dateBought}>
-                                            in {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDay()}, {new Date(txn.createdAt).getFullYear()}
+                                        <div className={styles.dateBought} >
+                                            in {new Date(txn.createdAt).getDate()}  {monthNames[new Date(txn.createdAt).getMonth()]}  {new Date(txn.createdAt).getFullYear()}
                                         </div>
                                     </div>
                                 })}

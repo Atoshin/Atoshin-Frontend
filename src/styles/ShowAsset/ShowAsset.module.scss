@@ -149,7 +149,8 @@
 }
 
 .counterPart {
-  width: 183px;
+  //width: 183px;
+  width: 149px;
   height: 53px;
   display: flex;
   align-items: center;
@@ -225,14 +226,9 @@
   border-radius: 5px 0px 0px 5px;
   border: none;
   background: transparent;
-  //margin-top: 17px !important;
-  width: 70px !important;
-  //font-size: 25px !important;
+  width: 57px !important;
   font-size: 18px !important;
   font-weight: 400 !important;
-  //padding-left: 10px;
-  //font-weight: 500 !important;
-  //margin-left: 50px !important;
   text-align: center;
 
   &:focus {
@@ -242,10 +238,17 @@
   }
 }
 
-.midMainSec {
+.midMainSec1 {
   display: flex;
   flex-direction: column;
   margin-top: 80px;
+}
+
+.midMainSec2 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  margin-bottom: 204px;
 }
 
 .provenanceTitle {

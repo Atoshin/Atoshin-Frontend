@@ -4,13 +4,26 @@ import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import * as React from "react";
 import Head from "next/head";
-
+import Link from "next/link";
+import {useEffect, useState} from "react";
+import {useRouter} from "next/router";
 
 export default function Landing() {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const [redirect, setRedirect] = useState(false);
+    const router = useRouter();
+    const autoRedirect = () => {
+        if (redirect === true) {
+            return router.push('/')
+        }
+    }
 
+    setTimeout(() => {
+        setRedirect(true)
+        autoRedirect()
+    }, 15000)
 
     return (
         <>
@@ -26,7 +39,9 @@ export default function Landing() {
             <div className={classes.midText}>
                 Increases Access And Enables New Communities
             </div>
-            <img className={classes.vector} src="/icons/vector-down.svg" alt=""/>
+            <Link href="/">
+                <img className={classes.vector} src="/icons/vector-down.svg" alt=""/>
+            </Link>
         </>
     )
 }

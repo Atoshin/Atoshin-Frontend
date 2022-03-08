@@ -12,6 +12,7 @@ import {ethers} from "ethers";
 import {useTheme} from "@mui/material/styles";
 import {useRouter} from "next/router";
 import {useCookies} from "react-cookie";
+import {setOpen} from '../../../redux/slices/connectWalletModalSlice'
 
 export default function HeaderContent({setDrawerMenu}) {
     const dispatch = useAppDispatch()
@@ -64,9 +65,8 @@ export default function HeaderContent({setDrawerMenu}) {
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const router = useRouter()
 
-    const [openModal, setOpenModal] = useState(false);
-    const handleOpen = () => setOpenModal(true);
-    const handleCloseModal = () => setOpenModal(false);
+    const handleOpen = () => dispatch(setOpen(true));
+    const handleCloseModal = () => dispatch(setOpen(false));
 
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -129,7 +129,7 @@ export default function HeaderContent({setDrawerMenu}) {
                         <div className={classes.logoContainer}>
                             <Link href="/">
                                 <a>
-                                    <img className={classes.AtoshinLogo} src="/images/Atoshin-logo.png" alt=""/>
+                                    <img className={classes.AtoshinLogo} src="/images/Atoshin-logo-typography.svg" alt=""/>
                                 </a>
                             </Link>
                         </div>
@@ -175,7 +175,6 @@ export default function HeaderContent({setDrawerMenu}) {
             </>
         }
         <UserMenu handleClose={handleClose} anchorEl={anchorEl}/>
-        <ConnectWalletModal open={openModal} setOpen={setOpenModal}
-                            handleClose={handleCloseModal}/>
+        <ConnectWalletModal handleClose={handleCloseModal}/>
     </>
 }

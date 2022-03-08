@@ -21,7 +21,7 @@ export default function NewsModal({open, setOpen, news}) {
 
     return (
         <>
-            <Dialog onClose={handleClose} open={open} fullWidth maxWidth={"xl"} classes={{paper: classes.imgDialog}}>
+            <Dialog onClose={handleClose} open={open} fullWidth maxWidth={"xl"} classes={ Object.keys(news).length > 5 ? {paper: classes.imgDialogScroll} : {paper: classes.imgDialog}}>
                 <div className={classes.dialogHeader}>
                     <DialogTitle className={classes.modalTitle}>Interesting news and stories about artist</DialogTitle>
                     <div className={classes.vectorX} onClick={handleClose}>
@@ -33,7 +33,7 @@ export default function NewsModal({open, setOpen, news}) {
                     {news.map((newsSingular, idx) => {
                         return <a key={idx} target="_blank" rel="noreferrer" href={newsSingular.link}
                                   className={classes.newsLink}>
-                            <div className={classes.item}>
+                            <div className={ parseInt(Object.keys(news)[Object.keys(news).length - 1]) === idx ? classes.lastItem : classes.item}>
                                 <div className={classes.itemTxtSec}>
                                     <div className={classes.newsTitle}>{newsSingular.title}</div>
                                     <div className={classes.newsUrl}>
@@ -47,8 +47,6 @@ export default function NewsModal({open, setOpen, news}) {
                             </div>
                         </a>
                     })}
-
-
                 </div>
 
             </Dialog>

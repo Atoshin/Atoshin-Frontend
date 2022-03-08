@@ -15,7 +15,6 @@ export default function HistoryModal(props) {
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
-
     return (
         <Dialog onClose={handleClose} open={open}>
 
@@ -38,7 +37,7 @@ export default function HistoryModal(props) {
 
             <div className={classes.HistoryDialogMain}>
                 {txns.map((txn, idx) => {
-                   return <div key={idx} className={classes.historyIndexRow}>
+                    return <div key={idx} className={classes.historyIndexRow}>
                        <div className={classes.buyerNameSec}>
                            <div className={classes.boughtBy}>
                                Bought by
@@ -48,7 +47,7 @@ export default function HistoryModal(props) {
                            </a>
                        </div>
                        <div className={classes.dateBought}>
-                           in {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDay()}, {new Date(txn.createdAt).getFullYear()}
+                           in {new Date(txn.createdAt).getDate()} {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getFullYear()}
                        </div>
                    </div>
                 })}

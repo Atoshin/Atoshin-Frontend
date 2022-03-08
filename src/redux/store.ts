@@ -3,12 +3,14 @@ import {createWrapper, HYDRATE} from 'next-redux-wrapper';
 import account from './slices/accountSlice';
 import artCenterMap from "./slices/artCenterMap";
 import alert from "./slices/alertSlice";
+import walletModal from "./slices/connectWalletModalSlice";
 
 const store = configureStore({
     reducer: {
         account,
         artCenterMap,
-        alert
+        alert,
+        walletModal
     },
 });
 
