@@ -623,6 +623,7 @@ export default function ShowAsset({asset}) {
                                     <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions} classes={{disabled: styles.disabledBtn}}
                                             onClick={submitOrder} className={styles.BuyBtnDesktop}>
                                         Buy - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH
+
                                     </Button>
                                     :
                                     <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions} classes={{disabled: styles.disabledBtn}}
