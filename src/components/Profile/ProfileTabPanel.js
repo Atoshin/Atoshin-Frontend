@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import {createTheme, useTheme} from '@mui/material/styles';
 import {useMediaQuery} from "@mui/material";
 import calculateDecimalPrecision from "../../functions/calculateDecimalPrecision";
+import {useState} from "react";
 
 
 function ProfileTabPanel(props) {
@@ -47,7 +48,13 @@ export default function BasicTabs({artworks, history}) {
     const [value, setValue] = React.useState(0);
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
-
+    const [artWorkHover, setArtWorkHover] = useState(false);
+    const artWorkMouseOver = () => {
+        setArtWorkHover(true)
+    }
+    const artWorkMouseLeave = () => {
+        setArtWorkHover(false)
+    }
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -70,7 +77,16 @@ export default function BasicTabs({artworks, history}) {
                 <div className={classes.profileBoxArtwork}>
                     <div className={classes.artworkSec}>
                         {artworks.map((artwork, idx) => {
-                            return <div key={idx} className={classes.artworkCard}>
+                            return <div key={idx} className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}
+                                        onMouseEnter={artWorkMouseOver}
+                                        onMouseLeave={artWorkMouseLeave}>
+                                {
+                                    artWorkHover === true ?
+                                        <div className={classes.hoveredArtworkBackground}>
+                                            <div className={classes.contractsBtn}><div>Contracts</div></div>
+                                            <div className={classes.assetBtn}><div>Asset</div></div>
+                                        </div> : ''
+                                }
                                 <div className={classes.artworkImg} style={{
                                     backgroundImage: `url(${artwork.assetImage})`,
                                     backgroundPosition: "center",
