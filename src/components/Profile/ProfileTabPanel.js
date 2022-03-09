@@ -9,7 +9,7 @@ import {createTheme, useTheme} from '@mui/material/styles';
 import {useMediaQuery} from "@mui/material";
 import calculateDecimalPrecision from "../../functions/calculateDecimalPrecision";
 import {useState} from "react";
-
+import ArtWork from "./ArtWork";
 
 function ProfileTabPanel(props) {
     const {children, value, index, ...other} = props;
@@ -48,14 +48,6 @@ export default function BasicTabs({artworks, history}) {
     const [value, setValue] = React.useState(0);
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
-    const [artWorkHover, setArtWorkHover] = useState(false);
-    const artWorkMouseOver = () => {
-        setArtWorkHover(true)
-    }
-    const artWorkMouseLeave = () => {
-        setArtWorkHover(false)
-    }
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -76,31 +68,36 @@ export default function BasicTabs({artworks, history}) {
             <ProfileTabPanel value={value} index={0}>
                 <div className={classes.profileBoxArtwork}>
                     <div className={classes.artworkSec}>
+
                         {artworks.map((artwork, idx) => {
-                            return <div key={idx} className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}
-                                        onMouseEnter={artWorkMouseOver}
-                                        onMouseLeave={artWorkMouseLeave}>
-                                {
-                                    artWorkHover === true ?
-                                        <div className={classes.hoveredArtworkBackground}>
-                                            <div className={classes.contractsBtn}><div>Contracts</div></div>
-                                            <div className={classes.assetBtn}><div>Asset</div></div>
-                                        </div> : ''
-                                }
-                                <div className={classes.artworkImg} style={{
-                                    backgroundImage: `url(${artwork.assetImage})`,
-                                    backgroundPosition: "center",
-                                    backgroundSize: "cover"
-                                }}/>
-                                <div className={classes.cardBottomSec}>
-                                    <div className={classes.artworkName}>
-                                        {artwork.name}
-                                    </div>
-                                    {/*<div className={classes.artworkTokens}>*/}
-                                    {/*</div>*/}
-                                </div>
-                            </div>
+                            return <ArtWork artwork={artwork} key={idx}/>
                         })}
+
+                        {/*{artworks.map((artwork, idx) => {*/}
+                        {/*    return <div key={idx} className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}*/}
+                        {/*                onMouseEnter={artWorkMouseOver}*/}
+                        {/*                onMouseLeave={artWorkMouseLeave}>*/}
+                        {/*        {*/}
+                        {/*            artWorkHover === true ?*/}
+                        {/*                <div className={classes.hoveredArtworkBackground}>*/}
+                        {/*                    <div className={classes.contractsBtn}><div>Contracts</div></div>*/}
+                        {/*                    <div className={classes.assetBtn}><div>Asset</div></div>*/}
+                        {/*                </div> : ''*/}
+                        {/*        }*/}
+                        {/*        <div className={classes.artworkImg} style={{*/}
+                        {/*            backgroundImage: `url(${artwork.assetImage})`,*/}
+                        {/*            backgroundPosition: "center",*/}
+                        {/*            backgroundSize: "cover"*/}
+                        {/*        }}/>*/}
+                        {/*        <div className={classes.cardBottomSec}>*/}
+                        {/*            <div className={classes.artworkName}>*/}
+                        {/*                {artwork.name}*/}
+                        {/*            </div>*/}
+                        {/*            /!*<div className={classes.artworkTokens}>*!/*/}
+                        {/*            /!*</div>*!/*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*})}*/}
                     </div>
                 </div>
             </ProfileTabPanel>
