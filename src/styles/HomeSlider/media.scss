@@ -1,15 +1,17 @@
-@media (max-width: 600px) {
+@media (max-width: 1052px) {
   .topLeftSecFadeIn {
-    margin-top: 129px;
+    margin-top: 70px;
     width: 100%;
     padding-right: 0;
   }
   .topLeftSecFadeOut {
-    margin-top: 129px;
+    margin-top: 70px;
     width: 100%;
     padding-right: 0;
   }
   .topMainSec {
+    width: 80% !important;
+    margin: auto;
     flex-direction: column;
     margin-top: 0;
   }
@@ -87,5 +89,19 @@
   .sliderImages {
     width: 100% !important;
     height: auto !important;
+  }
+  .infoSecDesktop {
+    display: none;
+  }
+  .mobBtn{
+    display: flex;
+  }
+}
+@media (max-width: 600px) {
+  .topMainSec {
+    width: 100% !important;
+    //margin: auto;
+    flex-direction: column;
+    margin-top: 0;
   }
 }
