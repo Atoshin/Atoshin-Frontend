@@ -62,7 +62,7 @@ export default function HeaderContent({setDrawerMenu}) {
     }, [])
 
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const matches = useMediaQuery(theme.breakpoints.down('md'));
     const router = useRouter()
 
     const handleOpen = () => dispatch(setOpen(true));
@@ -129,7 +129,7 @@ export default function HeaderContent({setDrawerMenu}) {
                         <div className={classes.logoContainer}>
                             <Link href="/">
                                 <a>
-                                    <img className={classes.AtoshinLogo} src="/images/Atoshin-logo-typography.svg" alt=""/>
+                                    <img className={classes.AtoshinLogo} src="/images/atoshin-logo-typography.svg" alt=""/>
                                 </a>
                             </Link>
                         </div>
