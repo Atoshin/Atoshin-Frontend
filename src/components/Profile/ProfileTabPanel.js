@@ -68,7 +68,6 @@ export default function BasicTabs({artworks, history}) {
             <ProfileTabPanel value={value} index={0}>
                 <div className={classes.profileBoxArtwork}>
                     <div className={classes.artworkSec}>
-
                         {artworks.map((artwork, idx) => {
                             return <ArtWork artwork={artwork} key={idx}/>
                         })}

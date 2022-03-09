@@ -29,7 +29,7 @@ export default function ArtWork ({artwork, key}) {
                                 </div>
                             </div> : ''
                     }
-                    <div className={classes.artworkImg} style={{
+                    <div className={artWorkHover === true ? classes.hoveredArtworkImg : classes.artworkImg} style={{
                         backgroundImage: `url(${artwork.assetImage})`,
                         backgroundPosition: "center",
                         backgroundSize: "cover"
