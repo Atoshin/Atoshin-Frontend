@@ -9,6 +9,7 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 import {Slide} from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
+import GallerySlider from "./GallerySlider";
 
 
 export default function GallerySection({gallery}) {
@@ -143,17 +144,17 @@ export default function GallerySection({gallery}) {
                         <div className={classes.galleryDescSec}>
                             <div className={classes.galleryDesc}>
                                 {!matches &&
-                                <div className={classes.galleryDecsTxt}>
-                                    {gallerySummery(selectedGallery)}
-                                </div>
+                                    <div className={classes.galleryDecsTxt}>
+                                        {gallerySummery(selectedGallery)}
+                                    </div>
                                 }
                                 {matches &&
-                                <div className={classes.galleryDecsTxtMob}>
-                                    {selectedGallery.summary}
-                                </div>
+                                    <div className={classes.galleryDecsTxtMob}>
+                                        {selectedGallery.summary}
+                                    </div>
                                 }
                                 {!matches &&
-                                <ExploreBtn/>
+                                    <ExploreBtn/>
                                 }
                             </div>
                         </div>
@@ -222,10 +223,10 @@ export default function GallerySection({gallery}) {
                         })
                     }
                     {matches &&
-                    <ExploreBtn/>
+                        <ExploreBtn/>
                     }
                 </div>
-                <div className={classes.galleryBottomSec}>
+                {/*<div className={classes.galleryBottomSec}>*/}
                     {
                         Object.keys(gallery).length < 4 || Object.keys(gallery).length === 4 ?
                         //         Object.keys(gallery).length > 4 ?
@@ -266,6 +267,7 @@ export default function GallerySection({gallery}) {
                             </div>
                             :
                             <div style={{width: '100%'}}>
+                                <GallerySlider artists={gallery} setSelectedGallery={setSelectedGallery}/>
                                 <Slide ref={sliderRef} style={{position: 'relative'}} {...properties}>
                                     {
                                         gallery.map((data) => {
@@ -302,7 +304,7 @@ export default function GallerySection({gallery}) {
                                 </Slide>
                             </div>
                     }
-                </div>
+                {/*</div>*/}
             </div>
         }
     </>
