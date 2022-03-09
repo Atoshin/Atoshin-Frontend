@@ -53,7 +53,6 @@ export default function GallerySection({gallery}) {
             return gallery.summary
         }
     }
-
     const properties = {
         easing: "ease",
         slidesToShow: matches ? 2 : 4,
@@ -153,6 +152,9 @@ export default function GallerySection({gallery}) {
                                         {selectedGallery.summary}
                                     </div>
                                 }
+                                {matches &&
+                                <div className={classes.mobileExploreSec}><ExploreBtn/></div>
+                                }
                                 {!matches &&
                                     <ExploreBtn/>
                                 }
@@ -222,22 +224,19 @@ export default function GallerySection({gallery}) {
                             </div>
                         })
                     }
-                    {matches &&
-                        <ExploreBtn/>
-                    }
                 </div>
                 {/*<div className={classes.galleryBottomSec}>*/}
                     {
-                        Object.keys(gallery).length < 4 || Object.keys(gallery).length === 4 ?
-                        //         Object.keys(gallery).length > 4 ?
-                            <div style={{width: '100%', display: 'flex'}}>
-                                {
-                                    gallery.map((data) => {
-                                        if (data.id === selectedGallery.id) {
-                                            return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
-                                                const {url} = img;
-                                                return<div onClick={() => setSelectedGallery(data)}
-                                                         key={idx} className={classes.selectedGallery}>
+                            Object.keys(gallery).length < 4 || Object.keys(gallery).length === 4 ?
+                                //         Object.keys(gallery).length > 4 ?
+                                <div style={{width: '100%', display: 'flex'}}>
+                                    {
+                                        gallery.map((data) => {
+                                            if (data.id === selectedGallery.id) {
+                                                return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
+                                                    const {url} = img;
+                                                    return<div onClick={() => setSelectedGallery(data)}
+                                                               key={idx} className={classes.selectedGallery}>
                                                         <div datasrc={url} style={{
                                                             backgroundImage: `url("${url}")`,
                                                             backgroundSize: 'cover',
@@ -246,49 +245,12 @@ export default function GallerySection({gallery}) {
                                                         }} className={classes.galleryPhotos}/>
                                                         <div className={classes.galleryTitle}>{data.name}</div>
                                                     </div>
-                                            })
-                                        } else {
-                                            return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
-                                                const {url} = img;
-                                                return <div onClick={() => setSelectedGallery(data)}
-                                                            key={idx} className={classes.gallerySec}>
-                                                    <div datasrc={url} style={{
-                                                        backgroundImage: `url("${url}")`,
-                                                        backgroundSize: 'cover',
-                                                        backgroundPosition: "center",
-                                                        backgroundRepeat: "no-repeat",
-                                                    }} className={classes.galleryPhotos}/>
-                                                    <div className={classes.galleryTitle}>{data.name}</div>
-                                                </div>
-                                            })
-                                        }
-                                    })
-                                }
-                            </div>
-                            :
-                            <div style={{width: '100%'}}>
-                                <GallerySlider artists={gallery} setSelectedGallery={setSelectedGallery}/>
-                                <Slide ref={sliderRef} style={{position: 'relative'}} {...properties}>
-                                    {
-                                        gallery.map((data) => {
-                                            if (data.id === selectedGallery.id) {
-                                                return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
-                                                    const {url} = img;
-                                                    return <div key={idx} className={classes.selectedGallery}>
-                                                            <div datasrc={url} style={{
-                                                                backgroundImage: `url("${url}")`,
-                                                                backgroundSize: 'cover',
-                                                                backgroundPosition: "center",
-                                                                backgroundRepeat: "no-repeat",
-                                                            }} className={classes.galleryPhotos}/>
-                                                            <div className={classes.galleryTitle}>{data.name}</div>
-                                                        </div>
                                                 })
                                             } else {
                                                 return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {
                                                     const {url} = img;
-                                                    return <div onClick={() => setSelectedGallery(data)} key={idx}
-                                                                className={classes.gallerySec}>
+                                                    return <div onClick={() => setSelectedGallery(data)}
+                                                                key={idx} className={classes.gallerySec}>
                                                         <div datasrc={url} style={{
                                                             backgroundImage: `url("${url}")`,
                                                             backgroundSize: 'cover',
@@ -301,8 +263,45 @@ export default function GallerySection({gallery}) {
                                             }
                                         })
                                     }
-                                </Slide>
-                            </div>
+                                </div>
+                                :
+                                <div style={{width: '100%'}}>
+                                    <GallerySlider gallery={gallery} setSelectedGallery={setSelectedGallery} selectedGallery={selectedGallery}/>
+                                    {/*<Slide ref={sliderRef} style={{position: 'relative'}} {...properties}>*/}
+                                    {/*    {*/}
+                                    {/*        gallery.map((data) => {*/}
+                                    {/*            if (data.id === selectedGallery.id) {*/}
+                                    {/*                return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {*/}
+                                    {/*                    const {url} = img;*/}
+                                    {/*                    return <div key={idx} className={classes.selectedGallery}>*/}
+                                    {/*                            <div datasrc={url} style={{*/}
+                                    {/*                                backgroundImage: `url("${url}")`,*/}
+                                    {/*                                backgroundSize: 'cover',*/}
+                                    {/*                                backgroundPosition: "center",*/}
+                                    {/*                                backgroundRepeat: "no-repeat",*/}
+                                    {/*                            }} className={classes.galleryPhotos}/>*/}
+                                    {/*                            <div className={classes.galleryTitle}>{data.name}</div>*/}
+                                    {/*                        </div>*/}
+                                    {/*                })*/}
+                                    {/*            } else {*/}
+                                    {/*                return data.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((img, idx) => {*/}
+                                    {/*                    const {url} = img;*/}
+                                    {/*                    return <div onClick={() => setSelectedGallery(data)} key={idx}*/}
+                                    {/*                                className={classes.gallerySec}>*/}
+                                    {/*                        <div datasrc={url} style={{*/}
+                                    {/*                            backgroundImage: `url("${url}")`,*/}
+                                    {/*                            backgroundSize: 'cover',*/}
+                                    {/*                            backgroundPosition: "center",*/}
+                                    {/*                            backgroundRepeat: "no-repeat",*/}
+                                    {/*                        }} className={classes.galleryPhotos}/>*/}
+                                    {/*                        <div className={classes.galleryTitle}>{data.name}</div>*/}
+                                    {/*                    </div>*/}
+                                    {/*                })*/}
+                                    {/*            }*/}
+                                    {/*        })*/}
+                                    {/*    }*/}
+                                    {/*</Slide>*/}
+                                </div>
                     }
                 {/*</div>*/}
             </div>
