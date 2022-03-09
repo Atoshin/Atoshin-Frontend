@@ -9,10 +9,7 @@ import 'react-slideshow-image/dist/styles.css';
 import Link from "next/link";
 import calculateDecimalPrecision from "../../../functions/calculateDecimalPrecision";
 
-export default function Slider({images, sliderRef, setCurrentSlide, assets, currentSlide}) {
-    const imageRef = useRef({
-        current: {}
-    })
+export default function Slider({images, sliderRef, setCurrentSlide, assets, currentSlide, imageRef}) {
     const router = useRouter();
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
@@ -23,8 +20,7 @@ export default function Slider({images, sliderRef, setCurrentSlide, assets, curr
                slidesToShow={1}
                infinite={true}
                arrows={false}
-               // autoplay={true}
-               autoplay={false}
+               autoplay={true}
                slidesToScroll={1}
                cssClass={classes.slider}
                duration={5000}
@@ -39,15 +35,17 @@ export default function Slider({images, sliderRef, setCurrentSlide, assets, curr
                         <a>
                             <div
                                 // onClick={() => router.push(`/show-asset/${assets[currentSlide].id}`)}
-                                className={classes.topRightSec}>
-                                <div className={classes.artworkImgSec}>
+                                className={classes.topRightSec} style={{width: imageRef.current.clientWidth}}>
+                                <div className={classes.artworkImgSec} style={{height: (((imageRef.current.clientWidth) * 2) / 3)}}>
                                     <div style={{
                                         backgroundImage: `url(${img})`,
                                         backgroundSize: `${imageRef.current.clientWidth}px`,
                                         backgroundRepeat: "no-repeat",
                                         backgroundPosition: 'center',
-                                        width: imageRef.current.clientWidth,
-                                        height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined
+                                        // width: imageRef.current.clientWidth,
+                                        width: '100%',
+                                        // height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined
+                                        height: (((imageRef.current.clientWidth) * 2) / 3),
                                     }} className={classes.artWorkImg}/>
                                 </div>
                                 <div ref={imageRef} className={classes.artWorkDetailSec}>
