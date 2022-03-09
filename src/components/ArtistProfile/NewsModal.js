@@ -13,6 +13,7 @@ export default function NewsModal({open, setOpen, news}) {
         // }
         // setImg(images.find(img => img.main === 1))
     }
+
     const linkHandler = (news) => {
         const url = new URL(news.link);
         return url.origin

@@ -94,7 +94,6 @@ export default function ShowAsset({asset}) {
             const topSec = document.getElementsByClassName(styles.topMainSec)[0]
             var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
-            // console.log(window.scrollY, container.clientHeight)
             if (window.scrollY + height > container.clientHeight) {
                 setScrolled(false)
             } else {
@@ -117,8 +116,7 @@ export default function ShowAsset({asset}) {
                     RPCEndPoint: rpcEndpoint
                 } = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
 
-                // const provider = new ethers.providers.JsonRpcProvider(rpcEndpoint)
-                const provider = new ethers.providers.JsonRpcProvider()
+                const provider = new ethers.providers.JsonRpcProvider(rpcEndpoint)
                 const marketContract = new ethers.Contract(nftMarketAddress, marketAbi, provider)
                 const data = await marketContract.getArtworkOwners(tokenIds[0], tokenIds[tokenIds.length - 1])
                 let items = await Promise.all(data.map(async i => {
@@ -328,6 +326,8 @@ export default function ShowAsset({asset}) {
     }
 
     const submitOrder = async () => {
+        const mintedIds = [];
+        let txnHash = '0x0000000000000000000000000000000000000000000000000000000000000000';
         try {
             if (window.ethereum) {
                 setLoadingTxn(true)
@@ -357,7 +357,6 @@ export default function ShowAsset({asset}) {
                 let contract = new ethers.Contract(resData.Market.address, resData.Market.abi, signer)
                 const tokenIds = [];
                 const mintedAts = [];
-                const mintedIds = [];
                 for (let i = 0; i < resData.contracts.length; i++) {
                     tokenIds.push(resData.contracts[i].minted.tokenId);
                     mintedAts.push(new Date(resData.contracts[i].minted.createdAt).getTime());
@@ -377,7 +376,7 @@ export default function ShowAsset({asset}) {
                 )
 
                 const tx = await transaction.wait()
-                const txnHash = tx.transactionHash
+                txnHash = tx.transactionHash
                 await axios.patch(`/api/contracts/asset/${query.id}`, {
                     txnHash,
                     mintedIds,
@@ -387,6 +386,11 @@ export default function ShowAsset({asset}) {
             } else {
             }
         } catch (e) {
+            await axios.patch(`/api/contracts/asset/${query.id}`, {
+                txnHash,
+                mintedIds,
+                txnStatus: 'unsold'
+            })
             setLoadingTxn(false)
             if (e.response) {
                 dispatch(setAlert({
@@ -430,6 +434,7 @@ export default function ShowAsset({asset}) {
         }
     }, [currentSlide, rendered])
 
+
     const add = () => {
         if (quantity <= parseInt((asset.totalFractions - asset.soldFractions) - 1)) {
             setQuantity((quantity) => {
@@ -459,10 +464,7 @@ export default function ShowAsset({asset}) {
         } else {
             setQuantity(e.target.value)
         }
-        // if(e.target.value.slice(0,1) === fractionsLeft.toString().slice(0,1) && parseInt(e.target.value.charAt(e.target.value.length - 1)) >= parseInt(fractionsLeft.toString().charAt(fractionsLeft.toString().length - 1)) ){
-        // }
-        // else{
-        // }
+
     }
     return (
         <>

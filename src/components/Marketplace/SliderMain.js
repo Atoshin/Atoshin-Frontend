@@ -17,7 +17,6 @@ export default function SliderMain({asset, idx}) {
         setHovered(false)
     }
 
-    console.log(hovered + '-' + idx);
 
 
     return (

@@ -15,6 +15,8 @@ import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {parseCookies} from "../../functions/parseCookies";
 import {useCookies} from "react-cookie";
 import Head from "next/head";
+import CryptoJS from "crypto-js";
+import calculateDecimalPrecision from "../../functions/calculateDecimalPrecision";
 
 
 export default function Profile({token}) {
@@ -27,7 +29,11 @@ export default function Profile({token}) {
     const address = useAppSelector(selectAddress)
     const balance = useAppSelector(selectBalance)
     const [cookie, setCookie, removeCookie] = useCookies(['token'])
-    const [userData, setUserData] = useState({})
+    const [userData, setUserData] = useState({
+        assets: [],
+        transactions: []
+    })
+    const [artworks, setArtworks] = useState([])
 
     useEffect(() => {
         //region change background color for profile page
@@ -37,6 +43,36 @@ export default function Profile({token}) {
         style.backgroundImage = 'none';
         //endregion
     }, [])
+
+    const loadMyNFTs = async () => {
+        const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+        await provider.send("eth_requestAccounts", []);
+        const signer = provider.getSigner();
+        const {data: encData} = await axios.get('/api/contracts/abi-info');
+        const decrypted = await CryptoJS.AES.decrypt(encData, process.env.NEXT_PUBLIC_CRYPT_KEY)
+        const {
+            Market: {address: nftMarketAddress, abi: marketAbi},
+            NFT: {address: nftAddress, abi: nftAbi},
+        } = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
+        const contract = new ethers.Contract(nftMarketAddress, marketAbi, signer)
+        const nftContract = new ethers.Contract(nftAddress, nftAbi, signer)
+        const data = await contract.fetchMyNFTs()
+        const items = await Promise.all(data.map(async i => {
+            const tokenUri = await nftContract.tokenURI(i.tokenId)
+            const meta = await axios.get(tokenUri)
+            let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
+            return {
+                price,
+                name: meta.data.name,
+                tokenId: i.tokenId.toNumber(),
+                seller: i.creator,
+                owner: i.owner,
+                image: meta.data.image,
+                assetImage: meta.data.assetImage
+            }
+        }))
+        setArtworks(items)
+    }
 
     useEffect(() => {
         //region fetch profile data
@@ -110,10 +146,10 @@ export default function Profile({token}) {
         }
 
         checkConnection();
+        loadMyNFTs();
         //endregion
 
     }, [cookie])
-
 
     return (
         <>
@@ -131,7 +167,7 @@ export default function Profile({token}) {
                             <div className={classes.profileImg} style={{
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
-                                backgroundImage: `url(${!userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL ? userData.avatarUrl : "/icons/profile-icon.svg"})`
+                                backgroundImage: `url(${!(userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL) ? userData.avatarUrl : "/icons/profile-icon.svg"})`
                             }}/>
                             {/*<img className={classes.profileImg} src={userData.avatar ? userData.avatar : "/icons/profile-icon.svg"} alt=""/>*/}
                             <div className={classes.profileName}>
@@ -152,7 +188,7 @@ export default function Profile({token}) {
                             </div>
                             <div className={classes.valueSec}>
                                 <div className={classes.valueNum}>
-                                    {balance}
+                                    {calculateDecimalPrecision(balance, 5)}
                                 </div>
                                 <div className={classes.ethTxt}>
                                     ETH
@@ -168,7 +204,7 @@ export default function Profile({token}) {
                                 <div className={classes.profileImg} style={{
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
-                                    backgroundImage: `url(${!userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL ? userData.avatarUrl : "/icons/profile-icon.svg"})`
+                                    backgroundImage: `url(${!(userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL) ? userData.avatarUrl : "/icons/profile-icon.svg"})`
                                 }}/>
                                 <div className={classes.profileName}>
                                     {userData.firstName ? userData.firstName + ' ' + userData.lastName : 'Unknown'}
@@ -181,7 +217,8 @@ export default function Profile({token}) {
                                     </div>
                                     <img onClick={() => copyText(address)} className={classes.copyImg}
                                          src="/icons/copy-icon.svg" alt=""/>
-                                    <a target="_blank" href={`https://etherscan.io/address/${address}`} rel="noreferrer">
+                                    <a target="_blank" href={`https://etherscan.io/address/${address}`}
+                                       rel="noreferrer">
                                         <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
                                     </a>
                                 </div>
@@ -190,7 +227,7 @@ export default function Profile({token}) {
                                 </div>
                                 <div className={classes.valueSec}>
                                     <div className={classes.valueNum}>
-                                        {balance}
+                                        {calculateDecimalPrecision(balance, 5)}
                                     </div>
                                     <div className={classes.ethTxt}>
                                         ETH
@@ -202,7 +239,7 @@ export default function Profile({token}) {
 
                 </div>
                 <div className={classes.rightSec}>
-                    <ProfileTabPanel/>
+                    <ProfileTabPanel artworks={artworks} history={{txns: userData.transactions, assets: userData.assets}}/>
                 </div>
             </div>
         </>
