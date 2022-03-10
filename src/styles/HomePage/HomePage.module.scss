@@ -175,6 +175,8 @@
   flex-direction: row;
   justify-content: space-between;
   margin-bottom:48px ;
+  border: solid red;
+  width: 100%;
 }
 
 .galleryDescMainSec {
@@ -198,7 +200,6 @@
   flex-direction: row;
   justify-content: space-between;
   margin-top: 27px;
-
 }
 
 .imgSec {
@@ -210,7 +211,8 @@
   font-size: 16px;
   font-weight: 300;
   line-height: 25px;
-  width: 526px;
+  //width: 526px;
+
   text-align: left;
   margin-top: 9px;
   height: 150px;
@@ -263,7 +265,20 @@
 
 .galleryMainPhoto {
   width: 360px;
+  //width: 100%;
   height: 360px;
+  //height: 100%;
+  border-radius: 3px;
+  //margin-left: 41px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.galleryMainPhotoN {
+  width: 360px;
+  //width: 100%;
+  //height: 360px;
+  //height: 100%;
   border-radius: 3px;
   //margin-left: 41px;
   display: flex;
@@ -274,12 +289,20 @@
 .galleryVidContainer {
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  //align-items: center;
+  //justify-content: center;
   cursor: pointer;
   height: 100%;
+  //width: 33%;
+  width: 360px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
+  //border: 2px solid red;
+  justify-content: flex-end;
+
+}
+.galleryVidContainerM {
+display: none;
 }
 
 .galleryPlayPhoto {

@@ -1,4 +1,4 @@
-@media (max-width: 720px) {
+@media (max-width: 899px) {
   .topMainSec {
     flex-direction: column;
   }
@@ -130,4 +130,23 @@
   .galleryName {
     justify-content: center;
   }
+  .galleryVidContainerM {
+    position: relative;
+    display: flex;
+    //align-items: center;
+    //justify-content: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    //height: 178px;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    border: 2px solid red;
+  }
+
+  .galleryMainPhotoN{
+    display: none;
+  }
+
 }
