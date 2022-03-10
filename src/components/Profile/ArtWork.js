@@ -24,9 +24,9 @@ export default function ArtWork ({artwork, key}) {
                                 <div className={classes.contractsBtn}>
                                     <div>Contracts</div>
                                 </div>
-                                <div className={classes.assetBtn}>
-                                    <div>Asset</div>
-                                </div>
+                                {/*<div className={classes.assetBtn}>*/}
+                                {/*    <div>Asset</div>*/}
+                                {/*</div>*/}
                             </div> : ''
                     }
                     <div className={artWorkHover === true ? classes.hoveredArtworkImg : classes.artworkImg} style={{

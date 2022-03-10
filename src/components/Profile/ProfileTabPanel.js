@@ -71,6 +71,35 @@ export default function BasicTabs({artworks, history}) {
                         {artworks.map((artwork, idx) => {
                             return <ArtWork artwork={artwork} key={idx}/>
                         })}
+                        {/*<div  className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}*/}
+                        {/*     onMouseEnter={artWorkMouseOver}*/}
+                        {/*     onMouseLeave={artWorkMouseLeave}>*/}
+                        {/*    {*/}
+                        {/*        artWorkHover === true ?*/}
+                        {/*            <div className={classes.hoveredArtworkBackground}>*/}
+                        {/*                <div className={classes.contractsBtn}>*/}
+                        {/*                    <div>Contracts</div>*/}
+                        {/*                </div>*/}
+                        {/*                /!*<div className={classes.assetBtn}>*!/*/}
+                        {/*                /!*    <div>Asset</div>*!/*/}
+                        {/*                /!*</div>*!/*/}
+                        {/*            </div> : ''*/}
+                        {/*    }*/}
+                        {/*    <div className={artWorkHover === true ? classes.hoveredArtworkImg : classes.artworkImg} style={{*/}
+                        {/*        backgroundImage: `url(images/dd-gallery1.jpg)`,*/}
+                        {/*        backgroundPosition: "center",*/}
+                        {/*        backgroundSize: "cover"*/}
+                        {/*    }}/>*/}
+                        {/*    <div className={classes.cardBottomSec}>*/}
+                        {/*        <div className={classes.artworkName}>*/}
+                        {/*            /!*{artwork.name}*!/*/}
+                        {/*            jjjjjjjjj*/}
+                        {/*        </div>*/}
+                        {/*        /!*<div className={classes.artworkTokens}>*!/*/}
+                        {/*        /!*</div>*!/*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
+
 
                         {/*{artworks.map((artwork, idx) => {*/}
                         {/*    return <div key={idx} className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}*/}
