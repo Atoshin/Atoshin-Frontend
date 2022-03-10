@@ -73,6 +73,8 @@
   padding-right: 96px;
 }
 
+
+
 .paragraph {
   width: 928px;
 }
@@ -107,19 +109,37 @@
 .slider {
 }
 
+
+
 .SlideImg {
-  height: 150px;
-  width: 150px;
+  align-items: center;
+  height: 220px;
+  width: 220px;
+  //width: 90%;
+  cursor: pointer;
   background-position: center;
   background-size: cover;
-  align-items: center;
+  border-radius: 3px;
+
+  margin-right: 16px;
+
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 1px 3px 0px #00000026;
 }
 
 .slideImg2 {
   height: 220px;
-  width: 220px;
+  //width: 220px;
+  width: 100%;
   background-position: center;
   background-size: cover;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0px 1px 3px 0px #00000026;
+
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -228,7 +248,7 @@
 }
 
 .relatedDescTitle {
-  margin: 0 24px 16px 24px;
+  margin: 0 0px 16px 0px;
   font-weight: 500;
   font-size: 16px;
   line-height: 18.75px;
@@ -237,6 +257,25 @@
   //width: 172px;
 }
 
+.relatedDescTitle2{
+  //margin: 0 24px 16px 24px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18.75px;
+  color: #232323;
+  text-align: left;
+  //width: 172px;
+}
+
+
+.dateSec{
+  height: 40px;
+  margin-bottom: 8px;
+}
+.dateSec2{
+  height: 40px;
+  margin-bottom: 4px;
+}
 .date {
   font-family: Roboto;
   font-size: 10px;
@@ -247,7 +286,6 @@
   text-align: left;
   color: #999999;
   margin-top: 9px;
-  border: 1px solid red;
 }
 
 .date1 {
@@ -260,12 +298,12 @@
   letter-spacing: 0em;
   text-align: left;
   color: #999999;
-  margin-top: 5px;
+  margin-top: 6px;
   width: 172px;
-  margin-left: 23px;
+  //margin-left: 23px;
 }
 
-.relatedDescTitle2 {
+.relatedDescTitleMob {
   width: 118px;
   margin: 0;
   font-weight: 500;
@@ -285,7 +323,8 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;
-  margin: 0 24px 16px 24px;
+  margin: 0 0px 16px 0px;
+
 }
 
 .relatedDescDesc2 {
@@ -296,7 +335,8 @@
   line-height: 25px;
   letter-spacing: 0em;
   text-align: left;
-  margin: 8px 16px 0 16px;
+  //margin: 8px 16px 16px 16px;
+  margin: 0 0px 16px 0px;
 }
 
 .relatedSec {
@@ -335,7 +375,10 @@
 .relatedDescription {
   display: flex;
   flex-direction: column;
-  margin-top: 24px;
+  margin-top: 16px;
+  height: 120px;
+ padding-right: 24px;
+  padding-left: 24px;
 
 }
 
@@ -357,6 +400,7 @@
   border-radius: 12px;
   margin-bottom: 10px;
 }
+
 
 
 @import "media";
