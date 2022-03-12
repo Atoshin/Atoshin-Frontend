@@ -1,24 +1,27 @@
 .root{
-  //width: 100%;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  //display: flex;
+  //flex-wrap: wrap;
+  //justify-content: space-between;
+  //border: 2px solid red;
+  //flex-direction: column;
   margin-top: 16px;
 }
 
 .row{
-  //display: flex;
+  display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   //border: 2px solid red;
   justify-content: space-between;
   margin-bottom: 25px;
-  flex-wrap: wrap;
   //display: inline-grid;
   //grid-template-columns: auto auto auto;
   //grid-column-gap: 50px;
-  display: inline-grid;
-  grid-template-columns: auto auto auto;
-  grid-column-gap: 31px;
-  grid-row-gap: 16px;
+  //display: inline-grid;
+  //grid-template-columns: auto auto auto;
+  //grid-column-gap: 31px;
+  //grid-row-gap: 16px;
 }
 
 .item{

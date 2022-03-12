@@ -27,11 +27,11 @@ export default function ArtistsSlider({artists}) {
             </p>
         </div>
         <div className={classes.artistsSlider}>
-            <img className={classes.vectorLeft} onClick={() => {
-                sliderRef.current.goBack()
-            }}
-                 src="/icons/vector-left.svg" alt=""/>
-            <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={false}
+            {/*<img className={classes.vectorLeft} onClick={() => {*/}
+            {/*    sliderRef.current.goBack()*/}
+            {/*}}*/}
+            {/*     src="/icons/vector-left.svg" alt=""/>*/}
+            <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={true}
                    slidesToScroll={1}
                    transitionDuration={500}
                    duration={5000}>
@@ -58,10 +58,10 @@ export default function ArtistsSlider({artists}) {
                     )
                 })}
             </Slide>
-            <img className={classes.vectorRight} onClick={() => {
-                sliderRef.current.goNext()
-            }}
-                 src="/icons/vector-right.svg" alt=""/>
+            {/*<img className={classes.vectorRight} onClick={() => {*/}
+            {/*    sliderRef.current.goNext()*/}
+            {/*}}*/}
+            {/*     src="/icons/vector-right.svg" alt=""/>*/}
         </div>
     </div>
 }

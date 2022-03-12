@@ -1,4 +1,4 @@
-@media (max-width: 600px) {
+@media (max-width: 1200px) {
   .mainTitle {
     margin-top: 10px;
     font-weight: 550;
@@ -8,6 +8,9 @@
   .card {
     width: 312px;
     height: 489px;
+    margin-right: 12px;
+    margin-left: 12px;
+    margin-bottom: 80px;
   }
 
   .total{
@@ -34,5 +37,43 @@
 
   .artworkName {
     font-size: 16px;
+  }
+  .items{
+    //display: inline-grid;
+    display: flex;
+    //align-items: center;
+    //justify-content: center !important;
+    flex-wrap: wrap;
+    //margin-left: auto;
+    //margin-right: auto;
+    //grid-template-columns: auto auto auto;
+    //grid-column-gap: 36px;
+    //grid-row-gap: 36px;
+    margin-top: 56px;
+    margin-bottom: 92px;
+  }
+}
+
+@media (max-width: 735px) {
+  .items{
+    //display: inline-grid;
+    display: flex;
+    //align-items: center;
+    //justify-content: center !important;
+    flex-wrap: wrap;
+    //margin-left: auto;
+    //margin-right: auto;
+    //grid-template-columns: auto auto auto;
+    //grid-column-gap: 36px;
+    //grid-row-gap: 36px;
+    margin-top: 56px;
+    margin-bottom: 92px;
+  }
+  .card {
+    width: 312px;
+    height: 489px;
+    margin-right: 12px;
+    margin-left: 12px;
+    margin-bottom: 80px;
   }
 }
