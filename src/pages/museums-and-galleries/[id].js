@@ -48,7 +48,6 @@ export default function ArtCenter({artCenter}) {
             long: location.long,
         }))
     }
-
     useEffect(() => {
         //region change background color for profile page
         const body = document.getElementsByTagName('body')[0];
@@ -106,7 +105,7 @@ export default function ArtCenter({artCenter}) {
                            cssClass={classes.slider}
                            easing={"ease"}
                         // slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
-                           slidesToShow={matches1 ? 2 : matches4 ? 4 : 5}
+                           slidesToShow={matches1 ? 2 : matches3 ? 4 : 5}
                         // slidesToShow={matches ? 2 : 5}
                            infinite={true}
                            arrows={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5 ? true : false}
