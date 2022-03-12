@@ -51,14 +51,6 @@ export default function BasicTabs({artworks, history}) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    const [artWorkHover, setArtWorkHover] = useState(false);
-
-    const artWorkMouseOver = () => {
-        setArtWorkHover(true)
-    }
-    const artWorkMouseLeave = () => {
-        setArtWorkHover(false)
-    }
 
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -76,182 +68,38 @@ export default function BasicTabs({artworks, history}) {
             <ProfileTabPanel value={value} index={0}>
                 <div className={classes.profileBoxArtwork}>
                     <div className={classes.artworkSec}>
-                        {/*{artworks.map((artwork, idx) => {*/}
-                        {/*    return <ArtWork artwork={artwork} key={idx}/>*/}
-                        {/*})}*/}
-                        <div  className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}
-                             onMouseEnter={artWorkMouseOver}
-                             onMouseLeave={artWorkMouseLeave}>
-                            {
-                                artWorkHover === true ?
-                                    <div className={classes.hoveredArtworkBackground}>
-                                        <div className={classes.contractsBtn}>
-                                            <div>Contracts</div>
-                                        </div>
-                                        {/*<div className={classes.assetBtn}>*/}
-                                        {/*    <div>Asset</div>*/}
-                                        {/*</div>*/}
-                                    </div> : ''
-                            }
-                            <div className={artWorkHover === true ? classes.hoveredArtworkImg : classes.artworkImg} style={{
-                                backgroundImage: `url(images/dd-gallery1.jpg)`,
-                                backgroundPosition: "center",
-                                backgroundSize: "cover"
-                            }}/>
-                            <div className={classes.cardBottomSec}>
-                                <div className={classes.artworkName}>
-                                    {/*{artwork.name}*/}
-                                    1111
-                                </div>
-                                {/*<div className={classes.artworkTokens}>*/}
-                                {/*</div>*/}
-                            </div>
-                        </div>
+                        {artworks.map((artwork, idx) => {
+                            return <ArtWork artwork={artwork} key={idx}/>
+                        })}
+                        {/*<div  className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}*/}
+                        {/*     onMouseEnter={artWorkMouseOver}*/}
+                        {/*     onMouseLeave={artWorkMouseLeave}>*/}
+                        {/*    {*/}
+                        {/*        artWorkHover === true ?*/}
+                        {/*            <div className={classes.hoveredArtworkBackground}>*/}
+                        {/*                <div className={classes.contractsBtn}>*/}
+                        {/*                    <div>Contracts</div>*/}
+                        {/*                </div>*/}
+                        {/*                /!*<div className={classes.assetBtn}>*!/*/}
+                        {/*                /!*    <div>Asset</div>*!/*/}
+                        {/*                /!*</div>*!/*/}
+                        {/*            </div> : ''*/}
+                        {/*    }*/}
+                        {/*    <div className={artWorkHover === true ? classes.hoveredArtworkImg : classes.artworkImg} style={{*/}
+                        {/*        backgroundImage: `url(images/dd-gallery1.jpg)`,*/}
+                        {/*        backgroundPosition: "center",*/}
+                        {/*        backgroundSize: "cover"*/}
+                        {/*    }}/>*/}
+                        {/*    <div className={classes.cardBottomSec}>*/}
+                        {/*        <div className={classes.artworkName}>*/}
+                        {/*            /!*{artwork.name}*!/*/}
+                        {/*            1111*/}
+                        {/*        </div>*/}
+                        {/*        /!*<div className={classes.artworkTokens}>*!/*/}
+                        {/*        /!*</div>*!/*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
 
-                        <div  className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}
-                              onMouseEnter={artWorkMouseOver}
-                              onMouseLeave={artWorkMouseLeave}>
-                            {
-                                artWorkHover === true ?
-                                    <div className={classes.hoveredArtworkBackground}>
-                                        <div className={classes.contractsBtn}>
-                                            <div>Contracts</div>
-                                        </div>
-                                        {/*<div className={classes.assetBtn}>*/}
-                                        {/*    <div>Asset</div>*/}
-                                        {/*</div>*/}
-                                    </div> : ''
-                            }
-                            <div className={artWorkHover === true ? classes.hoveredArtworkImg : classes.artworkImg} style={{
-                                backgroundImage: `url(images/dd-gallery1.jpg)`,
-                                backgroundPosition: "center",
-                                backgroundSize: "cover"
-                            }}/>
-                            <div className={classes.cardBottomSec}>
-                                <div className={classes.artworkName}>
-                                    {/*{artwork.name}*/}
-                                    2222
-                                </div>
-                                {/*<div className={classes.artworkTokens}>*/}
-                                {/*</div>*/}
-                            </div>
-                        </div>
-
-                        <div  className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}
-                              onMouseEnter={artWorkMouseOver}
-                              onMouseLeave={artWorkMouseLeave}>
-                            {
-                                artWorkHover === true ?
-                                    <div className={classes.hoveredArtworkBackground}>
-                                        <div className={classes.contractsBtn}>
-                                            <div>Contracts</div>
-                                        </div>
-                                        {/*<div className={classes.assetBtn}>*/}
-                                        {/*    <div>Asset</div>*/}
-                                        {/*</div>*/}
-                                    </div> : ''
-                            }
-                            <div className={artWorkHover === true ? classes.hoveredArtworkImg : classes.artworkImg} style={{
-                                backgroundImage: `url(images/dd-gallery1.jpg)`,
-                                backgroundPosition: "center",
-                                backgroundSize: "cover"
-                            }}/>
-                            <div className={classes.cardBottomSec}>
-                                <div className={classes.artworkName}>
-                                    {/*{artwork.name}*/}
-                                    33333
-                                </div>
-                                {/*<div className={classes.artworkTokens}>*/}
-                                {/*</div>*/}
-                            </div>
-                        </div>
-
-                        <div  className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}
-                              onMouseEnter={artWorkMouseOver}
-                              onMouseLeave={artWorkMouseLeave}>
-                            {
-                                artWorkHover === true ?
-                                    <div className={classes.hoveredArtworkBackground}>
-                                        <div className={classes.contractsBtn}>
-                                            <div>Contracts</div>
-                                        </div>
-                                        {/*<div className={classes.assetBtn}>*/}
-                                        {/*    <div>Asset</div>*/}
-                                        {/*</div>*/}
-                                    </div> : ''
-                            }
-                            <div className={artWorkHover === true ? classes.hoveredArtworkImg : classes.artworkImg} style={{
-                                backgroundImage: `url(images/dd-gallery1.jpg)`,
-                                backgroundPosition: "center",
-                                backgroundSize: "cover"
-                            }}/>
-                            <div className={classes.cardBottomSec}>
-                                <div className={classes.artworkName}>
-                                    {/*{artwork.name}*/}
-                                    44444
-                                </div>
-                                {/*<div className={classes.artworkTokens}>*/}
-                                {/*</div>*/}
-                            </div>
-                        </div>
-
-                        <div  className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}
-                              onMouseEnter={artWorkMouseOver}
-                              onMouseLeave={artWorkMouseLeave}>
-                            {
-                                artWorkHover === true ?
-                                    <div className={classes.hoveredArtworkBackground}>
-                                        <div className={classes.contractsBtn}>
-                                            <div>Contracts</div>
-                                        </div>
-                                        {/*<div className={classes.assetBtn}>*/}
-                                        {/*    <div>Asset</div>*/}
-                                        {/*</div>*/}
-                                    </div> : ''
-                            }
-                            <div className={artWorkHover === true ? classes.hoveredArtworkImg : classes.artworkImg} style={{
-                                backgroundImage: `url(images/dd-gallery1.jpg)`,
-                                backgroundPosition: "center",
-                                backgroundSize: "cover"
-                            }}/>
-                            <div className={classes.cardBottomSec}>
-                                <div className={classes.artworkName}>
-                                    {/*{artwork.name}*/}
-                                    jjjjjjjjj
-                                </div>
-                                {/*<div className={classes.artworkTokens}>*/}
-                                {/*</div>*/}
-                            </div>
-                        </div>
-
-                        <div  className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}
-                              onMouseEnter={artWorkMouseOver}
-                              onMouseLeave={artWorkMouseLeave}>
-                            {
-                                artWorkHover === true ?
-                                    <div className={classes.hoveredArtworkBackground}>
-                                        <div className={classes.contractsBtn}>
-                                            <div>Contracts</div>
-                                        </div>
-                                        {/*<div className={classes.assetBtn}>*/}
-                                        {/*    <div>Asset</div>*/}
-                                        {/*</div>*/}
-                                    </div> : ''
-                            }
-                            <div className={artWorkHover === true ? classes.hoveredArtworkImg : classes.artworkImg} style={{
-                                backgroundImage: `url(images/dd-gallery1.jpg)`,
-                                backgroundPosition: "center",
-                                backgroundSize: "cover"
-                            }}/>
-                            <div className={classes.cardBottomSec}>
-                                <div className={classes.artworkName}>
-                                    {/*{artwork.name}*/}
-                                    jjjjjjjjj
-                                </div>
-                                {/*<div className={classes.artworkTokens}>*/}
-                                {/*</div>*/}
-                            </div>
-                        </div>
 
 
                         {/*{artworks.map((artwork, idx) => {*/}
@@ -327,26 +175,22 @@ export default function BasicTabs({artworks, history}) {
                                 <div className={classes.indexRowSec}>
                                     <div className={classes.itemsSec}>
                                         <div className={classes.smallImg} style={{
-                                            // backgroundImage: `url(${history.assets[idx].medias.find(media => media.main === 1).url})`,
-                                            backgroundColor: 'red',
+                                            backgroundImage: `url(${history.assets[idx].medias.find(media => media.main === 1).url})`,
                                             backgroundPosition: "center",
                                             backgroundSize: "cover"
                                         }}/>
                                         <div className={classes.artworkNameIndex}>
-                                            {/*{history.assets[idx].title}*/}
-                                            QWEQWE
+                                            {history.assets[idx].title}
                                         </div>
                                     </div>
                                     <div className={classes.statusSec}>
                                         Sold
                                     </div>
                                     <div className={classes.dateSec}>
-                                        {/*{monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDate()}, {new Date(txn.createdAt).getFullYear()}*/}
-                                        12/12/1212
+                                        {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDate()}, {new Date(txn.createdAt).getFullYear()}
                                     </div>
                                     <div className={classes.transactionSec}>
-                                        {/*{calculateDecimalPrecision(history.assets[idx].ethPricePerFraction * txn.tokenQuantity, 3) + ' ETH'}*/}
-                                        RWEFSD
+                                        {calculateDecimalPrecision(history.assets[idx].ethPricePerFraction * txn.tokenQuantity, 3) + ' ETH'}
                                     </div>
                                 </div>
                             </div>
