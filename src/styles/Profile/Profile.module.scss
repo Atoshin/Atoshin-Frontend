@@ -102,4 +102,17 @@
   padding-right: 16px;
 }
 
+.profileImgSecMob {
+  display: none;
+}
+
+.detailSecMob {
+  display: none;
+}
+.desktopDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @import "media";
