@@ -21,9 +21,9 @@ export default function ArtWork ({artwork, key}) {
                     {
                         artWorkHover === true ?
                             <div className={classes.hoveredArtworkBackground}>
-                                <div className={classes.contractsBtn}>
-                                    <div>Contracts</div>
-                                </div>
+                                <a rel="noreferrer" target="_blank" href={artwork.image} className={classes.contractsBtn}>
+                                    <div>Contract</div>
+                                </a>
                                 {/*<div className={classes.assetBtn}>*/}
                                 {/*    <div>Asset</div>*/}
                                 {/*</div>*/}
