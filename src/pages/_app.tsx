@@ -35,18 +35,18 @@ function MyApp({Component, pageProps}: AppProps) {
     return <>
         <CookiesProvider>
             <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
-                {router.pathname !== '/landing' &&
+                {router.pathname !== '/welcome' &&
                 <Header setDrawerMenu={setDrawerState} isScrolled={scrolled}/>
                 }
                 <LeftDrawer state={drawerState} setState={setDrawerState}/>
-                {router.pathname === '/landing' ?
+                {router.pathname === '/welcome' ?
                     <Component {...pageProps}/>
                     :
                     <Container className="main-mui-container">
                         <Component {...pageProps}/>
                     </Container>
                 }
-                {router.pathname !== '/landing' &&
+                {router.pathname !== '/welcome' &&
                 <Footer/>
                 }
             </div>

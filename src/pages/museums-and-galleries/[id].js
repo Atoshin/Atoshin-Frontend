@@ -85,8 +85,7 @@ export default function ArtCenter({artCenter}) {
         slidesToScroll: 1,
         transitionDuration: 500,
         duration: 5000,
-        nextArrow: <div className={classes.previous}><img alt={"vector-right"} src={'/icons/vector-right.svg'}/></div>,
-        prevArrow: <div/>,
+        arrows: true
     };
 
     const VideoShow = () => {

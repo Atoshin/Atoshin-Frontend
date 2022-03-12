@@ -53,17 +53,17 @@ export default function GallerySection({gallery}) {
             return gallery.summary
         }
     }
-    const properties = {
-        easing: "ease",
-        slidesToShow: matches ? 2 : 4,
-        infinite: true,
-        // arrows:false,
-        nextArrow: <img className={classes.sliderNextArrow} src='/icons/vector-right.svg' alt="vector-right"/>,
-        prevArrow: <img className={classes.sliderPrevArrow} src="/icons/vector-left.svg" alt="vector-left"/>,
-        slidesToScroll: 1,
-        transitionDuration: 500,
-        duration: 5000,
-    }
+    // const properties = {
+    //     easing: "ease",
+    //     slidesToShow: matches ? 2 : 4,
+    //     infinite: true,
+    //     // arrows:false,
+    //     nextArrow: <img className={classes.sliderNextArrow} src='/icons/vector-right.svg' alt="vector-right"/>,
+    //     prevArrow: <img className={classes.sliderPrevArrow} src="/icons/vector-left.svg" alt="vector-left"/>,
+    //     slidesToScroll: 1,
+    //     transitionDuration: 500,
+    //     duration: 5000,
+    // }
     return <>
         <ImagesModal setOpen={setOpenImage} open={openImage}/>
         {

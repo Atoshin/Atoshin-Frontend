@@ -1,4 +1,4 @@
-@media (max-width: 600px) {
+@media (max-width: 1056px) {
   .mainTitle {
     margin-top: 10px;
     font-weight: 550;
@@ -8,16 +8,13 @@
   .card {
     width: 312px;
     height: 489px;
+    margin-right: 12px;
+    margin-left: 12px;
+    margin-bottom: 80px;
   }
 
   .total{
     font-size: 14px;
-  }
-
-  .items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .leftNumbers{
@@ -34,5 +31,52 @@
 
   .artworkName {
     font-size: 16px;
+  }
+  .items{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+  }
+}
+
+@media (max-width: 721px) {
+  .items{
+    display: flex;
+    justify-content: center !important;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+  }
+  .card {
+    width: 312px;
+    height: 489px;
+    margin-right: 12px;
+    margin-left: 12px;
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 1182px) {
+  .items{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+@media (max-width: 922px) {
+  .items {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+    padding: 0 !important;
   }
 }

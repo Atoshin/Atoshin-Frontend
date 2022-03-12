@@ -1,4 +1,4 @@
-@media (max-width: 600px) {
+@media (max-width: 920px) {
 
   .profileMain {
     display: flex;
@@ -46,5 +46,8 @@
     font-size: 14px;
     font-weight: 300;
     margin-top: 16px;
+  }
+  .desktopDiv {
+    display: none;
   }
 }
