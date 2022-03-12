@@ -190,12 +190,16 @@
 .avatarIconSec {
   display: flex;
   cursor: pointer;
+  position: relative;
 }
 
 
 .menuMain {
-  left: -154px !important;
-  top: 12.82px;
+  left: -60px !important;
+  //top: 12.82px;
+  top: 16px;
+  //right: 200px!important;
+  position: absolute;
 }
 
 .menuMainSec {
