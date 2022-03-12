@@ -2,7 +2,7 @@
 
 }
 
-@media (min-width: 782px) {
+@media (min-width: 788px) {
 
   .ArtistTitle {
     display: none !important;
@@ -11,10 +11,17 @@
 }
 
 
-@media (max-width: 782px) {
+@media (max-width: 788px) {
 
   .row {
     justify-content: center!important;
   }
 
+}
+
+@media (max-width: 1157px) {
+
+  .row {
+    justify-content: center!important;
+  }
 }

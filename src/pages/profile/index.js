@@ -22,7 +22,7 @@ import calculateDecimalPrecision from "../../functions/calculateDecimalPrecision
 export default function Profile({token}) {
 
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const matches = useMediaQuery(theme.breakpoints.down('md'));
     const [openModal, setOpenModal] = useState(false);
 
     const dispatch = useAppDispatch();
@@ -159,47 +159,45 @@ export default function Profile({token}) {
             <EditProfileModal setUserData={setUserData} open={openModal} setOpen={setOpenModal}/>
             <div className={classes.profileMain}>
                 <div className={classes.leftSec}>
-                    {!matches ?
                         <>
-                            <div className={classes.editProfileSec} onClick={() => setOpenModal(true)}>
-                                Edit Profile
-                            </div>
-                            <div className={classes.profileImg} style={{
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
-                                backgroundImage: `url(${!(userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL) ? userData.avatarUrl : "/icons/profile-icon.svg"})`
-                            }}/>
-                            {/*<img className={classes.profileImg} src={userData.avatar ? userData.avatar : "/icons/profile-icon.svg"} alt=""/>*/}
-                            <div className={classes.profileName}>
-                                {userData.firstName ? userData.firstName + ' ' + userData.lastName : 'Unknown'}
-                            </div>
-                            <div className={classes.walletAddressSec}>
-                                <div className={classes.walletAddress}>
-                                    {address && address.slice(0, 4) + '...' + address.slice(-4)}
+                            <div className={classes.desktopDiv}>
+                                <div className={classes.editProfileSec} onClick={() => setOpenModal(true)}>
+                                    Edit Profile
                                 </div>
-                                <img onClick={() => copyText(address)} className={classes.copyImg}
-                                     src="/icons/copy-icon.svg" alt=""/>
-                                <a target="_blank" href={`https://etherscan.io/address/${address}`} rel="noreferrer">
-                                    <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
-                                </a>
-                            </div>
-                            <div className={classes.valueTxt}>
-                                The value of your account
-                            </div>
-                            <div className={classes.valueSec}>
-                                <div className={classes.valueNum}>
-                                    {calculateDecimalPrecision(balance, 5)}
+                                <div className={classes.profileImg} style={{
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    backgroundImage: `url(${!(userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL) ? userData.avatarUrl : "/icons/profile-icon.svg"})`
+                                }}/>
+                                {/*<img className={classes.profileImg} src={userData.avatar ? userData.avatar : "/icons/profile-icon.svg"} alt=""/>*/}
+                                <div className={classes.profileName}>
+                                    {userData.firstName ? userData.firstName + ' ' + userData.lastName : 'Unknown'}
                                 </div>
-                                <div className={classes.ethTxt}>
-                                    ETH
+                                <div className={classes.walletAddressSec}>
+                                    <div className={classes.walletAddress}>
+                                        {address && address.slice(0, 4) + '...' + address.slice(-4)}
+                                    </div>
+                                    <img onClick={() => copyText(address)} className={classes.copyImg}
+                                         src="/icons/copy-icon.svg" alt=""/>
+                                    <a target="_blank" href={`https://etherscan.io/address/${address}`} rel="noreferrer">
+                                        <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
+                                    </a>
+                                </div>
+                                <div className={classes.valueTxt}>
+                                    The value of your account
+                                </div>
+                                <div className={classes.valueSec}>
+                                    <div className={classes.valueNum}>
+                                        {calculateDecimalPrecision(balance, 5)}
+                                    </div>
+                                    <div className={classes.ethTxt}>
+                                        ETH
+                                    </div>
                                 </div>
                             </div>
+
                         </>
-                        :
                         <>
-                            {/*<div className={classes.editProfileSec}>*/}
-                            {/*    Edit Profile*/}
-                            {/*</div>*/}a
                             <div className={classes.profileImgSecMob}>
                                 <div className={classes.profileImg} style={{
                                     backgroundSize: "cover",
@@ -235,7 +233,6 @@ export default function Profile({token}) {
                                 </div>
                             </div>
                         </>
-                    }
 
                 </div>
                 <div className={classes.rightSec}>
