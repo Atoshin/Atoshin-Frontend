@@ -107,7 +107,7 @@ export default function HeaderContent({setDrawerMenu}) {
                             <div className={classes.logoMob}>
                                 <Link href="/">
                                     <img className={classes.AtoshinLogoMob}
-                                         src="/images/atoshin-logo-typography.svg"
+                                         src="images/atoshin-logo-typography.svg"
                                          alt=""/>
                                 </Link>
                             </div>

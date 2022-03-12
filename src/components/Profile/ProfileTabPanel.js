@@ -93,12 +93,13 @@ export default function BasicTabs({artworks, history}) {
                         {/*    <div className={classes.cardBottomSec}>*/}
                         {/*        <div className={classes.artworkName}>*/}
                         {/*            /!*{artwork.name}*!/*/}
-                        {/*            jjjjjjjjj*/}
+                        {/*            1111*/}
                         {/*        </div>*/}
                         {/*        /!*<div className={classes.artworkTokens}>*!/*/}
                         {/*        /!*</div>*!/*/}
                         {/*    </div>*/}
                         {/*</div>*/}
+
 
 
                         {/*{artworks.map((artwork, idx) => {*/}
@@ -171,6 +172,27 @@ export default function BasicTabs({artworks, history}) {
                                         </div>
                                     </div>
                                 })}
+                                {/*<div className={classes.indexRowSec}>*/}
+                                {/*    <div className={classes.itemsSec}>*/}
+                                {/*        <div className={classes.smallImg} style={{*/}
+                                {/*            backgroundImage: `url(${history.assets[idx].medias.find(media => media.main === 1).url})`,*/}
+                                {/*            backgroundPosition: "center",*/}
+                                {/*            backgroundSize: "cover"*/}
+                                {/*        }}/>*/}
+                                {/*        <div className={classes.artworkNameIndex}>*/}
+                                {/*            {history.assets[idx].title}*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*    <div className={classes.statusSec}>*/}
+                                {/*        Sold*/}
+                                {/*    </div>*/}
+                                {/*    <div className={classes.dateSec}>*/}
+                                {/*        {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDate()}, {new Date(txn.createdAt).getFullYear()}*/}
+                                {/*    </div>*/}
+                                {/*    <div className={classes.transactionSec}>*/}
+                                {/*        {calculateDecimalPrecision(history.assets[idx].ethPricePerFraction * txn.tokenQuantity, 3) + ' ETH'}*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
                             </div>
                         </div>
                     </div>

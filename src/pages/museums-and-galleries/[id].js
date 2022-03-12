@@ -332,51 +332,55 @@ export default function ArtCenter({artCenter}) {
                             <Slide {...properties} ref={relatedSliderRef}>
                                 {artCenter.assets.map((asset, idx) => {
                                     return (
-                                        <div key={idx}
-                                             className={(matches1 || matches2) ? classes.card2 : classes.card}>
-                                            <div
-                                                className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
-                                                style={{
-                                                    backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
-                                                    backgroundSize: "cover",
-                                                    backgroundPosition: "center",
-                                                    borderRadius: 3,
-                                                }}
-                                            >
-                                            </div>
-                                            <div className={classes.relatedDescription}>
+                                        <Link href={`/show-asset/${asset.id}`} key={idx}>
+                                            <a>
+                                                <div key={idx}
+                                                     className={(matches1 || matches2) ? classes.card2 : classes.card}>
+                                                    <div
+                                                        className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
+                                                        style={{
+                                                            backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
+                                                            backgroundSize: "cover",
+                                                            backgroundPosition: "center",
+                                                            borderRadius: 3,
+                                                        }}
+                                                    >
+                                                    </div>
+                                                    <div className={classes.relatedDescription}>
 
-                                                {
-                                                    (new Date(asset.endDate) > new Date()) ?
-                                                        <div className={classes.dateSec}>
-                                                            <div
-                                                                className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle2}>
-                                                                {asset.title}
-                                                            </div>
-                                                            <div
-                                                                className={matches1 || matches2 ? classes.date : classes.date1}>
-                                                                Sale ends
-                                                                in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
-                                                            </div>
-                                                        </div>
-                                                        :
-                                                        <div className={classes.dateSec2}>
-                                                            <div
-                                                                className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle}>
-                                                                {asset.title}
-                                                            </div>
-                                                        </div>
-                                                }
-                                                <p className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}>
-                                                    {
-                                                        (matches1 || matches2) ?
-                                                            shortenWords(extractContent(asset.bio), 35) + '...'
-                                                            :
-                                                            shortenWords(extractContent(asset.bio), 60) + '...'
-                                                    }
-                                                </p>
-                                            </div>
-                                        </div>
+                                                        {
+                                                            (new Date(asset.endDate) > new Date()) ?
+                                                                <div className={classes.dateSec}>
+                                                                    <div
+                                                                        className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle2}>
+                                                                        {asset.title}
+                                                                    </div>
+                                                                    <div
+                                                                        className={matches1 || matches2 ? classes.date : classes.date1}>
+                                                                        Sale ends
+                                                                        in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
+                                                                    </div>
+                                                                </div>
+                                                                :
+                                                                <div className={classes.dateSec2}>
+                                                                    <div
+                                                                        className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle}>
+                                                                        {asset.title}
+                                                                    </div>
+                                                                </div>
+                                                        }
+                                                        <p className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}>
+                                                            {
+                                                                (matches1 || matches2) ?
+                                                                    shortenWords(extractContent(asset.bio), 35) + '...'
+                                                                    :
+                                                                    shortenWords(extractContent(asset.bio), 60) + '...'
+                                                            }
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </Link>
                                     )
                                 })}
                             </Slide>
