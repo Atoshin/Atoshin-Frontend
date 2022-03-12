@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home/Home.module.scss'
 import HomePage from "../components/HomePage";
 import axios from "axios";
+import {parseCookies} from "../functions/parseCookies";
 
 export default function Home(props) {
     return (
@@ -36,6 +37,13 @@ export default function Home(props) {
 
 
 export async function getServerSideProps(ctx) {
+    const visitedLanding = parseCookies(ctx.req).visitedLanding;
+    const res = ctx.res;
+    if (!visitedLanding) {
+        res.setHeader("location", "/welcome")
+        res.statusCode = 302
+        res.end()
+    }
     const {
         data: {
             assets,
