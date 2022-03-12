@@ -17,10 +17,10 @@ export default function ArtistsSlider({gallery, setSelectedGallery, selectedGall
 
     return <div className={classes.artistMainSec}>
         <div className={classes.artistsSlider}>
-            <img className={classes.vectorLeft}
-                 // onClick={() => {sliderRef.current.goBack()}}
-                 src="/icons/vector-left.svg" alt=""/>
-            <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={false}
+            {/*<img className={classes.vectorLeft}*/}
+            {/*     // onClick={() => {sliderRef.current.goBack()}}*/}
+            {/*     src="/icons/vector-left.svg" alt=""/>*/}
+            <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={true}
                    slidesToScroll={1}
                    transitionDuration={500}
                    autoplay={false}
@@ -75,9 +75,9 @@ export default function ArtistsSlider({gallery, setSelectedGallery, selectedGall
                         // </Link>
                 })}
             </Slide>
-            <img className={classes.vectorRight}
-                 // onClick={() => {sliderRef.current.goNext()}}
-                 src="/icons/vector-right.svg" alt=""/>
+            {/*<img className={classes.vectorRight}*/}
+            {/*     // onClick={() => {sliderRef.current.goNext()}}*/}
+            {/*     src="/icons/vector-right.svg" alt=""/>*/}
         </div>
     </div>
 }
