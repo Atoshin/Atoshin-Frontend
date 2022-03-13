@@ -392,6 +392,7 @@ export default function ArtCenter({artCenter}) {
     )
 }
 
+/*
 export async function getStaticPaths() {
     const {data: {galleries}} = await axios.get(`${process.env.BACKEND_BASE_URL}/galleries`)
     const paths = galleries.map(gallery => ({
@@ -403,7 +404,6 @@ export async function getStaticPaths() {
         fallback: 'blocking'
     }
 }
-
 export async function getStaticProps({params: {id}}) {
     const {
         data: {
@@ -416,4 +416,22 @@ export async function getStaticProps({params: {id}}) {
             artCenter
         },
     }
+}
+*/
+
+export async function getServerSideProps({query}) {
+    const artCenterId = query.id
+
+    const {
+        data: {
+            artCenter
+        }
+    } = await axios.get(`${process.env.BASE_URL}/api/art-center/${artCenterId}`)
+
+    return {
+        props: {
+            artCenter
+        }
+    }
+
 }
