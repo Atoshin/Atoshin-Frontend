@@ -1,6 +1,5 @@
 import classes from "../../styles/Marketplace/Marketplace.module.scss";
-import {Slide} from "react-slideshow-image";
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import Slider from "./Slider";
 import {TimeDifference} from "./TimeDifference";
 import Link from "next/link";
@@ -26,7 +25,6 @@ export default function SliderMain({asset, idx}) {
                     onMouseEnter={() => mouseOver()}
                     onMouseLeave={() => mouseOut()}
                     className={classes.card}>
-
                     <Slider hovered={hovered} asset={asset}/>
                     <div className={classes.cardDetails}>
                         <div>
