@@ -416,7 +416,7 @@ export default function ShowAsset({asset}) {
                 const height = (imgContainer.clientWidth * currentSlide.size.height) / currentSlide.size.width
                 setMainImgSize({
                     height,
-                    width: imgContainer.clientWidth
+                    width: '100%'
                 })
             } else {
                 // const iframe = document.getElementById(`asset-ytv-${currentSlide.id}`).children[0]
