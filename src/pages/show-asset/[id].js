@@ -158,7 +158,8 @@ export default function ShowAsset({asset}) {
     }
 
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    // const matches = useMediaQuery(theme.breakpoints.down('xs'));
+    const matches = useMediaQuery('(max-width:1120px)');
     const ArtworkSubImages = () => {
         if (Object.keys(asset.videoLinks).length > 0) {
             if (typeof document !== 'undefined') {
@@ -634,6 +635,7 @@ export default function ShowAsset({asset}) {
                             </div>
                         }
                     </div>
+                    {!matches &&
                     <div className={styles.topRightMainSec}>
                         <div className={styles.artworkMainImgSec} onClick={() => {
                             setOpenImages(true)
@@ -646,6 +648,7 @@ export default function ShowAsset({asset}) {
                             <ArtworkSubImages/>
                         </div>
                     </div>
+                    }
                 </div>
                 <div className={asset.buyTransactions.length > 0 ? styles.midMainSec1 : styles.midMainSec2 }>
                     <div className={styles.provenanceTitle}>
@@ -709,7 +712,9 @@ export default function ShowAsset({asset}) {
                                         <Link
                                             href={`/artists/${asset.artist.fullName.toLowerCase().replace(/ /g, '-')}/${asset.artist.id}`}>
                                             <a>
-                                                <div className={styles.backStoryArtistName}>{asset.artistName}</div>
+                                                <div className={styles.backStoryArtistName}>
+                                                    {asset.artistName}
+                                                </div>
                                             </a>
                                         </Link>
                                     </div>
