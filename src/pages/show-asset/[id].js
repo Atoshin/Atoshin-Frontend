@@ -844,7 +844,7 @@ export default function ShowAsset({asset}) {
         </>
     )
 }
-
+/*
 export async function getStaticPaths() {
     const {data: {assets}} = await axios.get(`${process.env.BACKEND_BASE_URL}/marketplace`)
     const paths = assets.map(asset => ({
@@ -856,7 +856,6 @@ export async function getStaticPaths() {
         fallback: 'blocking'
     }
 }
-
 export async function getStaticProps({params: {id}}) {
     const {
         data: {
@@ -871,4 +870,21 @@ export async function getStaticProps({params: {id}}) {
         revalidate: 30
     }
 }
+*/
 
+export async function getServerSideProps({query, req}) {
+    const assetId = query.id;
+    const token = parseCookies(req).token
+    const {
+        data: {
+            asset
+        }
+    } = await axios.get(`${process.env.BASE_URL}/api/show-asset/${assetId}`)
+
+    return {
+        props: {
+            asset,
+            token
+        }
+    }
+}

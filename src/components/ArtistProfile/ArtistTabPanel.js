@@ -23,7 +23,7 @@ function ArtistTabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box sx={{p: 3}}>
+                <Box sx={{p: 3}} className={classes.boxMob}>
                     <Typography>{children}</Typography>
                 </Box>
             )}
@@ -74,12 +74,12 @@ export default function BasicTabs({artist}) {
                     }
                 </Tabs>
             </Box>
-            <ArtistTabPanel value={value} index={0} style={{marginBottom:64}}>
+            <ArtistTabPanel value={value} index={0} className={classes.bioTab}>
                 <div className={classes.bioSec} dangerouslySetInnerHTML={{__html: artist.bio}}/>
             </ArtistTabPanel>
             {
                 Object.keys(artist.medias).length > 1 ?
-                    <ArtistTabPanel value={value} index={1} style={{marginBottom:80}}>
+                    <ArtistTabPanel value={value} index={1} className={classes.artworkTab}>
                         <div className={classes.artworkSec}>
                             <ArtworkImages artworks={artist.medias}/>
                         </div>
@@ -87,7 +87,7 @@ export default function BasicTabs({artist}) {
             }
             {
                 Object.keys(artist.auctions).length > 1 ?
-                    <ArtistTabPanel value={value} index={2} style={{marginBottom:40}}>
+                    <ArtistTabPanel value={value} index={2} className={classes.auctionTab}>
                         <div className={classes.auctionMainSec}>
                             {artist.auctions.map((auction, idx) => {
                                 if (parseInt(Object.keys(artist.auctions)[Object.keys(artist.auctions).length - 1]) === idx) {

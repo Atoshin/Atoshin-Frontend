@@ -1,24 +1,20 @@
 import classes from '../../styles/landing/Landing.module.scss'
 import 'react-slideshow-image/dist/styles.css';
-import {useTheme} from "@mui/material/styles";
-import {useMediaQuery} from "@mui/material";
 import * as React from "react";
 import Head from "next/head";
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useRouter} from "next/router";
 import {useCookies} from "react-cookie";
+import axios from 'axios';
 
-export default function Landing() {
+export default function Landing({data}) {
 
-    const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const [cookie, setCookie] = useCookies();
     const router = useRouter();
     const autoRedirect = () => {
         return router.push('/')
     }
-
 
 
     useEffect(() => {
@@ -44,12 +40,21 @@ export default function Landing() {
             </video>
             <img className={classes.topLogo} src="/images/atoshin-logo-typography-white.svg" alt=""/>
             <img className={classes.midLogo} src="/images/atoshin-logo-hexagon-white.svg" alt=""/>
-            <div className={classes.midText}>
-                Increases Access And Enables New Communities
-            </div>
+            <div className={classes.midText}>{data}</div>
             <Link href="/">
                 <img className={classes.vector} src="/icons/vector-down.svg" alt=""/>
             </Link>
         </>
     )
+}
+
+
+export async function getStaticProps() {
+    const {data: {data}} = await axios.get(`${process.env.BACKEND_BASE_URL}/landing/content`)
+
+    return {
+        props: {
+            data
+        }
+    }
 }

@@ -85,8 +85,7 @@ export default function ArtCenter({artCenter}) {
         slidesToScroll: 1,
         transitionDuration: 500,
         duration: 5000,
-        nextArrow: <div className={classes.previous}><img alt={"vector-right"} src={'/icons/vector-right.svg'}/></div>,
-        prevArrow: <div/>,
+        arrows: true
     };
 
     const VideoShow = () => {
@@ -324,65 +323,67 @@ export default function ArtCenter({artCenter}) {
             </div>
             {
                 artCenter.assets.length ?
-                    <div className={classes.relatedSec}>
+                    <div className={classes.relatedSec} style={{border:'solid red'}}>
                         <div className={classes.relatedTitle}>
                             Related to gallery
                         </div>
                         <div className={classes.slider2}>
-                            <Slide {...properties} ref={relatedSliderRef}>
-                                {artCenter.assets.map((asset, idx) => {
-                                    return (
-                                        <Link href={`/show-asset/${asset.id}`} key={idx}>
-                                            <a>
-                                                <div key={idx}
-                                                     className={(matches1 || matches2) ? classes.card2 : classes.card}>
-                                                    <div
-                                                        className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
-                                                        style={{
-                                                            backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
-                                                            backgroundSize: "cover",
-                                                            backgroundPosition: "center",
-                                                            borderRadius: 3,
-                                                        }}
-                                                    >
-                                                    </div>
-                                                    <div className={classes.relatedDescription}>
+                            <Slide {...properties} ref={relatedSliderRef} style={{border:'solid red'}}>
+                               <div style={{width:'100%'}}>
+                                   {artCenter.assets.map((asset, idx) => {
+                                       return (
+                                           <Link href={`/show-asset/${asset.id}`} key={idx}>
+                                               <a>
+                                                   <div key={idx}
+                                                        className={(matches1 || matches2) ? classes.card2 : classes.card}>
+                                                       <div
+                                                           className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
+                                                           style={{
+                                                               backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
+                                                               backgroundSize: "cover",
+                                                               backgroundPosition: "center",
+                                                               borderRadius: 3,
+                                                           }}
+                                                       >
+                                                       </div>
+                                                       <div className={classes.relatedDescription}>
 
-                                                        {
-                                                            (new Date(asset.endDate) > new Date()) ?
-                                                                <div className={classes.dateSec}>
-                                                                    <div
-                                                                        className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle2}>
-                                                                        {asset.title}
-                                                                    </div>
-                                                                    <div
-                                                                        className={matches1 || matches2 ? classes.date : classes.date1}>
-                                                                        Sale ends
-                                                                        in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
-                                                                    </div>
-                                                                </div>
-                                                                :
-                                                                <div className={classes.dateSec2}>
-                                                                    <div
-                                                                        className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle}>
-                                                                        {asset.title}
-                                                                    </div>
-                                                                </div>
-                                                        }
-                                                        <p className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}>
-                                                            {
-                                                                (matches1 || matches2) ?
-                                                                    shortenWords(extractContent(asset.bio), 35) + '...'
-                                                                    :
-                                                                    shortenWords(extractContent(asset.bio), 60) + '...'
-                                                            }
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </Link>
-                                    )
-                                })}
+                                                           {
+                                                               (new Date(asset.endDate) > new Date()) ?
+                                                                   <div className={classes.dateSec}>
+                                                                       <div
+                                                                           className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle2}>
+                                                                           {asset.title}
+                                                                       </div>
+                                                                       <div
+                                                                           className={matches1 || matches2 ? classes.date : classes.date1}>
+                                                                           Sale ends
+                                                                           in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
+                                                                       </div>
+                                                                   </div>
+                                                                   :
+                                                                   <div className={classes.dateSec2}>
+                                                                       <div
+                                                                           className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle}>
+                                                                           {asset.title}
+                                                                       </div>
+                                                                   </div>
+                                                           }
+                                                           <p className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}>
+                                                               {
+                                                                   (matches1 || matches2) ?
+                                                                       shortenWords(extractContent(asset.bio), 35) + '...'
+                                                                       :
+                                                                       shortenWords(extractContent(asset.bio), 60) + '...'
+                                                               }
+                                                           </p>
+                                                       </div>
+                                                   </div>
+                                               </a>
+                                           </Link>
+                                       )
+                                   })}
+                               </div>
                             </Slide>
                         </div>
                     </div>
@@ -393,6 +394,7 @@ export default function ArtCenter({artCenter}) {
     )
 }
 
+/*
 export async function getStaticPaths() {
     const {data: {galleries}} = await axios.get(`${process.env.BACKEND_BASE_URL}/galleries`)
     const paths = galleries.map(gallery => ({
@@ -404,7 +406,6 @@ export async function getStaticPaths() {
         fallback: 'blocking'
     }
 }
-
 export async function getStaticProps({params: {id}}) {
     const {
         data: {
@@ -417,4 +418,22 @@ export async function getStaticProps({params: {id}}) {
             artCenter
         },
     }
+}
+*/
+
+export async function getServerSideProps({query}) {
+    const artCenterId = query.id
+
+    const {
+        data: {
+            artCenter
+        }
+    } = await axios.get(`${process.env.BASE_URL}/api/art-center/${artCenterId}`)
+
+    return {
+        props: {
+            artCenter
+        }
+    }
+
 }

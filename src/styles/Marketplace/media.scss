@@ -1,4 +1,4 @@
-@media (max-width: 1200px) {
+@media (max-width: 1056px) {
   .mainTitle {
     margin-top: 10px;
     font-weight: 550;
@@ -17,12 +17,6 @@
     font-size: 14px;
   }
 
-  .items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .leftNumbers{
     font-size: 14px;
   }
@@ -39,34 +33,20 @@
     font-size: 16px;
   }
   .items{
-    //display: inline-grid;
     display: flex;
-    //align-items: center;
-    //justify-content: center !important;
+    justify-content: center;
     flex-wrap: wrap;
-    //margin-left: auto;
-    //margin-right: auto;
-    //grid-template-columns: auto auto auto;
-    //grid-column-gap: 36px;
-    //grid-row-gap: 36px;
-    margin-top: 56px;
+    //margin-top: 56px;
     margin-bottom: 92px;
   }
 }
 
-@media (max-width: 735px) {
+@media (max-width: 721px) {
   .items{
-    //display: inline-grid;
     display: flex;
-    //align-items: center;
-    //justify-content: center !important;
+    justify-content: center !important;
     flex-wrap: wrap;
-    //margin-left: auto;
-    //margin-right: auto;
-    //grid-template-columns: auto auto auto;
-    //grid-column-gap: 36px;
-    //grid-row-gap: 36px;
-    margin-top: 56px;
+    //margin-top: 56px;
     margin-bottom: 92px;
   }
   .card {
@@ -75,5 +55,28 @@
     margin-right: 12px;
     margin-left: 12px;
     margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 1182px) {
+  .items{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+@media (max-width: 922px) {
+  .items {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+    padding: 0 !important;
   }
 }
