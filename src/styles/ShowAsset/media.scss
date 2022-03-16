@@ -1,4 +1,4 @@
-@media (max-width: 600px) {
+@media (max-width: 1120px) {
 
   .topMainSec {
     flex-direction: column;
@@ -7,6 +7,7 @@
 
   .showAssetMain {
     margin-top: 88px;
+    width: 100%;
   }
 
   .topLeftMainSec {
@@ -195,6 +196,34 @@
   .quantity {
     font-size: 12px;
 
+  }
+  .provenanceSec {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+  }
+  .leftBottomSec {
+    display: none;
+  }
+  .rightBottomSec {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .backStorySec {
+    width: 100%;
+  }
+  .aboutArtworkSec {
+    width: 100%;
+  }
+  .aboutArtworkDivider {
+    width: 90%;
+    height: 0;
+    border-bottom: 2px solid #232323;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    margin-left: 0px;
   }
   //.saleEndDate {
   //  width: 304px;

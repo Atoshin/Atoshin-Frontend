@@ -6,7 +6,6 @@ export default function Slider({assets, asset, setHovered, hovered}) {
     // const [hovered, setHovered] = useState(false)
 
 
-
     const slideRef = useRef();
 
     useEffect(() => {
@@ -16,10 +15,12 @@ export default function Slider({assets, asset, setHovered, hovered}) {
     }, [hovered])
 
     const goto = () => {
-        setTimeout(()=>{
-            slideRef.current.goTo(0);
+        setTimeout(() => {
+            slideRef.current.goTo(asset.medias.indexOf(asset.medias.find(media => media.main === 1)));
         }, 500)
     }
+
+    console.log(asset.medias.indexOf(asset.medias.find(media => media.main === 1)));
 
     return (
         <div
@@ -31,6 +32,7 @@ export default function Slider({assets, asset, setHovered, hovered}) {
                     slidesToShow={1}
                     easing={"ease"}
                     infinite={true}
+                    defaultIndex={asset.medias.indexOf(asset.medias.find(media => media.main === 1))}
                     pauseOnHover={false}
                     // duration={2000}
                     duration={1000}
@@ -47,12 +49,12 @@ export default function Slider({assets, asset, setHovered, hovered}) {
                                     key={id}
                                     className={classes.cardImg}
                                     style={{
-                                    backgroundImage: `url("${media.url}")`,
-                                    backgroundRepeat: "no-repeat",
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "center",
-                                    borderRadius: '3px 3px 0px 0px',
-                                }}
+                                        backgroundImage: `url("${media.url}")`,
+                                        backgroundRepeat: "no-repeat",
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center",
+                                        borderRadius: '3px 3px 0px 0px',
+                                    }}
                                 />
                             </>
                         )

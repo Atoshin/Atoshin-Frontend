@@ -182,7 +182,8 @@ export default function ShowAsset({asset}) {
     }
 
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    // const matches = useMediaQuery(theme.breakpoints.down('xs'));
+    const matches = useMediaQuery('(max-width:1120px)');
     const ArtworkSubImages = () => {
         if (Object.keys(asset.videoLinks).length > 0) {
             if (typeof document !== 'undefined') {
@@ -448,7 +449,7 @@ export default function ShowAsset({asset}) {
                 const height = (imgContainer.clientWidth * currentSlide.size.height) / currentSlide.size.width
                 setMainImgSize({
                     height,
-                    width: imgContainer.clientWidth
+                    width: '100%'
                 })
             } else {
                 // const iframe = document.getElementById(`asset-ytv-${currentSlide.id}`).children[0]
@@ -684,6 +685,7 @@ export default function ShowAsset({asset}) {
                             </div>
                         }
                     </div>
+                    {!matches &&
                     <div className={styles.topRightMainSec}>
                         <div className={styles.artworkMainImgSec} onClick={() => {
                             setOpenImages(true)
@@ -696,6 +698,7 @@ export default function ShowAsset({asset}) {
                             <ArtworkSubImages/>
                         </div>
                     </div>
+                    }
                 </div>
                 <div className={asset.buyTransactions.length > 0 ? styles.midMainSec1 : styles.midMainSec2}>
                     <div className={styles.provenanceTitle}>
@@ -759,7 +762,9 @@ export default function ShowAsset({asset}) {
                                         <Link
                                             href={`/artists/${asset.artist.fullName.toLowerCase().replace(/ /g, '-')}/${asset.artist.id}`}>
                                             <a>
-                                                <div className={styles.backStoryArtistName}>{asset.artistName}</div>
+                                                <div className={styles.backStoryArtistName}>
+                                                    {asset.artistName}
+                                                </div>
                                             </a>
                                         </Link>
                                     </div>
@@ -894,7 +899,7 @@ export default function ShowAsset({asset}) {
         </>
     )
 }
-
+/*
 export async function getStaticPaths() {
     const {data: {assets}} = await axios.get(`${process.env.BACKEND_BASE_URL}/marketplace`)
     const paths = assets.map(asset => ({
@@ -906,7 +911,6 @@ export async function getStaticPaths() {
         fallback: 'blocking'
     }
 }
-
 export async function getStaticProps({params: {id}}) {
     const {
         data: {
@@ -921,4 +925,21 @@ export async function getStaticProps({params: {id}}) {
         revalidate: 30
     }
 }
+*/
 
+export async function getServerSideProps({query, req}) {
+    const assetId = query.id;
+    const token = parseCookies(req).token
+    const {
+        data: {
+            asset
+        }
+    } = await axios.get(`${process.env.BASE_URL}/api/show-asset/${assetId}`)
+
+    return {
+        props: {
+            asset,
+            token
+        }
+    }
+}

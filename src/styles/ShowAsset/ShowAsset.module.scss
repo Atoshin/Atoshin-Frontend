@@ -242,6 +242,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 80px;
+  width: 100%;
 }
 
 .midMainSec2 {
@@ -249,6 +250,7 @@
   flex-direction: column;
   margin-top: 80px;
   margin-bottom: 204px;
+  width: 100%;
 }
 
 .provenanceTitle {
@@ -274,6 +276,7 @@
 .backStorySec {
   display: flex;
   flex-direction: column;
+  width: 40%;
 }
 
 .backStoryTitle {
@@ -288,14 +291,14 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 25px;
-  width: 423px;
+  width: 100%;
   height: 100%;
 }
 
 .backStoryDivider {
   width: 282px;
   height: 0;
-  border: 1px solid #232323;
+  border-bottom: 2px solid #232323;
   margin-top: 32px;
   margin-bottom: 32px;
   margin-left: 19px;
@@ -304,6 +307,8 @@
 .backStoryBottomSec {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 }
 
 
@@ -311,8 +316,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-right: 24px;
-  margin-left: 4px;
+  width: 55%;
+  //margin-right: 24px;
+  //margin-left: 4px;
 }
 
 .backStoryArtistTxt {
@@ -326,7 +332,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 145px;
+  width: 180px;
   height: 30px;
   color: #232323;
   font-size: 16px;
@@ -341,6 +347,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 45%;
 }
 
 .originalOwnerTxt {
@@ -369,6 +376,7 @@
 .aboutArtworkSec {
   display: flex;
   flex-direction: column;
+  width: 40%;
 }
 
 .aboutArtworkTxt {
@@ -401,7 +409,7 @@
 .aboutArtworkDivider {
   width: 282px;
   height: 0;
-  border: 1px solid #232323;
+  border-bottom: 2px solid #232323;
   margin-top: 32px;
   margin-bottom: 32px;
   margin-left: 16px;
@@ -411,6 +419,8 @@
   display: flex;
   flex-direction: row;
   position: relative;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .mintedDateSec {
@@ -425,7 +435,7 @@
   padding-bottom: 1px;
   background-color: #E9E6E6;
   border-radius: 5px;
-  margin-right: 24px;
+  //margin-right: 24px;
   cursor: pointer;
 }
 
@@ -443,6 +453,7 @@
   border-radius: 5px;
   cursor: pointer;
   opacity: 0.5;
+
 }
 
 .watchArtworkSecActive {
@@ -462,10 +473,10 @@
 
 .provenanceDivider {
   height: 196px;
-  border: 1px solid #232323;
-  margin-right: 105px;
+  border-left: 2px solid #232323;
+  //margin-right: 105px;
   margin-top: 37px;
-  margin-left: 105px;
+  //margin-left: 105px;
 }
 
 .bottomMainSec {
@@ -751,9 +762,8 @@
   height: 650px !important;
   //width: 906px !important;
   //height: 597px !important;
-  //display: flex !important;
-  //flex-direction: column !important;
-  //border: 1px solid red;
+  display: flex !important;
+  flex-direction: column !important;
 
   .dialogHeader {
     display: flex;
@@ -775,7 +785,6 @@
   }
 
   .selectedItem {
-
   }
 
   .modalTitle {
@@ -847,7 +856,6 @@
 .main {
   width: 100% !important;
   //height: 50%;
-  border: 1px solid red;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -922,6 +930,7 @@
   left: 20px
 }
 
+
 .showMoreImg {
   //display: flex;
   //justify-content: center;
@@ -941,22 +950,26 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  justify-content: space-between;
 }
 
 .provenanceBottomSec {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .leftBottomSec {
   display: flex;
   flex-direction: column;
+  width: 45%;
 }
-
 .rightBottomSec {
   display: flex;
   flex-direction: column;
-  margin-left: 210px;
+  //margin-left: 210px;
+  width: 40%;
 }
 
 .mg {
