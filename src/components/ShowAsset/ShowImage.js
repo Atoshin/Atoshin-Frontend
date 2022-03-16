@@ -1,0 +1,76 @@
+import * as React from 'react';
+import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from '@mui/material/Dialog';
+import classes from "../../styles/ShowAsset/ShowAsset.module.scss";
+import Zoom from "react-img-zoom";
+import {useEffect, useRef, useState} from "react";
+
+export default function ShowImage({
+                                      videos,
+                                      mainImg,
+                                      isGallary,
+                                      images,
+                                      vertical,
+                                      selectedImg,
+                                      clickedVideoId,
+                                      newInfo
+                                  }) {
+
+    const [img, setImg] = useState(images.find(img => img.main === 1))
+    const [isImage, setIsImage] = useState(images.find(img => img.main === 1))
+
+
+    console.log({videos});
+    console.log(img);
+
+    console.log(images[1].id);
+    console.log(selectedImg);
+
+    console.log({clickedVideoId});
+    // console.log(videos[0].id);
+
+    console.log(newInfo);
+
+    useEffect(() => {
+        if (newInfo.video) {
+            console.log('video');
+            setImg(videos.find(video => video.id === newInfo.id))
+        } else {
+            setImg(images.find(img => img.id === newInfo.id))
+            console.log('image');
+        }
+    }, [newInfo])
+
+    // useEffect(() => {
+    //     setImg(images.find(img => img.id === newInfo.id))
+    // }, [newInfo])
+
+
+    return (
+        <div className={classes.showImageContainer}>
+            {/*{*/}
+            {/*    images.map((image, idx) => {*/}
+            {/*        console.log(image);*/}
+            {/*        return(*/}
+            {/*)*/}
+            {/*})*/}
+            {/*}*/}
+            {
+                newInfo.video ?
+                    <div dangerouslySetInnerHTML={{__html: img.link}}>
+                    </div>
+                    :
+                    ''
+            }
+            {
+                newInfo.image ?
+                    // <img width={'100%'} height={'90%'} className={classes.showImage} src={img.url} alt=""/>
+                    <>
+                        <img width={'100%'} height={'90%'} className={classes.showImage} src={img.url} alt=""/>
+                    </>
+                    :
+                    ''
+            }
+        </div>
+    )
+}

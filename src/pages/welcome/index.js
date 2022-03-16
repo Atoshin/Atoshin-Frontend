@@ -29,7 +29,7 @@ export default function Landing({data}) {
         })
         setTimeout(() => {
             autoRedirect()
-        }, 15000)
+        }, 30000)
     }, [])
     return (
         <>

@@ -90,15 +90,15 @@ export default function ImagesModal({
                             <div
                                 id="ytv-asset"
                                 ref={ref}
-                                style={{borderRadius: 3}}
+                                style={{borderRadius: 3, display: "flex", alignItems: "center", justifyContent: "center"}}
                                 dangerouslySetInnerHTML={{__html: mainImg.link}}/>
                             :
                             isGallary ?
-                                <div  style={{width:698, height:469, display:'flex', justifyContent:'center'}}>
-                                    <img src={mainImg.url}
-                                         style={{borderRadius: 3, boxShadow:" 0px 1px 3px 0px #00000026",width:698, height:469}}
+                                // <div  style={{width:'100%', height:469, display:'flex', justifyContent:'center'}}>
+                                    <img width="498px" height="269px" src={mainImg.url}
+                                         style={{borderRadius: 3, boxShadow:" 0px 1px 3px 0px #00000026",maxWidth: '100%', height: "auto",marginTop: 25}}
                                     />
-                                </div>
+                                // </div>
                                 :
                             // <div style={{borderRadius: 3}}>
                                 <ZoomImg/>
@@ -107,7 +107,7 @@ export default function ImagesModal({
                 </div>
                 {/*<img className={classes.modalMainImg} src="/images/starry-night-main.png" alt=""/>*/}
                 <div className={classes.dialogBody}>
-                    <div className={classes.otherImgesContainer}>
+                    {/*<div className={classes.otherImgesContainer}>*/}
                         {videos.map((video, idx) => {
                             if (typeof document !== "undefined") {
                                 let span = document.createElement('span');
@@ -123,7 +123,7 @@ export default function ImagesModal({
                                         border: '2px solid #FD6E19',
                                         borderRadius: 3,
                                         marginBottom: 24,
-                                        marginLeft: 24,
+                                        // marginLeft: 24,
                                         padding: 3,
                                         display: 'flex',
                                         justifyContent: 'center'
@@ -160,7 +160,7 @@ export default function ImagesModal({
                                         justifyContent: 'center',
                                         alignItems: 'center',
                                         marginBottom: 24,
-                                        marginLeft: 24,
+                                        // marginLeft: 24,
                                         boxShadow: '0px 1px 3px 0px #00000026',
                                     }}>
                                         <img src={'/images/show-asset/videoPlay.svg'}
@@ -180,7 +180,7 @@ export default function ImagesModal({
                                             border: '2px solid #FD6E19',
                                             borderRadius: 3,
                                             marginBottom: 24,
-                                            marginLeft: 24,
+                                            // marginLeft: 24,
                                             padding: 3,
                                             display: 'flex',
                                             justifyContent: 'center',
@@ -206,7 +206,7 @@ export default function ImagesModal({
                                             backgroundSize: "cover",
                                             cursor: "pointer",
                                             marginBottom: 24,
-                                            marginLeft: 24,
+                                            // marginLeft: 24,
                                             boxShadow: '0px 1px 3px 0px #00000026',
                                         }}/>
                                     }
@@ -241,7 +241,7 @@ export default function ImagesModal({
                                             border: '2px solid #FD6E19',
                                             borderRadius: 3,
                                             marginBottom: 24,
-                                            marginLeft: 24,
+                                            // marginLeft: 24,
                                             padding: 3,
                                             display: 'flex',
                                             justifyContent: 'center',
@@ -267,7 +267,7 @@ export default function ImagesModal({
                                             backgroundSize: "cover",
                                             cursor: "pointer",
                                             marginBottom: 24,
-                                            marginLeft: 24,
+                                            // marginLeft: 24,
                                             boxShadow: '0px 1px 3px 0px #00000026',
                                         }}/>
                                     }
@@ -275,7 +275,7 @@ export default function ImagesModal({
                         }
                         {/*<img src="/images/starry-night-second.png" className={classes.sideImage}/>*/}
                     </div>
-                </div>
+                {/*</div>*/}
             </div>
         </Dialog>
     );
