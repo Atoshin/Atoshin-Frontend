@@ -49,6 +49,10 @@
   margin-left: 16px;
 }
 
+.readMore {
+  color: #8BB5FF;
+}
+
 .text2 {
   //font-family: Roboto;
   font-size: 16px;
@@ -72,7 +76,6 @@
   padding-left: 96px;
   padding-right: 96px;
 }
-
 
 
 .paragraph {
@@ -106,9 +109,9 @@
   text-align: center;
   align-items: center;
 }
+
 .slider {
 }
-
 
 
 .SlideImg {
@@ -145,7 +148,7 @@
 }
 
 .detailsSec {
-  margin-top:29px;
+  margin-top: 29px;
   padding-left: 96px;
   padding-right: 96px;
 }
@@ -174,11 +177,16 @@
 .table {
   margin-top: 40px;
   margin-bottom: 12px;
-  color:#232323;
+  color: #232323;
 }
 
 .row {
   padding: 24px;
+}
+
+.mobileBioSec {
+  display: flex;
+  flex-direction: column;
 }
 
 .slider2 {
@@ -186,13 +194,14 @@
   text-align: center;
 }
 
-.slides{
+.slides {
   display: flex;
 }
 
 .card {
   height: 419px;
   width: 256px;
+
   * {
     user-select: none;
   }
@@ -227,7 +236,8 @@
 .card2:hover {
   box-shadow: 0px 2px 20px 0px #00000033;
 }
-.card:hover{
+
+.card:hover {
   box-shadow: 0px 2px 20px 0px #00000033;
 }
 
@@ -261,7 +271,7 @@
   //width: 172px;
 }
 
-.relatedDescTitle2{
+.relatedDescTitle2 {
   //margin: 0 24px 16px 24px;
   font-weight: 500;
   font-size: 16px;
@@ -272,14 +282,16 @@
 }
 
 
-.dateSec{
+.dateSec {
   height: 40px;
   margin-bottom: 8px;
 }
-.dateSec2{
+
+.dateSec2 {
   height: 40px;
   margin-bottom: 4px;
 }
+
 .date {
   font-family: Roboto;
   font-size: 10px;
@@ -381,7 +393,7 @@
   flex-direction: column;
   margin-top: 16px;
   height: 120px;
- padding-right: 24px;
+  padding-right: 24px;
   padding-left: 24px;
 
 }
@@ -396,7 +408,6 @@
 }
 
 
-
 .textImg {
   display: flex;
   height: 72px;
@@ -404,7 +415,6 @@
   border-radius: 12px;
   margin-bottom: 10px;
 }
-
 
 
 @import "media";
