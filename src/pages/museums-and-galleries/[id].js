@@ -139,9 +139,10 @@ export default function ArtCenter({artCenter}) {
                            slidesToScroll={1}
                            transitionDuration={500}
                            duration={5000}
-                           nextArrow={<div className={classes.previous}><img alt={"vector-right"}
-                                                                             src={'/icons/vector-right.svg'}/>
-                           </div>}
+                           nextArrow={ matches1 ? <div> </div> :
+                               <div className={classes.previous} style={{border:'solid black'}}><img alt={"vector-right"}
+                                                                                                     src={'/icons/vector-right.svg'}/>
+                               </div>}
                            prevArrow={<div/>}
                            ref={gallerySliderRef}>
                         {
@@ -324,8 +325,9 @@ export default function ArtCenter({artCenter}) {
                                    slidesToScroll={1}
                                    transitionDuration={500}
                                    duration={5000}
-                                   nextArrow={<div className={classes.previous}><img alt={"vector-right"}
-                                                                                     src={'/icons/vector-right.svg'}/>
+                                   nextArrow={ matches1 ? <div> </div> :
+                                       <div className={classes.previous} style={{border:'solid black'}}><img alt={"vector-right"}
+                                                                                                                  src={'/icons/vector-right.svg'}/>
                                    </div>}
                                    prevArrow={<div/>}
                                    ref={gallerySliderRef}>
