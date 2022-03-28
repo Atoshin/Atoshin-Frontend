@@ -200,8 +200,8 @@
 
 .card {
   height: 419px;
-  width: 256px;
-
+  //width: 256px;
+  width: 220px;
   * {
     user-select: none;
   }
@@ -246,7 +246,8 @@
   //height: 152px;
   //margin: 24px 24px 16px 24px;
   background-size: cover;
-  width: 208px;
+  //width: 208px;
+  width: 172px;
   height: 188px;
   margin: 24px auto 0 auto;
 }

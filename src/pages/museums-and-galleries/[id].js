@@ -411,7 +411,7 @@ export default function ArtCenter({artCenter}) {
                         </div>
                         <div className={classes.slider2}>
                             <Slide {...properties} ref={relatedSliderRef}>
-                                <div className={classes.slides} style={{width: '100%'}}>
+                                {/*<div className={classes.slides} style={{width: '100%'}}>*/}
                                     {artCenter.assets.map((asset, idx) => {
                                         return (
                                             <Link href={`/show-asset/${asset.id}`} key={idx}>
@@ -465,7 +465,7 @@ export default function ArtCenter({artCenter}) {
                                             </Link>
                                         )
                                     })}
-                                </div>
+                                {/*</div>*/}
                             </Slide>
                         </div>
                         {/*<GallerySlider/>*/}
