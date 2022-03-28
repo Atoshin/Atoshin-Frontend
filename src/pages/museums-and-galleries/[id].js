@@ -16,6 +16,7 @@ import {Map} from "../../components/ArtCenters/Map";
 import ImagesModal from '../../components/ShowAsset/ImagesModal3'
 import * as React from "react";
 import Head from "next/head";
+import {GallerySlider} from "../../components/ArtCenters/GallerySlider";
 
 export default function ArtCenter({artCenter}) {
     const [rendered, setRendered] = useState(false)
@@ -364,13 +365,13 @@ export default function ArtCenter({artCenter}) {
             </div>
             {
                 artCenter.assets.length ?
-                    <div className={classes.relatedSec} style={{border:'solid red'}}>
+                    <div className={classes.relatedSec}>
                         <div className={classes.relatedTitle}>
                             Related to gallery
                         </div>
                         <div className={classes.slider2}>
-                            <Slide {...properties} ref={relatedSliderRef} style={{border:'solid red'}}>
-                               <div style={{width:'100%'}}>
+                            <Slide {...properties} ref={relatedSliderRef}>
+                               <div className={classes.slides} style={{width:'100%'}}>
                                    {artCenter.assets.map((asset, idx) => {
                                        return (
                                            <Link href={`/show-asset/${asset.id}`} key={idx}>
@@ -427,6 +428,7 @@ export default function ArtCenter({artCenter}) {
                                </div>
                             </Slide>
                         </div>
+                        {/*<GallerySlider/>*/}
                     </div>
                     :
                     <div style={{height: '250px'}}/>
