@@ -45,7 +45,6 @@ export default function ShowImage({
     //     setImg(images.find(img => img.id === newInfo.id))
     // }, [newInfo])
 
-
     return (
         <div className={classes.showImageContainer}>
             {/*{*/}
@@ -57,7 +56,7 @@ export default function ShowImage({
             {/*}*/}
             {
                 newInfo.video ?
-                    <div dangerouslySetInnerHTML={{__html: img.link}}>
+                    <div className={classes.video} dangerouslySetInnerHTML={{__html: img.link}}>
                     </div>
                     :
                     ''
