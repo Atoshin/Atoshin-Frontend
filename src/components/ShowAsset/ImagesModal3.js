@@ -90,7 +90,7 @@ export default function ImagesModal({
             <div className={classes.dialogHeader}>
                 <DialogTitle className={classes.modalTitle}>{title} Photos</DialogTitle>
                 <div className={classes.vectorX} onClick={handleClose}>
-                    <img src="/icons/vector-X.png" alt=""/>
+                    <img className={classes.vector} src="/icons/vector-X.png" alt=""/>
                 </div>
             </div>
             <div className={classes.mg}>

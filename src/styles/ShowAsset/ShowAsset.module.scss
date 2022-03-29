@@ -792,7 +792,8 @@
     margin-left: 32px;
     padding-left: 0;
     padding-top: 0;
-    padding-bottom: 24px !important;
+    //padding-bottom: 24px !important;
+    padding-bottom: 24px;
     display: flex;
     justify-content: space-between;
     font-weight: 700;
@@ -1031,7 +1032,12 @@
   .showImage{
     width: 100%;
   }
+  .vector{
+    width: 16px;
+    height: 16px;
+  }
 }
+
 
 @import "media";
 
