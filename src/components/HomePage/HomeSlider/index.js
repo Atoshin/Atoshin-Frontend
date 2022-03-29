@@ -71,7 +71,9 @@ export default function HomeSlider({assets}) {
                 <div style={{height: 180, marginBottom: 25}}>
                     <div className={classes.artworkInfo} dangerouslySetInnerHTML={artworkInfo()}/>
                 </div>
-                <BuyBtn/>
+                   <div className={classes.buyBtnDesktop}>
+                       <BuyBtn/>
+                   </div>
             </div>
         </div>
         <div className={classes.topRightMainSec}>
