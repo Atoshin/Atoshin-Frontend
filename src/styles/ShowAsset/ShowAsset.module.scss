@@ -1028,6 +1028,19 @@
       //border: 2px solid red;
       margin: 10px;
     }
+    .videoItem{
+      height:100px;
+      width: 120px;
+      margin:10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .playIcon{
+      width:53px;
+      height:53px;
+    }
   }
   .showImage{
     width: 100%;

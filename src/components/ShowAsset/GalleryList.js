@@ -17,10 +17,10 @@ export default function GalleryList({
                                         newInfo
                                     }) {
 
-
-    console.log({videos});
-    console.log(mainImg);
-    console.log(images);
+    //
+    // console.log({videos});
+    // console.log(mainImg);
+    // console.log(images);
 
     // if (typeof document !== 'undefined') {
     //     let span = document.createElement('span');
@@ -53,7 +53,7 @@ export default function GalleryList({
             <div className={classes.items}>
                 {
                     artCenter.videoLinks.map((data, idx) => {
-                        console.log(data);
+                        // console.log(data);
                         if (typeof document !== 'undefined') {
                             let span = document.createElement('span');
                             span.hidden = true;
@@ -62,20 +62,15 @@ export default function GalleryList({
                             const ytvId = iframe.src.slice(-11)
                             span.remove()
                             return (
-                                <div onClick={() => selectVideo(data.id)} key={idx}
-                                     style={{
-                                         backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
-                                         width: 120,
-                                         height: 80,
-                                         cursor: "pointer",
-                                         display: "flex",
-                                         alignItems: "center",
-                                         justifyContent: "center"
-                                     }}>
-                                    <img src={'/images/show-asset/videoPlay.svg'}
-                                        // style={{display: "flex", alignItems: "center", justifyContent: "center"}}
-                                    />
-                                </div>
+                                    <div onClick={() => selectVideo(data.id)} key={idx}
+                                         className={classes.videoItem}
+                                         style={{
+                                             backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`}}>
+                                        <img src={'/images/show-asset/videoPlay.svg'}
+                                             className={classes.playIcon}
+                                            // style={{display: "flex", alignItems: "center", justifyContent: "center"}}
+                                        />
+                                    </div>
                             )
                         }
                     })
