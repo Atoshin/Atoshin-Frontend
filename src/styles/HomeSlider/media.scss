@@ -1,8 +1,26 @@
 @media (max-width: 1052px) {
   .topLeftSecFadeIn {
-    margin-top: 70px;
+    margin-top: 69px;
     width: 100%;
     padding-right: 0;
+  }
+  .topRightSec{
+    width: 100% !important;
+    //border: solid purple;
+  }
+  .artWorkImg{
+    //height: 100% !important;
+    //border: solid green;
+    width: 100%;
+  }
+  .artWorkName{
+    font-size: 30px !important;
+  }
+  .artistName{
+    font-size: 12px !important;
+  }
+  .buyBtnDesktop{
+    display:none;
   }
   .topLeftSecFadeOut {
     margin-top: 70px;
@@ -22,7 +40,7 @@
     width: 100%;
   }
   .artworkImgSec {
-    margin-top: 24px;
+    //margin-top: 24px;
     height: auto !important;
   }
   .artWorkImg {
@@ -91,10 +109,11 @@
     height: auto !important;
   }
   .infoSecDesktop {
-    display: none;
+    //display: none;
   }
   .mobBtn{
     display: flex;
+    justify-content: center;
   }
 }
 @media (max-width: 600px) {

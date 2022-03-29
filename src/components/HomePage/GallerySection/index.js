@@ -45,6 +45,8 @@ export default function GallerySection({gallery}) {
     }
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const matches2 = useMediaQuery(theme.breakpoints.down('md'));
+    const matches3 = useMediaQuery(theme.breakpoints.down('lg'));
 
     const gallerySummery = (gallery) => {
         if (gallery.summary.length > 426) {
@@ -80,62 +82,78 @@ export default function GallerySection({gallery}) {
                         View All
                     </div>
                 </div>
-                {
-                    matches &&
-                    Object.keys(selectedGallery.videoLinks).length > 0 ?
-                        selectedGallery.videoLinks.slice(0, 1).map((videoLinks) => {
-                            if (videoLinks.media !== null) {
-                                return <div className={classes.galleryVidContainerM} onClick={openYouTubeModal}>
-                                    <div ref={imageRef} style={{
+
+                {(matches || matches2) ?
+                Object.keys(selectedGallery.videoLinks).length > 0 ?
+                    selectedGallery.videoLinks.slice(0, 1).map((videoLinks) => {
+                        if (videoLinks.media !== null) {
+                            return <div className={classes.galleryVidContainerM}>
+                                <div
+                                    style={{
                                         backgroundImage: `url("${videoLinks.media.url}")`,
-                                        width: '100%',
+                                        // width: '100%',
+                                        height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : '100%',
+                                        // height: '300px',
+                                        backgroundRepeat: "no-repeat",
+                                        backgroundSize: "cover",
+                                        backgroundPosition: 'center',
+                                        // filter: 'contrast(50%)',
+                                        // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)'
+                                        filter: 'saturate(100%) brightness(0.50)',
+                                        display:'flex',
+                                        justifyContent:'center',
+                                        alignItems:'center'
+                                    }}
+                                    className={classes.galleryMainPhotoN}
+                                    onClick={openYouTubeModal}
+                                />
+                                <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
+                                     onClick={openYouTubeModal}/>
+                            </div>
+                        } else {
+                            return selectedGallery.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((data, key) => {
+                                return <div key={key} className={classes.galleryVidContainerM}>
+                                    <div style={{
+                                        backgroundImage: `url("${data.url}")`,
+                                        // width: '100%',
                                         height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : 360,
                                         // height: '300px',
                                         backgroundRepeat: "no-repeat",
                                         backgroundSize: "cover",
-                                        backgroundPosition: 'center'
-                                    }}>
-                                    </div>
-                                    <img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""
-                                         onClick={openYouTubeModal}/>
+                                        backgroundPosition: 'center',
+                                        // filter: 'contrast(50%)',
+                                        // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)',
+                                        // filter: 'saturate(100%) brightness(0.50)'
+                                    }}
+                                         className={classes.galleryMainPhotoN}/>
+                                    {/*<img src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""*/}
+                                    {/*     onClick={openYouTubeModal}/>*/}
                                 </div>
-                            } else {
-                                return selectedGallery.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((data, key) => {
-                                    return <div key={key} className={classes.galleryVidContainerM}>
-                                        <div ref={imageRef} style={{
-                                            backgroundImage: `url("${data.url}")`,
-                                            width: '100%',
-                                            height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : 360,
-                                            // height: '300px',
-                                            backgroundRepeat: "no-repeat",
-                                            backgroundSize: "cover",
-                                            backgroundPosition: 'center',
-                                        }}>
-                                        </div>
-                                        {/*<img style={{border:'solid red'}} src="/icons/play-icon.svg" className={classes.galleryPlayPhoto} alt=""*/}
-                                        {/*     onClick={openYouTubeModal}/>*/}
-                                    </div>
-                                })
-
-                            }
-
-                        })
-                        :
-                        selectedGallery.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((data, idx) => {
-                            return <div key={idx} className={classes.galleryVidContainerM}>
-                                <div ref={imageRef} style={{
+                            })
+                        }
+                    }) :
+                    selectedGallery.medias.filter(media => media.homeapagePicture === 1).slice(0, 1).map((data, idx) => {
+                        return <div key={idx} className={classes.galleryVidContainerM}>
+                            <div
+                                style={{
                                     backgroundImage: `url("${data.url}")`,
                                     width: '100%',
                                     height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : 360,
                                     // height: '300px',
                                     backgroundRepeat: "no-repeat",
                                     backgroundSize: "cover",
-                                    backgroundPosition: 'center'
-                                }}>
-                                </div>
-                            </div>
-                        })
+                                    backgroundPosition: 'center',
+                                    // filter: 'contrast(50%)',
+                                    // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)'
+                                    // filter: 'saturate(100%) brightness(0.50)'
+                                }}
+                                className={classes.galleryMainPhotoN}
+                            />
+                        </div>
+                    }) : ''
                 }
+
+                {/*paste here*/}
                 <div className={classes.galleryTopSec}>
                     <div className={classes.galleryDescMainSec}>
                         <div className={classes.galleryName}>
@@ -146,26 +164,26 @@ export default function GallerySection({gallery}) {
                         </div>
                         <div className={classes.galleryDescSec}>
                             <div className={classes.galleryDesc}>
-                                {!matches &&
+                                {(!matches && !matches2) ?
                                     <div className={classes.galleryDecsTxt}>
                                         {gallerySummery(selectedGallery)}
-                                    </div>
+                                    </div> : ''
                                 }
-                                {matches &&
+                                {(matches && matches2) ?
                                     <div className={classes.galleryDecsTxtMob}>
                                         {selectedGallery.summary}
-                                    </div>
+                                    </div> : ''
                                 }
-                                {matches &&
-                                    <div className={classes.mobileExploreSec}><ExploreBtn/></div>
+                                {(matches && matches2) ?
+                                    <div className={classes.mobileExploreSec}><ExploreBtn/></div> : ''
                                 }
-                                {!matches &&
-                                    <ExploreBtn/>
+                                {(!matches && !matches2) ?
+                                    <ExploreBtn/> : ''
                                 }
                             </div>
                         </div>
                     </div>
-                    {!matches &&
+                    {(!matches && !matches2)  ?
                     Object.keys(selectedGallery.videoLinks).length > 0 ?
                         selectedGallery.videoLinks.slice(0, 1).map((videoLinks) => {
                             if (videoLinks.media !== null) {
@@ -181,7 +199,10 @@ export default function GallerySection({gallery}) {
                                             backgroundPosition: 'center',
                                             // filter: 'contrast(50%)',
                                             // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)'
-                                            filter: 'saturate(100%) brightness(0.50)'
+                                            filter: 'saturate(100%) brightness(0.50)',
+                                            display:'flex',
+                                            justifyContent:'center',
+                                            alignItems:'center'
                                         }}
                                         className={classes.galleryMainPhotoN}
                                         onClick={openYouTubeModal}
@@ -217,6 +238,7 @@ export default function GallerySection({gallery}) {
                                     style={{
                                         backgroundImage: `url("${data.url}")`,
                                         width: '100%',
+                                        // height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : 360,
                                         height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : 360,
                                         // height: '300px',
                                         backgroundRepeat: "no-repeat",
@@ -229,7 +251,7 @@ export default function GallerySection({gallery}) {
                                     className={classes.galleryMainPhotoN}
                                 />
                             </div>
-                        })
+                        }) : ''
                     }
                 </div>
                 {/*<div className={classes.galleryBottomSec}>*/}

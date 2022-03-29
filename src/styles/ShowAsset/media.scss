@@ -237,13 +237,100 @@
   //}
 }
 
+@media (max-width: 710px) {
+  .main {
+    width: 100% !important;
+    //height: 50%;
+    //border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .dialogBody {
+    display: flex !important;
+    //align-items: center;
+    //justify-content: center;
+    flex-direction: row !important;
+    overflow: hidden;
+    //overflow-x: scroll !important;
+    //overflow-y: hidden !important;
+    height: 150px !important;
+    width: 100% !important;
+    //flex-flow: wrap;
+    flex-wrap: wrap;
+    //border: 2px solid red !important;
+  }
+  .mg{
+    width: 100%;
+    height: 100%;
+    //border: 1px solid red;
+    display: flex;
+    flex-direction: column !important;
+  }
+  .list{
+    height: 20%;
+    width: 100%;
+    //border: 1px solid red;
+  }
+  .pic{
+    height: 80%;
+    width: 100%;
+    //border: 1px solid red;
+  }
+  .vectorX{
+    width: 20px !important;
+    height: 20px !important;
+  }
 
+  .vector{
+    width: 7px !important;
+    height: 7px !important;
+  }
 
+  .videoItem{
+    width: 80px !important;
+    height: 60px !important;
+  }
 
+  .playIcon{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 
+  .modalTitle{
+    font-size: 14px!important;
+    padding-bottom: 10px !important;
+  }
 
+  .showImageContainer{
+    padding-right:20px;
+    padding-left: 20px;
+  }
 
+}
 
+@media (min-width: 710px) {
+  .items{
+    flex-direction: column !important;
+    align-items: center;
+  }
+  .item {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 120px!important;
+    height: 100px !important;
+    //border: 2px solid red;
+    margin: 10px;
+  }
+  .container {
+    display: block;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100% !important;
+    //border: 1px solid blue;
+  }
+}
 
 
 

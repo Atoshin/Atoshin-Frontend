@@ -1,5 +1,6 @@
 @media (max-width: 720px) {
   .artist {
+    width: 150px;
     img {
       //width: calc(100% - 8px);
     }
@@ -37,7 +38,12 @@
   }
 
   .moreArtists {
-    margin-bottom: 16px;
+    margin-bottom: 6px;
+  }
+
+  .artistCard{
+    width: 150px;
+    height: 125px;
   }
 
   .vectorLeft {

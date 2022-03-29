@@ -5,6 +5,10 @@
   .topLeftSec {
     margin-top: 0;
   }
+
+  .artCenterTitle{
+    font-size: 25px;
+  }
   .imgSec {
     max-width: 35px;
     margin-right: 10px;
@@ -78,7 +82,7 @@
     margin-left: auto !important;
   }
   .galleryMainSec {
-    margin-top: 100px;
+    margin-top: 70px;
   }
   .artist {
     img {
@@ -135,10 +139,12 @@
     display: flex;
     //align-items: center;
     //justify-content: center;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     //height: 178px;
-    height: 100%;
+    //height: 100%;
+    height: 178px;
     width: 100%;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
     border-radius: 3px;
@@ -146,7 +152,9 @@
   }
 
   .galleryMainPhotoN{
-    display: none;
+    //display: none;
+    width: 100%;
+    justify-content: center;
   }
 
 }

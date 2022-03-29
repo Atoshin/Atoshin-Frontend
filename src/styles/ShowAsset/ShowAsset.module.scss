@@ -773,11 +773,15 @@
 
   .dialogBody {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    overflow: scroll;
+    //overflow: scroll;
+    overflow-y: scroll;
     height: 500px;
-    width: 537px;
-    flex-flow: wrap;
+    width: 180px;
+    //flex-flow: wrap;
+    border: 2px solid black;
   }
 
   .selectedItem {
@@ -788,7 +792,8 @@
     margin-left: 32px;
     padding-left: 0;
     padding-top: 0;
-    padding-bottom: 24px !important;
+    //padding-bottom: 24px !important;
+    padding-bottom: 24px;
     display: flex;
     justify-content: space-between;
     font-weight: 700;
@@ -798,9 +803,12 @@
   .modalMainImg {
     width: 698px;
     height: 469px;
-    margin-left: 32px;
+    //margin-left: 32px;
     //cursor: crosshair;
     border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .otherImgesContainer {
@@ -847,8 +855,11 @@
 }
 
 .main {
+  width: 100% !important;
+  //height: 50%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .infoTooltip {
@@ -961,6 +972,85 @@
   //margin-left: 210px;
   width: 40%;
 }
+
+.mg {
+  width: 100%;
+  height: 80%;
+  //border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+}
+
+.list {
+  width: 20%;
+  height: 80%;
+  //border: 1px solid red;
+}
+
+.pic {
+  width: 80%;
+  height: 80%;
+  //border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video{
+  width: 100%;
+  height: 90%;
+  iframe{
+    width: 100% !important;
+  }
+}
+
+.showImageContainer{
+  width: 600px;
+}
+
+.container {
+  display: block;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  //border: 1px solid blue;
+
+  .items {
+    //width: 1000px;
+    display: flex;
+    flex-direction: row;
+
+    .item {
+      cursor: pointer;
+      flex-grow: 0;
+      flex-shrink: 0;
+      width: 80px;
+      height: 60px;
+      //border: 2px solid red;
+      margin: 10px;
+    }
+    .videoItem{
+      height:100px;
+      width: 120px;
+      margin:10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .playIcon{
+      width:53px;
+      height:53px;
+    }
+  }
+  .showImage{
+    width: 100%;
+  }
+  .vector{
+    width: 16px;
+    height: 16px;
+  }
+}
+
 
 @import "media";
 
