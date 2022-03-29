@@ -53,7 +53,7 @@ export default function HomeSlider({assets}) {
     const artworkInfo = () => {
         if (currentDesc) {
             if (currentDesc.bio.slice(3, -4).length >= 388) {
-                return {__html: currentDesc.bio.slice(3, -4).slice(0, 386)}
+                return {__html: currentDesc.bio.slice(3, -4).slice(0, 386) + '..'}
             } else {
                 return {__html: currentDesc.bio}
             }

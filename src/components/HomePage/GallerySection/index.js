@@ -181,7 +181,10 @@ export default function GallerySection({gallery}) {
                                             backgroundPosition: 'center',
                                             // filter: 'contrast(50%)',
                                             // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)'
-                                            filter: 'saturate(100%) brightness(0.50)'
+                                            filter: 'saturate(100%) brightness(0.50)',
+                                            display:'flex',
+                                            justifyContent:'center',
+                                            alignItems:'center'
                                         }}
                                         className={classes.galleryMainPhotoN}
                                         onClick={openYouTubeModal}
