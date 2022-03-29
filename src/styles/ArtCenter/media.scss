@@ -132,7 +132,7 @@
 
   .slideImg2{
     height: 150px;
-    width: 150px;
+    width: 150px !important;
   }
   .SlideImg{
     height: 150px;
@@ -149,7 +149,7 @@
   }
 
   .slider2{
-    margin-bottom: 32px;
+    margin-bottom: 12px;
   }
 
 }
@@ -181,6 +181,8 @@
   .slideImg2{
     width: 90% !important;
   }
+
+
 }
 
 @media (max-width: 900px) {
