@@ -95,7 +95,7 @@ export default function GallerySection({gallery}) {
                                         height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : '100%',
                                         // height: '300px',
                                         backgroundRepeat: "no-repeat",
-                                        backgroundSize: "cover",
+                                        backgroundSize:"cover",
                                         backgroundPosition: 'center',
                                         // filter: 'contrast(50%)',
                                         // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)'
@@ -120,6 +120,7 @@ export default function GallerySection({gallery}) {
                                         // height: '300px',
                                         backgroundRepeat: "no-repeat",
                                         backgroundSize: "cover",
+                                        // backgroundSize: "100% 100%",
                                         backgroundPosition: 'center',
                                         // filter: 'contrast(50%)',
                                         // filter: 'hue-rotate(85deg) saturate(100%) brightness(0.85)',
