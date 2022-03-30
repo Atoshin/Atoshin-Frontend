@@ -1,7 +1,7 @@
 .profileMain {
   display: flex;
   flex-direction: row;
-  margin-top: 90px;
+  margin-top: 100px;
   margin-bottom: 104px;
 }
 
@@ -11,7 +11,7 @@
   align-items: center;
   width: 30%;
   background-color: #FFFFFF;
-  margin-right: 34px;
+  margin-right: 32px;
 }
 
 .profileImg {
@@ -31,6 +31,7 @@
 .walletAddressSec {
   display: flex;
   flex-direction: row;
+  align-items: center;
   margin-top: 16px;
   background-color: #F5F5F5;
   padding: 12px 8px;
@@ -45,9 +46,12 @@
 
 .copyImg {
   width: 24px;
-  height: 22px;
+  height: 24px;
   margin-left: 24px;
   cursor: pointer;
+}
+.link{
+  height: 24px;
 }
 
 .linkOutImg {
@@ -74,7 +78,7 @@
 .valueNum {
   color: #000000;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 900;
   margin-right: 5px;
 }
 
@@ -113,6 +117,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  margin-bottom: 4px;
 }
 
 @import "media";

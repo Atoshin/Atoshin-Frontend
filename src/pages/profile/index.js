@@ -179,7 +179,7 @@ export default function Profile({token}) {
                                     </div>
                                     <img onClick={() => copyText(address)} className={classes.copyImg}
                                          src="/icons/copy-icon.svg" alt=""/>
-                                    <a target="_blank" href={`https://etherscan.io/address/${address}`} rel="noreferrer">
+                                    <a target="_blank" href={`https://etherscan.io/address/${address}`} rel="noreferrer" className={classes.link}>
                                         <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
                                     </a>
                                 </div>
