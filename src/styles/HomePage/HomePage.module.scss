@@ -152,7 +152,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 24px;
 }
 
 .viewAllArtCenters {
@@ -192,7 +192,6 @@
   font-size: 25px;
   font-weight: 500;
   color: #000000;
-  //font-family: "Eksell-font";
 }
 
 .galleryDescSec {
@@ -214,22 +213,22 @@
   //width: 526px;
 
   text-align: left;
-  margin-top: 9px;
+  //margin-top: 9px;
   height: 150px;
 }
 
 .galleryDecsTxtMob {
   display: flex;
   justify-content: center;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 300;
   //line-height: 25px;
   width: 100%;
   text-align: center;
-  margin-top: 9px;
-  line-height: 1.5em;
+  margin-top: 10px;
+  line-height: 20px;
   //white-space: nowrap;
-  height: 6em;
+  //height: 6em;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -246,7 +245,7 @@
   height: 53px;
   border-radius: 5px !important;
   //margin-top: 24px !important;
-  margin-top: 30px !important;
+  margin-top: 36px !important;
   text-transform: none !important;
   font-size: 18px !important;
   font-weight: 500 !important;
@@ -469,8 +468,9 @@ display: none;
 .artistsSlider {
   display: flex;
   width: 100%;
+  border: solid red;
   justify-content: space-between;
-  margin-bottom: 210px;
+  //margin-bottom: 210px;
 }
 
 .artist {

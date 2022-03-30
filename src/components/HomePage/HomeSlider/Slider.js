@@ -21,7 +21,7 @@ export default function Slider({images, sliderRef, setCurrentSlide, assets, curr
                infinite={true}
                arrows={false}
 
-               autoplay={false}
+               autoplay={true}
                slidesToScroll={1}
                cssClass={classes.slider}
                duration={5000}
@@ -41,8 +41,6 @@ export default function Slider({images, sliderRef, setCurrentSlide, assets, curr
                                     <div style={{
                                         backgroundImage: `url(${img})`,
                                         backgroundSize: `${imageRef.current.clientWidth}px`,
-                                        backgroundRepeat: "no-repeat",
-                                        backgroundPosition: 'center',
                                         // width: imageRef.current.clientWidth,
                                         width: '100%',
                                         // height: matches ? (((imageRef.current.clientWidth) * 2) / 3) : undefined

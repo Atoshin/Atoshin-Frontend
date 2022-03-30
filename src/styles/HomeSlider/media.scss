@@ -8,6 +8,10 @@
     width: 100% !important;
     //border: solid purple;
   }
+  .artworkInfoSec{
+    height: auto !important;
+    margin-bottom: 0px !important;
+  }
   .artWorkImg{
     //height: 100% !important;
     //border: solid green;
@@ -38,6 +42,7 @@
   }
   .artworkInfo {
     width: 100%;
+    height: auto !important;
   }
   .artworkImgSec {
     //margin-top: 24px;
@@ -122,5 +127,8 @@
     //margin: auto;
     flex-direction: column;
     margin-top: 0;
+  }
+  .topLeftSecFadeIn{
+    font-size: 12px !important;
   }
 }

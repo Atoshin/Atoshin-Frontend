@@ -169,12 +169,12 @@ export default function GallerySection({gallery}) {
                                         {gallerySummery(selectedGallery)}
                                     </div> : ''
                                 }
-                                {(matches && matches2) ?
+                                {(matches || matches2) ?
                                     <div className={classes.galleryDecsTxtMob}>
                                         {selectedGallery.summary}
                                     </div> : ''
                                 }
-                                {(matches && matches2) ?
+                                {(matches || matches2) ?
                                     <div className={classes.mobileExploreSec}><ExploreBtn/></div> : ''
                                 }
                                 {(!matches && !matches2) ?

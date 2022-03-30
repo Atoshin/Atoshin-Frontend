@@ -34,6 +34,11 @@
     margin-top: 8px;
   }
 
+  .artworkInfoSec{
+    height: 180px;
+    margin-bottom: 25px;
+  }
+
   .artworkInfo {
     font-size: 16px;
     font-weight: 300;
@@ -77,7 +82,14 @@
     transition: opacity 1s ease;
   }
 
+  .artworkInfoSec{
+    height: 180px;
+    margin-bottom: 25px;
+  }
   .artworkInfo {
+    height: 200px;
+
+
     font-size: 16px;
     font-weight: 300;
     line-height: 25px;
@@ -96,7 +108,8 @@
   background-color: #FD6108 !important;
   color: #FFFFFF !important;
   border-radius: 5px !important;
-  margin-top: 40px !important;
+  margin-top: 61px !important;
+  //margin-top: 5px !important;
   //margin-top: 33px !important;
   font-size: 20px !important;
   font-weight: 500 !important;
@@ -141,6 +154,8 @@
     height: 365.3px;
     transition: all 1s ease;
     border-radius: 3px 3px 0px 0px;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
 
@@ -171,6 +186,7 @@
 .topRightSec {
   display: flex;
   flex-direction: column;
+  width: 100% !important;
   //margin-left: 109px;
   //margin-left: 5px;
   //margin-right: 50px;

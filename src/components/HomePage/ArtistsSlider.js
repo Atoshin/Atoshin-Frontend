@@ -19,12 +19,12 @@ export default function ArtistsSlider({artists}) {
             Artists
         </div>
         <div className={classes.moreArtists}>
-            <p className={classes.artistsSubtext}>
+            <div className={classes.artistsSubtext}>
                 Learn more about these great artists
-            </p>
-            <p onClick={() => router.push('/artists')} className={classes.viewAll}>
+            </div>
+            <div onClick={() => router.push('/artists')} className={classes.viewAll}>
                 View All
-            </p>
+            </div>
         </div>
         <div className={classes.artistsSlider}>
             {/*<img className={classes.vectorLeft} onClick={() => {*/}
