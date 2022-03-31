@@ -28,11 +28,12 @@
   //margin-top: 40px;
   //margin-left: 40px;
   //width: auto;
-  height: 409px!important;
+  height: 409px !important;
   overflow-y: auto;
   //margin-bottom: 92px;
   //margin: auto;
 }
+
 .artworkSec::-webkit-scrollbar {
   display: none;
 }
@@ -48,7 +49,7 @@
 
 }
 
-.contractsBtn{
+.contractsBtn {
   width: 77px;
   height: 30px;
   border: 2px solid #C6CCD1;
@@ -65,10 +66,11 @@
   letter-spacing: 0em;
 }
 
-.contractsBtn:hover{
+.contractsBtn:hover {
   cursor: pointer;
 }
-.assetBtn{
+
+.assetBtn {
   width: 77px;
   height: 30px;
   border: 2px solid #C6CCD1;
@@ -84,9 +86,11 @@
   line-height: 16px;
   letter-spacing: 0em;
 }
-.assetBtn:hover{
+
+.assetBtn:hover {
   cursor: pointer;
 }
+
 .hoveredArtworkCard {
   display: flex;
   flex-direction: column;
@@ -101,7 +105,7 @@
 
 }
 
-.hoveredArtworkBackground{
+.hoveredArtworkBackground {
   z-index: 98;
   //background-color:#23232380;
   //height: 220px;
@@ -114,13 +118,14 @@
   align-items: center;
   justify-content: center;
 }
+
 .artworkImg {
   width: 200px;
   height: 180px;
   border-radius: 3px 3px 0px 0px;
 }
 
-.hoveredArtworkImg{
+.hoveredArtworkImg {
   width: 200px;
   height: 180px;
   border-radius: 3px 3px 0px 0px;
@@ -132,6 +137,7 @@
   //background: #23232380;
   //filter: saturate(100%) brightness(0.50);
 }
+
 .cardBottomSec {
   display: flex;
   flex-direction: column;
@@ -167,6 +173,7 @@
   //margin-left: -24px;
   //margin-right: -24px;
 }
+
 .historyMainSec::-webkit-scrollbar {
   display: none;
 }
@@ -300,6 +307,9 @@
   border-radius: 5px;
 }
 
+.tabBox {
+}
+
 .historyRowSec {
   display: flex;
   flex-direction: column;
@@ -308,6 +318,7 @@
   overflow-y: scroll;
   flex-flow: wrap;
 }
+
 .historyRowSec::-webkit-scrollbar {
   display: none;
 }

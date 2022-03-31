@@ -209,6 +209,9 @@ export default function Profile({token}) {
                                 </div>
                             </div>
                             <div className={classes.detailSecMob}>
+                                <div className={classes.editProfileSecMob}   onClick={() => setOpenModal(true)}>
+                                   <span> Edit Profile</span>
+                                </div>
                                 <div className={classes.walletAddressSec}>
                                     <div className={classes.walletAddress}>
                                         {address && address.slice(0, 4) + '...' + address.slice(-4)}

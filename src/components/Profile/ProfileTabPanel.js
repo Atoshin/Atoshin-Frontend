@@ -58,15 +58,15 @@ export default function BasicTabs({artworks, history}) {
         setArtWorkHover(true)
     }
     const artWorkMouseLeave = () => {
-        // setArtWorkHover(false)
+        setArtWorkHover(false)
     }
 
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
     return (
-        <Box sx={{width: '100%'}}>
-            <Box className={classes.table} sx={{borderBottom: 1, borderColor: 'divider',}}>
+        <Box className={classes.tabBox} sx={{width: '100%'}}>
+            <Box className={classes.table} sx={{borderBottom: 1, borderColor: 'divider'}}>
                 <Tabs value={value} onChange={handleChange} style={{width: '100%'}}
                       TabIndicatorProps={{style: {background: '#232323'}}} textColor="secondary"
                       indicatorColor="secondary" aria-label="basic tabs example">
@@ -102,7 +102,7 @@ export default function BasicTabs({artworks, history}) {
                             <div className={classes.cardBottomSec}>
                                 <div className={classes.artworkName}>
                                     {/*{artwork.name}*/}
-                                    1111
+                                    12345678901234567hhh
                                 </div>
                                 <div className={classes.artworkTokens}>
                                     12 tokens
@@ -110,7 +110,94 @@ export default function BasicTabs({artworks, history}) {
                             </div>
                         </div>
 
+                        <div  className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}
+                              onMouseEnter={artWorkMouseOver}
+                              onMouseLeave={artWorkMouseLeave}>
+                            {
+                                artWorkHover === true ?
+                                    <div className={classes.hoveredArtworkBackground}>
+                                        <div className={classes.contractsBtn}>
+                                            <div>Contracts</div>
+                                        </div>
+                                        {/*<div className={classes.assetBtn}>*/}
+                                        {/*    <div>Asset</div>*/}
+                                        {/*</div>*/}
+                                    </div> : ''
+                            }
+                            <div className={artWorkHover === true ? classes.hoveredArtworkImg : classes.artworkImg} style={{
+                                backgroundImage: `url(images/dd-gallery1.jpg)`,
+                                backgroundPosition: "center",
+                                backgroundSize: "cover"
+                            }}/>
+                            <div className={classes.cardBottomSec}>
+                                <div className={classes.artworkName}>
+                                    {/*{artwork.name}*/}
+                                    12345678901234567hhh
+                                </div>
+                                <div className={classes.artworkTokens}>
+                                    12 tokens
+                                </div>
+                            </div>
+                        </div>
+                        <div  className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}
+                              onMouseEnter={artWorkMouseOver}
+                              onMouseLeave={artWorkMouseLeave}>
+                            {
+                                artWorkHover === true ?
+                                    <div className={classes.hoveredArtworkBackground}>
+                                        <div className={classes.contractsBtn}>
+                                            <div>Contracts</div>
+                                        </div>
+                                        {/*<div className={classes.assetBtn}>*/}
+                                        {/*    <div>Asset</div>*/}
+                                        {/*</div>*/}
+                                    </div> : ''
+                            }
+                            <div className={artWorkHover === true ? classes.hoveredArtworkImg : classes.artworkImg} style={{
+                                backgroundImage: `url(images/dd-gallery1.jpg)`,
+                                backgroundPosition: "center",
+                                backgroundSize: "cover"
+                            }}/>
+                            <div className={classes.cardBottomSec}>
+                                <div className={classes.artworkName}>
+                                    {/*{artwork.name}*/}
+                                    12345678901234567hhh
+                                </div>
+                                <div className={classes.artworkTokens}>
+                                    12 tokens
+                                </div>
+                            </div>
+                        </div>
+                        <div  className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}
+                              onMouseEnter={artWorkMouseOver}
+                              onMouseLeave={artWorkMouseLeave}>
+                            {
+                                artWorkHover === true ?
+                                    <div className={classes.hoveredArtworkBackground}>
+                                        <div className={classes.contractsBtn}>
+                                            <div>Contracts</div>
+                                        </div>
+                                        {/*<div className={classes.assetBtn}>*/}
+                                        {/*    <div>Asset</div>*/}
+                                        {/*</div>*/}
+                                    </div> : ''
+                            }
+                            <div className={artWorkHover === true ? classes.hoveredArtworkImg : classes.artworkImg} style={{
+                                backgroundImage: `url(images/dd-gallery1.jpg)`,
+                                backgroundPosition: "center",
+                                backgroundSize: "cover"
+                            }}/>
+                            <div className={classes.cardBottomSec}>
+                                <div className={classes.artworkName}>
+                                    {/*{artwork.name}*/}
+                                    12345678901234567hhh
 
+                                </div>
+                                <div className={classes.artworkTokens}>
+                                    12 tokens
+                                </div>
+                            </div>
+                        </div>
                         {/*{artworks.map((artwork, idx) => {*/}
                         {/*    return <div key={idx} className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}*/}
                         {/*                onMouseEnter={artWorkMouseOver}*/}
