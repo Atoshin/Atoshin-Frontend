@@ -58,7 +58,7 @@ export default function BasicTabs({artworks, history}) {
         setArtWorkHover(true)
     }
     const artWorkMouseLeave = () => {
-        setArtWorkHover(false)
+        // setArtWorkHover(false)
     }
 
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -158,6 +158,142 @@ export default function BasicTabs({artworks, history}) {
                                 </div>
                             </div>
                             <div className={classes.historyRowSec}>
+
+                                <div  className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <div className={classes.smallImg} style={{
+                                            backgroundImage: `url(images/dd-gallery1.jpg)`,
+                                            backgroundPosition: "center",
+                                            backgroundSize: "cover"
+                                        }}/>
+                                        <div className={classes.artworkNameIndex}>
+                                            history1
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        12122022
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        123 ETH
+                                    </div>
+                                </div>
+
+                                <div  className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <div className={classes.smallImg} style={{
+                                            backgroundImage: `url(images/dd-gallery1.jpg)`,
+                                            backgroundPosition: "center",
+                                            backgroundSize: "cover"
+                                        }}/>
+                                        <div className={classes.artworkNameIndex}>
+                                            history1
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        12122022
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        123 ETH
+                                    </div>
+                                </div>
+
+                                <div  className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <div className={classes.smallImg} style={{
+                                            backgroundImage: `url(images/dd-gallery1.jpg)`,
+                                            backgroundPosition: "center",
+                                            backgroundSize: "cover"
+                                        }}/>
+                                        <div className={classes.artworkNameIndex}>
+                                            history1
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        12122022
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        123 ETH
+                                    </div>
+                                </div>
+
+
+                                <div  className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <div className={classes.smallImg} style={{
+                                            backgroundImage: `url(images/dd-gallery1.jpg)`,
+                                            backgroundPosition: "center",
+                                            backgroundSize: "cover"
+                                        }}/>
+                                        <div className={classes.artworkNameIndex}>
+                                            history1
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        12122022
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        123 ETH
+                                    </div>
+                                </div>
+
+
+                                <div  className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <div className={classes.smallImg} style={{
+                                            backgroundImage: `url(images/dd-gallery1.jpg)`,
+                                            backgroundPosition: "center",
+                                            backgroundSize: "cover"
+                                        }}/>
+                                        <div className={classes.artworkNameIndex}>
+                                            history1
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        12122022
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        123 ETH
+                                    </div>
+                                </div>
+
+
+                                <div  className={classes.indexRowSec}>
+                                    <div className={classes.itemsSec}>
+                                        <div className={classes.smallImg} style={{
+                                            backgroundImage: `url(images/dd-gallery1.jpg)`,
+                                            backgroundPosition: "center",
+                                            backgroundSize: "cover"
+                                        }}/>
+                                        <div className={classes.artworkNameIndex}>
+                                            historylast
+                                        </div>
+                                    </div>
+                                    <div className={classes.statusSec}>
+                                        Sold
+                                    </div>
+                                    <div className={classes.dateSec}>
+                                        12122022
+                                    </div>
+                                    <div className={classes.transactionSec}>
+                                        123 ETH
+                                    </div>
+                                </div>
+
                                 {history.txns.map((txn, idx) => {
                                     return <div key={idx} className={classes.indexRowSec}>
                                         <div className={classes.itemsSec}>
