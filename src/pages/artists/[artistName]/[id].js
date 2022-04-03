@@ -39,6 +39,7 @@ export default function Artist({artist}) {
         transitionDuration: 500,
         duration: 5000,
         arrows: true,
+        // arrows: !(matches && artist.assets.length <= 2)
 
 
         // // autoplay: true,
@@ -153,12 +154,12 @@ export default function Artist({artist}) {
 
                 {
                     artist.assets.length ?
-                        <div className={classes.relatedSec} style={{border:'solid red'}}>
+                        <div className={classes.relatedSec}>
                             <div className={classes.relatedTitle}>
                                 Related to gallery
                             </div>
                             <div className={classes.slider2}>
-                                <Slide {...properties} ref={relatedSliderRef} style={{border:'solid red'}}>
+                                <Slide {...properties} ref={relatedSliderRef}>
                                     {artist.assets.map((asset, idx) => {
                                         return (
                                             <Link href={`/show-asset/${asset.id}`} key={idx}>
