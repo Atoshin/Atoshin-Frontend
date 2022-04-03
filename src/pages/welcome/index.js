@@ -25,19 +25,21 @@ export default function Landing({data}) {
         })
         setTimeout(() => {
             autoRedirect()
-        }, 15000)
+        }, 30000)
     }, [])
     return (
         <>
             <Head>
                 <title>Welcome to Atoshin</title>
             </Head>
-            <video className={classes.bgVideo} width="1000" autoPlay muted loop id="myVideo">
-                {/*<source src="/public/videos/landing-intro.webm"*/}
-                {/*        type="video/webm"/>*/}
-                <source src="/videos/landing-video.mp4"
-                        type="video/mp4"/>
-            </video>
+            <div className={classes.vidContainer}>
+                <video className={classes.bgVideo} width="1000" autoPlay playsInline muted loop id="myVideo">
+                    {/*<source src="/public/videos/landing-intro.webm"*/}
+                    {/*        type="video/webm"/>*/}
+                    <source src="/videos/landing-video.mp4"
+                            type="video/mp4"/>
+                </video>
+            </div>
             <img className={classes.topLogo} src="/images/atoshin-logo-typography-white.svg" alt=""/>
             <img className={classes.midLogo} src="/images/atoshin-logo-hexagon-white.svg" alt=""/>
             <div className={classes.midText}>{data}</div>

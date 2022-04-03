@@ -1,7 +1,7 @@
 .mainImgSec {
   display: flex;
   justify-content: center;
-  margin-top: 82px;
+  margin-top: 48px;
 }
 
 .mainImg {
@@ -49,6 +49,10 @@
   margin-left: 16px;
 }
 
+.readMore {
+  color: #8BB5FF;
+}
+
 .text2 {
   //font-family: Roboto;
   font-size: 16px;
@@ -63,7 +67,7 @@
 
 .paragraphSec {
   width: 100%;
-  margin-top: 48px;
+  margin-top: 50px;
   //height: 300px;
   display: flex;
   flex-direction: column;
@@ -74,7 +78,6 @@
 }
 
 
-
 .paragraph {
   width: 928px;
 }
@@ -83,10 +86,7 @@
   height: 239px;
   text-align: center;
   align-items: center;
-  //border: solid red;
 }
-
-
 .previous {
   width: 58px;
   height: 58px;
@@ -105,10 +105,10 @@
   height: 155px;
   text-align: center;
   align-items: center;
-}
+  }
+
 .slider {
 }
-
 
 
 .SlideImg {
@@ -122,6 +122,7 @@
   border-radius: 3px;
 
   margin-right: 16px;
+  margin-left: 10px;
 
   display: flex;
   justify-content: center;
@@ -130,8 +131,8 @@
 
 .slideImg2 {
   height: 220px;
-  //width: 220px;
-  width: 100%;
+  width: 220px;
+  //width: 100%;
   background-position: center;
   background-size: cover;
   align-items: center;
@@ -140,11 +141,10 @@
 
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .detailsSec {
-  margin-top:29px;
+  margin-top: 29px;
   padding-left: 96px;
   padding-right: 96px;
 }
@@ -171,22 +171,33 @@
 }
 
 .table {
-  margin-top: 40px;
+  margin-top: 28px;
   margin-bottom: 12px;
+  color: #232323;
 }
 
 .row {
   padding: 24px;
 }
 
+.mobileBioSec {
+  display: flex;
+  flex-direction: column;
+}
+
 .slider2 {
-  margin-bottom: 48px;
+  margin-bottom: 28px;
   text-align: center;
+}
+
+.slides {
+  display: flex;
 }
 
 .card {
   height: 419px;
-  width: 256px;
+  //width: 256px;
+  width: 220px;
   * {
     user-select: none;
   }
@@ -221,7 +232,8 @@
 .card2:hover {
   box-shadow: 0px 2px 20px 0px #00000033;
 }
-.card:hover{
+
+.card:hover {
   box-shadow: 0px 2px 20px 0px #00000033;
 }
 
@@ -230,8 +242,9 @@
   //height: 152px;
   //margin: 24px 24px 16px 24px;
   background-size: cover;
-  width: 208px;
-  height: 188px;
+  //width: 208px;
+  width: 172px;
+  height: 152px;
   margin: 24px auto 0 auto;
 }
 
@@ -255,7 +268,7 @@
   //width: 172px;
 }
 
-.relatedDescTitle2{
+.relatedDescTitle2 {
   //margin: 0 24px 16px 24px;
   font-weight: 500;
   font-size: 16px;
@@ -266,14 +279,16 @@
 }
 
 
-.dateSec{
+.dateSec {
   height: 40px;
   margin-bottom: 8px;
 }
-.dateSec2{
+
+.dateSec2 {
   height: 40px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
+
 .date {
   font-family: Roboto;
   font-size: 10px;
@@ -289,7 +304,7 @@
 .date1 {
   height: 15px;
   font-family: Roboto;
-  font-size: 10px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 12px;
@@ -375,7 +390,7 @@
   flex-direction: column;
   margin-top: 16px;
   height: 120px;
- padding-right: 24px;
+  padding-right: 24px;
   padding-left: 24px;
 
 }
@@ -390,7 +405,6 @@
 }
 
 
-
 .textImg {
   display: flex;
   height: 72px;
@@ -398,7 +412,6 @@
   border-radius: 12px;
   margin-bottom: 10px;
 }
-
 
 
 @import "media";

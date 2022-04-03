@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 38px;
-    margin-bottom: 104px;
+    margin-bottom: 38px;
   }
 
   .leftSec {
@@ -15,7 +15,11 @@
     width: 100%;
     background-color: #FFFFFF;
     margin-right: 0px;
-    padding: 16px;
+    //padding: 16px;
+    padding-top: 8px;
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-bottom: 16px;
   }
 
   .profileImg {
@@ -43,11 +47,58 @@
 
   .valueTxt {
     color: #232323;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 300;
     margin-top: 16px;
   }
   .desktopDiv {
     display: none;
+  }
+  .profileName{
+    margin-top: 11px;
+    font-size: 12px;
+  }
+  .valueSec{
+    margin-top: 4px;
+  }
+  .editProfileSecMob{
+    display: flex;
+    //border: solid rebeccapurple;
+    justify-content: flex-end;
+    color: #193EFF;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    letter-spacing: 0em;
+    margin-left: 20px;
+  }
+  .linkOutImg {
+    width: 18px;
+    height: 18px;
+    //border: solid 1px rebeccapurple;
+
+  }
+  .copyImg{
+    width: 20px;
+    height: 18px;
+    margin-bottom: 2px;
+    //border: solid 1px rebeccapurple;
+  }
+  .walletAddressSec{
+    //padding: 7px 7px;
+    padding-left: 9px;
+    padding-right: 7px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+  .walletAddress{
+    font-size: 12px;
+  }
+  .valueNum{
+    font-size: 16px;
+  }
+  .ethTxt{
+    font-size: 12px;
   }
 }

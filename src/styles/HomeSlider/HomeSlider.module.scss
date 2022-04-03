@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 110px;
+  margin-top: 70px;
   width: 100%;
 }
 
@@ -34,12 +34,17 @@
     margin-top: 8px;
   }
 
+  .artworkInfoSec{
+    height: 180px;
+    margin-bottom: 25px;
+  }
+
   .artworkInfo {
     font-size: 16px;
     font-weight: 300;
     line-height: 25px;
     color: #232323;
-    margin-top: 16px;
+    //margin-top: 16px;
     opacity: 1;
     transition: opacity 1s ease;
     text-align: left;
@@ -77,7 +82,14 @@
     transition: opacity 1s ease;
   }
 
+  .artworkInfoSec{
+    height: 180px;
+    margin-bottom: 25px;
+  }
   .artworkInfo {
+    height: 200px;
+
+
     font-size: 16px;
     font-weight: 300;
     line-height: 25px;
@@ -93,10 +105,11 @@
 .buyBtn {
   width: 164px;
   height: 55px;
-  background-color: #EE574C !important;
+  background-color: #FD6108 !important;
   color: #FFFFFF !important;
   border-radius: 5px !important;
-  margin-top: 24px !important;
+  margin-top: 61px !important;
+  //margin-top: 5px !important;
   //margin-top: 33px !important;
   font-size: 20px !important;
   font-weight: 500 !important;
@@ -104,7 +117,7 @@
   text-transform: none !important;
 
   &:hover {
-    background-color: #EE574C !important;
+    background-color: #FD6108 !important;
   }
 }
 
@@ -126,6 +139,7 @@
   flex-direction: column;
   width: 58%;
   filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
+  margin-top: 24px;
 
   .artworkImgSec {
     //height: 365.3px;
@@ -140,6 +154,8 @@
     height: 365.3px;
     transition: all 1s ease;
     border-radius: 3px 3px 0px 0px;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
 
@@ -170,6 +186,7 @@
 .topRightSec {
   display: flex;
   flex-direction: column;
+  width: 100% !important;
   //margin-left: 109px;
   //margin-left: 5px;
   //margin-right: 50px;
@@ -273,8 +290,8 @@
   font-size: 32px;
   font-weight: 500;
   //line-height: 32px;
-  color: #EE574C;
-
+  //color: #EE574C;
+color: #FD6108;
 }
 
 .Txt {
@@ -326,6 +343,8 @@
   width: 100%;
   float: right;
   //margin-left: 112px;
+
+  align-items: center;
 }
 
 .selectedTap {
@@ -335,13 +354,13 @@
   margin-left: 10px;
   margin-right: 10px;
   //font-weight: 700;
-  color: #EE574C;
+  color: #FD6108;
   font-weight: 300;
 }
 
 .vector {
   width: 10.29px;
-  height: 20.46px;
+  height: 16.69px;
   cursor: pointer;
 }
 
@@ -361,6 +380,9 @@
 }
 .mobBtn{
   display: none;
+}
+.buyBtnDesktop{
+
 }
 
 @import "media";

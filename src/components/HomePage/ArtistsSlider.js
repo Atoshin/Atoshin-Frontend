@@ -19,22 +19,22 @@ export default function ArtistsSlider({artists}) {
             Artists
         </div>
         <div className={classes.moreArtists}>
-            <p className={classes.artistsSubtext}>
+            <div className={classes.artistsSubtext}>
                 Learn more about these great artists
-            </p>
-            <p onClick={() => router.push('/artists')} className={classes.viewAll}>
+            </div>
+            <div onClick={() => router.push('/artists')} className={classes.viewAll}>
                 View All
-            </p>
+            </div>
         </div>
         <div className={classes.artistsSlider}>
             {/*<img className={classes.vectorLeft} onClick={() => {*/}
             {/*    sliderRef.current.goBack()*/}
             {/*}}*/}
             {/*     src="/icons/vector-left.svg" alt=""/>*/}
-            <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={true}
+            <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={matches ? false : true}
                    slidesToScroll={1}
                    transitionDuration={500}
-                   duration={5000}>
+                   duration={3000}>
                 {artists.map((artist, idx) => {
                     return (
                         <Link key={idx} href={`/artists/${artist.fullName.toLowerCase().replace(/ /g, '-')}/${artist.id}`}>
@@ -42,14 +42,7 @@ export default function ArtistsSlider({artists}) {
                                 {/*onClick={() => router.push(`/artists/${artist.fullName.toLowerCase().replace(/ /g, '-')}/${artist.id}`)}*/}
                                 <div key={artist.id} className={classes.artist}>
                                     {/*<img src={artist.medias.find(media => media.main === 1).url} alt="" style={{borderRadius:" 3px 3px 0px 0px"}}/>*/}
-                                    <div style={{
-                                        backgroundImage: `url("${artist.medias.find(media => media.main === 1).url}")`,
-                                        width: '100%',
-                                        height: '221px',
-                                        backgroundRepeat: "no-repeat",
-                                        backgroundSize: "cover",
-                                        backgroundPosition: 'center'
-                                    }}>
+                                    <div className={classes.artistCard} style={{backgroundImage: `url("${artist.medias.find(media => media.main === 1).url}")`,}}>
                                     </div>
                                     <p>{artist.fullName}</p>
                                 </div>

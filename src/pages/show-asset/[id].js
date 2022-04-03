@@ -1,7 +1,7 @@
 import styles from "../../styles/ShowAsset/ShowAsset.module.scss";
 import {Button, Slide as MUISlide, Fade, useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
-import ImagesModal from "../../components/ShowAsset/ImagesModal";
+import ImagesModal from "../../components/ShowAsset/ImagesModal3";
 import {useEffect, useState} from "react";
 import OwnersModal from "../../components/ShowAsset/OwnersModal";
 import HistoryModal from "../../components/ShowAsset/HistoryModal";
@@ -46,6 +46,13 @@ export default function ShowAsset({asset}) {
     const [mainImgSize, setMainImgSize] = useState({
         width: '',
         height: ''
+    })
+    const [newInfo, setNewInfo] = useState({
+        video: false,
+        image: false,
+        open: false,
+        id: '',
+        showAsset: false
     })
     const dispatch = useAppDispatch()
     const userAddress = useAppSelector(selectAddress);
@@ -154,6 +161,24 @@ export default function ShowAsset({asset}) {
     const openImageModal = (id) => {
         setClickedImageId(id)
         setOpenImages(true);
+        setNewInfo({
+            video: false,
+            image: true,
+            id: id,
+            open: true,
+            showAsset: true
+        })
+    }
+    const openVideoModal = (id) => {
+        setClickedImageId(id)
+        setOpenImages(true);
+        setNewInfo({
+            video: true,
+            image: false,
+            id: id,
+            open: true,
+            showAsset: true
+        })
     }
 
     const theme = useTheme();
@@ -168,57 +193,66 @@ export default function ShowAsset({asset}) {
                 const iframe = span.children[0];
                 const ytvId = iframe.src.slice(-11)
                 span.remove()
-                return [
+                return (
                     asset.videoLinks.slice(0, 5).map((data, idx) => {
-                        return <div key={5000} onClick={() => {
-                            setClickedVideoId(data.id)
-                            setOpenImages(true)
-                        }} style={{
-                            backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
-                            width: 93.39,
-                            height: 93.39,
-                            backgroundPosition: 'center',
-                            backgroundSize: "cover",
-                            marginRight: 15.73,
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            borderRadius: 3,
-                            boxShadow: '0px 1px 3px 0px #00000026'
-                        }}>
-                            <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
-                        </div>
-                    }),
-                    asset.medias.slice(0, (6 - asset.videoLinks.length)).map((data, idx) => {
-                        if (idx === parseInt(Object.keys(asset.medias.slice(0, (6 - asset.videoLinks.length)))[Object.keys(asset.medias.slice(0, (6 - asset.videoLinks.length))).length - 1]) || idx === 4) {
-                            return <div key={idx} onClick={() => openImageModal(data.id)} style={{
-                                backgroundImage: `url("${data.url}")`,
-                                width: 93.39,
-                                height: 93.39,
-                                backgroundPosition: 'center',
-                                backgroundSize: "cover",
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                borderRadius: 3,
-                                boxShadow: '0px 1px 3px 0px #00000026'
-                            }}>
-                                <img src="/images/show-asset/more.svg" style={{width: 53.84, height: 53.84}}/>
+                        return (
+                            <div key={5000}
+                                 // onClick={() => {
+                                 //     setClickedVideoId(data.id)
+                                 //     setOpenImages(true)
+                                 // }}
+                                 onClick={openVideoModal(data.id)}
+                                 style={{
+                                     backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
+                                     width: 93.39,
+                                     height: 93.39,
+                                     backgroundPosition: 'center',
+                                     backgroundSize: "cover",
+                                     marginRight: 15.73,
+                                     display: 'flex',
+                                     justifyContent: 'center',
+                                     alignItems: 'center',
+                                     borderRadius: 3,
+                                     boxShadow: '0px 1px 3px 0px #00000026'
+                                 }}>
+                                <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
                             </div>
-                        } else {
-                            return <div onClick={() => openImageModal(data.id)} style={{
-                                backgroundImage: `url("${data.url}")`,
-                                width: 93.39,
-                                height: 93.39,
-                                backgroundPosition: 'center',
-                                backgroundSize: "cover",
-                                marginRight: 15.73,
-                                borderRadius: 3,
-                                boxShadow: '0px 1px 3px 0px #00000026'
-                            }}/>
-                        }
-                    })
-                ]
+                        )
+                    }),
+                        asset.medias.slice(0, (6 - asset.videoLinks.length)).map((data, idx) => {
+                            if (idx === parseInt(Object.keys(asset.medias.slice(0, (6 - asset.videoLinks.length)))[Object.keys(asset.medias.slice(0, (6 - asset.videoLinks.length))).length - 1]) || idx === 4) {
+                                return (
+                                    <div key={idx}
+                                         onClick={() => openImageModal(data.id)}
+                                         style={{
+                                             backgroundImage: `url("${data.url}")`,
+                                             width: 93.39,
+                                             height: 93.39,
+                                             backgroundPosition: 'center',
+                                             backgroundSize: "cover",
+                                             display: 'flex',
+                                             justifyContent: 'center',
+                                             alignItems: 'center',
+                                             borderRadius: 3,
+                                             boxShadow: '0px 1px 3px 0px #00000026'
+                                         }}>
+                                        <img src="/images/show-asset/more.svg" style={{width: 53.84, height: 53.84}}/>
+                                    </div>
+                                )
+                            } else {
+                                return <div onClick={() => openImageModal(data.id)} style={{
+                                    backgroundImage: `url("${data.url}")`,
+                                    width: 93.39,
+                                    height: 93.39,
+                                    backgroundPosition: 'center',
+                                    backgroundSize: "cover",
+                                    marginRight: 15.73,
+                                    borderRadius: 3,
+                                    boxShadow: '0px 1px 3px 0px #00000026'
+                                }}/>
+                            }
+                        })
+                )
 
 
                 // return [
@@ -472,13 +506,24 @@ export default function ShowAsset({asset}) {
                 <title>{asset.title}</title>
             </Head>
             <LoadingBackdrop setOpen={setLoadingTxn} open={loadingTxn}/>
-            <ImagesModal open={openImages} setOpen={setOpenImages} images={asset.medias} title={asset.title}
-                         videos={asset.videoLinks}
-                         clickedImageId={clickedImageId}
-                         setClickedImageId={setClickedImageId}
-                         setClickedVideoId={setClickedVideoId}
-                         clickedVideoId={clickedVideoId}
-                         isGallary={false}
+            <ImagesModal
+                open={openImages}
+                setOpen={setOpenImages}
+                images={asset.medias}
+                title={asset.title}
+                videos={asset.videoLinks}
+                clickedImageId={clickedImageId}
+                setClickedImageId={setClickedImageId}
+                setClickedVideoId={setClickedVideoId}
+                clickedVideoId={clickedVideoId}
+                isGallary={false}
+
+                vertical={true}
+                setSelectedImg={setClickedImageId}
+                selectedImg={clickedImageId}
+                artCenter={asset}
+                setNewInfo={setNewInfo}
+                newInfo={newInfo}
             />
             {/*imageId={imageId}*/}
             <OwnersModal owners={owners} open={openOwners} setOpen={setOpenOwners}/>
@@ -503,60 +548,64 @@ export default function ShowAsset({asset}) {
                             </div>
                         </div>
                         {matches &&
-                        <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease'}}
-                             className={styles.artworkMainImgSec}>
-                            <Slide
-                                easing='ease'
-                                slidesToShow={1}
-                                infinite={true}
-                                autoplay={sliderAutoplay}
-                                duration={5000}
-                                indicators
-                                onChange={(oldIdx, newIdx) => {
-                                    const mediaIndexes = asset.medias.filter(media => media.main !== 1).length - 1
-                                    if (newIdx > mediaIndexes) {
-                                        newIdx = newIdx - (mediaIndexes + 1);
-                                        setCurrentSlide(asset.videoLinks[newIdx])
-                                    } else {
-                                        setCurrentSlide(asset.medias.filter(media => media.main !== 1)[newIdx])
-                                    }
-                                }}
-                            >
-                                {asset.medias.filter(media => media.main !== 1).map(media => {
-                                    return <img key={media.id}
-                                                style={{...mainImgSize, transition: 'all 500ms ease'}}
-                                                className={styles.artworkMainImg}
-                                                src={media.url} alt=""/>
-                                })}
-                                {asset.videoLinks.map(video => {
-                                    let span = document.createElement('span');
-                                    span.hidden = true;
-                                    span.innerHTML = video.link;
-                                    const iframe = span.children[0]
-                                    const ytvId = iframe.src.slice(-11)
-                                    span.remove()
-                                    return <Youtube
-                                        key={ytvId}
-                                        // videoId={video.videoId}
-                                        videoId={ytvId}
-                                        containerClassName={styles.artworkMainImgMobile}
-                                        opts={mainImgSize}
-                                        onPlay={() => {
-                                            setSliderAutoplay(false)
-                                        }}
-                                        onPause={() => {
-                                            setSliderAutoplay(true)
-                                        }}
-                                    />
-                                })}
-                            </Slide>
-                        </div>
+                            <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease'}}
+                                 className={styles.artworkMainImgSec}>
+                                <Slide
+                                    easing='ease'
+                                    slidesToShow={1}
+                                    infinite={true}
+                                    autoplay={sliderAutoplay}
+                                    duration={5000}
+                                    indicators
+                                    onChange={(oldIdx, newIdx) => {
+                                        const mediaIndexes = asset.medias.filter(media => media.main !== 1).length - 1
+                                        if (newIdx > mediaIndexes) {
+                                            newIdx = newIdx - (mediaIndexes + 1);
+                                            setCurrentSlide(asset.videoLinks[newIdx])
+                                        } else {
+                                            setCurrentSlide(asset.medias.filter(media => media.main !== 1)[newIdx])
+                                        }
+                                    }}
+                                >
+                                    {asset.medias.filter(media => media.main !== 1).map(media => {
+                                        return (
+                                            <img key={media.id}
+                                                 style={{...mainImgSize, transition: 'all 500ms ease'}}
+                                                 className={styles.artworkMainImg}
+                                                 src={media.url} alt=""/>
+                                        )
+                                    })}
+                                    {asset.videoLinks.map(video => {
+                                        let span = document.createElement('span');
+                                        span.hidden = true;
+                                        span.innerHTML = video.link;
+                                        const iframe = span.children[0]
+                                        const ytvId = iframe.src.slice(-11)
+                                        span.remove()
+                                        return (
+                                            <Youtube
+                                                key={ytvId}
+                                                // videoId={video.videoId}
+                                                videoId={ytvId}
+                                                containerClassName={styles.artworkMainImgMobile}
+                                                opts={mainImgSize}
+                                                onPlay={() => {
+                                                    setSliderAutoplay(false)
+                                                }}
+                                                onPause={() => {
+                                                    setSliderAutoplay(true)
+                                                }}
+                                            />
+                                        )
+                                    })}
+                                </Slide>
+                            </div>
                         }
                         {matches &&
-                        <div className={styles.saleEndDateMob}>
-                            {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
-                            {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
-                        </div>
+                            <div className={styles.saleEndDateMob}>
+                                {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
+                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
+                            </div>
                         }
                         <div className={styles.saleMainSec}>
                             <div className={styles.saleEndDate}>
@@ -569,31 +618,9 @@ export default function ShowAsset({asset}) {
                             <div className={styles.fractionsLeftTxt}>
                                 Fractions left
                                 {!matches &&
-                                <div className={styles.firstTooltipSec}>
                                     <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
                                          className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
-                                    <Fade in={tooltip}>
-                                        <div className={styles.fractionsTooltip}>
-                                            {(asset.totalFractions * asset.ownershipPercentage) / 100} fractions belong
-                                            to
-                                            the gallery
-                                            and {(asset.totalFractions - (asset.totalFractions * asset.ownershipPercentage) / 100)} fractions
-                                            can be traded
-                                            <div className={styles.arrow}/>
-                                        </div>
-                                    </Fade>
-                                </div>
                                 }
-
-                            </div>
-                            <div className={styles.fractionsLeftAmount}>
-                                {asset.totalFractions - asset.soldFractions}<span
-                                style={{fontWeight: 400}}>/{asset.totalFractions}</span>
-                            </div>
-                            {matches &&
-                            <div className={styles.firstTooltipSec}>
-                                <img onClick={() => setTooltip(!tooltip)}
-                                     className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                                 <Fade in={tooltip}>
                                     <div className={styles.fractionsTooltip}>
                                         {(asset.totalFractions * asset.ownershipPercentage) / 100} fractions belong to
@@ -604,24 +631,31 @@ export default function ShowAsset({asset}) {
                                     </div>
                                 </Fade>
                             </div>
+                            <div className={styles.fractionsLeftAmount}>
+                                {asset.totalFractions - asset.soldFractions}<span
+                                style={{fontWeight: 400}}>/{asset.totalFractions}</span>
+                            </div>
+                            {matches &&
+                                <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
+                                     className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                             }
                         </div>
                         {(matches) &&
-                        <MUISlide in={scrolled} direction={"up"}>
-                            <div className={styles.priceMainSec}>
-                                <div className={styles.priceSec}>
-                                    <div className={styles.priceTxt}>
-                                        Price
+                            <MUISlide in={scrolled} direction={"up"}>
+                                <div className={styles.priceMainSec}>
+                                    <div className={styles.priceSec}>
+                                        <div className={styles.priceTxt}>
+                                            Price
+                                        </div>
+                                        <div className={styles.priceAmount}>
+                                            {asset.ethPricePerFraction} ETH
+                                        </div>
                                     </div>
-                                    <div className={styles.priceAmount}>
-                                        {asset.ethPricePerFraction} ETH
-                                    </div>
+                                    <Button className={styles.BuyBtn}>
+                                        Buy now
+                                    </Button>
                                 </div>
-                                <Button className={styles.BuyBtn}>
-                                    Buy now
-                                </Button>
-                            </div>
-                        </MUISlide>
+                            </MUISlide>
                         }
                         {
                             (!matches) &&
@@ -714,35 +748,6 @@ export default function ShowAsset({asset}) {
                                     </div>
                                     <div className={styles.detailText}>{asset.gallery.name}</div>
                                 </div>
-                                {matches &&
-                                <div className={styles.backStoryBottomSecMob}>
-                                    <div className={styles.backStoryArtistSec}>
-                                        <div className={styles.backStoryArtistTxt}>
-                                            Artist
-                                        </div>
-                                        <Link
-                                            href={`/artists/${asset.artist.fullName.toLowerCase().replace(/ /g, '-')}/${asset.artist.id}`}>
-                                            <a>
-                                                <div className={styles.backStoryArtistName}>
-                                                    {asset.artistName}
-                                                </div>
-                                            </a>
-                                        </Link>
-                                    </div>
-                                    <div className={styles.originalOwnerSec} style={{marginTop: 13}}>
-                                        <div className={styles.originalOwnerTxt}>
-                                            Original owner
-                                        </div>
-                                        <Link href={`/museums-and-galleries/${asset.gallery.id}`}>
-                                            <a>
-                                                <div className={styles.originalOwnerName}>
-                                                    {asset.gallery.name}
-                                                </div>
-                                            </a>
-                                        </Link>
-                                    </div>
-                                </div>
-                                }
                             </div>
                         </div>
                         <div className={styles.provenanceBottomSec}>
@@ -792,131 +797,108 @@ export default function ShowAsset({asset}) {
                                         </a>
                                         :
                                         <div style={{width: 177}}/>}
-                                    {matches ?
-                                        <div className={styles.secondTooltipSec}>
-                                            <div onClick={() => setSecondTooltip(!secondTooltip)}
-                                                 className={owners.find(owner => owner.address === userAddress) ? styles.watchArtworkSecActive : styles.watchArtworkSec}>
-                                                Watch artwork online
+                                    <div onMouseEnter={() => setSecondTooltip(true)}
+                                         onMouseOut={() => setSecondTooltip(false)}
+                                         className={owners.find(owner => owner.address === userAddress) ? styles.watchArtworkSecActive : styles.watchArtworkSec}>
+                                        Watch artwork online
+                                    </div>
+                                    {
+                                        secondTooltip &&
+                                        <Fade in={secondTooltip}>
+                                            <div className={styles.watchOnlineTooltip}>
+                                                This item is only active for owners
+                                                <div className={styles.arrow2}/>
                                             </div>
-                                            {
-                                                secondTooltip &&
-                                                <Fade in={secondTooltip}>
-                                                    <div className={styles.watchOnlineTooltip}>
-                                                        This item is only active for owners
-                                                        <div className={styles.arrow2}/>
-                                                    </div>
-                                                </Fade>
-                                            }
-                                        </div>
-                                        :
-                                        <div className={styles.secondTooltipSec}>
-                                            <div onMouseEnter={() => setSecondTooltip(true)}
-                                                 onMouseOut={() => setSecondTooltip(false)}
-                                                 className={owners.find(owner => owner.address === userAddress) ? styles.watchArtworkSecActive : styles.watchArtworkSec}>
-                                                Watch artwork online
-                                            </div>
-                                            {
-                                                secondTooltip &&
-                                                <Fade in={secondTooltip}>
-                                                    <div className={styles.watchOnlineTooltip}>
-                                                        This item is only active for owners
-                                                        <div className={styles.arrow2}/>
-                                                    </div>
-                                                </Fade>
-                                            }
-                                        </div>
+                                        </Fade>
                                     }
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 {asset.buyTransactions.length > 0 &&
-                <div className={styles.bottomMainSec}>
-                    <div className={styles.ownersMainSec}>
-                        <div className={styles.ownersTitleSec}>
-                            <div className={styles.ownersTitle}>
-                                Top Owners
-                            </div>
-                            <div onClick={() => setOpenOwners(true)} className={styles.viewAllOwners}>
-                                View All
-                            </div>
-                        </div>
-                        <div className={styles.ownersIndexSec}>
-                            <div className={styles.indexTitles}>
-                                <div className={styles.rankTitle}>
-                                    Rank
+                    <div className={styles.bottomMainSec}>
+                        <div className={styles.ownersMainSec}>
+                            <div className={styles.ownersTitleSec}>
+                                <div className={styles.ownersTitle}>
+                                    Top Owners
                                 </div>
-                                <div className={styles.ownerNameTitle}>
-                                    Owners
-                                </div>
-                                <div className={styles.quantityTitle}>
-                                    Quantity
+                                <div onClick={() => setOpenOwners(true)} className={styles.viewAllOwners}>
+                                    View All
                                 </div>
                             </div>
-                            {owners.slice(0, 3).map((owner, idx) => {
-                                return <div key={idx} className={styles.ownersIndexRow}>
-                                    <div className={styles.rankNum}>
-                                        {idx + 1}
+                            <div className={styles.ownersIndexSec}>
+                                <div className={styles.indexTitles}>
+                                    <div className={styles.rankTitle}>
+                                        Rank
                                     </div>
-                                    <a target="_blank"
-                                       href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'address/' + owner.address}
-                                       className={styles.ownerName} rel="noreferrer">
-                                        {owner.address.slice(0, 4) + '...' + owner.address.slice(-4)}
-                                    </a>
-                                    <div className={styles.quantity}>
-                                        {owner.tokens} Token{owner.tokens > 1 && 's'}
+                                    <div className={styles.ownerNameTitle}>
+                                        Owners
+                                    </div>
+                                    <div className={styles.quantityTitle}>
+                                        Quantity
                                     </div>
                                 </div>
-                            })}
-                        </div>
-                    </div>
-                    <div className={styles.historyMainSec}>
-                        <div className={styles.historyTitleSec}>
-                            <div className={styles.historyTitle}>
-                                History
-                            </div>
-                            <div onClick={() => setOpenHistory(true)} className={styles.viewAllHistory}>
-                                View All
-                            </div>
-                        </div>
-                        <div className={styles.historyIndexSec}>
-                            <div className={styles.historyIndexTitles}>
-                                <div className={styles.buyerNameTitle}>
-                                    Buyers
-                                </div>
-                                <div className={styles.dateTitle}>
-                                    Date
-                                </div>
-                            </div>
-                            {asset.buyTransactions && asset.buyTransactions.map((txn, idx) => {
-                                return <div key={idx} className={styles.historyIndexRow}>
-                                    <div className={styles.buyerNameSec}>
-                                        <div className={styles.boughtBy}>
-                                            Bought by
+                                {owners.slice(0, 3).map((owner, idx) => {
+                                    return <div key={idx} className={styles.ownersIndexRow}>
+                                        <div className={styles.rankNum}>
+                                            {idx + 1}
                                         </div>
                                         <a target="_blank"
-                                           href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + txn.txnHash}
-                                           className={styles.buyerName} rel="noreferrer">
-                                            {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
+                                           href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'address/' + owner.address}
+                                           className={styles.ownerName} rel="noreferrer">
+                                            {owner.address.slice(0, 4) + '...' + owner.address.slice(-4)}
                                         </a>
+                                        <div className={styles.quantity}>
+                                            {owner.tokens} Token{owner.tokens > 1 && 's'}
+                                        </div>
                                     </div>
-                                    <div className={styles.dateBought}>
-                                        in {new Date(txn.createdAt).getDate()} {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getFullYear()}
+                                })}
+                            </div>
+                        </div>
+                        <div className={styles.historyMainSec}>
+                            <div className={styles.historyTitleSec}>
+                                <div className={styles.historyTitle}>
+                                    History
+                                </div>
+                                <div onClick={() => setOpenHistory(true)} className={styles.viewAllHistory}>
+                                    View All
+                                </div>
+                            </div>
+                            <div className={styles.historyIndexSec}>
+                                <div className={styles.historyIndexTitles}>
+                                    <div className={styles.buyerNameTitle}>
+                                        Buyers
+                                    </div>
+                                    <div className={styles.dateTitle}>
+                                        Date
                                     </div>
                                 </div>
-                            })}
+                                {asset.buyTransactions && asset.buyTransactions.map((txn, idx) => {
+                                    return <div key={idx} className={styles.historyIndexRow}>
+                                        <div className={styles.buyerNameSec}>
+                                            <div className={styles.boughtBy}>
+                                                Bought by
+                                            </div>
+                                            <a target="_blank"
+                                               href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + txn.txnHash}
+                                               className={styles.buyerName} rel="noreferrer">
+                                                {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
+                                            </a>
+                                        </div>
+                                        <div className={styles.dateBought}>
+                                            in {new Date(txn.createdAt).getDate()} {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getFullYear()}
+                                        </div>
+                                    </div>
+                                })}
+                            </div>
                         </div>
                     </div>
-                </div>
                 }
             </div>
         </>
     )
 }
-
 /*
 export async function getStaticPaths() {
     const {data: {assets}} = await axios.get(`${process.env.BACKEND_BASE_URL}/marketplace`)

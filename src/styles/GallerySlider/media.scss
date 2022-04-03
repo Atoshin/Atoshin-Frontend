@@ -1,5 +1,6 @@
 @media (max-width: 720px) {
   .artist {
+    height: 156px;
     img {
       //width: calc(100% - 8px);
     }
@@ -9,6 +10,14 @@
       font-weight: 500;
       font-size: 12px;
       line-height: 14px;
+    }
+  }
+
+  .selectedGallery{
+    height: 158px;
+
+    p {
+      font-size: 16px;
     }
   }
 
@@ -56,6 +65,7 @@
 
   .artistMainSec {
     //margin-top: 70px;
+    height: 176px;
   }
   .artistsSlider {
     margin-bottom: 70px;

@@ -13,15 +13,26 @@ import extractContent from "../../functions/getHtmlInnerText";
 import shortenWords from "../../functions/shortenWords";
 import Link from 'next/link';
 import {Map} from "../../components/ArtCenters/Map";
-import ImagesModal from '../../components/ShowAsset/ImagesModal'
+import ImagesModal from '../../components/ShowAsset/ImagesModal3'
 import * as React from "react";
 import Head from "next/head";
+import {GallerySlider} from "../../components/ArtCenters/GallerySlider";
 
 export default function ArtCenter({artCenter}) {
     const [rendered, setRendered] = useState(false)
     const [openImages, setOpenImages] = useState(false)
     const [clickedImageId, setClickedImageId] = useState('');
     const [clickedVideoId, setClickedVideoId] = useState('');
+    const [selectedImg, setSelectedImg] = useState()
+    const [newInfo, setNewInfo] = useState({
+        video: false,
+        image: false,
+        open: false,
+        id: ''
+    })
+
+    const [showAllBio, setShowAllBio] = useState(false);
+
     // const [isGallery, setIsGallery] = useState(true);
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -32,9 +43,11 @@ export default function ArtCenter({artCenter}) {
     const theme = useTheme();
     // const matches = useMediaQuery(theme.breakpoints.down('xs'));
 
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    // const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
+    const matches = useMediaQuery('(max-width:370px)');
     const matches1 = useMediaQuery(theme.breakpoints.down('sm'));
+
     const matches2 = useMediaQuery(theme.breakpoints.down('md'));
     const matches3 = useMediaQuery(theme.breakpoints.down('lg'));
     const matches4 = useMediaQuery(theme.breakpoints.down('xl'));
@@ -47,6 +60,16 @@ export default function ArtCenter({artCenter}) {
             lat: location.lat,
             long: location.long,
         }))
+    }
+
+    const clickHandler = (e) => {
+        // `target` is the element the click was on (the div we hooked or an element
+        // with in it), `currentTarget` is the div we hooked the event on
+        const el = e.target.closest("span");
+        if (el && e.currentTarget.contains(el)) {
+            // ...do your state change...
+            setShowAllBio(true)
+        }
     }
     useEffect(() => {
         //region change background color for profile page
@@ -71,7 +94,26 @@ export default function ArtCenter({artCenter}) {
     const showImageModal = (id) => {
         setOpenImages(true)
         setClickedImageId(id)
-
+        setSelectedImg(id)
+        setClickedVideoId(id)
+        setNewInfo({
+            video: false,
+            image: true,
+            id: id,
+            open: true,
+        })
+    }
+    const showVideoModal = (id) => {
+        setOpenImages(true)
+        setClickedImageId(id)
+        setSelectedImg(id)
+        setClickedVideoId(id)
+        setNewInfo({
+            video: true,
+            image: false,
+            id: id,
+            open: true
+        })
     }
     const properties = {
         // autoplay: true,
@@ -87,6 +129,9 @@ export default function ArtCenter({artCenter}) {
         duration: 5000,
         arrows: true
     };
+
+    const read =`<span className={classes.readMore} style="color: #8BB5FF;  font-size: 10px;font-weight: 300;cursor: pointer;"> Read more</span>`;
+
 
     const VideoShow = () => {
         if (Object.keys(artCenter.videoLinks).length > 0) {
@@ -104,29 +149,36 @@ export default function ArtCenter({artCenter}) {
                            cssClass={classes.slider}
                            easing={"ease"}
                         // slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
-                           slidesToShow={matches1 ? 2 : matches3 ? 4 : 5}
+                        //    slidesToShow={sliderHandler()}
+                           slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
                         // slidesToShow={matches ? 2 : 5}
                            infinite={true}
                            arrows={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5 ? true : false}
                            slidesToScroll={1}
                            transitionDuration={500}
                            duration={5000}
-                           nextArrow={<div className={classes.previous}><img alt={"vector-right"}
-                                                                             src={'/icons/vector-right.svg'}/>
-                           </div>}
+                           nextArrow={matches1 ? <div></div> :
+                               <div className={classes.previous}><img alt={"vector-right"}
+                                                                      src={'/icons/vector-right.svg'}/>
+                               </div>}
                            prevArrow={<div/>}
                            ref={gallerySliderRef}>
                         {
-                            artCenter.videoLinks.map((idx, data) => {
-                                return <div key={idx} onClick={() => {
-                                    setClickedVideoId(data.id)
-                                    setOpenImages(true)
-                                }}
-                                            className={classes.SlideImg}
-                                            style={{backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,}}>
-                                    <img src={'/images/show-asset/videoPlay.svg'}
-                                         style={{width: 53.84, height: 53.84}}/>
-                                </div>
+                            artCenter.videoLinks.map((data, idx) => {
+                                return (
+                                    <div key={idx} onClick={() => {
+                                        // console.log(data.id);
+                                        // setClickedVideoId(data.id)
+                                        // setOpenImages(true)
+                                        // console.log(data.id);
+                                        showVideoModal(data.id)
+                                    }}
+                                         className={classes.SlideImg}
+                                         style={{backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`}}>
+                                        <img src={'/images/show-asset/videoPlay.svg'}
+                                             style={{width: 53.84, height: 53.84}}/>
+                                    </div>
+                                )
                             })
                         }
                         {
@@ -134,7 +186,9 @@ export default function ArtCenter({artCenter}) {
                                 if (idx === parseInt(Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1))[Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1)).length - 1]) || idx === 4) {
                                     return <div key={idx} onClick={() => showImageModal(data.id)}
                                                 className={classes.slideImg2}
-                                                style={{backgroundImage: `url("${data.url}")`}}></div>
+                                                style={{backgroundImage: `url("${data.url}")`}}>
+
+                                    </div>
                                 } else {
                                     return <div key={idx} onClick={() => showImageModal(data.id)}
                                                 className={classes.SlideImg}
@@ -156,14 +210,21 @@ export default function ArtCenter({artCenter}) {
             <Head>
                 <title>{artCenter.name}</title>
             </Head>
-            <ImagesModal open={openImages} setOpen={setOpenImages}
-                         images={artCenter.medias} title={artCenter.name}
-                         videos={artCenter.videoLinks}
-                         clickedImageId={clickedImageId}
-                         setClickedImageId={setClickedImageId}
-                         setClickedVideoId={setClickedVideoId}
-                         clickedVideoId={clickedVideoId}
-                         isGallary={true}
+            <ImagesModal
+                open={openImages} setOpen={setOpenImages}
+                images={artCenter.medias} title={artCenter.name}
+                videos={artCenter.videoLinks}
+                clickedImageId={clickedImageId}
+                setClickedImageId={setClickedImageId}
+                setClickedVideoId={setClickedVideoId}
+                clickedVideoId={clickedVideoId}
+                vertical={true}
+                isGallary={true}
+                setSelectedImg={setSelectedImg}
+                selectedImg={selectedImg}
+                artCenter={artCenter}
+                setNewInfo={setNewInfo}
+                newInfo={newInfo}
             />
             <div className={classes.mainImgSec}>
                 <img src={artCenter.medias.find(media => media.galleryLargePicture === 1).url}
@@ -251,7 +312,26 @@ export default function ArtCenter({artCenter}) {
                     {/*</svg>*/}
                     {/*</div>*/}
 
-                    <div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio}}/>
+                    {/*<div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio}}/>*/}
+                    {
+                        matches1 ?
+                            artCenter.bio.length > 430 ?
+                            showAllBio ?
+                                <div className={classes.mobileBioSec}>
+                                    <div className={classes.text}
+                                         dangerouslySetInnerHTML={{__html: artCenter.bio}}>
+                                    </div>
+                                </div> :
+                                <div className={classes.mobileBioSec}>
+                                    <div className={classes.text} onClick={clickHandler}
+                                         dangerouslySetInnerHTML={{__html: artCenter.bio.slice(0, 430)+'..' + read}}>
+                                    </div>
+                                </div>
+                                :
+                            <div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio.slice(0, 430)}}/>
+                        :
+                            <div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio}}/>
+                    }
                 </div>
 
 
@@ -282,15 +362,17 @@ export default function ArtCenter({artCenter}) {
                                    slidesToScroll={1}
                                    transitionDuration={500}
                                    duration={5000}
-                                   nextArrow={<div className={classes.previous}><img alt={"vector-right"}
-                                                                                     src={'/icons/vector-right.svg'}/>
-                                   </div>}
+                                   nextArrow={matches1 ? <div></div> :
+                                       <div className={classes.previous} style={{border: 'solid black'}}><img
+                                           alt={"vector-right"}
+                                           src={'/icons/vector-right.svg'}/>
+                                       </div>}
                                    prevArrow={<div/>}
                                    ref={gallerySliderRef}>
                                 {
                                     artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((img, key) => {
                                         return <div
-                                            onClick={() => showImageModal(img.id)}
+                                            onClick={() => setSelectedImg(img.id)}
                                             key={key} className={classes.SlideImg}
                                             style={{backgroundImage: `url("${img.url}")`}}/>
                                     })
@@ -323,69 +405,70 @@ export default function ArtCenter({artCenter}) {
             </div>
             {
                 artCenter.assets.length ?
-                    <div className={classes.relatedSec} style={{border:'solid red'}}>
+                    <div className={classes.relatedSec}>
                         <div className={classes.relatedTitle}>
                             Related to gallery
                         </div>
                         <div className={classes.slider2}>
-                            <Slide {...properties} ref={relatedSliderRef} style={{border:'solid red'}}>
-                               <div style={{width:'100%'}}>
-                                   {artCenter.assets.map((asset, idx) => {
-                                       return (
-                                           <Link href={`/show-asset/${asset.id}`} key={idx}>
-                                               <a>
-                                                   <div key={idx}
-                                                        className={(matches1 || matches2) ? classes.card2 : classes.card}>
-                                                       <div
-                                                           className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
-                                                           style={{
-                                                               backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
-                                                               backgroundSize: "cover",
-                                                               backgroundPosition: "center",
-                                                               borderRadius: 3,
-                                                           }}
-                                                       >
-                                                       </div>
-                                                       <div className={classes.relatedDescription}>
+                            <Slide {...properties} ref={relatedSliderRef}>
+                                {/*<div className={classes.slides} style={{width: '100%'}}>*/}
+                                    {artCenter.assets.map((asset, idx) => {
+                                        return (
+                                            <Link href={`/show-asset/${asset.id}`} key={idx}>
+                                                <a>
+                                                    <div key={idx}
+                                                         className={(matches1 || matches2) ? classes.card2 : classes.card}>
+                                                        <div
+                                                            className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
+                                                            style={{
+                                                                backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
+                                                                backgroundSize: "cover",
+                                                                backgroundPosition: "center",
+                                                                borderRadius: 3,
+                                                            }}
+                                                        >
+                                                        </div>
+                                                        <div className={classes.relatedDescription}>
 
-                                                           {
-                                                               (new Date(asset.endDate) > new Date()) ?
-                                                                   <div className={classes.dateSec}>
-                                                                       <div
-                                                                           className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle2}>
-                                                                           {asset.title}
-                                                                       </div>
-                                                                       <div
-                                                                           className={matches1 || matches2 ? classes.date : classes.date1}>
-                                                                           Sale ends
-                                                                           in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
-                                                                       </div>
-                                                                   </div>
-                                                                   :
-                                                                   <div className={classes.dateSec2}>
-                                                                       <div
-                                                                           className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle}>
-                                                                           {asset.title}
-                                                                       </div>
-                                                                   </div>
-                                                           }
-                                                           <p className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}>
-                                                               {
-                                                                   (matches1 || matches2) ?
-                                                                       shortenWords(extractContent(asset.bio), 35) + '...'
-                                                                       :
-                                                                       shortenWords(extractContent(asset.bio), 60) + '...'
-                                                               }
-                                                           </p>
-                                                       </div>
-                                                   </div>
-                                               </a>
-                                           </Link>
-                                       )
-                                   })}
-                               </div>
+                                                            {
+                                                                (new Date(asset.endDate) > new Date()) ?
+                                                                    <div className={classes.dateSec}>
+                                                                        <div
+                                                                            className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle2}>
+                                                                            {asset.title}
+                                                                        </div>
+                                                                        <div
+                                                                            className={matches1 || matches2 ? classes.date : classes.date1}>
+                                                                            Sale ends
+                                                                            in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
+                                                                        </div>
+                                                                    </div>
+                                                                    :
+                                                                    <div className={classes.dateSec2}>
+                                                                        <div
+                                                                            className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle}>
+                                                                            {asset.title}
+                                                                        </div>
+                                                                    </div>
+                                                            }
+                                                            <p className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}>
+                                                                {
+                                                                    (matches1 || matches2) ?
+                                                                        shortenWords(extractContent(asset.bio), 35) + '...'
+                                                                        :
+                                                                        shortenWords(extractContent(asset.bio), 60) + '...'
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </Link>
+                                        )
+                                    })}
+                                {/*</div>*/}
                             </Slide>
                         </div>
+                        {/*<GallerySlider/>*/}
                     </div>
                     :
                     <div style={{height: '250px'}}/>

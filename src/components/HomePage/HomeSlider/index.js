@@ -53,7 +53,7 @@ export default function HomeSlider({assets}) {
     const artworkInfo = () => {
         if (currentDesc) {
             if (currentDesc.bio.slice(3, -4).length >= 388) {
-                return {__html: currentDesc.bio.slice(3, -4).slice(0, 386)}
+                return {__html: currentDesc.bio.slice(3, -4).slice(0, 386) + '..'}
             } else {
                 return {__html: currentDesc.bio}
             }
@@ -68,10 +68,12 @@ export default function HomeSlider({assets}) {
                 By {currentDesc.artistName}
             </div>
             <div className={classes.infoSecDesktop}>
-                <div style={{height: 180, marginBottom: 25}}>
+                <div className={classes.artworkInfoSec}>
                     <div className={classes.artworkInfo} dangerouslySetInnerHTML={artworkInfo()}/>
                 </div>
-                <BuyBtn/>
+                   <div className={classes.buyBtnDesktop}>
+                       <BuyBtn/>
+                   </div>
             </div>
         </div>
         <div className={classes.topRightMainSec}>

@@ -5,6 +5,14 @@
   .topLeftSec {
     margin-top: 0;
   }
+
+  .viewAllArtCenters{
+    font-size: 12px;
+  }
+
+  .artCenterTitle{
+    font-size: 25px;
+  }
   .imgSec {
     max-width: 35px;
     margin-right: 10px;
@@ -45,6 +53,7 @@
   }
   .galleryTopSec {
     flex-direction: column;
+    margin-bottom: 24px;
   }
   .galleryDescSec {
     flex-direction: column;
@@ -78,7 +87,7 @@
     margin-left: auto !important;
   }
   .galleryMainSec {
-    margin-top: 100px;
+    margin-top: 70px;
   }
   .artist {
     img {
@@ -125,20 +134,25 @@
     margin-bottom: 16px;
   }
   .galleryDescMainSec {
-    margin-top: 16px;
+    margin-top: 23px;
   }
   .galleryName {
     justify-content: center;
+    font-weight: 550;
+    font-size: 18px;
+    font-family: Eksell-font;
   }
   .galleryVidContainerM {
     position: relative;
     display: flex;
     //align-items: center;
     //justify-content: center;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     //height: 178px;
-    height: 100%;
+    //height: 100%;
+    height: 178px;
     width: 100%;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
     border-radius: 3px;
@@ -146,7 +160,10 @@
   }
 
   .galleryMainPhotoN{
-    display: none;
+    //display: none;
+    width: 100%;
+    justify-content: center;
+    height: 178px !important;
   }
 
 }

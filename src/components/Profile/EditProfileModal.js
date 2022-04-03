@@ -108,6 +108,11 @@ export default function EditProfileModal(props) {
                                            error={error.firstName}
                                            helperText={error.firstName}
                                            onChange={e => setInputs({...inputs, firstName: e.target.value})}
+                                           InputProps={{
+                                               classes: {
+                                                   root: classes.cssOutlinedInput
+                                               }
+                                           }}
                                            classes={{input: classes.input}} placeholder="Enter First name" type="text"/>
                                 <div className={classes.inputTitle}>
                                     Last name
