@@ -312,6 +312,7 @@
 }
 
 
+
 .backStoryArtistSec {
   display: flex;
   flex-direction: row;
@@ -856,6 +857,7 @@
   height: 20px;
   margin-left: 14px;
   cursor: pointer;
+  position: relative;
 }
 
 .fractionsTooltip {
@@ -872,8 +874,8 @@
   position: absolute;
   padding: 11px 14px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  bottom: 64px;
-  left: 87px;
+  bottom: 38px;
+  left: -5px;
 }
 
 .arrow {
@@ -903,8 +905,8 @@
   position: absolute;
   padding: 11px 14px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  bottom: 50px;
-  left: 201px;
+  bottom: 40px;
+  left: -25px;
 }
 
 
@@ -960,6 +962,19 @@
   flex-direction: column;
   //margin-left: 210px;
   width: 40%;
+}
+.firstTooltipSec{
+  position: relative;
+}
+
+.secondTooltipSec {
+  position: relative;
+}
+
+.backStoryBottomSecMob{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 @import "media";
