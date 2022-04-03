@@ -471,7 +471,7 @@ export default function ArtCenter({artCenter}) {
                         {/*<GallerySlider/>*/}
                     </div>
                     :
-                    <div style={{height: '250px'}}/>
+                    <div className={classes.sliderEmptySec}/>
             }
         </>
     )
