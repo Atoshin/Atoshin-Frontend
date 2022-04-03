@@ -73,7 +73,7 @@ export default function EditProfileModal(props) {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box sx={style} className={classes.box}>
                     <div className={classes.modalMainSec}>
                         <div className={classes.closeVectorSec}>
                             <div className={classes.closeVector} style={{marginLeft: 5}} onClick={submitForm}>
@@ -88,18 +88,18 @@ export default function EditProfileModal(props) {
                             </div>}
                         </div>
                         <div className={classes.modalMain}>
-                            <div className={classes.leftSec}>
-                                <div className={classes.editProfileImg} style={{
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "center",
-                                    backgroundImage: `url(${inputs.avatar ? (URL.createObjectURL(inputs.avatar)) : "/icons/profile-icon.svg"})`
-                                }}/>
-                                <div onClick={chooseImage} className={classes.changePhoto}>
-                                    Change Photo
+                                <div className={classes.leftSec}>
+                                    <div className={classes.editProfileImg} style={{
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center",
+                                        backgroundImage: `url(${inputs.avatar ? (URL.createObjectURL(inputs.avatar)) : "/icons/profile-icon.svg"})`
+                                    }}/>
+                                    <div onClick={chooseImage} className={classes.changePhoto}>
+                                        Change Photo
+                                    </div>
+                                    <input type="file" hidden ref={ref}
+                                           onChange={e => setInputs({...inputs, avatar: e.target.files[0]})}/>
                                 </div>
-                                <input type="file" hidden ref={ref}
-                                       onChange={e => setInputs({...inputs, avatar: e.target.files[0]})}/>
-                            </div>
                             <div className={classes.rightSec}>
                                 <div className={classes.inputTitle}>
                                     First name
