@@ -328,6 +328,7 @@
 }
 
 
+
 .backStoryArtistSec {
   display: flex;
   flex-direction: row;
@@ -584,6 +585,7 @@
   font-weight: 500;
   width: 125px;
   cursor: pointer;
+  text-align: center;
 }
 
 .quantity {
@@ -591,6 +593,7 @@
   font-size: 18px;
   font-weight: 400;
   width: 73px;
+  text-align: center;
 }
 
 .historyMainSec {
@@ -884,6 +887,7 @@
   height: 20px;
   //margin-left: 14px;
   cursor: pointer;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -906,8 +910,8 @@
   position: absolute;
   padding: 11px 14px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  bottom: 64px;
-  left: 87px;
+  bottom: 38px;
+  left: -5px;
 }
 
 .arrow {
@@ -937,8 +941,8 @@
   position: absolute;
   padding: 11px 14px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  bottom: 50px;
-  left: 201px;
+  bottom: 40px;
+  left: -25px;
 }
 
 
@@ -994,6 +998,19 @@
   flex-direction: column;
   //margin-left: 210px;
   width: 40%;
+}
+.firstTooltipSec{
+  position: relative;
+}
+
+.secondTooltipSec {
+  position: relative;
+}
+
+.backStoryBottomSecMob{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .mg {

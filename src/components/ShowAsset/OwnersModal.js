@@ -36,17 +36,21 @@ export default function OwnersModal(props) {
 
             <div className={classes.indexSec}>
                 {owners.map((owner, idx) => {
-                    return <div key={idx} className={classes.ownersIndexRow}>
-                        <div className={classes.rankNum}>
-                            {idx + 1}
+                    return (
+                        <div key={idx} className={classes.ownersIndexRow}>
+                            <div className={classes.rankNum}>
+                                {idx + 1}
+                            </div>
+                            <a rel="noreferrer" target="_blank"
+                               href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'address/' + owner.address}
+                               className={classes.ownerName}>
+                                {owner.address.slice(0, 4) + '...' + owner.address.slice(-4)}
+                            </a>
+                            <div className={classes.quantity}>
+                                {owner.tokens} Token{owner.tokens > 1 && 's'}
+                            </div>
                         </div>
-                        <a rel="noreferrer" target="_blank" href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'address/' + owner.address} className={classes.ownerName}>
-                            {owner.address.slice(0, 4) + '...' + owner.address.slice(-4)}
-                        </a>
-                        <div className={classes.quantity}>
-                            {owner.tokens} Token{owner.tokens > 1 && 's'}
-                        </div>
-                    </div>
+                    )
                 })}
             </div>
             {/*<div className={classes.ownersModalIndexMain}>*/}
