@@ -156,7 +156,7 @@ export default function Artist({artist}) {
                     artist.assets.length ?
                         <div className={classes.relatedSec}>
                             <div className={classes.relatedTitle}>
-                                Related to gallery
+                                Offering artworks in Atoshin
                             </div>
                             <div className={classes.slider2}>
                                 <Slide {...properties} ref={relatedSliderRef}>

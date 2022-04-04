@@ -156,7 +156,7 @@ export default function HeaderContent({setDrawerMenu}) {
                             {/*<li>About NFT</li>*/}
                             <Link href={"/about-nft"}>
                                 <a>
-                                    <ActiveLink title={'About NFT'} href={"/about-nft"}/>
+                                    <ActiveLink title={'What is Fractional NFT ?'} href={"/about-nft"}/>
                                 </a>
                             </Link>
                             {address ?
