@@ -38,7 +38,8 @@ export default function Artist({artist}) {
         slidesToScroll: 1,
         transitionDuration: 500,
         duration: 5000,
-        arrows: true,
+        // arrows: true,
+        arrows: artist.assets.length >= 5
         // arrows: !(matches && artist.assets.length <= 2)
 
 

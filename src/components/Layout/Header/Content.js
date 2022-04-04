@@ -136,7 +136,7 @@ export default function HeaderContent({setDrawerMenu}) {
                         <ul className={classes.menuContainer}>
                             <Link href={'/marketplace'}>
                                 <a>
-                                    <ActiveLink title={'Marketplace'} href={"/marketplace"}/>
+                                    <ActiveLink title={' Marketplace '} href={"/marketplace"}/>
                                 </a>
                             </Link>
                             <Link href={"/gallery-list"}>
