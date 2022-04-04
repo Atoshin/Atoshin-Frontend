@@ -20,7 +20,6 @@ export default function GalleryList({
     //
     // console.log({videos});
     // console.log(mainImg);
-    // console.log(images);
 
     // if (typeof document !== 'undefined') {
     //     let span = document.createElement('span');

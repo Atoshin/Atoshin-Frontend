@@ -484,6 +484,7 @@ export default function ShowAsset({asset}) {
         }
     }
     const minus = () => {
+        // console.log(asset.totalFractions - asset.soldFractions === 0)
         if (quantity > 1) {
             setQuantity((quantity) => {
                 return parseInt(quantity) - 1
@@ -644,6 +645,22 @@ export default function ShowAsset({asset}) {
                                      className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                             }
                         </div>
+
+
+                        {
+                            matches &&
+                           <div className={styles.counter}>
+                               <div className={styles.counterPart}>
+                                   <img src="/images/show-asset/minus.svg" style={{marginLeft: 20, width: 56.5, cursor:'pointer'}}
+                                        onClick={minus}/>
+                                   <input value={quantity} onChange={inputHandler}
+                                          className={styles.quantityInput} type="text"/>
+                                   <img src="/images/show-asset/plus.svg" style={{marginRight: 20, width: 56.5,  cursor:'pointer'}}
+                                        onClick={add}/>
+                               </div>
+                           </div>
+                        }
+
                         {(matches) &&
                             <MUISlide in={scrolled} direction={"up"}>
                                 <div className={styles.priceMainSec}>
@@ -665,11 +682,11 @@ export default function ShowAsset({asset}) {
                             (!matches) &&
                             <div className={styles.priceMainSec}>
                                 <div className={styles.counterPart}>
-                                    <img src="/images/show-asset/minus.svg" style={{marginLeft: 20, width: 56.5}}
+                                    <img src="/images/show-asset/minus.svg" style={{marginLeft: 20, width: 56.5, cursor:'pointer'}}
                                          onClick={minus}/>
                                     <input value={quantity} onChange={inputHandler}
                                            className={styles.quantityInput} type="text"/>
-                                    <img src="/images/show-asset/plus.svg" style={{marginRight: 20, width: 56.5}}
+                                    <img src="/images/show-asset/plus.svg" style={{marginRight: 20, width: 56.5,  cursor:'pointer'}}
                                          onClick={add}/>
                                 </div>
                                 {address ?

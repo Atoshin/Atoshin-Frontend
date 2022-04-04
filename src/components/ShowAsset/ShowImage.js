@@ -13,31 +13,36 @@ export default function ShowImage({
                                       vertical,
                                       selectedImg,
                                       clickedVideoId,
-                                      newInfo
+                                      newInfo,
                                   }) {
 
     const [img, setImg] = useState(images.find(img => img.main === 1))
     const [isImage, setIsImage] = useState(images.find(img => img.main === 1))
 
-
-    console.log({videos});
-    console.log(img);
-
-    console.log(images[1].id);
-    console.log(selectedImg);
-
-    console.log({clickedVideoId});
-    // console.log(videos[0].id);
-
-    console.log(newInfo);
-
+    let ZoomImg = () => (<Zoom
+        img={mainImg.url}
+        // style={{borderRadius: 3}}
+        zoomScale={2}
+        width={698}
+        height={469}
+    />)
+    // console.log({videos});
+    // console.log(img);
+    //
+    // console.log(images[1].id);
+    // console.log(selectedImg);
+    //
+    // console.log({clickedVideoId});
+    // // console.log(videos[0].id);
+    //
+    // console.log(newInfo);
     useEffect(() => {
         if (newInfo.video) {
-            console.log('video');
+            // console.log('video');
             setImg(videos.find(video => video.id === newInfo.id))
         } else {
             setImg(images.find(img => img.id === newInfo.id))
-            console.log('image');
+            // console.log('image');
         }
     }, [newInfo])
 
@@ -63,10 +68,16 @@ export default function ShowImage({
             }
             {
                 newInfo.image ?
+                    isGallary ?
+                        <>
+                            <img width={'100%'} height={'90%'} className={classes.showImage} src={img.url} alt=""/>
+                        </> :
+                        <>
+                            <ZoomImg/>
+                            {/*<img width={'100%'} height={'90%'} className={classes.showImage} style={{border:'solid '}} src={img.url} alt=""/>*/}
+                        </>
                     // <img width={'100%'} height={'90%'} className={classes.showImage} src={img.url} alt=""/>
-                    <>
-                        <img width={'100%'} height={'90%'} className={classes.showImage} src={img.url} alt=""/>
-                    </>
+
                     :
                     ''
             }
