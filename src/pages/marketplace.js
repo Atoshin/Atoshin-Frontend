@@ -35,7 +35,7 @@ export default function Marketplace({assets}) {
             <meta name="description" content="Atoshin Marketplace"/>
             <link rel="icon" href="/favicon.ico"/>
         </Head>
-        <h1 className={classes.mainTitle}>Marketplace</h1>
+        <h1 className={classes.mainTitle}></h1>
         <hr className={classes.hr}/>
         <div
             className={classes.items}>
