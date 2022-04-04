@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   overflow: scroll;
-  height: 500px;
+  //height: 500px;
   width: 537px;
   flex-flow: wrap;
   overflow-x: hidden;
@@ -69,9 +69,11 @@
   align-items: center;
   justify-content: space-between;
   height: 51px;
-  padding-right: 59px;
+  width: 100%;
   padding-left: 28px;
+  padding-right: 28px;
   border-bottom: 1px solid #E5E5E5;
+  //border: 2px solid red;
   background-color: white;
   position: sticky;
   top: 0;
@@ -81,7 +83,7 @@
   //display: flex;
   //justify-content: center;
   //align-items: center;
-  width: 191px;
+  //width: 191px;
   color: #232323;
   font-size: 16px;
   font-weight: 300;
@@ -91,10 +93,12 @@
   //display: flex;
   //justify-content: center;
   //align-items: center;
-  width: 169px;
+  //width: 169px;
   color: #232323;
   font-size: 16px;
   font-weight: 300;
+  width: 200px;
+  text-align: center;
 }
 
 .buyerNameSec {
@@ -122,6 +126,7 @@
   font-size: 18px;
   font-weight: 400;
   width: 200px;
+  text-align: center;
 }
 
 
@@ -143,7 +148,122 @@
 
 
 
+@media (max-width: 1120px) {
+  .modalTitle {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
 
+  .rankTitle {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: right;
+
+  }
+  .ownersTitle {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: center;
+  }
+  .quantityTitle {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: right;
+  }
+  .rankNum {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+
+  }
+  .ownerName {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+
+  }
+  .quantity {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+
+  }
+  .modalTitle {
+    height: 20px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .vectorX {
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background-color: #ECECEC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //margin-right: 24px;
+    //margin-top: 24px;
+    cursor: pointer;
+
+    img {
+      width: 6px;
+    }
+  }
+
+  .boughtBy {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+
+  }
+  .buyerName {
+    color: #193EFF;
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .dateBought {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+
+  }
+}
 
 
 
