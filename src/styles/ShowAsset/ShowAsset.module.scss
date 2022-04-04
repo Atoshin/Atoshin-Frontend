@@ -52,7 +52,7 @@
   font-weight: 500;
   margin-top: 8px;
   //padding-top: 2px;
-  padding-bottom: 5px;
+  //padding-bottom: 5px;
   cursor: pointer;
 }
 
@@ -60,6 +60,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 67px;
+  padding-top: 8px;
 }
 
 .saleStartDate {
@@ -115,6 +116,12 @@
   font-weight: 500;
   margin-top: 8px;
 }
+.saleEndDateMob1{
+  color: #232323;
+  font-size: 16px;
+  font-weight: 300;
+  margin-right: 8px;
+}
 
 .fractionsMainSec {
   display: flex;
@@ -131,7 +138,9 @@
   color: #232323;
   font-size: 16px;
   font-weight: 400;
-  margin-bottom: 8px;
+  //margin-bottom: 8px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .fractionsLeftAmount {
@@ -389,6 +398,7 @@
 
 .detailSec {
   display: flex;
+  align-items: center;
   flex-direction: row;
   margin-bottom: 16px;
 }
@@ -637,7 +647,7 @@
 .buyerNameSec {
   display: flex;
   flex-direction: row;
-  width: 200px;
+  //width: 200px;
 }
 
 .boughtBy {
@@ -657,7 +667,7 @@
   color: #232323;
   font-size: 18px;
   font-weight: 400;
-  width: 190px;
+  //width: 190px;
 }
 
 .historyTitleSec {
@@ -866,9 +876,15 @@
 .infoTooltip {
   width: 20px;
   height: 20px;
-  margin-left: 14px;
+  //margin-left: 14px;
   cursor: pointer;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
 }
 
 .fractionsTooltip {

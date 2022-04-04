@@ -7,6 +7,7 @@ import * as React from "react";
 export default function FAQ() {
     const [state, setState] = useState({})
 
+    console.log(state)
 
     const qAndAs = [
         {
@@ -95,7 +96,7 @@ export default function FAQ() {
                     </div>
                     <div className={classes.qMainSection}>
                         <h3 className={classes.question}>{q.question}</h3>
-                        {state ?
+                        {state[idx] ?
                             <img src={"/icons/arrowDown.svg"} alt="" style={{marginRight: 15}}/>
                             :
                             <img src={"/icons/arrowRight.svg"} alt="" style={{marginRight: 15}}/>

@@ -603,13 +603,17 @@ export default function ShowAsset({asset}) {
                         }
                         {matches &&
                             <div className={styles.saleEndDateMob}>
-                                {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
+                                <div className={styles.saleEndDateMob1}>
+                                    {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
+                                </div>
                                 {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
                             </div>
                         }
                         <div className={styles.saleMainSec}>
                             <div className={styles.saleEndDate}>
-                                {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
+                                <div className={styles.saleEndDateMob1}>
+                                    {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
+                                </div>
                                 {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
                             </div>
                             <TimeDifference setIsOver={setIsAuctionOver} time={asset.endDate}/>

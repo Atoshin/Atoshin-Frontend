@@ -17,6 +17,7 @@
   font-weight: 700;
   line-height: 41px;
   letter-spacing: 0em;
+  margin-top: 16px;
 }
 
 .item {
@@ -62,7 +63,7 @@
 }
 
 .QaContainer {
-  margin-bottom: 50px;
+  margin-bottom: 110px;
 }
 
 .faqTitleSec {
@@ -86,6 +87,11 @@
 }
 
 @media (max-width: 782px) {
+
+  .QaContainer{
+    margin-bottom: 32px;
+  }
+
   .faqTitle {
     font-family: Roboto;
     font-size: 24px;
@@ -98,5 +104,11 @@
   .faqTitleSec {
     margin-top: 53px;
     margin-bottom: 24px;
+  }
+  .FAQ{
+    font-size: 14px;
+  }
+  .question{
+    font-size: 14px;
   }
 }
