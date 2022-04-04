@@ -84,7 +84,6 @@ export default function ImagesModal({
             />)
         }
     }, [mainImg])
-
     return (
         <Dialog onClose={handleClose} open={open} fullWidth maxWidth={"xl"} classes={{paper: classes.imgDialog}}>
             <div className={classes.dialogHeader}>
@@ -95,7 +94,7 @@ export default function ImagesModal({
             </div>
             <div className={classes.mg}>
                 <div className={classes.pic}>
-                    <ShowImage newInfo={newInfo} selectedImg={selectedImg} videos={videos} images={images} mainImg={mainImg} isGallary={isGallary} clickedVideoId={clickedVideoId}/>
+                    <ShowImage isGallary={isGallary} newInfo={newInfo}  selectedImg={selectedImg} videos={videos} images={images} mainImg={mainImg} isGallary={isGallary} clickedVideoId={clickedVideoId}/>
                 </div>
                 <div className={classes.list}>
                     <GalleryList newInfo={newInfo} setNewInfo={setNewInfo} setSelectedImg={setSelectedImg} videos={videos} images={images} mainImg={mainImg} isGallary={isGallary} setClickedVideoId artCenter={artCenter}/>
