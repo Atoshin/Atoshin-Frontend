@@ -17,13 +17,13 @@ export default function ImagesModal({
                                         clickedVideoId,
                                         setClickedImageId,
                                         setClickedVideoId,
-                                        isGallary,
+                                        isGallery,
                                         vertical,
-    newInfo,
-    setNewInfo,
-    artCenter,
-    setSelectedImg,
-    selectedImg
+                                        newInfo,
+                                        setNewInfo,
+                                        artCenter,
+                                        setSelectedImg,
+                                        selectedImg
                                     }) {
     const [mainImg, setImg] = useState(images.find(img => img.main === 1))
     // const [selectedImg, setSelectedImg] = useState()
@@ -94,10 +94,13 @@ export default function ImagesModal({
             </div>
             <div className={classes.mg}>
                 <div className={classes.pic}>
-                    <ShowImage isGallary={isGallary} newInfo={newInfo}  selectedImg={selectedImg} videos={videos} images={images} mainImg={mainImg} isGallary={isGallary} clickedVideoId={clickedVideoId}/>
+                    <ShowImage isGallery={isGallery} newInfo={newInfo} selectedImg={selectedImg} videos={videos}
+                               images={images} mainImg={mainImg} clickedVideoId={clickedVideoId}/>
                 </div>
                 <div className={classes.list}>
-                    <GalleryList newInfo={newInfo} setNewInfo={setNewInfo} setSelectedImg={setSelectedImg} videos={videos} images={images} mainImg={mainImg} isGallary={isGallary} setClickedVideoId artCenter={artCenter}/>
+                    <GalleryList newInfo={newInfo} setNewInfo={setNewInfo} setSelectedImg={setSelectedImg}
+                                 videos={videos} images={images} mainImg={mainImg} isGallary={isGallery}
+                                 setClickedVideoId artCenter={artCenter}/>
                 </div>
             </div>
         </Dialog>

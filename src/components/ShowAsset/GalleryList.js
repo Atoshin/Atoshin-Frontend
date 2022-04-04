@@ -61,15 +61,16 @@ export default function GalleryList({
                             const ytvId = iframe.src.slice(-11)
                             span.remove()
                             return (
-                                    <div onClick={() => selectVideo(data.id)} key={idx}
-                                         className={classes.videoItem}
-                                         style={{
-                                             backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`}}>
-                                        <img src={'/images/show-asset/videoPlay.svg'}
-                                             className={classes.playIcon}
-                                            // style={{display: "flex", alignItems: "center", justifyContent: "center"}}
-                                        />
-                                    </div>
+                                <div onClick={() => selectVideo(data.id)} key={idx}
+                                     className={classes.videoItem}
+                                     style={{
+                                         backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`
+                                     }}>
+                                    <img src={'/images/show-asset/videoPlay.svg'}
+                                         className={classes.playIcon}
+                                        // style={{display: "flex", alignItems: "center", justifyContent: "center"}}
+                                    />
+                                </div>
                             )
                         }
                     })
