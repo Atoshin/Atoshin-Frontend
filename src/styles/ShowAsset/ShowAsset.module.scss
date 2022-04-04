@@ -157,6 +157,13 @@
   align-items: center;
 }
 
+.counter{
+  display: flex;
+  //border: solid rebeccapurple;
+  justify-content: center;
+  margin-top: 24px;
+}
+
 .counterPart {
   //width: 183px;
   width: 149px;
