@@ -161,7 +161,7 @@
   display: flex;
   //border: solid rebeccapurple;
   justify-content: center;
-  margin-top: 24px;
+  //margin-top: 24px;
 }
 
 .counterPart {
@@ -173,6 +173,15 @@
   border: 1px solid #A7A7A7;
   border-radius: 3px;
   //justify-content: center;
+}
+
+.counterPartMob{
+  width: 149px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #A7A7A7;
+  border-radius: 3px;
 }
 
 .priceSec {
@@ -205,7 +214,29 @@
   margin-top: 17px !important;
   border-radius: 5px !important;
 }
-
+.disabledBuyBtn {
+  width: 143px !important;
+  height: 53px !important;
+  //background-color: #232323 !important;
+  background-color: rgba(35, 35, 35, 0.5) !important;
+  color: #FFFFFF !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  margin-left: 55px !important;
+  margin-top: 17px !important;
+  border-radius: 5px !important;
+}
+.soldOut{
+  color: #FD6108;
+  //color: #FD6E19;
+  font-size: 18px;
+  font-weight: 500;
+  width: 149px;
+  height: 53px;
+  display: flex;
+  align-items: center;
+}
 .BuyBtnDesktop {
   //width: 143px !important;
   width: 228px !important;
@@ -225,6 +256,7 @@
   //width: 143px !important;
   width: 228px !important;
   height: 53px !important;
+  //background-color: rebeccapurple !important;
   background-color: rgba(35, 35, 35, 0.5) !important;
   color: #FFFFFF !important;
   font-size: 18px !important;

@@ -356,7 +356,7 @@
     justify-content: center;
   }
   .BuyBtn {
-    width: 123px !important;
+    width: 150px !important;
     height: 35px !important;
     background-color: #232323 !important;
     color: #FFFFFF !important;
@@ -365,6 +365,23 @@
     margin-left: 0px !important;
     margin-top: 0px !important;
     border-radius: 5px !important;
+  }
+
+  .disabledBuyBtn {
+    //background-color: #232323 !important;
+    background-color: rgba(35, 35, 35, 0.5) !important;
+    width: 150px !important;
+    height: 35px !important;
+    color: #FFFFFF !important;
+    font-size: 16px !important;
+    text-transform: none !important;
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+    border-radius: 5px !important;
+  }
+
+  .soldOut{
+    justify-content: center;
   }
 
   .aboutArtworkTxt {
