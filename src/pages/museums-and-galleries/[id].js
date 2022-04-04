@@ -185,7 +185,7 @@ export default function ArtCenter({artCenter}) {
                             artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((data, idx) => {
                                 if (idx === parseInt(Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1))[Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1)).length - 1]) || idx === 4) {
                                     return <div key={idx} onClick={() => showImageModal(data.id)}
-                                                className={classes.slideImg2}
+                                                className={classes.SlideImg}
                                                 style={{backgroundImage: `url("${data.url}")`}}>
 
                                     </div>
@@ -352,7 +352,8 @@ export default function ArtCenter({artCenter}) {
                         :
                         artCenter.medias ?
                             <Slide style={{position: 'relative'}}
-                                   autoplay={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length > 5 ? true : false}
+                                   autoplay={false}
+                                   // autoplay={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length > 5 ? true : false}
                                    cssClass={classes.slider}
                                    easing={"ease"}
                                    slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
@@ -363,7 +364,7 @@ export default function ArtCenter({artCenter}) {
                                    transitionDuration={500}
                                    duration={5000}
                                    nextArrow={matches1 ? <div></div> :
-                                       <div className={classes.previous} style={{border: 'solid black'}}><img
+                                       <div className={classes.previous}><img
                                            alt={"vector-right"}
                                            src={'/icons/vector-right.svg'}/>
                                        </div>}
