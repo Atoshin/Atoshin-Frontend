@@ -8,7 +8,7 @@ import {useEffect, useRef, useState} from "react";
 export default function ShowImage({
                                       videos,
                                       mainImg,
-                                      isGallary,
+                                      isGallery,
                                       images,
                                       vertical,
                                       selectedImg,
@@ -68,7 +68,7 @@ export default function ShowImage({
             }
             {
                 newInfo.image ?
-                    isGallary ?
+                    isGallery ?
                         <>
                             <img width={'100%'} height={'90%'} className={classes.showImage} src={img.url} alt=""/>
                         </> :
