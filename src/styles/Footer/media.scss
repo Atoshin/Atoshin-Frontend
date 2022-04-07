@@ -15,16 +15,16 @@
   }
   .registerBtn {
     //margin-left: 12px;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 14px;
-    background-color: #F4F4EF;
-    color: #232323;
-    width: 30%;
-    height: 30px;
-    border-radius: 5px;
-    text-align: center;
-    text-transform: none;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 14px !important;
+    background-color: #F4F4EF !important;
+    color: #232323 !important;
+    width: 30% !important;
+    height: 30px !important;
+    border-radius: 5px !important;
+    text-align: center !important;
+    text-transform: none !important;
 
   }
   .registerText {
@@ -33,7 +33,7 @@
     margin-top: 24px;
   }
   .emailInput {
-    width: 65%;
+    width: 63%;
     height: 30px;
     border-radius: 5px;
     font-weight: 300;
