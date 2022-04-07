@@ -156,6 +156,13 @@
   margin-top: 48px;
   align-items: center;
 }
+.priceMainSec2{
+  display: flex;
+  flex-direction: row;
+  //justify-content: space-between;
+  margin-top: 48px;
+  align-items: center;
+}
 
 .counter{
   display: flex;
@@ -232,7 +239,7 @@
   //color: #FD6E19;
   font-size: 18px;
   font-weight: 500;
-  width: 149px;
+  //width: 149px;
   height: 53px;
   display: flex;
   align-items: center;
@@ -250,8 +257,8 @@
   //border-radius: 0px 5px 5px 0px;
   margin-left: 16px;
   border-radius: 5px 5px 5px 5px;
-
 }
+
 .disabledBtn {
   //width: 143px !important;
   width: 228px !important;
@@ -266,7 +273,18 @@
   //border-radius: 0px 5px 5px 0px;
   margin-left: 16px;
   border-radius: 5px 5px 5px 5px;
-
+}
+.disabledBtn2{
+  width: 228px !important;
+  height: 53px !important;
+  background-color: rgba(35, 35, 35, 0.5) !important;
+  color: #FFFFFF !important;
+  font-size: 18px !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+  //margin-left: 16px;
+  margin-left: 0px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 .quantityInput {

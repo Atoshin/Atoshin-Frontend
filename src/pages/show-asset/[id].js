@@ -655,7 +655,7 @@ export default function ShowAsset({asset}) {
 
                         {(matches) &&
                             <MUISlide in={scrolled} direction={"up"}>
-                                <div className={styles.priceMainSec}>
+                                <div className={isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.priceMainSec2 : styles.priceMainSec }>
                                     <div className={styles.priceSec}>
                                         {/*<div className={styles.priceTxt}>*/}
                                         {/*    Price*/}
@@ -666,7 +666,9 @@ export default function ShowAsset({asset}) {
                                             <div className={styles.counter}>
                                                 {
                                                     isAuctionOver || asset.soldFractions === asset.totalFractions ?
-                                                        <div className={styles.soldOut}>Sold Out</div> :
+                                                        <div className={styles.soldOut}>
+
+                                                        </div> :
                                                         <div className={styles.counterPartMob}>
                                                             <img src="/images/show-asset/minus.svg" style={{marginLeft: 20, width: 56.5, cursor:'pointer'}}
                                                                  onClick={minus}/>
@@ -683,7 +685,7 @@ export default function ShowAsset({asset}) {
                                             classes={{disabled: styles.disabledBuyBtn}}>
                                         {
                                             isAuctionOver || asset.soldFractions === asset.totalFractions ?
-                                                   `Buy now`
+                                                `Sold Out`
                                                 :
                                                 `Buy ${calculateDecimalPrecision(asset.ethPricePerFraction, 5)} ETH`
                                         }
@@ -693,11 +695,13 @@ export default function ShowAsset({asset}) {
                         }
                         {
                             (!matches) &&
-                            <div className={styles.priceMainSec}>
+                            <div className={ isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.priceMainSec2 : styles.priceMainSec }>
                                 {
                                     isAuctionOver || asset.soldFractions === asset.totalFractions ?
-                                      <div className={styles.soldOut}>sold out</div>   :
-                                        <div className={styles.counterPart} style={{border:'solid red'}}>
+                                      <div className={styles.soldOut}>
+                                          {/*sold out*/}
+                                      </div>   :
+                                        <div className={styles.counterPart}>
                                             <img src="/images/show-asset/minus.svg" style={{marginLeft: 20, width: 56.5, cursor:'pointer'}}
                                                  onClick={minus}/>
                                             <input value={quantity} onChange={inputHandler}
@@ -708,11 +712,11 @@ export default function ShowAsset({asset}) {
                                 }
                                 {address ?
                                     <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions}
-                                            classes={{disabled: styles.disabledBtn}}
+                                            classes={{disabled: isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.disabledBtn2 : styles.disabledBtn }}
                                             onClick={submitOrder} className={styles.BuyBtnDesktop}>
                                         {
                                             isAuctionOver || asset.soldFractions === asset.totalFractions ?
-                                               ` Buy now `
+                                               `Sold Out`
                                             :
                                             `Buy - ${calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH`
                                         }
@@ -720,11 +724,11 @@ export default function ShowAsset({asset}) {
                                     </Button>
                                     :
                                     <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions}
-                                            classes={{disabled: styles.disabledBtn}}
+                                            classes={{disabled: isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.disabledBtn2 : styles.disabledBtn }}
                                             onClick={() => dispatch(setOpen(true))} className={styles.BuyBtnDesktop}>
                                         {
                                             isAuctionOver || asset.soldFractions === asset.totalFractions ?
-                                                ` Buy now `
+                                                `Sold Out`
                                                 :
                                                 ` Buy - ${calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH`
                                         }
