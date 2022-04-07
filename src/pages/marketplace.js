@@ -36,7 +36,7 @@ export default function Marketplace({assets}) {
             <link rel="icon" href="/favicon.ico"/>
         </Head>
         <h1 className={classes.mainTitle}></h1>
-        <hr className={classes.hr}/>
+        {/*<hr className={classes.hr}/>*/}
         <div
             className={classes.items}>
             {assets.map((asset, idx) => {
