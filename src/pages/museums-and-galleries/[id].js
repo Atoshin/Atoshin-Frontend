@@ -31,7 +31,7 @@ export default function ArtCenter({artCenter}) {
         id: ''
     })
 
-    const [showAllBio, setShowAllBio] = useState(false);
+    // const [showAllBio, setShowAllBio] = useState(false);
 
     // const [isGallery, setIsGallery] = useState(true);
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -62,15 +62,15 @@ export default function ArtCenter({artCenter}) {
         }))
     }
 
-    const clickHandler = (e) => {
-        // `target` is the element the click was on (the div we hooked or an element
-        // with in it), `currentTarget` is the div we hooked the event on
-        const el = e.target.closest("span");
-        if (el && e.currentTarget.contains(el)) {
-            // ...do your state change...
-            setShowAllBio(true)
-        }
-    }
+    // const clickHandler = (e) => {
+    //     // `target` is the element the click was on (the div we hooked or an element
+    //     // with in it), `currentTarget` is the div we hooked the event on
+    //     const el = e.target.closest("span");
+    //     if (el && e.currentTarget.contains(el)) {
+    //         // ...do your state change...
+    //         setShowAllBio(true)
+    //     }
+    // }
     useEffect(() => {
         //region change background color for profile page
         const body = document.getElementsByTagName('body')[0];
@@ -130,7 +130,7 @@ export default function ArtCenter({artCenter}) {
         arrows: true
     };
 
-    const read =`<span className={classes.readMore} style="color: #8BB5FF;  font-size: 10px;font-weight: 300;cursor: pointer;"> Read more</span>`;
+    // const read =`<span className={classes.readMore} style="color: #8BB5FF;  font-size: 10px;font-weight: 300;cursor: pointer;"> Read more</span>`;
 
 
     const VideoShow = () => {
@@ -313,25 +313,26 @@ export default function ArtCenter({artCenter}) {
                     {/*</div>*/}
 
                     {/*<div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio}}/>*/}
-                    {
-                        matches1 ?
-                            artCenter.bio.length > 430 ?
-                            showAllBio ?
-                                <div className={classes.mobileBioSec}>
-                                    <div className={classes.text}
-                                         dangerouslySetInnerHTML={{__html: artCenter.bio}}>
-                                    </div>
-                                </div> :
-                                <div className={classes.mobileBioSec}>
-                                    <div className={classes.text} onClick={clickHandler}
-                                         dangerouslySetInnerHTML={{__html: artCenter.bio.slice(0, 430)+'..' + read}}>
-                                    </div>
-                                </div>
-                                :
-                            <div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio.slice(0, 430)}}/>
-                        :
+                    {/*{*/}
+                    {/*    matches1 ?*/}
+                    {/*        artCenter.bio.length > 430 ?*/}
+                    {/*        showAllBio ?*/}
+                    {/*            <div className={classes.mobileBioSec}>*/}
+                    {/*                <div className={classes.text}*/}
+                    {/*                     dangerouslySetInnerHTML={{__html: artCenter.bio}}>*/}
+                    {/*                </div>*/}
+                    {/*            </div> :*/}
+                    {/*            <div className={classes.mobileBioSec}>*/}
+                    {/*                <div className={classes.text} onClick={clickHandler}*/}
+                    {/*                     dangerouslySetInnerHTML={{__html: artCenter.bio.slice(0, 430)+'..' + read}}>*/}
+                    {/*                </div>*/}
+                    {/*            </div>*/}
+                    {/*            :*/}
+                    {/*        <div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio.slice(0, 430)}}/>*/}
+                    {/*    :*/}
+                    {/*        <div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio}}/>*/}
+                    {/*}*/}
                             <div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio}}/>
-                    }
                 </div>
 
 
