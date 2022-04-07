@@ -20,7 +20,6 @@ export default function Slider({assets, asset, setHovered, hovered}) {
         }, 500)
     }
 
-    console.log(asset.medias.indexOf(asset.medias.find(media => media.main === 1)));
 
     return (
         <div

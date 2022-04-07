@@ -201,7 +201,7 @@ export default function ShowAsset({asset}) {
                                  //     setClickedVideoId(data.id)
                                  //     setOpenImages(true)
                                  // }}
-                                 onClick={openVideoModal(data.id)}
+                                 onClick={() => openVideoModal(data.id)}
                                  style={{
                                      backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
                                      width: 93.39,
@@ -507,25 +507,31 @@ export default function ShowAsset({asset}) {
                 <title>{asset.title}</title>
             </Head>
             <LoadingBackdrop setOpen={setLoadingTxn} open={loadingTxn}/>
-            <ImagesModal
-                open={openImages}
-                setOpen={setOpenImages}
-                images={asset.medias}
-                title={asset.title}
-                videos={asset.videoLinks}
-                clickedImageId={clickedImageId}
-                setClickedImageId={setClickedImageId}
-                setClickedVideoId={setClickedVideoId}
-                clickedVideoId={clickedVideoId}
-                isGallary={false}
 
-                vertical={true}
-                setSelectedImg={setClickedImageId}
-                selectedImg={clickedImageId}
-                artCenter={asset}
-                setNewInfo={setNewInfo}
-                newInfo={newInfo}
-            />
+            {
+                openImages ?
+                    <ImagesModal
+                        open={openImages}
+                        setOpen={setOpenImages}
+                        images={asset.medias}
+                        title={asset.title}
+                        videos={asset.videoLinks}
+                        clickedImageId={clickedImageId}
+                        setClickedImageId={setClickedImageId}
+                        setClickedVideoId={setClickedVideoId}
+                        clickedVideoId={clickedVideoId}
+                        isGallary={false}
+
+                        vertical={true}
+                        setSelectedImg={setClickedImageId}
+                        selectedImg={clickedImageId}
+                        artCenter={asset}
+                        setNewInfo={setNewInfo}
+                        newInfo={newInfo}
+                    />
+                    :
+                    null
+            }
             {/*imageId={imageId}*/}
             <OwnersModal owners={owners} open={openOwners} setOpen={setOpenOwners}/>
             <HistoryModal txns={asset.buyTransactions} open={openHistory} setOpen={setOpenHistory}/>
