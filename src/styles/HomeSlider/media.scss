@@ -1,8 +1,16 @@
 @media (max-width: 1052px) {
   .topLeftSecFadeIn {
-    margin-top: 69px;
+    //margin-top: 69px;
+
+    margin-top: 70px;
     width: 100%;
     padding-right: 0;
+  }
+  .topLeftSecFadeOut {
+    margin-top: 70px;
+    width: 100%;
+    padding-right: 0;
+    //border: solid green;
   }
   .topRightSec{
     width: 100% !important;
@@ -26,11 +34,6 @@
   .buyBtnDesktop{
     display:none;
   }
-  .topLeftSecFadeOut {
-    margin-top: 70px;
-    width: 100%;
-    padding-right: 0;
-  }
   .topMainSec {
     width: 80% !important;
     margin: auto;
@@ -42,7 +45,8 @@
   }
   .artworkInfo {
     width: 100%;
-    height: auto !important;
+    //height: auto !important;
+    height: 130px !important;
   }
   .artworkImgSec {
     //margin-top: 24px;

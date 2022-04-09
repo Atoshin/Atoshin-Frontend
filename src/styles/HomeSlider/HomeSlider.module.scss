@@ -52,6 +52,18 @@
     height: 200px;
     overflow: hidden;
   }
+  //.artworkInfo {
+  //  //height: 200px;
+  //
+  //  //font-size: 16px;
+  //  //font-weight: 300;
+  //  //line-height: 25px;
+  //  //color: #232323;
+  //  margin-top: 16px;
+  //  //text-align: left;
+  //  opacity: 0;
+  //  //transition: opacity 1s ease;
+  //}
 }
 
 .topLeftSecFadeOut {
@@ -86,18 +98,31 @@
     height: 180px;
     margin-bottom: 25px;
   }
+  //.artworkInfo {
+  //  height: 200px;
+  //
+  //
+  //  font-size: 16px;
+  //  font-weight: 300;
+  //  line-height: 25px;
+  //  color: #232323;
+  //  //margin-top: 16px;
+  //  text-align: left;
+  //  opacity: 0;
+  //  transition: opacity 1s ease;
+  //}
   .artworkInfo {
-    height: 200px;
-
-
     font-size: 16px;
     font-weight: 300;
     line-height: 25px;
     color: #232323;
-    margin-top: 16px;
-    text-align: left;
-    opacity: 0;
+    //margin-top: 16px;
+    opacity: 1;
     transition: opacity 1s ease;
+    text-align: left;
+    //border:solid red;
+    height: 200px;
+    overflow: hidden;
   }
 }
 
