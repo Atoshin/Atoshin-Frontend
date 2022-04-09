@@ -39,6 +39,7 @@ export default function GalleryList({
         })
     }
     const selectImage = (id) => {
+        // console.log(id);
         setNewInfo({
             video: false,
             image: true,
@@ -80,12 +81,17 @@ export default function GalleryList({
                         // console.log(image);
                         if (!image.main && !image.galleryLargePicture && !newInfo.showAsset) {
                             return (
-                                <img onClick={() => selectImage(image.id)} className={classes.item} key={idx}
+                                <img onClick={() => {
+                                    selectImage(image.id)
+                                }} className={classes.item} key={idx}
                                      src={image.url} alt=""/>
                             )
                         } else if (newInfo.showAsset) {
                             return (
-                                <img onClick={() => selectImage(image.id)} className={classes.item} key={idx}
+                                <img onClick={() => {
+                                    // selectImage(image.id)
+                                    console.log('2')
+                                }} className={classes.item} key={idx}
                                      src={image.url} alt=""/>
                             )
                         }

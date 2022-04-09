@@ -17,7 +17,7 @@ export default function ImagesModal({
                                         clickedVideoId,
                                         setClickedImageId,
                                         setClickedVideoId,
-                                        isGallery,
+                                        isGallary,
                                         vertical,
                                         newInfo,
                                         setNewInfo,
@@ -94,12 +94,12 @@ export default function ImagesModal({
             </div>
             <div className={classes.mg}>
                 <div className={classes.pic}>
-                    <ShowImage isGallery={isGallery} newInfo={newInfo} selectedImg={selectedImg} videos={videos}
+                    <ShowImage isGallery={isGallary} newInfo={newInfo} selectedImg={selectedImg} videos={videos}
                                images={images} mainImg={mainImg} clickedVideoId={clickedVideoId}/>
                 </div>
                 <div className={classes.list}>
                     <GalleryList newInfo={newInfo} setNewInfo={setNewInfo} setSelectedImg={setSelectedImg}
-                                 videos={videos} images={images} mainImg={mainImg} isGallary={isGallery}
+                                 videos={videos} images={images} mainImg={mainImg} isGallary={isGallary}
                                  setClickedVideoId artCenter={artCenter}/>
                 </div>
             </div>

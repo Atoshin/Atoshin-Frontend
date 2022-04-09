@@ -37,6 +37,8 @@ export default function ShowImage({
     //
     // console.log(newInfo);
     useEffect(() => {
+        console.log(newInfo)
+        console.log(newInfo.id)
         if (newInfo.video) {
             // console.log('video');
             setImg(videos.find(video => video.id === newInfo.id))
