@@ -81,6 +81,7 @@ export default function GalleryList({
                         // console.log(image);
                         if (!image.main && !image.galleryLargePicture && !newInfo.showAsset) {
                             return (
+                                // style={{border:'solid purple'}}
                                 <img onClick={() => {
                                     selectImage(image.id)
                                 }} className={classes.item} key={idx}
@@ -88,8 +89,9 @@ export default function GalleryList({
                             )
                         } else if (newInfo.showAsset) {
                             return (
+                                // style={{border:'solid'}}
                                 <img onClick={() => {
-                                    // selectImage(image.id)
+                                    selectImage(image.id)
                                     console.log('2')
                                 }} className={classes.item} key={idx}
                                      src={image.url} alt=""/>

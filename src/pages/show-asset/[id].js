@@ -555,7 +555,7 @@ export default function ShowAsset({asset}) {
                             </div>
                         </div>
                         {matches &&
-                            <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease'}}
+                            <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease', border:'solid', cursor:'pointer'}}
                                  className={styles.artworkMainImgSec}>
                                 <Slide
                                     easing='ease'
@@ -577,6 +577,15 @@ export default function ShowAsset({asset}) {
                                     {asset.medias.filter(media => media.main !== 1).map(media => {
                                         return (
                                             <img key={media.id}
+                                                 onClick={()=>{
+                                                     setNewInfo({
+                                                         video: false,
+                                                         image: true,
+                                                         id: media.id,
+                                                         open: true
+                                                     })
+                                                     setOpenImages(true)
+                                                 }}
                                                  style={{...mainImgSize, transition: 'all 500ms ease'}}
                                                  className={styles.artworkMainImg}
                                                  src={media.url} alt=""/>
