@@ -71,7 +71,6 @@ export default function Artist({artist}) {
         // // transitionDuration:500,
         // // duration:5000,
     };
-    console.log(artist)
     return (
         <>
             <Head>
