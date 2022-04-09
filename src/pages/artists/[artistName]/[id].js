@@ -58,8 +58,6 @@ export default function Artist({artist}) {
         // prevArrow: <div/>,
 
 
-
-
         // autoplay:artist.assets.length >= 4 ? true : false ,
         // autoplay:true,
         // easing: "ease",
@@ -73,7 +71,7 @@ export default function Artist({artist}) {
         // // transitionDuration:500,
         // // duration:5000,
     };
-
+    console.log(artist)
     return (
         <>
             <Head>
@@ -106,12 +104,23 @@ export default function Artist({artist}) {
                             </a>
                             <div className={classes.rankingSec}>
                                 <div className={classes.globalRank}>
+                                    {
+                                        artist.worldRanking ?
+                                            ` Top ${artist.worldRanking}.Global` :
+                                            'unKnown'
+                                    }
                                     {/*{artist.worldRanking}*/}
-                                    Top {artist.worldRanking}.Global
                                 </div>
                                 <div className={classes.domesticRank}>
                                     {/*{artist.iranRanking}*/}
-                                    Top {artist.iranRanking}.Iran, Islamic Republic Of Iran
+                                    {
+                                        artist.iranRanking ?
+                                            `Top ${artist.iranRanking}.Iran, Islamic Republic Of Iran` :
+                                            !artist.iranRanking && !artist.worldRanking ?
+                                                ''
+                                                :
+                                                'unknown'
+                                    }
                                 </div>
                             </div>
                         </div>
