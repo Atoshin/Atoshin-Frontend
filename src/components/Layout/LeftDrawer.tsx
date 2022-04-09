@@ -50,7 +50,7 @@ export default function LeftDrawer({state, setState}) {
                 <img onClick={() => setState(false)} className={classes.vectorXIcon} src="/icons/vector-x.svg" alt=""/>
             </div>
             <List>
-                <ListItem button>
+                <ListItem className={classes.item}  button>
                     <ActiveLink title={"Marketplace"} href={"/marketplace"}/>
                 </ListItem>
                 <ListItem button>
@@ -60,7 +60,7 @@ export default function LeftDrawer({state, setState}) {
                     <ActiveLink title="Artists" href='/artists'/>
                 </ListItem>
                 <ListItem button>
-                    <ActiveLink title="About NFT" href='/about-nft'/>
+                    <ActiveLink title="What is Fractionalize NFT ?" href='/about-nft'/>
                 </ListItem>
             </List>
         </Box>
