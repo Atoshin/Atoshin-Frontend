@@ -41,15 +41,18 @@ export default function Footer() {
             <div className={classes.dividingLine}>
             </div>
             <div className={classes.linksMainSec}>
-                {matches ?
-                    <div className={classes.logoSec}>
-                        <img className={classes.logoSec} src="/images/atoshin-logo-typography-white.svg" alt=""/>
-                    </div>
-                    :
-                    <div className={classes.logoSec}>
-                        <img className={classes.logoSec} src="/images/atoshin-logo-white.svg" alt=""/>
-                    </div>
-                }
+                {/*{matches ?*/}
+                {/*    <div className={classes.logoSec}>*/}
+                {/*        <img className={classes.logoSec} src="/images/atoshin-logo-typography-white.svg" alt=""/>*/}
+                {/*    </div>*/}
+                {/*    :*/}
+                {/*    <div className={classes.logoSec}>*/}
+                {/*        <img className={classes.logoSec} src="/images/atoshin-logo-white.svg" alt=""/>*/}
+                {/*    </div>*/}
+                {/*}*/}
+                <div className={classes.logoSec}>
+                    <img className={classes.logoSec} src="/images/atoshin-logo-white.svg" alt=""/>
+                </div>
                 <div className={classes.linksSec}>
                     <div className={classes.linkTitle}>
                         Support
