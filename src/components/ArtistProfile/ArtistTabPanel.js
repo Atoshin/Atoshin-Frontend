@@ -142,7 +142,7 @@ export default function BasicTabs({artist}) {
                                                 {matches &&
                                                 <div className={classes.rightSec}>
                                                     <div className={classes.soldPrice}>
-                                                        Sold price: ${addCommas(auction.soldPrice)}
+                                                        Sold price: {addCommas(auction.soldPrice)}
                                                     </div>
                                                     {/*<div className={classes.auctionPriceDetails}>*/}
                                                     {/*    Estimates: 30,000 - 40,000$*/}
@@ -170,7 +170,7 @@ export default function BasicTabs({artist}) {
                                         {!matches &&
                                         <div className={classes.rightSec}>
                                             <div className={classes.soldPrice}>
-                                                Sold price: ${addCommas(auction.soldPrice)}
+                                                Sold price: {addCommas(auction.soldPrice)}
                                             </div>
                                             {/*<div className={classes.auctionPriceDetails}>*/}
                                             {/*    Estimates: 30,000 - 40,000$*/}
@@ -233,7 +233,7 @@ export default function BasicTabs({artist}) {
                                                 {matches &&
                                                 <div className={classes.rightSec}>
                                                     <div className={classes.soldPrice}>
-                                                        Sold price: ${addCommas(auction.soldPrice)}
+                                                        Sold price: {addCommas(auction.soldPrice)}
                                                     </div>
                                                     {/*<div className={classes.auctionPriceDetails}>*/}
                                                     {/*    Estimates: 30,000 - 40,000$*/}
@@ -261,7 +261,7 @@ export default function BasicTabs({artist}) {
                                         {!matches &&
                                         <div className={classes.rightSec}>
                                             <div className={classes.soldPrice}>
-                                                Sold price: ${addCommas(auction.soldPrice)}
+                                                Sold price: {addCommas(auction.soldPrice)}
                                             </div>
                                             {/*<div className={classes.auctionPriceDetails}>*/}
                                             {/*    Estimates: 30,000 - 40,000$*/}
