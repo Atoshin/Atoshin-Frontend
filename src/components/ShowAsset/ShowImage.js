@@ -4,7 +4,8 @@ import Dialog from '@mui/material/Dialog';
 import classes from "../../styles/ShowAsset/ShowAsset.module.scss";
 import Zoom from "react-img-zoom";
 import {useEffect, useRef, useState} from "react";
-
+import {useMediaQuery} from "@mui/material";
+import {useTheme} from "@mui/material/styles";
 export default function ShowImage({
                                       videos,
                                       mainImg,
@@ -16,8 +17,14 @@ export default function ShowImage({
                                       newInfo,
                                   }) {
 
+    const theme = useTheme();
+
     const [img, setImg] = useState(images.find(img => img.main === 1))
     const [isImage, setIsImage] = useState(images.find(img => img.main === 1))
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+    const matches2 = useMediaQuery(theme.breakpoints.down('md'));
+    const matches3 = useMediaQuery('(max-width:1000px)');
+
 
     let ZoomImg = () => (<Zoom
         img={img.url}
@@ -72,10 +79,14 @@ export default function ShowImage({
                         <>
                             <img width={'100%'} height={'90%'} className={classes.showImage} src={img.url} alt=""/>
                         </> :
+                        (matches || matches2 || matches3 ) ?
                         <>
-                            <ZoomImg/>
+                            <img width={'100%'} height={'90%'} className={classes.showImage} src={img.url} alt=""/>
                             {/*<img width={'100%'} height={'90%'} className={classes.showImage} style={{border:'solid '}} src={img.url} alt=""/>*/}
-                        </>
+                        </> :
+                            <ZoomImg/>
+
+
                     // <img width={'100%'} height={'90%'} className={classes.showImage} src={img.url} alt=""/>
 
                     :

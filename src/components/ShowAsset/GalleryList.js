@@ -41,10 +41,11 @@ export default function GalleryList({
     const selectImage = (id) => {
         // console.log(id);
         setNewInfo({
+            ...newInfo,
             video: false,
             image: true,
             id: id,
-            open: true
+            open: true,
         })
     }
 
@@ -79,24 +80,43 @@ export default function GalleryList({
                 {
                     images.map((image, idx) => {
                         // console.log(image);
-                        if (!image.main && !image.galleryLargePicture && !newInfo.showAsset) {
-                            return (
-                                // style={{border:'solid purple'}}
-                                <img onClick={() => {
-                                    selectImage(image.id)
-                                }} className={classes.item} key={idx}
-                                     src={image.url} alt=""/>
-                            )
+
+                        if (!newInfo.showAsset && !image.main && !image.galleryLargePicture) {
+                                return (
+                                    // style={{border:'solid purple'}}
+                                    <img onClick={() => {
+                                        selectImage(image.id)
+                                    }} className={classes.item} key={idx}
+                                         src={image.url} alt=""/>
+                                )
                         } else if (newInfo.showAsset) {
                             return (
                                 // style={{border:'solid'}}
                                 <img onClick={() => {
                                     selectImage(image.id)
-                                    console.log('2')
                                 }} className={classes.item} key={idx}
                                      src={image.url} alt=""/>
                             )
                         }
+
+                        // if (!image.main && !image.galleryLargePicture && !newInfo.showAsset) {
+                        //     return (
+                        //         // style={{border:'solid purple'}}
+                        //         <img onClick={() => {
+                        //             selectImage(image.id)
+                        //         }} className={classes.item} key={idx}
+                        //              src={image.url} alt=""/>
+                        //     )
+                        // } else if (newInfo.showAsset) {
+                        //     return (
+                        //         // style={{border:'solid'}}
+                        //         <img onClick={() => {
+                        //             selectImage(image.id)
+                        //             console.log('2')
+                        //         }} className={classes.item} key={idx}
+                        //              src={image.url} alt=""/>
+                        //     )
+                        // }
                     })
                 }
             </div>

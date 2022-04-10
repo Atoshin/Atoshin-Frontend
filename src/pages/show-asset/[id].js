@@ -555,7 +555,7 @@ export default function ShowAsset({asset}) {
                             </div>
                         </div>
                         {matches &&
-                            <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease', border:'solid', cursor:'pointer'}}
+                            <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease', cursor:'pointer'}}
                                  className={styles.artworkMainImgSec}>
                                 <Slide
                                     easing='ease'
@@ -750,6 +750,14 @@ export default function ShowAsset({asset}) {
                     <div className={styles.topRightMainSec}>
                         <div className={styles.artworkMainImgSec} onClick={() => {
                             setOpenImages(true)
+                            setNewInfo({
+                                ...newInfo,
+                                video: false,
+                                image: true,
+                                open: true,
+                                showAsset: true,
+                                id:asset.medias.find(media => media.main === 1).id
+                            })
                             setClickedImageId(asset.medias.find(media => media.main === 1).id)
                         }}>
                             <img className={styles.artworkMainImg}

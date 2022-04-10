@@ -93,6 +93,7 @@ export default function ImagesModal({
                 </div>
             </div>
             <div className={classes.mg}>
+
                 <div className={classes.pic}>
                     <ShowImage isGallery={isGallary} newInfo={newInfo} selectedImg={selectedImg} videos={videos}
                                images={images} mainImg={mainImg} clickedVideoId={clickedVideoId}/>
