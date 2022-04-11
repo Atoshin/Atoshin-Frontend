@@ -184,7 +184,9 @@ export default function FAQ() {
                     and research papers for the above information:
                 </div>
                 <div className={classes.url}>
-                    https://learn.bybit.com/nft/what-are-fractional-nfts/
+                    <a href=" https://learn.bybit.com/nft/what-are-fractional-nfts/" target='_blank'>
+                        https://learn.bybit.com/nft/what-are-fractional-nfts/
+                    </a>
                 </div>
                 <div className={classes.referencesTxt}>
                     {` “Understanding Security Issues in the NFT Ecosystem Dipanjan” Das, Priyanka Bose, Nicola Ruaro,
@@ -196,10 +198,14 @@ export default function FAQ() {
                     This version: 31 October 2021
                 </div>
                 <div className={classes.url}>
-                    https://www.argent.xyz/learn/fractionalized-nfts/
+                    <a href=" https://www.argent.xyz/learn/fractionalized-nfts/" target='_blank'>
+                        https://www.argent.xyz/learn/fractionalized-nfts/
+                    </a>
                 </div>
-                <div className={classes.referencesTxt} style={{marginBottom:0}}>
-                    https://hackernoon.com/fractionalized-nfts-are-the-future-of-fractionalized-assets
+                <div className={classes.referencesTxt} style={{marginBottom:0, cursor:'pointer'}}>
+                    <a href="https://hackernoon.com/fractionalized-nfts-are-the-future-of-fractionalized-assets" target='_blank' rel="noreferrer">
+                        https://hackernoon.com/fractionalized-nfts-are-the-future-of-fractionalized-assets
+                    </a>
                 </div>
             </div>
         </div>
