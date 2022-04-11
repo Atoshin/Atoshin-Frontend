@@ -696,7 +696,7 @@ export default function ShowAsset({asset}) {
                                             isAuctionOver || asset.soldFractions === asset.totalFractions ?
                                                 `Sold Out`
                                                 :
-                                                `Buy ${calculateDecimalPrecision(asset.ethPricePerFraction, 5)} ETH`
+                                                `Buy ${calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH`
                                         }
                                     </Button>
                                 </div>
