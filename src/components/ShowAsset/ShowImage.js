@@ -25,7 +25,6 @@ export default function ShowImage({
     const matches2 = useMediaQuery(theme.breakpoints.down('md'));
     const matches3 = useMediaQuery('(max-width:1000px)');
 
-
     let ZoomImg = () => (<Zoom
         img={img.url}
         // style={{borderRadius: 3}}
@@ -84,6 +83,7 @@ export default function ShowImage({
                             <img width={'100%'} height={'90%'} className={classes.showImage} src={img.url} alt=""/>
                             {/*<img width={'100%'} height={'90%'} className={classes.showImage} style={{border:'solid '}} src={img.url} alt=""/>*/}
                         </> :
+
                             <ZoomImg/>
 
 

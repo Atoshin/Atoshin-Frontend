@@ -19,8 +19,7 @@ export default function GalleryList({
 
     //
     // console.log({videos});
-    // console.log(mainImg);
-
+    console.log(mainImg)
     // if (typeof document !== 'undefined') {
     //     let span = document.createElement('span');
     //     span.hidden = true;
@@ -62,61 +61,88 @@ export default function GalleryList({
                             const iframe = span.children[0];
                             const ytvId = iframe.src.slice(-11)
                             span.remove()
-                            return (
-                                <div onClick={() => selectVideo(data.id)} key={idx}
-                                     className={classes.videoItem}
-                                     style={{
-                                         backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`
-                                     }}>
-                                    <img src={'/images/show-asset/videoPlay.svg'}
-                                         className={classes.playIcon}
-                                        // style={{display: "flex", alignItems: "center", justifyContent: "center"}}
-                                    />
+                            if(data.id === newInfo.id){
+                                return <div className={classes.selectedVideoSec}>
+                                    <div onClick={() => selectVideo(data.id)} key={idx}
+                                         className={classes.selectedVideoItem}
+                                         style={{
+                                             backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
+                                         }}>
+                                        <img src={'/images/show-asset/videoPlay.svg'}
+                                             className={classes.playIcon}
+                                            // style={{display: "flex", alignItems: "center", justifyContent: "center"}}
+                                        />
+                                    </div>
                                 </div>
-                            )
+                            }
+                        else{
+                            return  <div onClick={() => selectVideo(data.id)} key={idx}
+                                         className={classes.videoItem}
+                                         style={{
+                                             backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`
+                                         }}>
+                                <img src={'/images/show-asset/videoPlay.svg'}
+                                     className={classes.playIcon}
+                                    // style={{display: "flex", alignItems: "center", justifyContent: "center"}}
+                                />
+                            </div>
+                            }
+                            // return (
+                                // <div onClick={() => selectVideo(data.id)} key={idx}
+                                //      className={classes.videoItem}
+                                //      style={{
+                                //          backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`
+                                //      }}>
+                                //     <img src={'/images/show-asset/videoPlay.svg'}
+                                //          className={classes.playIcon}
+                                //         // style={{display: "flex", alignItems: "center", justifyContent: "center"}}
+                                //     />
+                                // </div>
+                            // )
                         }
                     })
                 }
                 {
                     images.map((image, idx) => {
-                        // console.log(image);
-
                         if (!newInfo.showAsset && !image.main && !image.galleryLargePicture) {
-                                return (
-                                    // style={{border:'solid purple'}}
-                                    <img onClick={() => {
-                                        selectImage(image.id)
-                                    }} className={classes.item} key={idx}
-                                         src={image.url} alt=""/>
-                                )
-                        } else if (newInfo.showAsset) {
-                            return (
-                                // style={{border:'solid'}}
-                                <img onClick={() => {
+                            // return (
+                                // <img onClick={() => {
+                                //     selectImage(image.id)
+                                // }} className={classes.item} key={idx}
+                                //      // style={{border: 'solid purple'}}
+                                //      src={image.url} alt=""/>
+                            if (image.id === newInfo.id) {
+                                return <img onClick={() => {
+                                    selectImage(image.id)
+                                }} className={classes.selectedItem} key={idx}
+                                            src={image.url} alt=""/>
+                            } else {
+                                return <img onClick={() => {
                                     selectImage(image.id)
                                 }} className={classes.item} key={idx}
-                                     src={image.url} alt=""/>
-                            )
+                                    // style={{border:'solid purple'}}
+                                            src={image.url} alt=""/>
+                            }
+                        // )
+                        } else if (newInfo.showAsset) {
+                            // return (
+                                // style={{border:'solid'}}
+                             if(image.id === newInfo.id){
+                                 return  <img onClick={() => {
+                                     selectImage(image.id)
+                                 }} className={classes.selectedItem} key={idx}
+                                               // style={{border:'solid purple'}}
+                                                 src={image.url} alt=""/>
+                             }
+                             else {
+                                return <img onClick={() => {
+                                     selectImage(image.id)
+                                 }} className={classes.item} key={idx}
+                                      src={image.url} alt=""/>
+                             }
+                            // )
                         }
 
-                        // if (!image.main && !image.galleryLargePicture && !newInfo.showAsset) {
-                        //     return (
-                        //         // style={{border:'solid purple'}}
-                        //         <img onClick={() => {
-                        //             selectImage(image.id)
-                        //         }} className={classes.item} key={idx}
-                        //              src={image.url} alt=""/>
-                        //     )
-                        // } else if (newInfo.showAsset) {
-                        //     return (
-                        //         // style={{border:'solid'}}
-                        //         <img onClick={() => {
-                        //             selectImage(image.id)
-                        //             console.log('2')
-                        //         }} className={classes.item} key={idx}
-                        //              src={image.url} alt=""/>
-                        //     )
-                        // }
                     })
                 }
             </div>

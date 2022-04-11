@@ -25,10 +25,13 @@ export default function ImagesModal({
                                         setSelectedImg,
                                         selectedImg
                                     }) {
+
+
     const [mainImg, setImg] = useState(images.find(img => img.main === 1))
     // const [selectedImg, setSelectedImg] = useState()
-
     const ref = useRef();
+
+    console.log(mainImg)
     const handleClose = () => {
         setOpen(false);
         if (ref.current) {
@@ -61,7 +64,6 @@ export default function ImagesModal({
         width={698}
         height={469}
     />)
-
     useEffect(() => {
         const backdrop = document.getElementById('ytv-asset')
         if (backdrop) {

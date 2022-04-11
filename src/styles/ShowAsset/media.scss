@@ -551,6 +551,39 @@
     //border: 2px solid red;
     margin: 10px;
   }
+  .selectedItem {
+    width: 120px !important;
+    height: 100px !important;
+    padding: 3px;
+    border: 2px solid #FD6E19;
+  }
+  .selectedVideoSec{
+    height:100px !important;
+    width: 120px !important;
+    margin:10px;
+    border: 2px solid #FD6E19;
+    padding:3px;
+  }
+  .videoItem{
+    height:100px !important;
+    width: 120px !important;
+    margin:10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .selectedVideoItem{
+    height:90px !important;
+    //width: 120px;
+    //margin:10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //padding: 3px;
+    //border: 2px solid #FD6E19;
+  }
   .container {
     display: block;
     overflow-y: scroll;
