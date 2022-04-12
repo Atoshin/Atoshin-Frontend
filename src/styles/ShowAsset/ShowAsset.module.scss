@@ -246,6 +246,8 @@
 }
 .BuyBtnDesktop {
   //width: 143px !important;
+  margin-left: 0px;
+
   width: 228px !important;
   height: 53px !important;
   background-color: #232323 !important;
@@ -255,7 +257,18 @@
   //margin-top: 17px !important;
   font-weight: 500 !important;
   //border-radius: 0px 5px 5px 0px;
+  border-radius: 5px 5px 5px 5px;
+}
+.BuyBtnDesktop2{
   margin-left: 16px;
+
+  width: 228px !important;
+  height: 53px !important;
+  background-color: #232323 !important;
+  color: #FFFFFF !important;
+  font-size: 18px !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
   border-radius: 5px 5px 5px 5px;
 }
 

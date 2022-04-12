@@ -722,7 +722,7 @@ export default function ShowAsset({asset}) {
                                 {address ?
                                     <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions}
                                             classes={{disabled: isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.disabledBtn2 : styles.disabledBtn }}
-                                            onClick={submitOrder} className={styles.BuyBtnDesktop}>
+                                            onClick={submitOrder} className={isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.BuyBtnDesktop : styles.BuyBtnDesktop2 }>
                                         {
                                             isAuctionOver || asset.soldFractions === asset.totalFractions ?
                                                `Sold Out`
