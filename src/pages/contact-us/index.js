@@ -7,6 +7,7 @@ import Head from "next/head";
 import * as React from "react";
 import TextField from '@mui/material/TextField';
 import axios from "axios";
+// import API from '../api/contact-us/index'
 
 export default function ContactUs({galleries}) {
 
@@ -44,18 +45,34 @@ export default function ContactUs({galleries}) {
 
     const submit = () => {
         if (name && email && subject && message) {
-            // console.log(`${process.env.BASE_URL}/api/art-center/1`)
-            // axios.post(`${process.env.BASE_URL}/api/v1/send-mail`, {
-            axios.post(`https://atoshinadmin.satratech.ir/api/v1/send-mail`, {
+            // next_public
+            // Api.Contact_us
+
+            let c = JSON.stringify({
                 'data': {
                     'name': name,
                     'email': email,
                     'subject': subject,
                     'message': message
                 }
+            });
+            // console.log(`${process.env.BASE_URL}/api/art-center/1`)
+            // axios.post(`${process.env.BASE_URL}/api/send-mail`, {
+            // API()
+            // axios.post(`https://atoshinadmin.satratech.ir/api/v1/send-mail`, {'data': {
+            //         'name': name,
+            //         'email': email,
+            //         'subject': subject,
+            //         'message': message
+            //     }})
+            axios.post('/api/contact-us',{
+                    'name': name,
+                    'email': email,
+                    'subject': subject,
+                    'message': message
             }).then(({data}) => {
                 console.log(data);
-            }).catch((error)=> {
+            }).catch((error) => {
                 console.log(error)
             });
         }
