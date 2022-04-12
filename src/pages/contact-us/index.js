@@ -2,16 +2,21 @@ import classes from '../../styles/ContactUs/contactUs.module.scss'
 import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
 import Button from '@mui/material/Button';
-
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import Head from "next/head";
 import * as React from "react";
+import TextField from '@mui/material/TextField';
+import axios from "axios";
 
 export default function ContactUs({galleries}) {
 
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
         //region change background color for profile page
@@ -21,6 +26,40 @@ export default function ContactUs({galleries}) {
         style.backgroundImage = 'none';
         //endregion
     }, [])
+
+    const handleChange = (e) => {
+        if (e.target.id === 'name') {
+            setName(e.target.value);
+        }
+        if (e.target.id === 'email') {
+            setEmail(e.target.value);
+        }
+        if (e.target.id === 'subject') {
+            setSubject(e.target.value);
+        }
+        if (e.target.id === 'message') {
+            setMessage(e.target.value);
+        }
+    }
+
+    const submit = () => {
+        if (name && email && subject && message) {
+            // console.log(`${process.env.BASE_URL}/api/art-center/1`)
+            // axios.post(`${process.env.BASE_URL}/api/v1/send-mail`, {
+            axios.post(`https://atoshinadmin.satratech.ir/api/v1/send-mail`, {
+                'data': {
+                    'name': name,
+                    'email': email,
+                    'subject': subject,
+                    'message': message
+                }
+            }).then(({data}) => {
+                console.log(data);
+            }).catch((error)=> {
+                console.log(error)
+            });
+        }
+    }
 
     return (
         <>
@@ -57,7 +96,7 @@ export default function ContactUs({galleries}) {
                                 <div className={classes.email}>want to show your museum or gallery in Atoshin?</div>
                                 {/*<div className={classes.emailC}>joinus@atoshin.art</div>*/}
                                 {/*<a href="mailto:joinus@atoshin.art">*/}
-                                    <div className={classes.emailC}>joinus@atoshin.art</div>
+                                <div className={classes.emailC}>joinus@atoshin.art</div>
                                 {/*</a>*/}
                             </div>
                             <div className={classes.sec2}>
@@ -69,23 +108,63 @@ export default function ContactUs({galleries}) {
                 </div>
                 <div>
                     <div className={classes.tableBox}>
-                        {/*<div className={classes.name1}>*/}
-                        {/*    <div className={classes.innerBox}>Name</div>*/}
-                        {/*</div>*/}
-                        <input type="text" className={classes.name1} placeholder='Name'/>
-                        {/*<div className={classes.name}>*/}
-                        {/*    <div className={classes.innerBox}>Email</div>*/}
-                        {/*</div>*/}
-                        <input type="text" className={classes.name} placeholder='Email'/>
+                        {/*<input type="text" className={classes.name1} placeholder='Name'/>*/}
+                        <TextField
+                            onChange={handleChange}
+                            // defaultValue="Message"
+                            value={name}
+                            id='name'
+                            variant="standard"
+                            fullWidth
+                            placeholder='Name'
+                            InputProps={{
+                                disableUnderline: true, // <== added this
+                            }}
+                            className={classes.name1}/>
 
-                        <input type="text" className={classes.name} placeholder='Subject'/>
+                        {/*<input type="text" className={classes.name} placeholder='Email'/>*/}
 
-                        {/*<div className={classes.name} style={{height:124, display: 'block'}}>*/}
-                        {/*    <div className={classes.innerBox} >Message</div>*/}
-                        {/*</div>*/}
-                        <input type="text" className={classes.message} placeholder='Message'/>
 
-                        <Button variant="contained" className={classes.submit}>
+                        <TextField fullWidth
+                                   value={email}
+                                   onChange={handleChange}
+                                   id='email'
+                                   variant="standard"
+                                   InputProps={{
+                                       disableUnderline: true, // <== added this
+                                   }}
+                                   placeholder='Email'
+                                   className={classes.name}/>
+
+
+                        <TextField fullWidth
+                                   value={subject}
+                                   onChange={handleChange}
+                                   id='subject'
+                                   variant="standard"
+                                   InputProps={{
+                                       disableUnderline: true, // <== added this
+                                   }}
+                                   placeholder='Subject'
+                                   className={classes.name}/>
+
+                        {/*<input type="text" className={classes.message} placeholder='Message'/>*/}
+                        <TextField
+                            multiline
+                            classes={{root: classes.message}}
+                            rows={4}
+                            onChange={handleChange}
+                            id='message'
+                            // defaultValue="Message"
+                            value={message}
+                            variant="standard"
+                            fullWidth
+                            placeholder={'Message'}
+                            InputProps={{
+                                disableUnderline: true, // <== added this
+                            }}
+                        />
+                        <Button variant="contained" className={classes.submit} onClick={submit}>
                             <span style={{textTransform: 'upperCase'}}>S</span>ubmit
                         </Button>
                     </div>
