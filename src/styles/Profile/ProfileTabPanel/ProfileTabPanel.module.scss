@@ -316,10 +316,23 @@
   height: 378px;
   width: 100%;
   overflow-y: scroll;
-  flex-flow: wrap;
+  //flex-flow: wrap;
+  flex-flow:column nowrap;
+}
+.historyRowSec2{
+  display: flex;
+  flex-direction: column;
+  height: 378px;
+  width: 100%;
+  overflow-y: scroll;
+  //flex-flow: wrap;
+  flex-flow:row wrap;
 }
 
 .historyRowSec::-webkit-scrollbar {
+  display: none;
+}
+.historyRowSec2::-webkit-scrollbar {
   display: none;
 }
 

@@ -117,8 +117,35 @@ export default function BasicTabs({artworks, history}) {
                                     Transaction
                                 </div>
                             </div>
-                            <div className={classes.historyRowSec}>
+                            <div className={Object.keys(history.txns).length < 5 ? classes.historyRowSec : classes.historyRowSec2 }>
+
+                                {/*<div  className={classes.indexRowSec}>*/}
+                                {/*    <div className={classes.itemsSec}>*/}
+                                {/*        <div className={classes.smallImg} style={{*/}
+                                {/*            backgroundImage: `url(images/starryNight.png)`,*/}
+                                {/*            backgroundPosition: "center",*/}
+                                {/*            backgroundSize: "cover"*/}
+                                {/*        }}/>*/}
+                                {/*        <div className={classes.artworkNameIndex}>*/}
+                                {/*            /!*{history.assets[idx].title}*!/*/}
+                                {/*            ghghghg*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*    <div className={classes.statusSec}>*/}
+                                {/*        Sold*/}
+                                {/*    </div>*/}
+                                {/*    <div className={classes.dateSec}>*/}
+                                {/*        2023*/}
+                                {/*        /!*{monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDate()}, {new Date(txn.createdAt).getFullYear()}*!/*/}
+                                {/*    </div>*/}
+                                {/*    <div className={classes.transactionSec}>*/}
+                                {/*        jdfjk*/}
+                                {/*        /!*{calculateDecimalPrecision(history.assets[idx].ethPricePerFraction * txn.tokenQuantity, 3) + ' ETH'}*!/*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
+
                                 {history.txns.map((txn, idx) => {
+                                    console.log(Object.keys(history.txns).length)
                                     return <div key={idx} className={classes.indexRowSec}>
                                         <div className={classes.itemsSec}>
                                             <div className={classes.smallImg} style={{
@@ -141,6 +168,7 @@ export default function BasicTabs({artworks, history}) {
                                         </div>
                                     </div>
                                 })}
+
                                 {/*<div className={classes.indexRowSec}>*/}
                                 {/*    <div className={classes.itemsSec}>*/}
                                 {/*        <div className={classes.smallImg} style={{*/}
