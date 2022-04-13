@@ -1,4 +1,5 @@
 import classes from "../../../styles/ArtistProfile/ArtistProfile.module.scss";
+import style from '../../../styles/ArtCenter/artCenter.module.scss'
 import {Button, Fade, useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import {useRef, useState} from "react";
@@ -13,64 +14,33 @@ import Link from 'next/link';
 import NewsModal from "../../../components/ArtistProfile/NewsModal";
 import Head from "next/head";
 
+import RelatedSlider from "../../../components/ArtistProfile/RelatedSlider";
+
+
 export default function Artist({artist}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
     const matches2 = useMediaQuery(theme.breakpoints.down('md'));
     const matches3 = useMediaQuery(theme.breakpoints.down('lg'));
     const matches4 = useMediaQuery(theme.breakpoints.down('xl'));
     const relatedSliderRef = useRef()
     const [openNewsModal, setOpenNewsModal] = useState(false);
-    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    ];
-
-    const properties = {
-
-        // autoplay: true,
-        autoplay: false,
-        cssClass: classes.slider,
-        easing: "ease",
-        slidesToShow: matches ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5,
-        // slidesToShow:matches ? 2 : 4,
-        infinite: true,
-        // arrows:false,
-        slidesToScroll: 1,
-        transitionDuration: 500,
-        duration: 5000,
-        // arrows: true,
-        arrows: artist.assets.length >= 5
-        // arrows: !(matches && artist.assets.length <= 2)
-
-
-        // // autoplay: true,
-        // autoplay: false,
-        // cssClass: classes.slider,
-        // easing: "ease",
-        // slidesToShow: matches ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5,
-        // // slidesToShow:matches ? 2 : 4,
-        // infinite: true,
-        // // arrows:false,
-        // slidesToScroll: 1,
-        // transitionDuration: 500,
-        // duration: 5000,
-        // nextArrow: <div className={classes.previous}><img alt={"vector-right"} src={'/icons/vector-right.svg'}/></div>,
-        // prevArrow: <div/>,
-
-
-        // autoplay:artist.assets.length >= 4 ? true : false ,
-        // autoplay:true,
-        // easing: "ease",
-        // // slidesToShow:artist.assets.length < 4 ? artist.assets.length : (matches ? 2 : 4),
-        // // slidesToShow:4,
-        // slidesToShow: matches ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5,
-        // infinite: true,
-        // // arrows:artist.assets.length >= 5 ? true : false,
-        // arrows: true,
-        // slidesToScroll: 1,
-        // // transitionDuration:500,
-        // // duration:5000,
-    };
+    // const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    //     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    // ];
+    // const properties = {
+    //     autoplay: true,
+    //     cssClass: style.slider,
+    //     easing: "ease",
+    //     slidesToShow: 2,
+    //     // slidesToShow:matches ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5,
+    //     infinite: true,
+    //     slidesToScroll: 1,
+    //     transitionDuration: 500,
+    //     duration: 5000,
+    //     arrows: matches ? false : artist.assets.length < 5 ? true : false
+    // };
     return (
         <>
             <Head>
@@ -161,146 +131,8 @@ export default function Artist({artist}) {
                     <ArtistTabPanel artist={artist}/>
                 </div>
 
-                {
-                    artist.assets.length ?
-                        <div className={classes.relatedSec}>
-                            <div className={classes.relatedTitle}>
-                                Offering artworks in Atoshin
-                            </div>
-                            <div className={classes.slider2}>
-                                <Slide {...properties} ref={relatedSliderRef}>
-                                    {artist.assets.map((asset, idx) => {
-                                        return (
-                                            <Link href={`/show-asset/${asset.id}`} key={idx}>
-                                                <a>
-                                                    <div key={idx}
-                                                         className={(matches || matches2) ? classes.card2 : classes.card}>
-                                                        <div
-                                                            className={(matches || matches2) ? classes.relatedImg2 : classes.relatedImg}
-                                                            style={{
-                                                                backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
-                                                                backgroundSize: "cover",
-                                                                backgroundPosition: "center",
-                                                                borderRadius: 3,
-                                                            }}
-                                                        >
-                                                        </div>
-                                                        <div className={classes.relatedDescription}>
+                <RelatedSlider data={artist.assets}/>
 
-                                                            {
-                                                                (new Date(asset.endDate) > new Date()) ?
-                                                                    <div className={classes.dateSec}>
-                                                                        <div
-                                                                            className={(matches || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle2}>
-                                                                            {asset.title}
-                                                                        </div>
-                                                                        <div
-                                                                            className={matches || matches2 ? classes.date : classes.date1}>
-                                                                            Sale ends
-                                                                            in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
-                                                                        </div>
-                                                                    </div>
-                                                                    :
-                                                                    <div className={classes.dateSec2}>
-                                                                        <div
-                                                                            className={(matches || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle}>
-                                                                            {asset.title}
-                                                                        </div>
-                                                                    </div>
-                                                            }
-                                                            <p className={(matches || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}>
-                                                                {
-                                                                    (matches || matches2) ?
-                                                                        shortenWords(extractContent(asset.bio), 35) + '...'
-                                                                        :
-                                                                        shortenWords(extractContent(asset.bio), 60) + '...'
-                                                                }
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </Link>
-                                        )
-                                    })}
-                                </Slide>
-                            </div>
-                        </div>
-                        :
-                        <div style={{height: '250px'}}/>
-                }
-
-                {/*<div className={classes.relatedSec}>*/}
-                {/*    <div className={classes.relatedTitle}>*/}
-                {/*        Related to Artist*/}
-                {/*    </div>*/}
-                {/*    <div className={classes.slider2}>*/}
-                {/*        <Slide ref={relatedSliderRef}*/}
-                {/*               autoplay={artist.assets.length >= 4}*/}
-                {/*               easing={"ease"}*/}
-                {/*            // slidesToShow:artist.assets.length < 4 ? artist.assets.length : (matches ? 2 : 4),*/}
-                {/*               slidesToShow={matches ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}*/}
-                {/*               infinite={true}*/}
-                {/*               arrows={artist.assets.length >= 5}*/}
-                {/*               cssClass={classes.slider}*/}
-                {/*               slidesToScroll={1}>*/}
-                {/*            {artist.assets.map((asset, idx) => {*/}
-                {/*                return <Link key={idx} href={`/show-asset/${asset.id}`}>*/}
-                {/*                    <a>*/}
-                {/*                        <div className={(matches || matches2) ? classes.card2 : classes.card} style={{border:'solid red'}}>*/}
-                {/*                            <div className={(matches || matches2) ? classes.relatedImg2 : classes.relatedImg}*/}
-                {/*                                 style={{*/}
-                {/*                                     backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,*/}
-                {/*                                     backgroundPosition: "center",*/}
-                {/*                                     backgroundSize: "cover",*/}
-                {/*                                     borderRadius: 3*/}
-                {/*                                 }}/>*/}
-                {/*                            <div className={classes.relatedDescription}>*/}
-                {/*                                {*/}
-                {/*                                    (new Date(asset.endDate) > new Date()) ?*/}
-                {/*                                        <div className={classes.dateSec}>*/}
-                {/*                                            <div*/}
-                {/*                                                className={(matches || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle2}>*/}
-                {/*                                                {asset.title}*/}
-                {/*                                            </div>*/}
-                {/*                                            <div*/}
-                {/*                                                className={matches || matches2 ? classes.date : classes.date1}>*/}
-                {/*                                                Sale ends*/}
-                {/*                                                in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}*/}
-                {/*                                            </div>*/}
-                {/*                                        </div>*/}
-                {/*                                        :*/}
-                {/*                                        <div className={classes.dateSec2}>*/}
-                {/*                                            <div*/}
-                {/*                                                className={(matches || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle}>*/}
-                {/*                                                {asset.title}*/}
-                {/*                                            </div>*/}
-                {/*                                        </div>*/}
-                {/*                                }*/}
-
-                {/*                                /!*<p className={classes.relatedDescTitle}>{asset.title}</p>*!/*/}
-                {/*                                /!*{(new Date(asset.endDate) > new Date()) &&*!/*/}
-                {/*                                /!*    <div*!/*/}
-                {/*                                /!*        className={classes.date1}>*!/*/}
-                {/*                                /!*        Sale ends*!/*/}
-                {/*                                /!*        in {new Date(asset.endDate).getDate()} {monthNames[new Date(asset.endDate).getMonth()]}  {new Date(asset.endDate).getFullYear()}*!/*/}
-                {/*                                /!*    </div>*!/*/}
-                {/*                                /!*}*!/*/}
-                {/*                                <p  className={(matches || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}>*/}
-                {/*                                    {*/}
-                {/*                                        (matches || matches2) ?*/}
-                {/*                                            shortenWords(extractContent(asset.bio), 35) + '...'*/}
-                {/*                                            :*/}
-                {/*                                            shortenWords(extractContent(asset.bio), 60) + '...'}*/}
-                {/*                                </p>*/}
-                {/*                            </div>*/}
-                {/*                        </div>*/}
-                {/*                    </a>*/}
-                {/*                </Link>*/}
-                {/*            })}*/}
-                {/*            */}
-                {/*        </Slide>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
             </div>
         </>
     )

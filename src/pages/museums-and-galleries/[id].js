@@ -16,7 +16,7 @@ import {Map} from "../../components/ArtCenters/Map";
 import ImagesModal from '../../components/ShowAsset/ImagesModal3'
 import * as React from "react";
 import Head from "next/head";
-import {GallerySlider} from "../../components/ArtCenters/GallerySlider";
+import RelatedSlider from "../../components/ArtistProfile/RelatedSlider";
 
 export default function ArtCenter({artCenter}) {
     const [rendered, setRendered] = useState(false)
@@ -127,7 +127,8 @@ export default function ArtCenter({artCenter}) {
         slidesToScroll: 1,
         transitionDuration: 500,
         duration: 5000,
-        arrows: true
+        // arrows: true,
+        arrows:matches1 ? false : artCenter.assets.length > 5 ? true : false
     };
 
     // const read =`<span className={classes.readMore} style="color: #8BB5FF;  font-size: 10px;font-weight: 300;cursor: pointer;"> Read more</span>`;
@@ -405,76 +406,8 @@ export default function ArtCenter({artCenter}) {
                     <Map artCenter={artCenter}/>
                 </div>
             </div>
-            {
-                artCenter.assets.length ?
-                    <div className={classes.relatedSec}>
-                        <div className={classes.relatedTitle}>
-                            Offering artworks in Atoshin
-                        </div>
-                        <div className={classes.slider2}>
-                            <Slide {...properties} ref={relatedSliderRef}>
-                                {/*<div className={classes.slides} style={{width: '100%'}}>*/}
-                                    {artCenter.assets.map((asset, idx) => {
-                                        return (
-                                            <Link href={`/show-asset/${asset.id}`} key={idx}>
-                                                <a>
-                                                    <div key={idx}
-                                                         className={(matches1 || matches2) ? classes.card2 : classes.card}>
-                                                        <div
-                                                            className={(matches1 || matches2) ? classes.relatedImg2 : classes.relatedImg}
-                                                            style={{
-                                                                backgroundImage: `url("${asset.medias.find(media => media.main === 1).url}")`,
-                                                                backgroundSize: "cover",
-                                                                backgroundPosition: "center",
-                                                                borderRadius: 3,
-                                                            }}
-                                                        >
-                                                        </div>
-                                                        <div className={classes.relatedDescription}>
 
-                                                            {
-                                                                (new Date(asset.endDate) > new Date()) ?
-                                                                    <div className={classes.dateSec}>
-                                                                        <div
-                                                                            className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle2}>
-                                                                            {asset.title}
-                                                                        </div>
-                                                                        <div
-                                                                            className={matches1 || matches2 ? classes.date : classes.date1}>
-                                                                            Sale ends
-                                                                            in {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
-                                                                        </div>
-                                                                    </div>
-                                                                    :
-                                                                    <div className={classes.dateSec2}>
-                                                                        <div
-                                                                            className={(matches1 || matches2) ? classes.relatedDescTitleMob : classes.relatedDescTitle}>
-                                                                            {asset.title}
-                                                                        </div>
-                                                                    </div>
-                                                            }
-                                                            <p className={(matches1 || matches2) ? classes.relatedDescDesc2 : classes.relatedDescDesc}>
-                                                                {
-                                                                    (matches1 || matches2) ?
-                                                                        shortenWords(extractContent(asset.bio), 35) + '...'
-                                                                        :
-                                                                        shortenWords(extractContent(asset.bio), 60) + '...'
-                                                                }
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </Link>
-                                        )
-                                    })}
-                                {/*</div>*/}
-                            </Slide>
-                        </div>
-                        {/*<GallerySlider/>*/}
-                    </div>
-                    :
-                    <div className={classes.sliderEmptySec}/>
-            }
+            <RelatedSlider data={artCenter.assets}/>
         </>
     )
 }
