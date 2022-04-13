@@ -150,7 +150,20 @@ export default function Profile({token}) {
         //endregion
 
     }, [cookie])
-
+    const userNameTxt = () => {
+        if(userData.firstName && userData.lastName){
+            return userData.firstName + ' ' + userData.lastName
+        }
+        else if (userData.firstName && !userData.lastName){
+            return userData.firstName
+        }
+        else if(!userData.firstName && userData.lastName){
+            return userData.lastName
+        }
+        else if (!userData.firstName && !userData.lastName){
+            return 'Unknown'
+        }
+    }
     return (
         <>
             <Head>
@@ -171,7 +184,11 @@ export default function Profile({token}) {
                                 }}/>
                                 {/*<img className={classes.profileImg} src={userData.avatar ? userData.avatar : "/icons/profile-icon.svg"} alt=""/>*/}
                                 <div className={classes.profileName}>
-                                    {userData.firstName ? userData.firstName + ' ' + userData.lastName : 'Unknown'}
+                                    {/*{userData.firstName && userData.lastName ?*/}
+                                    {/*    userData.firstName + ' ' + userData.lastName*/}
+                                    {/*    : 'Unknown'*/}
+                                    {/*}*/}
+                                    {userNameTxt()}
                                 </div>
                                 <div className={classes.walletAddressSec}>
                                     <div className={classes.walletAddress}>
@@ -204,8 +221,9 @@ export default function Profile({token}) {
                                     backgroundPosition: "center",
                                     backgroundImage: `url(${!(userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL) ? userData.avatarUrl : "/icons/profile-icon.svg"})`
                                 }}/>
-                                <div className={classes.profileName}>
-                                    {userData.firstName ? userData.firstName + ' ' + userData.lastName : 'Unknown'}
+                                <div className={classes.profileName} style={{border:'solid red'}}>
+                                    {/*{userData.firstName ? userData.firstName + ' ' + userData.lastName : 'Unknown'}*/}
+                                    {userNameTxt()}
                                 </div>
                             </div>
                             <div className={classes.detailSecMob}>
