@@ -20,7 +20,7 @@ export default function ArtistsSlider({gallery, setSelectedGallery, selectedGall
             {/*<img className={classes.vectorLeft}*/}
             {/*     // onClick={() => {sliderRef.current.goBack()}}*/}
             {/*     src="/icons/vector-left.svg" alt=""/>*/}
-            <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={matches ? false : true}
+            <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={matches ? false : gallery.length < 4 ? true : false }
                    slidesToScroll={1}
                    transitionDuration={500}
                    autoplay={false}
