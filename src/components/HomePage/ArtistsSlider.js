@@ -31,7 +31,7 @@ export default function ArtistsSlider({artists}) {
             {/*    sliderRef.current.goBack()*/}
             {/*}}*/}
             {/*     src="/icons/vector-left.svg" alt=""/>*/}
-            <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={matches ? false : true}
+            <Slide ref={sliderRef} easing={"ease"} slidesToShow={matches ? 2 : 4} infinite={true} arrows={matches ? false : artists.length > 4 ? true : false }
                    slidesToScroll={1}
                    transitionDuration={500}
                    duration={3000}>
