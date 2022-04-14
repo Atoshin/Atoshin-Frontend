@@ -13,7 +13,28 @@
     }
   }
 
+  .artist2 {
+    height: 156px;
+    img {
+      //width: calc(100% - 8px);
+    }
+
+    p {
+      font-family: Roboto;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
   .selectedGallery{
+    height: 158px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+  .selectedGallery2{
     height: 158px;
 
     p {
