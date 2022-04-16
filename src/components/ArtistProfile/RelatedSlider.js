@@ -45,7 +45,7 @@ export default function RelatedSlider({data}) {
         arrows: matches ? false : data.length > 5 ? true : false
     };
     const mapData = () => {
-        return <div style={{display: 'flex', border: 'solid green'}}>
+        return <div style={{display: 'flex'}}>
             {
                 data.map((asset, idx) => {
                     return (
