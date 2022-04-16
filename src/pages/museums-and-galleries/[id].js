@@ -17,6 +17,7 @@ import ImagesModal from '../../components/ShowAsset/ImagesModal3'
 import * as React from "react";
 import Head from "next/head";
 import RelatedSlider from "../../components/ArtistProfile/RelatedSlider";
+import {GallerySlider} from "../../components/ArtCenters/GallerySlider";
 
 export default function ArtCenter({artCenter}) {
     const [rendered, setRendered] = useState(false)
@@ -116,23 +117,150 @@ export default function ArtCenter({artCenter}) {
         })
     }
     const properties = {
-        // autoplay: true,
         autoplay: false,
         cssClass: classes.slider,
         easing: "ease",
         slidesToShow: matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5,
         // slidesToShow:matches ? 2 : 4,
         infinite: true,
-        // arrows:false,
         slidesToScroll: 1,
         transitionDuration: 500,
         duration: 5000,
-        // arrows: true,
-        arrows:matches1 ? false : artCenter.assets.length > 5 ? true : false
+        arrows: matches1 ? false : artCenter.assets.length > 5 ? true : false
     };
 
-    // const read =`<span className={classes.readMore} style="color: #8BB5FF;  font-size: 10px;font-weight: 300;cursor: pointer;"> Read more</span>`;
+    const slider = (ytvId) => {
+        return <Slide style={{position: 'relative'}}
+                      autoplay={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5 ? true : false}
+                      cssClass={classes.slider}
+                      easing={"ease"}
+                      slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
+                      infinite={true}
+                      arrows={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5 ? true : false}
+                      slidesToScroll={1}
+                      transitionDuration={500}
+                      duration={5000}
+                      nextArrow={matches1 ? <div></div> :
+                          <div className={classes.previous}><img alt={"vector-right"}
+                                                                 src={'/icons/vector-right.svg'}/>
+                          </div>}
+                      prevArrow={<div/>}
+                      ref={gallerySliderRef}>
+            {
+                artCenter.videoLinks.map((data, idx) => {
+                    return (
+                        <div key={idx} onClick={() => {
+                            // setClickedVideoId(data.id)
+                            // setOpenImages(true)
+                            showVideoModal(data.id)
+                        }}
+                             className={classes.SlideImg}
+                             style={{backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`}}>
+                            <img src={'/images/show-asset/videoPlay.svg'}
+                                 style={{width: 53.84, height: 53.84}}/>
+                        </div>
+                    )
+                })
+            }
+            {
+                artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((data, idx) => {
+                    if (idx === parseInt(Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1))[Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1)).length - 1]) || idx === 4) {
+                        return <div key={idx} onClick={() => showImageModal(data.id)}
+                                    className={classes.SlideImg}
+                                    style={{backgroundImage: `url("${data.url}")`}}>
 
+                        </div>
+                    } else {
+                        return <div key={idx} onClick={() => showImageModal(data.id)}
+                                    className={classes.SlideImg}
+                                    style={{backgroundImage: `url("${data.url}")`,}}/>
+
+                    }
+                })
+            }
+        </Slide>
+    }
+
+    const mapData = (ytvId) => {
+        return <div style={{display: 'flex'}}>
+            {
+                artCenter.videoLinks.map((data, idx) => {
+                    return (
+                        <div key={idx} onClick={() => {
+                            // setClickedVideoId(data.id)
+                            // setOpenImages(true)
+                            showVideoModal(data.id)
+                        }}
+                             className={classes.SlideImg}
+                             style={{backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`}}>
+                            <img src={'/images/show-asset/videoPlay.svg'}
+                                 style={{width: 53.84, height: 53.84}}/>
+                        </div>
+                    )
+                })
+            }
+            {
+                artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((data, idx) => {
+                    if (idx === parseInt(Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1))[Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1)).length - 1]) || idx === 4) {
+                        return <div key={idx} onClick={() => showImageModal(data.id)}
+                                    className={classes.SlideImg}
+                                    style={{backgroundImage: `url("${data.url}")`}}>
+
+                        </div>
+                    } else {
+                        return <div key={idx} onClick={() => showImageModal(data.id)}
+                                    className={classes.SlideImg}
+                                    style={{backgroundImage: `url("${data.url}")`,}}/>
+
+                    }
+                })
+            }
+        </div>
+    }
+
+    const showData = (ytvId) => {
+        // matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5
+        if (matches1) {
+            if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length <= 2) {
+                return mapData(ytvId)
+            } else {
+                return slider(ytvId)
+            }
+        }
+        if (matches2) {
+            if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length <= 3) {
+                return mapData(ytvId)
+            }
+            else {
+                return slider(ytvId)
+            }
+        }
+        if (matches3) {
+            if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length <= 3) {
+                return mapData(ytvId)
+            }
+            else {
+                return slider(ytvId)
+            }
+        }
+        if (matches4) {
+            if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length <= 4) {
+                return mapData(ytvId)
+            }
+            else {
+                return slider(ytvId)
+            }
+        }
+        else {
+            if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length <= 5) {
+                return mapData(ytvId)
+            }
+            else {
+                return slider(ytvId)
+            }
+        }
+
+    }
 
     const VideoShow = () => {
         if (Object.keys(artCenter.videoLinks).length > 0) {
@@ -143,62 +271,59 @@ export default function ArtCenter({artCenter}) {
                 const iframe = span.children[0];
                 const ytvId = iframe.src.slice(-11)
                 span.remove()
-                // if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5) {
                 return (
-                    <Slide style={{position: 'relative'}}
-                           autoplay={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5 ? true : false}
-                           cssClass={classes.slider}
-                           easing={"ease"}
-                        // slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
-                        //    slidesToShow={sliderHandler()}
-                           slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
-                        // slidesToShow={matches ? 2 : 5}
-                           infinite={true}
-                           arrows={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5 ? true : false}
-                           slidesToScroll={1}
-                           transitionDuration={500}
-                           duration={5000}
-                           nextArrow={matches1 ? <div></div> :
-                               <div className={classes.previous}><img alt={"vector-right"}
-                                                                      src={'/icons/vector-right.svg'}/>
-                               </div>}
-                           prevArrow={<div/>}
-                           ref={gallerySliderRef}>
-                        {
-                            artCenter.videoLinks.map((data, idx) => {
-                                return (
-                                    <div key={idx} onClick={() => {
-                                        // console.log(data.id);
-                                        // setClickedVideoId(data.id)
-                                        // setOpenImages(true)
-                                        // console.log(data.id);
-                                        showVideoModal(data.id)
-                                    }}
-                                         className={classes.SlideImg}
-                                         style={{backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`}}>
-                                        <img src={'/images/show-asset/videoPlay.svg'}
-                                             style={{width: 53.84, height: 53.84}}/>
-                                    </div>
-                                )
-                            })
-                        }
-                        {
-                            artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((data, idx) => {
-                                if (idx === parseInt(Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1))[Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1)).length - 1]) || idx === 4) {
-                                    return <div key={idx} onClick={() => showImageModal(data.id)}
-                                                className={classes.SlideImg}
-                                                style={{backgroundImage: `url("${data.url}")`}}>
+                    showData(ytvId)
 
-                                    </div>
-                                } else {
-                                    return <div key={idx} onClick={() => showImageModal(data.id)}
-                                                className={classes.SlideImg}
-                                                style={{backgroundImage: `url("${data.url}")`,}}/>
+                // <Slide style={{position: 'relative'}}
+                //        autoplay={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5 ? true : false}
+                //        cssClass={classes.slider}
+                //        easing={"ease"}
+                //        slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
+                //        infinite={true}
+                //        arrows={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5 ? true : false}
+                //        slidesToScroll={1}
+                //        transitionDuration={500}
+                //        duration={5000}
+                //        nextArrow={matches1 ? <div></div> :
+                //            <div className={classes.previous}><img alt={"vector-right"}
+                //                                                   src={'/icons/vector-right.svg'}/>
+                //            </div>}
+                //        prevArrow={<div/>}
+                //        ref={gallerySliderRef}>
+                //     {
+                //         artCenter.videoLinks.map((data, idx) => {
+                //             return (
+                //                 <div key={idx} onClick={() => {
+                //                     // setClickedVideoId(data.id)
+                //                     // setOpenImages(true)
+                //                     showVideoModal(data.id)
+                //                 }}
+                //                      className={classes.SlideImg}
+                //                      style={{backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`}}>
+                //                     <img src={'/images/show-asset/videoPlay.svg'}
+                //                          style={{width: 53.84, height: 53.84}}/>
+                //                 </div>
+                //             )
+                //         })
+                //     }
+                //     {
+                //         artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((data, idx) => {
+                //             if (idx === parseInt(Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1))[Object.keys(artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1)).length - 1]) || idx === 4) {
+                //                 return <div key={idx} onClick={() => showImageModal(data.id)}
+                //                             className={classes.SlideImg}
+                //                             style={{backgroundImage: `url("${data.url}")`}}>
+                //
+                //                 </div>
+                //             } else {
+                //                 return <div key={idx} onClick={() => showImageModal(data.id)}
+                //                             className={classes.SlideImg}
+                //                             style={{backgroundImage: `url("${data.url}")`,}}/>
+                //
+                //             }
+                //         })
+                //     }
+                // </Slide>
 
-                                }
-                            })
-                        }
-                    </Slide>
                 )
 
             } else {
@@ -333,7 +458,7 @@ export default function ArtCenter({artCenter}) {
                     {/*    :*/}
                     {/*        <div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio}}/>*/}
                     {/*}*/}
-                            <div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio}}/>
+                    <div className={classes.text} dangerouslySetInnerHTML={{__html: artCenter.bio}}/>
                 </div>
 
 
@@ -347,40 +472,12 @@ export default function ArtCenter({artCenter}) {
 
 
             <div className={matches1 ? classes.sliderSec1 : classes.sliderSec}>
-
                 {
                     Object.keys(artCenter.videoLinks).length > 0 ?
                         <VideoShow/>
                         :
                         artCenter.medias ?
-                            <Slide style={{position: 'relative'}}
-                                   autoplay={false}
-                                   // autoplay={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length > 5 ? true : false}
-                                   cssClass={classes.slider}
-                                   easing={"ease"}
-                                   slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
-                                // slidesToShow:matches ? 2 : 4,
-                                   infinite={true}
-                                   arrows={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length > 5 ? true : false}
-                                   slidesToScroll={1}
-                                   transitionDuration={500}
-                                   duration={5000}
-                                   nextArrow={matches1 ? <div></div> :
-                                       <div className={classes.previous}><img
-                                           alt={"vector-right"}
-                                           src={'/icons/vector-right.svg'}/>
-                                       </div>}
-                                   prevArrow={<div/>}
-                                   ref={gallerySliderRef}>
-                                {
-                                    artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((img, key) => {
-                                        return <div
-                                            onClick={() => setSelectedImg(img.id)}
-                                            key={key} className={classes.SlideImg}
-                                            style={{backgroundImage: `url("${img.url}")`}}/>
-                                    })
-                                }
-                            </Slide>
+                            <GallerySlider data={artCenter.medias} setSelectedImg={setSelectedImg}/>
                             : ''
                 }
             </div>

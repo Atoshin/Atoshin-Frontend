@@ -111,6 +111,23 @@
 .slider {
 }
 
+.SlideImg3{
+  align-items: center;
+  height: 220px;
+  width: 220px;
+  //width: 90%;
+  cursor: pointer;
+  background-position: center;
+  background-size: cover;
+  border-radius: 3px;
+
+  margin-right: 16px;
+  margin-left: 10px;
+
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 1px 3px 0px #00000026;
+}
 
 .SlideImg {
   align-items: center;
@@ -131,6 +148,7 @@
 }
 
 .slideImg2 {
+  border: solid red ;
   height: 220px;
   width: 220px;
   //width: 100%;
