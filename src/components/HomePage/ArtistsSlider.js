@@ -84,14 +84,13 @@ export default function ArtistsSlider({artists}) {
             }
         }
         if (matches4) {
-            console.log('f')
             if (artists.length <= 4) {
                 return mapData()
             } else {
                 return slider()
             }
         } else {
-            if (artists.slice(0, 3).length <= 4) {
+            if (artists.length <= 4) {
                 return mapData()
             } else {
                 return slider()
