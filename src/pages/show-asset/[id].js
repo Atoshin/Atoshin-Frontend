@@ -197,10 +197,10 @@ export default function ShowAsset({asset}) {
                     asset.videoLinks.slice(0, 5).map((data, idx) => {
                         return (
                             <div key={5000}
-                                 // onClick={() => {
-                                 //     setClickedVideoId(data.id)
-                                 //     setOpenImages(true)
-                                 // }}
+                                // onClick={() => {
+                                //     setClickedVideoId(data.id)
+                                //     setOpenImages(true)
+                                // }}
                                  onClick={() => openVideoModal(data.id)}
                                  style={{
                                      backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
@@ -555,7 +555,8 @@ export default function ShowAsset({asset}) {
                             </div>
                         </div>
                         {matches &&
-                            <div id="main-img-container" style={{...mainImgSize, transition: 'all 500ms ease', cursor:'pointer'}}
+                            <div id="main-img-container"
+                                 style={{...mainImgSize, transition: 'all 500ms ease', cursor: 'pointer'}}
                                  className={styles.artworkMainImgSec}>
                                 <Slide
                                     easing='ease'
@@ -577,7 +578,7 @@ export default function ShowAsset({asset}) {
                                     {asset.medias.filter(media => media.main !== 1).map(media => {
                                         return (
                                             <img key={media.id}
-                                                 onClick={()=>{
+                                                 onClick={() => {
                                                      setNewInfo({
                                                          video: false,
                                                          image: true,
@@ -664,7 +665,8 @@ export default function ShowAsset({asset}) {
 
                         {(matches) &&
                             <MUISlide in={scrolled} direction={"up"}>
-                                <div className={isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.priceMainSec2 : styles.priceMainSec }>
+                                <div
+                                    className={isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.priceMainSec2 : styles.priceMainSec}>
                                     <div className={styles.priceSec}>
                                         {/*<div className={styles.priceTxt}>*/}
                                         {/*    Price*/}
@@ -672,22 +674,24 @@ export default function ShowAsset({asset}) {
                                         {/*<div className={styles.priceAmount}>*/}
                                         {/*    {calculateDecimalPrecision(asset.ethPricePerFraction, 5)} ETH*/}
                                         {/*</div>*/}
-                                            <div className={styles.counter}>
-                                                {
-                                                    isAuctionOver || asset.soldFractions === asset.totalFractions ?
-                                                        <div className={styles.soldOut}>
+                                        <div className={styles.counter}>
+                                            {
+                                                isAuctionOver || asset.soldFractions === asset.totalFractions ?
+                                                    <div className={styles.soldOut}>
 
-                                                        </div> :
-                                                        <div className={styles.counterPartMob}>
-                                                            <img src="/images/show-asset/minus.svg" style={{marginLeft: 20, width: 56.5, cursor:'pointer'}}
-                                                                 onClick={minus}/>
-                                                            <input value={quantity} onChange={inputHandler}
-                                                                   className={styles.quantityInput} type="text"/>
-                                                            <img src="/images/show-asset/plus.svg" style={{marginRight: 20, width: 56.5,  cursor:'pointer'}}
-                                                                 onClick={add}/>
-                                                        </div>
-                                                }
-                                            </div>
+                                                    </div> :
+                                                    <div className={styles.counterPartMob}>
+                                                        <img src="/images/show-asset/minus.svg"
+                                                             style={{marginLeft: 20, width: 56.5, cursor: 'pointer'}}
+                                                             onClick={minus}/>
+                                                        <input value={quantity} onChange={inputHandler}
+                                                               className={styles.quantityInput} type="text"/>
+                                                        <img src="/images/show-asset/plus.svg"
+                                                             style={{marginRight: 20, width: 56.5, cursor: 'pointer'}}
+                                                             onClick={add}/>
+                                                    </div>
+                                            }
+                                        </div>
                                     </div>
                                     <Button className={styles.BuyBtn}
                                             disabled={isAuctionOver || asset.soldFractions === asset.totalFractions}
@@ -704,36 +708,40 @@ export default function ShowAsset({asset}) {
                         }
                         {
                             (!matches) &&
-                            <div className={ isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.priceMainSec2 : styles.priceMainSec }>
+                            <div
+                                className={isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.priceMainSec2 : styles.priceMainSec}>
                                 {
                                     isAuctionOver || asset.soldFractions === asset.totalFractions ?
-                                      <div className={styles.soldOut}>
-                                          {/*sold out*/}
-                                      </div>   :
+                                        <div className={styles.soldOut}>
+                                            {/*sold out*/}
+                                        </div> :
                                         <div className={styles.counterPart}>
-                                            <img src="/images/show-asset/minus.svg" style={{marginLeft: 20, width: 56.5, cursor:'pointer'}}
+                                            <img src="/images/show-asset/minus.svg"
+                                                 style={{marginLeft: 20, width: 56.5, cursor: 'pointer'}}
                                                  onClick={minus}/>
                                             <input value={quantity} onChange={inputHandler}
                                                    className={styles.quantityInput} type="text"/>
-                                            <img src="/images/show-asset/plus.svg" style={{marginRight: 20, width: 56.5,  cursor:'pointer'}}
+                                            <img src="/images/show-asset/plus.svg"
+                                                 style={{marginRight: 20, width: 56.5, cursor: 'pointer'}}
                                                  onClick={add}/>
                                         </div>
                                 }
                                 {address ?
                                     <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions}
-                                            classes={{disabled: isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.disabledBtn2 : styles.disabledBtn }}
-                                            onClick={submitOrder} className={isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.BuyBtnDesktop : styles.BuyBtnDesktop2 }>
+                                            classes={{disabled: isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.disabledBtn2 : styles.disabledBtn}}
+                                            onClick={submitOrder}
+                                            className={isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.BuyBtnDesktop : styles.BuyBtnDesktop2}>
                                         {
                                             isAuctionOver || asset.soldFractions === asset.totalFractions ?
-                                               `Sold Out`
-                                            :
-                                            `Buy - ${calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH`
+                                                `Sold Out`
+                                                :
+                                                `Buy - ${calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH`
                                         }
                                         {/*Buy - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH*/}
                                     </Button>
                                     :
                                     <Button disabled={isAuctionOver || asset.soldFractions === asset.totalFractions}
-                                            classes={{disabled: isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.disabledBtn2 : styles.disabledBtn }}
+                                            classes={{disabled: isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.disabledBtn2 : styles.disabledBtn}}
                                             onClick={() => dispatch(setOpen(true))} className={styles.BuyBtnDesktop}>
                                         {
                                             isAuctionOver || asset.soldFractions === asset.totalFractions ?
@@ -747,26 +755,26 @@ export default function ShowAsset({asset}) {
                         }
                     </div>
                     {!matches &&
-                    <div className={styles.topRightMainSec}>
-                        <div className={styles.artworkMainImgSec} onClick={() => {
-                            setOpenImages(true)
-                            setNewInfo({
-                                ...newInfo,
-                                video: false,
-                                image: true,
-                                open: true,
-                                showAsset: true,
-                                id:asset.medias.find(media => media.main === 1).id
-                            })
-                            setClickedImageId(asset.medias.find(media => media.main === 1).id)
-                        }}>
-                            <img className={styles.artworkMainImg}
-                                 src={asset.medias.find(media => media.main === 1).url} alt=""/>
+                        <div className={styles.topRightMainSec}>
+                            <div className={styles.artworkMainImgSec} onClick={() => {
+                                setOpenImages(true)
+                                setNewInfo({
+                                    ...newInfo,
+                                    video: false,
+                                    image: true,
+                                    open: true,
+                                    showAsset: true,
+                                    id: asset.medias.find(media => media.main === 1).id
+                                })
+                                setClickedImageId(asset.medias.find(media => media.main === 1).id)
+                            }}>
+                                <img className={styles.artworkMainImg}
+                                     src={asset.medias.find(media => media.main === 1).url} alt=""/>
+                            </div>
+                            <div className={styles.artworkOtherImgSec}>
+                                <ArtworkSubImages/>
+                            </div>
                         </div>
-                        <div className={styles.artworkOtherImgSec}>
-                            <ArtworkSubImages/>
-                        </div>
-                    </div>
                     }
                 </div>
                 <div className={asset.buyTransactions.length > 0 ? styles.midMainSec1 : styles.midMainSec2}>
@@ -780,6 +788,16 @@ export default function ShowAsset({asset}) {
                                     Back story
                                 </div>
                                 <div className={styles.backStoryTxt} dangerouslySetInnerHTML={{__html: asset.bio}}/>
+                                <div className={styles.backStoryTitle}>
+                                    Net Asset Value
+                                </div>
+                                <div className={styles.backStoryTxt}>
+                                    The net asset value of this artwork
+                                    is {calculateDecimalPrecision(asset.ethPricePerFraction * asset.totalFractions, 5)} ETH
+                                    which has been divided
+                                    into {asset.totalFractions} fractions and at the unit price
+                                    of {calculateDecimalPrecision(asset.ethPricePerFraction, 5)}
+                                </div>
                             </div>
                             <div className={styles.provenanceDivider}>
                             </div>
@@ -968,6 +986,7 @@ export default function ShowAsset({asset}) {
         </>
     )
 }
+
 /*
 export async function getStaticPaths() {
     const {data: {assets}} = await axios.get(`${process.env.BACKEND_BASE_URL}/marketplace`)
