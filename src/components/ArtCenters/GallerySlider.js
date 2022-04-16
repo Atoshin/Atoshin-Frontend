@@ -59,8 +59,6 @@ export const GallerySlider = ({data, setSelectedImg}) => {
     }
 
     const showData = () => {
-        console.log(data.length <= 2)
-        console.log(data.length)
         if (matches1) {
             if (data.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length <= 2) {
                 return mapData()
@@ -89,8 +87,7 @@ export const GallerySlider = ({data, setSelectedImg}) => {
                 return slider()
             }
         } else {
-            console.log(data.length);
-            if (data.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length <= 4) {
+            if (data.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length <= 5) {
                 return mapData()
             } else {
                 return slider()
