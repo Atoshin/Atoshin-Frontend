@@ -682,12 +682,14 @@ export default function ShowAsset({asset}) {
                                                     </div> :
                                                     <div className={styles.counterPartMob}>
                                                         <img src="/images/show-asset/minus.svg"
-                                                             style={{marginLeft: 20, width: 56.5, cursor: 'pointer'}}
+                                                             className={styles.minus}
+                                                             // style={{marginLeft: 20, width: 56.5, cursor: 'pointer'}}
                                                              onClick={minus}/>
                                                         <input value={quantity} onChange={inputHandler}
                                                                className={styles.quantityInput} type="text"/>
                                                         <img src="/images/show-asset/plus.svg"
-                                                             style={{marginRight: 20, width: 56.5, cursor: 'pointer'}}
+                                                             className={styles.add}
+                                                             // style={{marginRight: 20, width: 56.5, cursor: 'pointer'}}
                                                              onClick={add}/>
                                                     </div>
                                             }

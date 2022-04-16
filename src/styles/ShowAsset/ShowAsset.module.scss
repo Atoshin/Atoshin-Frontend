@@ -183,12 +183,24 @@
 }
 
 .counterPartMob{
-  width: 149px;
+  width: 130px;
+  //width: 149px;
   height: 35px;
   display: flex;
   align-items: center;
   border: 1px solid #A7A7A7;
   border-radius: 3px;
+}
+.minus{
+  margin-left: 20px;
+  width: 56.5px;
+  cursor: pointer;
+}
+
+.add{
+  margin-right: 20px;
+  width: 56.5px;
+  cursor: pointer;
 }
 
 .priceSec {
