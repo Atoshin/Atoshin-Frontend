@@ -18,7 +18,7 @@ export default function ArtistsSlider({artists}) {
     const matches4 = useMediaQuery(theme.breakpoints.down('xl'));
 
     const mapData = () => {
-        return <div style={{border:'solid purple', display:'flex'}}>
+        return <div style={{display:'flex'}}>
             {artists.map((artist, idx) => {
                 return (
                     <Link key={idx} href={`/artists/${artist.fullName.toLowerCase().replace(/ /g, '-')}/${artist.id}`}>
@@ -84,6 +84,7 @@ export default function ArtistsSlider({artists}) {
             }
         }
         if (matches4) {
+            console.log('f')
             if (artists.length <= 4) {
                 return mapData()
             } else {
