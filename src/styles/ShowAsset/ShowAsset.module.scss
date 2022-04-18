@@ -116,7 +116,8 @@
   font-weight: 500;
   margin-top: 8px;
 }
-.saleEndDateMob1{
+
+.saleEndDateMob1 {
   color: #232323;
   font-size: 16px;
   font-weight: 300;
@@ -156,7 +157,8 @@
   margin-top: 48px;
   align-items: center;
 }
-.priceMainSec2{
+
+.priceMainSec2 {
   display: flex;
   flex-direction: row;
   //justify-content: space-between;
@@ -164,7 +166,7 @@
   align-items: center;
 }
 
-.counter{
+.counter {
   display: flex;
   //border: solid rebeccapurple;
   justify-content: center;
@@ -182,7 +184,7 @@
   //justify-content: center;
 }
 
-.counterPartMob{
+.counterPartMob {
   width: 130px;
   //width: 149px;
   height: 35px;
@@ -191,13 +193,14 @@
   border: 1px solid #A7A7A7;
   border-radius: 3px;
 }
-.minus{
+
+.minus {
   margin-left: 20px;
   width: 56.5px;
   cursor: pointer;
 }
 
-.add{
+.add {
   margin-right: 20px;
   width: 56.5px;
   cursor: pointer;
@@ -233,6 +236,7 @@
   margin-top: 17px !important;
   border-radius: 5px !important;
 }
+
 .disabledBuyBtn {
   width: 143px !important;
   height: 53px !important;
@@ -246,7 +250,8 @@
   margin-top: 17px !important;
   border-radius: 5px !important;
 }
-.soldOut{
+
+.soldOut {
   color: #FD6108;
   //color: #FD6E19;
   font-size: 18px;
@@ -256,6 +261,7 @@
   display: flex;
   align-items: center;
 }
+
 .BuyBtnDesktop {
   //width: 143px !important;
   margin-left: 0px;
@@ -271,7 +277,8 @@
   //border-radius: 0px 5px 5px 0px;
   border-radius: 5px 5px 5px 5px;
 }
-.BuyBtnDesktop2{
+
+.BuyBtnDesktop2 {
   margin-left: 16px;
 
   width: 228px !important;
@@ -299,7 +306,8 @@
   margin-left: 16px;
   border-radius: 5px 5px 5px 5px;
 }
-.disabledBtn2{
+
+.disabledBtn2 {
   width: 228px !important;
   height: 53px !important;
   background-color: rgba(35, 35, 35, 0.5) !important;
@@ -403,7 +411,6 @@
 }
 
 
-
 .backStoryArtistSec {
   display: flex;
   flex-direction: row;
@@ -440,6 +447,10 @@
   flex-direction: row;
   align-items: center;
   width: 45%;
+}
+
+.slider {
+
 }
 
 .originalOwnerTxt {
@@ -808,6 +819,21 @@
   margin-bottom: 16px;
   position: relative;
   border-radius: 3px;
+
+  ul {
+    // solution one
+    //border: solid purple;
+    left: 50% !important;
+    transform: translate(-50%, 0);
+
+
+    // solution two
+    //left: 0 !important;
+    //right: 0 !important;
+    //margin-right: auto;
+    //margin-left: auto;
+    //width: 200px;
+  }
 }
 
 .artworkMainImg {
@@ -1066,13 +1092,15 @@
   flex-direction: column;
   width: 45%;
 }
+
 .rightBottomSec {
   display: flex;
   flex-direction: column;
   //margin-left: 210px;
   width: 40%;
 }
-.firstTooltipSec{
+
+.firstTooltipSec {
   position: relative;
 }
 
@@ -1080,7 +1108,7 @@
   position: relative;
 }
 
-.backStoryBottomSecMob{
+.backStoryBottomSecMob {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -1109,15 +1137,16 @@
   justify-content: center;
 }
 
-.video{
+.video {
   width: 100%;
   height: 90%;
-  iframe{
+
+  iframe {
     width: 100% !important;
   }
 }
 
-.showImageContainer{
+.showImageContainer {
   width: 600px;
 }
 
@@ -1141,7 +1170,8 @@
       //border: 2px solid red;
       margin: 10px;
     }
-    .selectedItem{
+
+    .selectedItem {
       width: 80px;
       height: 60px;
       margin: 10px;
@@ -1149,17 +1179,19 @@
 
       border: 2px solid #FD6E19;
     }
-    .videoItem{
-      height:60px ;
-      width: 80px ;
-      margin:10px;
+
+    .videoItem {
+      height: 60px;
+      width: 80px;
+      margin: 10px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .selectedVideoItem{
-      height:50px ;
+
+    .selectedVideoItem {
+      height: 50px;
       //width: 120px;
       //margin:10px;
       cursor: pointer;
@@ -1169,22 +1201,26 @@
       //padding: 3px;
       //border: 2px solid #FD6E19;
     }
-    .selectedVideoSec{
-      height:60px ;
-      width: 80px ;
-      margin:10px;
+
+    .selectedVideoSec {
+      height: 60px;
+      width: 80px;
+      margin: 10px;
       border: 2px solid #FD6E19;
-      padding:3px;
+      padding: 3px;
     }
-    .playIcon{
-      width:53px;
-      height:53px;
+
+    .playIcon {
+      width: 53px;
+      height: 53px;
     }
   }
-  .showImage{
+
+  .showImage {
     width: 100%;
   }
-  .vector{
+
+  .vector {
     width: 16px;
     height: 16px;
   }

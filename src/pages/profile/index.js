@@ -221,7 +221,7 @@ export default function Profile({token}) {
                                     backgroundPosition: "center",
                                     backgroundImage: `url(${!(userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL) ? userData.avatarUrl : "/icons/profile-icon.svg"})`
                                 }}/>
-                                <div className={classes.profileName} style={{border:'solid red'}}>
+                                <div className={classes.profileName}>
                                     {/*{userData.firstName ? userData.firstName + ' ' + userData.lastName : 'Unknown'}*/}
                                     {userNameTxt()}
                                 </div>
