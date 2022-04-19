@@ -16,7 +16,9 @@ export default function LeftDrawer({state, setState}) {
     const ActiveLink = ({title, href = undefined}) => {
         if (href === router.pathname) {
             return <Link href={href}>
-                <ListItemText className={classes.activeLink} primary={title}/>
+               <div>
+                   <ListItemText className={classes.activeLink} primary={title}/>
+               </div>
             </Link>
         }
         return <Link href={href}>
