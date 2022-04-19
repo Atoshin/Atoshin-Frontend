@@ -39,7 +39,7 @@ export default function Profile({token}) {
         //region change background color for profile page
         const body = document.getElementsByTagName('body')[0];
         const style = body.style
-        style.backgroundColor = '#e5e5e5';
+        style.backgroundColor = '#f3f5f8';
         style.backgroundImage = 'none';
         //endregion
     }, [])
@@ -227,29 +227,31 @@ export default function Profile({token}) {
                                 </div>
                             </div>
                             <div className={classes.detailSecMob}>
-                                <div className={classes.editProfileSecMob}   onClick={() => setOpenModal(true)}>
+                                <div className={classes.editProfileSecMob} onClick={() => setOpenModal(true)}>
                                    <span> Edit Profile</span>
                                 </div>
-                                <div className={classes.walletAddressSec}>
-                                    <div className={classes.walletAddress}>
-                                        {address && address.slice(0, 4) + '...' + address.slice(-4)}
+                                <div className={classes.detailMob}>
+                                    <div className={classes.walletAddressSec}>
+                                        <div className={classes.walletAddress}>
+                                            {address && address.slice(0, 4) + '...' + address.slice(-4)}
+                                        </div>
+                                        <img onClick={() => copyText(address)} className={classes.copyImg}
+                                             src="/icons/copy-icon.svg" alt=""/>
+                                        <a target="_blank" href={`https://etherscan.io/address/${address}`}
+                                           rel="noreferrer">
+                                            <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
+                                        </a>
                                     </div>
-                                    <img onClick={() => copyText(address)} className={classes.copyImg}
-                                         src="/icons/copy-icon.svg" alt=""/>
-                                    <a target="_blank" href={`https://etherscan.io/address/${address}`}
-                                       rel="noreferrer">
-                                        <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
-                                    </a>
-                                </div>
-                                <div className={classes.valueTxt}>
-                                    The value of your account
-                                </div>
-                                <div className={classes.valueSec}>
-                                    <div className={classes.valueNum}>
-                                        {calculateDecimalPrecision(balance, 5)}
+                                    <div className={classes.valueTxt}>
+                                        Wallet Balance
                                     </div>
-                                    <div className={classes.ethTxt}>
-                                        ETH
+                                    <div className={classes.valueSec}>
+                                        <div className={classes.valueNum}>
+                                            {calculateDecimalPrecision(balance, 5)}
+                                        </div>
+                                        <div className={classes.ethTxt}>
+                                            ETH
+                                        </div>
                                     </div>
                                 </div>
                             </div>
