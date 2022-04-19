@@ -7,6 +7,7 @@ import {useEffect} from "react";
 import {useRouter} from "next/router";
 import {useCookies} from "react-cookie";
 import axios from 'axios';
+import {Button} from "@mui/material";
 
 export default function Landing({data}) {
 
@@ -43,6 +44,11 @@ export default function Landing({data}) {
             <img className={classes.topLogo} src="/images/atoshin-logo-typography-white.svg" alt=""/>
             <img className={classes.midLogo} src="/images/atoshin-logo-hexagon-white.svg" alt=""/>
             <div className={classes.midText}>{data}</div>
+            <Link href="/">
+                <Button className={classes.continueBtn}>
+                    Continue
+                </Button>
+            </Link>
             <Link href="/">
                 <img className={classes.vector} src="/icons/vector-down.svg" alt=""/>
             </Link>

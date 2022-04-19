@@ -62,5 +62,15 @@
   cursor: pointer;
 }
 
+.continueBtn{
+  border: solid 1px #FFFFFF !important;
+  color: #FFFFFF !important;
+  position: absolute !important;
+  width: 150px !important;
+  font-size: 18px !important;
+  height: 50px !important;
+  bottom: 80px !important;
+  left: auto !important;
+}
 
 @import "media";
