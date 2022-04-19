@@ -378,6 +378,15 @@
   width: 40%;
 }
 
+.backStoryPart {
+  margin-bottom: 24px;
+}
+
+.netAssetPart {
+  margin-bottom: 24px;
+
+}
+
 .backStoryTitle {
   color: #232323;
   font-size: 16px;
@@ -392,7 +401,9 @@
   line-height: 25px;
   width: 100%;
   height: 100%;
+
 }
+
 
 .backStoryDivider {
   width: 282px;
@@ -1224,6 +1235,11 @@
     width: 16px;
     height: 16px;
   }
+}
+
+.provenanceMainSec p {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
 }
 
 

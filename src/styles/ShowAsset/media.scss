@@ -1,6 +1,6 @@
 @media (max-width: 1120px) {
 
-  .artworkTitle{
+  .artworkTitle {
     font-size: 30px;
   }
   .artistName {
@@ -17,6 +17,15 @@
     text-align: left;
     margin-bottom: 12px;
   }
+
+  .netAssetPart {
+    margin-bottom: 24px;
+  }
+
+  .backStoryPart {
+    margin-bottom: 24px;
+  }
+
   .detailTitle {
     font-family: Roboto;
     font-size: 12px;
@@ -106,8 +115,11 @@
     width: 100% !important;
     height: 0;
     border-bottom: 2px solid #232323;
-    margin-top: 32px;
-    margin-bottom: 32px;
+    //margin-top: 32px;
+    margin-top: 0px;
+    margin-bottom: 18px;
+
+    //margin-bottom: 32px;
     margin-left: 16px;
   }
 
@@ -199,6 +211,8 @@
     letter-spacing: 0em;
     text-align: left;
     margin-bottom: 12px;
+
+    margin-top: 0px;
   }
   .topMainSec {
     flex-direction: column;
@@ -340,7 +354,7 @@
     flex-direction: column;
     justify-content: space-between;
     margin-top: 72px;
-    margin-bottom: 204px;
+    margin-bottom: 63px;
   }
   .ownersIndexSec {
     display: flex;
@@ -399,13 +413,16 @@
     border-radius: 5px !important;
   }
 
-  .soldOut{
+  .soldOut {
     justify-content: center;
   }
 
   .aboutArtworkTxt {
     margin-bottom: 12px;
-    margin-top: 18px;
+    //margin-top: 18px;
+
+    margin-top: 0px;
+
   }
 
   .rankTitle {
@@ -457,18 +474,22 @@
     width: 100%;
     height: 0;
     border-bottom: 2px solid #232323;
-    margin-top: 32px;
-    margin-bottom: 32px;
+    //margin-top: 32px;
+
+    margin-top: 0px;
+    margin-bottom: 18px;
+
+    //margin-bottom: 32px;
     margin-left: 0px;
   }
-  .add{
+  .add {
     width: 40px;
   }
-  .minus{
+  .minus {
     width: 40px;
     margin-left: 10px;
   }
-  }
+}
 
 @media (max-width: 710px) {
   .main {
@@ -493,64 +514,64 @@
     flex-wrap: wrap;
     //border: 2px solid red !important;
   }
-  .mg{
+  .mg {
     width: 100%;
     height: 100%;
     //border: 1px solid red;
     display: flex;
     flex-direction: column !important;
   }
-  .list{
+  .list {
     height: 20%;
     width: 100%;
     //border: 1px solid red;
   }
-  .pic{
+  .pic {
     height: 80%;
     width: 100%;
     //border: 1px solid red;
   }
-  .vectorX{
+  .vectorX {
     width: 20px !important;
     height: 20px !important;
   }
 
-  .vector{
+  .vector {
     width: 7px !important;
     height: 7px !important;
   }
 
-  .videoItem{
+  .videoItem {
     width: 80px !important;
     height: 60px !important;
   }
 
-  .playIcon{
+  .playIcon {
     margin-left: 20px;
     margin-right: 20px;
   }
 
-  .modalTitle{
-    font-size: 14px!important;
+  .modalTitle {
+    font-size: 14px !important;
     padding-bottom: 10px !important;
   }
 
-  .showImageContainer{
-    padding-right:20px;
+  .showImageContainer {
+    padding-right: 20px;
     padding-left: 20px;
   }
 
 }
 
 @media (min-width: 710px) {
-  .items{
+  .items {
     flex-direction: column !important;
     align-items: center;
   }
   .item {
     flex-grow: 0;
     flex-shrink: 0;
-    width: 120px!important;
+    width: 120px !important;
     height: 100px !important;
     //border: 2px solid red;
     margin: 10px;
@@ -561,24 +582,24 @@
     padding: 3px;
     border: 2px solid #FD6E19;
   }
-  .selectedVideoSec{
-    height:100px !important;
+  .selectedVideoSec {
+    height: 100px !important;
     width: 120px !important;
-    margin:10px;
+    margin: 10px;
     border: 2px solid #FD6E19;
-    padding:3px;
+    padding: 3px;
   }
-  .videoItem{
-    height:100px !important;
+  .videoItem {
+    height: 100px !important;
     width: 120px !important;
-    margin:10px;
+    margin: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .selectedVideoItem{
-    height:90px !important;
+  .selectedVideoItem {
+    height: 90px !important;
     //width: 120px;
     //margin:10px;
     cursor: pointer;

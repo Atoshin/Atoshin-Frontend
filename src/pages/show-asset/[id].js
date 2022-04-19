@@ -555,76 +555,76 @@ export default function ShowAsset({asset}) {
                             </div>
                         </div>
                         {matches &&
-                            <div id="main-img-container"
-                                 style={{...mainImgSize, transition: 'all 500ms ease', cursor: 'pointer'}}
-                                 className={styles.artworkMainImgSec}>
-                                <Slide
-                                    easing='ease'
-                                    slidesToShow={1}
-                                    infinite={true}
-                                    autoplay={sliderAutoplay}
-                                    duration={5000}
-                                    indicators
-                                    onChange={(oldIdx, newIdx) => {
-                                        const mediaIndexes = asset.medias.filter(media => media.main !== 1).length - 1
-                                        if (newIdx > mediaIndexes) {
-                                            newIdx = newIdx - (mediaIndexes + 1);
-                                            setCurrentSlide(asset.videoLinks[newIdx])
-                                        } else {
-                                            setCurrentSlide(asset.medias.filter(media => media.main !== 1)[newIdx])
-                                        }
-                                    }}
-                                >
-                                    {asset.medias.filter(media => media.main !== 1).map(media => {
-                                        return (
-                                            <img key={media.id}
-                                                 onClick={() => {
-                                                     setNewInfo({
-                                                         video: false,
-                                                         image: true,
-                                                         id: media.id,
-                                                         open: true
-                                                     })
-                                                     setOpenImages(true)
-                                                 }}
-                                                 style={{...mainImgSize, transition: 'all 500ms ease'}}
-                                                 className={styles.artworkMainImg}
-                                                 src={media.url} alt=""/>
-                                        )
-                                    })}
-                                    {asset.videoLinks.map(video => {
-                                        let span = document.createElement('span');
-                                        span.hidden = true;
-                                        span.innerHTML = video.link;
-                                        const iframe = span.children[0]
-                                        const ytvId = iframe.src.slice(-11)
-                                        span.remove()
-                                        return (
-                                            <Youtube
-                                                key={ytvId}
-                                                // videoId={video.videoId}
-                                                videoId={ytvId}
-                                                containerClassName={styles.artworkMainImgMobile}
-                                                opts={mainImgSize}
-                                                onPlay={() => {
-                                                    setSliderAutoplay(false)
-                                                }}
-                                                onPause={() => {
-                                                    setSliderAutoplay(true)
-                                                }}
-                                            />
-                                        )
-                                    })}
-                                </Slide>
-                            </div>
+                        <div id="main-img-container"
+                             style={{...mainImgSize, transition: 'all 500ms ease', cursor: 'pointer'}}
+                             className={styles.artworkMainImgSec}>
+                            <Slide
+                                easing='ease'
+                                slidesToShow={1}
+                                infinite={true}
+                                autoplay={sliderAutoplay}
+                                duration={5000}
+                                indicators
+                                onChange={(oldIdx, newIdx) => {
+                                    const mediaIndexes = asset.medias.filter(media => media.main !== 1).length - 1
+                                    if (newIdx > mediaIndexes) {
+                                        newIdx = newIdx - (mediaIndexes + 1);
+                                        setCurrentSlide(asset.videoLinks[newIdx])
+                                    } else {
+                                        setCurrentSlide(asset.medias.filter(media => media.main !== 1)[newIdx])
+                                    }
+                                }}
+                            >
+                                {asset.medias.filter(media => media.main !== 1).map(media => {
+                                    return (
+                                        <img key={media.id}
+                                             onClick={() => {
+                                                 setNewInfo({
+                                                     video: false,
+                                                     image: true,
+                                                     id: media.id,
+                                                     open: true
+                                                 })
+                                                 setOpenImages(true)
+                                             }}
+                                             style={{...mainImgSize, transition: 'all 500ms ease'}}
+                                             className={styles.artworkMainImg}
+                                             src={media.url} alt=""/>
+                                    )
+                                })}
+                                {asset.videoLinks.map(video => {
+                                    let span = document.createElement('span');
+                                    span.hidden = true;
+                                    span.innerHTML = video.link;
+                                    const iframe = span.children[0]
+                                    const ytvId = iframe.src.slice(-11)
+                                    span.remove()
+                                    return (
+                                        <Youtube
+                                            key={ytvId}
+                                            // videoId={video.videoId}
+                                            videoId={ytvId}
+                                            containerClassName={styles.artworkMainImgMobile}
+                                            opts={mainImgSize}
+                                            onPlay={() => {
+                                                setSliderAutoplay(false)
+                                            }}
+                                            onPause={() => {
+                                                setSliderAutoplay(true)
+                                            }}
+                                        />
+                                    )
+                                })}
+                            </Slide>
+                        </div>
                         }
                         {matches &&
-                            <div className={styles.saleEndDateMob}>
-                                <div className={styles.saleEndDateMob1}>
-                                    {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
-                                </div>
-                                {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
+                        <div className={styles.saleEndDateMob}>
+                            <div className={styles.saleEndDateMob1}>
+                                {isAuctionOver ? 'Sale ended on ' : 'Sale ends in '}
                             </div>
+                            {monthNames[new Date(asset.endDate).getMonth()]} {new Date(asset.endDate).getDate()}, {new Date(asset.endDate).getFullYear()}
+                        </div>
                         }
                         <div className={styles.saleMainSec}>
                             <div className={styles.saleEndDate}>
@@ -639,8 +639,8 @@ export default function ShowAsset({asset}) {
                             <div className={styles.fractionsLeftTxt}>
                                 Fractions left
                                 {!matches &&
-                                    <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
-                                         className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                                <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
+                                     className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                                 }
                                 <Fade in={tooltip}>
                                     <div className={styles.fractionsTooltip}>
@@ -657,56 +657,56 @@ export default function ShowAsset({asset}) {
                                 style={{fontWeight: 400}}>/{asset.totalFractions}</span>
                             </div>
                             {matches &&
-                                <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
-                                     className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
+                            <img onMouseEnter={() => setTooltip(true)} onMouseOut={() => setTooltip(false)}
+                                 className={styles.infoTooltip} src="/icons/info-tooltip.svg" alt=""/>
                             }
                         </div>
 
 
                         {(matches) &&
-                            <MUISlide in={scrolled} direction={"up"}>
-                                <div
-                                    className={isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.priceMainSec2 : styles.priceMainSec}>
-                                    <div className={styles.priceSec}>
-                                        {/*<div className={styles.priceTxt}>*/}
-                                        {/*    Price*/}
-                                        {/*</div>*/}
-                                        {/*<div className={styles.priceAmount}>*/}
-                                        {/*    {calculateDecimalPrecision(asset.ethPricePerFraction, 5)} ETH*/}
-                                        {/*</div>*/}
-                                        <div className={styles.counter}>
-                                            {
-                                                isAuctionOver || asset.soldFractions === asset.totalFractions ?
-                                                    <div className={styles.soldOut}>
-
-                                                    </div> :
-                                                    <div className={styles.counterPartMob}>
-                                                        <img src="/images/show-asset/minus.svg"
-                                                             className={styles.minus}
-                                                             // style={{marginLeft: 20, width: 56.5, cursor: 'pointer'}}
-                                                             onClick={minus}/>
-                                                        <input value={quantity} onChange={inputHandler}
-                                                               className={styles.quantityInput} type="text"/>
-                                                        <img src="/images/show-asset/plus.svg"
-                                                             className={styles.add}
-                                                             // style={{marginRight: 20, width: 56.5, cursor: 'pointer'}}
-                                                             onClick={add}/>
-                                                    </div>
-                                            }
-                                        </div>
-                                    </div>
-                                    <Button className={styles.BuyBtn}
-                                            disabled={isAuctionOver || asset.soldFractions === asset.totalFractions}
-                                            classes={{disabled: styles.disabledBuyBtn}}>
+                        <MUISlide in={scrolled} direction={"up"}>
+                            <div
+                                className={isAuctionOver || asset.soldFractions === asset.totalFractions ? styles.priceMainSec2 : styles.priceMainSec}>
+                                <div className={styles.priceSec}>
+                                    {/*<div className={styles.priceTxt}>*/}
+                                    {/*    Price*/}
+                                    {/*</div>*/}
+                                    {/*<div className={styles.priceAmount}>*/}
+                                    {/*    {calculateDecimalPrecision(asset.ethPricePerFraction, 5)} ETH*/}
+                                    {/*</div>*/}
+                                    <div className={styles.counter}>
                                         {
                                             isAuctionOver || asset.soldFractions === asset.totalFractions ?
-                                                `Sold Out`
-                                                :
-                                                `Buy ${calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH`
+                                                <div className={styles.soldOut}>
+
+                                                </div> :
+                                                <div className={styles.counterPartMob}>
+                                                    <img src="/images/show-asset/minus.svg"
+                                                         className={styles.minus}
+                                                        // style={{marginLeft: 20, width: 56.5, cursor: 'pointer'}}
+                                                         onClick={minus}/>
+                                                    <input value={quantity} onChange={inputHandler}
+                                                           className={styles.quantityInput} type="text"/>
+                                                    <img src="/images/show-asset/plus.svg"
+                                                         className={styles.add}
+                                                        // style={{marginRight: 20, width: 56.5, cursor: 'pointer'}}
+                                                         onClick={add}/>
+                                                </div>
                                         }
-                                    </Button>
+                                    </div>
                                 </div>
-                            </MUISlide>
+                                <Button className={styles.BuyBtn}
+                                        disabled={isAuctionOver || asset.soldFractions === asset.totalFractions}
+                                        classes={{disabled: styles.disabledBuyBtn}}>
+                                    {
+                                        isAuctionOver || asset.soldFractions === asset.totalFractions ?
+                                            `Sold Out`
+                                            :
+                                            `Buy ${calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH`
+                                    }
+                                </Button>
+                            </div>
+                        </MUISlide>
                         }
                         {
                             (!matches) &&
@@ -757,26 +757,26 @@ export default function ShowAsset({asset}) {
                         }
                     </div>
                     {!matches &&
-                        <div className={styles.topRightMainSec}>
-                            <div className={styles.artworkMainImgSec} onClick={() => {
-                                setOpenImages(true)
-                                setNewInfo({
-                                    ...newInfo,
-                                    video: false,
-                                    image: true,
-                                    open: true,
-                                    showAsset: true,
-                                    id: asset.medias.find(media => media.main === 1).id
-                                })
-                                setClickedImageId(asset.medias.find(media => media.main === 1).id)
-                            }}>
-                                <img className={styles.artworkMainImg}
-                                     src={asset.medias.find(media => media.main === 1).url} alt=""/>
-                            </div>
-                            <div className={styles.artworkOtherImgSec}>
-                                <ArtworkSubImages/>
-                            </div>
+                    <div className={styles.topRightMainSec}>
+                        <div className={styles.artworkMainImgSec} onClick={() => {
+                            setOpenImages(true)
+                            setNewInfo({
+                                ...newInfo,
+                                video: false,
+                                image: true,
+                                open: true,
+                                showAsset: true,
+                                id: asset.medias.find(media => media.main === 1).id
+                            })
+                            setClickedImageId(asset.medias.find(media => media.main === 1).id)
+                        }}>
+                            <img className={styles.artworkMainImg}
+                                 src={asset.medias.find(media => media.main === 1).url} alt=""/>
                         </div>
+                        <div className={styles.artworkOtherImgSec}>
+                            <ArtworkSubImages/>
+                        </div>
+                    </div>
                     }
                 </div>
                 <div className={asset.buyTransactions.length > 0 ? styles.midMainSec1 : styles.midMainSec2}>
@@ -786,19 +786,23 @@ export default function ShowAsset({asset}) {
                     <div className={styles.provenanceMainSec}>
                         <div className={styles.provenanceSec}>
                             <div className={styles.backStorySec}>
-                                <div className={styles.backStoryTitle}>
-                                    Back story
+                                <div className={styles.backStoryPart}>
+                                    <div className={styles.backStoryTitle}>
+                                        Back story
+                                    </div>
+                                    <div className={styles.backStoryTxt} dangerouslySetInnerHTML={{__html: asset.bio}}/>
                                 </div>
-                                <div className={styles.backStoryTxt} dangerouslySetInnerHTML={{__html: asset.bio}}/>
-                                <div className={styles.backStoryTitle}>
-                                    Net Asset Value
-                                </div>
-                                <div className={styles.backStoryTxt}>
-                                    The net asset value of this artwork
-                                    is {calculateDecimalPrecision(asset.ethPricePerFraction * asset.totalFractions, 5)} ETH
-                                    which has been divided
-                                    into {asset.totalFractions} fractions and at the unit price
-                                    of {calculateDecimalPrecision(asset.ethPricePerFraction, 5)}
+                                <div className={styles.netAssetPart}>
+                                    <div className={styles.backStoryTitle}>
+                                        Net Asset Value
+                                    </div>
+                                    <div className={styles.backStoryTxt}>
+                                        The net asset value of this artwork
+                                        is {calculateDecimalPrecision(asset.ethPricePerFraction * asset.totalFractions, 5)} ETH
+                                        which has been divided
+                                        into {asset.totalFractions} fractions and at the unit price
+                                        of {calculateDecimalPrecision(asset.ethPricePerFraction, 5)}
+                                    </div>
                                 </div>
                             </div>
                             <div className={styles.provenanceDivider}>
@@ -906,83 +910,83 @@ export default function ShowAsset({asset}) {
                     </div>
                 </div>
                 {asset.buyTransactions.length > 0 &&
-                    <div className={styles.bottomMainSec}>
-                        <div className={styles.ownersMainSec}>
-                            <div className={styles.ownersTitleSec}>
-                                <div className={styles.ownersTitle}>
-                                    Top Owners
-                                </div>
-                                <div onClick={() => setOpenOwners(true)} className={styles.viewAllOwners}>
-                                    View All
-                                </div>
+                <div className={styles.bottomMainSec}>
+                    <div className={styles.ownersMainSec}>
+                        <div className={styles.ownersTitleSec}>
+                            <div className={styles.ownersTitle}>
+                                Top Owners
                             </div>
-                            <div className={styles.ownersIndexSec}>
-                                <div className={styles.indexTitles}>
-                                    <div className={styles.rankTitle}>
-                                        Rank
-                                    </div>
-                                    <div className={styles.ownerNameTitle}>
-                                        Owners
-                                    </div>
-                                    <div className={styles.quantityTitle}>
-                                        Quantity
-                                    </div>
-                                </div>
-                                {owners.slice(0, 3).map((owner, idx) => {
-                                    return <div key={idx} className={styles.ownersIndexRow}>
-                                        <div className={styles.rankNum}>
-                                            {idx + 1}
-                                        </div>
-                                        <a target="_blank"
-                                           href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'address/' + owner.address}
-                                           className={styles.ownerName} rel="noreferrer">
-                                            {owner.address.slice(0, 4) + '...' + owner.address.slice(-4)}
-                                        </a>
-                                        <div className={styles.quantity}>
-                                            {owner.tokens} Token{owner.tokens > 1 && 's'}
-                                        </div>
-                                    </div>
-                                })}
+                            <div onClick={() => setOpenOwners(true)} className={styles.viewAllOwners}>
+                                View All
                             </div>
                         </div>
-                        <div className={styles.historyMainSec}>
-                            <div className={styles.historyTitleSec}>
-                                <div className={styles.historyTitle}>
-                                    History
+                        <div className={styles.ownersIndexSec}>
+                            <div className={styles.indexTitles}>
+                                <div className={styles.rankTitle}>
+                                    Rank
                                 </div>
-                                <div onClick={() => setOpenHistory(true)} className={styles.viewAllHistory}>
-                                    View All
+                                <div className={styles.ownerNameTitle}>
+                                    Owners
+                                </div>
+                                <div className={styles.quantityTitle}>
+                                    Quantity
                                 </div>
                             </div>
-                            <div className={styles.historyIndexSec}>
-                                <div className={styles.historyIndexTitles}>
-                                    <div className={styles.buyerNameTitle}>
-                                        Buyers
+                            {owners.slice(0, 3).map((owner, idx) => {
+                                return <div key={idx} className={styles.ownersIndexRow}>
+                                    <div className={styles.rankNum}>
+                                        {idx + 1}
                                     </div>
-                                    <div className={styles.dateTitle}>
-                                        Date
+                                    <a target="_blank"
+                                       href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'address/' + owner.address}
+                                       className={styles.ownerName} rel="noreferrer">
+                                        {owner.address.slice(0, 4) + '...' + owner.address.slice(-4)}
+                                    </a>
+                                    <div className={styles.quantity}>
+                                        {owner.tokens} Token{owner.tokens > 1 && 's'}
                                     </div>
                                 </div>
-                                {asset.buyTransactions && asset.buyTransactions.map((txn, idx) => {
-                                    return <div key={idx} className={styles.historyIndexRow}>
-                                        <div className={styles.buyerNameSec}>
-                                            <div className={styles.boughtBy}>
-                                                Bought by
-                                            </div>
-                                            <a target="_blank"
-                                               href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + txn.txnHash}
-                                               className={styles.buyerName} rel="noreferrer">
-                                                {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
-                                            </a>
-                                        </div>
-                                        <div className={styles.dateBought}>
-                                            in {new Date(txn.createdAt).getDate()} {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getFullYear()}
-                                        </div>
-                                    </div>
-                                })}
-                            </div>
+                            })}
                         </div>
                     </div>
+                    <div className={styles.historyMainSec}>
+                        <div className={styles.historyTitleSec}>
+                            <div className={styles.historyTitle}>
+                                History
+                            </div>
+                            <div onClick={() => setOpenHistory(true)} className={styles.viewAllHistory}>
+                                View All
+                            </div>
+                        </div>
+                        <div className={styles.historyIndexSec}>
+                            <div className={styles.historyIndexTitles}>
+                                <div className={styles.buyerNameTitle}>
+                                    Buyers
+                                </div>
+                                <div className={styles.dateTitle}>
+                                    Date
+                                </div>
+                            </div>
+                            {asset.buyTransactions && asset.buyTransactions.map((txn, idx) => {
+                                return <div key={idx} className={styles.historyIndexRow}>
+                                    <div className={styles.buyerNameSec}>
+                                        <div className={styles.boughtBy}>
+                                            Bought by
+                                        </div>
+                                        <a target="_blank"
+                                           href={process.env.NEXT_PUBLIC_ETHERSCAN_DOMAIN + 'tx/' + txn.txnHash}
+                                           className={styles.buyerName} rel="noreferrer">
+                                            {txn.transactable.wallet.walletAddress.slice(0, 4) + '...' + txn.transactable.wallet.walletAddress.slice(-4)}
+                                        </a>
+                                    </div>
+                                    <div className={styles.dateBought}>
+                                        in {new Date(txn.createdAt).getDate()} {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getFullYear()}
+                                    </div>
+                                </div>
+                            })}
+                        </div>
+                    </div>
+                </div>
                 }
             </div>
         </>
