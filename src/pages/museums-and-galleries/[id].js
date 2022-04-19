@@ -479,13 +479,13 @@ export default function ArtCenter({artCenter}) {
                     {/*    <td className={classes.td2}>DD Owner</td>*/}
                     {/*</tr>*/}
                     <tr>
-                        <td className={classes.td1}>Address</td>
+                        <td className={classes.td1}>Location</td>
                         <td className={classes.td2}>{artCenter.location && artCenter.location.address}</td>
                     </tr>
-                    <tr>
-                        <td className={classes.td1}>Location</td>
-                        <td></td>
-                    </tr>
+                    {/*<tr>*/}
+                    {/*    <td className={classes.td1}>Location</td>*/}
+                    {/*    <td></td>*/}
+                    {/*</tr>*/}
                 </div>
                 <div className={classes.map}>
                     <Map artCenter={artCenter}/>
