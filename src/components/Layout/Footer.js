@@ -50,9 +50,17 @@ export default function Footer() {
                 {/*        <img className={classes.logoSec} src="/images/atoshin-logo-white.svg" alt=""/>*/}
                 {/*    </div>*/}
                 {/*}*/}
+
+                {/*<div className={classes.logoSec}>*/}
+                {/*    <img className={classes.logoSec} src="/images/atoshin-logo-white.svg" alt=""/>*/}
+                {/*</div>*/}
+
+
                 <div className={classes.logoSec}>
-                    <img className={classes.logoSec} src="/images/atoshin-logo-white.svg" alt=""/>
+                    <img className={classes.logoSec} src="/images/atoshin-logo-hexagon-white.svg" alt=""/>
                 </div>
+
+
                 <div className={classes.linksSec}>
                     <div className={classes.linkTitle}>
                         Support
