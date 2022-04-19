@@ -116,18 +116,6 @@ export default function ArtCenter({artCenter}) {
             open: true
         })
     }
-    const properties = {
-        autoplay: false,
-        cssClass: classes.slider,
-        easing: "ease",
-        slidesToShow: matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5,
-        // slidesToShow:matches ? 2 : 4,
-        infinite: true,
-        slidesToScroll: 1,
-        transitionDuration: 500,
-        duration: 5000,
-        arrows: matches1 ? false : artCenter.assets.length > 5 ? true : false
-    };
 
     const slider = (ytvId) => {
         return <Slide style={{position: 'relative'}}
@@ -136,15 +124,15 @@ export default function ArtCenter({artCenter}) {
                       easing={"ease"}
                       slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
                       infinite={true}
-                      arrows={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5 ? true : false}
+                      arrows={ matches1 ? false : artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5 ? true : false}
                       slidesToScroll={1}
                       transitionDuration={500}
                       duration={5000}
-                      nextArrow={matches1 ? <div></div> :
-                          <div className={classes.previous}><img alt={"vector-right"}
-                                                                 src={'/icons/vector-right.svg'}/>
-                          </div>}
-                      prevArrow={<div/>}
+                      // nextArrow={matches1 ? <div></div> :
+                      //     <div className={classes.previous}><img alt={"vector-right"}
+                      //                                            src={'/icons/vector-right.svg'}/>
+                      //     </div>}
+                      // prevArrow={<div/>}
                       ref={gallerySliderRef}>
             {
                 artCenter.videoLinks.map((data, idx) => {

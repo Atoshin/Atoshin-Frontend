@@ -36,16 +36,16 @@ export const GallerySlider = ({data, setSelectedImg}) => {
                        slidesToShow={matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5}
             // slidesToShow:matches ? 2 : 4,
                        infinite={true}
-                       arrows={data.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length > 5 ? true : false}
+                       arrows={matches1 ? false : data.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length > 5 ? true : false}
                        slidesToScroll={1}
                        transitionDuration={500}
                        duration={5000}
-                       nextArrow={matches1 ? <div></div> :
-                           <div className={classes.previous}><img
-                               alt={"vector-right"}
-                               src={'/icons/vector-right.svg'}/>
-                           </div>}
-                       prevArrow={<div/>}
+                       // nextArrow={matches1 ? <div></div> :
+                       //     <div className={classes.previous}><img
+                       //         alt={"vector-right"}
+                       //         src={'/icons/vector-right.svg'}/>
+                       //     </div>}
+                       // prevArrow={<div/>}
                        ref={gallerySliderRef}>
             {
                 data.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).map((img, key) => {
