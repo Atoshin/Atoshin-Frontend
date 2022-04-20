@@ -112,27 +112,33 @@ export default function GalleryList({
                                 //      // style={{border: 'solid purple'}}
                                 //      src={image.url} alt=""/>
                             if (image.id === newInfo.id) {
-                                return <img onClick={() => {
-                                    selectImage(image.id)
-                                }} className={classes.selectedItem} key={idx}
-                                            src={image.url} alt=""/>
+                                return <div className={classes.selectedItem} style={{display:'flex'}}>
+                                    <img onClick={() => {
+                                        selectImage(image.id)
+                                    }} className={classes.selectedItemImg} key={idx}
+                                         src={image.url} alt=""/>
+                                </div>
                             } else {
                                 return <img onClick={() => {
                                     selectImage(image.id)
                                 }} className={classes.item} key={idx}
-                                    // style={{border:'solid purple'}}
                                             src={image.url} alt=""/>
                             }
                         // )
                         } else if (newInfo.showAsset) {
                             // return (
-                                // style={{border:'solid'}}
                              if(image.id === newInfo.id){
-                                 return  <img onClick={() => {
-                                     selectImage(image.id)
-                                 }} className={classes.selectedItem} key={idx}
-                                               // style={{border:'solid purple'}}
-                                                 src={image.url} alt=""/>
+                                 return <div className={classes.selectedItem}>
+                                     <img onClick={() => {
+                                         selectImage(image.id)
+                                     }} className={classes.selectedItemImg} key={idx}
+                                          src={image.url} alt=""/>
+                                 </div>
+                                 // return  <img onClick={() => {
+                                 //     selectImage(image.id)
+                                 // }} className={classes.selectedItem} key={idx}
+                                 //               // style={{border:'solid purple'}}
+                                 //                 src={image.url} alt=""/>
                              }
                              else {
                                 return <img onClick={() => {
