@@ -32,6 +32,9 @@
   overflow-y: auto;
   //margin-bottom: 92px;
   //margin: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
 }
 
 .artworkSec::-webkit-scrollbar {
@@ -172,6 +175,7 @@
   //flex-flow: wrap;
   //margin-left: -24px;
   //margin-right: -24px;
+
 }
 
 .historyMainSec::-webkit-scrollbar {
@@ -199,7 +203,9 @@
 .itemsTitle {
   display: flex;
   justify-content: center;
-  width: 140px;
+  //width: 140px;
+
+  width: 180px;
   color: #232323;
   font-size: 16px;
   font-weight: 300;
@@ -207,10 +213,14 @@
 }
 
 .statusTitle {
-  width: 51px;
+  //width: 51px;
+
+  width: 100px;
   color: #232323;
   font-size: 16px;
   font-weight: 300;
+
+  text-align: center;
 }
 
 .dateTitle {
@@ -223,7 +233,10 @@
 }
 
 .transactionTitle {
-  width: 83px;
+  //width: 83px;
+
+  width: 100px;
+  text-align: right;
   color: #232323;
   font-size: 16px;
   font-weight: 300;
@@ -244,7 +257,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 140px;
+  //width: 140px;
+  width: 180px;
+
+  justify-content: center;
   margin-left: 33px;
 }
 
@@ -264,7 +280,10 @@
 .statusSec {
   display: flex;
   justify-content: center;
-  width: 51px;
+  //width: 51px;
+
+  width: 100px;
+  text-align: center;
   color: #232323;
   font-size: 16px;
   font-weight: 400;
@@ -280,11 +299,14 @@
 }
 
 .transactionSec {
-  width: 83px;
+  //width: 83px;
+
+  width: 100px;
   color: #232323;
   font-size: 16px;
   font-weight: 400;
   margin-right: 70px;
+  text-align: right;
 }
 
 .profileBoxArtwork {
@@ -318,6 +340,9 @@
   overflow-y: scroll;
   //flex-flow: wrap;
   flex-flow:column nowrap;
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 .historyRowSec2{
   display: flex;
@@ -327,6 +352,9 @@
   overflow-y: scroll;
   //flex-flow: wrap;
   flex-flow:row wrap;
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .historyRowSec::-webkit-scrollbar {

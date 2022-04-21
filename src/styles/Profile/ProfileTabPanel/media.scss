@@ -12,6 +12,9 @@
     padding-top: 0px;
     height: auto;
     //height: 316px;
+
+    //padding-left: ;
+    //padding-right: ;
   }
 
   .artworkSec {
@@ -54,7 +57,8 @@
   .itemsTitle {
     display: flex;
     justify-content: center;
-    width: 155px;
+    //width: 155px;
+    width: 167px; // 153+ 12px margin
     color: #232323;
     font-size: 10px;
     font-weight: 300;
@@ -183,5 +187,7 @@
   }
   .itemsSec{
     margin-left: 12px;
+    width: 155px;
+    justify-content: flex-start;
   }
 }

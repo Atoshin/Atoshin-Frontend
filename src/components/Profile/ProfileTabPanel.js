@@ -145,7 +145,6 @@ export default function BasicTabs({artworks, history}) {
                                 {/*</div>*/}
 
                                 {history.txns.map((txn, idx) => {
-                                    console.log(Object.keys(history.txns).length)
                                     return <div key={idx} className={classes.indexRowSec}>
                                         <div className={classes.itemsSec}>
                                             <div className={classes.smallImg} style={{
@@ -158,7 +157,7 @@ export default function BasicTabs({artworks, history}) {
                                             </div>
                                         </div>
                                         <div className={classes.statusSec}>
-                                            Sold
+                                            Bought
                                         </div>
                                         <div className={classes.dateSec}>
                                             {monthNames[new Date(txn.createdAt).getMonth()]} {new Date(txn.createdAt).getDate()}, {new Date(txn.createdAt).getFullYear()}
