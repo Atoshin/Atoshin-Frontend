@@ -13,8 +13,8 @@
     height: auto;
     //height: 316px;
 
-    //padding-left: ;
-    //padding-right: ;
+    padding-left:44px; // 54- 10px
+    padding-right:0px ;
   }
 
   .artworkSec {
@@ -22,8 +22,9 @@
     flex-wrap: nowrap;
     flex-direction: row;
     margin-top: 0px;
-    margin-left: 8px;
-    margin-right: 16px;
+    //margin-right: 16px;
+
+    margin-right: 0px;
     //display: inline-grid;
     //grid-template-columns: auto auto auto;
     //grid-column-gap: 31px;
@@ -37,6 +38,9 @@
     overflow-x: auto;
     //margin-bottom: 92px;
     //border: solid red;
+    margin-left: 0px;
+    padding-left: 0px;
+    //margin-left: 8px;
   }
 
   .tabTitles {
