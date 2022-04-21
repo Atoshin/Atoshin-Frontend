@@ -1,5 +1,5 @@
 
-.dialogHeaderSticky{
+.dialogHeaderSticky {
   background-color: white;
   position: sticky;
   top: 0;
@@ -15,26 +15,28 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  //width: 537px;
-  width: 100%;
+  //width: 100%;
+  width: 537px;
+
   padding-right: 24px;
-  padding-left: 28px;
+  //padding-left: 28px;
+  padding-left: 32px;
   border-bottom: 1px solid #E5E5E5;
 }
 
-  .modalTitle {
-    display: flex;
-    align-items: center;
-    //margin-top: 24px;
-    //margin-left: 28px;
-    padding-bottom: 0;
-    height: 88px;
-    padding-left: 0;
-    padding-top: 0;
-    justify-content: space-between;
-    font-weight: 700;
-    //border: 2px solid red;
-  }
+.modalTitle {
+  display: flex;
+  align-items: center;
+  //margin-top: 24px;
+  //margin-left: 28px;
+  padding-bottom: 0;
+  height: 88px;
+  padding-left: 0;
+  padding-top: 0;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 20px;
+}
 
 .vectorX {
   width: 40px;
@@ -64,33 +66,42 @@
   align-items: center;
   justify-content: space-between;
   height: 51px;
-  padding-right: 38px;
-  padding-left: 28px;
+  //padding-right: 38px;
+  padding-left: 32px;
+
+  padding-right: 61px; // 45 px + 16px
   border-bottom: 1px solid #E5E5E5;
 
 }
 
 .rankTitle {
   color: #232323;
-  width: 36px;
+  //width: 36px;
+
+  width: 50px;
   font-weight: 300;
   font-size: 16px;
+  text-align: center;
 }
 
 .ownersTitle {
   //display: flex;
   //justify-content: center;
   color: #232323;
-  width: 95px;
+  //width: 95px;
+
+  width: 100px;
   font-weight: 300;
   font-size: 16px;
 }
 
 .quantityTitle {
   color: #232323;
-  width: 65px;
+  //width: 65px;
   font-weight: 300;
   font-size: 16px;
+
+  width: 100px;
 }
 
 .indexSec {
@@ -101,7 +112,6 @@
   //width: 537px;
   flex-flow: wrap;
   overflow-x: hidden;
-  //border: 2px solid red;
 }
 
 .ownersIndexRow {
@@ -111,27 +121,32 @@
   justify-content: space-between;
   align-items: center;
   height: 85px;
-  padding-left: 40px;
-  padding-right: 28px;
+  //padding-left: 40px;
+  padding-left: 32px;
+
+  //padding-right: 28px;
+
+  padding-right: 45px;
   border-bottom: 1px solid #E5E5E5;
-  //border: 2px solid red;
-  width: 100%;
+  width: 537px;
 }
 
 .rankNum {
   color: #232323;
   //width: 36px;
+
+  text-align: center;
+  width: 50px;
   font-weight: 500;
   font-size: 18px;
-  //border: 2px solid red;
 }
 
 .ownerName {
   color: #193EFF;
   //width: 106px;
   font-weight: 500;
+  width: 100px;
   font-size: 18px;
-  //border: 2px solid red;
 }
 
 .quantity {
@@ -139,7 +154,8 @@
   //width: 73px;
   font-weight: 400;
   font-size: 18px;
-  //border: 2px solid red;
+
+  width: 100px;
 }
 
 
@@ -153,13 +169,33 @@
     text-align: left;
   }
 
+  .dialogHeader {
+    padding-right: 22px;
+    padding-left: 24px;
+
+    width: 100%;
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .ownersIndexRow {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .ownersIndexTitlesSec {
+    padding-right: 41px;
+    padding-left: 24px;
+  }
+
   .rankTitle {
     font-family: Roboto;
     font-size: 12px;
     font-weight: 300;
     line-height: 14px;
     letter-spacing: 0em;
-    text-align: right;
+    text-align: center;
 
   }
   .ownersTitle {
@@ -176,7 +212,7 @@
     font-weight: 300;
     line-height: 14px;
     letter-spacing: 0em;
-    text-align: right;
+    text-align: center;
   }
   .rankNum {
     font-family: Roboto;
@@ -184,7 +220,7 @@
     font-weight: 500;
     line-height: 14px;
     letter-spacing: 0em;
-    text-align: left;
+    text-align: center;
 
   }
   .ownerName {
@@ -193,7 +229,7 @@
     font-weight: 500;
     line-height: 14px;
     letter-spacing: 0em;
-    text-align: left;
+    text-align: center;
 
   }
   .quantity {
@@ -202,13 +238,13 @@
     font-weight: 400;
     line-height: 14px;
     letter-spacing: 0em;
-    text-align: left;
+    text-align: center;
 
   }
   .modalTitle {
     height: 20px;
-    margin-top: 12px;
-    margin-bottom: 12px;
+    //margin-top: 12px;
+    //margin-bottom: 12px;
   }
 
   .vectorX {
@@ -227,6 +263,19 @@
       width: 6px;
     }
   }
+}
+
+
+@media (max-width: 500px) {
+
+  .ownersIndexRow {
+    width: 100%;
+  }
+
+  .dialogHeader {
+    width: 100%;
+  }
+
 }
 
 
