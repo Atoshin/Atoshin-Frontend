@@ -17,6 +17,17 @@
     padding-right:0px ;
   }
 
+  .profileBoxArtwork2{
+    display: flex;
+    justify-content: center;
+    background-color: #FFFFFF;
+    margin-top: 19px;
+    padding-top: 0px;
+    height: auto;
+    padding-left:0px; // 54- 10px
+    padding-right:0px ;
+  }
+
   .artworkSec {
     display: flex;
     flex-wrap: nowrap;
@@ -41,6 +52,19 @@
     margin-left: 0px;
     padding-left: 0px;
     //margin-left: 8px;
+  }
+
+  .artworkSec2 {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin-top: 0px;
+    margin-right: 0px;
+    width: 100%;
+    height: auto !important;
+    overflow-x: auto;
+    margin-left: 0px;
+    padding-left: 0px;
   }
 
   .tabTitles {
@@ -194,4 +218,14 @@
     width: 155px;
     justify-content: flex-start;
   }
+}
+
+@media (max-width: 450px) {
+  .profileBoxArtwork{
+
+  }
+  .artworkSec{
+    //border: solid red 1px;
+  }
+
 }

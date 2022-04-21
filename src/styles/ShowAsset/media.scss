@@ -529,11 +529,13 @@
   .pic {
     height: 80%;
     width: 100%;
-    //border: 1px solid red;
+    margin-bottom: 10px;
   }
   .vectorX {
     width: 20px !important;
     height: 20px !important;
+    margin-top: 10px !important;
+    margin-right: 10px !important;
   }
 
   .vector {
@@ -554,6 +556,12 @@
   .modalTitle {
     font-size: 14px !important;
     padding-bottom: 10px !important;
+    margin-top: 20px !important;
+    margin-left: 20px !important;
+  }
+
+  .imgDialog{
+    height: auto !important;
   }
 
   .showImageContainer {

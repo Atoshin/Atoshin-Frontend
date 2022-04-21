@@ -918,11 +918,12 @@
 
 
   .modalTitle {
-    margin-top: 46px;
-    margin-left: 32px;
+    //margin-top: 46px;
+    //margin-left: 32px;
+    margin-left: 64px;
+    margin-top: 64px;
     padding-left: 0;
     padding-top: 0;
-    //padding-bottom: 24px !important;
     padding-bottom: 24px;
     display: flex;
     justify-content: space-between;
@@ -974,8 +975,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 32px;
-    margin-right: 32px;
+    //margin-top: 32px;
+    margin-top: 24px;
+    margin-right: 24px;
+    //margin-right: 32px;
     cursor: pointer;
 
     img {
