@@ -37,7 +37,23 @@
 
 }
 
+.artworkSec2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 409px !important;
+  overflow-y: auto;
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+}
+
 .artworkSec::-webkit-scrollbar {
+  display: none;
+}
+
+.artworkSec2::-webkit-scrollbar {
   display: none;
 }
 
@@ -320,6 +336,17 @@
   padding-right: 40px;
 }
 
+.profileBoxArtwork2{
+  display: flex;
+  //justify-content: center;
+  background-color: #FFFFFF;
+  margin-top: 24px;
+  padding-top: 40px;
+  height: 450px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
 .profileBoxHistory {
   //display: flex;
   //justify-content: center;
@@ -363,5 +390,6 @@
 .historyRowSec2::-webkit-scrollbar {
   display: none;
 }
+
 
 @import "media";

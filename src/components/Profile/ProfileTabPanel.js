@@ -66,8 +66,8 @@ export default function BasicTabs({artworks, history}) {
                 </Tabs>
             </Box>
             <ProfileTabPanel value={value} index={0}>
-                <div className={classes.profileBoxArtwork}>
-                    <div className={classes.artworkSec}>
+                <div className={Object.keys(artworks).length === 1  ? classes.profileBoxArtwork2 : classes.profileBoxArtwork}>
+                    <div className={Object.keys(artworks).length === 1  ? classes.artworkSec2 :  classes.artworkSec}>
                         {artworks.map((artwork, idx) => {
                             return <ArtWork artwork={artwork} key={idx}/>
                         })}
