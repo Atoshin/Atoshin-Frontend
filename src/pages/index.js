@@ -13,7 +13,7 @@ export default function Home(props) {
                     <meta name="description" content="Atoshin Marketplace"/>
                     {/*<link rel="icon" href="/favicon.ico"/>*/}
                     {/*<link rel="shortcut icon" href="/favicon.ico" />*/}
-                    <link rel="shortcut icon" href="/images/favicon.ico"/>
+                    {/*<link rel="shortcut icon" href="/images/favicon.ico"/>*/}
                 </Head>
                 <main className={styles.main}>
                     <HomePage {...props}/>
