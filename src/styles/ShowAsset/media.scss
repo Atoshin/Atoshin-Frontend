@@ -6,6 +6,9 @@
   .artistName {
     width: 129px;
     height: 30px;
+    font-size: 14px !important;
+    margin-top: 0;
+    margin-left: 8px;
   }
 
   .backStoryTitle {
@@ -232,12 +235,6 @@
     align-items: center;
     flex-direction: row;
     margin-top: 12px;
-  }
-  .artistName {
-    width: 129px;
-    font-size: 14px !important;
-    margin-top: 0px;
-    margin-left: 8px;
   }
   .artistText {
     font-size: 14px;
@@ -491,6 +488,7 @@
   }
 }
 
+
 @media (max-width: 710px) {
   .main {
     width: 100% !important;
@@ -560,7 +558,7 @@
     margin-left: 20px !important;
   }
 
-  .imgDialog{
+  .imgDialog {
     height: auto !important;
   }
 
@@ -590,12 +588,12 @@
     padding: 3px;
     border: 2px solid #FD6E19;
   }
-  .selectedItemImg{
+  .selectedItemImg {
     //width:114px !important;
-    width:110px !important;
-    margin:0px;
+    width: 110px !important;
+    margin: 0px;
     //height:94px !important;
-    height:90px !important;
+    height: 90px !important;
   }
   .selectedVideoSec {
     height: 100px !important;
