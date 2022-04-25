@@ -62,7 +62,7 @@ export default function LeftDrawer({state, setState}) {
                     <ActiveLink title="Artists" href='/artists'/>
                 </ListItem>
                 <ListItem button>
-                    <ActiveLink title="What is Fractionalize NFT ?" href='/about-nft'/>
+                    <ActiveLink title="What is Fractionalized NFT ?" href='/about-nft'/>
                 </ListItem>
             </List>
         </Box>
