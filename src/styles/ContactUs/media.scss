@@ -1,6 +1,6 @@
 @media (max-width: 782px) {
-  .row{
-    justify-content: center!important;
+  .row {
+    justify-content: center !important;
   }
 
   .root {
@@ -27,7 +27,7 @@
     margin-bottom: 24px;
   }
 
-  .contactUs{
+  .contactUs {
     font-family: Roboto;
     font-size: 14px;
     font-style: normal;
@@ -48,7 +48,7 @@
 
   }
 
-  .email{
+  .email {
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -58,17 +58,17 @@
     //border: solid rebeccapurple 1px;
   }
 
-  .emailC{
+  .emailC {
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 16px;
 
   }
-.emailIcon{
-  width: 20px;
-  height: 16px;
-}
+  .emailIcon {
+    width: 20px;
+    height: 16px;
+  }
   .fill {
     font-family: Roboto;
     font-size: 12px;
@@ -94,20 +94,20 @@
 
   }
 
-  .name{
-width: 312px;
-    height: 44px;
+  .name {
+    width: 312px !important;
+    height: 44px !important;
   }
-  .name1{
-    width: 312px;
-    height: 44px;
+  .name1 {
+    width: 312px !important;
+    height: 44px !important;
   }
-  .message{
-    width: 312px;
-    height: 124px
+  .message {
+    width: 312px !important;
+    height: 124px !important;
   }
-  .submit{
-    width: 312px;
-    height: 47px;
+  .submit {
+    width: 312px !important;
+    height: 47px !important;
   }
 }

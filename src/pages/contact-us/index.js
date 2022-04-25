@@ -48,24 +48,20 @@ export default function ContactUs({galleries}) {
             // next_public
             // Api.Contact_us
 
-            let c = JSON.stringify({
-                'data': {
-                    'name': name,
-                    'email': email,
-                    'subject': subject,
-                    'message': message
-                }
-            });
-            // console.log(`${process.env.BASE_URL}/api/art-center/1`)
-            // axios.post(`${process.env.BASE_URL}/api/send-mail`, {
-            // API()
-            // axios.post(`https://atoshinadmin.satratech.ir/api/v1/send-mail`, {'data': {
+            // axios.post('/api/contact-us', {
+            //     'data': {
             //         'name': name,
             //         'email': email,
             //         'subject': subject,
             //         'message': message
-            //     }})
-            axios.post('/api/contact-us',{
+            //     }
+            // }).then(({data}) => {
+            //     console.log(data);
+            // }).catch((error) => {
+            //     console.log(error)
+            // });
+
+            axios.post('/api/contact-us', {
                     'name': name,
                     'email': email,
                     'subject': subject,
@@ -77,7 +73,7 @@ export default function ContactUs({galleries}) {
             });
         }
     }
-
+    // href="/static/favicon.ico"
     return (
         <>
             <Head>
