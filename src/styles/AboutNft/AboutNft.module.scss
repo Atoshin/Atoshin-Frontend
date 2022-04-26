@@ -1,5 +1,6 @@
+@import "./../colors";
 .FAQ {
-  color: #FD6E19;
+  color: $orange;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -109,7 +110,7 @@ margin-bottom: 8px;
   width: 20px;
   height: 20px;
   border-radius: 10px;
-  background-color: #FD6E19;
+  background-color: $orange;
   color: #FFFFFF;
   //padding-bottom: 3px;
   margin-left: -10px;
@@ -130,7 +131,7 @@ margin-bottom: 8px;
   font-style: normal;
   font-weight: 400;
   line-height: 25px;
-  color: #FD6E19;
+  color: $orange;
   margin-bottom: 8px;
   cursor: pointer;
 }

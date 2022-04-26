@@ -1,3 +1,4 @@
+@import "./../colors";
 .main {
   display: flex;
   flex-direction: column;
@@ -78,7 +79,7 @@
 }
 .newsMainSec:hover {
   cursor: pointer;
-  border: 1px solid #FD6E19;
+  border: 1px solid $orange;
 }
 
 .newsSec {

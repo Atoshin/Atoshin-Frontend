@@ -1,3 +1,4 @@
+@import "./../colors";
 .showAssetMain {
   display: flex;
   flex-direction: column;
@@ -252,7 +253,7 @@
 }
 
 .soldOut {
-  color: #FD6108;
+  color: $orange;
   //color: #FD6E19;
   font-size: 18px;
   font-weight: 500;
@@ -1195,7 +1196,7 @@
       justify-content:center;
       align-items:center;
 
-      border: 2px solid #FD6E19;
+      border: 2px solid $orange;
     }
 
     .selectedItemImg{
@@ -1232,7 +1233,7 @@
       height: 60px;
       width: 80px;
       margin: 10px;
-      border: 2px solid #FD6E19;
+      border: 2px solid $orange;
       padding: 3px;
     }
 

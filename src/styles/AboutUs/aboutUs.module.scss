@@ -1,4 +1,4 @@
-
+@import "./../colors";
 .root {
   font-family: Roboto;
   margin-top: 96px;
@@ -29,7 +29,7 @@
   margin-right: 95px;
   border: none;
   height: 1px;
-  background-color: #FD6E19;
+  background-color: $orange;
   margin-bottom: 16px;
 }
 

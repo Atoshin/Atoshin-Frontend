@@ -1,3 +1,4 @@
+@import "./../colors";
 .root {
   display: flex;
   //align-items: center;
@@ -14,7 +15,7 @@
   line-height: 19px;
   letter-spacing: 0em;
   text-align: left;
-  color: #FD6E19;
+  color: $orange;
 
 }
 
@@ -217,7 +218,9 @@
   //left: 795px;
   //top: 546px;
   border-radius: 3px !important;
-  background-color: #FD6E19 !important;
+
+  background-color: $orange !important;
+
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -235,7 +238,7 @@
 
   &:hover{
     box-shadow: 0px 3px 4px 0px #0000001F;
-    background-color: #FD6E19;
+    background-color: $orange;
     color: white;
     border-radius: 3px;
 

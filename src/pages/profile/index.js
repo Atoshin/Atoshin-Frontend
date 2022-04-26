@@ -169,7 +169,7 @@ export default function Profile({token}) {
             <Head>
                 <title>Profile</title>
             </Head>
-            <EditProfileModal setUserData={setUserData} open={openModal} setOpen={setOpenModal}/>
+            <EditProfileModal setUserData={setUserData} userData={userData} open={openModal} setOpen={setOpenModal}/>
             <div className={classes.profileMain}>
                 <div className={classes.leftSec}>
                         <>

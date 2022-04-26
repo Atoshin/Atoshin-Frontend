@@ -1,3 +1,4 @@
+@import "./../colors";
 @media (max-width: 600px) {
   .modalTitle {
     margin-top: 32px;
@@ -62,7 +63,7 @@
     font-style: normal;
     font-weight: 400;
     text-align: left;
-    color: #FD6E19;
+    color: $orange;
     margin-top: 8px;
   }
 }
