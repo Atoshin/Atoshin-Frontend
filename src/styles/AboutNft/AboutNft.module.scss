@@ -158,8 +158,22 @@ margin-bottom: 8px;
     letter-spacing: 0em;
   }
 
+  .image{
+    width: 250px;
+    //width: auto;
+    height: 100px;
+  }
+
   .faqTitleSec {
     margin-top: 53px;
     margin-bottom: 24px;
+  }
+}
+
+
+@media (max-width: 350px) {
+  .image{
+    width: auto;
+    height: 100px;
   }
 }

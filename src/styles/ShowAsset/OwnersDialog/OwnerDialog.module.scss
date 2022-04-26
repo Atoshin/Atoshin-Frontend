@@ -38,6 +38,10 @@
   font-size: 20px;
 }
 
+.dialog {
+
+}
+
 .vectorX {
   width: 40px;
   height: 40px;
@@ -276,6 +280,28 @@
     width: 100%;
   }
 
+  .ownersIndexRow {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .ownersIndexTitlesSec {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .dialog {
+    width: 290px;
+  }
 }
+
+@media (max-width: 355px) {
+
+  .dialog {
+    width: auto;
+    border: solid red;
+  }
+}
+
 
 
