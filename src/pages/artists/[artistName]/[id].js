@@ -130,8 +130,10 @@ export default function Artist({artist}) {
                 <div className={classes.midMainSec}>
                     <ArtistTabPanel artist={artist}/>
                 </div>
-
-                <RelatedSlider data={artist.assets}/>
+                {
+                    artist.assets &&
+                    <RelatedSlider data={artist.assets}/>
+                }
 
             </div>
         </>
