@@ -522,7 +522,7 @@ export default function PrivacyPolicy() {
                 information that we share with our affiliates and third parties for marketing purposes, as well as
                 contact information for such affiliates and third parties, under California Civil Code sections
                 1798.83-1798.84. If you are a resident of California and would like a copy of this notice, please send a
-                written request to <span className={classes.link}>info@atoshin.art</span><br/>
+                written request to <span className={classes.link}><a className={classes.link} href="mailto:info@atoshin.art">info@atoshin.art</a></span><br/>
                 We will make every effort to answer to your request as soon as possible.
             </div>
             <div className={classes.paragraphTitle}>9. How Do We Keep Your Information Safe?</div>
