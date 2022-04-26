@@ -797,11 +797,17 @@ export default function ShowAsset({asset}) {
                                         Net Asset Value
                                     </div>
                                     <div className={styles.backStoryTxt}>
-                                        The net asset value of this artwork
-                                        is {calculateDecimalPrecision(asset.ethPricePerFraction * asset.totalFractions, 5)} ETH
-                                        which has been divided
-                                        into {asset.totalFractions} fractions and at the unit price
-                                        of {calculateDecimalPrecision(asset.ethPricePerFraction, 5)}
+                                        This artwork has been fractionalized {asset.totalFractions} tokens
+                                        and {(asset.totalFractions * asset.ownershipPercentage) / 100} numbers belong to
+                                        gallery {asset.gallery.name} , so {asset.soldFractions} fractions was traded in first part .Value
+                                        of this artwork is {calculateDecimalPrecision(asset.ethPricePerFraction * asset.totalFractions, 5)} ETH and
+                                        the price per token is {calculateDecimalPrecision(asset.ethPricePerFraction, 5)} ETH.
+
+                                        {/*The net asset value of this artwork*/}
+                                        {/*is {calculateDecimalPrecision(asset.ethPricePerFraction * asset.totalFractions, 5)} ETH*/}
+                                        {/*which has been divided*/}
+                                        {/*into {asset.totalFractions} fractions and at the unit price*/}
+                                        {/*of {calculateDecimalPrecision(asset.ethPricePerFraction, 5)}*/}
                                     </div>
                                 </div>
                             </div>
