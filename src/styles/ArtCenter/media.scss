@@ -113,6 +113,12 @@
     padding-right: 0px;
     margin-top: 27px;
   }
+
+  .detailsSec2 {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 27px;
+  }
   .paragraphSec {
     width: 100%;
     //margin-top: 48px;
@@ -193,6 +199,9 @@
 @media (max-width: 900px) {
   .relatedDescription{
     margin-top: 8px;
+  }
+  .detailsSec2{
+    margin-bottom: 32px;
   }
   .date1{
     margin-top: 9px;

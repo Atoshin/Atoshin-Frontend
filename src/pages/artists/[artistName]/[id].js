@@ -2,7 +2,7 @@ import classes from "../../../styles/ArtistProfile/ArtistProfile.module.scss";
 import style from '../../../styles/ArtCenter/artCenter.module.scss'
 import {Button, Fade, useMediaQuery} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import * as React from "react";
 import {Slide} from "react-slideshow-image";
 import 'react-slideshow-image/dist/styles.css';
@@ -17,7 +17,7 @@ import Head from "next/head";
 import RelatedSlider from "../../../components/ArtistProfile/RelatedSlider";
 
 
-export default function Artist({artist}) {
+export default function Artist({artist, relatedAssets}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -131,8 +131,8 @@ export default function Artist({artist}) {
                     <ArtistTabPanel artist={artist}/>
                 </div>
                 {
-                    artist.assets &&
-                    <RelatedSlider data={artist.assets}/>
+                    relatedAssets &&
+                    <RelatedSlider data={relatedAssets}/>
                 }
 
             </div>
@@ -173,13 +173,15 @@ export async function getServerSideProps({query}) {
 
     const {
         data: {
-            artist
+            artist,
+            relatedAssets
         }
     } = await axios.get(`${process.env.BASE_URL}/api/artist-profile/${id}`)
 
     return {
         props: {
-            artist
+            artist,
+            relatedAssets
         }
     }
 }

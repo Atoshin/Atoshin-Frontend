@@ -19,7 +19,7 @@ import Head from "next/head";
 import RelatedSlider from "../../components/ArtistProfile/RelatedSlider";
 import {GallerySlider} from "../../components/ArtCenters/GallerySlider";
 
-export default function ArtCenter({artCenter}) {
+export default function ArtCenter({artCenter, relatedAssets}) {
     const [rendered, setRendered] = useState(false)
     const [openImages, setOpenImages] = useState(false)
     const [clickedImageId, setClickedImageId] = useState('');
@@ -256,7 +256,6 @@ export default function ArtCenter({artCenter}) {
                 span.remove()
                 return (
                     showData(ytvId)
-
                     // <Slide style={{position: 'relative'}}
                     //        autoplay={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5 ? true : false}
                     //        cssClass={classes.slider}
@@ -464,7 +463,7 @@ export default function ArtCenter({artCenter}) {
                             : ''
                 }
             </div>
-            <div className={classes.detailsSec}>
+            <div className={relatedAssets ? classes.detailsSec : classes.detailsSec2}>
                 <div className={classes.detailsHeader}>
                     Details
                 </div>
@@ -488,8 +487,8 @@ export default function ArtCenter({artCenter}) {
             </div>
 
             {
-                artCenter.assets &&
-                <RelatedSlider data={artCenter.assets}/>
+                relatedAssets &&
+                <RelatedSlider data={relatedAssets}/>
             }
         </>
     )
@@ -522,18 +521,21 @@ export async function getStaticProps({params: {id}}) {
 }
 */
 
+
 export async function getServerSideProps({query}) {
     const artCenterId = query.id
 
     const {
         data: {
-            artCenter
+            artCenter,
+            relatedAssets
         }
     } = await axios.get(`${process.env.BASE_URL}/api/art-center/${artCenterId}`)
 
     return {
         props: {
-            artCenter
+            artCenter,
+            relatedAssets
         }
     }
 
