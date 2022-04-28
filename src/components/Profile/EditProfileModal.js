@@ -26,35 +26,27 @@ const style = {
 };
 
 export default function EditProfileModal(props) {
-    const {open, setOpen, setUserData} = props;
+    const {open, setOpen, setUserData, userData} = props;
     const [inputs, setInputs] = useState({});
     const [loadingSubmit, setLoadingSubmit] = useState(false);
     const [error, setError] = useState({});
     const [chooseImg, setChooseImg] = useState(false);
     const address = useAppSelector(selectAddress);
     const ref = useRef(null);
+    let path;
 
     useEffect(() => {
-        if (open === false) {
-            setChooseImg(false)
-        }
+        // console.log(userData)
         if (open) {
             axios.get(`/api/profile/${address}`).then(r => {
+                // console.log(r.data.user)
                 setInputs({
-                    avatar: !(r.data.user.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL) ? r.data.user.avatarUrl : "/icons/profile-icon.svg",
+                    // avatar: !(r.data.user.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL) ? r.data.user.avatarUrl : "/icons/profile-icon.svg",
+                    avatar:'',
                     email: r.data.user.email ? r.data.user.email : '',
                     firstName: r.data.user.firstName ? r.data.user.firstName : '',
                     lastName: r.data.user.lastName ? r.data.user.lastName : ''
                 })
-                // avatar: File
-                // {name: '500ٍ.PNG',
-                // lastModified: 1650274287159,
-                // lastModifiedDate: Mon Apr 18 2022 14:01:27 GMT+0430 (Iran Daylight Time),
-                // webkitRelativePath: '',
-                // size: 29922, …
-                // }
-                // console.log(r.data.user.avatarUrl)
-                // console.log(process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL)
             })
         }
     }, [open])
@@ -67,53 +59,48 @@ export default function EditProfileModal(props) {
         e.preventDefault();
         ref.current.click()
     }
+    useEffect( () => {
+        if(chooseImg === true){
+            (async () => {
+                const formData = new FormData();
+                formData.append('File', inputs.avatar)
+                if (inputs.avatar) {
+                    // const response = await axios.post(`https://atoshinadmin.satratech.ir/api/v1/file`, formData);
+                    const response = await axios.post(`https://atoshinadmin.satratech.ir/api/v1/file/App\Models\User/${userData.id}`, formData);
+                    path = response.data.path;
+                    console.log(path);
+                    console.log(formData);
+                    console.log(inputs.avatar);
+                }
+            })();
+        }
+    }, [chooseImg])
+
+    console.log('choose image : ' + chooseImg)
 
     const submitForm = async (e) => {
         setLoadingSubmit(true);
-        if (chooseImg) {
-            const formData = new FormData();
-            formData.append('File', inputs.avatar)
-            let path;
-            if (inputs.avatar) {
-                const response = await axios.post('https://atoshinadmin.satratech.ir/api/v1/file', formData)
-                path = response.data.path;
-            }
-            console.log({...inputs, avatar: path})
-            axios.patch(`/api/profile/${address}`, {...inputs, avatar: path}).then(r => {
-                axios.get(`/api/profile/${address}`).then(r => {
-                    setOpen(false)
-                    setLoadingSubmit(false)
-                    setUserData(r.data.user)
-                    console.log(r.data.user)
-                })
-            }).catch(({response}) => {
-                    if (response) {
-                        if (response.status === 422) setError(response.data.errors)
-                    }
+        // const formData = new FormData();
+        // formData.append('File', inputs.avatar)
+        // let path;
+        // if (inputs.avatar) {
+        //     const response = await axios.post(`https://atoshinadmin.satratech.ir/api/v1/file/App\\Models\\User/${userData.id}`, formData)
+        //     path = response.data.path;
+        // }
+        // console.log({...inputs})
+        axios.patch(`/api/profile/${address}`, {...inputs, avatar: path}).then(r => {
+            axios.get(`/api/profile/${address}`).then(r => {
+                console.log(r.data);
+                setOpen(false)
+                setLoadingSubmit(false)
+                setUserData(r.data.user)
+            })
+        }).catch(({response}) => {
+                if (response) {
+                    if (response.status === 422) setError(response.data.errors)
                 }
-            );
-        } else {
-            let data = {
-                email: inputs.email,
-                firstName: inputs.firstName,
-                lastName: inputs.lastName
             }
-            console.log(data)
-
-            axios.patch(`/api/profile/${address}`, data).then(r => {
-                axios.get(`/api/profile/${address}`).then(r => {
-                    setOpen(false)
-                    setLoadingSubmit(false)
-                    setUserData(r.data.user)
-                    console.log(r.data.user)
-                })
-            }).catch(({response}) => {
-                    if (response) {
-                        if (response.status === 422) setError(response.data.errors)
-                    }
-                }
-            );
-        }
+        );
         setLoadingSubmit(false);
     }
 
@@ -144,11 +131,13 @@ export default function EditProfileModal(props) {
                                 <div className={classes.editProfileImg} style={{
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
-                                    backgroundImage: `url(${chooseImg === true ?
-                                        inputs.avatar ? (URL.createObjectURL(inputs.avatar)) : "/icons/profile-icon.svg"
-                                        : inputs.avatar})`,
+                                    // backgroundImage: `url(${chooseImg === true ?
+                                    //     inputs.avatar ? (URL.createObjectURL(inputs.avatar)) : "/icons/profile-icon.svg"
+                                    //     : inputs.avatar})`,
                                     // backgroundImage: `url(${inputs.avatar ? (URL.createObjectURL(inputs.avatar)) : "/icons/profile-icon.svg"})` previous one
-
+                                    backgroundImage: `url(${inputs.avatar && chooseImg ? (URL.createObjectURL(inputs.avatar))
+                                        : !(userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL) ?  userData.avatarUrl : "/icons/profile-icon.svg"
+                                    })`
                                     // backgroundImage: `url(${inputs.avatar ? inputs.avatar : "/icons/profile-icon.svg"})`
                                 }}/>
                                 <div onClick={chooseImage} className={classes.changePhoto}>
