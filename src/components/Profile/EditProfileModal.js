@@ -19,7 +19,6 @@ const style = {
     width: 822,
     height: 477,
     bgcolor: 'background.paper',
-    // border: '2px solid #000',
     borderRadius: '5px',
     boxShadow: 24,
     p: 4,
@@ -33,16 +32,13 @@ export default function EditProfileModal(props) {
     const [chooseImg, setChooseImg] = useState(false);
     const address = useAppSelector(selectAddress);
     const ref = useRef(null);
-    let path;
+    const [path, setPath] = useState('');
 
     useEffect(() => {
-        // console.log(userData)
         if (open) {
             axios.get(`/api/profile/${address}`).then(r => {
-                // console.log(r.data.user)
                 setInputs({
-                    // avatar: !(r.data.user.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL) ? r.data.user.avatarUrl : "/icons/profile-icon.svg",
-                    avatar:'',
+                    avatar: '',
                     email: r.data.user.email ? r.data.user.email : '',
                     firstName: r.data.user.firstName ? r.data.user.firstName : '',
                     lastName: r.data.user.lastName ? r.data.user.lastName : ''
@@ -59,38 +55,11 @@ export default function EditProfileModal(props) {
         e.preventDefault();
         ref.current.click()
     }
-    useEffect( () => {
-        if(chooseImg === true){
-            (async () => {
-                const formData = new FormData();
-                formData.append('File', inputs.avatar)
-                if (inputs.avatar) {
-                    // const response = await axios.post(`https://atoshinadmin.satratech.ir/api/v1/file`, formData);
-                    const response = await axios.post(`https://atoshinadmin.satratech.ir/api/v1/file/App\Models\User/${userData.id}`, formData);
-                    path = response.data.path;
-                    console.log(path);
-                    console.log(formData);
-                    console.log(inputs.avatar);
-                }
-            })();
-        }
-    }, [chooseImg])
-
-    console.log('choose image : ' + chooseImg)
 
     const submitForm = async (e) => {
         setLoadingSubmit(true);
-        // const formData = new FormData();
-        // formData.append('File', inputs.avatar)
-        // let path;
-        // if (inputs.avatar) {
-        //     const response = await axios.post(`https://atoshinadmin.satratech.ir/api/v1/file/App\\Models\\User/${userData.id}`, formData)
-        //     path = response.data.path;
-        // }
-        // console.log({...inputs})
-        axios.patch(`/api/profile/${address}`, {...inputs, avatar: path}).then(r => {
+        axios.patch(`/api/profile/${address}`, {...inputs, avatar: path && path}).then(r => {
             axios.get(`/api/profile/${address}`).then(r => {
-                console.log(r.data);
                 setOpen(false)
                 setLoadingSubmit(false)
                 setUserData(r.data.user)
@@ -103,6 +72,15 @@ export default function EditProfileModal(props) {
         );
         setLoadingSubmit(false);
     }
+
+    const fileChange = async (e) => {
+        const avatar = e.target.files[0]
+        const formData = new FormData();
+        formData.append('file', avatar)
+        const response = await axios.post(`https://atoshinadmin.satratech.ir/api/v1/file/App\Models\User/${userData.id}`, formData);
+        setPath(response.data.path);
+    }
+
 
     return (
         <div>
@@ -135,8 +113,8 @@ export default function EditProfileModal(props) {
                                     //     inputs.avatar ? (URL.createObjectURL(inputs.avatar)) : "/icons/profile-icon.svg"
                                     //     : inputs.avatar})`,
                                     // backgroundImage: `url(${inputs.avatar ? (URL.createObjectURL(inputs.avatar)) : "/icons/profile-icon.svg"})` previous one
-                                    backgroundImage: `url(${inputs.avatar && chooseImg ? (URL.createObjectURL(inputs.avatar))
-                                        : !(userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL) ?  userData.avatarUrl : "/icons/profile-icon.svg"
+                                    backgroundImage: `url(${path ? (URL.createObjectURL(path))
+                                        : !(userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL) ? userData.avatarUrl : "/icons/profile-icon.svg"
                                     })`
                                     // backgroundImage: `url(${inputs.avatar ? inputs.avatar : "/icons/profile-icon.svg"})`
                                 }}/>
@@ -144,10 +122,7 @@ export default function EditProfileModal(props) {
                                     Change Photo
                                 </div>
                                 <input type="file" hidden ref={ref}
-                                       onChange={e => {
-                                           setInputs({...inputs, avatar: e.target.files[0]})
-                                           setChooseImg(true)
-                                       }}/>
+                                       onChange={fileChange}/>
                             </div>
                             <div className={classes.rightSec}>
                                 <div className={classes.inputTitle}>
