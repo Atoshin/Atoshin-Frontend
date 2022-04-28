@@ -29,16 +29,13 @@ export default function EditProfileModal(props) {
     const [inputs, setInputs] = useState({});
     const [loadingSubmit, setLoadingSubmit] = useState(false);
     const [error, setError] = useState({});
-    const [chooseImg, setChooseImg] = useState(false);
     const address = useAppSelector(selectAddress);
     const ref = useRef(null);
-    const [path, setPath] = useState('');
 
     useEffect(() => {
         if (open) {
             axios.get(`/api/profile/${address}`).then(r => {
                 setInputs({
-                    avatar: '',
                     email: r.data.user.email ? r.data.user.email : '',
                     firstName: r.data.user.firstName ? r.data.user.firstName : '',
                     lastName: r.data.user.lastName ? r.data.user.lastName : ''
@@ -58,7 +55,7 @@ export default function EditProfileModal(props) {
 
     const submitForm = async (e) => {
         setLoadingSubmit(true);
-        axios.patch(`/api/profile/${address}`, {...inputs, avatar: path && path}).then(r => {
+        axios.patch(`/api/profile/${address}`, {...inputs}).then(r => {
             axios.get(`/api/profile/${address}`).then(r => {
                 setOpen(false)
                 setLoadingSubmit(false)
@@ -78,7 +75,7 @@ export default function EditProfileModal(props) {
         const formData = new FormData();
         formData.append('file', avatar)
         const response = await axios.post(`https://atoshinadmin.satratech.ir/api/v1/file/App\Models\User/${userData.id}`, formData);
-        setPath(response.data.path);
+        setUserData({...userData, media: response.data.media})
     }
 
 
@@ -109,14 +106,9 @@ export default function EditProfileModal(props) {
                                 <div className={classes.editProfileImg} style={{
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
-                                    // backgroundImage: `url(${chooseImg === true ?
-                                    //     inputs.avatar ? (URL.createObjectURL(inputs.avatar)) : "/icons/profile-icon.svg"
-                                    //     : inputs.avatar})`,
-                                    // backgroundImage: `url(${inputs.avatar ? (URL.createObjectURL(inputs.avatar)) : "/icons/profile-icon.svg"})` previous one
-                                    backgroundImage: `url(${path ? (URL.createObjectURL(path))
-                                        : !(userData.avatarUrl === process.env.NEXT_PUBLIC_BACKEND_IMAGE_URL) ? userData.avatarUrl : "/icons/profile-icon.svg"
+                                    backgroundImage: `url(${userData.media ? userData.media.url
+                                        : "/icons/profile-icon.svg"
                                     })`
-                                    // backgroundImage: `url(${inputs.avatar ? inputs.avatar : "/icons/profile-icon.svg"})`
                                 }}/>
                                 <div onClick={chooseImage} className={classes.changePhoto}>
                                     Change Photo
