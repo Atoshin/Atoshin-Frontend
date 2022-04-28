@@ -74,7 +74,7 @@ export default function EditProfileModal(props) {
         const avatar = e.target.files[0]
         const formData = new FormData();
         formData.append('file', avatar)
-        const response = await axios.post(`https://atoshinadmin.satratech.ir/api/v1/file/App\Models\User/${userData.id}`, formData);
+        const response = await axios.post(`https://atoshinadmin.satratech.ir/api/v1/file/App%5CModels%5CUser/${userData.id}`, formData);
         setUserData({...userData, media: response.data.media})
     }
 
