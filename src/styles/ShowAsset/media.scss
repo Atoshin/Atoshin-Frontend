@@ -5,11 +5,17 @@
     font-size: 30px;
   }
   .artistName {
-    width: 129px;
+    //width: 129px;
     height: 30px;
-    font-size: 14px !important;
+    //font-size: 14px !important;
+    font-size: 13px !important;
     margin-top: 0;
     margin-left: 8px;
+    padding-right: 5px;
+    padding-left: 5px;
+    width: auto;
+    max-width: 250px;
+    word-wrap: break-word;
   }
 
   .backStoryTitle {
