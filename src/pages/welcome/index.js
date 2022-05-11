@@ -33,7 +33,7 @@ export default function Landing({data}) {
             <Head>
                 <title>Welcome to Atoshin</title>
             </Head>
-            <div className={classes.vidContainer}>
+            <div className={classes.vidContainer} style={{border:'solid purple'}}>
                 <video className={classes.bgVideo} width="1000" autoPlay playsInline preload="auto" muted loop id="myVideo">
                     {/*<source src="/public/videos/landing-intro.webm"*/}
                     {/*        type="video/webm"/>*/}
