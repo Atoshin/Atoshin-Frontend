@@ -62,10 +62,12 @@ export default function ContactUs({galleries}) {
             // });
 
             axios.post('/api/contact-us', {
+                data: {
                     'name': name,
                     'email': email,
                     'subject': subject,
                     'message': message
+                }
             }).then(({data}) => {
                 console.log(data);
             }).catch((error) => {
