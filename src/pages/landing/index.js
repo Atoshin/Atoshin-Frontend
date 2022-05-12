@@ -21,11 +21,11 @@ export default function Landing() {
                 >
                     {
                         !isNftHover ?
-                                <div className={classes.nftBg}
-                                     style={{
-                                         backgroundImage: `url(/images/landing/nft.png)`
-                                     }}>
-                                </div>
+                            <div className={isCrowdfundingHover ? classes.nftBgSmall : classes.nftBg}
+                                 style={{
+                                     backgroundImage: `url(/images/landing/nft.png)`
+                                 }}>
+                            </div>
                             : ''
                     }
                     <div className={classes.iconSec}>

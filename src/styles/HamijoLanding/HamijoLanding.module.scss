@@ -1,3 +1,4 @@
+
 .mainSec {
   display: flex;
   width: 100%;
@@ -13,6 +14,7 @@
   color: #FFFFFF;
   font-family: Eksell Display;
 }
+
 .nftSec {
   width: 50%;
   min-height: 100%;
@@ -20,10 +22,12 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  transition: all 0.5s;
+
+  transition: all 0.80s;
   position: relative;
   //filter: grayscale(100%) brightness(2.50);
 }
+
 .nftSecSmall {
   width: 30%;
   min-height: 100%;
@@ -31,33 +35,43 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  transition: all 0.5s;
+  transition: all 0.80s;
   position: relative;
   //filter: grayscale(100%) brightness(2.50);
 }
+
 .nftSecHovered {
-  width: 60%;
+  width: 55%;
   min-height: 100%;
   height: auto;
-  background-position: center;
+  //background-position: 50% 50%;
+  //background-repeat: no-repeat;
+  //background-size: 100%;
+
+
+  background-position: 50% 50%;
   background-repeat: no-repeat;
-  background-size: cover;
-  transition: all 0.5s;
+  background-size: 100% 100%;
+
+  transition: all 0.80s;
   position: relative;
 }
+
 .nftText {
-  //border: solid black;
   display: flex;
   flex-direction: column;
   //margin-top: 249px;
   top: 50%;
-
-  left: 50%;
-  transform: translate(-50%, 0);
-
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 450px;
+  //transform: translate(-50%, 0);
   position: absolute;
-  z-index:120;
+  z-index: 120;
 }
+
 .title {
   font-size: 70px;
   font-weight: 400;
@@ -66,6 +80,7 @@
   text-align: center;
   margin-bottom: 48px;
 }
+
 .des {
   font-size: 45px;
   font-weight: 500;
@@ -73,24 +88,41 @@
   letter-spacing: 0em;
   text-align: center;
 }
+
 .vectorSec {
   display: flex;
   justify-content: center;
 }
+
 .vector {
   height: 28.64px;
   width: 14.41px;
   position: absolute;
   bottom: 0;
+  cursor: pointer;
 }
+
 .nftBg {
   z-index: 110;
   height: 100%;
   width: 100%;
-  background-position: center;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+  border: solid red;
+  filter: grayscale(100%) brightness(2.50);
+}
+
+.nftBgSmall {
+  z-index: 110;
+  height: 100%;
+  width: 100%;
+  background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  border: solid red;
   filter: grayscale(100%) brightness(2.50);
 }
 .iconSec {
@@ -104,10 +136,12 @@
   transform: translate(-50%, 0);
   z-index: 120;
 }
+
 .logo {
   width: 99px;
   height: 79px;
 }
+
 .crowdfundingSec {
   width: 50%;
   min-height: 100%;
@@ -117,25 +151,28 @@
   background-repeat: no-repeat;
   background-size: cover;
   //position: relative;
-  transition: all 0.5s;
+  transition: all 0.80s;
   //filter: saturate(100%) brightness(0.50) grayscale(80%);
   filter: grayscale(100%) brightness(0.85);
 }
+
 .crowdfundingSecSmall {
   //background-image: url("/images/landing/crowdfunding.png");
   //filter: contrast(50%);
   // filter: hue-rotate(85deg) saturate(100%) brightness(0.85);
-  width: 40%;
+  //width: 40%;
+  width: 45%;
   min-height: 100%;
   height: auto;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   //position: relative;
-  transition: all 0.5s;
+  transition: all 0.80s;
   //filter: saturate(100%) brightness(0.50) grayscale(80%);
   filter: grayscale(100%) brightness(0.85);
 }
+
 .crowdfundingSecHovered {
   //background-image: url("/images/landing/crowdfunding.png");
   width: 70%;
@@ -148,9 +185,10 @@
   // filter: hue-rotate(85deg) saturate(100%) brightness(0.85);
   //filter: saturate(100%) brightness(0.50);
   position: relative;
-  transition: all 0.5s;
+  transition: all 0.80s;
   z-index: 100;
 }
+
 .crowdHoverBg {
   filter: saturate(100%) brightness(0.50);
   //position: absolute;
@@ -161,16 +199,23 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .crowdfundingText {
   position: absolute;
   //z-index: 98;
   display: flex;
   flex-direction: column;
   //margin-top: 249px;
+  //left: 50%;
+  //transform: translate(-50%, 0);
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, 0);
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 550px;
 }
+
 .line {
   width: 4px;
   z-index: 90;
