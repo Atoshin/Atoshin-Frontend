@@ -10,9 +10,17 @@
 
   position: relative;
   background-color: cadetblue;
-  // textStyle
   color: #FFFFFF;
   font-family: Eksell Display;
+}
+
+.header{
+  background-color: #FFFFFF;
+  height: 111px;
+  position: absolute;
+  z-index: 300;
+  top:0;
+  width: 100%;
 }
 
 .nftSec {
@@ -22,10 +30,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-  transition: all 1s;
+  transition: all 2s;
   position: relative;
-  //filter: grayscale(100%) brightness(2.50);
+  background-image: none;
+  filter: grayscale(100%) brightness(2.50);
 }
 
 .nftSecSmall {
@@ -33,11 +41,14 @@
   min-height: 100%;
   height: auto;
   background-position: center;
+  //background-position: left;
   background-repeat: no-repeat;
   background-size: cover;
-  transition: all 1s;
+  //background-size: 100% 100%;
+  transition: all 2s;
   position: relative;
-  //filter: grayscale(100%) brightness(2.50);
+  background-image: none;
+  filter: grayscale(100%) brightness(2.50);
 }
 
 .nftSecHovered {
@@ -45,15 +56,12 @@
   min-height: 100%;
   height: auto;
   //background-position: 50% 50%;
-  //background-repeat: no-repeat;
-  //background-size: 100%;
-
-
-  background-position: 50% 50%;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
-
-  transition: all 1s;
+  //background-size: 100% 100%;
+  background-size: cover;
+  //background-size: contain;
+  transition:all 2s;
   position: relative;
 }
 
@@ -96,43 +104,49 @@
 
 .vector {
   height: 28.64px;
-  width: 14.41px;
+  width: 20px;
   position: absolute;
   bottom: 0;
   cursor: pointer;
+  z-index: 120;
 }
 
 .nftBg {
   z-index: 110;
   height: 100%;
   width: 100%;
+  transition: all 8s;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   position: relative;
-  filter: grayscale(100%) brightness(2.50);
+  filter: grayscale(100%) brightness(250%);
 }
 
 .nftBgSmall {
   z-index: 110;
   height: 100%;
   width: 100%;
-  background-position: 50% 50%;
+  //transition: all 2s;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  filter: grayscale(100%) brightness(2.50);
+  filter: grayscale(100%) brightness(250%);
+  //2.50
 }
 .iconSec {
   display: flex;
-  margin-top: 32px;
-  margin-left: 32px;
+  //margin-top: 16px;
+  //margin-left: 32px;
   position: absolute;
 
-  top: 2%;
-  left: 5%;
-  transform: translate(-50%, 0);
+  top: 16px;
+  left: 32px;
+  //transform: translate(-50%, 0);
   z-index: 120;
+}
+.nftSec > .iconSec{
 }
 
 .logo {
@@ -144,18 +158,16 @@
   width: 50%;
   min-height: 100%;
   height: auto;
-  //background-image: url("/images/landing/crowdfunding.png");
   background-position: right;
   background-repeat: no-repeat;
   background-size: cover;
   //position: relative;
-  transition: all 1s;
+  transition:all  2s;
   //filter: saturate(100%) brightness(0.50) grayscale(80%);
   filter: grayscale(100%) brightness(0.85);
 }
 
 .crowdfundingSecSmall {
-  //background-image: url("/images/landing/crowdfunding.png");
   //filter: contrast(50%);
   // filter: hue-rotate(85deg) saturate(100%) brightness(0.85);
   //width: 40%;
@@ -166,13 +178,12 @@
   background-repeat: no-repeat;
   background-size: cover;
   //position: relative;
-  transition: all 1s;
+  transition: all 2s;
   //filter: saturate(100%) brightness(0.50) grayscale(80%);
   filter: grayscale(100%) brightness(0.85);
 }
 
 .crowdfundingSecHovered {
-  //background-image: url("/images/landing/crowdfunding.png");
   width: 60%;
   min-height: 100%;
   height: auto;
