@@ -11,6 +11,13 @@ export default function Landing() {
     return (
         <>
             <div className={classes.mainSec}>
+
+                <div className={classes.header}>
+                    <div className={classes.iconSec}>
+                        <img src="/images/landing/hamijologo.png" alt="" className={classes.logo}/>
+                    </div>
+                </div>
+
                 <div
                     className={isNftHover ? classes.nftSecHovered : isCrowdfundingHover ? classes.nftSecSmall : classes.nftSec}
                     onMouseEnter={() => setIsNftHover(true)}
@@ -19,18 +26,18 @@ export default function Landing() {
                         backgroundImage: `url(/images/landing/nft.png)`
                     }}
                 >
-                    {
-                        !isNftHover ?
-                            <div className={isCrowdfundingHover ? classes.nftBgSmall : classes.nftBg}
-                                 style={{
-                                     backgroundImage: `url(/images/landing/nft.png)`
-                                 }}>
-                            </div>
-                            : ''
-                    }
-                    <div className={classes.iconSec}>
-                        <img src="/images/landing/hamijologo.png" alt="" className={classes.logo}/>
-                    </div>
+                    {/*{*/}
+                    {/*    !isNftHover ?*/}
+                    {/*        <div className={isCrowdfundingHover ? classes.nftBgSmall : classes.nftBg}*/}
+                    {/*             style={{*/}
+                    {/*                 backgroundImage: `url(/images/landing/nft.png)`*/}
+                    {/*             }}>*/}
+                    {/*        </div>*/}
+                    {/*        : ''*/}
+                    {/*}*/}
+                    {/*<div className={classes.iconSec}>*/}
+                    {/*    <img src="/images/landing/hamijologo.png" alt="" className={classes.logo}/>*/}
+                    {/*</div>*/}
                     <div className={classes.nftText}>
                         <div className={classes.title}>
                             NFT
