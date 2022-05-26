@@ -54,7 +54,7 @@ export default function Slider({images, sliderRef, setCurrentSlide, assets, curr
                                                 Price
                                             </div>
                                             <div className={classes.amountSec}>
-                                                {calculateDecimalPrecision(assets[i].ethPricePerFraction, 5)} ETH
+                                                {calculateDecimalPrecision(assets[i].ethPricePerFraction, 5)} {assets[i].tradedCurrency}
                                             </div>
                                         </div>
                                         <div className={classes.quantSec}>

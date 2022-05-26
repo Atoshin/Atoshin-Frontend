@@ -46,7 +46,7 @@ export default function SliderMain({asset, idx}) {
                                 <p className={classes.fractionsLeft}>Price</p>
                                 <span className={classes.fractions}>
                             <p className={classes.leftNumbers}>{calculateDecimalPrecision(asset.ethPricePerFraction, 5)}</p>
-                            <p className={classes.total}>ETH</p>
+                            <p className={classes.total}>{asset.tradedCurrency}</p>
                             </span>
                             </div>
                             <div className={classes.column} style={{paddingRight: 16}}>

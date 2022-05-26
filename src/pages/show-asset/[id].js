@@ -702,7 +702,7 @@ export default function ShowAsset({asset}) {
                                         isAuctionOver || asset.soldFractions === asset.totalFractions ?
                                             `Sold Out`
                                             :
-                                            `Buy ${calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH`
+                                            `Buy ${calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ${asset.tradedCurrency}`
                                     }
                                 </Button>
                             </div>
@@ -737,7 +737,7 @@ export default function ShowAsset({asset}) {
                                             isAuctionOver || asset.soldFractions === asset.totalFractions ?
                                                 `Sold Out`
                                                 :
-                                                `Buy - ${calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH`
+                                                `Buy - ${calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ${asset.tradedCurrency}`
                                         }
                                         {/*Buy - {calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH*/}
                                     </Button>
@@ -749,7 +749,7 @@ export default function ShowAsset({asset}) {
                                             isAuctionOver || asset.soldFractions === asset.totalFractions ?
                                                 `Sold Out`
                                                 :
-                                                ` Buy - ${calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ETH`
+                                                ` Buy - ${calculateDecimalPrecision(asset.ethPricePerFraction * quantity, 5)} ${asset.tradedCurrency}`
                                         }
                                     </Button>
                                 }
@@ -800,8 +800,8 @@ export default function ShowAsset({asset}) {
                                         This artwork has been fractionalized {asset.totalFractions} tokens
                                         and {(asset.totalFractions * asset.ownershipPercentage) / 100} numbers belong to
                                         gallery {asset.gallery.name} , so {asset.soldFractions} fractions was traded in first part .Value
-                                        of this artwork is {calculateDecimalPrecision(asset.ethPricePerFraction * asset.totalFractions, 5)} ETH and
-                                        the price per token is {calculateDecimalPrecision(asset.ethPricePerFraction, 5)} ETH.
+                                        of this artwork is {calculateDecimalPrecision(asset.ethPricePerFraction * asset.totalFractions, 5)} {asset.tradedCurrency} and
+                                        the price per token is {calculateDecimalPrecision(asset.ethPricePerFraction, 5)} {asset.tradedCurrency}.
 
                                         {/*The net asset value of this artwork*/}
                                         {/*is {calculateDecimalPrecision(asset.ethPricePerFraction * asset.totalFractions, 5)} ETH*/}
