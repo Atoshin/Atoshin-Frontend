@@ -1,0 +1,658 @@
+@import "./../colors";
+@media (max-width: 1120px) {
+
+  .artworkTitle {
+    font-size: 30px;
+  }
+  .artistName {
+    //width: 129px;
+    height: 30px;
+    //font-size: 14px !important;
+    font-size: 13px !important;
+    margin-top: 0;
+    margin-left: 8px;
+    padding-right: 5px;
+    padding-left: 5px;
+    width: auto;
+    max-width: 250px;
+    word-wrap: break-word;
+  }
+
+  .backStoryTitle {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 12px;
+  }
+
+  .netAssetPart {
+    margin-bottom: 24px;
+  }
+
+  .backStoryPart {
+    margin-bottom: 24px;
+  }
+
+  .detailTitle {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .provenanceTitle {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+
+  .ownersTitle {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+
+  .historyMainSec {
+    display: flex;
+    flex-direction: column;
+    margin-top: 45px;
+  }
+
+  .historyTitle {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .viewAllHistory {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: right;
+  }
+  .buyerNameTitle {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+
+  .dateTitle {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+
+  .boughtBy {
+    color: #232323;
+    font-size: 12px;
+    font-weight: 400;
+    margin-right: 3px;
+  }
+
+  .buyerName {
+    color: #193EFF;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .dateBought {
+    color: #232323;
+    font-size: 12px;
+    font-weight: 400;
+    //width: 190px;
+  }
+  .aboutArtworkDivider {
+    width: 100% !important;
+    height: 0;
+    border-bottom: 2px solid #232323;
+    //margin-top: 32px;
+    margin-top: 0px;
+    margin-bottom: 18px;
+
+    //margin-bottom: 32px;
+    margin-left: 16px;
+  }
+
+
+  .viewAllOwners {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: right;
+  }
+
+  .mintedDateSec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 30px;
+    color: #232323;
+    padding-bottom: 1px;
+    background-color: #E9E6E6;
+    border-radius: 5px;
+    //margin-right: 24px;
+    cursor: pointer;
+
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .watchArtworkSecActive {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 177px;
+    height: 30px;
+    color: #232323;
+    padding-bottom: 1px;
+    background-color: #E9E6E6;
+    border-radius: 5px;
+    cursor: pointer;
+
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+
+  }
+
+  .watchArtworkSec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 177px;
+    height: 30px;
+    color: #232323;
+    padding-bottom: 1px;
+    background-color: #E9E6E6;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.5;
+
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .detailText {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+
+  .aboutArtworkTxt {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 12px;
+
+    margin-top: 0px;
+  }
+  .topMainSec {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .showAssetMain {
+    margin-top: 28px;
+    width: 100%;
+  }
+
+  .topLeftMainSec {
+    margin-top: 0px;
+  }
+  .artistNameSec {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 12px;
+  }
+  .artistText {
+    font-size: 14px;
+  }
+  .artworkMainImgSec {
+    width: 100%;
+    margin-bottom: 38px;
+    margin-top: 17px;
+  }
+
+  .artworkMainImg {
+    width: 100%;
+    height: 208px;
+  }
+
+  .topRightMainSec {
+    display: none;
+  }
+
+  .saleMainSec {
+    margin-top: 0px;
+  }
+  .saleStartDate {
+    display: none;
+  }
+  .saleEndDate {
+    display: none;
+    width: 304px;
+    margin-bottom: 8px;
+  }
+  .timeCounterSec {
+    //width: 70%;
+    width: 229px;
+    margin: auto;
+  }
+  .counterNum {
+    font-size: 25px;
+    margin-bottom: 8px;
+  }
+  .counterTitle {
+    font-size: 14px;
+  }
+  .fractionsMainSec {
+    flex-direction: row;
+    margin-top: 24px;
+    justify-content: center;
+    align-items: baseline;
+  }
+  .fractionsLeftTxt {
+    font-size: 14px;
+    margin-right: 8px;
+  }
+  .priceMainSec {
+    position: fixed;
+    bottom: 0;
+    //top: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 27px;
+    margin-left: -25px;
+    margin-right: -20px;
+    width: 100%;
+    height: 57px;
+    background: #FFFFFF;
+    box-shadow: 0px -2px 9px rgba(0, 0, 0, 0.1);
+    padding-left: 40px;
+    padding-right: 40px;
+    z-index: 1000;
+  }
+  .priceMainSec2 {
+    position: fixed;
+    bottom: 0;
+    //top: 200px;
+    display: flex;
+    flex-direction: row;
+    //justify-content: space-between;
+    align-items: center;
+    margin-top: 27px;
+    margin-left: -25px;
+    margin-right: -20px;
+    width: 100%;
+    height: 57px;
+    background: #FFFFFF;
+    box-shadow: 0px -2px 9px rgba(0, 0, 0, 0.1);
+    padding-left: 40px;
+    padding-right: 40px;
+    z-index: 1000;
+  }
+  .provenanceMainSec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: 18px 16px;
+  }
+  .backStoryTxt {
+    font-size: 12px;
+    width: 100%;
+  }
+  .backStoryDivider {
+    display: none;
+  }
+  .provenanceDivider {
+    display: none;
+  }
+  .backStoryBottomSec {
+    display: none;
+  }
+  .bottomMainSec {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 72px;
+    margin-bottom: 63px;
+  }
+  .ownersIndexSec {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+  }
+  .historyIndexSec {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+  }
+  .priceTxt {
+    font-size: 14px;
+    font-weight: 300;
+  }
+  .priceAmount {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 3px;
+  }
+  .priceSec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .BuyBtn {
+    width: 140px !important;
+    height: 35px !important;
+    background-color: #232323 !important;
+    color: #FFFFFF !important;
+    font-size: 14px !important;
+    text-transform: none !important;
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+    border-radius: 5px !important;
+  }
+
+  .disabledBuyBtn {
+    //background-color: #232323 !important;
+    background-color: rgba(35, 35, 35, 0.5) !important;
+    width: 150px !important;
+    height: 35px !important;
+    color: #FFFFFF !important;
+    font-size: 16px !important;
+    text-transform: none !important;
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+    border-radius: 5px !important;
+  }
+
+  .soldOut {
+    justify-content: center;
+  }
+
+  .aboutArtworkTxt {
+    margin-bottom: 12px;
+    //margin-top: 18px;
+
+    margin-top: 0px;
+
+  }
+
+  .rankTitle {
+    font-size: 12px;
+    font-weight: 300;
+  }
+
+  .ownerNameTitle {
+    font-size: 12px;
+  }
+
+  .quantityTitle {
+    font-size: 12px;
+  }
+
+  .rankNum {
+    font-size: 12px;
+  }
+
+  .ownerName {
+    font-size: 12px;
+  }
+
+  .quantity {
+    font-size: 12px;
+
+  }
+  .provenanceSec {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+  }
+  .leftBottomSec {
+    display: none;
+  }
+  .rightBottomSec {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .backStorySec {
+    width: 100%;
+  }
+  .aboutArtworkSec {
+    width: 100%;
+  }
+  .aboutArtworkDivider {
+    width: 100%;
+    height: 0;
+    border-bottom: 2px solid #232323;
+    //margin-top: 32px;
+
+    margin-top: 0px;
+    margin-bottom: 18px;
+
+    //margin-bottom: 32px;
+    margin-left: 0px;
+  }
+  .add {
+    width: 40px;
+  }
+  .minus {
+    width: 40px;
+    margin-left: 10px;
+  }
+}
+
+
+@media (max-width: 710px) {
+  .main {
+    width: 100% !important;
+    //height: 50%;
+    //border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .watchArtworkSec{
+    width: 137px;
+  }
+  .watchArtworkSecActive{
+    width: 137px;
+  }
+  .mintedDateSec{
+    width:137px ;
+  }
+  .dialogBody {
+    display: flex !important;
+    //align-items: center;
+    //justify-content: center;
+    flex-direction: row !important;
+    overflow: hidden;
+    //overflow-x: scroll !important;
+    //overflow-y: hidden !important;
+    height: 150px !important;
+    width: 100% !important;
+    //flex-flow: wrap;
+    flex-wrap: wrap;
+    //border: 2px solid red !important;
+  }
+  .mg {
+    width: 100%;
+    height: 100%;
+    //border: 1px solid red;
+    display: flex;
+    flex-direction: column !important;
+  }
+  .list {
+    height: 20%;
+    width: 100%;
+    //border: 1px solid red;
+  }
+  .pic {
+    height: 80%;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .vectorX {
+    width: 20px !important;
+    height: 20px !important;
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+  }
+
+  .vector {
+    width: 7px !important;
+    height: 7px !important;
+  }
+
+  .videoItem {
+    width: 80px !important;
+    height: 60px !important;
+  }
+
+  .playIcon {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .modalTitle {
+    font-size: 14px !important;
+    padding-bottom: 10px !important;
+    margin-top: 20px !important;
+    margin-left: 20px !important;
+  }
+
+  .imgDialog {
+    height: auto !important;
+  }
+
+  .showImageContainer {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+}
+
+@media (min-width: 710px) {
+  .items {
+    flex-direction: column !important;
+    align-items: center;
+  }
+  .item {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 120px !important;
+    height: 100px !important;
+    //border: 2px solid red;
+    margin: 10px;
+  }
+  .selectedItem {
+    width: 120px !important;
+    height: 100px !important;
+    padding: 3px;
+    border: 2px solid $orange;
+  }
+  .selectedItemImg {
+    //width:114px !important;
+    width: 110px !important;
+    margin: 0px;
+    //height:94px !important;
+    height: 90px !important;
+  }
+  .selectedVideoSec {
+    height: 100px !important;
+    width: 120px !important;
+    margin: 10px;
+    border: 2px solid $orange;
+    padding: 3px;
+  }
+  .videoItem {
+    height: 100px !important;
+    width: 120px !important;
+    margin: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .selectedVideoItem {
+    height: 90px !important;
+    //width: 120px;
+    //margin:10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //padding: 3px;
+    //border: 2px solid #FD6E19;
+  }
+  .container {
+    display: block;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100% !important;
+    //border: 1px solid blue;
+  }
+}
+
+
+
+
+
+
+
+
+

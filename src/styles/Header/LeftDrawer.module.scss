@@ -1,0 +1,22 @@
+.menuTopSec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
+  padding-left: 16px;
+  padding-top: 14px;
+  padding-bottom: 25px;
+}
+
+.activeLink{
+  border-bottom: 2px solid black !important;
+  font-weight: 700 !important;
+}
+.logoImg {
+  width: 112px;
+  height: 32px;
+}
+.vectorXIcon {
+  width: 24px;
+  height: 24px;
+}

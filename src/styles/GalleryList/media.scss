@@ -1,0 +1,42 @@
+@media (max-width: 1056px) {
+  .row{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+  }
+}
+
+@media (max-width: 787px) {
+  .row{
+    display: flex;
+    justify-content: center !important;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+  }
+}
+
+@media (max-width: 1161px) {
+  .row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+    //padding-left: 100px;
+    //padding-right: 100px;
+  }
+}
+
+@media (max-width: 922px) {
+  .row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+    padding: 0 !important;
+  }
+}

@@ -1,0 +1,102 @@
+@media (max-width: 920px) {
+  .footerMain {
+    width: 100%;
+    height: 100%;
+  }
+  .dividingLine {
+    width: 90%;
+    margin-top: 24px;
+  }
+  .emailSec {
+    width: 90%;
+    justify-content: space-between;
+    margin-top: 24px;
+    align-items: center;
+  }
+  .registerBtn {
+    //margin-left: 12px;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    line-height: 14px !important;
+    background-color: #F4F4EF !important;
+    color: #232323 !important;
+    width: 30% !important;
+    height: 30px !important;
+    border-radius: 5px !important;
+    text-align: center !important;
+    text-transform: none !important;
+
+  }
+  .registerText {
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 24px;
+  }
+  .emailInput {
+    width: 63%;
+    height: 30px;
+    border-radius: 5px;
+    font-weight: 300;
+    font-size: 12px;
+    padding-left: 15px;
+    color: #232323;
+  }
+  .linksMainSec {
+    width: 100%;
+  }
+  .logoSec {
+    //width: 80px;
+
+    width: 14.42px;
+    height: 16.58px;
+    //height: 32px;
+    //border-radius: 5px;
+    //font-weight: 700;
+    //font-size: 12px;
+  }
+  .linkTitle {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .linkSubtitle {
+    font-size: 12px;
+    font-weight: 300;
+  }
+  .socialMediaSec {
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  .instagramIcon {
+    width: 20.39px;
+    height: 20px;
+  }
+  .linkedInIcon {
+    width: 20.39px;
+    height: 20px;
+    margin-left: 22.09px;
+  }
+  .telegramIcon {
+    width: 19.61px;
+    height: 17.25px;
+    margin-left: 22.09px;
+  }
+  .twitterIcon {
+    width: 20.39px;
+    height: 16.26px;
+    margin-left: 22.09px;
+  }
+  .linksMainSec {
+    margin-top: 24px;
+    width: 90% ;
+  }
+}
+@media (max-width: 400px) {
+
+  .logoSec{
+    height: 16.58px;
+    //width: 62px;
+
+    width: 14.42px;
+  }
+
+}

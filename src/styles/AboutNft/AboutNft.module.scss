@@ -1,0 +1,179 @@
+@import "./../colors";
+.FAQ {
+  color: $orange;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.txt{
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+}
+
+.faqTitle {
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: 0em;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #A7A7A7;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.realBenefits{
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+}
+
+.imageSec{
+display: flex;
+  justify-content: center;
+}
+
+.finalWords{
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 23px;
+  text-align: left;
+margin-bottom: 8px;
+  margin-top:24px ;
+}
+
+.image{
+  width: 695px;
+  height: 352px;
+  margin-bottom: 8px;
+}
+
+.question {
+  width: 100%;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-left: 32px;
+  margin-top: 22px;
+}
+
+.answer {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding: 32px;
+  color:#232323;
+}
+
+.qMainSection {
+  display: flex;
+  width: 100%;
+}
+
+.QaContainer {
+  margin-bottom: 110px;
+  margin-top: 24px;
+}
+
+.faqTitleSec {
+  margin-top: 100px;
+  margin-bottom: 64px;
+}
+
+.number {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: $orange;
+  color: #FFFFFF;
+  //padding-bottom: 3px;
+  margin-left: -10px;
+  top: 20px;
+}
+
+.referencesTitle{
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  //margin-top: 40px;
+  margin-bottom: 8px;
+}
+
+.url{
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+  color: $orange;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.referencesTxt{
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+  margin-bottom: 8px;
+}
+
+.faqTitleSec {
+  margin-top: 100px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 782px) {
+  .faqTitle {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0em;
+  }
+
+  .image{
+    width: 250px;
+    //width: auto;
+    height: 100px;
+  }
+
+  .faqTitleSec {
+    margin-top: 53px;
+    margin-bottom: 24px;
+  }
+}
+
+
+@media (max-width: 350px) {
+  .image{
+    width: auto;
+    height: 100px;
+  }
+}

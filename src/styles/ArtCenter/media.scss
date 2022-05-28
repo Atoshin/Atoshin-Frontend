@@ -1,0 +1,224 @@
+@media (max-width: 600px) {
+  //.artist {
+  //  img {
+  //    //width: calc(100% - 8px);
+  //  }
+  //
+  //  p {
+  //    font-family: Roboto;
+  //    font-weight: 500;
+  //    font-size: 12px;
+  //    line-height: 14px;
+  //  }
+  //}
+  //
+  //.artistTitle {
+  //  width: 100%;
+  //  font-size: 25px;
+  //  font-weight: 550;
+  //  line-height: 30px;
+  //  font-family: "Eksell-font";
+  //}
+  //
+  //.artistsSubtext {
+  //  font-family: Roboto;
+  //  font-weight: 300;
+  //  font-size: 12px;
+  //  line-height: 14px;
+  //}
+  //
+  //.viewAll {
+  //  font-family: Roboto;
+  //  font-style: normal;
+  //  font-weight: 500;
+  //  font-size: 12px;
+  //  line-height: 14px;
+  //  cursor: pointer;
+  //}
+  //
+  //.moreArtists {
+  //  margin-bottom: 16px;
+  //}
+  //
+  //.vectorLeft {
+  //  //display: none;
+  //  position: absolute;
+  //  left: -15px;
+  //  top: 80px;
+  //}
+  //.vectorRight {
+  //  //display: none;
+  //  position: absolute;
+  //  right: -15px;
+  //  top: 80px;
+  //}
+  //
+  //
+  //.artistMainSec {
+  //  margin-top: 70px;
+  //}
+  //.artistsSlider {
+  //  margin-bottom: 70px;
+  //}
+
+  .title {
+    font-size: 30px;
+  }
+
+  .text{
+    font-size: 12px;
+    font-weight: 300;
+  }
+  .readMore{
+    font-size: 10px;
+    font-weight: 300;
+    cursor: pointer;
+  }
+
+  .socialMediaSec {
+    margin-top: 17px;
+    width: 122px;
+  }
+  .headerSection {
+    margin-top: 32px;
+  }
+  .td1 {
+    font-size: 12px;
+    width: 100px;
+    font-weight: 300;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .td2 {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .map {
+    height: 205px;
+    width: 100%;
+    margin: 0 0 0 0;
+    //margin-top: 24px;
+  }
+
+  .relatedDescription{
+    padding-right: 16px;
+    padding-left: 16px;
+    margin-top: 8px;
+  }
+
+  .detailsSec {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 27px;
+  }
+
+  .detailsSec2 {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 27px;
+  }
+  .paragraphSec {
+    width: 100%;
+    //margin-top: 48px;
+    margin-top: 33px;
+    //height: 300px;
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+    justify-content: center;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 32px;
+  }
+  .table {
+    margin-bottom: 8px;
+    margin-top: 16px;
+  }
+
+  .slideImg2{
+    height: 150px;
+    width: 150px !important;
+  }
+  .SlideImg{
+    height: 150px;
+    width: 150px !important;
+  }
+  .SlideImg3{
+    height: 150px;
+    width: 150px !important;
+  }
+
+  .relatedSec {
+    margin-top: 32px;
+  }
+
+  .relatedTitle{
+    margin-bottom: 4px;
+    font-size: 18px;
+  }
+
+  .slider2{
+    margin-bottom: 12px;
+  }
+
+}
+
+//@media (max-width: 780px) {
+//  .SlideImg{
+//    width: 90% ;
+//    border: solid red 1px;
+//  }
+//  .slideImg2{
+//    width: 90% ;
+//    border: solid red;
+//
+//  }
+//}
+@media (max-width: 850px) {
+  .SlideImg{
+    width: 90%;
+  }
+  //.slideImg2{
+  //  width: 90%;
+  //}
+}
+
+@media (max-width: 370px) {
+  .SlideImg{
+    width: 90% !important;
+  }
+  .slideImg2{
+    width: 90% !important;
+  }
+
+
+}
+
+@media (max-width: 900px) {
+  .relatedDescription{
+    margin-top: 8px;
+  }
+  .detailsSec2{
+    margin-bottom: 32px;
+  }
+  .date1{
+    margin-top: 9px;
+  }
+  .dateSec2{
+    height: 50px;
+    margin-bottom: 0px;
+  }
+  .dateSec{
+    height: 50px;
+    margin-bottom: 0px;
+  }
+  .relatedDescription{
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+  .sliderEmptySec{
+    margin-bottom: 32px;
+  }
+}

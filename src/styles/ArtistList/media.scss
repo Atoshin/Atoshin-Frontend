@@ -1,0 +1,83 @@
+@media (max-width: 600px) {
+
+}
+
+@media (min-width: 788px) {
+
+  .ArtistTitle {
+    display: none !important;
+  }
+
+}
+
+
+@media (max-width: 788px) {
+
+  .row {
+    //justify-content: center!important;
+  }
+
+}
+
+@media (max-width: 1157px) {
+
+  .row {
+    //justify-content: center!important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1056px) {
+  .row{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+  }
+}
+
+@media (max-width: 792px) {
+  .row{
+    display: flex;
+    justify-content: center !important;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+  }
+}
+
+@media (max-width: 1161px) {
+  .row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+    //padding-left: 100px;
+    //padding-right: 100px;
+  }
+}
+
+@media (max-width: 922px) {
+  .row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    //margin-top: 56px;
+    margin-bottom: 92px;
+    padding: 0 !important;
+  }
+}

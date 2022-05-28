@@ -1,0 +1,39 @@
+@import "./../colors";
+.root {
+  font-family: Roboto;
+  margin-top: 96px;
+  margin-bottom: 94px;
+}
+
+.pageTitle {
+  font-size: 41px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 48px;
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+.paragraph {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+  text-align: justify;
+  margin-bottom: 16px;
+}
+
+.line {
+  //width: 550px;
+  margin-left: 95px;
+  margin-right: 95px;
+  border: none;
+  height: 1px;
+  background-color: $orange;
+  margin-bottom: 16px;
+}
+
+.link {
+  text-decoration: none;
+  color: #007BFF;
+}

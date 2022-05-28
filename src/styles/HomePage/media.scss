@@ -1,0 +1,169 @@
+@media (max-width: 899px) {
+  .topMainSec {
+    flex-direction: column;
+  }
+  .topLeftSec {
+    margin-top: 0;
+  }
+
+  .viewAllArtCenters{
+    font-size: 12px;
+  }
+
+  .artCenterTitle{
+    font-size: 25px;
+  }
+  .imgSec {
+    max-width: 35px;
+    margin-right: 10px;
+  }
+  .artworkInfo {
+    width: 100%;
+  }
+  .artworkImgSec {
+    height: 208px;
+    margin-top: 24px;
+  }
+  .artWorkImg {
+    width: 100%;
+    height: 208px;
+  }
+  .topRightMainSec {
+    width: 100%;
+  }
+  .sliderBottomMenu {
+    display: none
+  }
+  .buyBtn {
+    width: 96px;
+    height: 32px;
+    background-color: #EE574C;
+    color: #FFFFFF;
+    border-radius: 5px;
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    margin-right: auto;
+    margin-left: auto;
+    text-transform: none;
+  }
+  .galleryBottomSec {
+    display: none;
+  }
+  .galleryTopSec {
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+  .galleryDescSec {
+    flex-direction: column;
+    margin-top: 0px;
+  }
+  .galleryDecsTxt {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .galleryMainPhoto {
+    //width: 100%;
+    ////height: 178px;
+    //margin-top: 24px;
+    //margin-right: auto;
+    //margin-left: auto;
+    display: none;
+  }
+  .exploreBtn {
+    background-color: #232323;
+    color: white;
+    width: 96px;
+    height: 32px;
+    border-radius: 5px !important;
+    margin-top: 16px !important;
+    text-transform: none !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 16.41px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  .galleryMainSec {
+    margin-top: 70px;
+  }
+  .artist {
+    img {
+      width: calc(100% - 8px);
+    }
+
+    p {
+      font-family: Roboto;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+  .artistTitle {
+    width: 100%;
+    font-size: 25px;
+    font-weight: 550;
+    line-height: 30px;
+  }
+  .artistsSubtext {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .viewAll {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    cursor: pointer;
+  }
+  .moreArtists {
+    margin-bottom: 24px;
+  }
+  .galleryVidContainer {
+    overflow: hidden;
+  }
+  .galleryPlayPhoto {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+  }
+  .artCenterSec {
+    margin-bottom: 16px;
+  }
+  .galleryDescMainSec {
+    margin-top: 23px;
+  }
+  .galleryName {
+    justify-content: center;
+    font-weight: 550;
+    font-size: 18px;
+    font-family: Eksell-font;
+  }
+  .galleryVidContainerM {
+    position: relative;
+    display: flex;
+    //align-items: center;
+    //justify-content: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    //height: 178px;
+    //height: 100%;
+    height: 178px;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    //border: 2px solid red;
+  }
+
+  .galleryMainPhotoN{
+    //display: none;
+    width: 100%;
+    justify-content: center;
+    height: 178px !important;
+  }
+
+}

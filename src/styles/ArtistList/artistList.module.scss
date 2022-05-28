@@ -1,0 +1,107 @@
+.root {
+  //width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.row {
+  //display: inline-grid;
+  //grid-template-columns: auto auto auto;
+  //grid-column-gap: 36px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  height: 305px;
+  width: 360px;
+  border-radius: 3px;
+  box-shadow: 0px 7px 12px 0px #0000001A;
+  //box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  margin-bottom: 32px;
+  //border: 2px solid red;
+  //border: red 2px solid ;
+}
+.item:hover{
+  box-shadow: 0px 2px 20px 0px #00000033;
+}
+.itemRoot{
+  margin: 5px;
+}
+
+.img {
+  height: 236px;
+  width: 360px;
+  background-color: lightgray;
+}
+
+.imgTitle {
+  text-align: center;
+  margin-top: 24px;
+
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+}
+
+.sort {
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.sortSec {
+  display: flex;
+  //height: 100px;
+  text-align: center;
+  align-items: center;
+  margin-top: 81px;
+}
+
+.sortList {
+  border: 2px solid #232323;
+  border-radius: 5px;
+  width: 199px;
+  height: 44px;
+  display: flex;
+  margin-left: 16px;
+}
+
+.sortListText {
+  text-align: left;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+
+}
+
+.ArtistTitle {
+  font-family: Eksell Display;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 550;
+  line-height: 36px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 84px;
+}
+
+@import "media";

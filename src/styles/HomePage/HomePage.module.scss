@@ -1,0 +1,504 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.topMainSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  //width: 100%;
+}
+
+.topLeftSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 109px;
+}
+
+.artWorkName {
+  font-size: 50px;
+  font-weight: 550;
+  line-height: 60px;
+  color: #000000;
+  text-align: left;
+  font-family: "Eksell-font";
+}
+
+.artistName {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  color: #232323;
+  margin-top: 8px;
+}
+
+.artworkInfo {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 25px;
+  color: #232323;
+  margin-top: 16px;
+  text-align: left;
+  width: 366px;
+}
+
+.buyBtn {
+  width: 164px;
+  height: 55px;
+  background-color: #EE574C;
+  color: #FFFFFF;
+  border-radius: 5px;
+  margin-top: 24px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  text-transform: none;
+
+  :hover {
+    background-color: #EE574C;
+  }
+}
+
+.topRightMainSec {
+  display: flex;
+  flex-direction: column;
+  width: 645px;
+
+  //float: right;
+}
+
+.topRightSec {
+  display: flex;
+  flex-direction: column;
+  //margin-left: 109px;
+  filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.15));
+}
+
+.artworkImgSec {
+  height: 430px;
+}
+
+.artWorkImg {
+  width: 645px;
+  height: 430px;
+}
+
+.artWorkDetailSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 645px;
+  height: 115px;
+  background-color: #FFFFFF;
+  border-radius: 0px 0px 3px 3px;
+  padding-left: 48px;
+  padding-right: 80px;
+  //border: 1px #232323;
+}
+
+
+.Sec {
+  display: flex;
+  flex-direction: column;
+  margin-right: 16px;
+}
+
+.Num {
+  font-size: 32px;
+  font-weight: 500;
+  color: #EE574C;
+}
+
+.Txt {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.priceSec {
+  display: flex;
+  flex-direction: row;
+  margin-top: 23px;
+  margin-bottom: 27px;
+}
+
+.titleSec {
+  font-size: 16px;
+  font-weight: 300;
+  margin-right: 39px;
+}
+
+
+.title2Sec {
+  font-size: 16px;
+  font-weight: 300;
+  margin-right: 16px;
+}
+
+.amountSec {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.galleryMainSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 124px;
+}
+
+.artCenterSec {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.viewAllArtCenters {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.artCenterTitle {
+  color: #000000;
+  font-size: 40px;
+  font-weight: 550;
+  font-family: "Eksell-font";
+}
+
+
+.galleryTopSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom:48px ;
+  //border: solid red;
+  width: 100%;
+}
+
+.galleryDescMainSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 59px;
+}
+
+.galleryName {
+  display: flex;
+  align-items: center;
+  //justify-content: center;
+  font-size: 25px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.galleryDescSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 27px;
+}
+
+.imgSec {
+  max-width: 56px;
+  margin-right: 24px;
+}
+
+.galleryDecsTxt {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 25px;
+  //width: 526px;
+
+  text-align: left;
+  //margin-top: 9px;
+  height: 150px;
+}
+
+.galleryDecsTxtMob {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 300;
+  //line-height: 25px;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 20px;
+  //white-space: nowrap;
+  //height: 6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobileExploreSec{
+  display: flex;
+  justify-content: center;
+}
+
+.exploreBtn {
+  background-color: #232323 !important;
+  color: white !important;
+  width: 143px;
+  height: 53px;
+  border-radius: 5px !important;
+  //margin-top: 24px !important;
+  margin-top: 36px !important;
+  text-transform: none !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  line-height: 21.09px !important;
+
+
+  &:hover {
+    background-color: rgba(35, 35, 35, 0.90) !important;
+  }
+}
+
+.galleryDesc {
+  display: flex;
+  flex-direction: column;
+}
+
+.galleryMainPhoto {
+  width: 360px;
+  //width: 100%;
+  height: 360px;
+  //height: 100%;
+  border-radius: 3px;
+  //margin-left: 41px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.galleryMainPhotoN {
+  width: 360px;
+  height: 100%;
+  //width: 100%;
+  //height: 360px;
+  border-radius: 3px;
+  //margin-left: 41px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.galleryVidContainer {
+  position: relative;
+  display: flex;
+  //align-items: center;
+  //justify-content: center;
+  cursor: pointer;
+  height: 100%;
+  //width: 33%;
+  width: 360px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  //border: 2px solid red;
+  justify-content: center;
+  align-items: center;
+
+}
+.galleryVidContainerM {
+display: none;
+}
+
+.galleryPlayPhoto {
+  position: absolute;
+  width: 92.86px;
+  height: 92.91px;
+  cursor: pointer;
+}
+.sliderNextArrow{
+  position: absolute;
+  right: -45px;
+  width: 10.29px;
+  height: 20.46px;
+  cursor: pointer;
+}
+.sliderPrevArrow{
+  position: absolute;
+  left: -47px;
+  width: 10.29px;
+  height: 20.46px;
+  cursor: pointer;
+}
+.galleryBottomSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 48px;
+}
+
+.gallerySec{
+  width: 265px;;
+  height: 274px;
+  //box-shadow: 0px 1px 3px 0px #00000026;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.05), 0 2px 10px 0 rgba(0, 0, 0, 0.05);
+  margin: 10px 10px 10px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+//.selectedGallerySec{
+//  border:solid #FD6108 2px;
+//  border-radius:3px;
+//  margin:6px 1px 6px 1px;
+//  width: 265px;
+//  height: 274px;
+//  display:flex;
+//  justify-content:center;
+//  cursor: pointer;
+//  background-color: #FFFFFF !important;
+//  box-shadow: 0px 1px 3px 0px #00000026;
+//
+//}
+.selectedGallery{
+  width: 265px;
+  height: 274px;
+  //margin: 2px 2px 2px 2px;
+  border-radius: 3px;
+  //box-shadow: 0px 1px 3px 0px #00000026;
+  //box-shadow: 2px 4px 4px 2px #00000026;
+  //box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.05), 0 2px 10px 0 rgba(0, 0, 0, 0.18);
+  //margin: 10px 5px 10px 5px;
+  margin: 0px 10px 10px 10px;
+  bottom: 10px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.galleryTitle{
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-top: 16px;
+}
+.galleryPhotos {
+  //border-radius: 3px;
+  border-radius: 3px 3px 0px 0px;
+  //width: 255px;
+  //height: 216px;
+  width: 265px;
+  height: 221px;
+  cursor: pointer;
+  user-select: none;
+  //margin-right: 20px;
+}
+.selectedGalleryPhotos{
+  border-radius: 3px 3px 0px 0px;
+  width: 255px;
+  height: 216px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.galleryImgModal {
+  max-width: 860px;
+  user-select: none;
+}
+
+.sliderBottomMenu {
+  display: flex;
+  flex-direction: row;
+  margin-top: 16px;
+  width: 645px;
+  float: right;
+  //margin-left: 112px;
+}
+
+.selectedTap {
+  font-size: 18px;
+  margin-left: 25.12px;
+  margin-right: 31px;
+  font-weight: 700;
+  color: #EE574C;
+}
+
+.unselectedTab {
+  font-size: 16px;
+  font-weight: 300;
+  color: #232323;
+  margin-right: 31px;
+}
+
+.artistMainSec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 278px;
+}
+
+.artistTitle {
+  width: 100%;
+  font-size: 40px;
+  font-weight: 550;
+  line-height: 48px;
+  font-family: "Eksell-font";
+}
+
+.moreArtists {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.artistsSubtext {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.viewAll {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  cursor: pointer;
+}
+
+.artistsSlider {
+  display: flex;
+  width: 100%;
+  border: solid red;
+  justify-content: space-between;
+  //margin-bottom: 210px;
+}
+
+.artist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  border-radius: 3px;
+
+
+  img {
+    width: 265px;
+  }
+
+  p {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
+
+.vector {
+  width: 10.29px;
+  height: 20.46px;
+}
+
+
+@import "media";

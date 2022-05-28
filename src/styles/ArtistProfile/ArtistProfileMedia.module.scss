@@ -1,0 +1,134 @@
+@media (max-width: 895px) {
+  .relatedTitle{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    text-align: left;
+
+  }
+  .domesticRank{
+    font-size: 14px;
+  }
+  .artistImg{
+    display: none;
+  }
+
+  .relatedSec{
+    margin-top: 32px;
+  }
+
+  .mobileArtistImg{
+    display: flex;
+    background-position: center;
+    background-size: cover;
+    border-radius: 3px;
+    width: 312px;
+    height: 242px;
+    box-shadow: 0px 1px 3px 0px #00000026;
+  }
+  .topSec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 36px;
+  }
+
+  .artistName {
+    font-size: 30px;
+    font-weight: 550;
+    margin-top: 24px;
+  }
+
+  .artistDetailSec {
+    align-items: center;
+  }
+
+  .artistImgSec {
+    display: none;
+    //display: flex;
+    justify-content: center;
+    //width: 312px;
+    //height: 242px;
+  }
+
+  .artistImgSecMob {
+    width: 312px;
+    height: 242px;
+    display: flex;
+    box-shadow: 0px 1px 3px 0px #00000026;
+    border-radius: 3px;
+  }
+
+  .rankingMainSec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .rankingSec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0px;
+  }
+
+  .globalRank {
+    color: #232323;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 11px;
+    margin-top: 10px;
+  }
+
+  .rankingText {
+    color: #232323;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration-line: underline;
+  }
+
+  .newsMainSec {
+    width: 312px;
+    height: 71px;
+    margin-top: 32px;
+    padding: 12px 16px 13px 16px;
+  }
+
+  .newsText {
+    font-size: 14px;
+  }
+
+  .newsLink {
+    color: #232323;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 900px) {
+  .relatedDescription{
+    margin-top: 8px;
+  }
+  .date1{
+    margin-top: 9px;
+  }
+  .dateSec2{
+    height: 50px;
+  }
+  .dateSec{
+    height: 50px;
+  }
+  .relatedDescription{
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-bottom: 16px;
+  }
+  .newsTitle{
+    font-size: 12px;
+
+  }
+}

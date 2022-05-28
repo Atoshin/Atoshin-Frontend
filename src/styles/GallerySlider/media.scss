@@ -1,0 +1,94 @@
+@media (max-width: 720px) {
+  .artist {
+    height: 156px;
+    img {
+      //width: calc(100% - 8px);
+    }
+
+    p {
+      font-family: Roboto;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  .artist2 {
+    height: 156px;
+    img {
+      //width: calc(100% - 8px);
+    }
+
+    p {
+      font-family: Roboto;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  .selectedGallery{
+    height: 158px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+  .selectedGallery2{
+    height: 158px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .artistTitle {
+    width: 100%;
+    font-size: 25px;
+    font-weight: 550;
+    line-height: 30px;
+    font-family: "Eksell-font";
+  }
+
+  .artistsSubtext {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .viewAll {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    cursor: pointer;
+  }
+
+  .moreArtists {
+    margin-bottom: 16px;
+  }
+
+  .vectorLeft {
+    //display: none;
+    position: absolute;
+    left: -15px;
+    top: 80px;
+  }
+  .vectorRight {
+    //display: none;
+    position: absolute;
+    right: -15px;
+    top: 80px;
+  }
+
+
+  .artistMainSec {
+    //margin-top: 70px;
+    height: 176px;
+  }
+  .artistsSlider {
+    margin-bottom: 70px;
+  }
+}
