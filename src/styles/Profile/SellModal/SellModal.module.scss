@@ -1,0 +1,318 @@
+@import './../../colors';
+
+.modalMain {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.leftSec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 64px;
+}
+
+.editProfileImg {
+  width: 178px;
+  height: 178px;
+  border-radius: 178px;
+}
+
+.changePhoto {
+  margin-top: 16px;
+  color: #232323;
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+.rightSec {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-right: 64px;
+}
+
+.inputTitle {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+
+.input {
+  width: 149px;
+  height: 53px;
+  //border: 2px solid #A7A7A7;
+  border-radius: 5px;
+  color: #A7A7A7;
+  font-size: 14px !important;
+  font-weight: 400;
+  padding-left: 16px;
+  //margin-bottom: 24px;
+  input {
+    //border: none;
+    border: 2px solid #A7A7A7;
+    padding: 8px;
+  }
+}
+.orangeInput{
+  width: 149px;
+  height: 53px;
+  //border: 2px solid #A7A7A7;
+  border-radius: 5px;
+  color: #A7A7A7;
+  font-size: 14px !important;
+  font-weight: 400;
+  padding-left: 16px;
+  //margin-bottom: 24px;
+  &:focus{
+    border: 2px solid $orange;
+
+  }
+  input {
+    //border: none;
+    border: 2px solid $orange;
+    padding: 8px;
+
+  }
+}
+
+
+.closeVectorSec {
+  display: flex;
+  direction: rtl;
+}
+
+.closeVector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #ECECEC;
+  cursor: pointer;
+  right: 0;
+  position: absolute;
+}
+
+.vectorX {
+  width: 16px;
+  height: 16px;
+}
+
+.vectorCheck {
+  width: 28px;
+  height: 28px;
+}
+
+.modalMainSec {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  padding: 24px;
+}
+
+.fixPriceSec {
+  //border: solid crimson;
+  margin-top: 32px;
+  margin-left: 32px;
+}
+
+.imageSec {
+  display: flex;
+
+  img {
+    width: 200px;
+    height: 180px;
+    margin-right: 24px;
+  }
+
+  .desSec {
+    margin-top: 10px;
+    //border: solid 1px;
+    margin-bottom: 28px;
+  }
+}
+
+.checkBoxSec {
+  display: flex;
+  align-items: center;
+  margin-bottom: 41px;
+
+  .checked {
+    color: #232323 !important;
+  }
+
+  div {
+    margin-left: 7.38px;
+
+    span {
+      cursor: pointer;
+      color: #193eff;
+    }
+  }
+}
+
+.buttonSec {
+  display: flex;
+  justify-content: center;
+
+  .btn {
+    color: #FFFFFF !important;
+    background-color: $orange !important;
+    width: 196px;
+    height: 43px;
+    font-family: Roboto !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 19px !important;
+    letter-spacing: 0em !important;
+
+    &:hover {
+      color: #FFFFFF !important;
+      background-color: $orange !important;
+    }
+  }
+
+  .disabledBtn {
+    color: #FFFFFF !important;
+    background-color: #E1E1E1 !important;
+    width: 196px;
+    height: 43px;
+    font-family: Roboto !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 19px !important;
+    letter-spacing: 0em !important;
+
+    &:hover {
+      color: #FFFFFF !important;
+      background-color: #E1E1E1 !important;
+    }
+  }
+}
+
+.priceSec {
+  display: flex;
+  align-items: center;
+}
+
+.textSec {
+
+}
+
+.title {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.note {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 15px;
+  word-wrap: break-word;
+}
+
+.toWhereSec {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 35px;
+
+  hr {
+    border: none;
+    height: 1px;
+    background: #BEBDBD;
+    width: 65%;
+  }
+}
+
+.assetName {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.lastPriceSec {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.lastPrice {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-left: 24px;
+}
+
+.auctionSec {
+  //border: solid red;
+}
+
+.tabBox {
+}
+
+.tabTitles {
+  width: 190px;
+  color: #232323 !important;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: lowercase !important;
+}
+
+.tabTitles:focus {
+  width: 190px;
+  color: #232323;
+  font-size: 18px;
+  font-weight: 700 !important;
+  //border-bottom: 2px solid #232323!important;
+}
+
+//@media (max-width: 830px) {
+//  .box {
+//    width: 90%;
+//  }
+//  .leftSec {
+//    margin-left: 0px;
+//  }
+//  .rightSec {
+//    margin-right: 0px;
+//  }
+//}
+//
+//@media (max-width: 490px) {
+//  .box {
+//    padding-left: 16px;
+//    padding-right: 16px;
+//  }
+//}
