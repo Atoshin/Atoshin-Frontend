@@ -85,9 +85,9 @@ export default function GallerySection({gallery}) {
 
                 {(matches || matches2) ?
                 Object.keys(selectedGallery.videoLinks).length > 0 ?
-                    selectedGallery.videoLinks.slice(0, 1).map((videoLinks) => {
+                    selectedGallery.videoLinks.slice(0, 1).map((videoLinks, idx) => {
                         if (videoLinks.media !== null) {
-                            return <div className={classes.galleryVidContainerM}>
+                            return <div key={idx} className={classes.galleryVidContainerM}>
                                 <div
                                     style={{
                                         backgroundImage: `url("${videoLinks.media.url}")`,
