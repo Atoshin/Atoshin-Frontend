@@ -24,6 +24,7 @@ import LoadingBackdrop from "../../components/Layout/Backdrop";
 import {selectAddress} from "../../redux/slices/accountSlice";
 import Head from "next/head";
 import {setOpen} from "../../redux/slices/connectWalletModalSlice";
+import BuyModal from "../../components/ShowAsset/BuyModal";
 
 
 const nullAddress = "0x0000000000000000000000000000000000000000";
@@ -54,6 +55,7 @@ export default function ShowAsset({asset}) {
         id: '',
         showAsset: false
     })
+    const [openBuyModal, setOpenBuyModal] = useState(false);
     const dispatch = useAppDispatch()
     const userAddress = useAppSelector(selectAddress);
     const {query} = useRouter();
@@ -535,6 +537,7 @@ export default function ShowAsset({asset}) {
             {/*imageId={imageId}*/}
             <OwnersModal owners={owners} open={openOwners} setOpen={setOpenOwners}/>
             <HistoryModal txns={asset.buyTransactions} open={openHistory} setOpen={setOpenHistory}/>
+            <BuyModal setOpen={setOpenBuyModal} open={openBuyModal}/>
             <div className={styles.showAssetMain}>
                 <div className={styles.topMainSec}>
                     <div className={styles.topLeftMainSec}>
@@ -936,7 +939,7 @@ export default function ShowAsset({asset}) {
                                 <div className={styles.date}>On December 23, 2022</div>
                                 <div className={styles.price}>12 ETH</div>
                                 <div className={styles.buySec}>
-                                    <Button variant='contained'>
+                                    <Button variant='contained' onClick={()=> setOpenBuyModal(true)}>
                                         Buy
                                     </Button>
                                 </div>

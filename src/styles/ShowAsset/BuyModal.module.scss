@@ -1,0 +1,283 @@
+@import "./../colors";
+
+.box {
+  padding: 16px;
+
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  //width: unset;
+  width: 550px;
+  max-width: 550px;
+  // height: 477,
+
+}
+
+.modalMainSec {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalBody {
+  //padding: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.processModalBody {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.imageSec {
+  padding-top: 32px;
+  padding-bottom: 24px;
+  border-top: 1px solid #BEBDBD;
+  border-bottom: 1px solid #BEBDBD;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.statusSec {
+  margin-top: 24px;
+  padding-right: 57px;
+  padding-left: 56px;
+  padding-bottom: 24px;
+}
+
+.titleSec {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.statusTitle {
+  width: 110px;
+  //border: seagreen solid;
+
+}
+
+.transactionTitle {
+  //border: seagreen solid;
+  width: 130px;
+
+}
+
+.status {
+  width: 110px;
+  //border: seagreen solid;
+}
+
+.transaction {
+  color: #193EFF;
+  //border: seagreen solid;
+  text-align: left;
+  width: 130px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+
+}
+
+.processNote {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: center;
+  word-wrap: break-word;
+  margin-bottom: 16px;
+}
+
+.assetImg {
+  width: 151px;
+  height: 151px;
+  margin: auto;
+}
+.processModalHeader{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 14px;
+  padding-bottom: 27px;
+}
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+ // padding-top: 14px;
+ //padding-bottom: 27px;
+}
+
+.closeVector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #ECECEC;
+  cursor: pointer;
+  //right: 0;
+  //position: absolute;
+}
+
+.vectorX {
+  width: 16px;
+  height: 16px;
+}
+
+.loadingNote {
+  max-width: 300px;
+  width: unset;
+  margin-right: 105px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  //margin-bottom: 27px;
+  //margin-top:14px ;
+}
+
+.assetTable {
+  margin-top: 44px;
+}
+
+.tableHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.assetTitle {
+  //border: solid crimson;
+  width: 200px;
+}
+
+.ownerTitle {
+  //border: solid crimson;
+  width: 110px;
+}
+
+.priceTitle {
+  //border: solid crimson;
+  width: 100px;
+}
+
+.itemRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #BBBBBB;
+}
+
+.asset {
+  //border: solid crimson;
+  width: 200px;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 71px;
+    height: 71px;
+    box-shadow: 0px 1px 3px 0px #00000026;
+    border-radius: 3px;
+    margin-right: 24px;
+  }
+
+  .assetName {
+
+  }
+}
+
+.owner {
+  //border: solid crimson;
+  width: 110px;
+  color: #193EFF;
+}
+
+.price {
+  //border: solid crimson;
+  width: 100px;
+  text-align: right;
+}
+
+.totalCostSec {
+  display: flex;
+  align-items: center;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  margin-bottom: 64px;
+
+  .hr {
+    height: 1px;
+    border-top: 1px solid #E2E2E2;
+    width: 65%;
+  }
+}
+
+.totalCost {
+  width: 15%;
+}
+
+.totalCostPrice {
+  width: 20%;
+  text-align: right;
+}
+
+.btnSec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.BuyBtn {
+  width: 134px !important;
+  height: 43px !important;
+  background-color: $orange !important;
+  font-family: Roboto !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  line-height: 19px !important;
+  letter-spacing: 0em;
+  text-transform: lowercase !important;
+
+  &:hover {
+    background-color: $orange;
+  }
+}
