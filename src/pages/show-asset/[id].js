@@ -799,9 +799,12 @@ export default function ShowAsset({asset}) {
                                     <div className={styles.backStoryTxt}>
                                         This artwork has been fractionalized {asset.totalFractions} tokens
                                         and {(asset.totalFractions * asset.ownershipPercentage) / 100} numbers belong to
-                                        gallery {asset.gallery.name} , so {asset.soldFractions} fractions was traded in first part .Value
-                                        of this artwork is {calculateDecimalPrecision(asset.ethPricePerFraction * asset.totalFractions, 5)} {asset.tradedCurrency} and
-                                        the price per token is {calculateDecimalPrecision(asset.ethPricePerFraction, 5)} {asset.tradedCurrency}.
+                                        gallery {asset.gallery.name} , so {asset.soldFractions} fractions was traded in
+                                        first part .Value
+                                        of this artwork
+                                        is {calculateDecimalPrecision(asset.ethPricePerFraction * asset.totalFractions, 5)} {asset.tradedCurrency} and
+                                        the price per token
+                                        is {calculateDecimalPrecision(asset.ethPricePerFraction, 5)} {asset.tradedCurrency}.
 
                                         {/*The net asset value of this artwork*/}
                                         {/*is {calculateDecimalPrecision(asset.ethPricePerFraction * asset.totalFractions, 5)} ETH*/}
@@ -912,6 +915,85 @@ export default function ShowAsset({asset}) {
                                     }
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div className={styles.fixPriceSec}>
+                        <div className={styles.fixPriceTitle}>List of Fix Price</div>
+                        <div className={styles.fixPriceTable}>
+                            <div className={styles.header}>
+                                <div className={styles.assetTile}>Asset</div>
+                                <div className={styles.sellersTitle}>Sellers</div>
+                                <div className={styles.datesTitle}>Date Of listing</div>
+                                <div className={styles.priceTitle}>Price</div>
+                                <div className={styles.buyTitle}></div>
+                            </div>
+
+                            <div className={styles.fixPriceRow}>
+                                <div className={styles.asset}>
+                                    <img src="/images/starryNight.png" alt=""/>
+                                </div>
+                                <div className={styles.sellers}>0we6...245rb</div>
+                                <div className={styles.date}>On December 23, 2022</div>
+                                <div className={styles.price}>12 ETH</div>
+                                <div className={styles.buySec}>
+                                    <Button variant='contained'>
+                                        Buy
+                                    </Button>
+                                </div>
+                            </div>
+                            <div className={styles.fixPriceRow}>
+                                <div className={styles.asset}>
+                                    <img src="/images/starryNight.png" alt=""/>
+                                </div>
+                                <div className={styles.sellers}>0we6...245rb</div>
+                                <div className={styles.date}>On December 23, 2022</div>
+                                <div className={styles.price}>12 ETH</div>
+                                <div className={styles.buySec}>
+                                    <Button variant='contained'>
+                                        Buy
+                                    </Button>
+                                </div>
+                            </div>
+                            <div className={styles.fixPriceRow}>
+                                <div className={styles.asset}>
+                                    <img src="/images/starryNight.png" alt=""/>
+                                </div>
+                                <div className={styles.sellers}>0we6...245rb</div>
+                                <div className={styles.date}>On December 23, 2022</div>
+                                <div className={styles.price}>12 ETH</div>
+                                <div className={styles.buySec}>
+                                    <Button variant='contained'>
+                                        Buy
+                                    </Button>
+                                </div>
+                            </div>
+                            <div className={styles.fixPriceRow}>
+                                <div className={styles.asset}>
+                                    <img src="/images/starryNight.png" alt=""/>
+                                </div>
+                                <div className={styles.sellers}>0we6...245rb</div>
+                                <div className={styles.date}>On December 23, 2022</div>
+                                <div className={styles.price}>12 ETH</div>
+                                <div className={styles.buySec}>
+                                    <Button variant='contained'>
+                                        Buy
+                                    </Button>
+                                </div>
+                            </div>
+                            <div className={styles.fixPriceRow}>
+                                <div className={styles.asset}>
+                                    <img src="/images/starryNight.png" alt=""/>
+                                </div>
+                                <div className={styles.sellers}>0we6...245rb</div>
+                                <div className={styles.date}>On December 23, 2022</div>
+                                <div className={styles.price}>12 ETH</div>
+                                <div className={styles.buySec}>
+                                    <Button variant='contained'>
+                                        Buy
+                                    </Button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
