@@ -96,9 +96,9 @@ export default function BasicTabs({setOpen}) {
                             <div className={classes.priceSec}>
                                 <div>Your Price</div>
                                 <div className={classes.lastPrice}>
-                                    <TextField className={price ? classes.orangeInput : classes.input} value={price} onChange={inputHandler}>
+                                    <input className={price ? classes.orangeInput : classes.input} value={price} onChange={inputHandler}>
 
-                                    </TextField>
+                                    </input>
                                 </div>
                             </div>
                         </div>
@@ -117,6 +117,7 @@ export default function BasicTabs({setOpen}) {
                             <Checkbox
                                 checked={isChecked}
                                 onChange={handleCheckBox}
+                                className={classes.checkBox}
                                 classes={{checked:classes.checked}}
                                 inputProps={{'aria-label': 'controlled'}}
                             />

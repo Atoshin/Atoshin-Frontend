@@ -51,8 +51,12 @@ export default function ArtWork({artwork, key, isSale}) {
                             <div className={classes.artworkName}>
                                 {artwork.name}
                             </div>
-                            {/*<div className={classes.artworkTokens}>*/}
-                            {/*</div>*/}
+                            {
+                                isSale &&
+                                <div className={classes.artworkTokens}>
+                                   <span>4 ETH</span> sale price
+                                </div>
+                            }
                         </div>
                     </div>
                     {
