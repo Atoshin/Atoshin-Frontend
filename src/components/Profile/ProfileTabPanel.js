@@ -46,6 +46,8 @@ function a11yProps(index) {
 
 export default function BasicTabs({artworks, history}) {
     const [value, setValue] = React.useState(0);
+    const [isSale, setIsSale] = useState(false);
+
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('sm'));
     const handleChange = (event, newValue) => {
@@ -63,13 +65,14 @@ export default function BasicTabs({artworks, history}) {
                       indicatorColor="secondary" aria-label="basic tabs example">
                     <Tab className={classes.tabTitles} label="Artworks" {...a11yProps(0)} />
                     <Tab className={classes.tabTitles} label="History" {...a11yProps(1)} />
+                    <Tab className={classes.tabTitles} label="On Sale" {...a11yProps(2)} />
                 </Tabs>
             </Box>
             <ProfileTabPanel value={value} index={0}>
                 <div className={Object.keys(artworks).length === 1  ? classes.profileBoxArtwork2 : classes.profileBoxArtwork}>
                     <div className={Object.keys(artworks).length === 1  ? classes.artworkSec2 :  classes.artworkSec}>
                         {artworks.map((artwork, idx) => {
-                            return <ArtWork artwork={artwork} key={idx}/>
+                            return <ArtWork artwork={artwork} key={idx} isSale={false}/>
                         })}
                         {/*{artworks.map((artwork, idx) => {*/}
                         {/*    return <div key={idx} className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}*/}
@@ -191,6 +194,40 @@ export default function BasicTabs({artworks, history}) {
                                 {/*</div>*/}
                             </div>
                         </div>
+                    </div>
+                </div>
+            </ProfileTabPanel>
+            <ProfileTabPanel value={value} index={2}>
+                <div className={classes.profileBoxArtwork}>
+                    <div className={classes.artworkSec}>
+                        {artworks.map((artwork, idx) => {
+                            return <ArtWork artwork={artwork} key={idx} isSale={true}/>
+                        })}
+                        {/*{artworks.map((artwork, idx) => {*/}
+                        {/*    return <div key={idx} className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}*/}
+                        {/*                onMouseEnter={artWorkMouseOver}*/}
+                        {/*                onMouseLeave={artWorkMouseLeave}>*/}
+                        {/*        {*/}
+                        {/*            artWorkHover === true ?*/}
+                        {/*                <div className={classes.hoveredArtworkBackground}>*/}
+                        {/*                    <div className={classes.contractsBtn}><div>Contracts</div></div>*/}
+                        {/*                    <div className={classes.assetBtn}><div>Asset</div></div>*/}
+                        {/*                </div> : ''*/}
+                        {/*        }*/}
+                        {/*        <div className={classes.artworkImg} style={{*/}
+                        {/*            backgroundImage: `url(${artwork.assetImage})`,*/}
+                        {/*            backgroundPosition: "center",*/}
+                        {/*            backgroundSize: "cover"*/}
+                        {/*        }}/>*/}
+                        {/*        <div className={classes.cardBottomSec}>*/}
+                        {/*            <div className={classes.artworkName}>*/}
+                        {/*                {artwork.name}*/}
+                        {/*            </div>*/}
+                        {/*            /!*<div className={classes.artworkTokens}>*!/*/}
+                        {/*            /!*</div>*!/*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*})}*/}
                     </div>
                 </div>
             </ProfileTabPanel>

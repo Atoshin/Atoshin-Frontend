@@ -31,6 +31,16 @@
   padding-right: 16px;
 }
 
+.imageSec2 {
+  //padding-top: 32px;
+  //padding-bottom: 16px;
+  //border-top: 1px solid #BEBDBD;
+  //border-bottom: 1px solid #BEBDBD;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .imageSec {
   padding-top: 32px;
   padding-bottom: 24px;
@@ -79,6 +89,51 @@
   //border: seagreen solid;
 }
 
+.deleteHr {
+  height: 1px;
+  border-top: 1px solid #E2E2E2;
+  width: 67%;
+}
+
+.toWhere {
+  width: 18%;
+}
+
+.assetPrice {
+  width: 15%;
+  text-align: right;
+}
+
+.deleteRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+.deleteBtn {
+  margin: auto !important;
+  width: 156px !important;
+  height: 43px !important;
+  background-color: #232323 !important;
+  font-family: Roboto !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  line-height: 19px !important;
+  letter-spacing: 0em;
+
+   text-transform: lowercase !important;
+  &:hover {
+    background-color: #232323 !important;
+  }
+}
+
 .transaction {
   color: #193EFF;
   //border: seagreen solid;
@@ -99,6 +154,15 @@
 
 }
 
+.deletingAssetImg {
+  width: 151px;
+  height: 151px;
+  margin: auto;
+  margin-bottom: 24px;
+  border-radius: 3px;
+}
+
+
 .processNote {
   font-family: Roboto;
   font-size: 16px;
@@ -115,19 +179,29 @@
   height: 151px;
   margin: auto;
 }
-.processModalHeader{
+
+.processModalHeader {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   padding-top: 14px;
   padding-bottom: 27px;
 }
+
+.deleteModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  //padding-top: 14px;
+  padding-bottom: 4px;
+}
+
 .modalHeader {
   display: flex;
   align-items: center;
   justify-content: flex-end;
- // padding-top: 14px;
- //padding-bottom: 27px;
+  // padding-top: 14px;
+  //padding-bottom: 27px;
 }
 
 .closeVector {

@@ -3,10 +3,11 @@ import classes from "../../styles/Profile/ProfileTabPanel/ProfileTabPanel.module
 import {useState} from "react";
 import {Button} from "@mui/material";
 import SellModal from "./SellModal";
-
-export default function ArtWork({artwork, key}) {
+import DeleteSellModal from "./DeleteSellModal";
+export default function ArtWork({artwork, key, isSale}) {
     const [artWorkHover, setArtWorkHover] = useState(false);
     const [openSellModal, setOpenSellModal] = useState(false);
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
     const artWorkMouseOver = () => {
         setArtWorkHover(true)
     }
@@ -16,6 +17,7 @@ export default function ArtWork({artwork, key}) {
     return (
         <>
             <SellModal open={openSellModal} setOpen={setOpenSellModal}/>
+            <DeleteSellModal open={openDeleteModal} setOpen={setOpenDeleteModal}/>
             {
                 <div className={classes.artworkCardParent}>
                     <div key={key} className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}
@@ -24,10 +26,17 @@ export default function ArtWork({artwork, key}) {
                         {
                             artWorkHover === true ?
                                 <div className={classes.hoveredArtworkBackground}>
-                                    <a rel="noreferrer" target="_blank" href={artwork.image}
-                                       className={classes.contractsBtn}>
-                                        <div>Contract</div>
-                                    </a>
+                                    {
+                                        isSale ?
+                                            <div className={classes.contractsBtn}>
+                                                <div onClick={() => setOpenDeleteModal(true)}>pending</div>
+                                            </div>
+                                            :
+                                            <a rel="noreferrer" target="_blank" href={artwork.image}
+                                               className={classes.contractsBtn}>
+                                                <div>Contract</div>
+                                            </a>
+                                    }
                                     {/*<div className={classes.assetBtn}>*/}
                                     {/*    <div>Asset</div>*/}
                                     {/*</div>*/}
@@ -46,9 +55,12 @@ export default function ArtWork({artwork, key}) {
                             {/*</div>*/}
                         </div>
                     </div>
-                    <Button variant='contained' className={classes.sellBtn} onClick={()=> setOpenSellModal(true)}>
-                        <span>s</span>ell
-                    </Button>
+                    {
+                        !isSale &&
+                        <Button variant='contained' className={classes.sellBtn} onClick={() => setOpenSellModal(true)}>
+                            <span>s</span>ell
+                        </Button>
+                    }
                 </div>
             }
         </>
