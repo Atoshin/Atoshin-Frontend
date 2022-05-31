@@ -24,7 +24,6 @@ export default function Profile({token}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('md'));
     const [openModal, setOpenModal] = useState(false);
-
     const dispatch = useAppDispatch();
     const address = useAppSelector(selectAddress)
     const balance = useAppSelector(selectBalance)
@@ -42,6 +41,8 @@ export default function Profile({token}) {
         style.backgroundColor = '#f3f5f8';
         style.backgroundImage = 'none';
         //endregion
+
+        console.log(cookie)
     }, [])
 
     const loadMyNFTs = async () => {
@@ -264,26 +265,4 @@ export default function Profile({token}) {
             </div>
         </>
     )
-}
-
-export async function getServerSideProps({req, res}) {
-    let token = null;
-    const cookies = parseCookies(req);
-    if (cookies.token) {
-        token = cookies.token;
-    }
-
-    //
-    // if (!token) {
-    //     res.setHeader("location", "/")
-    //     res.statusCode = 302
-    //     res.end()
-    // }
-
-
-    return {
-        props: {
-            token
-        }
-    }
 }

@@ -4,12 +4,14 @@ import type {RootState as AppState} from "../store";
 
 export interface AccountState {
     address: string,
-    balance: number
+    balance: number,
+    currency: string,
 }
 
 const initialState: AccountState = {
     address: '',
-    balance: 0
+    balance: 0,
+    currency: 'ETH'
 }
 
 export const accountSlice = createSlice({
@@ -19,8 +21,9 @@ export const accountSlice = createSlice({
         setAddress: (state, action: PayloadAction<string>) => {
             state.address = action.payload
         },
-        setBalance: (state, action: PayloadAction<number>) => {
-            state.balance = action.payload
+        setBalance: (state, action: PayloadAction<{ balance: number, currency: string }>) => {
+            state.balance = action.payload.balance;
+            state.currency = action.payload.currency;
         }
     }
 })
