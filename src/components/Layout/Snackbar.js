@@ -7,11 +7,11 @@ import Slide from '@mui/material/Slide';
 
 
 const Alert = React.forwardRef(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="outlined" {...props} />;
+    return <MuiAlert elevation={6} ref={ref} {...props} />;
 });
 
 function SlideTransition(props) {
-    return <Slide {...props} direction="up" />;
+    return <Slide {...props} direction="up"/>;
 }
 
 export default function AppSnackbar() {
@@ -31,7 +31,9 @@ export default function AppSnackbar() {
     };
 
     return (
-        <Snackbar TransitionComponent={SlideTransition} open={state.open} autoHideDuration={6000} onClose={handleClose}>
+        <Snackbar TransitionComponent={SlideTransition} open={state.open}
+                  autoHideDuration={state.alwaysOn ? undefined : 10000}
+                  onClose={handleClose}>
             <Alert onClose={handleClose} severity={state.severity} sx={{width: '100%'}}>{state.message}</Alert>
         </Snackbar>
     );
