@@ -23,7 +23,6 @@ export default function ConnectWalletModal() {
 
     const handleClose = () => dispatch(setOpen(false));
 
-
     const providerOptions = {
         walletconnect: {
             package: WalletConnectProvider, // required
@@ -93,14 +92,21 @@ export default function ConnectWalletModal() {
 
 
     const connectWallet = async (selectedProvider) => {
+        // if (web3Modal.cachedProvider) {
+        //     web3Modal.clearCachedProvider();
+        // }
         if (selectedProvider === 'injected') {
             if (!window.ethereum) {
                 window.open('https://metamask.io/download', '_blank')
                 return;
             }
         }
+        const web3Modal = new Web3Modal({
+            providerOptions,
+            disableInjectedProvider: false,
+            cacheProvider: true
+        })
 
-        const web3Modal = new Web3Modal({providerOptions, disableInjectedProvider: false})
         try {
             const instance = await web3Modal.connectTo(selectedProvider)
 

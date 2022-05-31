@@ -4,13 +4,10 @@ import {Button, useMediaQuery} from "@mui/material";
 import Container from "@mui/material/Container";
 import UserMenu from "../UserMenu";
 import {useAppDispatch, useAppSelector} from "../../../redux/hooks";
-import {useEffect, useState} from "react";
-import Web3 from "web3";
-import {selectAddress, setAddress, setBalance} from "../../../redux/slices/accountSlice";
-import {ethers} from "ethers";
+import {useState} from "react";
+import {selectAddress} from "../../../redux/slices/accountSlice";
 import {useTheme} from "@mui/material/styles";
 import {useRouter} from "next/router";
-import {useCookies} from "react-cookie";
 import {setOpen} from '../../../redux/slices/connectWalletModalSlice'
 
 export default function HeaderContent({setDrawerMenu}) {
