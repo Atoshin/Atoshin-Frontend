@@ -130,6 +130,10 @@
 
 .box {
   padding: 24px;
+  max-width: 681px;
+  //width: unset;
+  width: 100%;
+  //min-width: 350px;
 }
 
 .fixPriceSec {
@@ -159,6 +163,11 @@
   display: flex;
   align-items: center;
   margin-bottom: 41px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
 
   .checked {
     color: #232323 !important;
@@ -181,7 +190,7 @@
 .buttonSec {
   display: flex;
   justify-content: center;
-
+  margin-bottom: 8px;
   .btn {
     color: #FFFFFF !important;
     background-color: $orange !important;
@@ -211,7 +220,6 @@
     line-height: 19px !important;
     letter-spacing: 0em !important;
     box-shadow: none !important;
-
     &:hover {
       color: #FFFFFF !important;
       background-color: #E1E1E1 !important;
@@ -222,6 +230,21 @@
 .priceSec {
   display: flex;
   align-items: center;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19px;
+  letter-spacing: 0em;
+}
+
+.price {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-left: 16px;
 }
 
 .textSec {
@@ -261,11 +284,19 @@
   text-align: left;
   margin-bottom: 35px;
 
+  .offer {
+    text-align: right;
+  }
+
+  div {
+    width: 25%;
+  }
+
   hr {
     border: none;
     height: 1px;
     background: #BEBDBD;
-    width: 65%;
+    width: 60%;
   }
 }
 
@@ -283,6 +314,12 @@
   display: flex;
   align-items: center;
   margin-bottom: 32px;
+
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19px;
+  letter-spacing: 0em;
 }
 
 .lastPrice {
@@ -318,21 +355,126 @@
   //border-bottom: 2px solid #232323!important;
 }
 
-//@media (max-width: 830px) {
-//  .box {
-//    width: 90%;
-//  }
-//  .leftSec {
-//    margin-left: 0px;
-//  }
-//  .rightSec {
-//    margin-right: 0px;
-//  }
-//}
-//
-//@media (max-width: 490px) {
-//  .box {
-//    padding-left: 16px;
-//    padding-right: 16px;
-//  }
-//}
+@media (max-width: 685px) {
+  .box {
+    width: 90%;
+  }
+}
+
+@media (max-width: 520px) {
+  .closeVector {
+    width: 20px;
+    height: 20px;
+  }
+  .vectorX {
+    width: 8px;
+    height: 8px;
+  }
+  .box {
+    padding: 8px;
+    width: 90%;
+  }
+ .buttonSec{
+   margin-bottom: 24px;
+ }
+  .fixPriceSec {
+    //border: solid crimson;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  .imageSec {
+    img {
+      width: 136px;
+      height: 123px;
+      margin-right: 9px;
+    }
+  }
+  .assetName {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .lastPriceSec {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 16px;
+  }
+  .lastPrice {
+    font-size: 14px;
+    line-height: 16px;
+    //margin-left: 8px;
+  }
+  .priceSec {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .price {
+    margin-left: 8px;
+  }
+  .input {
+    width: 88px;
+    height: 36px;
+  }
+  .orangeInput {
+    width: 88px;
+    height: 36px;
+  }
+  .title {
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 8px;
+  }
+  .note {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .toWhereSec {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 27px;
+  }
+  .checkBoxSec {
+    margin-bottom: 32px;
+    font-size: 14px;
+    line-height: 16px;
+
+    .checkBox {
+      padding-right: 7px !important;
+    }
+  }
+  .tabTitles {
+    width: 150px;
+  }
+}
+
+@media (max-width: 450px) {
+  .toWhereSec {
+    div {
+      width: 27%;
+    }
+
+    hr {
+      width: 44%;
+    }
+  }
+}
+
+@media (max-width: 374px) {
+  .toWhereSec {
+    div {
+      width: 31%;
+    }
+
+    hr {
+      width: 38%;
+    }
+  }
+  //.input {
+  //  width: 80px;
+  //}
+  //.orangeInput {
+  //  width: 80px;
+  //}
+  //.price{
+  //  margin-left: 5px;
+  //}
+}

@@ -1,6 +1,6 @@
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import classes from "../../styles/ShowAsset/BuyModal.module.scss";
+import classes from "../../styles/Profile/DeleteSellModal.module.scss";
 import {Button} from "@mui/material";
 import * as React from "react";
 
@@ -45,20 +45,24 @@ export default function DeleteSellModal({open, setOpen}) {
 
                             <div className={classes.processModalBody}>
                                 <div className={classes.imageSec2}>
-                                    <div className={classes.processNote}>You just purchased Starry Night .
-                                        It should confirmed on
-                                        the blockchain shortly
+                                    <div className={classes.processNote}>Are you sure that you want cancel your listing of
+                                        Starry Night
                                     </div>
                                     <img src="/images/starryNight.png" alt="" className={classes.deletingAssetImg}/>
-                                    <div className={classes.processNote}>Commission fee will deducted form your wallet
+                                    <div className={classes.processNote2}>Commission fee will deducted form your wallet
                                         if you cancel your sell
                                     </div>
                                 </div>
 
-                                <div className={classes.deleteRow}>
-                                    <div className={classes.toWhere}>To Hamijoo</div>
-                                    <div className={classes.deleteHr}></div>
-                                    <div className={classes.assetPrice}>0.1 ETH</div>
+                                {/*<div className={classes.deleteRow}>*/}
+                                {/*    <div className={classes.toWhere}>To Hamijoo</div>*/}
+                                {/*    <div className={classes.deleteHr}></div>*/}
+                                {/*    <div className={classes.assetPrice}>0.1 ETH</div>*/}
+                                {/*</div>*/}
+                                <div className={classes.toWhereSec}>
+                                    <div>To hamijoo</div>
+                                    <hr/>
+                                    <div className={classes.offer}>0.1 ETH</div>
                                 </div>
                                 <div className={classes.btnSec}>
                                     <Button variant='contained' className={classes.deleteBtn} onClick={()=> setOpen(false)}>
