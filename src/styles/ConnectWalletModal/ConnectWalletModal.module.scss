@@ -69,7 +69,23 @@
 
 .metaMaskLogo {
   width: 58px;
-  height: 58px;
+}
+.torusLogo {
+  width: 40px;
+  margin-top: 5px;
+  //height: 58px;
+}
+.authereumLogo {
+  margin-top: 5px;
+  width: 40px;
+  //height: 58px;
+}
+
+.coinbasewalletLogo{
+  width: 40px;
+}
+.walletConnectLogo{
+  width: 68px;
 }
 
 .metaMaskTitle {
@@ -120,6 +136,7 @@
   justify-content: space-between;
   width: 100%;
   margin-top: 32px;
+  margin-bottom: 15px;
 }
 
 .downloadMainSec {

@@ -91,6 +91,7 @@ export default function Layout({children}) {
         checkConnection();
     }, [])
 
+
     useEffect(() => {
         const setScroll = (e) => {
             if (window.scrollY > 300) {

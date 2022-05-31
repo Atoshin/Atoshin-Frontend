@@ -23,7 +23,6 @@ export default function HeaderContent({setDrawerMenu}) {
     const router = useRouter()
 
     const handleOpen = () => dispatch(setOpen(true));
-    const handleCloseModal = () => dispatch(setOpen(false));
 
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -155,6 +154,5 @@ export default function HeaderContent({setDrawerMenu}) {
             </>
         }
         <UserMenu handleClose={handleClose} anchorEl={anchorEl}/>
-        <ConnectWalletModal handleClose={handleCloseModal}/>
     </>
 }
