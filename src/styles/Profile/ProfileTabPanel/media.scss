@@ -13,19 +13,19 @@
     height: auto;
     //height: 316px;
 
-    padding-left:44px; // 54- 10px
-    padding-right:0px ;
+    padding-left: 44px; // 54- 10px
+    padding-right: 0px;
   }
 
-  .profileBoxArtwork2{
+  .profileBoxArtwork2 {
     display: flex;
     justify-content: center;
     background-color: #FFFFFF;
     margin-top: 19px;
     padding-top: 0px;
     height: auto;
-    padding-left:0px; // 54- 10px
-    padding-right:0px ;
+    padding-left: 0px; // 54- 10px
+    padding-right: 0px;
   }
 
   .artworkSec {
@@ -68,16 +68,18 @@
   }
 
   .tabTitles {
-    width: 156px;
+    //width: 156px;
+    width: 78px;
     color: #232323 !important;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 300;
   }
 
   .tabTitles:focus {
-    width: 156px;
+    //width: 156px;
+    width: 78px;
     color: #232323;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500 !important;
     //border-bottom: 2px solid #232323!important;
   }
@@ -156,20 +158,33 @@
     margin-right: 12px;
   }
 
+  .artworkCardParent {
+    width: 204px;
+    //height: 224px;
+    height: 254px;
+    margin-right: 6px;
+    margin-left: 6px;
+  }
+
   .hoveredArtworkCard {
-    width: 204px;
+    //width: 204px;
     height: 224px;
-    margin-right: 6px;
-    margin-left: 6px;
+    //margin-right: 6px;
+    //margin-left: 6px;
+    //height: auto;
   }
+  .sellBtn {
+    font-size: 14px !important;
+    font-weight: 400 !important;
 
+  }
   .artworkCard {
-    width: 204px;
     height: 224px;
-    margin-right: 6px;
-    margin-left: 6px;
+    //height: auto;
+    //width: 204px;
+    //margin-right: 6px;
+    //margin-left: 6px;
   }
-
   .hoveredArtworkBackground {
     width: 204px;
     height: 183px;
@@ -190,30 +205,62 @@
     padding-right: 12px;
     padding-left: 12px;
   }
+  .sellArtworkCard {
+    //height: 224px;
+    height: 252px;
+  }
+  .sellHoveredArtworkCard {
+    //height: 224px;
+    height: 252px;
+    background-color: #FFFFFF;
+  }
 
+  .sellCardBottomSec {
+    //flex-direction: row;
+    //align-items: center;
+    justify-content: space-around;
+    //min-height: 41px;
+    max-height: 69px;
+    min-height: 69px;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
   .artworkName {
     font-size: 14px;
     width: 96px;
     word-wrap: break-word;
-    margin-left: 0px;
+    margin-left: 0;
   }
-
+  .sellArtworkName {
+    font-size: 14px;
+    //width: 96px;
+    word-wrap: break-word;
+    margin-left: 0;
+  }
   .artworkTokens {
     font-size: 12px;
-    margin-left: 30px;
+    //margin-left: 30px;
+    margin-left: 0;
+    //margin-top: 14px;
+    justify-content: space-between;
+    span {
+      font-size: 14px;
+      line-height: 16px;
+      margin-right: 0;
+    }
   }
   .historyIndexSec {
     height: 266px;
   }
-  .profileBoxHistory{
+  .profileBoxHistory {
     height: 266px;
     margin-top: 0px;
   }
-  .historyMainSec{
+  .historyMainSec {
     margin-top: 0px;
     height: 350px;
   }
-  .itemsSec{
+  .itemsSec {
     margin-left: 12px;
     width: 155px;
     justify-content: flex-start;
@@ -221,10 +268,10 @@
 }
 
 @media (max-width: 450px) {
-  .profileBoxArtwork{
+  .profileBoxArtwork {
 
   }
-  .artworkSec{
+  .artworkSec {
     //border: solid red 1px;
   }
 

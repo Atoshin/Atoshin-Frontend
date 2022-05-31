@@ -95,7 +95,7 @@ export default function BasicTabs({setOpen}) {
 
                             <div className={classes.priceSec}>
                                 <div>Your Price</div>
-                                <div className={classes.lastPrice}>
+                                <div className={classes.price}>
                                     <input className={price ? classes.orangeInput : classes.input} value={price} onChange={inputHandler}>
 
                                     </input>
@@ -111,7 +111,7 @@ export default function BasicTabs({setOpen}) {
                         <div className={classes.toWhereSec}>
                             <div>To hamijoo</div>
                             <hr/>
-                            <div>2.5 % of offer</div>
+                            <div className={classes.offer}>2.5 % of offer</div>
                         </div>
                         <div className={classes.checkBoxSec}>
                             <Checkbox

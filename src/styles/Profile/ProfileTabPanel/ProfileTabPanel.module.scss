@@ -61,6 +61,9 @@
 .artworkCardParent {
   margin: 5px 10px 16px 10px;
   box-shadow: 0px 1px 3px 0px #00000026 !important;
+}
+
+.sellArtworkCardParent {
 
 }
 
@@ -68,7 +71,7 @@
   display: flex;
   flex-direction: column;
   //box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
-  height: 239px;
+  height: 231px;
   //box-shadow: 0px 1px 3px 0px #00000026;
   border-radius: 3px;
   //margin: 5px 10px 16px 10px;
@@ -119,11 +122,12 @@
 .sellBtn {
   width: 100%;
   height: 30px !important;
-  background-color:   #232323 !important;
+  background-color: #232323 !important;
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
   text-transform: lowercase !important;
-  span{
+
+  span {
     text-transform: capitalize !important;
   }
 }
@@ -132,7 +136,7 @@
   display: flex;
   flex-direction: column;
   //box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
-  height: 239px;
+  height: 231px;
   //box-shadow: 0px 1px 3px 0px #00000026;
   border-radius: 3px;
   border-bottom-right-radius: 0 !important;
@@ -141,10 +145,46 @@
   background-color: #23232380;
   position: relative;
   //margin: 5px 10px 16px 10px;
+}
 
+.sellHoveredArtworkCard {
+  display: flex;
+  flex-direction: column;
+  height: 239px;
+  border-radius: 3px;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  z-index: 99;
+  background-color: #23232380;
+  position: relative;
+  margin: 5px 10px 16px 10px;
+  box-shadow: 0px 1px 3px 0px #00000026 !important;
+}
+
+.sellArtworkCard {
+  display: flex;
+  flex-direction: column;
+  height: 239px;
+  border-radius: 3px;
+  margin: 5px 10px 16px 10px;
+  box-shadow: 0px 1px 3px 0px #00000026 !important;
 }
 
 .hoveredArtworkBackground {
+  z-index: 98;
+  //background-color:#23232380;
+  //height: 220px;
+  height: 180px;
+  //margin-top: 50px;
+  //bottom: 50px;
+  width: 200px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sellHoveredArtworkBackground {
   z-index: 98;
   //background-color:#23232380;
   //height: 220px;
@@ -181,7 +221,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 59px;
+  min-height: 51px;
+}
+
+.sellCardBottomSec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 51px;
 }
 
 .artworkName {
@@ -189,11 +236,19 @@
   font-size: 16px;
   font-weight: 400;
   //margin-top: 8px;
-  margin-left: 18px;
+  margin-left: 4px;
   //margin-bottom: 8px;
 }
 
+.sellArtworkName {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 18px;
+}
+
 .artworkTokens {
+  display: flex;
   color: #232323;
   font-size: 14px;
   font-weight: 300;
@@ -201,7 +256,8 @@
   font-family: Roboto;
   line-height: 16px;
   letter-spacing: 0em;
-  span{
+
+  span {
     margin-right: 10px;
     font-size: 16px;
     font-weight: 400;
