@@ -1,6 +1,6 @@
 import classes from '../../../styles/Header/Header.module.scss';
 import HeaderContent from "./Content";
-import {Fade, Slide} from "@mui/material";
+import {Slide} from "@mui/material";
 
 export default function Header({setDrawerMenu, isScrolled}) {
 

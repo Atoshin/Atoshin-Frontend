@@ -6,7 +6,8 @@ export interface AlertState {
     data: {
         open: boolean,
         message: string,
-        severity: string
+        severity: string,
+        alwaysOn?: boolean
     }
 }
 
@@ -14,7 +15,8 @@ const initialState: AlertState = {
     data: {
         open: false,
         message: '',
-        severity: ''
+        severity: '',
+        alwaysOn: false
     },
 }
 
@@ -22,7 +24,7 @@ export const alertSlice = createSlice({
     name: 'alert',
     initialState,
     reducers: {
-        setAlert: (state, action: PayloadAction<{ open: false, message: '', severity: '' }>) => {
+        setAlert: (state, action: PayloadAction<{ open: boolean, message: string, severity: string , alwaysOn?: boolean}>) => {
             state.data = action.payload
         },
     }
