@@ -188,6 +188,7 @@
   justify-content: flex-end;
   padding-top: 14px;
   padding-bottom: 27px;
+  position: relative;
 }
 
 .deleteModalHeader {
@@ -225,15 +226,19 @@
 }
 
 .loadingNote {
-  max-width: 300px;
-  width: unset;
+  //max-width: 300px;
+  //width: 300px;
+  //border: solid;
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
   //margin-right: 105px;
   font-family: Roboto;
   font-size: 18px;
   font-weight: 500;
   line-height: 21px;
   letter-spacing: 0em;
-  text-align: left;
   margin: auto;
   //margin-bottom: 27px;
   //margin-top:14px ;
