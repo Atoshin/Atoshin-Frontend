@@ -1,7 +1,7 @@
 import classes from '../../styles/HomeSlider/HomeSlider.module.scss'
 import {useEffect, useState} from "react";
 
-export function TimeDifference({time}) {
+export function TimeDifference({time, comingSoon}) {
     const [rendered, setRendered] = useState(false)
     const [calculatedTime, setCalculatedTime] = useState({
         day: '',
@@ -98,7 +98,7 @@ export function TimeDifference({time}) {
     }, [calculatedTime])
 
 
-    return <div className={classes.dayHourMinSec}>
+    return <div className={comingSoon ? classes.dayHourMinSec2 : classes.dayHourMinSec}>
         <div className={classes.Sec}>
             <div className={classes.Num}>
                 {calculatedTime.day}
