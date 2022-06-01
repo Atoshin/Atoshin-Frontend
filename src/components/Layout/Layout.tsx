@@ -6,13 +6,13 @@ import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import Header from './Header';
 import ConnectWalletDialog from './ConnectWalletModal';
-import {selectAddress, setAddress, setBalance, setCurrency} from "../../redux/slices/accountSlice";
+import {setAddress, setBalance, setCurrency} from "../../redux/slices/accountSlice";
 import {ethers} from "ethers";
 import Web3 from "web3";
 import {useCookies} from "react-cookie";
-import {useAppDispatch, useAppSelector} from "../../redux/hooks";
+import {useAppDispatch} from "../../redux/hooks";
 import axios from 'axios';
-import {selectAlert, setAlert} from "../../redux/slices/alertSlice";
+import {setAlert} from "../../redux/slices/alertSlice";
 
 export default function Layout({children}) {
     const [drawerState, setDrawerState] = useState(false)
@@ -20,8 +20,6 @@ export default function Layout({children}) {
     const [_, __, removeCookie] = useCookies()
     const dispatch = useAppDispatch()
     const router = useRouter()
-    const snackbarState = useAppSelector(selectAlert)
-    const userAddress = useAppSelector(selectAddress)
 
     useEffect(() => {
         const getAccountAndBalance = (web3) => {
@@ -88,29 +86,6 @@ export default function Layout({children}) {
 
             window.ethereum.on('networkChanged', async function (chainId) {
                 getAccountAndBalance(web3);
-                // try {
-                //     const {data: network} = await axios.post('/api/networks', {chainId});
-                //     web3.eth.getBalance(userAddress.toLowerCase()).then(balance => {
-                //         // @ts-ignore
-                //         dispatch(setBalance(ethers.utils.formatEther(balance)))
-                //         dispatch(setCurrency(network.currency))
-                //         if (snackbarState.alwaysOn) {
-                //             dispatch(setAlert({
-                //                 open: false,
-                //                 message: undefined,
-                //                 severity: 'error',
-                //             }))
-                //         }
-                //     });
-                // } catch (e) {
-                //     console.log(e)
-                //     dispatch(setAlert({
-                //         open: true,
-                //         message: 'Current Network is not supported, please change your network',
-                //         severity: 'error',
-                //         alwaysOn: true
-                //     }));
-                // }
             });
         }
         checkConnection();
