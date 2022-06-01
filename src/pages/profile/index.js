@@ -9,10 +9,9 @@ import EditProfileModal from "../../components/Profile/EditProfileModal";
 import copyText from '../../functions/copyText'
 import axios from "axios";
 import Web3 from "web3";
-import {selectAddress, selectBalance, setAddress, setBalance} from "../../redux/slices/accountSlice";
+import {selectAddress, selectBalance, selectCurrency, setAddress, setBalance} from "../../redux/slices/accountSlice";
 import {ethers} from "ethers";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks";
-import {parseCookies} from "../../functions/parseCookies";
 import {useCookies} from "react-cookie";
 import Head from "next/head";
 import CryptoJS from "crypto-js";
@@ -26,6 +25,7 @@ export default function Profile({token}) {
     const [openModal, setOpenModal] = useState(false);
     const dispatch = useAppDispatch();
     const address = useAppSelector(selectAddress)
+    const currency = useAppSelector(selectCurrency)
     const balance = useAppSelector(selectBalance)
     const [cookie, setCookie, removeCookie] = useCookies(['token'])
     const [userData, setUserData] = useState({
@@ -209,7 +209,7 @@ export default function Profile({token}) {
                                         {calculateDecimalPrecision(balance, 5)}
                                     </div>
                                     <div className={classes.ethTxt}>
-                                        ETH
+                                        {currency}
                                     </div>
                                 </div>
                             </div>
