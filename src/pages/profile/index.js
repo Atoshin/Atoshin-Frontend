@@ -202,7 +202,7 @@ export async function getServerSideProps({req, res}) {
     } catch (e) {
         console.log(e)
         if (Object.keys(data).length === 0 && data.constructor === Object) {
-            res.setHeader("set-cookie", `intended=/profile; path=/; samesite=lax; httponly;`)
+            res.setHeader("set-cookie", `intended=/profile; path=/; samesite=true;`)
             res.writeHead(301, {Location: "/sign-message"})
             res.end()
         }
