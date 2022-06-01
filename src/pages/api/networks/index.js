@@ -24,6 +24,6 @@ export default function handler(req, res) {
             network
         )
     } else {
-        res.status(400).message('network not supported')
+        res.status(400).json({message: 'network not supported'})
     }
 }

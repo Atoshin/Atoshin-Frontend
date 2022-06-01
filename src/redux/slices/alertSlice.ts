@@ -3,29 +3,25 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import type {RootState as AppState} from "../store";
 
 export interface AlertState {
-    data: {
-        open: boolean,
-        message: string,
-        severity: string,
-        alwaysOn?: boolean
-    }
+    open: boolean,
+    message: string | undefined,
+    severity: string | undefined,
+    alwaysOn?: boolean
 }
 
 const initialState: AlertState = {
-    data: {
-        open: false,
-        message: '',
-        severity: '',
-        alwaysOn: false
-    },
+    open: false,
+    message: '',
+    severity: undefined,
+    alwaysOn: false
 }
 
 export const alertSlice = createSlice({
     name: 'alert',
     initialState,
     reducers: {
-        setAlert: (state, action: PayloadAction<{ open: boolean, message: string, severity: string , alwaysOn?: boolean}>) => {
-            state.data = action.payload
+        setAlert: (state, action: PayloadAction<{ open: boolean, message: string, severity: string, alwaysOn?: boolean }>) => {
+            return action.payload
         },
     }
 })
@@ -33,6 +29,6 @@ export const alertSlice = createSlice({
 export const {setAlert} = alertSlice.actions;
 
 
-export const selectAlert = (state: AppState) => state.alert.data
+export const selectAlert = (state: AppState) => state.alert
 
 export default alertSlice.reducer;

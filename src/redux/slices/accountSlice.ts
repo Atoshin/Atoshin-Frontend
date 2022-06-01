@@ -21,17 +21,20 @@ export const accountSlice = createSlice({
         setAddress: (state, action: PayloadAction<string>) => {
             state.address = action.payload
         },
-        setBalance: (state, action: PayloadAction<{ balance: number, currency: string }>) => {
-            state.balance = action.payload.balance;
-            state.currency = action.payload.currency;
+        setBalance: (state, action: PayloadAction<number>) => {
+            state.balance = action.payload;
+        },
+        setCurrency: (state, action: PayloadAction<string>) => {
+            state.currency = action.payload
         }
     }
 })
 
-export const {setAddress, setBalance} = accountSlice.actions;
+export const {setAddress, setBalance, setCurrency} = accountSlice.actions;
 
 
 export const selectAddress = (state: AppState) => state.account.address
 export const selectBalance = (state: AppState) => state.account.balance
+export const selectCurrency = (state: AppState) => state.account.currency
 
 export default accountSlice.reducer;
