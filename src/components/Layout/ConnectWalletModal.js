@@ -23,7 +23,7 @@ export default function ConnectWalletModal() {
     const handleClose = () => {
         dispatch(setOpen(false))
         if (router.pathname === '/sign-message') {
-            window.location.replace('/profile')
+            window.location.replace('/')
         }
     };
 
