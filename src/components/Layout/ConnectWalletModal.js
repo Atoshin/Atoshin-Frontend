@@ -18,15 +18,12 @@ export default function ConnectWalletModal() {
     const open = useAppSelector(selectOpen);
     const dispatch = useAppDispatch();
     const router = useRouter();
-    const [cookie, setCookie, removeCookie] = useCookies(['token'])
+    const [_, setCookie] = useCookies(['token'])
 
     const handleClose = () => {
         dispatch(setOpen(false))
         if (router.pathname === '/sign-message') {
-            console.log(cookie)
-            const intended = cookie.intended;
-            removeCookie(['intended'])
-            return router.push(intended)
+            window.location.replace('/profile')
         }
     };
 
