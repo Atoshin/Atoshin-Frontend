@@ -23,6 +23,7 @@ export default function ConnectWalletModal() {
     const handleClose = () => {
         dispatch(setOpen(false))
         if (router.pathname === '/sign-message') {
+            console.log(cookie)
             const intended = cookie.intended;
             removeCookie(['intended'])
             return router.push(intended)
