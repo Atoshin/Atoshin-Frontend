@@ -15,6 +15,8 @@ import axios from 'axios';
 import {setAlert} from "../../redux/slices/alertSlice";
 
 export default function Layout({children}) {
+
+
     const [drawerState, setDrawerState] = useState(false)
     const [scrolled, setScrolled] = useState(false)
     const [cookie, setCookie, removeCookie] = useCookies()
@@ -149,7 +151,9 @@ export default function Layout({children}) {
             }
             <LeftDrawer state={drawerState} setState={setDrawerState}/>
             {router.pathname === '/welcome' ?
-                {children}
+                <>
+                    {children}
+                </>
                 :
                 <Container className="main-mui-container">
                     {children}

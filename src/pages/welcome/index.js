@@ -59,7 +59,6 @@ export default function Landing({data}) {
 
 export async function getStaticProps() {
     const {data: {data}} = await axios.get(`${process.env.BACKEND_BASE_URL}/landing/content`)
-
     return {
         props: {
             data
