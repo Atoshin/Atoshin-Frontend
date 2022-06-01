@@ -21,7 +21,12 @@ export default function HomeSlider({assets}) {
     const BuyBtn = () => {
         return <Link href={`/show-asset/${assets[currentSlide].id}`}>
             <a>
-                <Button className={classes.buyBtn}>Buy Now</Button>
+                <Button
+                    className={comingSoonWithTime ? classes.buyBtnBlack : comingSoon ? classes.buyBtnBlack2 : classes.buyBtn}>
+                    {
+                        comingSoon || comingSoonWithTime ? "coming soon" : 'Buy Now'
+                    }
+                </Button>
             </a>
         </Link>
     }
@@ -31,6 +36,11 @@ export default function HomeSlider({assets}) {
     const [visibleDesc, setVisibleDesc] = useState(true)
     const [firstRender, setFirstRender] = useState(true)
     const [currentDesc, setCurrentDesc] = useState(assets[0])
+
+    const [comingSoon, setComingSoon] = useState(false);
+    const [soldOut, setSoldOut] = useState(false);
+    const [comingSoonWithTime, setComingSoonWithTime] = useState(false);
+
     const changeImageDesc = () => {
         setVisibleDesc(false)
         setTimeout(() => {
@@ -71,9 +81,18 @@ export default function HomeSlider({assets}) {
                 <div className={classes.artworkInfoSec}>
                     <div className={classes.artworkInfo} dangerouslySetInnerHTML={artworkInfo()}/>
                 </div>
-                   <div className={classes.buyBtnDesktop}>
-                       <BuyBtn/>
-                   </div>
+                <div className={classes.buyBtnDesktop}>
+                    {
+                        soldOut ?
+                            <Button className={classes.buyBtnDisabled}>
+                                {
+                                    soldOut ?
+                                        'sold out' : 'Buy Now'
+                                }
+                            </Button> : <BuyBtn/>
+                    }
+
+                </div>
             </div>
         </div>
         <div className={classes.topRightMainSec}>
@@ -81,10 +100,11 @@ export default function HomeSlider({assets}) {
                 {/*<Animation hover={isHovered} images={sliderImages} setImages={setSliderImages}*/}
                 {/*    currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} ref={animateRef} />*/}
                 <Slider imageRef={imageRef} assets={assets} currentSlide={currentSlide} images={sliderImages}
-                        sliderRef={animateRef}
+                        sliderRef={animateRef} comingSoon={comingSoon} soldOut={soldOut}
+                        comingSoonWithTime={comingSoonWithTime}
                         setCurrentSlide={setCurrentSlide}/>
             </div>
-            <div className={classes.sliderBottomMenu}>
+            <div className={comingSoon ? classes.sliderBottomMenuComingSoon : classes.sliderBottomMenu}>
                 <img style={{marginRight: 20,}} className={classes.vector} onClick={() => {
                     animateRef.current.goBack()
                 }}
@@ -101,7 +121,16 @@ export default function HomeSlider({assets}) {
                      src="/icons/vector-right.svg" alt=""/>
             </div>
             <div className={classes.mobBtn}>
-                <BuyBtn/>
+                {
+                    soldOut ?
+                        <Button className={classes.buyBtnDisabled}>
+                            {
+                                soldOut ?
+                                    'sold out' : 'Buy Now'
+                            }
+                        </Button> : <BuyBtn/>
+                }
+
             </div>
         </div>
     </div>
