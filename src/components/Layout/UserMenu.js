@@ -2,7 +2,7 @@ import classes from "../../styles/Header/Header.module.scss";
 import Menu from "@mui/material/Menu";
 import {useAppSelector} from "../../redux/hooks";
 import calculateDecimalPrecision from "../../functions/calculateDecimalPrecision";
-import {selectAddress, selectBalance} from "../../redux/slices/accountSlice";
+import {selectAddress, selectBalance, selectCurrency} from "../../redux/slices/accountSlice";
 import Link from 'next/link';
 import Web3 from "web3";
 
@@ -10,20 +10,10 @@ export default function UserMenu({anchorEl, handleClose}) {
     const open = Boolean(anchorEl);
     const address = useAppSelector(selectAddress)
     const balance = useAppSelector(selectBalance)
-    //
-    // const disconnectWallet = async () => {
-    //     let web3;
-    //     if (window.ethereum) {
-    //         web3 = await new Web3(window.ethereum);
-    //     } else if (window.web3) {
-    //         web3 = await new Web3(window.web3.currentProvider);
-    //     }
-    //     console.log(web3);
-    // }
+    const currency = useAppSelector(selectCurrency)
 
     return <Menu
         className={classes.menuMain}
-        // classes={{paper: classes.menuMain}}
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
@@ -40,7 +30,7 @@ export default function UserMenu({anchorEl, handleClose}) {
                     <img className={classes.ethLogo} src="/icons/eth-logo.png" alt=""/>
                 </div>
                 <div className={classes.balanceAmount}>
-                    {calculateDecimalPrecision(parseFloat(balance), 5)} ETH
+                    {calculateDecimalPrecision(parseFloat(balance), 5)} {currency}
                 </div>
             </div>
             <div className={classes.myProfileSec}>
@@ -53,12 +43,6 @@ export default function UserMenu({anchorEl, handleClose}) {
                     </a>
                 </Link>
             </div>
-            {/*<div className={classes.disconnectSec}>*/}
-            {/*    <img className={classes.disconnectIcon} src="/icons/disconnect-icon.svg" alt=""/>*/}
-            {/*    <div onClick={disconnectWallet} className={classes.disconnectText}>*/}
-            {/*        Disconnect*/}
-            {/*    </div>*/}
-            {/*</div>*/}
         </div>
     </Menu>
 }
