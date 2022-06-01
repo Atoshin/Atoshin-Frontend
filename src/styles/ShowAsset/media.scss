@@ -1,4 +1,5 @@
 @import "./../colors";
+
 @media (max-width: 1120px) {
 
   .artworkTitle {
@@ -505,14 +506,14 @@
     flex-direction: column;
     justify-content: space-between;
   }
-  .watchArtworkSec{
+  .watchArtworkSec {
     width: 137px;
   }
-  .watchArtworkSecActive{
+  .watchArtworkSecActive {
     width: 137px;
   }
-  .mintedDateSec{
-    width:137px ;
+  .mintedDateSec {
+    width: 137px;
   }
   .dialogBody {
     display: flex !important;
@@ -581,6 +582,104 @@
   .showImageContainer {
     padding-right: 20px;
     padding-left: 20px;
+  }
+
+
+  //hereeeee
+  .fixPriceTable {
+    .header {
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 14px;
+      justify-content: space-between;
+
+      .buyTitle {
+        width: 45px;
+        //border: seagreen solid 1px;
+      }
+
+      .datesTitle {
+        //width: 140px;
+        width: 90px;
+        //border: solid 1px crimson;
+      }
+
+      .sellersTitle {
+        padding-left: 24px;
+        width: 110px;
+        //border: solid 1px;
+      }
+
+      .priceTitle {
+        //border: seagreen solid 1px;
+      }
+    }
+  }
+  .assetTitle, .asset {
+    display: none;
+  }
+  .sellers {
+    padding-left: 24px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    width: 110px;
+    //border: solid 1px;
+  }
+  .date {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    //border: solid crimson 1px;
+    //width: 140px;
+    width: 90px;
+  }
+  .price {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    //border: seagreen solid 1px;
+  }
+  .buySec {
+    padding-right: 0;
+    width: 45px;
+    //border: solid 1px;
+    display: flex;
+    justify-content: center;
+
+    Button {
+      width: 45px !important;
+      height: 53px !important;
+      padding-right: 12px;
+      padding-left: 12px;
+      display: none;
+    }
+
+    .mobileBtn {
+      width: 45px !important;
+      height: 53px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #232323;
+      color: #FFFFFF;
+      font-family: Roboto;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 14px;
+      letter-spacing: 0em;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .fixPriceTable {
+    //border: solid;
+  }
+  .fixPriceTitle {
+    font-size: 18px;
+    line-height: 21px;
   }
 
 }

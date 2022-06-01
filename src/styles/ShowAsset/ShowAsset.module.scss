@@ -379,7 +379,7 @@
   //border: purple solid;
   width: 100%;
   margin-top: 72px;
-  margin-bottom: 72px;
+  //margin-bottom: 72px;
 }
 
 .fixPriceTitle {
@@ -409,7 +409,7 @@
     padding-top: 16px;
     padding-bottom: 16px;
 
-    .assetTile {
+    .assetTitle {
       width: 100px;
       //border: 1px solid crimson;
       padding-left: 42px;
@@ -497,7 +497,11 @@
       background-color: #232323;
     }
   }
+  .mobileBtn{
+    display: none;
+  }
 }
+
 
 .backStorySec {
   display: flex;
