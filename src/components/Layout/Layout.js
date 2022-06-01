@@ -17,7 +17,7 @@ import {setAlert} from "../../redux/slices/alertSlice";
 export default function Layout({children}) {
     const [drawerState, setDrawerState] = useState(false)
     const [scrolled, setScrolled] = useState(false)
-    const [_, __, removeCookie] = useCookies()
+    const [cookie, setCookie, removeCookie] = useCookies()
     const dispatch = useAppDispatch()
     const router = useRouter()
 
@@ -27,10 +27,33 @@ export default function Layout({children}) {
                 .then(async (addr) => {
                     if (addr[0]) {
                         dispatch(setAddress(addr[0]));
+                        setCookie('address', addr[0], {
+                            path: '/',
+                            sameSite: true,
+                            maxAge: 365 * 24 * 60 * 60
+                        })
                         web3.eth.getBalance(addr[0]).then(balance => {
                             web3.eth.net.getId()
                                 .then(async chainId => {
-                                    axios.post('/api/networks', {chainId}).then(({data: network}) => {
+                                    axios.post('/api/networks', {chainId}).then(async ({data: network}) => {
+
+                                        if (!cookie.token) {
+                                            try {
+                                                const signature = await web3.eth.sign(addr[0], process.env.NEXT_PUBLIC_SIGNATURE_PHRASE);
+                                                await axios.post(`/api/signature`, {
+                                                    signature,
+                                                    walletAddress: addr[0]
+                                                })
+                                                setCookie('token', signature, {
+                                                    path: "/",
+                                                    sameSite: true,
+                                                    maxAge: 365 * 24 * 60 * 60
+                                                })
+                                            } catch (error) {
+                                                console.log(error)
+                                            }
+                                        }
+
                                         // @ts-ignore
                                         dispatch(setBalance(ethers.utils.formatEther(balance)))
                                         dispatch(setCurrency(network.currency))
@@ -50,6 +73,8 @@ export default function Layout({children}) {
                                 });
                         });
                     } else {
+                        //@ts-ignore
+                        removeCookie(['address'])
                         //@ts-ignore
                         removeCookie(['token'])
                     }
@@ -72,6 +97,12 @@ export default function Layout({children}) {
         const providerEventListener = (web3) => {
             window.ethereum.on('accountsChanged', async function (accounts) {
                 if (accounts.length > 0) {
+                    setCookie('address', accounts[0], {
+                        path: '/',
+                        sameSite: true,
+                        maxAge: 365 * 24 * 60 * 60
+                    })
+
                     dispatch(setAddress(accounts[0]));
                     web3.eth.getBalance(accounts[0]).then(balance => {
                         // @ts-ignore
@@ -80,6 +111,8 @@ export default function Layout({children}) {
                 } else {
                     //@ts-ignore
                     removeCookie(['token'])
+                    //@ts-ignore
+                    removeCookie(['address'])
                     dispatch(setAddress(''))
                 }
             })
