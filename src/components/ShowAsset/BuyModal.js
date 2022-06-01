@@ -29,7 +29,7 @@ export default function BuyModal({open, setOpen}) {
         boxShadow: 24,
         p: 4
     };
-    useEffect(()=> {
+    useEffect(() => {
         setIsBuyProcessing(false)
     }, [open])
     return (
@@ -64,7 +64,10 @@ export default function BuyModal({open, setOpen}) {
                                                 <div className={classes.itemRow}>
                                                     <div className={classes.asset}>
                                                         <img src="/images/starryNight.png" alt=""/>
-                                                        <div className={classes.assetName}>starry Night</div>
+                                                        <div>
+                                                            <div className={classes.assetName}>starry Night</div>
+                                                            <div className={classes.ownerMobile}>0we6...245rb</div>
+                                                        </div>
                                                     </div>
                                                     <div className={classes.owner}>0we6...245rb</div>
                                                     <div className={classes.price}>4.5 ETH</div>
@@ -72,7 +75,7 @@ export default function BuyModal({open, setOpen}) {
 
                                                 <div className={classes.totalCostSec}>
                                                     <div className={classes.totalCost}>Total cost</div>
-                                                    <div className={classes.hr}/>
+                                                    {/*<div className={classes.hr}/>*/}
                                                     <div className={classes.totalCostPrice}>4.5 ETH</div>
                                                 </div>
                                                 <div className={classes.btnSec}>
