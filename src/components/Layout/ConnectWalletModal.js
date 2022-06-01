@@ -1,5 +1,4 @@
 import {DialogContent, useMediaQuery} from "@mui/material";
-import {useTheme} from "@mui/material/styles";
 import ethProvider from "eth-provider";
 import classes from '../../styles/ConnectWalletModal/ConnectWalletModal.module.scss';
 import axios from 'axios';
@@ -11,17 +10,24 @@ import Web3Modal from 'web3modal';
 import {CoinbaseWalletSDK} from "@coinbase/wallet-sdk";
 import Torus from "@toruslabs/torus-embed";
 import Authereum from "authereum";
+import {useRouter} from "next/router";
 import Dialog from "@mui/material/Dialog";
 import {ethers} from "ethers";
 
 export default function ConnectWalletModal() {
     const open = useAppSelector(selectOpen);
     const dispatch = useAppDispatch();
-    const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down('sm'));
-    const [cookie, setCookie] = useCookies(['token'])
+    const router = useRouter();
+    const [cookie, setCookie, removeCookie] = useCookies(['token'])
 
-    const handleClose = () => dispatch(setOpen(false));
+    const handleClose = () => {
+        dispatch(setOpen(false))
+        if (router.pathname === '/sign-message') {
+            const intended = cookie.intended;
+            removeCookie(['intended'])
+            return router.push(intended)
+        }
+    };
 
     const providerOptions = {
         walletconnect: {
@@ -79,12 +85,12 @@ export default function ConnectWalletModal() {
                 signature,
                 walletAddress
             })
-            dispatch(setOpen(false));
             setCookie('token', signature, {
                 path: "/",
                 sameSite: true,
                 maxAge: 365 * 24 * 60 * 60
             })
+            handleClose()
         } catch (error) {
             console.log(error)
         }

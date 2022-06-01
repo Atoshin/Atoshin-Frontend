@@ -146,21 +146,19 @@ export default function Layout({children}) {
 
     return <>
         <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
-            {router.pathname !== '/welcome' &&
-                <Header setDrawerMenu={setDrawerState} isScrolled={scrolled}/>
-            }
-            <LeftDrawer state={drawerState} setState={setDrawerState}/>
-            {router.pathname === '/welcome' ?
+            {router.pathname === '/welcome' || router.pathname === '/sign-message' ?
                 <>
                     {children}
                 </>
                 :
-                <Container className="main-mui-container">
-                    {children}
-                </Container>
-            }
-            {router.pathname !== '/welcome' &&
-                <Footer/>
+                <>
+                    <Header setDrawerMenu={setDrawerState} isScrolled={scrolled}/>
+                    <Container className="main-mui-container">
+                        {children}
+                    </Container>
+                    <LeftDrawer state={drawerState} setState={setDrawerState}/>
+                    <Footer/>
+                </>
             }
         </div>
         <AppSnackbar/>
