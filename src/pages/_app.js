@@ -1,10 +1,9 @@
 import '../styles/globals.scss'
-import {AppProps} from 'next/app';
 import {wrapper} from "../redux/store";
 import {CookiesProvider} from "react-cookie";
 import Layout from '../components/Layout/Layout'
 
-function MyApp({Component, pageProps}: AppProps) {
+function MyApp({Component, pageProps}) {
 
     return <>
         <CookiesProvider>
