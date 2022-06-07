@@ -1,0 +1,579 @@
+@import './../colors';
+
+.modalMain {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.leftSec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 64px;
+}
+
+.editProfileImg {
+  width: 178px;
+  height: 178px;
+  border-radius: 178px;
+}
+
+.changePhoto {
+  margin-top: 16px;
+  color: #232323;
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+.rightSec {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-right: 64px;
+}
+
+.inputTitle {
+  color: #232323;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+
+.input {
+  width: 149px;
+  height: 53px;
+  //border: 2px solid #A7A7A7;
+  border-radius: 5px;
+  //color: #A7A7A7;
+  font-size: 14px !important;
+  font-weight: 400;
+  padding-left: 16px;
+  //margin-bottom: 24px;
+  border: 2px solid #A7A7A7;
+  color: #232323;
+  font-family: Roboto;
+  //input {
+  //  //border: none;
+  //  border: 2px solid #A7A7A7;
+  //  padding: 8px;
+  //}
+}
+
+.input:focus {
+  border: 2px solid $orange !important;
+  outline: none;
+}
+
+.orangeInput {
+  width: 149px;
+  height: 53px;
+  //border: 2px solid #A7A7A7;
+  border-radius: 5px;
+  //color: #A7A7A7;
+  color: #232323;
+  font-size: 14px !important;
+  font-weight: 400;
+  padding-left: 16px;
+  font-family: Roboto;
+  //margin-bottom: 24px;
+  border: 2px solid $orange;
+
+  input {
+    //border: none;
+    border: 2px solid $orange;
+    padding: 8px;
+  }
+}
+
+.orangeInput:focus {
+  border: 2px solid $orange !important;
+  outline: none;
+}
+
+
+.closeVectorSec {
+  display: flex;
+  direction: rtl;
+}
+
+.closeVector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #ECECEC;
+  cursor: pointer;
+  right: 0;
+  position: absolute;
+}
+
+.vectorX {
+  width: 16px;
+  height: 16px;
+}
+
+.vectorCheck {
+  width: 28px;
+  height: 28px;
+}
+
+.modalMainSec {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  padding: 24px;
+  max-width: 681px;
+  //width: unset;
+  width: 100%;
+  //min-width: 350px;
+}
+
+.fixPriceSec {
+  //border: solid crimson;
+  margin-top: 32px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.imageSec {
+  display: flex;
+  margin-bottom: 24px;
+
+  img {
+    width: 214px;
+    height: 193px;
+    margin-right: 24px;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .desSec {
+    margin-top: 10px;
+    //border: solid 1px;
+    margin-bottom: 28px;
+  }
+}
+
+.checkBoxSec {
+  display: flex;
+  align-items: center;
+  margin-bottom: 41px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+
+  .checked {
+    color: #232323 !important;
+  }
+
+  .checkBox {
+    padding-left: 0 !important;
+  }
+
+  div {
+    margin-left: 7.38px;
+
+    span {
+      cursor: pointer;
+      color: #193eff;
+    }
+  }
+}
+
+.buttonSec {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+
+  .btn {
+    color: #FFFFFF !important;
+    background-color: $orange !important;
+    width: 196px;
+    height: 43px;
+    font-family: Roboto !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 19px !important;
+    letter-spacing: 0em !important;
+    box-shadow: none !important;
+
+    &:hover {
+      color: #FFFFFF !important;
+      background-color: $orange !important;
+    }
+  }
+
+  .disabledBtn {
+    color: #FFFFFF !important;
+    background-color: #E1E1E1 !important;
+    width: 196px;
+    height: 43px;
+    font-family: Roboto !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 19px !important;
+    letter-spacing: 0em !important;
+    box-shadow: none !important;
+
+    &:hover {
+      color: #FFFFFF !important;
+      background-color: #E1E1E1 !important;
+    }
+  }
+}
+
+.priceSec {
+  display: flex;
+  align-items: center;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19px;
+  letter-spacing: 0em;
+  margin-bottom: 24px;
+}
+
+.processModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  //padding-top: 21px;
+  padding-bottom: 24px;
+  position: relative;
+  border-bottom: 1px solid #BEBDBD;
+  height: 47px;
+}
+
+.loadingNote {
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  margin: auto;
+  //margin-top:14px;
+  //margin-bottom: 21px;
+}
+
+.select {
+  width: 149px;
+  height: 53px;
+  border-radius: 5px;
+  font-size: 14px !important;
+  font-weight: 400;
+  //padding-left: 16px;
+  //border-color: #A7A7A7;
+  color: #232323;
+  font-family: Roboto;
+  fieldset {
+    border-color: #A7A7A7 !important;
+    border-width: 2px !important;
+    &:focus {
+      border: solid crimson !important;
+    }
+
+  }
+
+}
+
+.orangeSelect {
+  width: 149px;
+  height: 53px;
+  border-radius: 5px;
+  font-size: 14px !important;
+  font-weight: 400;
+  //padding-left: 16px;
+  //border-color: #A7A7A7;
+  color: #232323;
+  font-family: Roboto;
+  //&:hover{
+  //  border-color: $orange;
+  //}
+  fieldset {
+    border: 2px solid $orange !important;
+  }
+}
+
+.list {
+  border: solid red;
+}
+
+.menuItem {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.lastMenuItem {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.test {
+  //border: solid red !important;
+  border: 2px solid #A7A7A7 !important;
+  //border-color: rebeccapurple !important;
+}
+
+.price {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-left: 16px;
+}
+
+.textSec {
+
+}
+
+.title {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.note {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 15px;
+  word-wrap: break-word;
+}
+
+.toWhereSec {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 35px;
+
+  .offer {
+    text-align: right;
+  }
+
+  div {
+    width: 25%;
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: #BEBDBD;
+    width: 60%;
+  }
+}
+
+.assetName {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.lastPriceSec {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19px;
+  letter-spacing: 0em;
+}
+
+.lastPrice {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-left: 24px;
+}
+
+.auctionSec {
+  //border: solid red;
+}
+
+.tabBox {
+}
+
+.tabTitles {
+  width: 190px;
+  color: #232323 !important;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: lowercase !important;
+}
+
+.tabTitles:focus {
+  width: 190px;
+  color: #232323;
+  font-size: 18px;
+  font-weight: 700 !important;
+  //border-bottom: 2px solid #232323!important;
+}
+
+@media (max-width: 685px) {
+  .box {
+    width: 90%;
+  }
+}
+
+@media (max-width: 520px) {
+  .closeVector {
+    width: 20px;
+    height: 20px;
+  }
+  .vectorX {
+    width: 8px;
+    height: 8px;
+  }
+  .box {
+    padding: 8px;
+    width: 90%;
+  }
+  .buttonSec {
+    margin-bottom: 24px;
+  }
+  .fixPriceSec {
+    //border: solid crimson;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  .imageSec {
+    img {
+      width: 136px;
+      height: 123px;
+      margin-right: 9px;
+    }
+  }
+  .assetName {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .lastPriceSec {
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 16px;
+  }
+  .lastPrice {
+    font-size: 14px;
+    line-height: 16px;
+    //margin-left: 8px;
+  }
+  .priceSec {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .price {
+    margin-left: 8px;
+  }
+  .input {
+    width: 88px;
+    height: 36px;
+  }
+  .orangeInput {
+    width: 88px;
+    height: 36px;
+  }
+  .title {
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 8px;
+  }
+  .note {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .toWhereSec {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 27px;
+  }
+  .checkBoxSec {
+    margin-bottom: 32px;
+    font-size: 14px;
+    line-height: 16px;
+
+    .checkBox {
+      padding-right: 7px !important;
+    }
+  }
+  .tabTitles {
+    width: 150px;
+  }
+}
+
+@media (max-width: 450px) {
+  .toWhereSec {
+    div {
+      width: 27%;
+    }
+
+    hr {
+      width: 44%;
+    }
+  }
+}
+
+@media (max-width: 374px) {
+  .toWhereSec {
+    div {
+      width: 31%;
+    }
+
+    hr {
+      width: 38%;
+    }
+  }
+  //.input {
+  //  width: 80px;
+  //}
+  //.orangeInput {
+  //  width: 80px;
+  //}
+  //.price{
+  //  margin-left: 5px;
+  //}
+}
