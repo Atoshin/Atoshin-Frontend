@@ -17,19 +17,7 @@ export default function HomeSlider({assets}) {
             }
         }
     })
-    const router = useRouter()
-    const BuyBtn = () => {
-        return <Link href={`/show-asset/${assets[currentSlide].id}`}>
-            <a>
-                <Button
-                    className={comingSoonWithTime ? classes.buyBtnBlack : comingSoon ? classes.buyBtnBlack2 : classes.buyBtn}>
-                    {
-                        comingSoon || comingSoonWithTime ? "coming soon" : 'Buy Now'
-                    }
-                </Button>
-            </a>
-        </Link>
-    }
+
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down('1052px'));
     const [currentSlide, setCurrentSlide] = useState(0)
@@ -37,9 +25,37 @@ export default function HomeSlider({assets}) {
     const [firstRender, setFirstRender] = useState(true)
     const [currentDesc, setCurrentDesc] = useState(assets[0])
 
-    const [comingSoon, setComingSoon] = useState(false);
-    const [soldOut, setSoldOut] = useState(false);
-    const [comingSoonWithTime, setComingSoonWithTime] = useState(false);
+
+    const BuyBtn = () => {
+        if (currentDesc.soldFractions === currentDesc.totalFractions) {
+            return <Button className={classes.buyBtnDisabled}>
+                Sold Out
+            </Button>
+        } else if (!currentDesc.startDate || new Date(currentDesc.startDate) > new Date()) {
+            // return <Link href={`/show-asset/${assets[currentSlide].id}`}>
+            //     <a>
+            //         <Button
+            //             className={classes.buyBtnBlack2}>
+            //             Coming Soon
+            //         </Button>
+            //     </a>
+            // </Link>
+            return <Button
+                className={classes.buyBtnBlack2}>
+                Coming Soon
+            </Button>
+
+        } else {
+            return <Link href={`/show-asset/${assets[currentSlide].id}`}>
+                <a>
+                    <Button
+                        className={classes.buyBtnBlack2}>
+                        Buy Now
+                    </Button>
+                </a>
+            </Link>
+        }
+    }
 
     const changeImageDesc = () => {
         setVisibleDesc(false)
@@ -82,29 +98,17 @@ export default function HomeSlider({assets}) {
                     <div className={classes.artworkInfo} dangerouslySetInnerHTML={artworkInfo()}/>
                 </div>
                 <div className={classes.buyBtnDesktop}>
-                    {
-                        soldOut ?
-                            <Button className={classes.buyBtnDisabled}>
-                                {
-                                    soldOut ?
-                                        'sold out' : 'Buy Now'
-                                }
-                            </Button> : <BuyBtn/>
-                    }
-
+                    <BuyBtn/>
                 </div>
             </div>
         </div>
         <div className={classes.topRightMainSec}>
             <div className={classes.sliderImages} style={{height: (((imageRef.current.clientWidth) * 2) / 3) + 115}}>
-                {/*<Animation hover={isHovered} images={sliderImages} setImages={setSliderImages}*/}
-                {/*    currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} ref={animateRef} />*/}
                 <Slider imageRef={imageRef} assets={assets} currentSlide={currentSlide} images={sliderImages}
-                        sliderRef={animateRef} comingSoon={comingSoon} soldOut={soldOut}
-                        comingSoonWithTime={comingSoonWithTime}
+                        sliderRef={animateRef}
                         setCurrentSlide={setCurrentSlide}/>
             </div>
-            <div className={comingSoon ? classes.sliderBottomMenuComingSoon : classes.sliderBottomMenu}>
+            <div className={classes.sliderBottomMenu}>
                 <img style={{marginRight: 20,}} className={classes.vector} onClick={() => {
                     animateRef.current.goBack()
                 }}
@@ -121,16 +125,7 @@ export default function HomeSlider({assets}) {
                      src="/icons/vector-right.svg" alt=""/>
             </div>
             <div className={classes.mobBtn}>
-                {
-                    soldOut ?
-                        <Button className={classes.buyBtnDisabled}>
-                            {
-                                soldOut ?
-                                    'sold out' : 'Buy Now'
-                            }
-                        </Button> : <BuyBtn/>
-                }
-
+                <BuyBtn/>
             </div>
         </div>
     </div>
