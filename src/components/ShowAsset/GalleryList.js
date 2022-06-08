@@ -19,7 +19,6 @@ export default function GalleryList({
 
     //
     // console.log({videos});
-    console.log(mainImg)
     // if (typeof document !== 'undefined') {
     //     let span = document.createElement('span');
     //     span.hidden = true;
@@ -38,7 +37,6 @@ export default function GalleryList({
         })
     }
     const selectImage = (id) => {
-        // console.log(id);
         setNewInfo({
             ...newInfo,
             video: false,
@@ -53,11 +51,10 @@ export default function GalleryList({
             <div className={classes.items}>
                 {
                     artCenter.videoLinks.map((data, idx) => {
-                        // console.log(data);
                         if (typeof document !== 'undefined') {
                             let span = document.createElement('span');
                             span.hidden = true;
-                            span.innerHTML = artCenter.videoLinks[0].link;
+                            span.innerHTML = data.link;
                             const iframe = span.children[0];
                             const ytvId = iframe.src.slice(-11)
                             span.remove()

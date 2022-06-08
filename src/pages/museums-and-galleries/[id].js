@@ -117,7 +117,7 @@ export default function ArtCenter({artCenter, relatedAssets}) {
         })
     }
 
-    const slider = (ytvId) => {
+    const slider = () => {
         return <Slide style={{position: 'relative'}}
                       autoplay={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5 ? true : false}
                       cssClass={classes.slider}
@@ -128,14 +128,15 @@ export default function ArtCenter({artCenter, relatedAssets}) {
                       slidesToScroll={1}
                       transitionDuration={500}
                       duration={5000}
-            // nextArrow={matches1 ? <div></div> :
-            //     <div className={classes.previous}><img alt={"vector-right"}
-            //                                            src={'/icons/vector-right.svg'}/>
-            //     </div>}
-            // prevArrow={<div/>}
                       ref={gallerySliderRef}>
             {
                 artCenter.videoLinks.map((data, idx) => {
+                    let span = document.createElement('span');
+                    span.hidden = true;
+                    span.innerHTML = data.link;
+                    const iframe = span.children[0];
+                    const ytvId = iframe.src.slice(-11)
+                    span.remove()
                     return (
                         <div key={idx} onClick={() => {
                             // setClickedVideoId(data.id)
@@ -169,10 +170,16 @@ export default function ArtCenter({artCenter, relatedAssets}) {
         </Slide>
     }
 
-    const mapData = (ytvId) => {
+    const mapData = () => {
         return <div style={{display: 'flex'}}>
             {
                 artCenter.videoLinks.map((data, idx) => {
+                    let span = document.createElement('span');
+                    span.hidden = true;
+                    span.innerHTML = data.link;
+                    const iframe = span.children[0];
+                    const ytvId = iframe.src.slice(-11)
+                    span.remove()
                     return (
                         <div key={idx} onClick={() => {
                             // setClickedVideoId(data.id)
@@ -206,40 +213,40 @@ export default function ArtCenter({artCenter, relatedAssets}) {
         </div>
     }
 
-    const showData = (ytvId) => {
+    const showData = () => {
         // matches1 ? 2 : matches2 ? 3 : matches3 ? 3 : matches4 ? 4 : 5
         if (matches1) {
             if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length <= 2) {
-                return mapData(ytvId)
+                return mapData()
             } else {
-                return slider(ytvId)
+                return slider()
             }
         }
         if (matches2) {
             if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length <= 3) {
-                return mapData(ytvId)
+                return mapData()
             } else {
-                return slider(ytvId)
+                return slider()
             }
         }
         if (matches3) {
             if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length <= 3) {
-                return mapData(ytvId)
+                return mapData()
             } else {
-                return slider(ytvId)
+                return slider()
             }
         }
         if (matches4) {
             if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length <= 4) {
-                return mapData(ytvId)
+                return mapData()
             } else {
-                return slider(ytvId)
+                return slider()
             }
         } else {
             if (artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length <= 5) {
-                return mapData(ytvId)
+                return mapData()
             } else {
-                return slider(ytvId)
+                return slider()
             }
         }
 
@@ -248,14 +255,14 @@ export default function ArtCenter({artCenter, relatedAssets}) {
     const VideoShow = () => {
         if (Object.keys(artCenter.videoLinks).length > 0) {
             if (typeof document !== 'undefined') {
-                let span = document.createElement('span');
-                span.hidden = true;
-                span.innerHTML = artCenter.videoLinks[0].link;
-                const iframe = span.children[0];
-                const ytvId = iframe.src.slice(-11)
-                span.remove()
+                // let span = document.createElement('span');
+                // span.hidden = true;
+                // span.innerHTML = artCenter.videoLinks[0].link;
+                // const iframe = span.children[0];
+                // const ytvId = iframe.src.slice(-11)
+                // span.remove()
                 return (
-                    showData(ytvId)
+                    showData()
                     // <Slide style={{position: 'relative'}}
                     //        autoplay={artCenter.medias.filter(image => image.main !== 1 && image.galleryLargePicture !== 1).length + Object.keys(artCenter.videoLinks).length > 5 ? true : false}
                     //        cssClass={classes.slider}

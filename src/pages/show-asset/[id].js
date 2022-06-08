@@ -191,14 +191,18 @@ export default function ShowAsset({asset}) {
     const matches2 = useMediaQuery(theme.breakpoints.down('md'));
     const matches3 = useMediaQuery(theme.breakpoints.down('lg'));
     const matches4 = useMediaQuery(theme.breakpoints.down('xl'));
-    const showData = (ytvId) => {
+    const showData = () => {
         return (
             <>
                 <>
                     {
                         asset.videoLinks.slice(0, 5).map((data, idx) => {
-                            console.log(data)
-                            console.log(asset.videoLinks[0].link)
+                            let span = document.createElement('span');
+                            span.hidden = true;
+                            span.innerHTML = data.link;
+                            const iframe = span.children[0];
+                            const ytvId = iframe.src.slice(-11)
+                            span.remove()
                             return (
                                 <div key={5000}
                                     // onClick={() => {
@@ -267,17 +271,16 @@ export default function ShowAsset({asset}) {
         )
     }
     const ArtworkSubImages = () => {
-        console.log(asset);
         if (Object.keys(asset.videoLinks).length > 0) {
             if (typeof document !== 'undefined') {
-                let span = document.createElement('span');
-                span.hidden = true;
-                span.innerHTML = asset.videoLinks[0].link;
-                const iframe = span.children[0];
-                const ytvId = iframe.src.slice(-11)
-                span.remove()
+                // let span = document.createElement('span');
+                // span.hidden = true;
+                // span.innerHTML = asset.videoLinks[0].link;
+                // const iframe = span.children[0];
+                // const ytvId = iframe.src.slice(-11)
+                // span.remove()
                 return (
-                    showData(ytvId)
+                    showData()
                 )
                 // return [
                 //     <div key={5000} onClick={() => {
