@@ -191,41 +191,43 @@ export default function ShowAsset({asset}) {
     const matches2 = useMediaQuery(theme.breakpoints.down('md'));
     const matches3 = useMediaQuery(theme.breakpoints.down('lg'));
     const matches4 = useMediaQuery(theme.breakpoints.down('xl'));
-    const ArtworkSubImages = () => {
-        if (Object.keys(asset.videoLinks).length > 0) {
-            if (typeof document !== 'undefined') {
-                let span = document.createElement('span');
-                span.hidden = true;
-                span.innerHTML = asset.videoLinks[0].link;
-                const iframe = span.children[0];
-                const ytvId = iframe.src.slice(-11)
-                span.remove()
-                return (
-                    asset.videoLinks.slice(0, 5).map((data, idx) => {
-                        return (
-                            <div key={5000}
-                                // onClick={() => {
-                                //     setClickedVideoId(data.id)
-                                //     setOpenImages(true)
-                                // }}
-                                 onClick={() => openVideoModal(data.id)}
-                                 style={{
-                                     backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
-                                     width: 93.39,
-                                     height: 93.39,
-                                     backgroundPosition: 'center',
-                                     backgroundSize: "cover",
-                                     marginRight: 15.73,
-                                     display: 'flex',
-                                     justifyContent: 'center',
-                                     alignItems: 'center',
-                                     borderRadius: 3,
-                                     boxShadow: '0px 1px 3px 0px #00000026'
-                                 }}>
-                                <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
-                            </div>
-                        )
-                    }),
+    const showData = (ytvId) => {
+        return (
+            <>
+                <>
+                    {
+                        asset.videoLinks.slice(0, 5).map((data, idx) => {
+                            console.log(data)
+                            console.log(asset.videoLinks[0].link)
+                            return (
+                                <div key={5000}
+                                    // onClick={() => {
+                                    //     setClickedVideoId(data.id)
+                                    //     setOpenImages(true)
+                                    // }}
+                                     onClick={() => openVideoModal(data.id)}
+                                     style={{
+                                         backgroundImage: `url("https://img.youtube.com/vi/${ytvId}/1.jpg")`,
+                                         width: 93.39,
+                                         height: 93.39,
+                                         backgroundPosition: 'center',
+                                         backgroundSize: "cover",
+                                         marginRight: 15.73,
+                                         display: 'flex',
+                                         justifyContent: 'center',
+                                         alignItems: 'center',
+                                         borderRadius: 3,
+                                         boxShadow: '0px 1px 3px 0px #00000026',
+                                     }}>
+                                    <img src={'/images/show-asset/videoPlay.svg'} style={{width: 53.84, height: 53.84}}/>
+                                </div>
+                            )
+                        })
+                    }
+                </>
+                {/*<div style={{display:'flex'}}>*/}
+                <>
+                {
                         asset.medias.slice(0, (6 - asset.videoLinks.length)).map((data, idx) => {
                             if (idx === parseInt(Object.keys(asset.medias.slice(0, (6 - asset.videoLinks.length)))[Object.keys(asset.medias.slice(0, (6 - asset.videoLinks.length))).length - 1]) || idx === 4) {
                                 return (
@@ -259,9 +261,24 @@ export default function ShowAsset({asset}) {
                                 }}/>
                             }
                         })
+                    }
+                </>
+            </>
+        )
+    }
+    const ArtworkSubImages = () => {
+        console.log(asset);
+        if (Object.keys(asset.videoLinks).length > 0) {
+            if (typeof document !== 'undefined') {
+                let span = document.createElement('span');
+                span.hidden = true;
+                span.innerHTML = asset.videoLinks[0].link;
+                const iframe = span.children[0];
+                const ytvId = iframe.src.slice(-11)
+                span.remove()
+                return (
+                    showData(ytvId)
                 )
-
-
                 // return [
                 //     <div key={5000} onClick={() => {
                 //         setClickedVideoId(asset.videoLinks[0].id)
@@ -972,8 +989,8 @@ export default function ShowAsset({asset}) {
                                 </div>
                                 <div className={styles.sellers}>0we6...245rb</div>
                                 <div className={styles.date}>
-                                        {
-                                            matches2 || matches1 ?
+                                    {
+                                        matches2 || matches1 ?
                                             '5/30/2022' :
                                             'On December 23, 2022'
                                     }
