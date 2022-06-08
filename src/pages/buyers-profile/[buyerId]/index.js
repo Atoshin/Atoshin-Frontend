@@ -97,7 +97,7 @@ export default function BuyerProfile() {
                                      src="/icons/copy-icon.svg" alt=""/>
                                 <a target="_blank" href={`https://etherscan.io/address/${address}`} rel="noreferrer"
                                    className={classes.link}>
-                                    <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
+                                    <img className={classes.linkOutImg} src="/icons/link-out.svg" alt=""/>
                                 </a>
                             </div>
                         </div>
@@ -127,20 +127,20 @@ export default function BuyerProfile() {
                                          src="/icons/copy-icon.svg" alt=""/>
                                     <a target="_blank" href={`https://etherscan.io/address/${address}`}
                                        rel="noreferrer">
-                                        <img className={classes.linkOutImg} src="icons/link-out.svg" alt=""/>
+                                        <img className={classes.linkOutImg} src="/icons/link-out.svg" alt=""/>
                                     </a>
                                 </div>
-                                <div className={classes.valueTxt}>
-                                    Wallet Balance
-                                </div>
-                                <div className={classes.valueSec}>
-                                    <div className={classes.valueNum}>
-                                        {/*{calculateDecimalPrecision(balance, 5)}*/}
-                                    </div>
-                                    <div className={classes.ethTxt}>
-                                        ETH
-                                    </div>
-                                </div>
+                                {/*<div className={classes.valueTxt}>*/}
+                                {/*    Wallet Balance*/}
+                                {/*</div>*/}
+                                {/*<div className={classes.valueSec}>*/}
+                                {/*    <div className={classes.valueNum}>*/}
+                                {/*        /!*{calculateDecimalPrecision(balance, 5)}*!/*/}
+                                {/*    </div>*/}
+                                {/*    <div className={classes.ethTxt}>*/}
+                                {/*        ETH*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
                             </div>
                         </div>
                     </>

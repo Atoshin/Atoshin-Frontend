@@ -3,6 +3,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import classes from "../../styles/ShowAsset/HistoryDialog/HistoryDialog.module.scss";
 import styles from "../../styles/ShowAsset/ShowAsset.module.scss";
+import {router} from "next/client";
+import {useRouter} from "next/router";
 
 
 export default function HistoryModal(props) {
@@ -15,6 +17,7 @@ export default function HistoryModal(props) {
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
+    const router = useRouter();
     return (
         <Dialog onClose={handleClose} open={open}>
 
@@ -37,7 +40,7 @@ export default function HistoryModal(props) {
 
             <div className={classes.HistoryDialogMain}>
                 {txns.map((txn, idx) => {
-                    return <div key={idx} className={classes.historyIndexRow}>
+                    return <div key={idx} className={classes.historyIndexRow} onClick={()=> router.push('/buyers-profile/1')}>
                        <div className={classes.buyerNameSec}>
                            <div className={classes.boughtBy}>
                                Bought by

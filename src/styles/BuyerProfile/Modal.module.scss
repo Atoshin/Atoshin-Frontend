@@ -45,12 +45,12 @@
 
 .input {
   width: 149px;
-  height: 53px;
+  height: 39px;
   //border: 2px solid #A7A7A7;
   border-radius: 5px;
   //color: #A7A7A7;
   font-size: 14px !important;
-  font-weight: 400;
+  font-weight: 500;
   padding-left: 16px;
   //margin-bottom: 24px;
   border: 2px solid #A7A7A7;
@@ -70,13 +70,13 @@
 
 .orangeInput {
   width: 149px;
-  height: 53px;
+  height: 39px;
   //border: 2px solid #A7A7A7;
   border-radius: 5px;
   //color: #A7A7A7;
   color: #232323;
   font-size: 14px !important;
-  font-weight: 400;
+  font-weight: 500;
   padding-left: 16px;
   font-family: Roboto;
   //margin-bottom: 24px;
@@ -146,18 +146,19 @@
 .imageSec {
   display: flex;
   margin-bottom: 24px;
-
+  //align-items: flex-end;
   img {
     width: 214px;
     height: 193px;
     margin-right: 24px;
     border-radius: 3px 3px 0 0;
+    //margin-top: 10px;
   }
 
   .desSec {
-    margin-top: 10px;
+    //margin-top: 10px;
     //border: solid 1px;
-    margin-bottom: 28px;
+    //margin-bottom: 28px;
   }
 }
 
@@ -242,6 +243,17 @@
   margin-bottom: 24px;
 }
 
+.offerSec {
+  display: flex;
+  align-items: center;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19px;
+  letter-spacing: 0em;
+  //margin-bottom: 24px;
+}
+
 .processModalHeader {
   display: flex;
   align-items: center;
@@ -269,8 +281,8 @@
 }
 
 .select {
-  width: 149px;
-  height: 53px;
+  width: 128px;
+  height: 39px;
   border-radius: 5px;
   font-size: 14px !important;
   font-weight: 400;
@@ -278,30 +290,39 @@
   //border-color: #A7A7A7;
   color: #232323;
   font-family: Roboto;
+
+  div {
+    padding-right: 0 !important;
+  }
+
   fieldset {
     border-color: #A7A7A7 !important;
     border-width: 2px !important;
-    &:focus {
-      border: solid crimson !important;
-    }
 
+    .Mui-focused {
+      border-color: #1D65E0;
+    }
   }
 
+  svg {
+    width: 8px;
+    height: 8px;
+  }
 }
 
 .orangeSelect {
-  width: 149px;
-  height: 53px;
+  width: 128px;
+  height: 39px;
   border-radius: 5px;
   font-size: 14px !important;
   font-weight: 400;
-  //padding-left: 16px;
-  //border-color: #A7A7A7;
   color: #232323;
   font-family: Roboto;
-  //&:hover{
-  //  border-color: $orange;
-  //}
+
+  div {
+    padding-right: 0 !important;
+  }
+
   fieldset {
     border: 2px solid $orange !important;
   }
@@ -388,14 +409,14 @@
   }
 
   div {
-    width: 25%;
+    width: 15%;
   }
 
   hr {
     border: none;
     height: 1px;
     background: #BEBDBD;
-    width: 60%;
+    width: 70%;
   }
 }
 
@@ -412,7 +433,7 @@
 .lastPriceSec {
   display: flex;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 
   font-family: Roboto;
   font-size: 16px;
@@ -458,9 +479,54 @@
   .box {
     width: 90%;
   }
+  .toWhereSec {
+    div {
+      width: 17.5%;
+    }
+
+    hr {
+      width: 65%;
+    }
+  }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 598px) {
+  .fixPriceSec {
+    margin-top: 10px;
+  }
+  .select {
+    width: 70px;
+    height: 30px;
+    font-size: 12px !important;
+
+    svg {
+      width: 12px;
+      height: 12px;
+      top: calc(50% - 25%);
+    }
+  }
+  .orangeSelect {
+    width: 70px;
+    height: 30px;
+
+    svg {
+      width: 12px;
+      height: 12px;
+      top: calc(50% - 25%);
+    }
+  }
+  .processModalHeader {
+    padding-bottom: 10px;
+    //padding-top: 30px;
+    height: 66px;
+    align-items: flex-start;
+  }
+  .loadingNote {
+    top: 36px;
+  }
+  .imageSec {
+    margin-bottom: 16px;
+  }
   .closeVector {
     width: 20px;
     height: 20px;
@@ -491,11 +557,12 @@
   .assetName {
     font-size: 16px;
     line-height: 19px;
+    margin-bottom: 11px;
   }
   .lastPriceSec {
     font-size: 12px;
     line-height: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
   .lastPrice {
     font-size: 14px;
@@ -505,17 +572,22 @@
   .priceSec {
     font-size: 12px;
     line-height: 16px;
+    margin-bottom: 8px;
+  }
+  .offerSec {
+    font-size: 12px;
+    line-height: 16px;
   }
   .price {
     margin-left: 8px;
   }
   .input {
     width: 88px;
-    height: 36px;
+    height: 30px;
   }
   .orangeInput {
     width: 88px;
-    height: 36px;
+    height: 30px;
   }
   .title {
     font-size: 16px;

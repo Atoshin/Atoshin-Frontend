@@ -78,7 +78,7 @@
 }
 
 .contractsBtn {
-  width: 77px;
+  width: 86px;
   height: 30px;
   border: 2px solid #C6CCD1;
   color: #FFFFFF;
@@ -100,7 +100,7 @@
 }
 
 .assetBtn {
-  width: 77px;
+  width: 86px;
   height: 30px;
   border: 2px solid #C6CCD1;
   color: #FFFFFF;
@@ -236,9 +236,8 @@
   color: #232323;
   font-size: 16px;
   font-weight: 400;
-  //margin-top: 8px;
-  margin-left: 4px;
-  //margin-bottom: 8px;
+  //margin-left: 4px;
+  margin-left: 18px;
 }
 
 .sellArtworkName {
@@ -250,6 +249,7 @@
 
 .artworkTokens {
   display: flex;
+  align-items: center;
   color: #232323;
   font-size: 14px;
   font-weight: 300;
@@ -416,7 +416,7 @@
   background-color: #FFFFFF;
   margin-top: 24px;
   padding-top: 40px;
-  height: 450px;
+  height: 445px;
   padding-left: 40px;
   padding-right: 40px;
 }

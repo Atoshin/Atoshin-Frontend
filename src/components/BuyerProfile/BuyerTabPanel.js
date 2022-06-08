@@ -209,7 +209,7 @@ export default function BasicTabs({artworks, history}) {
                         {/*{artworks.map((artwork, idx) => {*/}
                         {/*    return <ArtWork artwork={artwork} key={idx} isSale={true}/>*/}
                         {/*})}*/}
-                             <div  className={artWorkHover ? classes.hoveredArtworkCard : classes.artworkCard}
+                             <div  className={artWorkHover ? classes.sellHoveredArtworkCard : classes.sellArtworkCard}
                                         onMouseEnter={artWorkMouseOver}
                                         onMouseLeave={artWorkMouseLeave}>
                                 {
@@ -225,13 +225,14 @@ export default function BasicTabs({artworks, history}) {
                                     backgroundPosition: "center",
                                     backgroundSize: "cover"
                                 }}/>
-                                <div className={classes.cardBottomSec}>
+                                <div className={classes.sellCardBottomSec}>
                                     <div className={classes.artworkName}>
                                         {/*{artwork.name}*/}
                                         Starry Night
                                     </div>
-                                    {/*<div className={classes.artworkTokens}>*/}
-                                    {/*</div>*/}
+                                    <div className={classes.artworkTokens}>
+                                        <span>4 ETH</span> <div>sale price</div>
+                                    </div>
                                 </div>
                             </div>
 

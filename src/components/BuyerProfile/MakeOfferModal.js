@@ -96,13 +96,18 @@ export default function MakeOfferModal({open, setOpen}) {
                                             </div>
                                         </div>
 
-                                        <div className={classes.priceSec}>
+                                        <div className={classes.offerSec}>
                                             <div>Offer Last for</div>
                                             <div className={classes.price}>
-                                                {/*<input className={offerTime ? classes.orangeInput : classes.input}*/}
-                                                {/*       value={offerTime} onChange={offerTimeHandler}>*/}
 
-                                                {/*</input>*/}
+                                                {/*<select id="cars" name="carlist" form="carform" className={classes.select}>*/}
+                                                {/*    <option value="volvo">Volvo</option>*/}
+                                                {/*    <option value="saab">Saab</option>*/}
+                                                {/*    <option value="opel">Opel</option>*/}
+                                                {/*    <option value="audi">Audi</option>*/}
+                                                {/*</select>*/}
+
+
                                                 <Select
                                                     labelId="demo-simple-select-label"
                                                     id="demo-simple-select"
@@ -112,15 +117,15 @@ export default function MakeOfferModal({open, setOpen}) {
                                                     InputLabelProps={{shrink: false}}
                                                     onChange={handleChange}
                                                     className={offerTime ? classes.orangeSelect : classes.select}
-                                                    sx={{
-                                                        '& .MuiOutlinedInput-notchedOutline':{
-                                                            borderColor:'#FD6108 !important',
-                                                            '&:focus:':{
-                                                                // borderColor:'#000000 !important',
-                                                                borderColor:'#FD6108 !important',
-                                                            }
-                                                        },
-                                                    }}
+                                                    // sx={{
+                                                    //     '& .MuiOutlinedInput-notchedOutline':{
+                                                    //         borderColor:'#FD6108 ',
+                                                    //     },
+                                                    //     // // .css-gyyl3k-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline
+                                                    //     // '& .MuiInputBase-root-MuiOutlinedInput-root.focused .MuiOutlinedInput-notchedOutline' :{
+                                                    //     //     borderColor:'#000000 ',
+                                                    //     // }
+                                                    // }}
                                                 >
                                                     <MenuItem value={'1'} classes={{root:classes.menuItem}}>1 Day</MenuItem>
                                                     <MenuItem value={'1W'} classes={{root:classes.menuItem}}>1 Week</MenuItem>
@@ -133,14 +138,12 @@ export default function MakeOfferModal({open, setOpen}) {
                                 </div>
                                 <div className={classes.textSec}>
                                     <div className={classes.title}>fee</div>
-                                    <div className={classes.note}>As the time of the sale the following fee will be
-                                        deducted from
-                                        your profit of this sell
+                                    <div className={classes.note}>Commission fee will deducted form your wallet after you send your offer
                                     </div>
                                     <div className={classes.toWhereSec}>
                                         <div>To hamijoo</div>
                                         <hr/>
-                                        <div className={classes.offer}>2.5 % of offer</div>
+                                        <div className={classes.offer}>0.01 ETH</div>
                                     </div>
                                     <div className={classes.checkBoxSec}>
                                         <Checkbox
@@ -157,7 +160,7 @@ export default function MakeOfferModal({open, setOpen}) {
                                     <div className={classes.buttonSec}>
                                         <Button variant='contained'
                                                 className={isChecked && price && offerTime ? classes.btn : classes.disabledBtn}>
-                                            Post Your Listing
+                                            Send Your Offer
                                         </Button>
                                     </div>
                                 </div>
