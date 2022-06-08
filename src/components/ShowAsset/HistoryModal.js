@@ -3,9 +3,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import classes from "../../styles/ShowAsset/HistoryDialog/HistoryDialog.module.scss";
 import styles from "../../styles/ShowAsset/ShowAsset.module.scss";
-import {router} from "next/client";
 import {useRouter} from "next/router";
-
 
 export default function HistoryModal(props) {
     const {open, setOpen, txns} = props;
