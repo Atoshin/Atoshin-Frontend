@@ -176,7 +176,7 @@ export async function getServerSideProps({query}) {
             artist,
             relatedAssets
         }
-    } = await axios.get(`${process.env.BASE_URL}/api/artist-profile/${id}`)
+    } = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/artist-profile/${id}`)
 
     return {
         props: {

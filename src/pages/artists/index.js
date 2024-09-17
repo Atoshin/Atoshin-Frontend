@@ -53,12 +53,23 @@ export default function Artists({artists}) {
 }
 
 export async function getServerSideProps(ctx) {
-
-    const {data: {artists}} = await axios.get(`${process.env.BASE_URL}/api/artists`);
-
-    return {
-        props: {
-            artists
-        }
+    try {
+        const { data: { artists } } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/artists`);
+        
+        console.log(artists);
+        
+        return {
+            props: {
+                artists
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching artists:', error.response?.data || error.message);
+        
+        return {
+            props: {
+                artists: []
+            }
+        };
     }
 }

@@ -6,7 +6,7 @@ export default async function handler(req, res) {
         const {
             data,
             headers: returnedHeaders
-        } = await axios.post(`${process.env.BACKEND_BASE_URL}/wallets/store`, body)
+        } = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/wallets/store`, body)
         Object.entries(returnedHeaders).forEach((keyArr) =>
             res.setHeader(keyArr[0], keyArr[1])
         )

@@ -1204,7 +1204,7 @@ export async function getServerSideProps({query, req}) {
         data: {
             asset
         }
-    } = await axios.get(`${process.env.BASE_URL}/api/show-asset/${assetId}`)
+    } = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/show-asset/${assetId}`)
 
     return {
         props: {

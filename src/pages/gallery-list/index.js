@@ -58,7 +58,7 @@ export default function GalleryList({galleries}) {
 
 export async function getServerSideProps(ctx) {
 
-    const {data: {galleries}} = await axios.get(`${process.env.BASE_URL}/api/art-center/list`)
+    const {data: {galleries}} = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/art-center/list`)
 
 
     return {

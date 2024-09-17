@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 
 module.exports = {
-    siteUrl: 'https://atoshin.art',
+    siteUrl: 'http://localhost:3000',
     changefreq: 'daily',
     priority: 0.7,
     sitemapSize: 5000,

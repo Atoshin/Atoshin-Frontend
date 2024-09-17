@@ -165,7 +165,7 @@ export default function Slider({
             {
                 images.map((img, i) => (
                     <Link key={i}
-                          href={`/show-asset/${assets[currentSlide].id}`}>
+                          href={`${process.env.NEXT_PUBLIC_APP_URL}/show-asset/${assets[currentSlide].id}`}>
                         <a>
                             <div
                                 className={classes.topRightSec} style={{width: imageRef.current.clientWidth}}>

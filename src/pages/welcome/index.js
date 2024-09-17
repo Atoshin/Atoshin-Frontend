@@ -9,6 +9,7 @@ import {useCookies} from "react-cookie";
 import axios from 'axios';
 import {Button} from "@mui/material";
 
+
 export default function Landing({data}) {
 
     const [cookie, setCookie] = useCookies();
@@ -58,10 +59,23 @@ export default function Landing({data}) {
 
 
 export async function getStaticProps() {
-    const {data: {data}} = await axios.get(`${process.env.BACKEND_BASE_URL}/landing/content`)
-    return {
-        props: {
-            data
-        }
+    
+    try {
+        const {data: {data}} = await axios.get(`http://127.0.0.1:8000/api/v1/landing/content`)
+        console.log
+        
+        return {
+            props: {
+                data
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error.response?.data || error.message);
+        
+        return {
+            props: {
+                data: []
+            }
+        };
     }
 }

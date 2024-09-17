@@ -52,7 +52,7 @@ export async function getServerSideProps(ctx) {
             gallery,
             artists
         }
-    } = await axios.get(`${process.env.BASE_URL}/api/home?assetsToShow=5&artistsToShow=5&gallery=1`)
+    } = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/home?assetsToShow=5&artistsToShow=5&gallery=1`)
     return {
         props: {
             assets,

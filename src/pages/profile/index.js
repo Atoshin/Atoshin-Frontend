@@ -191,7 +191,7 @@ export async function getServerSideProps({req, res}) {
 
     try {
         const {data: {user}} =
-            await axios.get(`${process.env.BASE_URL}/api/profile/${data.address}`)
+            await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/profile/${data.address}`)
 
 
         return {

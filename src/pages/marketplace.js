@@ -54,7 +54,7 @@ export async function getServerSideProps(ctx) {
         data: {
             assets
         }
-    } = await axios.get(`${process.env.BASE_URL}/api/marketplace`)
+    } = await axios.get(`${process.env.NEXT_PUBLIC_APP_URL}/api/marketplace`)
 
     return {
         props: {

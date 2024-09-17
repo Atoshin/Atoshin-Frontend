@@ -15,7 +15,7 @@ export default function Footer() {
 
     const submit = () => {
         setLoading(true)
-        axios.post('/api/newsletter', {
+        axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/newsletter`, {
             email: state
         }).then(r => {
             setLoading(false)

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { error } from "console";
 
 export default async function handler(req, res) {
     const {headers, body, query} = req;
@@ -6,7 +7,7 @@ export default async function handler(req, res) {
         const {
             data,
             headers: returnedHeaders
-        } = await axios.get(`${process.env.BACKEND_BASE_URL}/homepage/material`, {
+        } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/homepage/material`, {
             params: {
                 number_of_assets: query.assetsToShow,
                 number_of_artists: query.artistsToShow,

@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         let returnedHeaders;
         if (req.method === 'GET') {
             const
-                response = await axios.get(`${process.env.BACKEND_BASE_URL}/user/${query.walletAddress}/show`, {
+                response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/user/${query.walletAddress}/show`, {
                     headers: {
                         Authorization: token
                     }
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
             returnedHeaders = response.headers;
         } else if (req.method === "PATCH") {
             const
-                response = await axios.patch(`${process.env.BACKEND_BASE_URL}/user/${query.walletAddress}/update`, body, {
+                response = await axios.patch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/${query.walletAddress}/update`, body, {
                     headers: {
                         Authorization: token
                     }

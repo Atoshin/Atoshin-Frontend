@@ -6,7 +6,7 @@ export default async function handler(req, res) {
         const {
             data,
             headers: returnedHeaders
-        } = await axios.get(`${process.env.BACKEND_BASE_URL}/asset/${query.id}/show`)
+        } = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/asset/${query.id}/show`)
 
         Object.entries(returnedHeaders).forEach((keyArr) =>
             res.setHeader(keyArr[0], keyArr[1])

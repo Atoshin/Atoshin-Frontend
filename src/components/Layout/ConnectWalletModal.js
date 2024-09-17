@@ -79,7 +79,7 @@ export default function ConnectWalletModal() {
         const walletAddress = await signer.getAddress();
         try {
             const signature = await signer.signMessage(process.env.NEXT_PUBLIC_SIGNATURE_PHRASE);
-            await axios.post(`/api/signature`, {
+            await axios.post(`${NEXT_PUBLIC_APP_URL}/api/signature`, {
                 signature,
                 walletAddress
             })
@@ -118,7 +118,7 @@ export default function ConnectWalletModal() {
             const signer = provider.getSigner();
             const walletAddress = await signer.getAddress();
             if (walletAddress) {
-                axios.post(`/api/wallet`, {
+                axios.post(`${NEXT_PUBLIC_APP_URL}/api/wallet`, {
                     walletAddress
                 }).then(r => {
                     signMessage(signer)
